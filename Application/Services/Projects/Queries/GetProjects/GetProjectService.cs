@@ -19,6 +19,7 @@ namespace Application.Services.Projects.Queries.GetProjects
             {
                 Description = p.Description,
                 Image = p.Image,
+                Duration=p.Duration,
                 Title = p.Title,
                 Price = p.Price,
                 ProjectId = p.ProjectId,
@@ -45,6 +46,7 @@ namespace Application.Services.Projects.Queries.GetProjects
                 Image = p.Image,
                 Title = p.Title,
                 Price = p.Price,
+                Duration = p.Duration,
                 ProjectId = p.ProjectId,
                 OwnerId = p.OwnerId,
                 ProjectTypeId = p.ProjectTypeId
@@ -68,6 +70,7 @@ namespace Application.Services.Projects.Queries.GetProjects
                 Title = p.Title,
                 Price = p.Price,
                 ProjectId = p.ProjectId,
+                Duration = p.Duration,
                 OwnerId = p.OwnerId,
                 ProjectTypeId = p.ProjectTypeId
 
@@ -92,6 +95,7 @@ namespace Application.Services.Projects.Queries.GetProjects
                 Price = p.Price,
                 ProjectId = p.ProjectId,
                 OwnerId = p.OwnerId,
+                Duration = p.Duration,
                 ProjectTypeId = p.ProjectTypeId
 
             }).OrderBy(x => x.ProjectId).ToList();

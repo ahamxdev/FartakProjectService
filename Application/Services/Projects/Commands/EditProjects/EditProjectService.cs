@@ -96,6 +96,7 @@ namespace Application.Services.Projects.Commands.EditProjects
                 project.Title = request.Title;
                 project.OwnerId = request.OwnerId;
                 project.Price = request.Price;
+                project.Duration = request.Duration;
 
 
                 _context.SaveChanges();

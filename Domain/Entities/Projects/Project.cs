@@ -4,6 +4,7 @@
     {
         public long ProjectId { get; set; }
         public long ProjectTypeId { get; set; }
+        public long Duration { get; set; }
         public required string Title { get; set; }
         public required string Description { get; set; }
         public long OwnerId { get; set; }

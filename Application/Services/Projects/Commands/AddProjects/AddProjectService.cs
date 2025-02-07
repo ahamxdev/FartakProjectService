@@ -45,6 +45,7 @@ namespace Application.Services.Projects.Commands.AddProjects
                             Price = request.Price,
                             ProjectTypeId = request.ProjectTypeId,
                             Title = request.Title,
+                            Duration = request.Duration,
                             Image = fileNameImage
 
                         };
@@ -82,6 +83,7 @@ namespace Application.Services.Projects.Commands.AddProjects
                         Price = request.Price,
                         ProjectTypeId = request.ProjectTypeId,
                         Title = request.Title,
+                        Duration = request.Duration,
                         Image = null
 
                     };
