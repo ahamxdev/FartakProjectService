@@ -3,7 +3,6 @@
     public class RequestAddPaymentDto
     {
         public long UserId { get; set; }
-        public long CourseId { get; set; }
         public required string PurchaseDate { get; set; }
         public required string PurchaseTime { get; set; }
         public required string ConfirmDate { get; set; }
@@ -22,7 +21,6 @@
 
 
         public long UserId { get; set; }
-        public long CourseId { get; set; }
         public required string PurchaseDate { get; set; }
         public required string PurchaseTime { get; set; }
         public required string Description { get; set; }

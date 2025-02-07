@@ -570,8 +570,7 @@ namespace Payments.Controllers
                     OrderId = "",
                     PurchaseTime = dto.PurchaseTime,
                     ZarinpalAuthority = result.Data.authority,
-                    Price = dto.Price,
-                    CourseId = dto.CourseId
+                    Price = dto.Price
 
                 });
 

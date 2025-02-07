@@ -23,7 +23,6 @@ namespace Application.Services.Payments.Queries.GetPayments
                 PurchaseState = p.PurchaseState,
                 Description = p.Description,
                 Price = p.Price,
-                CourseId = p.CourseId,
                 UserId = p.UserId
 
             }).OrderBy(x => x.PaymentId).ToList();
@@ -48,7 +47,6 @@ namespace Application.Services.Payments.Queries.GetPayments
                 PurchaseState = p.PurchaseState,
                 Description = p.Description,
                 Price = p.Price,
-                CourseId = p.CourseId,
                 UserId = p.UserId
 
             }).OrderBy(x => x.PaymentId).ToList();
@@ -72,7 +70,6 @@ namespace Application.Services.Payments.Queries.GetPayments
                 PurchaseState = p.PurchaseState,
                 Description = p.Description,
                 Price = p.Price,
-                CourseId = p.CourseId,
                 UserId = p.UserId
 
             }).OrderByDescending(x => x.PaymentId).ToList();
@@ -96,7 +93,6 @@ namespace Application.Services.Payments.Queries.GetPayments
                 PurchaseState = p.PurchaseState,
                 Description = p.Description,
                 Price = p.Price,
-                CourseId = p.CourseId,
                 UserId = p.UserId
 
             }).OrderByDescending(x => x.PaymentId).ToList();
@@ -122,7 +118,6 @@ namespace Application.Services.Payments.Queries.GetPayments
                 PurchaseState = p.PurchaseState,
                 Description = p.Description,
                 Price = p.Price,
-                CourseId = p.CourseId,
                 UserId = p.UserId
 
             }).OrderBy(x => x.PaymentId).ToList();

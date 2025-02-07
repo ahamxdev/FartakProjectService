@@ -33,6 +33,7 @@ namespace Persistence.Contexts
         public DbSet<BlogContent> BlogContents { get; set; }
         public DbSet<MessageSetting> MessageSettings { get; set; }
         public DbSet<TeacherType> TeacherTypes { get; set; }
+        public DbSet<PaymentUse> PaymentUses { get; set; }
 
         public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
         {
@@ -58,6 +59,7 @@ namespace Persistence.Contexts
             modelBuilder.Entity<Payment>().HasIndex(u => u.PaymentId).IsUnique();
             modelBuilder.Entity<ZarinpalSetting>().HasIndex(u => u.ZarinpalSettingId).IsUnique();
             modelBuilder.Entity<TeacherType>().HasIndex(u => u.TeacherTypeId).IsUnique();
+            modelBuilder.Entity<PaymentUse>().HasIndex(u => u.PaymentUseId).IsUnique();
         }
     }
 

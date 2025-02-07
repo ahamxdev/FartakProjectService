@@ -27,7 +27,6 @@ namespace Application.Services.Payments.Commands.AddPayments
                     PurchaseState = request.PurchaseState,
                     PurchaseTime = request.PurchaseTime,
                     Price = request.Price,
-                    CourseId = request.CourseId,
                     UserId = request.UserId,
                     ZarinpalAuthority = request.ZarinpalAuthority,
 

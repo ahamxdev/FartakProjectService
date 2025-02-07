@@ -23,6 +23,8 @@ using Application.Services.Payments.Commands.AddPayments;
 using Application.Services.Payments.Commands.EditPayments;
 using Application.Services.Payments.Commands.RemovePayments;
 using Application.Services.Payments.Queries.GetPayments;
+using Application.Services.PaymentUses.Commands.AddPaymentUses;
+using Application.Services.PaymentUses.Queries.GetPaymentUses;
 using Application.Services.ProjectLikes.Commands.AddProjectLikes;
 using Application.Services.ProjectLikes.Commands.RemoveProjectLikes;
 using Application.Services.ProjectLikes.Queries.GetProjectLikes;
@@ -213,6 +215,12 @@ builder.Services.AddScoped<IAddCourseService, AddCourseService>();
 builder.Services.AddScoped<IEditCourseService, EditCourseService>();
 builder.Services.AddScoped<IRemoveCourseService, RemoveCourseService>();
 builder.Services.AddScoped<IGetCourseService, GetCourseService>();
+
+
+//PaymantUse
+builder.Services.AddScoped<IAddPaymentUseService, AddPaymantUseService>();
+builder.Services.AddScoped<IGetPaymentUseService, GetPaymentUseService>();
+
 
 //CourseType
 

@@ -31,6 +31,7 @@ namespace Application.Interfaces.Contexts
         DbSet<Payment> Payments { get; set; }
         DbSet<ZarinpalSetting> ZarinpalSettings { get; set; }
         DbSet<TeacherType> TeacherTypes { get; set; }
+        DbSet<PaymentUse> PaymentUses { get; set; }
 
         int SaveChanges(bool accceptAllChangesOnSuccess);
         int SaveChanges();
