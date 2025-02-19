@@ -13,7 +13,7 @@ namespace Application.Services.TeacherUsers.Commands.EditTeacherUsers
         public long OnlinePrice { get; set; }
         public long TeacherTypeId { get; set; }
         public long InPersonPrice { get; set; }
-        public required IFormFile FileVideo { get; set; }
-        public required IFormFile FileImage { get; set; }
+        public IFormFile? FileVideo { get; set; }
+        public IFormFile? FileImage { get; set; }
     }
 }
