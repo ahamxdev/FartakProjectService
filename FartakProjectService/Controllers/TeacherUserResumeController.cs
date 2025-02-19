@@ -56,7 +56,7 @@ namespace FartakProjectService.Controllers
         [HttpPost]
         [Route("Add")]
 
-        public ActionResult Add([FromForm] RequestAddTeacherUserResumeDto dto)
+        public ActionResult Add( RequestAddTeacherUserResumeDto dto)
         {
             try
             {
@@ -166,7 +166,7 @@ namespace FartakProjectService.Controllers
         [ProducesResponseType(typeof(ErrorDto), 500)]
         [HttpPut]
         [Route("Edit")]
-        public ActionResult Edit([FromForm] RequestEditTeacherUserResumeDto dto)
+        public ActionResult Edit( RequestEditTeacherUserResumeDto dto)
         {
             try
             {
