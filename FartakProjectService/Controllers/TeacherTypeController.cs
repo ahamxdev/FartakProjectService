@@ -44,7 +44,7 @@ namespace FartakTeacherTypeService.Controllers
             _getTokenService = getTokenService;
         }
         /// <summary>
-        /// اضافه کردن یک کاربر جدید
+        /// اضافه کردن یک نوع تدریس جدید
         /// </summary>
         /// <response code="200">Success</response>
         /// <response code="400">Validation Error</response>
@@ -96,7 +96,7 @@ namespace FartakTeacherTypeService.Controllers
 
 
         /// <summary>
-        /// ویرایش کردن یک کاربر جدید
+        /// ویرایش کردن یک نوع تدریس جدید
         /// </summary>
         /// <response code="200">Success</response>
         /// <response code="400">Validation Error</response>
@@ -148,7 +148,7 @@ namespace FartakTeacherTypeService.Controllers
 
 
         /// <summary>
-        /// حذف کاربر
+        /// حذف نوع تدریس
         /// </summary>
         /// <response code="200">Success</response>
         /// <response code="400">Validation Error</response>
