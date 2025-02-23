@@ -13,5 +13,7 @@
         public long OnlinePrice { get; set; }
         public long TeacherTypeId { get; set; }
         public long InPersonPrice { get; set; }
+
+        public required string TeacherName {  get; set; }
     }
 }

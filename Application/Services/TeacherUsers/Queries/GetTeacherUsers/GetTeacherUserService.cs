@@ -1,5 +1,6 @@
 ﻿using Application.Interfaces.Contexts;
 using Application.Services.Users.Queries.GetUsers;
+using Domain.Entities.TeacherUser;
 
 namespace Application.Services.TeacherUsers.Queries.GetTeacherUsers
 {
@@ -14,25 +15,43 @@ namespace Application.Services.TeacherUsers.Queries.GetTeacherUsers
         }
         public ResultGetTeacherUserDto GetAll()
         {
-            var teacherUser = _context.TeacherUsers;
-            var teacherUserList = teacherUser.Select(p => new GetTeacherUserDto
-            {
-                Description = p.Description,
-                ImageName = p.ImageName,
-                VideoName = p.VideoName,
-                TeacherUserId = p.TeacherUserId,
-                UserId = p.UserId,
-                Gender = p.Gender,
-                InPersonPrice = p.InPersonPrice,
-                OnlinePrice = p.OnlinePrice,
-                TypeTeaching = p.TypeTeaching,
-                City = p.City,
-                TeacherTypeId = p.TeacherTypeId
+            var teacherUsers = _context.TeacherUsers.ToList();
 
-            }).OrderBy(x => x.TeacherUserId).ToList();
+            List<GetTeacherUserDto> teacherUserList = new List<GetTeacherUserDto>();
+
+            foreach (var teacherUser in teacherUsers)
+            {
+
+                var user = _getUserService.GetById(new RequestGetUserByIdDto { UserId = teacherUser.UserId });
+
+                string teacherName = "";
+                if (user.Rows > 0)
+                {
+                    teacherName=user.Users[0].Name + " " + user.Users[0].Lastname;
+                }
+
+
+                teacherUserList.Add(new GetTeacherUserDto
+                {
+
+                   
+                    City = teacherUser.City,
+                    Description = teacherUser.Description,
+                    ImageName = teacherUser.ImageName,
+                    TeacherName = teacherName,
+                    VideoName = teacherUser.VideoName,
+                    Gender = teacherUser.Gender,
+                    InPersonPrice = teacherUser.InPersonPrice,
+                    OnlinePrice = teacherUser.OnlinePrice,
+                    TeacherTypeId = teacherUser.TeacherTypeId,
+                    TeacherUserId = teacherUser.TeacherUserId,
+                    TypeTeaching=teacherUser.TypeTeaching,
+                    UserId = teacherUser.UserId
+                });
+            }
             return new ResultGetTeacherUserDto
             {
-                TeacherUsers = teacherUserList,
+                TeacherUsers = teacherUserList.OrderBy(t=>t.TeacherUserId).ToList(),
                 Rows = teacherUserList.Count,
             };
 
@@ -41,25 +60,42 @@ namespace Application.Services.TeacherUsers.Queries.GetTeacherUsers
 
         public ResultGetTeacherUserDto GetByTeacherId(RequestGetTeacherUserByTeacherIdDto request)
         {
-            var teacherUser = _context.TeacherUsers.Where(x => x.UserId == request.TeacherId);
-            var teacherUserList = teacherUser.Select(p => new GetTeacherUserDto
-            {
-                City = p.City,
-                Description = p.Description,
-                ImageName = p.ImageName,
-                VideoName = p.VideoName,
-                TeacherUserId = p.TeacherUserId,
-                UserId = p.UserId,
-                Gender = p.Gender,
-                InPersonPrice = p.InPersonPrice,
-                OnlinePrice = p.OnlinePrice,
-                TypeTeaching = p.TypeTeaching,
-                TeacherTypeId = p.TeacherTypeId
+            var teacherUsers = _context.TeacherUsers.Where(x => x.UserId == request.TeacherId).ToList();
+            List<GetTeacherUserDto> teacherUserList = new List<GetTeacherUserDto>();
 
-            }).OrderBy(x => x.TeacherUserId).ToList();
+            foreach (var teacherUser in teacherUsers)
+            {
+
+                var user = _getUserService.GetById(new RequestGetUserByIdDto { UserId = teacherUser.UserId });
+
+                string teacherName = "";
+                if (user.Rows > 0)
+                {
+                    teacherName = user.Users[0].Name + " " + user.Users[0].Lastname;
+                }
+
+
+                teacherUserList.Add(new GetTeacherUserDto
+                {
+
+
+                    City = teacherUser.City,
+                    Description = teacherUser.Description,
+                    ImageName = teacherUser.ImageName,
+                    TeacherName = teacherName,
+                    VideoName = teacherUser.VideoName,
+                    Gender = teacherUser.Gender,
+                    InPersonPrice = teacherUser.InPersonPrice,
+                    OnlinePrice = teacherUser.OnlinePrice,
+                    TeacherTypeId = teacherUser.TeacherTypeId,
+                    TeacherUserId = teacherUser.TeacherUserId,
+                    TypeTeaching = teacherUser.TypeTeaching,
+                    UserId = teacherUser.UserId
+                });
+            }
             return new ResultGetTeacherUserDto
             {
-                TeacherUsers = teacherUserList,
+                TeacherUsers = teacherUserList.OrderBy(t => t.TeacherUserId).ToList(),
                 Rows = teacherUserList.Count,
             };
 
@@ -67,25 +103,42 @@ namespace Application.Services.TeacherUsers.Queries.GetTeacherUsers
 
         public ResultGetTeacherUserDto GetByTeacherUserId(RequestGetTeacherUserByIdDto request)
         {
-            var teacherUser = _context.TeacherUsers.Where(x => x.TeacherUserId == request.TeacherUserId);
-            var teacherUserList = teacherUser.Select(p => new GetTeacherUserDto
-            {
-                City = p.City,
-                Description = p.Description,
-                ImageName = p.ImageName,
-                VideoName = p.VideoName,
-                TeacherUserId = p.TeacherUserId,
-                UserId = p.UserId,
-                Gender = p.Gender,
-                InPersonPrice = p.InPersonPrice,
-                OnlinePrice = p.OnlinePrice,
-                TypeTeaching = p.TypeTeaching,
-                TeacherTypeId = p.TeacherTypeId
+            var teacherUsers = _context.TeacherUsers.Where(x => x.TeacherUserId == request.TeacherUserId);
+            List<GetTeacherUserDto> teacherUserList = new List<GetTeacherUserDto>();
 
-            }).OrderBy(x => x.TeacherUserId).ToList();
+            foreach (var teacherUser in teacherUsers)
+            {
+
+                var user = _getUserService.GetById(new RequestGetUserByIdDto { UserId = teacherUser.UserId });
+
+                string teacherName = "";
+                if (user.Rows > 0)
+                {
+                    teacherName = user.Users[0].Name + " " + user.Users[0].Lastname;
+                }
+
+
+                teacherUserList.Add(new GetTeacherUserDto
+                {
+
+
+                    City = teacherUser.City,
+                    Description = teacherUser.Description,
+                    ImageName = teacherUser.ImageName,
+                    TeacherName = teacherName,
+                    VideoName = teacherUser.VideoName,
+                    Gender = teacherUser.Gender,
+                    InPersonPrice = teacherUser.InPersonPrice,
+                    OnlinePrice = teacherUser.OnlinePrice,
+                    TeacherTypeId = teacherUser.TeacherTypeId,
+                    TeacherUserId = teacherUser.TeacherUserId,
+                    TypeTeaching = teacherUser.TypeTeaching,
+                    UserId = teacherUser.UserId
+                });
+            }
             return new ResultGetTeacherUserDto
             {
-                TeacherUsers = teacherUserList,
+                TeacherUsers = teacherUserList.OrderBy(t => t.TeacherUserId).ToList(),
                 Rows = teacherUserList.Count,
             };
 
@@ -94,25 +147,42 @@ namespace Application.Services.TeacherUsers.Queries.GetTeacherUsers
 
         public ResultGetTeacherUserDto GetByTeacherTypeId(RequestGetTeacherUserByTeacherTypeIdDto request)
         {
-            var teacherUser = _context.TeacherUsers.Where(x => x.TeacherTypeId == request.TeacherTypeId);
-            var teacherUserList = teacherUser.Select(p => new GetTeacherUserDto
-            {
-                City = p.City,
-                Description = p.Description,
-                ImageName = p.ImageName,
-                VideoName = p.VideoName,
-                TeacherUserId = p.TeacherUserId,
-                UserId = p.UserId,
-                Gender = p.Gender,
-                InPersonPrice = p.InPersonPrice,
-                OnlinePrice = p.OnlinePrice,
-                TypeTeaching = p.TypeTeaching,
-                TeacherTypeId = p.TeacherTypeId
+            var teacherUsers = _context.TeacherUsers.Where(x => x.TeacherTypeId == request.TeacherTypeId);
+            List<GetTeacherUserDto> teacherUserList = new List<GetTeacherUserDto>();
 
-            }).OrderBy(x => x.TeacherUserId).ToList();
+            foreach (var teacherUser in teacherUsers)
+            {
+
+                var user = _getUserService.GetById(new RequestGetUserByIdDto { UserId = teacherUser.UserId });
+
+                string teacherName = "";
+                if (user.Rows > 0)
+                {
+                    teacherName = user.Users[0].Name + " " + user.Users[0].Lastname;
+                }
+
+
+                teacherUserList.Add(new GetTeacherUserDto
+                {
+
+
+                    City = teacherUser.City,
+                    Description = teacherUser.Description,
+                    ImageName = teacherUser.ImageName,
+                    TeacherName = teacherName,
+                    VideoName = teacherUser.VideoName,
+                    Gender = teacherUser.Gender,
+                    InPersonPrice = teacherUser.InPersonPrice,
+                    OnlinePrice = teacherUser.OnlinePrice,
+                    TeacherTypeId = teacherUser.TeacherTypeId,
+                    TeacherUserId = teacherUser.TeacherUserId,
+                    TypeTeaching = teacherUser.TypeTeaching,
+                    UserId = teacherUser.UserId
+                });
+            }
             return new ResultGetTeacherUserDto
             {
-                TeacherUsers = teacherUserList,
+                TeacherUsers = teacherUserList.OrderBy(t => t.TeacherUserId).ToList(),
                 Rows = teacherUserList.Count,
             };
 
