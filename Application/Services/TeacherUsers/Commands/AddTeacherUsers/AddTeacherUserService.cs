@@ -30,15 +30,10 @@ namespace Application.Services.TeacherUsers.Commands.AddTeacherUsers
 
                 if (request.FileImage != null) {
 
-                    if (uploadFile.IsUploadedFile(request.FileImage, uploadsRootFolderImage, fileNameImage))
-                    {
-
-                        var suffixImage = System.IO.Path.GetExtension(request.FileImage.FileName);
-                        string tickImage = DateTime.Now.Ticks.ToString();
-                        fileNameImage = tickImage + suffixImage;
-
-                    }
-                    else
+                    var suffixImage = System.IO.Path.GetExtension(request.FileImage.FileName);
+                    string tickImage = DateTime.Now.Ticks.ToString();
+                    fileNameImage = tickImage + suffixImage;
+                    if (!uploadFile.IsUploadedFile(request.FileImage, uploadsRootFolderImage, fileNameImage))
                     {
                         return new ResultDto<ResultAddTeacherUserDto>()
                         {
@@ -48,20 +43,18 @@ namespace Application.Services.TeacherUsers.Commands.AddTeacherUsers
 
                         };
                     }
-
+             
 
                 }
 
 
                 if (request.FileVideo != null) {
 
-                    if (uploadFile.IsUploadedFile(request.FileVideo, uploadsRootFolderVideo, fileNameVideo))
-                    {
-                        var suffixVideo = System.IO.Path.GetExtension(request.FileVideo.FileName);
-                        string tickVideo = DateTime.Now.Ticks.ToString();
-                        fileNameVideo = tickVideo + suffixVideo;
-                    }
-                    else
+                    var suffixVideo = System.IO.Path.GetExtension(request.FileVideo.FileName);
+                    string tickVideo = DateTime.Now.Ticks.ToString();
+                    fileNameVideo = tickVideo + suffixVideo;
+
+                    if (!uploadFile.IsUploadedFile(request.FileVideo, uploadsRootFolderVideo, fileNameVideo))
                     {
                         return new ResultDto<ResultAddTeacherUserDto>()
                         {
@@ -71,6 +64,7 @@ namespace Application.Services.TeacherUsers.Commands.AddTeacherUsers
 
                         };
                     }
+                 
 
                 }
            
