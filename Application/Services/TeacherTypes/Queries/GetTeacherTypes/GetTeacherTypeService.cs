@@ -19,7 +19,7 @@ namespace Application.Services.TeacherTypes.Queries.GetTeacherTypes
             {
                 Title = p.Title,
                 TeacherTypeId = p.TeacherTypeId,
-                TeacherTypeParentId = p.TeacherTypeId,
+                TeacherTypeParentId = p.TeacherTypeParentId,
 
             }).OrderBy(x => x.TeacherTypeId).ToList();
             return new ResultGetTeacherTypesDto
@@ -37,7 +37,7 @@ namespace Application.Services.TeacherTypes.Queries.GetTeacherTypes
             {
                 Title = p.Title,
                 TeacherTypeId = p.TeacherTypeId,
-                TeacherTypeParentId = p.TeacherTypeId,
+                TeacherTypeParentId = p.TeacherTypeParentId,
 
             }).OrderBy(x => x.TeacherTypeId).ToList();
             return new ResultGetTeacherTypesDto
@@ -55,7 +55,7 @@ namespace Application.Services.TeacherTypes.Queries.GetTeacherTypes
             {
                 Title = p.Title,
                 TeacherTypeId = p.TeacherTypeId,
-                TeacherTypeParentId = p.TeacherTypeId,
+                TeacherTypeParentId = p.TeacherTypeParentId,
 
             }).OrderBy(x => x.TeacherTypeId).ToList();
             return new ResultGetTeacherTypesDto
@@ -73,7 +73,7 @@ namespace Application.Services.TeacherTypes.Queries.GetTeacherTypes
             {
                 Title = p.Title,
                 TeacherTypeId = p.TeacherTypeId,
-                TeacherTypeParentId = p.TeacherTypeId,
+                TeacherTypeParentId = p.TeacherTypeParentId,
 
             }).OrderBy(x => x.TeacherTypeId).ToList();
             return new ResultGetTeacherTypesDto
