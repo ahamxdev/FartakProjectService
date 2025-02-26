@@ -16,7 +16,7 @@ namespace Application.Services.TeacherTypes.Commands.AddTeacherTypes
             _context = context;
             _configuration = configuration;
         }
-        public ResultDto<ResultAddTeacherTypesDto> Execute(RequestAddTeacherTypesDto request)
+        public ResultDto<ResultAddTeacherTypesDto> ExecuteParent(RequestAddTeacherTypesParentDto request)
         {
 
 
@@ -25,6 +25,7 @@ namespace Application.Services.TeacherTypes.Commands.AddTeacherTypes
                 TeacherType TeacherTypes = new TeacherType
                 {
                     Title = request.Title,
+                    TeacherTypeParentId=0
 
                 };
                 _context.TeacherTypes.Add(TeacherTypes);
@@ -51,5 +52,41 @@ namespace Application.Services.TeacherTypes.Commands.AddTeacherTypes
             }
         }
 
+
+        public ResultDto<ResultAddTeacherTypesDto> ExecuteChild(RequestAddTeacherTypesChildDto request)
+        {
+
+
+            try
+            {
+                TeacherType TeacherTypes = new TeacherType
+                {
+                    Title = request.Title,
+                    TeacherTypeParentId = request.TeacherTypeParentId,
+
+                };
+                _context.TeacherTypes.Add(TeacherTypes);
+                _context.SaveChanges();
+                return new ResultDto<ResultAddTeacherTypesDto>
+                {
+                    Data = new ResultAddTeacherTypesDto
+                    {
+                        TeacherTypeId = TeacherTypes.TeacherTypeId
+                    },
+                    IsSuccess = true,
+                    Message = "با موفقیت ثبت شد."
+                };
+            }
+            catch
+            {
+                return new ResultDto<ResultAddTeacherTypesDto>
+                {
+                    Data = new ResultAddTeacherTypesDto { TeacherTypeId = 0 },
+                    IsSuccess = false,
+                    Message = "ثبت با خطا مواجه شد."
+                };
+
+            }
+        }
     }
 }

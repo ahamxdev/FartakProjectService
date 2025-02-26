@@ -4,6 +4,7 @@ namespace Application.Services.TeacherTypes.Commands.AddTeacherTypes
 {
     public interface IAddTeacherTypeService
     {
-        ResultDto<ResultAddTeacherTypesDto> Execute(RequestAddTeacherTypesDto request);
+        ResultDto<ResultAddTeacherTypesDto> ExecuteParent(RequestAddTeacherTypesParentDto request);
+        ResultDto<ResultAddTeacherTypesDto> ExecuteChild(RequestAddTeacherTypesChildDto request);
     }
 }

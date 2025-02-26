@@ -44,7 +44,7 @@ namespace FartakTeacherTypeService.Controllers
             _getTokenService = getTokenService;
         }
         /// <summary>
-        /// اضافه کردن یک نوع تدریس جدید
+        /// اضافه کردن یک نوع تدریس جدید والد
         /// </summary>
         /// <response code="200">Success</response>
         /// <response code="400">Validation Error</response>
@@ -55,13 +55,13 @@ namespace FartakTeacherTypeService.Controllers
         [ProducesResponseType(typeof(ErrorDto), 409)]
         [ProducesResponseType(typeof(ErrorDto), 500)]
         [HttpPost]
-        [Route("Add")]
+        [Route("AddParent")]
 
-        public ActionResult Add(RequestAddTeacherTypesDto dto)
+        public ActionResult AddParent(RequestAddTeacherTypesParentDto dto)
         {
             try
             {
-                var TeacherType = _addTeacherTypeService.Execute(dto);
+                var TeacherType = _addTeacherTypeService.ExecuteParent(dto);
                 return Json(TeacherType);
             }
             catch (Exception e)
@@ -91,7 +91,51 @@ namespace FartakTeacherTypeService.Controllers
 
 
 
+        /// <summary>
+        /// اضافه کردن یک نوع تدریس جدید فرزند
+        /// </summary>
+        /// <response code="200">Success</response>
+        /// <response code="400">Validation Error</response>
+        /// <response code="409">Not Success - Value Content:</response>
+        /// <response code="500">Server Error - Value Content:</response>
+        [ProducesResponseType(typeof(ResultDto<ResultAddTeacherTypesDto>), 200)]
+        [ProducesResponseType(typeof(ValidationResult), 400)]
+        [ProducesResponseType(typeof(ErrorDto), 409)]
+        [ProducesResponseType(typeof(ErrorDto), 500)]
+        [HttpPost]
+        [Route("AddChild")]
 
+        public ActionResult AddChild(RequestAddTeacherTypesChildDto dto)
+        {
+            try
+            {
+                var TeacherType = _addTeacherTypeService.ExecuteChild(dto);
+                return Json(TeacherType);
+            }
+            catch (Exception e)
+            {
+                var st = new StackTrace(e, true);
+                var frame = st.GetFrame(0);
+                var line = 0;
+                if (frame != null)
+                {
+                    line = frame.GetFileLineNumber();
+                    // Proceed with line
+                }
+
+                return StatusCode(500, new
+                {
+                    value = new ErrorDto
+                    {
+                        IsSuccess = false,
+                        Message = "Server Error : LIne Number=" + line + " *** Message= " + e.Message,
+                        Service = "TeacherType",
+                        ResponseCode = 500,
+                    }
+                });
+            }
+
+        }
 
 
 
@@ -255,8 +299,93 @@ namespace FartakTeacherTypeService.Controllers
         }
 
 
+        /// <summary>
+        /// دریافت لیست نوع تدریس
+        /// </summary>
+        /// <response code="200">Success</response>
+        /// <response code="403">Not Authorized - Value Content:</response>
+        /// <response code="500">Server Error - Value Content:</response>
+        [ProducesResponseType(typeof(ResultGetTeacherTypesDto), 200)]
+        [ProducesResponseType(typeof(ErrorDto), 403)]
+        [ProducesResponseType(typeof(ErrorDto), 500)]
+        [HttpPost]
+        [Route("GetAllParent")]
+        public ActionResult GetAllParent()
+        {
+            try
+            {
+
+                var result = _getTeacherTypeService.GetAllParent();
+                return Json(result);
+            }
+            catch (Exception e)
+            {
+                var st = new StackTrace(e, true);
+                var frame = st.GetFrame(0);
+                var line = 0;
+                if (frame != null)
+                {
+                    line = frame.GetFileLineNumber();
+                    // Proceed with line
+                }
+
+                return StatusCode(500, new
+                {
+                    value = new ErrorDto
+                    {
+                        IsSuccess = false,
+                        Message = "Server Error : LIne Number=" + line + " *** Message= " + e.Message,
+                        Service = "TeacherType",
+                        ResponseCode = 500,
+                    }
+                });
+            }
+        }
 
 
+
+        /// <summary>
+        /// دریافت لیست نوع تدریس
+        /// </summary>
+        /// <response code="200">Success</response>
+        /// <response code="403">Not Authorized - Value Content:</response>
+        /// <response code="500">Server Error - Value Content:</response>
+        [ProducesResponseType(typeof(ResultGetTeacherTypesDto), 200)]
+        [ProducesResponseType(typeof(ErrorDto), 403)]
+        [ProducesResponseType(typeof(ErrorDto), 500)]
+        [HttpPost]
+        [Route("GetChildrenById")]
+        public ActionResult GetChildrenById(RequestGetTeacherTypesByIdDto dto)
+        {
+            try
+            {
+
+                var result = _getTeacherTypeService.GetById(dto);
+                return Json(result);
+            }
+            catch (Exception e)
+            {
+                var st = new StackTrace(e, true);
+                var frame = st.GetFrame(0);
+                var line = 0;
+                if (frame != null)
+                {
+                    line = frame.GetFileLineNumber();
+                    // Proceed with line
+                }
+
+                return StatusCode(500, new
+                {
+                    value = new ErrorDto
+                    {
+                        IsSuccess = false,
+                        Message = "Server Error : LIne Number=" + line + " *** Message= " + e.Message,
+                        Service = "TeacherType",
+                        ResponseCode = 500,
+                    }
+                });
+            }
+        }
 
 
         /// <summary>

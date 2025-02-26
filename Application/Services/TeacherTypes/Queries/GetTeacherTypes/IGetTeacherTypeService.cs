@@ -6,5 +6,7 @@ namespace Application.Services.TeacherTypes.Queries.GetTeacherTypes
     {
         ResultGetTeacherTypesDto GetById(RequestGetTeacherTypesByIdDto request);
         ResultGetTeacherTypesDto GetAll();
+        ResultGetTeacherTypesDto GetAllParent();
+        ResultGetTeacherTypesDto GetChildrenById(RequestGetTeacherTypesByIdDto request);
     }
 }

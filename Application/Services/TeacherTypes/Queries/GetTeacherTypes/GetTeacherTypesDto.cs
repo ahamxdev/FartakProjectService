@@ -4,5 +4,6 @@
     {
         public long TeacherTypeId { get; set; }
         public required string Title { get; set; }
+        public long TeacherTypeParentId { get; set; }
     }
 }
