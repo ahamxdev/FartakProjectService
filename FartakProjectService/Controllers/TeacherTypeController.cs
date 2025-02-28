@@ -360,7 +360,7 @@ namespace FartakTeacherTypeService.Controllers
             try
             {
 
-                var result = _getTeacherTypeService.GetById(dto);
+                var result = _getTeacherTypeService.GetChildrenById(dto);
                 return Json(result);
             }
             catch (Exception e)

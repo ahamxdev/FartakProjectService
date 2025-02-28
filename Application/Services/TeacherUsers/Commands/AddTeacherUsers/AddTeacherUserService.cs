@@ -81,6 +81,8 @@ namespace Application.Services.TeacherUsers.Commands.AddTeacherUsers
                     TypeTeaching = request.TypeTeaching,
                     UserId = request.UserId,
                     ImageName = fileNameImage,
+                    LanguageTeach=request.LanguageTeach,
+                    Place=request.Place,
                     VideoName = fileNameVideo,
                     TeacherTypeId = request.TeacherTypeId,
 

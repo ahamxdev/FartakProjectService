@@ -135,6 +135,8 @@ namespace Application.Services.TeacherUsers.Commands.EditTeacherUsers
                 TeacherUser.OnlinePrice = request.OnlinePrice;
                 TeacherUser.InPersonPrice = request.InPersonPrice;
                 TeacherUser.TeacherTypeId = request.TeacherTypeId;
+                TeacherUser.LanguageTeach=request.LanguageTeach;
+                TeacherUser.Place=request.Place;
 
                 _context.SaveChanges();
 
