@@ -361,14 +361,14 @@ namespace FartakProjectService.Controllers
         [ProducesResponseType(typeof(ErrorDto), 403)]
         [ProducesResponseType(typeof(ErrorDto), 500)]
         [HttpPost]
-        [Route("GetByFilter")]
-        public ActionResult GetByFilter(RequestGetTeacherUserByFilterDto dto)
+        [Route("GetByFilterAndTeacherTypeId")]
+        public ActionResult GetByFilterAndTeacherTypeId(RequestGetTeacherUserByFilterDto dto)
         {
             try
             {
 
 
-                var result = _getTeacherUserService.GetByFilter(dto);
+                var result = _getTeacherUserService.GetByFilterAndTeacherTypeId(dto);
 
                 return Json(result);
             }
