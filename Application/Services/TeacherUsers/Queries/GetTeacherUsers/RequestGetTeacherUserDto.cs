@@ -15,6 +15,7 @@
         public int LanguageTeach { get; set; } // 0 Farsi 1 English
         public int Place { get; set; } //0Iran 1 English
         public int TypeTeaching { get; set; } // 0 Online 1 InPerson
+        public long TeacherTypeId { get; set; }
     }
 
 

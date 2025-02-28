@@ -246,10 +246,10 @@ namespace Application.Services.TeacherUsers.Queries.GetTeacherUsers
             };
         }
 
-        public ResultGetTeacherUserDto GetByFilter(RequestGetTeacherUserByFilterDto request)
+        public ResultGetTeacherUserDto GetByFilterAndTeacherTypeId(RequestGetTeacherUserByFilterDto request)
         {
             var teacherUsers = _context.TeacherUsers.Where(x => x.LanguageTeach == request.LanguageTeach && 
-             x.Place == request.Place && x.TypeTeaching == request.TypeTeaching);
+             x.Place == request.Place && x.TypeTeaching == request.TypeTeaching && x.TeacherTypeId == request.TeacherTypeId) ;
 
             List<GetTeacherUserDto> teacherUserList = new List<GetTeacherUserDto>();
 
