@@ -71,8 +71,7 @@ namespace Application.Services.Users.Queries.GetUsers
 
         public ResultGetUserDto GetByFullNameTeacher(RequestGetUserByNameDto request)
         {
-            var users = _context.Users.Where(x => ( x.Name.ToLower() + x.Lastname.ToLower() )
-            .Contains(request.FullName.ToLower()) && 
+            var users = _context.Users.Where(x => ( x.Name.ToLower() + " " + x.Lastname.ToLower() ).Contains(request.FullName.ToLower()) && 
               x.Kind == 2);
             var userList = users.Select(p => new GetUserDto
             {
