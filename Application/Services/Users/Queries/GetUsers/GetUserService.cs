@@ -68,6 +68,36 @@ namespace Application.Services.Users.Queries.GetUsers
             };
         }
 
+
+        public ResultGetUserDto GetByFullNameTeacher(RequestGetUserByNameDto request)
+        {
+            var users = _context.Users.Where(x => ( x.Name.ToLower() + x.Lastname.ToLower() )
+            .Contains(request.FullName.ToLower()) && 
+              x.Kind == 2);
+            var userList = users.Select(p => new GetUserDto
+            {
+                UserId = p.UserId,
+                PassWord = "",
+                Email = p.Email,
+                Verify = "",
+                Status = p.Status,
+                Mobile = p.Mobile,
+                Kind = p.Kind,
+                Lastname = p.Lastname,
+                Name = p.Name,
+                Salt = ""
+
+
+            }).OrderBy(x => x.UserId).ToList();
+            return new ResultGetUserDto()
+            {
+
+                Users = userList,
+                Rows = userList.Count,
+
+            };
+        }
+
         public ResultGetUserDto GetByMobile(RequestGetUserByMobileDto request)
         {
             var users = _context.Users.Where(x => x.Mobile == request.Mobile);

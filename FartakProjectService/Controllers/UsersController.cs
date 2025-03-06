@@ -740,5 +740,49 @@ namespace FartakProjectService.Controllers
         }
 
 
+
+        /// <summary>
+        /// براساس نام و kind
+        /// </summary>
+        /// <response code="200">Success</response>
+        /// <response code="403">Not Authorized - Value Content:</response>
+        /// <response code="500">Server Error - Value Content:</response>
+        [ProducesResponseType(typeof(ResultDto), 200)]
+        [ProducesResponseType(typeof(ErrorDto), 403)]
+        [ProducesResponseType(typeof(ErrorDto), 500)]
+        [HttpPost]
+        [Route("GetByNameTeacher")]
+        public ActionResult GetByNameTeacher(RequestGetUserByNameDto dto)
+        {
+            try
+            {
+                var result = _getUserService.GetByFullNameTeacher(dto);
+
+                return Json(result);
+            }
+            catch (Exception e)
+            {
+                var st = new StackTrace(e, true);
+                var frame = st.GetFrame(0);
+                var line = 0;
+                if (frame != null)
+                {
+                    line = frame.GetFileLineNumber();
+                    // Proceed with line
+                }
+
+                return StatusCode(500, new
+                {
+                    value = new ErrorDto
+                    {
+                        IsSuccess = false,
+                        Message = "Server Error : LIne Number=" + line + " *** Message= " + e.Message,
+                        Service = "User",
+                        ResponseCode = 500,
+                    }
+                });
+            }
+        }
+
     }
 }

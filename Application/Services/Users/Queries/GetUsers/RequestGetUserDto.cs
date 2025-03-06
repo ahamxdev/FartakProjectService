@@ -7,6 +7,14 @@
 
 
     }
+
+    public class RequestGetUserByNameDto
+    {
+        public required string FullName { get; set; }
+
+
+    }
+
     public class RequestGetUserByMobileDto
     {
         public required string Mobile { get; set; }
