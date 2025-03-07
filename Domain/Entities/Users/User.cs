@@ -11,7 +11,7 @@
         public string? Email { get; set; }
         public string? Verify { get; set; }
         public int Status { get; set; } // 0 Active 1 Deactive 
-        public int Kind { get; set; } // 0 Admin , 1 User , 2 Teacher , 3 Owner
+        public int Kind { get; set; } // 0 Admin , 1 User , 2 Teacher , 3 Owner, 4 Freelancer
     }
 
 }

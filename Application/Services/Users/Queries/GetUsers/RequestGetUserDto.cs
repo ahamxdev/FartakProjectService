@@ -8,6 +8,14 @@
 
     }
 
+
+    public class RequestGetUserByKindDto
+    {
+        public int Kind { get; set; }
+
+
+    }
+
     public class RequestGetUserByNameDto
     {
         public required string FullName { get; set; }

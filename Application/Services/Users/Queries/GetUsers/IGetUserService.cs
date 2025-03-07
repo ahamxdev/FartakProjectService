@@ -11,5 +11,6 @@ namespace Application.Services.Users.Queries.GetUsers
         ResultGetUserDto GetByMobile(RequestGetUserByMobileDto request);
         ResultDto<GetUserDto> GetByMobilePassword(RequestGetUserByMobilePasswordDto request);
         ResultDto<GetUserDto> GetByMobilePasswordAdmin(RequestGetUserByMobilePasswordDto request);
+        ResultGetUserDto GetByKind(RequestGetUserByKindDto request);
     }
 }

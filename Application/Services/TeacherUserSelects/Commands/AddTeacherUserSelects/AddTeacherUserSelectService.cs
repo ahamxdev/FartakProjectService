@@ -21,6 +21,22 @@ namespace Application.Services.TeacherUserSelects.Commands.AddTeacherUserSelects
 
             try
             {
+
+                if (_context.TeacherUserSelects.Count(x => x.TeacherId == request.TeacherId &&
+                       x.StudentId == request.StudentId) > 0) {
+
+                    return new ResultDto<ResultAddTeacherUserSelectDto>
+                    {
+                        Data = new ResultAddTeacherUserSelectDto
+                        {
+                            TeacherUserSelectId = 0
+                        },
+                        IsSuccess = false,
+                        Message = "این استاد توسط کاربر قبلا انتخاب شده است"
+                    };
+
+                }
+
                 TeacherUserSelect teacherUserSelect = new TeacherUserSelect
                 {
                     Score = request.Score,

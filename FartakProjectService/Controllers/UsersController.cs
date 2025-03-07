@@ -610,6 +610,54 @@ namespace FartakProjectService.Controllers
 
 
 
+
+        /// <summary>
+        /// دریافت لیست کاربران بر اساس Kind
+        /// </summary>
+        /// <response code="200">Success</response>
+        /// <response code="403">Not Authorized - Value Content:</response>
+        /// <response code="500">Server Error - Value Content:</response>
+        [ProducesResponseType(typeof(ResultGetUserDto), 200)]
+        [ProducesResponseType(typeof(ErrorDto), 403)]
+        [ProducesResponseType(typeof(ErrorDto), 500)]
+        [HttpPost]
+        [Route("GetByKind")]
+        public ActionResult GetByKind(RequestGetUserByKindDto dto)
+        {
+            try
+            {
+                var result = _getUserService.GetByKind(dto);
+
+                return Json(result);
+            }
+            catch (Exception e)
+            {
+                var st = new StackTrace(e, true);
+                var frame = st.GetFrame(0);
+                var line = 0;
+                if (frame != null)
+                {
+                    line = frame.GetFileLineNumber();
+                    // Proceed with line
+                }
+
+                return StatusCode(500, new
+                {
+                    value = new ErrorDto
+                    {
+                        IsSuccess = false,
+                        Message = "Server Error : LIne Number=" + line + " *** Message= " + e.Message,
+                        Service = "User",
+                        ResponseCode = 500,
+                    }
+                });
+            }
+        }
+
+
+
+
+
         /// <summary>
         /// لاگین به سیستم
         /// </summary>
