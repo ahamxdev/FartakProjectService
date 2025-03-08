@@ -71,7 +71,6 @@ using Application.Services.ZarinpalSettings.Commands.AddZarinpalSettings;
 using Application.Services.ZarinpalSettings.Commands.EditZarinpalSettings;
 using Application.Services.ZarinpalSettings.Commands.RemoveZarinpalSettings;
 using Application.Services.ZarinpalSettings.Queries.GetZarinpalSettings;
-using Common.Services.UserService.Token.Queries.GetToken;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Contexts;
 
@@ -262,7 +261,6 @@ builder.Services.AddScoped<IGetCourseUserService, GetCourseUserService>();
 
 
 //External Api
-builder.Services.AddScoped<IGetTokenService, GetTokenService>();
 builder.Services.AddScoped<IDatabaseContext, DatabaseContext>();
 
 var app = builder.Build();

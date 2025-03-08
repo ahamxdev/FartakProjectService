@@ -1,5 +1,4 @@
 ﻿using Application.Interfaces.Contexts;
-using Application.Services.TeacherTypes.Commands.RemoveTeacherTypes;
 using Common.Dto;
 
 

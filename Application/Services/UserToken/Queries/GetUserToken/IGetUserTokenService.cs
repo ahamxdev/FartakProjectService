@@ -2,7 +2,7 @@
 {
     public interface IGetUserTokenService
     {
-        ResultGetUserTokenDto GetToken(RequestCheckTokenDto request);
         ResultGetUserTokenDto GetByUserId(RequestGetUserTokenByUserIdDto request);
+        bool GetToken(RequestCheckTokenDto request);
     }
 }

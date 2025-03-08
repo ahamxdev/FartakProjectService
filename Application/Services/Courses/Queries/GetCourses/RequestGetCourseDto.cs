@@ -11,6 +11,11 @@
         public long TeacherId { get; set; }
     }
 
+    public class RequestGetCourseByCourseTypeIdDto
+    {
+        public long CourseTypeId { get; set; }
+    }
+
     public class RequestGetCourseByUserIdDto
     {
         public long UserId { get; set; }

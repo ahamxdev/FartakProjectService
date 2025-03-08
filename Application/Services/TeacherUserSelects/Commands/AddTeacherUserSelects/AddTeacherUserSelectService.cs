@@ -23,7 +23,8 @@ namespace Application.Services.TeacherUserSelects.Commands.AddTeacherUserSelects
             {
 
                 if (_context.TeacherUserSelects.Count(x => x.TeacherId == request.TeacherId &&
-                       x.StudentId == request.StudentId) > 0) {
+                       x.StudentId == request.StudentId) > 0)
+                {
 
                     return new ResultDto<ResultAddTeacherUserSelectDto>
                     {

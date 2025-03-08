@@ -10,7 +10,7 @@ namespace Application.Services.UserToken.Queries.GetUserToken
             _context = context;
         }
 
-        public ResultGetUserTokenDto GetToken(RequestCheckTokenDto request)
+        public bool GetToken(RequestCheckTokenDto request)
         {
             var UserToken = _context.UserTokens.Where(x => x.UserId == request.SelfUserId && x.Token == request.Token);
             var UserTokenList = UserToken.Select(p => new GetUserTokenDto
@@ -20,11 +20,17 @@ namespace Application.Services.UserToken.Queries.GetUserToken
                 ExpireDate = p.ExpireDate,
                 Token = p.Token
             }).OrderBy(x => x.UserTokenId).ToList();
-            return new ResultGetUserTokenDto
+
+            if (UserTokenList.Count == 0)
             {
-                UserToken = UserTokenList,
-                Rows = UserTokenList.Count,
-            };
+                return false;
+            }
+            if (UserTokenList[0].ExpireDate < DateTime.Now)
+            {
+                return false;
+            }
+            return true;
+
         }
 
         public ResultGetUserTokenDto GetByUserId(RequestGetUserTokenByUserIdDto request)

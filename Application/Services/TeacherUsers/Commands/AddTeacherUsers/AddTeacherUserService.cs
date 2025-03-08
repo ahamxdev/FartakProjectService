@@ -28,7 +28,8 @@ namespace Application.Services.TeacherUsers.Commands.AddTeacherUsers
 
                 var uploadFile = new UploadFile();
 
-                if (request.FileImage != null) {
+                if (request.FileImage != null)
+                {
 
                     var suffixImage = System.IO.Path.GetExtension(request.FileImage.FileName);
                     string tickImage = DateTime.Now.Ticks.ToString();
@@ -43,12 +44,13 @@ namespace Application.Services.TeacherUsers.Commands.AddTeacherUsers
 
                         };
                     }
-             
+
 
                 }
 
 
-                if (request.FileVideo != null) {
+                if (request.FileVideo != null)
+                {
 
                     var suffixVideo = System.IO.Path.GetExtension(request.FileVideo.FileName);
                     string tickVideo = DateTime.Now.Ticks.ToString();
@@ -64,10 +66,10 @@ namespace Application.Services.TeacherUsers.Commands.AddTeacherUsers
 
                         };
                     }
-                 
+
 
                 }
-           
+
 
 
                 TeacherUser TeacherUser = new TeacherUser
@@ -81,8 +83,8 @@ namespace Application.Services.TeacherUsers.Commands.AddTeacherUsers
                     TypeTeaching = request.TypeTeaching,
                     UserId = request.UserId,
                     ImageName = fileNameImage,
-                    LanguageTeach=request.LanguageTeach,
-                    Place=request.Place,
+                    LanguageTeach = request.LanguageTeach,
+                    Place = request.Place,
                     VideoName = fileNameVideo,
                     TeacherTypeId = request.TeacherTypeId,
 

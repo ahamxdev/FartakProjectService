@@ -85,7 +85,8 @@ namespace Application.Services.Projects.Commands.EditProjects
                     }
                 }
 
-                else {
+                else
+                {
 
                     project.Image = null;
 

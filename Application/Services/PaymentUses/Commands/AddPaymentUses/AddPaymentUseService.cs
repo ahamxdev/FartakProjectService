@@ -1,5 +1,4 @@
 ﻿using Application.Interfaces.Contexts;
-using Application.Services.PaymentUses.Commands.AddPaymentUses;
 using Common.Dto;
 using Domain.Entities.Payments;
 
@@ -20,13 +19,13 @@ namespace Application.Services.PaymentUses.Commands.AddPaymentUses
                 PaymentUse PaymantUse = new PaymentUse()
                 {
 
-                    PaymentUseDate=request.PaymentUseDate,
-                    PaymentUseTime=request.PaymentUseTime,
+                    PaymentUseDate = request.PaymentUseDate,
+                    PaymentUseTime = request.PaymentUseTime,
                     Price = request.Price,
                     CourseId = request.CourseId,
                     UserId = request.UserId,
-                    PaymentId=request.PaymentId,
-                
+                    PaymentId = request.PaymentId,
+
 
                 };
                 _context.PaymentUses.Add(PaymantUse);

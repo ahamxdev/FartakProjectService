@@ -4,8 +4,8 @@ using Application.Services.TeacherUsers.Commands.AddTeacherUsers;
 using Application.Services.TeacherUsers.Commands.EditTeacherUsers;
 using Application.Services.TeacherUsers.Commands.RemoveTeacherUsers;
 using Application.Services.TeacherUsers.Queries.GetTeacherUsers;
+using Application.Services.UserToken.Queries.GetUserToken;
 using Common.Dto;
-using Common.Services.UserService.Token.Queries.GetToken;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FartakProjectService.Controllers
@@ -24,7 +24,7 @@ namespace FartakProjectService.Controllers
         private readonly IRemoveTeacherUserService _removeTeacherUserService;
         private readonly IGetTeacherUserService _getTeacherUserService;
         private readonly IConfiguration _configuration;
-        private readonly IGetTokenService _getTokenService;
+        private readonly IGetUserTokenService _getUserTokenService;
         /// <summary>
         /// سازنده کنترلر
         /// </summary>
@@ -33,14 +33,14 @@ namespace FartakProjectService.Controllers
                               IRemoveTeacherUserService removeTeacherUserService,
                               IGetTeacherUserService getTeacherUserService,
                               IConfiguration configuration,
-                              IGetTokenService getTokenService)
+                              IGetUserTokenService getUserTokenService)
         {
             _addTeacherUserService = addTeacherUserService;
             _editTeacherUserService = editTeacherUserService;
             _removeTeacherUserService = removeTeacherUserService;
             _getTeacherUserService = getTeacherUserService;
             _configuration = configuration;
-            _getTokenService = getTokenService;
+            _getUserTokenService = getUserTokenService;
         }
         /// <summary>
         /// اضافه کردن یک استاد جدید
@@ -56,10 +56,33 @@ namespace FartakProjectService.Controllers
         [HttpPost]
         [Route("Add")]
 
-        public ActionResult Add( RequestAddTeacherUserDto dto)
+        public ActionResult Add(RequestAddTeacherUserDto dto)
         {
             try
             {
+                var tokenDto = new RequestCheckTokenDto { Token = "", SelfUserId = 0 };
+                if (Request.Headers["token"].Count() > 0)
+                {
+                    tokenDto.Token = Request.Headers["token"];
+                }
+                if (Request.Headers["userId"].Count() > 0)
+                {
+                    tokenDto.SelfUserId = long.Parse(Request.Headers["userId"]);
+                }
+                if (tokenDto.Token == null || tokenDto.SelfUserId == 0)
+                {
+                    return StatusCode(409, Json(new ErrorDto
+                    {
+                        IsSuccess = false,
+                        ResponseCode = 409,
+                        Message = "مقادیر توکن نامعتبر میباشد",
+                        Service = "User",
+                    }));
+                }
+                if (_getUserTokenService.GetToken(tokenDto) == false)
+                {
+                    return StatusCode(403, Json(new ErrorDto { IsSuccess = false, Message = "توکن نامعتبر است", ResponseCode = 403, Service = "User" }));
+                }
                 var TeacherUser = _addTeacherUserService.Execute(dto);
                 return Json(TeacherUser);
             }
@@ -105,6 +128,29 @@ namespace FartakProjectService.Controllers
         {
             try
             {
+                var tokenDto = new RequestCheckTokenDto { Token = "", SelfUserId = 0 };
+                if (Request.Headers["token"].Count() > 0)
+                {
+                    tokenDto.Token = Request.Headers["token"];
+                }
+                if (Request.Headers["userId"].Count() > 0)
+                {
+                    tokenDto.SelfUserId = long.Parse(Request.Headers["userId"]);
+                }
+                if (tokenDto.Token == null || tokenDto.SelfUserId == 0)
+                {
+                    return StatusCode(409, Json(new ErrorDto
+                    {
+                        IsSuccess = false,
+                        ResponseCode = 409,
+                        Message = "مقادیر توکن نامعتبر میباشد",
+                        Service = "User",
+                    }));
+                }
+                if (_getUserTokenService.GetToken(tokenDto) == false)
+                {
+                    return StatusCode(403, Json(new ErrorDto { IsSuccess = false, Message = "توکن نامعتبر است", ResponseCode = 403, Service = "User" }));
+                }
 
                 var result = _removeTeacherUserService.Execute(dto);
                 if (result.IsSuccess == true)
@@ -166,11 +212,33 @@ namespace FartakProjectService.Controllers
         [ProducesResponseType(typeof(ErrorDto), 500)]
         [HttpPut]
         [Route("Edit")]
-        public ActionResult Edit( RequestEditTeacherUserDto dto)
+        public ActionResult Edit(RequestEditTeacherUserDto dto)
         {
             try
             {
-
+                var tokenDto = new RequestCheckTokenDto { Token = "", SelfUserId = 0 };
+                if (Request.Headers["token"].Count() > 0)
+                {
+                    tokenDto.Token = Request.Headers["token"];
+                }
+                if (Request.Headers["userId"].Count() > 0)
+                {
+                    tokenDto.SelfUserId = long.Parse(Request.Headers["userId"]);
+                }
+                if (tokenDto.Token == null || tokenDto.SelfUserId == 0)
+                {
+                    return StatusCode(409, Json(new ErrorDto
+                    {
+                        IsSuccess = false,
+                        ResponseCode = 409,
+                        Message = "مقادیر توکن نامعتبر میباشد",
+                        Service = "User",
+                    }));
+                }
+                if (_getUserTokenService.GetToken(tokenDto) == false)
+                {
+                    return StatusCode(403, Json(new ErrorDto { IsSuccess = false, Message = "توکن نامعتبر است", ResponseCode = 403, Service = "User" }));
+                }
                 var result = _editTeacherUserService.Execute(dto);
                 if (result.IsSuccess == true)
                     return Json(result);

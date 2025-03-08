@@ -19,7 +19,7 @@ namespace Application.Services.Projects.Queries.GetProjects
             {
                 Description = p.Description,
                 Image = p.Image,
-                Duration=p.Duration,
+                Duration = p.Duration,
                 Title = p.Title,
                 Price = p.Price,
                 ProjectId = p.ProjectId,

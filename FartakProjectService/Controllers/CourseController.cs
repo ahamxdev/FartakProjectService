@@ -6,8 +6,8 @@ using Application.Services.Courses.Commands.RemoveCourses;
 using Application.Services.Courses.Queries.GetCourses;
 using Application.Services.CourseUsers.Commands.AddCourseUsers;
 using Application.Services.Users.Commands.AddUsers;
+using Application.Services.UserToken.Queries.GetUserToken;
 using Common.Dto;
-using Common.Services.UserService.Token.Queries.GetToken;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FartakProjectService.Controllers
@@ -27,7 +27,7 @@ namespace FartakProjectService.Controllers
         private readonly IGetCourseService _getCourseService;
         private readonly IGetCourseUserService _getCourseUserService;
         private readonly IConfiguration _configuration;
-        private readonly IGetTokenService _getTokenService;
+        private readonly IGetUserTokenService _getUserTokenService;
         /// <summary>
         /// سازنده کنترلر
         /// </summary>
@@ -37,14 +37,14 @@ namespace FartakProjectService.Controllers
                               IGetCourseService getCourseService,
                               IConfiguration configuration,
                               IGetCourseUserService getCourseUserService,
-                              IGetTokenService getTokenService)
+                              IGetUserTokenService getUserTokenService)
         {
             _addCourseService = addCourseService;
             _editCourseService = editCourseService;
             _removeCourseService = removeCourseService;
             _getCourseService = getCourseService;
             _configuration = configuration;
-            _getTokenService = getTokenService;
+            _getUserTokenService = getUserTokenService;
             _getCourseUserService = getCourseUserService;
         }
         /// <summary>
@@ -65,6 +65,29 @@ namespace FartakProjectService.Controllers
         {
             try
             {
+                var tokenDto = new RequestCheckTokenDto { Token = "", SelfUserId = 0 };
+                if (Request.Headers["token"].Count() > 0)
+                {
+                    tokenDto.Token = Request.Headers["token"];
+                }
+                if (Request.Headers["userId"].Count() > 0)
+                {
+                    tokenDto.SelfUserId = long.Parse(Request.Headers["userId"]);
+                }
+                if (tokenDto.Token == null || tokenDto.SelfUserId == 0)
+                {
+                    return StatusCode(409, Json(new ErrorDto
+                    {
+                        IsSuccess = false,
+                        ResponseCode = 409,
+                        Message = "مقادیر توکن نامعتبر میباشد",
+                        Service = "User",
+                    }));
+                }
+                if (_getUserTokenService.GetToken(tokenDto) == false)
+                {
+                    return StatusCode(403, Json(new ErrorDto { IsSuccess = false, Message = "توکن نامعتبر است", ResponseCode = 403, Service = "User" }));
+                }
                 var Course = _addCourseService.Execute(dto);
                 return Json(Course);
             }
@@ -110,7 +133,29 @@ namespace FartakProjectService.Controllers
         {
             try
             {
-
+                var tokenDto = new RequestCheckTokenDto { Token = "", SelfUserId = 0 };
+                if (Request.Headers["token"].Count() > 0)
+                {
+                    tokenDto.Token = Request.Headers["token"];
+                }
+                if (Request.Headers["userId"].Count() > 0)
+                {
+                    tokenDto.SelfUserId = long.Parse(Request.Headers["userId"]);
+                }
+                if (tokenDto.Token == null || tokenDto.SelfUserId == 0)
+                {
+                    return StatusCode(409, Json(new ErrorDto
+                    {
+                        IsSuccess = false,
+                        ResponseCode = 409,
+                        Message = "مقادیر توکن نامعتبر میباشد",
+                        Service = "User",
+                    }));
+                }
+                if (_getUserTokenService.GetToken(tokenDto) == false)
+                {
+                    return StatusCode(403, Json(new ErrorDto { IsSuccess = false, Message = "توکن نامعتبر است", ResponseCode = 403, Service = "User" }));
+                }
                 var result = _removeCourseService.Execute(dto);
                 if (result.IsSuccess == true)
                 {
@@ -175,7 +220,29 @@ namespace FartakProjectService.Controllers
         {
             try
             {
-
+                var tokenDto = new RequestCheckTokenDto { Token = "", SelfUserId = 0 };
+                if (Request.Headers["token"].Count() > 0)
+                {
+                    tokenDto.Token = Request.Headers["token"];
+                }
+                if (Request.Headers["userId"].Count() > 0)
+                {
+                    tokenDto.SelfUserId = long.Parse(Request.Headers["userId"]);
+                }
+                if (tokenDto.Token == null || tokenDto.SelfUserId == 0)
+                {
+                    return StatusCode(409, Json(new ErrorDto
+                    {
+                        IsSuccess = false,
+                        ResponseCode = 409,
+                        Message = "مقادیر توکن نامعتبر میباشد",
+                        Service = "User",
+                    }));
+                }
+                if (_getUserTokenService.GetToken(tokenDto) == false)
+                {
+                    return StatusCode(403, Json(new ErrorDto { IsSuccess = false, Message = "توکن نامعتبر است", ResponseCode = 403, Service = "User" }));
+                }
                 var result = _editCourseService.Execute(dto);
                 if (result.IsSuccess == true)
                     return Json(result);
@@ -233,7 +300,29 @@ namespace FartakProjectService.Controllers
         {
             try
             {
-
+                var tokenDto = new RequestCheckTokenDto { Token = "", SelfUserId = 0 };
+                if (Request.Headers["token"].Count() > 0)
+                {
+                    tokenDto.Token = Request.Headers["token"];
+                }
+                if (Request.Headers["userId"].Count() > 0)
+                {
+                    tokenDto.SelfUserId = long.Parse(Request.Headers["userId"]);
+                }
+                if (tokenDto.Token == null || tokenDto.SelfUserId == 0)
+                {
+                    return StatusCode(409, Json(new ErrorDto
+                    {
+                        IsSuccess = false,
+                        ResponseCode = 409,
+                        Message = "مقادیر توکن نامعتبر میباشد",
+                        Service = "User",
+                    }));
+                }
+                if (_getUserTokenService.GetToken(tokenDto) == false)
+                {
+                    return StatusCode(403, Json(new ErrorDto { IsSuccess = false, Message = "توکن نامعتبر است", ResponseCode = 403, Service = "User" }));
+                }
                 var result = _editCourseService.ExecuteStatus(dto);
                 if (result.IsSuccess == true)
                     return Json(result);
@@ -454,6 +543,52 @@ namespace FartakProjectService.Controllers
 
 
 
+        /// <summary>
+        /// دریافت لیست دورهان بر اساس CourseTypeId
+        /// </summary>
+        /// <response code="200">Success</response>
+        /// <response code="403">Not Authorized - Value Content:</response>
+        /// <response code="500">Server Error - Value Content:</response>
+        [ProducesResponseType(typeof(ResultGetCourseDto), 200)]
+        [ProducesResponseType(typeof(ErrorDto), 403)]
+        [ProducesResponseType(typeof(ErrorDto), 500)]
+        [HttpPost]
+        [Route("GetByCourseTypeId")]
+        public ActionResult GetByCourseTypeId(RequestGetCourseByCourseTypeIdDto dto)
+        {
+            try
+            {
+
+
+                var result = _getCourseService.GetByCourseTypeId(dto);
+
+                return Json(result);
+            }
+            catch (Exception e)
+            {
+                var st = new StackTrace(e, true);
+                var frame = st.GetFrame(0);
+                var line = 0;
+                if (frame != null)
+                {
+                    line = frame.GetFileLineNumber();
+                    // Proceed with line
+                }
+
+                return StatusCode(500, new
+                {
+                    value = new ErrorDto
+                    {
+                        IsSuccess = false,
+                        Message = "Server Error : LIne Number=" + line + " *** Message= " + e.Message,
+                        Service = "Course",
+                        ResponseCode = 500,
+                    }
+                });
+            }
+        }
+
+
 
         /// <summary>
         /// دریافت لیست دورهان بر اساس CourseId
@@ -517,7 +652,29 @@ namespace FartakProjectService.Controllers
         {
             try
             {
-
+                var tokenDto = new RequestCheckTokenDto { Token = "", SelfUserId = 0 };
+                if (Request.Headers["token"].Count() > 0)
+                {
+                    tokenDto.Token = Request.Headers["token"];
+                }
+                if (Request.Headers["userId"].Count() > 0)
+                {
+                    tokenDto.SelfUserId = long.Parse(Request.Headers["userId"]);
+                }
+                if (tokenDto.Token == null || tokenDto.SelfUserId == 0)
+                {
+                    return StatusCode(409, Json(new ErrorDto
+                    {
+                        IsSuccess = false,
+                        ResponseCode = 409,
+                        Message = "مقادیر توکن نامعتبر میباشد",
+                        Service = "User",
+                    }));
+                }
+                if (_getUserTokenService.GetToken(tokenDto) == false)
+                {
+                    return StatusCode(403, Json(new ErrorDto { IsSuccess = false, Message = "توکن نامعتبر است", ResponseCode = 403, Service = "User" }));
+                }
 
                 var result = _getCourseService.GetByTeacherId(dto);
 
@@ -565,6 +722,29 @@ namespace FartakProjectService.Controllers
         {
             try
             {
+                var tokenDto = new RequestCheckTokenDto { Token = "", SelfUserId = 0 };
+                if (Request.Headers["token"].Count() > 0)
+                {
+                    tokenDto.Token = Request.Headers["token"];
+                }
+                if (Request.Headers["userId"].Count() > 0)
+                {
+                    tokenDto.SelfUserId = long.Parse(Request.Headers["userId"]);
+                }
+                if (tokenDto.Token == null || tokenDto.SelfUserId == 0)
+                {
+                    return StatusCode(409, Json(new ErrorDto
+                    {
+                        IsSuccess = false,
+                        ResponseCode = 409,
+                        Message = "مقادیر توکن نامعتبر میباشد",
+                        Service = "User",
+                    }));
+                }
+                if (_getUserTokenService.GetToken(tokenDto) == false)
+                {
+                    return StatusCode(403, Json(new ErrorDto { IsSuccess = false, Message = "توکن نامعتبر است", ResponseCode = 403, Service = "User" }));
+                }
                 var courseUsers = _getCourseUserService.GetByUserId(new RequestGetByUserIdDto { UserId = dto.UserId });
 
                 var courseIds = new List<long>();

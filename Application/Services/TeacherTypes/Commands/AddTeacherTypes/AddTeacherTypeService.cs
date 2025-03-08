@@ -1,5 +1,4 @@
 ﻿using Application.Interfaces.Contexts;
-using Application.Services.TeacherTypes.Commands.AddTeacherTypes;
 using Common.Dto;
 using Domain.Entities.TeacherUser;
 using Microsoft.Extensions.Configuration;
@@ -25,7 +24,7 @@ namespace Application.Services.TeacherTypes.Commands.AddTeacherTypes
                 TeacherType TeacherTypes = new TeacherType
                 {
                     Title = request.Title,
-                    TeacherTypeParentId=0
+                    TeacherTypeParentId = 0
 
                 };
                 _context.TeacherTypes.Add(TeacherTypes);

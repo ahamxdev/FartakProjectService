@@ -8,8 +8,9 @@ namespace Application.Services.Courses.Queries.GetCourses
         ResultGetCourseDto GetByTeacherId(RequestGetCourseByTeacherIdDto request);
         ResultGetCourseDto GetByUserId(RequestGetCourseByIdListDto request);
         ResultGetCourseDto GetById(RequestGetCourseByIdDto request);
-        public ResultGetCourseDto GetAllAccept();
-        public ResultGetCourseDto GetAllReject();
-        public ResultGetCourseDto GetAllWaiting();
+        ResultGetCourseDto GetAllAccept();
+        ResultGetCourseDto GetAllReject();
+        ResultGetCourseDto GetAllWaiting();
+        ResultGetCourseDto GetByCourseTypeId(RequestGetCourseByCourseTypeIdDto request);
     }
 }

@@ -73,7 +73,8 @@ namespace Application.Services.Projects.Commands.AddProjects
                     }
                 }
 
-                else {
+                else
+                {
 
                     Project project = new Project
                     {
@@ -102,7 +103,7 @@ namespace Application.Services.Projects.Commands.AddProjects
                 }
 
 
-               
+
 
 
             }

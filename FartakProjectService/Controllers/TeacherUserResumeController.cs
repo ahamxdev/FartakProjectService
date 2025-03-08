@@ -4,8 +4,8 @@ using Application.Services.TeacherUserResumes.Commands.AddTeacherUserResumes;
 using Application.Services.TeacherUserResumes.Commands.EditTeacherUserResumes;
 using Application.Services.TeacherUserResumes.Commands.RemoveTeacherUserResumes;
 using Application.Services.TeacherUserResumes.Queries.GetTeacherUserResumes;
+using Application.Services.UserToken.Queries.GetUserToken;
 using Common.Dto;
-using Common.Services.UserService.Token.Queries.GetToken;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FartakProjectService.Controllers
@@ -24,7 +24,7 @@ namespace FartakProjectService.Controllers
         private readonly IRemoveTeacherUserResumeService _removeTeacherUserResumeService;
         private readonly IGetTeacherUserResumeService _getTeacherUserResumeService;
         private readonly IConfiguration _configuration;
-        private readonly IGetTokenService _getTokenService;
+        private readonly IGetUserTokenService _getUserTokenService;
         /// <summary>
         /// سازنده کنترلر
         /// </summary>
@@ -33,14 +33,14 @@ namespace FartakProjectService.Controllers
                               IRemoveTeacherUserResumeService removeTeacherUserResumeService,
                               IGetTeacherUserResumeService getTeacherUserResumeService,
                               IConfiguration configuration,
-                              IGetTokenService getTokenService)
+                               IGetUserTokenService getUserTokenService)
         {
             _addTeacherUserResumeService = addTeacherUserResumeService;
             _editTeacherUserResumeService = editTeacherUserResumeService;
             _removeTeacherUserResumeService = removeTeacherUserResumeService;
             _getTeacherUserResumeService = getTeacherUserResumeService;
             _configuration = configuration;
-            _getTokenService = getTokenService;
+            _getUserTokenService = getUserTokenService;
         }
         /// <summary>
         /// اضافه کردن یک استاد جدید
@@ -56,10 +56,33 @@ namespace FartakProjectService.Controllers
         [HttpPost]
         [Route("Add")]
 
-        public ActionResult Add( RequestAddTeacherUserResumeDto dto)
+        public ActionResult Add(RequestAddTeacherUserResumeDto dto)
         {
             try
             {
+                var tokenDto = new RequestCheckTokenDto { Token = "", SelfUserId = 0 };
+                if (Request.Headers["token"].Count() > 0)
+                {
+                    tokenDto.Token = Request.Headers["token"];
+                }
+                if (Request.Headers["userId"].Count() > 0)
+                {
+                    tokenDto.SelfUserId = long.Parse(Request.Headers["userId"]);
+                }
+                if (tokenDto.Token == null || tokenDto.SelfUserId == 0)
+                {
+                    return StatusCode(409, Json(new ErrorDto
+                    {
+                        IsSuccess = false,
+                        ResponseCode = 409,
+                        Message = "مقادیر توکن نامعتبر میباشد",
+                        Service = "User",
+                    }));
+                }
+                if (_getUserTokenService.GetToken(tokenDto) == false)
+                {
+                    return StatusCode(403, Json(new ErrorDto { IsSuccess = false, Message = "توکن نامعتبر است", ResponseCode = 403, Service = "User" }));
+                }
                 var TeacherUserResume = _addTeacherUserResumeService.Execute(dto);
                 return Json(TeacherUserResume);
             }
@@ -105,7 +128,29 @@ namespace FartakProjectService.Controllers
         {
             try
             {
-
+                var tokenDto = new RequestCheckTokenDto { Token = "", SelfUserId = 0 };
+                if (Request.Headers["token"].Count() > 0)
+                {
+                    tokenDto.Token = Request.Headers["token"];
+                }
+                if (Request.Headers["userId"].Count() > 0)
+                {
+                    tokenDto.SelfUserId = long.Parse(Request.Headers["userId"]);
+                }
+                if (tokenDto.Token == null || tokenDto.SelfUserId == 0)
+                {
+                    return StatusCode(409, Json(new ErrorDto
+                    {
+                        IsSuccess = false,
+                        ResponseCode = 409,
+                        Message = "مقادیر توکن نامعتبر میباشد",
+                        Service = "User",
+                    }));
+                }
+                if (_getUserTokenService.GetToken(tokenDto) == false)
+                {
+                    return StatusCode(403, Json(new ErrorDto { IsSuccess = false, Message = "توکن نامعتبر است", ResponseCode = 403, Service = "User" }));
+                }
                 var result = _removeTeacherUserResumeService.Execute(dto);
                 if (result.IsSuccess == true)
                 {
@@ -166,10 +211,33 @@ namespace FartakProjectService.Controllers
         [ProducesResponseType(typeof(ErrorDto), 500)]
         [HttpPut]
         [Route("Edit")]
-        public ActionResult Edit( RequestEditTeacherUserResumeDto dto)
+        public ActionResult Edit(RequestEditTeacherUserResumeDto dto)
         {
             try
             {
+                var tokenDto = new RequestCheckTokenDto { Token = "", SelfUserId = 0 };
+                if (Request.Headers["token"].Count() > 0)
+                {
+                    tokenDto.Token = Request.Headers["token"];
+                }
+                if (Request.Headers["userId"].Count() > 0)
+                {
+                    tokenDto.SelfUserId = long.Parse(Request.Headers["userId"]);
+                }
+                if (tokenDto.Token == null || tokenDto.SelfUserId == 0)
+                {
+                    return StatusCode(409, Json(new ErrorDto
+                    {
+                        IsSuccess = false,
+                        ResponseCode = 409,
+                        Message = "مقادیر توکن نامعتبر میباشد",
+                        Service = "User",
+                    }));
+                }
+                if (_getUserTokenService.GetToken(tokenDto) == false)
+                {
+                    return StatusCode(403, Json(new ErrorDto { IsSuccess = false, Message = "توکن نامعتبر است", ResponseCode = 403, Service = "User" }));
+                }
 
                 var result = _editTeacherUserResumeService.Execute(dto);
                 if (result.IsSuccess == true)

@@ -3,15 +3,15 @@ using System.Diagnostics;
 using Application.Services.ProjectSeens.Commands.AddProjectSeens;
 using Application.Services.ProjectSeens.Commands.RemoveProjectSeens;
 using Application.Services.ProjectSeens.Queries.GetProjectSeens;
+using Application.Services.UserToken.Queries.GetUserToken;
 using Common.Dto;
-using Common.Services.UserService.Token.Queries.GetToken;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FartakProjectSeenService.Controllers
 {
     /// <summary>
     /// این سرویس ، سرویس بازدید پروژه می باشد.
-    /// •	تمامی رویدادهای موجود در این سرویس قبل از اجرا به سرویس ProjectSeen مراجعه و چک می کنند آیا درخواست توسط کاربر معتبر ارسال شده یا خیر
+    /// •	تمامی رویدادهای موجود در این سرویس قبل از اجرا به سرویس ProjectSeen مراجعه و چک می کنند آیا درخواست توسط بازدید پروژه معتبر ارسال شده یا خیر
     /// </summary>
     [ApiController]
     [Route("api/ProjectSeens")]
@@ -23,7 +23,7 @@ namespace FartakProjectSeenService.Controllers
         private readonly IRemoveProjectSeenService _removeProjectSeenService;
         private readonly IGetProjectSeenService _getProjectSeenService;
         private readonly IConfiguration _configuration;
-        private readonly IGetTokenService _getTokenService;
+        private readonly IGetUserTokenService _getUserTokenService;
         /// <summary>
         /// سازنده کنترلر
         /// </summary>
@@ -31,16 +31,16 @@ namespace FartakProjectSeenService.Controllers
                               IRemoveProjectSeenService removeProjectSeenService,
                               IGetProjectSeenService getProjectSeenService,
                               IConfiguration configuration,
-                              IGetTokenService getTokenService)
+                             IGetUserTokenService getUserTokenService)
         {
             _addProjectSeenService = addProjectSeenService;
             _removeProjectSeenService = removeProjectSeenService;
             _getProjectSeenService = getProjectSeenService;
             _configuration = configuration;
-            _getTokenService = getTokenService;
+            _getUserTokenService = getUserTokenService;
         }
         /// <summary>
-        /// اضافه کردن یک کاربر جدید
+        /// اضافه کردن یک بازدید پروژه جدید
         /// </summary>
         /// <response code="200">Success</response>
         /// <response code="400">Validation Error</response>
@@ -57,6 +57,8 @@ namespace FartakProjectSeenService.Controllers
         {
             try
             {
+
+
                 var ProjectSeen = _addProjectSeenService.Execute(dto);
                 return Json(ProjectSeen);
             }
@@ -86,7 +88,7 @@ namespace FartakProjectSeenService.Controllers
         }
 
         /// <summary>
-        /// حذف کاربر
+        /// حذف بازدید پروژه
         /// </summary>
         /// <response code="200">Success</response>
         /// <response code="400">Validation Error</response>
@@ -102,7 +104,29 @@ namespace FartakProjectSeenService.Controllers
         {
             try
             {
-
+                var tokenDto = new RequestCheckTokenDto { Token = "", SelfUserId = 0 };
+                if (Request.Headers["token"].Count() > 0)
+                {
+                    tokenDto.Token = Request.Headers["token"];
+                }
+                if (Request.Headers["userId"].Count() > 0)
+                {
+                    tokenDto.SelfUserId = long.Parse(Request.Headers["userId"]);
+                }
+                if (tokenDto.Token == null || tokenDto.SelfUserId == 0)
+                {
+                    return StatusCode(409, Json(new ErrorDto
+                    {
+                        IsSuccess = false,
+                        ResponseCode = 409,
+                        Message = "مقادیر توکن نامعتبر میباشد",
+                        Service = "User",
+                    }));
+                }
+                if (_getUserTokenService.GetToken(tokenDto) == false)
+                {
+                    return StatusCode(403, Json(new ErrorDto { IsSuccess = false, Message = "توکن نامعتبر است", ResponseCode = 403, Service = "User" }));
+                }
                 var result = _removeProjectSeenService.Execute(dto);
                 if (result.IsSuccess == true)
                 {

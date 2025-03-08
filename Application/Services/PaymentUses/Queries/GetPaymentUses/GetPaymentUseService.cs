@@ -1,5 +1,4 @@
 ﻿using Application.Interfaces.Contexts;
-using Application.Services.PaymentUses.Queries.GetPaymentUses;
 
 namespace Application.Services.PaymentUses.Queries.GetPaymentUses
 {
@@ -18,10 +17,10 @@ namespace Application.Services.PaymentUses.Queries.GetPaymentUses
             {
                 PaymentUseId = p.PaymentUseId,
                 UserId = p.UserId,
-                PaymentUseDate=p.PaymentUseDate,
-                PaymentUseTime=p.PaymentUseTime,
-                PaymentId=p.PaymentId,
-                CourseId=p.CourseId,
+                PaymentUseDate = p.PaymentUseDate,
+                PaymentUseTime = p.PaymentUseTime,
+                PaymentId = p.PaymentId,
+                CourseId = p.CourseId,
                 Price = p.Price
 
             }).OrderBy(x => x.PaymentUseId).ToList();

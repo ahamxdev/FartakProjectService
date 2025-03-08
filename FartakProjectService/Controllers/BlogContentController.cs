@@ -4,8 +4,8 @@ using Application.Services.BlogContents.Commands.AddBlogContent;
 using Application.Services.BlogContents.Commands.EditBlogContent;
 using Application.Services.BlogContents.Commands.RemoveBlogContent;
 using Application.Services.BlogContents.Queries.GetBlogContent;
+using Application.Services.UserToken.Queries.GetUserToken;
 using Common.Dto;
-using Common.Services.UserService.Token.Queries.GetToken;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BlogContents.Controllers
@@ -18,26 +18,26 @@ namespace BlogContents.Controllers
     [Route("api/BlogContents")]
     public class BlogContentsController : Controller
     {
-        private readonly IGetTokenService _getTokenService;
         private readonly IAddBlogContentService _addBlogContentService;
         private readonly IEditBlogContentService _editBlogContentService;
         private readonly IRemoveBlogContentService _removeBlogContentService;
         private readonly IGetBlogContentService _getBlogContentService;
+        private readonly IGetUserTokenService _getUserTokenService;
 
         /// <summary>
         /// سازنده کنترلر
         /// </summary>
         public BlogContentsController(IAddBlogContentService addBlogContentService,
                                   IEditBlogContentService editBlogContentService,
-                                  IGetTokenService getTokenService, IGetBlogContentService getBlogContentService,
-                                  IRemoveBlogContentService removeBlogContentService)
+                                  IGetBlogContentService getBlogContentService,
+                                  IRemoveBlogContentService removeBlogContentService,
+                                  IGetUserTokenService getUserTokenService)
         {
             _addBlogContentService = addBlogContentService;
             _editBlogContentService = editBlogContentService;
             _removeBlogContentService = removeBlogContentService;
             _getBlogContentService = getBlogContentService;
-            _getTokenService = getTokenService;
-
+            _getUserTokenService = getUserTokenService;
         }
 
 
@@ -61,6 +61,30 @@ namespace BlogContents.Controllers
 
             try
             {
+                var tokenDto = new RequestCheckTokenDto { Token = "", SelfUserId = 0 };
+                if (Request.Headers["token"].Count() > 0)
+                {
+                    tokenDto.Token = Request.Headers["token"];
+                }
+                if (Request.Headers["userId"].Count() > 0)
+                {
+                    tokenDto.SelfUserId = long.Parse(Request.Headers["userId"]);
+                }
+                if (tokenDto.Token == null || tokenDto.SelfUserId == 0)
+                {
+                    return StatusCode(409, Json(new ErrorDto
+                    {
+                        IsSuccess = false,
+                        ResponseCode = 409,
+                        Message = "مقادیر توکن نامعتبر میباشد",
+                        Service = "User",
+                    }));
+                }
+                if (_getUserTokenService.GetToken(tokenDto) == false)
+                {
+                    return StatusCode(403, Json(new ErrorDto { IsSuccess = false, Message = "توکن نامعتبر است", ResponseCode = 403, Service = "User" }));
+                }
+
                 var result = _addBlogContentService.Execute(dto);
                 if (result.IsSuccess == true)
                 {
@@ -125,6 +149,29 @@ namespace BlogContents.Controllers
 
             try
             {
+                var tokenDto = new RequestCheckTokenDto { Token = "", SelfUserId = 0 };
+                if (Request.Headers["token"].Count() > 0)
+                {
+                    tokenDto.Token = Request.Headers["token"];
+                }
+                if (Request.Headers["userId"].Count() > 0)
+                {
+                    tokenDto.SelfUserId = long.Parse(Request.Headers["userId"]);
+                }
+                if (tokenDto.Token == null || tokenDto.SelfUserId == 0)
+                {
+                    return StatusCode(409, Json(new ErrorDto
+                    {
+                        IsSuccess = false,
+                        ResponseCode = 409,
+                        Message = "مقادیر توکن نامعتبر میباشد",
+                        Service = "User",
+                    }));
+                }
+                if (_getUserTokenService.GetToken(tokenDto) == false)
+                {
+                    return StatusCode(403, Json(new ErrorDto { IsSuccess = false, Message = "توکن نامعتبر است", ResponseCode = 403, Service = "User" }));
+                }
 
                 var result = _editBlogContentService.Execute(dto);
                 if (result.IsSuccess == true)
@@ -189,6 +236,29 @@ namespace BlogContents.Controllers
         {
             try
             {
+                var tokenDto = new RequestCheckTokenDto { Token = "", SelfUserId = 0 };
+                if (Request.Headers["token"].Count() > 0)
+                {
+                    tokenDto.Token = Request.Headers["token"];
+                }
+                if (Request.Headers["userId"].Count() > 0)
+                {
+                    tokenDto.SelfUserId = long.Parse(Request.Headers["userId"]);
+                }
+                if (tokenDto.Token == null || tokenDto.SelfUserId == 0)
+                {
+                    return StatusCode(409, Json(new ErrorDto
+                    {
+                        IsSuccess = false,
+                        ResponseCode = 409,
+                        Message = "مقادیر توکن نامعتبر میباشد",
+                        Service = "User",
+                    }));
+                }
+                if (_getUserTokenService.GetToken(tokenDto) == false)
+                {
+                    return StatusCode(403, Json(new ErrorDto { IsSuccess = false, Message = "توکن نامعتبر است", ResponseCode = 403, Service = "User" }));
+                }
 
                 var result = _removeBlogContentService.Delete(dto);
                 if (result.IsSuccess == true)

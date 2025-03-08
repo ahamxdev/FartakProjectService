@@ -4,8 +4,8 @@ using Application.Services.Payments.Commands.AddPayments;
 using Application.Services.Payments.Commands.EditPayments;
 using Application.Services.Payments.Commands.RemovePayments;
 using Application.Services.Payments.Queries.GetPayments;
+using Application.Services.UserToken.Queries.GetUserToken;
 using Common.Dto;
-using Common.Services.UserService.Token.Queries.GetToken;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Payments.Controllers
@@ -18,7 +18,7 @@ namespace Payments.Controllers
     [Route("api/Payments")]
     public class PaymentsController : Controller
     {
-        private readonly IGetTokenService _getTokenService;
+        private readonly IGetUserTokenService _getUserTokenService;
         private readonly IAddPaymentService _addPaymentService;
         private readonly IEditPaymentService _editPaymentService;
         private readonly IRemovePaymentService _removePaymentService;
@@ -32,7 +32,7 @@ namespace Payments.Controllers
         /// </summary>
         public PaymentsController(IAddPaymentService addPaymentService,
                                   IEditPaymentService editPaymentService,
-                                  IGetTokenService getTokenService,
+                                  IGetUserTokenService getUserTokenService,
                                   IGetPaymentService getPaymentService,
                                   IRemovePaymentService removePaymentService)
         {
@@ -40,7 +40,7 @@ namespace Payments.Controllers
             _editPaymentService = editPaymentService;
             _removePaymentService = removePaymentService;
             _getPaymentService = getPaymentService;
-            _getTokenService = getTokenService;
+            _getUserTokenService = getUserTokenService;
 
         }
 
@@ -66,16 +66,16 @@ namespace Payments.Controllers
             try
             {
 
-                var tokenDto = new RequestGetTokenDto { };
-                if (Request.Headers["Authorization"].Count() > 0)
+                var tokenDto = new RequestCheckTokenDto { Token="",SelfUserId=0 };
+                if (Request.Headers["token"].Count() > 0)
                 {
-                    tokenDto.Token = Request.Headers["Authorization"];
+                    tokenDto.Token = Request.Headers["token"];
                 }
-                if (Request.Headers["selfUserId"].Count() > 0)
+                if (Request.Headers["userId"].Count() > 0)
                 {
-                    tokenDto.SelfUserId = Request.Headers["selfUserId"];
+                    tokenDto.SelfUserId = long.Parse(Request.Headers["userId"]);
                 }
-                if (tokenDto.Token == null || tokenDto.SelfUserId == null)
+                if (tokenDto.Token == null || tokenDto.SelfUserId==0)
                 {
                     return StatusCode(409, Json(new ErrorDto
                     {
@@ -85,7 +85,7 @@ namespace Payments.Controllers
                         Service = "User",
                     }));
                 }
-                if (_getTokenService.GetValidateToken(tokenDto) == false)
+                if (_getUserTokenService.GetToken(tokenDto) == false)
                 {
                     return StatusCode(403, Json(new ErrorDto { IsSuccess = false, Message = "توکن نامعتبر است", ResponseCode = 403, Service = "User" }));
                 }
@@ -154,17 +154,16 @@ namespace Payments.Controllers
 
             try
             {
-
-                var tokenDto = new RequestGetTokenDto { };
-                if (Request.Headers["Authorization"].Count() > 0)
+                var tokenDto = new RequestCheckTokenDto { Token = "", SelfUserId = 0 };
+                if (Request.Headers["token"].Count() > 0)
                 {
-                    tokenDto.Token = Request.Headers["Authorization"];
+                    tokenDto.Token = Request.Headers["token"];
                 }
-                if (Request.Headers["selfUserId"].Count() > 0)
+                if (Request.Headers["userId"].Count() > 0)
                 {
-                    tokenDto.SelfUserId = Request.Headers["selfUserId"];
+                    tokenDto.SelfUserId = long.Parse(Request.Headers["userId"]);
                 }
-                if (tokenDto.Token == null || tokenDto.SelfUserId == null)
+                if (tokenDto.Token == null || tokenDto.SelfUserId == 0)
                 {
                     return StatusCode(409, Json(new ErrorDto
                     {
@@ -174,7 +173,7 @@ namespace Payments.Controllers
                         Service = "User",
                     }));
                 }
-                if (_getTokenService.GetValidateToken(tokenDto) == false)
+                if (_getUserTokenService.GetToken(tokenDto) == false)
                 {
                     return StatusCode(403, Json(new ErrorDto { IsSuccess = false, Message = "توکن نامعتبر است", ResponseCode = 403, Service = "User" }));
                 }
@@ -244,17 +243,16 @@ namespace Payments.Controllers
 
             try
             {
-
-                var tokenDto = new RequestGetTokenDto { };
-                if (Request.Headers["Authorization"].Count() > 0)
+                var tokenDto = new RequestCheckTokenDto { Token = "", SelfUserId = 0 };
+                if (Request.Headers["token"].Count() > 0)
                 {
-                    tokenDto.Token = Request.Headers["Authorization"];
+                    tokenDto.Token = Request.Headers["token"];
                 }
-                if (Request.Headers["selfUserId"].Count() > 0)
+                if (Request.Headers["userId"].Count() > 0)
                 {
-                    tokenDto.SelfUserId = Request.Headers["selfUserId"];
+                    tokenDto.SelfUserId = long.Parse(Request.Headers["userId"]);
                 }
-                if (tokenDto.Token == null || tokenDto.SelfUserId == null)
+                if (tokenDto.Token == null || tokenDto.SelfUserId == 0)
                 {
                     return StatusCode(409, Json(new ErrorDto
                     {
@@ -264,7 +262,7 @@ namespace Payments.Controllers
                         Service = "User",
                     }));
                 }
-                if (_getTokenService.GetValidateToken(tokenDto) == false)
+                if (_getUserTokenService.GetToken(tokenDto) == false)
                 {
                     return StatusCode(403, Json(new ErrorDto { IsSuccess = false, Message = "توکن نامعتبر است", ResponseCode = 403, Service = "User" }));
                 }
@@ -334,16 +332,16 @@ namespace Payments.Controllers
             try
             {
 
-                var tokenDto = new RequestGetTokenDto { };
-                if (Request.Headers["Authorization"].Count() > 0)
+                var tokenDto = new RequestCheckTokenDto { Token = "", SelfUserId = 0 };
+                if (Request.Headers["token"].Count() > 0)
                 {
-                    tokenDto.Token = Request.Headers["Authorization"];
+                    tokenDto.Token = Request.Headers["token"];
                 }
-                if (Request.Headers["selfUserId"].Count() > 0)
+                if (Request.Headers["userId"].Count() > 0)
                 {
-                    tokenDto.SelfUserId = Request.Headers["selfUserId"];
+                    tokenDto.SelfUserId = long.Parse(Request.Headers["userId"]);
                 }
-                if (tokenDto.Token == null || tokenDto.SelfUserId == null)
+                if (tokenDto.Token == null || tokenDto.SelfUserId == 0)
                 {
                     return StatusCode(409, Json(new ErrorDto
                     {
@@ -353,7 +351,7 @@ namespace Payments.Controllers
                         Service = "User",
                     }));
                 }
-                if (_getTokenService.GetValidateToken(tokenDto) == false)
+                if (_getUserTokenService.GetToken(tokenDto) == false)
                 {
                     return StatusCode(403, Json(new ErrorDto { IsSuccess = false, Message = "توکن نامعتبر است", ResponseCode = 403, Service = "User" }));
                 }
@@ -420,16 +418,16 @@ namespace Payments.Controllers
             try
             {
 
-                var tokenDto = new RequestGetTokenDto { };
-                if (Request.Headers["Authorization"].Count() > 0)
+                var tokenDto = new RequestCheckTokenDto { Token = "", SelfUserId = 0 };
+                if (Request.Headers["token"].Count() > 0)
                 {
-                    tokenDto.Token = Request.Headers["Authorization"];
+                    tokenDto.Token = Request.Headers["token"];
                 }
-                if (Request.Headers["selfUserId"].Count() > 0)
+                if (Request.Headers["userId"].Count() > 0)
                 {
-                    tokenDto.SelfUserId = Request.Headers["selfUserId"];
+                    tokenDto.SelfUserId = long.Parse(Request.Headers["userId"]);
                 }
-                if (tokenDto.Token == null || tokenDto.SelfUserId == null)
+                if (tokenDto.Token == null || tokenDto.SelfUserId == 0)
                 {
                     return StatusCode(409, Json(new ErrorDto
                     {
@@ -439,7 +437,7 @@ namespace Payments.Controllers
                         Service = "User",
                     }));
                 }
-                if (_getTokenService.GetValidateToken(tokenDto) == false)
+                if (_getUserTokenService.GetToken(tokenDto) == false)
                 {
                     return StatusCode(403, Json(new ErrorDto { IsSuccess = false, Message = "توکن نامعتبر است", ResponseCode = 403, Service = "User" }));
                 }
@@ -495,16 +493,16 @@ namespace Payments.Controllers
             try
             {
 
-                var tokenDto = new RequestGetTokenDto { };
-                if (Request.Headers["Authorization"].Count() > 0)
+                var tokenDto = new RequestCheckTokenDto { Token = "", SelfUserId = 0 };
+                if (Request.Headers["token"].Count() > 0)
                 {
-                    tokenDto.Token = Request.Headers["Authorization"];
+                    tokenDto.Token = Request.Headers["token"];
                 }
-                if (Request.Headers["selfUserId"].Count() > 0)
+                if (Request.Headers["userId"].Count() > 0)
                 {
-                    tokenDto.SelfUserId = Request.Headers["selfUserId"];
+                    tokenDto.SelfUserId = long.Parse(Request.Headers["userId"]);
                 }
-                if (tokenDto.Token == null || tokenDto.SelfUserId == null)
+                if (tokenDto.Token == null || tokenDto.SelfUserId == 0)
                 {
                     return StatusCode(409, Json(new ErrorDto
                     {
@@ -514,7 +512,7 @@ namespace Payments.Controllers
                         Service = "User",
                     }));
                 }
-                if (_getTokenService.GetValidateToken(tokenDto) == false)
+                if (_getUserTokenService.GetToken(tokenDto) == false)
                 {
                     return StatusCode(403, Json(new ErrorDto { IsSuccess = false, Message = "توکن نامعتبر است", ResponseCode = 403, Service = "User" }));
                 }
@@ -551,83 +549,6 @@ namespace Payments.Controllers
 
 
         /// <summary>
-        /// دریافت اطلاعات یک خرید بر اساس PaymentId
-        /// </summary>
-        /// <response code="200">Success</response>
-        /// <response code="403">Not Authorized - Value Content:</response>
-        /// <response code="500">Server Error - Value Content:</response>
-        [ProducesResponseType(typeof(ResultGetPaymentDto), 200)]
-        [ProducesResponseType(typeof(ResultDto), 403)]
-        [ProducesResponseType(typeof(ResultDto), 500)]
-        [HttpPost]
-        [Route("GetByIdLocal")]
-        public ActionResult GetByIdLocal(RequestGetPaymentByIdDto dto)
-        {
-
-            try
-            {
-
-                //var tokenDto = new RequestGetTokenDto { };
-                //if (Request.Headers["Authorization"].Count() > 0)
-                //{
-                //    tokenDto.Token = Request.Headers["Authorization"];
-                //}
-                //if (Request.Headers["selfUserId"].Count() > 0)
-                //{
-                //    tokenDto.SelfUserId = Request.Headers["selfUserId"];
-                //}
-                //if (_getTokenService.GetValidateToken(tokenDto) == false)
-                //{
-                //    return StatusCode(403, Json(new ErrorDto { IsSuccess = false, Message = "توکن نامعتبر است", ResponseCode = 403, Service = "User" }));
-                //}
-
-                dto.PaymentId = dto.PaymentId - 54589;
-                //DateTime currentTime = DateTime.UtcNow.AddYears(1);
-                //long unixTime = ((DateTimeOffset)currentTime).ToUnixTimeSeconds();
-                var result = _getPaymentService.GetById(dto);
-                //var header = new {
-                //    alg= "HS256",
-                //    typ="JWT"
-                //};
-                //var payload = new { 
-                //    price=1000,
-                //    package_name= "com.revaal.app",
-                //    sku="test2",
-                //    exp= unixTime
-                //};
-                //string secretKey= "JCqORrhuCVsNd0OIkqzL1d2mF0Yo4v7HhE6qbq2oE_0";
-                //string jwt= MakeJwt(header,payload,secretKey);
-
-                return Json(result);
-
-            }
-
-
-            catch (Exception e)
-            {
-                var st = new StackTrace(e, true);
-                var frame = st.GetFrame(0);
-                var line = 0;
-                if (frame != null)
-                {
-                    line = frame.GetFileLineNumber();
-                    // Proceed with line
-                }
-
-                return StatusCode(500, new
-                {
-                    value = new ErrorDto
-                    {
-                        IsSuccess = false,
-                        Message = "Server Error : LIne Number=" + line + " *** Message= " + e.Message,
-                        Service = "Payment",
-                        ResponseCode = 500,
-                    }
-                });
-            }
-        }
-
-        /// <summary>
         /// دریافت اطلاعات یک خرید بر اساس UserId
         /// </summary>
         /// <response code="200">Success</response>
@@ -643,17 +564,16 @@ namespace Payments.Controllers
 
             try
             {
-
-                var tokenDto = new RequestGetTokenDto { };
-                if (Request.Headers["Authorization"].Count() > 0)
+                var tokenDto = new RequestCheckTokenDto { Token = "", SelfUserId = 0 };
+                if (Request.Headers["token"].Count() > 0)
                 {
-                    tokenDto.Token = Request.Headers["Authorization"];
+                    tokenDto.Token = Request.Headers["token"];
                 }
-                if (Request.Headers["selfUserId"].Count() > 0)
+                if (Request.Headers["userId"].Count() > 0)
                 {
-                    tokenDto.SelfUserId = Request.Headers["selfUserId"];
+                    tokenDto.SelfUserId = long.Parse(Request.Headers["userId"]);
                 }
-                if (tokenDto.Token == null || tokenDto.SelfUserId == null)
+                if (tokenDto.Token == null || tokenDto.SelfUserId == 0)
                 {
                     return StatusCode(409, Json(new ErrorDto
                     {
@@ -663,7 +583,7 @@ namespace Payments.Controllers
                         Service = "User",
                     }));
                 }
-                if (_getTokenService.GetValidateToken(tokenDto) == false)
+                if (_getUserTokenService.GetToken(tokenDto) == false)
                 {
                     return StatusCode(403, Json(new ErrorDto { IsSuccess = false, Message = "توکن نامعتبر است", ResponseCode = 403, Service = "User" }));
                 }
@@ -715,17 +635,16 @@ namespace Payments.Controllers
 
             try
             {
-
-                var tokenDto = new RequestGetTokenDto { };
-                if (Request.Headers["Authorization"].Count() > 0)
+                var tokenDto = new RequestCheckTokenDto { Token = "", SelfUserId = 0 };
+                if (Request.Headers["token"].Count() > 0)
                 {
-                    tokenDto.Token = Request.Headers["Authorization"];
+                    tokenDto.Token = Request.Headers["token"];
                 }
-                if (Request.Headers["selfUserId"].Count() > 0)
+                if (Request.Headers["userId"].Count() > 0)
                 {
-                    tokenDto.SelfUserId = Request.Headers["selfUserId"];
+                    tokenDto.SelfUserId = long.Parse(Request.Headers["userId"]);
                 }
-                if (tokenDto.Token == null || tokenDto.SelfUserId == null)
+                if (tokenDto.Token == null || tokenDto.SelfUserId == 0)
                 {
                     return StatusCode(409, Json(new ErrorDto
                     {
@@ -735,7 +654,7 @@ namespace Payments.Controllers
                         Service = "User",
                     }));
                 }
-                if (_getTokenService.GetValidateToken(tokenDto) == false)
+                if (_getUserTokenService.GetToken(tokenDto) == false)
                 {
                     return StatusCode(403, Json(new ErrorDto { IsSuccess = false, Message = "توکن نامعتبر است", ResponseCode = 403, Service = "User" }));
                 }

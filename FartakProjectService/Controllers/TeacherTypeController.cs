@@ -4,8 +4,8 @@ using Application.Services.TeacherTypes.Commands.AddTeacherTypes;
 using Application.Services.TeacherTypes.Commands.EditTeacherTypes;
 using Application.Services.TeacherTypes.Commands.RemoveTeacherTypes;
 using Application.Services.TeacherTypes.Queries.GetTeacherTypes;
+using Application.Services.UserToken.Queries.GetUserToken;
 using Common.Dto;
-using Common.Services.UserService.Token.Queries.GetToken;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FartakTeacherTypeService.Controllers
@@ -25,7 +25,7 @@ namespace FartakTeacherTypeService.Controllers
         private readonly IGetTeacherTypeService _getTeacherTypeService;
         private readonly IEditTeacherTypeService _editTeacherTypeService;
         private readonly IConfiguration _configuration;
-        private readonly IGetTokenService _getTokenService;
+        private readonly IGetUserTokenService _getUserTokenService;
         /// <summary>
         /// سازنده کنترلر
         /// </summary>
@@ -34,14 +34,14 @@ namespace FartakTeacherTypeService.Controllers
                               IGetTeacherTypeService getTeacherTypeService,
                               IEditTeacherTypeService editTeacherTypeService,
                               IConfiguration configuration,
-                              IGetTokenService getTokenService)
+                              IGetUserTokenService getUserTokenService)
         {
             _addTeacherTypeService = addTeacherTypeService;
             _removeTeacherTypeService = removeTeacherTypeService;
             _getTeacherTypeService = getTeacherTypeService;
             _editTeacherTypeService = editTeacherTypeService;
             _configuration = configuration;
-            _getTokenService = getTokenService;
+            _getUserTokenService = getUserTokenService;
         }
         /// <summary>
         /// اضافه کردن یک نوع تدریس جدید والد
@@ -61,6 +61,30 @@ namespace FartakTeacherTypeService.Controllers
         {
             try
             {
+                var tokenDto = new RequestCheckTokenDto { Token = "", SelfUserId = 0 };
+                if (Request.Headers["token"].Count() > 0)
+                {
+                    tokenDto.Token = Request.Headers["token"];
+                }
+                if (Request.Headers["userId"].Count() > 0)
+                {
+                    tokenDto.SelfUserId = long.Parse(Request.Headers["userId"]);
+                }
+                if (tokenDto.Token == null || tokenDto.SelfUserId == 0)
+                {
+                    return StatusCode(409, Json(new ErrorDto
+                    {
+                        IsSuccess = false,
+                        ResponseCode = 409,
+                        Message = "مقادیر توکن نامعتبر میباشد",
+                        Service = "User",
+                    }));
+                }
+                if (_getUserTokenService.GetToken(tokenDto) == false)
+                {
+                    return StatusCode(403, Json(new ErrorDto { IsSuccess = false, Message = "توکن نامعتبر است", ResponseCode = 403, Service = "User" }));
+                }
+
                 var TeacherType = _addTeacherTypeService.ExecuteParent(dto);
                 return Json(TeacherType);
             }
@@ -109,6 +133,29 @@ namespace FartakTeacherTypeService.Controllers
         {
             try
             {
+                var tokenDto = new RequestCheckTokenDto { Token = "", SelfUserId = 0 };
+                if (Request.Headers["token"].Count() > 0)
+                {
+                    tokenDto.Token = Request.Headers["token"];
+                }
+                if (Request.Headers["userId"].Count() > 0)
+                {
+                    tokenDto.SelfUserId = long.Parse(Request.Headers["userId"]);
+                }
+                if (tokenDto.Token == null || tokenDto.SelfUserId == 0)
+                {
+                    return StatusCode(409, Json(new ErrorDto
+                    {
+                        IsSuccess = false,
+                        ResponseCode = 409,
+                        Message = "مقادیر توکن نامعتبر میباشد",
+                        Service = "User",
+                    }));
+                }
+                if (_getUserTokenService.GetToken(tokenDto) == false)
+                {
+                    return StatusCode(403, Json(new ErrorDto { IsSuccess = false, Message = "توکن نامعتبر است", ResponseCode = 403, Service = "User" }));
+                }
                 var TeacherType = _addTeacherTypeService.ExecuteChild(dto);
                 return Json(TeacherType);
             }
@@ -157,6 +204,29 @@ namespace FartakTeacherTypeService.Controllers
         {
             try
             {
+                var tokenDto = new RequestCheckTokenDto { Token = "", SelfUserId = 0 };
+                if (Request.Headers["token"].Count() > 0)
+                {
+                    tokenDto.Token = Request.Headers["token"];
+                }
+                if (Request.Headers["userId"].Count() > 0)
+                {
+                    tokenDto.SelfUserId = long.Parse(Request.Headers["userId"]);
+                }
+                if (tokenDto.Token == null || tokenDto.SelfUserId == 0)
+                {
+                    return StatusCode(409, Json(new ErrorDto
+                    {
+                        IsSuccess = false,
+                        ResponseCode = 409,
+                        Message = "مقادیر توکن نامعتبر میباشد",
+                        Service = "User",
+                    }));
+                }
+                if (_getUserTokenService.GetToken(tokenDto) == false)
+                {
+                    return StatusCode(403, Json(new ErrorDto { IsSuccess = false, Message = "توکن نامعتبر است", ResponseCode = 403, Service = "User" }));
+                }
                 var TeacherType = _editTeacherTypeService.Execute(dto);
                 return Json(TeacherType);
             }
@@ -208,6 +278,29 @@ namespace FartakTeacherTypeService.Controllers
         {
             try
             {
+                var tokenDto = new RequestCheckTokenDto { Token = "", SelfUserId = 0 };
+                if (Request.Headers["token"].Count() > 0)
+                {
+                    tokenDto.Token = Request.Headers["token"];
+                }
+                if (Request.Headers["userId"].Count() > 0)
+                {
+                    tokenDto.SelfUserId = long.Parse(Request.Headers["userId"]);
+                }
+                if (tokenDto.Token == null || tokenDto.SelfUserId == 0)
+                {
+                    return StatusCode(409, Json(new ErrorDto
+                    {
+                        IsSuccess = false,
+                        ResponseCode = 409,
+                        Message = "مقادیر توکن نامعتبر میباشد",
+                        Service = "User",
+                    }));
+                }
+                if (_getUserTokenService.GetToken(tokenDto) == false)
+                {
+                    return StatusCode(403, Json(new ErrorDto { IsSuccess = false, Message = "توکن نامعتبر است", ResponseCode = 403, Service = "User" }));
+                }
 
                 var result = _removeTeacherTypeService.Execute(dto);
                 if (result.IsSuccess == true)

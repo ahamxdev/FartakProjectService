@@ -16,7 +16,7 @@
         public long TeacherTypeId { get; set; }
         public long InPersonPrice { get; set; }
 
-        public required string TeacherName {  get; set; }
-        public required string TeacherTypeTitle {  get; set; }
+        public required string TeacherName { get; set; }
+        public required string TeacherTypeTitle { get; set; }
     }
 }

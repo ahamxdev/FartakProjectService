@@ -1,6 +1,4 @@
-﻿using Application.Services.ProjectTypes.Queries.GetProjectTypes;
-
-namespace Application.Services.TeacherTypes.Queries.GetTeacherTypes
+﻿namespace Application.Services.TeacherTypes.Queries.GetTeacherTypes
 {
     public interface IGetTeacherTypeService
     {

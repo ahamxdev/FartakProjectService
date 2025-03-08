@@ -1,5 +1,4 @@
 ﻿using Application.Interfaces.Contexts;
-using Application.Services.TeacherUserSelects.Commands.AddTeacherUserSelects;
 using Common.Dto;
 using Microsoft.Extensions.Configuration;
 
@@ -17,9 +16,10 @@ namespace Application.Services.TeacherUserSelects.Commands.EditTeacherUserSelect
         }
         public ResultDto Execute(RequestEditTeacherUserSelectDto request)
         {
-            if (_context.TeacherUserSelects.Count(x =>x.TeacherUserSelectId != request.TeacherUserSelectId &&
+            if (_context.TeacherUserSelects.Count(x => x.TeacherUserSelectId != request.TeacherUserSelectId &&
                     x.TeacherId == request.TeacherId &&
-                      x.StudentId == request.StudentId) > 0){
+                      x.StudentId == request.StudentId) > 0)
+            {
 
                 return new ResultDto()
                 {

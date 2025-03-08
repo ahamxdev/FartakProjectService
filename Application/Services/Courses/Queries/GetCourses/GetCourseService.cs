@@ -240,6 +240,48 @@ namespace Application.Services.Courses.Queries.GetCourses
         }
 
 
+
+        public ResultGetCourseDto GetByCourseTypeId(RequestGetCourseByCourseTypeIdDto request)
+        {
+            var Courses = _context.Courses.Where(x => x.CourseTypeId == request.CourseTypeId);
+
+            var courseList = new List<GetCourseDto>();
+
+            foreach (var course in Courses)
+            {
+                string fullname = "";
+                var user = _getUserService.GetById(new RequestGetUserByIdDto { UserId = course.TeacherId });
+                if (user.Rows > 0)
+                {
+                    var firstname = user.Users[0].Name;
+                    var lastname = user.Users[0].Lastname;
+                    fullname = firstname + " " + lastname;
+
+                    courseList.Add(new GetCourseDto
+                    {
+                        Description = course.Description,
+                        status = course.status,
+                        TeacherId = course.TeacherId,
+                        Title = course.Title,
+                        CourseTypeId = course.CourseTypeId,
+                        Price = course.Price,
+                        CourseId = course.CourseId,
+                        VideoName = "",
+                        Duration = course.Duration,
+                        TeacherName = fullname,
+
+                    });
+
+                }
+            }
+            return new ResultGetCourseDto()
+            {
+                Courses = courseList.OrderBy(c => c.CourseId).ToList(),
+                Rows = courseList.Count,
+            };
+        }
+
+
         public ResultGetCourseDto GetByTeacherId(RequestGetCourseByTeacherIdDto request)
         {
             var Courses = _context.Courses.Where(x => x.TeacherId == request.TeacherId);

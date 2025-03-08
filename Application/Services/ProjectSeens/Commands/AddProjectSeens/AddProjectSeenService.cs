@@ -18,9 +18,23 @@ namespace Application.Services.ProjectSeens.Commands.AddProjectSeens
         public ResultDto<ResultAddProjectSeenDto> Execute(RequestAddProjectSeenDto request)
         {
 
-
             try
             {
+                if (_context.ProjectSeens.Count(p => p.UserId == request.UserId &&
+                  p.ProjectId == request.ProjectId) > 0) {
+
+                    return new ResultDto<ResultAddProjectSeenDto>
+                    {
+                        Data = new ResultAddProjectSeenDto
+                        {
+                            ProjectSeenId = 0,
+                        },
+                        IsSuccess = true,
+                        Message = "قبلا ثبت شده است"
+                    };
+
+                }
+
                 ProjectSeen ProjectSeen = new ProjectSeen
                 {
                     ProjectId = request.ProjectId,

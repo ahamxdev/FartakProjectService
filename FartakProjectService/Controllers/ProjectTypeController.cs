@@ -4,15 +4,15 @@ using Application.Services.ProjectTypes.Commands.AddProjectTypes;
 using Application.Services.ProjectTypes.Commands.EditProjectTypes;
 using Application.Services.ProjectTypes.Commands.RemoveProjectTypes;
 using Application.Services.ProjectTypes.Queries.GetProjectTypes;
+using Application.Services.UserToken.Queries.GetUserToken;
 using Common.Dto;
-using Common.Services.UserService.Token.Queries.GetToken;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FartakProjectTypeService.Controllers
 {
     /// <summary>
     /// این سرویس ، سرویس نوع پروژه می باشد.
-    /// •	تمامی رویدادهای موجود در این سرویس قبل از اجرا به سرویس ProjectType مراجعه و چک می کنند آیا درخواست توسط کاربر معتبر ارسال شده یا خیر
+    /// •	تمامی رویدادهای موجود در این سرویس قبل از اجرا به سرویس ProjectType مراجعه و چک می کنند آیا درخواست توسط دسته پروژه معتبر ارسال شده یا خیر
     /// </summary>
     [ApiController]
     [Route("api/ProjectTypes")]
@@ -25,7 +25,7 @@ namespace FartakProjectTypeService.Controllers
         private readonly IGetProjectTypeService _getProjectTypeService;
         private readonly IEditProjectTypeService _editProjectTypeService;
         private readonly IConfiguration _configuration;
-        private readonly IGetTokenService _getTokenService;
+        private readonly IGetUserTokenService _getUserTokenService;
         /// <summary>
         /// سازنده کنترلر
         /// </summary>
@@ -34,17 +34,17 @@ namespace FartakProjectTypeService.Controllers
                               IGetProjectTypeService getProjectTypeService,
                               IEditProjectTypeService editProjectTypeService,
                               IConfiguration configuration,
-                              IGetTokenService getTokenService)
+                              IGetUserTokenService getUserTokenService)
         {
             _addProjectTypeService = addProjectTypeService;
             _removeProjectTypeService = removeProjectTypeService;
             _getProjectTypeService = getProjectTypeService;
             _editProjectTypeService = editProjectTypeService;
             _configuration = configuration;
-            _getTokenService = getTokenService;
+            _getUserTokenService = getUserTokenService;
         }
         /// <summary>
-        /// اضافه کردن یک کاربر جدید
+        /// اضافه کردن یک دسته پروژه جدید
         /// </summary>
         /// <response code="200">Success</response>
         /// <response code="400">Validation Error</response>
@@ -61,6 +61,29 @@ namespace FartakProjectTypeService.Controllers
         {
             try
             {
+                var tokenDto = new RequestCheckTokenDto { Token = "", SelfUserId = 0 };
+                if (Request.Headers["token"].Count() > 0)
+                {
+                    tokenDto.Token = Request.Headers["token"];
+                }
+                if (Request.Headers["userId"].Count() > 0)
+                {
+                    tokenDto.SelfUserId = long.Parse(Request.Headers["userId"]);
+                }
+                if (tokenDto.Token == null || tokenDto.SelfUserId == 0)
+                {
+                    return StatusCode(409, Json(new ErrorDto
+                    {
+                        IsSuccess = false,
+                        ResponseCode = 409,
+                        Message = "مقادیر توکن نامعتبر میباشد",
+                        Service = "User",
+                    }));
+                }
+                if (_getUserTokenService.GetToken(tokenDto) == false)
+                {
+                    return StatusCode(403, Json(new ErrorDto { IsSuccess = false, Message = "توکن نامعتبر است", ResponseCode = 403, Service = "User" }));
+                }
                 var ProjectType = _addProjectTypeService.Execute(dto);
                 return Json(ProjectType);
             }
@@ -96,7 +119,7 @@ namespace FartakProjectTypeService.Controllers
 
 
         /// <summary>
-        /// ویرایش کردن یک کاربر جدید
+        /// ویرایش کردن یک دسته پروژه جدید
         /// </summary>
         /// <response code="200">Success</response>
         /// <response code="400">Validation Error</response>
@@ -113,6 +136,29 @@ namespace FartakProjectTypeService.Controllers
         {
             try
             {
+                var tokenDto = new RequestCheckTokenDto { Token = "", SelfUserId = 0 };
+                if (Request.Headers["token"].Count() > 0)
+                {
+                    tokenDto.Token = Request.Headers["token"];
+                }
+                if (Request.Headers["userId"].Count() > 0)
+                {
+                    tokenDto.SelfUserId = long.Parse(Request.Headers["userId"]);
+                }
+                if (tokenDto.Token == null || tokenDto.SelfUserId == 0)
+                {
+                    return StatusCode(409, Json(new ErrorDto
+                    {
+                        IsSuccess = false,
+                        ResponseCode = 409,
+                        Message = "مقادیر توکن نامعتبر میباشد",
+                        Service = "User",
+                    }));
+                }
+                if (_getUserTokenService.GetToken(tokenDto) == false)
+                {
+                    return StatusCode(403, Json(new ErrorDto { IsSuccess = false, Message = "توکن نامعتبر است", ResponseCode = 403, Service = "User" }));
+                }
                 var ProjectType = _editProjectTypeService.Execute(dto);
                 return Json(ProjectType);
             }
@@ -148,7 +194,7 @@ namespace FartakProjectTypeService.Controllers
 
 
         /// <summary>
-        /// حذف کاربر
+        /// حذف دسته پروژه
         /// </summary>
         /// <response code="200">Success</response>
         /// <response code="400">Validation Error</response>
@@ -164,7 +210,29 @@ namespace FartakProjectTypeService.Controllers
         {
             try
             {
-
+                var tokenDto = new RequestCheckTokenDto { Token = "", SelfUserId = 0 };
+                if (Request.Headers["token"].Count() > 0)
+                {
+                    tokenDto.Token = Request.Headers["token"];
+                }
+                if (Request.Headers["userId"].Count() > 0)
+                {
+                    tokenDto.SelfUserId = long.Parse(Request.Headers["userId"]);
+                }
+                if (tokenDto.Token == null || tokenDto.SelfUserId == 0)
+                {
+                    return StatusCode(409, Json(new ErrorDto
+                    {
+                        IsSuccess = false,
+                        ResponseCode = 409,
+                        Message = "مقادیر توکن نامعتبر میباشد",
+                        Service = "User",
+                    }));
+                }
+                if (_getUserTokenService.GetToken(tokenDto) == false)
+                {
+                    return StatusCode(403, Json(new ErrorDto { IsSuccess = false, Message = "توکن نامعتبر است", ResponseCode = 403, Service = "User" }));
+                }
                 var result = _removeProjectTypeService.Execute(dto);
                 if (result.IsSuccess == true)
                 {

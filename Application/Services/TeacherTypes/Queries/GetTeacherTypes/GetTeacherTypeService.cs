@@ -1,5 +1,4 @@
 ﻿using Application.Interfaces.Contexts;
-using Application.Services.TeacherTypes.Queries.GetTeacherTypes;
 
 
 namespace Application.Services.TeacherTypes.Queries.GetTeacherTypes
@@ -68,7 +67,7 @@ namespace Application.Services.TeacherTypes.Queries.GetTeacherTypes
 
         public ResultGetTeacherTypesDto GetAllParent()
         {
-            var TeacherTypes = _context.TeacherTypes.Where(t=>t.TeacherTypeParentId==0).ToList();
+            var TeacherTypes = _context.TeacherTypes.Where(t => t.TeacherTypeParentId == 0).ToList();
             var TeacherTypesList = TeacherTypes.Select(p => new GetTeacherTypesDto
             {
                 Title = p.Title,
