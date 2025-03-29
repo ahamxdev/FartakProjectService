@@ -10,6 +10,12 @@
         public long TeacherTypeId { get; set; }
     }
 
+
+    public class RequestGetTeacherUserByUserIdDto
+    {
+        public long UserId { get; set; }
+    }
+
     public class RequestGetTeacherUserByFilterDto
     {
         public int LanguageTeach { get; set; } // 0 Farsi 1 English

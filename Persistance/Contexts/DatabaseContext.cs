@@ -7,6 +7,7 @@ using Domain.Entities.Projects;
 using Domain.Entities.TeacherUser;
 using Domain.Entities.Users;
 using Domain.Entities.ZarinpalSettings;
+using Domain.Users;
 using Microsoft.EntityFrameworkCore;
 
 namespace Persistence.Contexts
@@ -14,6 +15,7 @@ namespace Persistence.Contexts
     public class DatabaseContext : DbContext, IDatabaseContext
     {
         public DbSet<User> Users { get; set; }
+        public DbSet<InboxUser> InboxUsers { get; set; }
         public DbSet<UserToken> UserTokens { get; set; }
         public DbSet<Course> Courses { get; set; }
         public DbSet<CourseUser> CourseUsers { get; set; }
@@ -29,11 +31,16 @@ namespace Persistence.Contexts
         public DbSet<ProjectSeen> ProjectSeens { get; set; }
         public DbSet<ProjectType> ProjectTypes { get; set; }
         public DbSet<ProjectUser> ProjectUsers { get; set; }
+        public DbSet<ProjectTeam> ProjectTeams { get; set; }
+        public DbSet<ProjectTeamMember> ProjectTeamMembers { get; set; }
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<BlogContent> BlogContents { get; set; }
         public DbSet<MessageSetting> MessageSettings { get; set; }
         public DbSet<TeacherType> TeacherTypes { get; set; }
         public DbSet<PaymentUse> PaymentUses { get; set; }
+        public DbSet<RequestProjectTeam> RequestProjectTeams { get; set; }
+        public DbSet<ProjectFile> ProjectFiles { get; set; }
+        public DbSet<ProjectPhase> ProjectPhases { get; set; }
 
         public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
         {
@@ -41,6 +48,7 @@ namespace Persistence.Contexts
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>().HasIndex(u => u.UserId).IsUnique();
+            modelBuilder.Entity<InboxUser>().HasIndex(u => u.InboxUserId).IsUnique();
             modelBuilder.Entity<UserToken>().HasIndex(u => u.UserTokenId).IsUnique();
             modelBuilder.Entity<Course>().HasIndex(u => u.CourseId).IsUnique();
             modelBuilder.Entity<CourseUser>().HasIndex(u => u.CourseUserId).IsUnique();
@@ -53,6 +61,9 @@ namespace Persistence.Contexts
             modelBuilder.Entity<ProjectSeen>().HasIndex(u => u.ProjectSeenId).IsUnique();
             modelBuilder.Entity<ProjectType>().HasIndex(u => u.ProjectTypeId).IsUnique();
             modelBuilder.Entity<ProjectUser>().HasIndex(u => u.ProjectUserId).IsUnique();
+            modelBuilder.Entity<ProjectTeam>().HasIndex(u => u.ProjectTeamId).IsUnique();
+            modelBuilder.Entity<RequestProjectTeam>().HasIndex(u => u.RequestProjectTeamId).IsUnique();
+            modelBuilder.Entity<ProjectTeamMember>().HasIndex(u => u.ProjectTeamMemberId).IsUnique();
             modelBuilder.Entity<Blog>().HasIndex(u => u.BlogId).IsUnique();
             modelBuilder.Entity<BlogContent>().HasIndex(u => u.BlogContentId).IsUnique();
             modelBuilder.Entity<MessageSetting>().HasIndex(u => u.MessageSettingId).IsUnique();
@@ -60,6 +71,8 @@ namespace Persistence.Contexts
             modelBuilder.Entity<ZarinpalSetting>().HasIndex(u => u.ZarinpalSettingId).IsUnique();
             modelBuilder.Entity<TeacherType>().HasIndex(u => u.TeacherTypeId).IsUnique();
             modelBuilder.Entity<PaymentUse>().HasIndex(u => u.PaymentUseId).IsUnique();
+            modelBuilder.Entity<ProjectFile>().HasIndex(u => u.ProjectFileId).IsUnique();
+            modelBuilder.Entity<ProjectPhase>().HasIndex(u => u.ProjectPhaseId).IsUnique();
         }
     }
 

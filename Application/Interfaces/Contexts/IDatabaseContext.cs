@@ -6,6 +6,7 @@ using Domain.Entities.Projects;
 using Domain.Entities.TeacherUser;
 using Domain.Entities.Users;
 using Domain.Entities.ZarinpalSettings;
+using Domain.Users;
 using Microsoft.EntityFrameworkCore;
 
 namespace Application.Interfaces.Contexts
@@ -14,6 +15,7 @@ namespace Application.Interfaces.Contexts
     {
         DbSet<User> Users { get; set; }
         DbSet<UserToken> UserTokens { get; set; }
+        DbSet<InboxUser> InboxUsers { get; set; }
         DbSet<Course> Courses { get; set; }
         DbSet<CourseUser> CourseUsers { get; set; }
         DbSet<CourseType> CourseTypes { get; set; }
@@ -21,10 +23,13 @@ namespace Application.Interfaces.Contexts
         DbSet<TeacherUserResume> TeacherUserResumes { get; set; }
         DbSet<TeacherUserSelect> TeacherUserSelects { get; set; }
         DbSet<Project> Projects { get; set; }
+        DbSet<ProjectTeam> ProjectTeams { get; set; }
+        DbSet<ProjectTeamMember> ProjectTeamMembers { get; set; }
         DbSet<ProjectLike> ProjectLikes { get; set; }
         DbSet<ProjectSeen> ProjectSeens { get; set; }
         DbSet<ProjectType> ProjectTypes { get; set; }
         DbSet<ProjectUser> ProjectUsers { get; set; }
+        DbSet<RequestProjectTeam> RequestProjectTeams { get; set; }
         DbSet<MessageSetting> MessageSettings { get; set; }
         DbSet<Blog> Blogs { get; set; }
         DbSet<BlogContent> BlogContents { get; set; }
@@ -32,6 +37,8 @@ namespace Application.Interfaces.Contexts
         DbSet<ZarinpalSetting> ZarinpalSettings { get; set; }
         DbSet<TeacherType> TeacherTypes { get; set; }
         DbSet<PaymentUse> PaymentUses { get; set; }
+        DbSet<ProjectFile> ProjectFiles { get; set; }
+        DbSet<ProjectPhase> ProjectPhases { get; set; }
 
         int SaveChanges(bool accceptAllChangesOnSuccess);
         int SaveChanges();

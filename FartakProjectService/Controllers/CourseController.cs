@@ -5,7 +5,9 @@ using Application.Services.Courses.Commands.EditCourses;
 using Application.Services.Courses.Commands.RemoveCourses;
 using Application.Services.Courses.Queries.GetCourses;
 using Application.Services.CourseUsers.Commands.AddCourseUsers;
+using Application.Services.TeacherUsers.Queries.GetTeacherUsers;
 using Application.Services.Users.Commands.AddUsers;
+using Application.Services.Users.Queries.GetUsers;
 using Application.Services.UserToken.Queries.GetUserToken;
 using Common.Dto;
 using Microsoft.AspNetCore.Mvc;
@@ -26,6 +28,8 @@ namespace FartakProjectService.Controllers
         private readonly IRemoveCourseService _removeCourseService;
         private readonly IGetCourseService _getCourseService;
         private readonly IGetCourseUserService _getCourseUserService;
+        private readonly IGetTeacherUserService _getTeacherUserService;
+        private readonly IGetUserService _getUserService;
         private readonly IConfiguration _configuration;
         private readonly IGetUserTokenService _getUserTokenService;
         /// <summary>
@@ -35,6 +39,8 @@ namespace FartakProjectService.Controllers
                               IEditCourseService editCourseService,
                               IRemoveCourseService removeCourseService,
                               IGetCourseService getCourseService,
+                              IGetUserService getUserService,
+                              IGetTeacherUserService getTeacherUserService,
                               IConfiguration configuration,
                               IGetCourseUserService getCourseUserService,
                               IGetUserTokenService getUserTokenService)
@@ -44,6 +50,8 @@ namespace FartakProjectService.Controllers
             _removeCourseService = removeCourseService;
             _getCourseService = getCourseService;
             _configuration = configuration;
+            _getUserService = getUserService;
+            _getTeacherUserService = getTeacherUserService;
             _getUserTokenService = getUserTokenService;
             _getCourseUserService = getCourseUserService;
         }
@@ -88,6 +96,50 @@ namespace FartakProjectService.Controllers
                 {
                     return StatusCode(403, Json(new ErrorDto { IsSuccess = false, Message = "توکن نامعتبر است", ResponseCode = 403, Service = "User" }));
                 }
+
+                var user = _getUserService.GetById(new RequestGetUserByIdDto
+                {
+                    UserId=tokenDto.SelfUserId,
+                });
+
+                if (user.Users[0].Kind != 2 && user.Users[0].Kind != 0) {
+
+                    return StatusCode(409, Json(new ErrorDto
+                    {
+                        IsSuccess = false,
+                        ResponseCode = 409,
+                        Message = "دسترسی لازم را ندارید",
+                        Service = "User",
+                    }));
+
+                }
+
+                if (user.Users[0].Kind == 2 )
+                {
+
+                    var teacherUser = _getTeacherUserService.GetByUserId(new RequestGetTeacherUserByUserIdDto
+                    {
+                        UserId = tokenDto.SelfUserId,
+                    });
+
+                    if (teacherUser.TeacherUsers[0].AllowUploadCourse == 0) {
+
+                        return StatusCode(409, Json(new ErrorDto
+                        {
+                            IsSuccess = false,
+                            ResponseCode = 409,
+                            Message = "دسترسی لازم را ندارید",
+                            Service = "User",
+                        }));
+
+                    }
+
+
+                
+
+                }
+
+
                 var Course = _addCourseService.Execute(dto);
                 return Json(Course);
             }
@@ -156,6 +208,51 @@ namespace FartakProjectService.Controllers
                 {
                     return StatusCode(403, Json(new ErrorDto { IsSuccess = false, Message = "توکن نامعتبر است", ResponseCode = 403, Service = "User" }));
                 }
+
+                var user = _getUserService.GetById(new RequestGetUserByIdDto
+                {
+                    UserId = tokenDto.SelfUserId,
+                });
+
+                if (user.Users[0].Kind != 2 && user.Users[0].Kind != 0)
+                {
+
+                    return StatusCode(409, Json(new ErrorDto
+                    {
+                        IsSuccess = false,
+                        ResponseCode = 409,
+                        Message = "دسترسی لازم را ندارید",
+                        Service = "User",
+                    }));
+
+                }
+
+                if (user.Users[0].Kind == 2)
+                {
+
+                    var teacherUser = _getTeacherUserService.GetByUserId(new RequestGetTeacherUserByUserIdDto
+                    {
+                        UserId = tokenDto.SelfUserId,
+                    });
+
+                    if (teacherUser.TeacherUsers[0].AllowUploadCourse == 0)
+                    {
+
+                        return StatusCode(409, Json(new ErrorDto
+                        {
+                            IsSuccess = false,
+                            ResponseCode = 409,
+                            Message = "دسترسی لازم را ندارید",
+                            Service = "User",
+                        }));
+
+                    }
+
+
+
+
+                }
+
                 var result = _removeCourseService.Execute(dto);
                 if (result.IsSuccess == true)
                 {
@@ -243,6 +340,51 @@ namespace FartakProjectService.Controllers
                 {
                     return StatusCode(403, Json(new ErrorDto { IsSuccess = false, Message = "توکن نامعتبر است", ResponseCode = 403, Service = "User" }));
                 }
+
+                var user = _getUserService.GetById(new RequestGetUserByIdDto
+                {
+                    UserId = tokenDto.SelfUserId,
+                });
+
+                if (user.Users[0].Kind != 2 && user.Users[0].Kind != 0)
+                {
+
+                    return StatusCode(409, Json(new ErrorDto
+                    {
+                        IsSuccess = false,
+                        ResponseCode = 409,
+                        Message = "دسترسی لازم را ندارید",
+                        Service = "User",
+                    }));
+
+                }
+
+                if (user.Users[0].Kind == 2)
+                {
+
+                    var teacherUser = _getTeacherUserService.GetByUserId(new RequestGetTeacherUserByUserIdDto
+                    {
+                        UserId = tokenDto.SelfUserId,
+                    });
+
+                    if (teacherUser.TeacherUsers[0].AllowUploadCourse == 0)
+                    {
+
+                        return StatusCode(409, Json(new ErrorDto
+                        {
+                            IsSuccess = false,
+                            ResponseCode = 409,
+                            Message = "دسترسی لازم را ندارید",
+                            Service = "User",
+                        }));
+
+                    }
+
+
+
+
+                }
+
                 var result = _editCourseService.Execute(dto);
                 if (result.IsSuccess == true)
                     return Json(result);

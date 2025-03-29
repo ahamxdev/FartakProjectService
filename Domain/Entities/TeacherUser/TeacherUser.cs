@@ -15,5 +15,7 @@
         public long InPersonPrice { get; set; }
         public int LanguageTeach { get; set; } // 0 Farsi 1 English
         public int Place { get; set; } //0Iran 1 Other
+
+        public int AllowUploadCourse {  get; set; } // 0 No 1 Yes
     }
 }

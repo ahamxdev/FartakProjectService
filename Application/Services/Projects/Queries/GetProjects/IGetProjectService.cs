@@ -3,7 +3,7 @@
     public interface IGetProjectService
     {
         ResultGetProjectDto GetAll();
-        ResultGetProjectDto GetByProjectId(RequestGetProjectByIdDto request);
+        ResultGetProjectDto GetById(RequestGetProjectByIdDto request);
         ResultGetProjectDto GetByOwnerId(RequestGetProjectByOwnerIdDto request);
         ResultGetProjectDto GetByProjectTypeId(RequestGetProjectByProjectTypeIdDto request);
     }

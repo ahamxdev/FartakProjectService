@@ -8,5 +8,6 @@
         public required string PaymentUseDate { get; set; }
         public required string PaymentUseTime { get; set; }
         public long Price { get; set; }
+        public long ProjectPhaseId { get; set; }
     }
 }

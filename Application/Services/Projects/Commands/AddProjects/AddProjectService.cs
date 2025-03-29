@@ -46,6 +46,9 @@ namespace Application.Services.Projects.Commands.AddProjects
                             ProjectTypeId = request.ProjectTypeId,
                             Title = request.Title,
                             Duration = request.Duration,
+                            CreateDate=request.CreateDate,
+                            DeadLine = request.DeadLine,
+                            Status = request.Status,
                             Image = fileNameImage
 
                         };
@@ -85,6 +88,9 @@ namespace Application.Services.Projects.Commands.AddProjects
                         ProjectTypeId = request.ProjectTypeId,
                         Title = request.Title,
                         Duration = request.Duration,
+                        CreateDate = request.CreateDate,
+                        DeadLine= request.DeadLine,
+                        Status= request.Status,
                         Image = null
 
                     };

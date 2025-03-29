@@ -16,5 +16,6 @@ namespace Application.Services.TeacherUsers.Commands.AddTeacherUsers
         public int Place { get; set; } //0Iran 1 Other
         public IFormFile? FileVideo { get; set; }
         public IFormFile? FileImage { get; set; }
+        public int AllowUploadCourse { get; set; }
     }
 }

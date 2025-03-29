@@ -1,4 +1,4 @@
-using System.Reflection;
+﻿using System.Reflection;
 using Application.Interfaces.Contexts;
 using Application.Services.BlogContents.Commands.AddBlogContent;
 using Application.Services.BlogContents.Commands.EditBlogContent;
@@ -17,6 +17,10 @@ using Application.Services.CourseTypes.Commands.EditCourseTypes;
 using Application.Services.CourseTypes.Commands.RemoveCourseTypes;
 using Application.Services.CourseTypes.Queries.GetCourseTypes;
 using Application.Services.CourseUsers.Commands.AddCourseUsers;
+using Application.Services.InboxUsers.Commands.AddInboxUser;
+using Application.Services.InboxUsers.Commands.EditInboxUser;
+using Application.Services.InboxUsers.Commands.RemoveInboxUser;
+using Application.Services.InboxUsers.Queries.GetInboxUser;
 using Application.Services.MessageSetting.Commands.EditMessageSetting;
 using Application.Services.MessageSetting.Queries.GetMessageSetting;
 using Application.Services.Payments.Commands.AddPayments;
@@ -25,9 +29,17 @@ using Application.Services.Payments.Commands.RemovePayments;
 using Application.Services.Payments.Queries.GetPayments;
 using Application.Services.PaymentUses.Commands.AddPaymentUses;
 using Application.Services.PaymentUses.Queries.GetPaymentUses;
+using Application.Services.ProjectFiles.Commands.AddProjectFiles;
+using Application.Services.ProjectFiles.Commands.RemoveProjectFiles;
+using Application.Services.ProjectFiles.Queries.GetProjectFiles;
 using Application.Services.ProjectLikes.Commands.AddProjectLikes;
 using Application.Services.ProjectLikes.Commands.RemoveProjectLikes;
 using Application.Services.ProjectLikes.Queries.GetProjectLikes;
+using Application.Services.ProjectPhases.Commands.AddProjectPhase;
+using Application.Services.ProjectPhases.Commands.EditProjectPhase;
+using Application.Services.ProjectPhases.Commands.RemoveProjectPhase;
+using Application.Services.ProjectPhases.Commands.RemoveProjectPhases;
+using Application.Services.ProjectPhases.Queries.GetProjectPhase;
 using Application.Services.Projects.Commands.AddProjects;
 using Application.Services.Projects.Commands.EditProjects;
 using Application.Services.Projects.Commands.RemoveProjects;
@@ -35,6 +47,14 @@ using Application.Services.Projects.Queries.GetProjects;
 using Application.Services.ProjectSeens.Commands.AddProjectSeens;
 using Application.Services.ProjectSeens.Commands.RemoveProjectSeens;
 using Application.Services.ProjectSeens.Queries.GetProjectSeens;
+using Application.Services.ProjectTeamMembers.Commands.AddProjectTeamMembers;
+using Application.Services.ProjectTeamMembers.Commands.EditProjectTeamMembers;
+using Application.Services.ProjectTeamMembers.Commands.RemoveProjectTeamMembers;
+using Application.Services.ProjectTeamMembers.Queries.GetProjectTeamMembers;
+using Application.Services.ProjectTeams.Commands.AddProjectTeams;
+using Application.Services.ProjectTeams.Commands.EditProjectTeams;
+using Application.Services.ProjectTeams.Commands.RemoveProjectTeams;
+using Application.Services.ProjectTeams.Queries.GetProjectTeams;
 using Application.Services.ProjectTypes.Commands.AddProjectTypes;
 using Application.Services.ProjectTypes.Commands.EditProjectTypes;
 using Application.Services.ProjectTypes.Commands.RemoveProjectTypes;
@@ -42,6 +62,10 @@ using Application.Services.ProjectTypes.Queries.GetProjectTypes;
 using Application.Services.ProjectUsers.Commands.AddProjectUsers;
 using Application.Services.ProjectUsers.Commands.RemoveProjectUsers;
 using Application.Services.ProjectUsers.Queries.GetProjectUsers;
+using Application.Services.RequestProjectTeams.Commands.AddRequestProjectTeams;
+using Application.Services.RequestProjectTeams.Commands.EditRequestProjectTeams;
+using Application.Services.RequestProjectTeams.Commands.RemoveRequestProjectTeams;
+using Application.Services.RequestProjectTeams.Queries.GetRequestProjectTeams;
 using Application.Services.SMS;
 using Application.Services.TeacherTypes.Commands.AddTeacherTypes;
 using Application.Services.TeacherTypes.Commands.EditTeacherTypes;
@@ -117,6 +141,13 @@ builder.Services.AddScoped<IGetUserService, GetUserService>();
 
 
 
+//InboxUser
+
+builder.Services.AddScoped<IAddInboxUserService, AddInboxUserService>();
+builder.Services.AddScoped<IEditInboxUserService, EditInboxUserService>();
+builder.Services.AddScoped<IRemoveInboxUserService, RemoveInboxUserService>();
+builder.Services.AddScoped<IGetInboxUserService, GetInboxUserService>();
+
 
 //TeacherTypes
 
@@ -125,6 +156,31 @@ builder.Services.AddScoped<IEditTeacherTypeService, EditTeacherTypeService>();
 builder.Services.AddScoped<IRemoveTeacherTypeService, RemoveTeacherTypeService>();
 builder.Services.AddScoped<IGetTeacherTypeService, GetTeacherTypeService>();
 
+
+
+//ProjectTeamMembers
+
+builder.Services.AddScoped<IAddProjectTeamMemberService, AddProjectTeamMemberService>();
+builder.Services.AddScoped<IEditProjectTeamMemberService, EditProjectTeamMemberService>();
+builder.Services.AddScoped<IRemoveProjectTeamMemberService, RemoveProjectTeamMemberService>();
+builder.Services.AddScoped<IGetProjectTeamMemberService, GetProjectTeamMemberService>();
+
+
+//ProjectTeams
+
+builder.Services.AddScoped<IAddProjectTeamService, AddProjectTeamService>();
+builder.Services.AddScoped<IEditProjectTeamService, EditProjectTeamService>();
+builder.Services.AddScoped<IRemoveProjectTeamService, RemoveProjectTeamService>();
+builder.Services.AddScoped<IGetProjectTeamService, GetProjectTeamService>();
+
+
+
+//RequestProjectTeams
+
+builder.Services.AddScoped<IAddRequestProjectTeamService, AddRequestProjectTeamService>();
+builder.Services.AddScoped<IEditRequestProjectTeamService, EditRequestProjectTeamService>();
+builder.Services.AddScoped<IRemoveRequestProjectTeamService, RemoveRequestProjectTeamService>();
+builder.Services.AddScoped<IGetRequestProjectTeamService, GetRequestProjectTeamService>();
 
 
 
@@ -162,6 +218,17 @@ builder.Services.AddScoped<IRemoveProjectService, RemoveProjectService>();
 builder.Services.AddScoped<IGetProjectService, GetProjectService>();
 
 
+
+
+// ProjectPhase
+
+builder.Services.AddScoped<IAddProjectPhaseService, AddProjectPhaseService>();
+builder.Services.AddScoped<IEditProjectPhaseService, EditProjectPhaseService>();
+builder.Services.AddScoped<IRemoveProjectPhaseService, RemoveProjectPhaseService>();
+builder.Services.AddScoped<IGetProjectPhaseService, GetProjectPhaseService>();
+
+
+
 //Blog
 builder.Services.AddScoped<IAddBlogService, AddBlogService>();
 builder.Services.AddScoped<IEditBlogService, EditBlogService>();
@@ -183,6 +250,16 @@ builder.Services.AddScoped<IGetBlogContentService, GetBlogContentService>();
 builder.Services.AddScoped<IAddProjectLikeService, AddProjectLikeService>();
 builder.Services.AddScoped<IRemoveProjectLikeService, RemoveProjectLikeService>();
 builder.Services.AddScoped<IGetProjectLikeService, GetProjectLikeService>();
+
+
+
+
+// ProjectFile
+
+builder.Services.AddScoped<IAddProjectFileService, AddProjectFileService>();
+builder.Services.AddScoped<IRemoveProjectFileService, RemoveProjectFileService>();
+builder.Services.AddScoped<IGetProjectFileService, GetProjectFileService>();
+
 
 
 // ProjectUser
@@ -262,8 +339,32 @@ builder.Services.AddScoped<IGetCourseUserService, GetCourseUserService>();
 
 //External Api
 builder.Services.AddScoped<IDatabaseContext, DatabaseContext>();
+builder.Services.AddSignalR();
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyHeader()
+              .AllowAnyMethod()
+              .AllowCredentials()
+              .SetIsOriginAllowed(origin => true); // برای اجازه دادن به همه Origin ها
+    });
+});
+
+
+
+builder.Services.AddSignalR();
 
 var app = builder.Build();
+
+app.UseCors("AllowAll");
+
+
+app.MapHub<ChatHub>("/chathub");
+
+
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -281,6 +382,7 @@ app.UseAuthorization();
 app.UseDefaultFiles();
 app.UseStaticFiles();
 
+app.UseRouting();
 
 
 app.MapControllers();

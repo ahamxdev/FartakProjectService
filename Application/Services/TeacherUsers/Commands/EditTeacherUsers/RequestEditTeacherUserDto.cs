@@ -17,5 +17,7 @@ namespace Application.Services.TeacherUsers.Commands.EditTeacherUsers
         public long InPersonPrice { get; set; }
         public IFormFile? FileVideo { get; set; }
         public IFormFile? FileImage { get; set; }
+        public int AllowUploadCourse { get; set; }
+
     }
 }

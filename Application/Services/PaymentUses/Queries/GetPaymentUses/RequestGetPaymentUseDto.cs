@@ -20,4 +20,9 @@
         public long CourseId { get; set; }
     }
 
+    public class RequestGetPaymentUseGetByProjectPhaseIdDto
+    {
+        public long ProjectPhaseId { get; set; }
+    }
+
 }

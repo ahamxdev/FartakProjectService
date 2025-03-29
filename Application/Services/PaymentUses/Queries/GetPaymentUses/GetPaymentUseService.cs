@@ -20,6 +20,7 @@ namespace Application.Services.PaymentUses.Queries.GetPaymentUses
                 PaymentUseDate = p.PaymentUseDate,
                 PaymentUseTime = p.PaymentUseTime,
                 PaymentId = p.PaymentId,
+                ProjectPhaseId=p.ProjectPhaseId,
                 CourseId = p.CourseId,
                 Price = p.Price
 
@@ -43,7 +44,8 @@ namespace Application.Services.PaymentUses.Queries.GetPaymentUses
                 PaymentUseTime = p.PaymentUseTime,
                 PaymentId = p.PaymentId,
                 CourseId = p.CourseId,
-                Price = p.Price
+                Price = p.Price,
+                ProjectPhaseId = p.ProjectPhaseId,
 
             }).OrderBy(x => x.PaymentUseId).ToList();
             return new ResultGetPaymentUseDto
@@ -65,6 +67,7 @@ namespace Application.Services.PaymentUses.Queries.GetPaymentUses
                 PaymentUseTime = p.PaymentUseTime,
                 PaymentId = p.PaymentId,
                 CourseId = p.CourseId,
+                ProjectPhaseId = p.ProjectPhaseId,
                 Price = p.Price
 
             }).OrderBy(x => x.PaymentUseId).ToList();
@@ -87,6 +90,7 @@ namespace Application.Services.PaymentUses.Queries.GetPaymentUses
                 PaymentUseTime = p.PaymentUseTime,
                 PaymentId = p.PaymentId,
                 CourseId = p.CourseId,
+                ProjectPhaseId = p.ProjectPhaseId,
                 Price = p.Price
 
             }).OrderBy(x => x.PaymentUseId).ToList();
@@ -96,6 +100,31 @@ namespace Application.Services.PaymentUses.Queries.GetPaymentUses
                 Rows = PaymentUseList.Count,
             };
         }
+
+
+
+        public ResultGetPaymentUseDto GetByProjectPhaseId(RequestGetPaymentUseGetByProjectPhaseIdDto request)
+        {
+            var PaymentUse = _context.PaymentUses.Where(x => x.ProjectPhaseId == request.ProjectPhaseId);
+            var PaymentUseList = PaymentUse.Select(p => new GetPaymentUseDto
+            {
+                PaymentUseId = p.PaymentUseId,
+                UserId = p.UserId,
+                PaymentUseDate = p.PaymentUseDate,
+                PaymentUseTime = p.PaymentUseTime,
+                PaymentId = p.PaymentId,
+                CourseId = p.CourseId,
+                ProjectPhaseId = p.ProjectPhaseId,
+                Price = p.Price
+
+            }).OrderBy(x => x.PaymentUseId).ToList();
+            return new ResultGetPaymentUseDto
+            {
+                PaymentUses = PaymentUseList,
+                Rows = PaymentUseList.Count,
+            };
+        }
+
 
         public ResultGetPaymentUseDto GetAll()
         {
@@ -107,6 +136,7 @@ namespace Application.Services.PaymentUses.Queries.GetPaymentUses
                 PaymentUseDate = p.PaymentUseDate,
                 PaymentUseTime = p.PaymentUseTime,
                 PaymentId = p.PaymentId,
+                ProjectPhaseId = p.ProjectPhaseId,
                 CourseId = p.CourseId,
                 Price = p.Price
 

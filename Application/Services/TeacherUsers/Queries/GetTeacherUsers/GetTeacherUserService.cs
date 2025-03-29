@@ -62,7 +62,8 @@ namespace Application.Services.TeacherUsers.Queries.GetTeacherUsers
                     Place = teacherUser.Place,
                     LanguageTeach = teacherUser.LanguageTeach,
                     UserId = teacherUser.UserId,
-                    TeacherTypeTitle = teacherTypeName
+                    TeacherTypeTitle = teacherTypeName,
+                    AllowUploadCourse=teacherUser.AllowUploadCourse,
                 });
             }
             return new ResultGetTeacherUserDto
@@ -120,7 +121,8 @@ namespace Application.Services.TeacherUsers.Queries.GetTeacherUsers
                     Place = teacherUser.Place,
                     LanguageTeach = teacherUser.LanguageTeach,
                     UserId = teacherUser.UserId,
-                    TeacherTypeTitle = teacherTypeName
+                    TeacherTypeTitle = teacherTypeName,
+                    AllowUploadCourse = teacherUser.AllowUploadCourse,
                 });
             }
             return new ResultGetTeacherUserDto
@@ -177,7 +179,8 @@ namespace Application.Services.TeacherUsers.Queries.GetTeacherUsers
                     Place = teacherUser.Place,
                     LanguageTeach = teacherUser.LanguageTeach,
                     UserId = teacherUser.UserId,
-                    TeacherTypeTitle = teacherTypeName
+                    TeacherTypeTitle = teacherTypeName,
+                    AllowUploadCourse = teacherUser.AllowUploadCourse,
                 });
             }
             return new ResultGetTeacherUserDto
@@ -235,7 +238,65 @@ namespace Application.Services.TeacherUsers.Queries.GetTeacherUsers
                     Place = teacherUser.Place,
                     LanguageTeach = teacherUser.LanguageTeach,
                     UserId = teacherUser.UserId,
-                    TeacherTypeTitle = teacherTypeName
+                    TeacherTypeTitle = teacherTypeName,
+                    AllowUploadCourse = teacherUser.AllowUploadCourse,
+                });
+            }
+            return new ResultGetTeacherUserDto
+            {
+                TeacherUsers = teacherUserList.OrderBy(t => t.TeacherUserId).ToList(),
+                Rows = teacherUserList.Count,
+            };
+        }
+
+        public ResultGetTeacherUserDto GetByUserId(RequestGetTeacherUserByUserIdDto request)
+        {
+            var teacherUsers = _context.TeacherUsers.Where(x => x.UserId == request.UserId);
+
+            List<GetTeacherUserDto> teacherUserList = new List<GetTeacherUserDto>();
+
+            foreach (var teacherUser in teacherUsers)
+            {
+
+                var user = _getUserService.GetById(new RequestGetUserByIdDto { UserId = teacherUser.UserId });
+
+                string teacherName = "";
+
+                if (user.Rows > 0)
+                {
+                    teacherName = user.Users[0].Name + " " + user.Users[0].Lastname;
+                }
+
+
+                var teacherType = _getTeacherTypeService.GetById(new RequestGetTeacherTypesByIdDto { TeacherTypeId = teacherUser.TeacherTypeId });
+
+                string teacherTypeName = "";
+                if (teacherType.Rows > 0)
+                {
+                    teacherTypeName = teacherType.TeacherTypes[0].Title;
+                }
+
+
+                teacherUserList.Add(new GetTeacherUserDto
+                {
+
+
+                    City = teacherUser.City,
+                    Description = teacherUser.Description,
+                    ImageName = teacherUser.ImageName,
+                    TeacherName = teacherName,
+                    VideoName = teacherUser.VideoName,
+                    Gender = teacherUser.Gender,
+                    InPersonPrice = teacherUser.InPersonPrice,
+                    OnlinePrice = teacherUser.OnlinePrice,
+                    TeacherTypeId = teacherUser.TeacherTypeId,
+                    TeacherUserId = teacherUser.TeacherUserId,
+                    TypeTeaching = teacherUser.TypeTeaching,
+                    Place = teacherUser.Place,
+                    LanguageTeach = teacherUser.LanguageTeach,
+                    UserId = teacherUser.UserId,
+                    TeacherTypeTitle = teacherTypeName,
+                    AllowUploadCourse = teacherUser.AllowUploadCourse,
                 });
             }
             return new ResultGetTeacherUserDto
@@ -292,7 +353,8 @@ namespace Application.Services.TeacherUsers.Queries.GetTeacherUsers
                     Place = teacherUser.Place,
                     LanguageTeach = teacherUser.LanguageTeach,
                     UserId = teacherUser.UserId,
-                    TeacherTypeTitle = teacherTypeName
+                    TeacherTypeTitle = teacherTypeName,
+                    AllowUploadCourse = teacherUser.AllowUploadCourse,
                 });
             }
             return new ResultGetTeacherUserDto

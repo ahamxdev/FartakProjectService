@@ -24,6 +24,9 @@ namespace Application.Services.Projects.Queries.GetProjects
                 Price = p.Price,
                 ProjectId = p.ProjectId,
                 OwnerId = p.OwnerId,
+                CreateDate=p.CreateDate,
+                DeadLine = p.DeadLine,
+                Status=p.Status,
                 ProjectTypeId = p.ProjectTypeId
 
             }).OrderBy(x => x.ProjectId).ToList();
@@ -37,7 +40,7 @@ namespace Application.Services.Projects.Queries.GetProjects
 
 
 
-        public ResultGetProjectDto GetByProjectId(RequestGetProjectByIdDto request)
+        public ResultGetProjectDto GetById(RequestGetProjectByIdDto request)
         {
             var Project = _context.Projects.Where(x => x.ProjectId == request.ProjectId);
             var ProjectList = Project.Select(p => new GetProjectDto
@@ -48,6 +51,9 @@ namespace Application.Services.Projects.Queries.GetProjects
                 Price = p.Price,
                 Duration = p.Duration,
                 ProjectId = p.ProjectId,
+                CreateDate = p.CreateDate,
+                DeadLine = p.DeadLine,
+                Status = p.Status,
                 OwnerId = p.OwnerId,
                 ProjectTypeId = p.ProjectTypeId
 
@@ -72,6 +78,9 @@ namespace Application.Services.Projects.Queries.GetProjects
                 ProjectId = p.ProjectId,
                 Duration = p.Duration,
                 OwnerId = p.OwnerId,
+                CreateDate = p.CreateDate,
+                DeadLine = p.DeadLine,
+                Status = p.Status,
                 ProjectTypeId = p.ProjectTypeId
 
             }).OrderBy(x => x.ProjectId).ToList();
@@ -95,6 +104,9 @@ namespace Application.Services.Projects.Queries.GetProjects
                 Price = p.Price,
                 ProjectId = p.ProjectId,
                 OwnerId = p.OwnerId,
+                CreateDate = p.CreateDate,
+                DeadLine = p.DeadLine,
+                Status = p.Status,
                 Duration = p.Duration,
                 ProjectTypeId = p.ProjectTypeId
 

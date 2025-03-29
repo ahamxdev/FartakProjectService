@@ -6,6 +6,7 @@
         ResultGetTeacherUserDto GetByTeacherId(RequestGetTeacherUserByTeacherIdDto request);
         ResultGetTeacherUserDto GetByTeacherUserId(RequestGetTeacherUserByIdDto request);
         ResultGetTeacherUserDto GetByTeacherTypeId(RequestGetTeacherUserByTeacherTypeIdDto request);
+        ResultGetTeacherUserDto GetByUserId(RequestGetTeacherUserByUserIdDto request);
         ResultGetTeacherUserDto GetByFilterAndTeacherTypeId(RequestGetTeacherUserByFilterDto request);
     }
 }

@@ -87,6 +87,7 @@ namespace Application.Services.TeacherUsers.Commands.AddTeacherUsers
                     Place = request.Place,
                     VideoName = fileNameVideo,
                     TeacherTypeId = request.TeacherTypeId,
+                    AllowUploadCourse = request.AllowUploadCourse,
 
                 };
                 _context.TeacherUsers.Add(TeacherUser);

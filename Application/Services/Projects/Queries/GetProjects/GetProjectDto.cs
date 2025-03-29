@@ -10,5 +10,8 @@
         public long Duration { get; set; }
         public long Price { get; set; }
         public string? Image { get; set; }
+        public required string CreateDate { get; set; }
+        public required string DeadLine { get; set; }
+        public int Status { get; set; } // 0 Nothing 1 Doing 2 Finish 
     }
 }

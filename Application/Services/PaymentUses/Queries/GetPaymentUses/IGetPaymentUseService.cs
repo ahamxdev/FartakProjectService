@@ -6,6 +6,7 @@
         ResultGetPaymentUseDto GetById(RequestGetPaymentUseGetByIdDto request);
         ResultGetPaymentUseDto GetByPaymentId(RequestGetPaymentUseGetByPaymentIdDto request);
         ResultGetPaymentUseDto GetByCourseId(RequestGetPaymentUseGetByCourseIdDto request);
+        ResultGetPaymentUseDto GetByProjectPhaseId(RequestGetPaymentUseGetByProjectPhaseIdDto request);
         ResultGetPaymentUseDto GetAll();
     }
 }

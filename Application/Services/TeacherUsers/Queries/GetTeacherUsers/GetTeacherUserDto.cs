@@ -18,5 +18,6 @@
 
         public required string TeacherName { get; set; }
         public required string TeacherTypeTitle { get; set; }
+        public int AllowUploadCourse { get; set; }
     }
 }

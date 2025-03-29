@@ -2,6 +2,7 @@
 using Common.Dto;
 using Common.FileOperation.DeleteFile;
 using Common.FileOperation.UploadFile;
+using Domain.Entities.Projects;
 using Microsoft.Extensions.Configuration;
 
 namespace Application.Services.Projects.Commands.EditProjects
@@ -97,6 +98,8 @@ namespace Application.Services.Projects.Commands.EditProjects
                 project.Title = request.Title;
                 project.OwnerId = request.OwnerId;
                 project.Price = request.Price;
+                project.Status = request.Status;
+                project.DeadLine = request.DeadLine;
                 project.Duration = request.Duration;
 
 
