@@ -5,7 +5,7 @@ using System;
 
 public class ChatHub : Hub
 {
-    private readonly string _connectionString = "Server=.;Database=YourDatabase;Trusted_Connection=True;";
+    private readonly string _connectionString = "Server=localhost;Database=DBFartak;TrustServerCertificate=True;Integrated Security=True";
 
     // هنگام ورود کاربر، بررسی می‌شود که در کدام تیم است
     public async Task JoinTeam(long memberId)
