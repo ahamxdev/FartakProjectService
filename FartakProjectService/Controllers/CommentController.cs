@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
-using Application.Services.InboxUsers.Commands.AddInboxUser;
-using Application.Services.InboxUsers.Commands.EditInboxUser;
-using Application.Services.InboxUsers.Commands.RemoveInboxUser;
-using Application.Services.InboxUsers.Queries.GetInboxUser;
+using Application.Services.Commants.Commands.AddComments;
+using Application.Services.Commants.Commands.EditComments;
+using Application.Services.Commants.Commands.RemoveComments;
+using Application.Services.Commants.Queries.GetComments;
 using Application.Services.UserToken.Queries.GetUserToken;
 using Common.Dto;
 using Microsoft.AspNetCore.Mvc;
@@ -11,41 +11,41 @@ using Microsoft.AspNetCore.Mvc;
 namespace FartakProjectService.Controllers
 {
     /// <summary>
-    /// این سرویس ، سرویس صندوق کاربران می باشد.
-    /// •	تمامی رویدادهای موجود در این سرویس قبل از اجرا به سرویس InboxUser مراجعه و چک می کنند آیا درخواست توسط کاربر معتبر ارسال شده یا خیر
+    /// این سرویس ، سرویس صندوق ادمین می باشد.
+    /// •	تمامی رویدادهای موجود در این سرویس قبل از اجرا به سرویس Comment مراجعه و چک می کنند آیا درخواست توسط کاربر معتبر ارسال شده یا خیر
     /// </summary>
     [ApiController]
-    [Route("api/InboxUsers")]
-    public class InboxUserController : Controller
+    [Route("api/Comments")]
+    public class CommentController : Controller
     {
-        private readonly IAddInboxUserService _addInboxUserService;
-        private readonly IEditInboxUserService _editInboxUserService;
-        private readonly IRemoveInboxUserService _removeInboxUserService;
-        private readonly IGetInboxUserService _getInboxUserService;
+        private readonly IAddCommentService _addCommentService;
+        private readonly IEditCommentService _editCommentService;
+        private readonly IRemoveCommentService _removeCommentService;
+        private readonly IGetCommentService _getCommentService;
         private readonly IGetUserTokenService _getUserTokenService;
         private readonly IConfiguration _configuration;
         /// <summary>
         /// سازنده کنترلر
         /// </summary>
-        public InboxUserController(IAddInboxUserService addInboxUserService,
-                              IEditInboxUserService editInboxUserService,
-                              IRemoveInboxUserService removeInboxUserService,
-                              IGetInboxUserService getInboxUserService,
+        public CommentController(IAddCommentService addCommentService,
+                              IEditCommentService editCommentService,
+                              IRemoveCommentService removeCommentService,
+                              IGetCommentService getCommentService,
                               IGetUserTokenService getUserTokenService,
                               IConfiguration configuration)
         {
-            _addInboxUserService = addInboxUserService;
+            _addCommentService = addCommentService;
             _getUserTokenService = getUserTokenService;
-            _editInboxUserService = editInboxUserService;
-            _removeInboxUserService = removeInboxUserService;
-            _getInboxUserService = getInboxUserService;
+            _editCommentService = editCommentService;
+            _removeCommentService = removeCommentService;
+            _getCommentService = getCommentService;
             _configuration = configuration;
 
         }
 
 
         /// <summary>
-        /// اضاف کردن صندوق کاربران
+        /// اضاف کردن صندوق ادمین
         /// </summary>
         /// <response code="200">Success</response>
         /// <response code="400">Validation Error</response>
@@ -59,13 +59,14 @@ namespace FartakProjectService.Controllers
         [ProducesResponseType(typeof(ErrorDto), 500)]
         [HttpPost]
         [Route("Add")]
-        public ActionResult Add(RequestAddInboxUserDto dto)
+        public ActionResult Add(RequestAddCommentDto dto)
         {
             try
             {
                 var tokenDto = new RequestCheckTokenDto { Token = "", SelfUserId = 0 };
                 if (Request.Headers["token"].Count() > 0)
                 {
+
                     tokenDto.Token = Request.Headers["token"];
                 }
                 if (Request.Headers["userId"].Count() > 0)
@@ -87,7 +88,7 @@ namespace FartakProjectService.Controllers
                     return StatusCode(403, Json(new ErrorDto { IsSuccess = false, Message = "توکن نامعتبر است", ResponseCode = 403, Service = "User" }));
                 }
 
-                var result = _addInboxUserService.Execute(dto);
+                var result = _addCommentService.Execute(dto);
                 if (result.IsSuccess == true)
                     return Json(result);
                 else
@@ -95,7 +96,7 @@ namespace FartakProjectService.Controllers
                     {
                         IsSuccess = false,
                         Message = result.Message,
-                        Service = "InboxUser",
+                        Service = "Comment",
                         ResponseCode = 409,
                     }));
             }
@@ -116,7 +117,7 @@ namespace FartakProjectService.Controllers
                     {
                         IsSuccess = false,
                         Message = "Server Error : LIne Number=" + line + " *** Message= " + e.Message,
-                        Service = "InboxUser",
+                        Service = "Comment",
                         ResponseCode = 500,
                     }
                 });
@@ -127,7 +128,7 @@ namespace FartakProjectService.Controllers
 
 
         /// <summary>
-        /// ویرایش صندوق کاربران
+        /// ویرایش صندوق ادمین
         /// </summary>
         /// <response code="200">Success</response>
         /// <response code="400">Validation Error</response>
@@ -141,7 +142,7 @@ namespace FartakProjectService.Controllers
         [ProducesResponseType(typeof(ErrorDto), 500)]
         [HttpPut]
         [Route("Edit")]
-        public ActionResult Edit(RequestEditInboxUserDto dto)
+        public ActionResult Edit(RequestEditCommentDto dto)
         {
             try
             {
@@ -169,7 +170,7 @@ namespace FartakProjectService.Controllers
                     return StatusCode(403, Json(new ErrorDto { IsSuccess = false, Message = "توکن نامعتبر است", ResponseCode = 403, Service = "User" }));
                 }
 
-                var result = _editInboxUserService.Execute(dto);
+                var result = _editCommentService.Execute(dto);
                 if (result.IsSuccess == true)
                     return Json(result);
                 else
@@ -177,7 +178,7 @@ namespace FartakProjectService.Controllers
                     {
                         IsSuccess = false,
                         Message = result.Message,
-                        Service = "InboxUser",
+                        Service = "Comment",
                         ResponseCode = 409,
                     }));
             }
@@ -198,7 +199,7 @@ namespace FartakProjectService.Controllers
                     {
                         IsSuccess = false,
                         Message = "Server Error : LIne Number=" + line + " *** Message= " + e.Message,
-                        Service = "InboxUser",
+                        Service = "Comment",
                         ResponseCode = 500,
                     }
                 });
@@ -207,20 +208,23 @@ namespace FartakProjectService.Controllers
 
 
 
+
         /// <summary>
-        /// حذف صندوق کاربران
+        /// ویرایش صندوق ادمین سین زدن
         /// </summary>
         /// <response code="200">Success</response>
         /// <response code="400">Validation Error</response>
+        /// <response code="403">Not Authorized - Value Content:</response>
         /// <response code="409">Not Success - Value Content:</response>
         /// <response code="500">Server Error - Value Content:</response>
         [ProducesResponseType(typeof(ResultDto), 200)]
         [ProducesResponseType(typeof(ValidationResult), 400)]
+        [ProducesResponseType(typeof(ErrorDto), 403)]
         [ProducesResponseType(typeof(ErrorDto), 409)]
         [ProducesResponseType(typeof(ErrorDto), 500)]
-        [HttpDelete]
-        [Route("Delete")]
-        public ActionResult Delete(RequestRemoveInboxUserDto dto)
+        [HttpPut]
+        [Route("ExecuteRead")]
+        public ActionResult ExecuteRead(RequestEditCommentReadDto dto)
         {
             try
             {
@@ -248,7 +252,86 @@ namespace FartakProjectService.Controllers
                     return StatusCode(403, Json(new ErrorDto { IsSuccess = false, Message = "توکن نامعتبر است", ResponseCode = 403, Service = "User" }));
                 }
 
-                var result = _removeInboxUserService.Execute(dto);
+                var result = _editCommentService.ExecuteRead(dto);
+                if (result.IsSuccess == true)
+                    return Json(result);
+                else
+                    return StatusCode(409, Json(new ErrorDto
+                    {
+                        IsSuccess = false,
+                        Message = result.Message,
+                        Service = "Comment",
+                        ResponseCode = 409,
+                    }));
+            }
+            catch (Exception e)
+            {
+                var st = new StackTrace(e, true);
+                var frame = st.GetFrame(0);
+                var line = 0;
+                if (frame != null)
+                {
+                    line = frame.GetFileLineNumber();
+                    // Proceed with line
+                }
+
+                return StatusCode(500, new
+                {
+                    value = new ErrorDto
+                    {
+                        IsSuccess = false,
+                        Message = "Server Error : LIne Number=" + line + " *** Message= " + e.Message,
+                        Service = "Comment",
+                        ResponseCode = 500,
+                    }
+                });
+            }
+        }
+
+
+
+        /// <summary>
+        /// حذف صندوق ادمین
+        /// </summary>
+        /// <response code="200">Success</response>
+        /// <response code="400">Validation Error</response>
+        /// <response code="409">Not Success - Value Content:</response>
+        /// <response code="500">Server Error - Value Content:</response>
+        [ProducesResponseType(typeof(ResultDto), 200)]
+        [ProducesResponseType(typeof(ValidationResult), 400)]
+        [ProducesResponseType(typeof(ErrorDto), 409)]
+        [ProducesResponseType(typeof(ErrorDto), 500)]
+        [HttpDelete]
+        [Route("Delete")]
+        public ActionResult Delete(RequestRemoveCommentDto dto)
+        {
+            try
+            {
+                var tokenDto = new RequestCheckTokenDto { Token = "", SelfUserId = 0 };
+                if (Request.Headers["token"].Count() > 0)
+                {
+                    tokenDto.Token = Request.Headers["token"];
+                }
+                if (Request.Headers["userId"].Count() > 0)
+                {
+                    tokenDto.SelfUserId = long.Parse(Request.Headers["userId"]);
+                }
+                if (tokenDto.Token == null || tokenDto.SelfUserId == 0)
+                {
+                    return StatusCode(409, Json(new ErrorDto
+                    {
+                        IsSuccess = false,
+                        ResponseCode = 409,
+                        Message = "مقادیر توکن نامعتبر میباشد",
+                        Service = "User",
+                    }));
+                }
+                if (_getUserTokenService.GetToken(tokenDto) == false)
+                {
+                    return StatusCode(403, Json(new ErrorDto { IsSuccess = false, Message = "توکن نامعتبر است", ResponseCode = 403, Service = "User" }));
+                }
+
+                var result = _removeCommentService.Execute(dto);
                 if (result.IsSuccess == true)
                 {
                     return Json(new ResultDto
@@ -262,7 +345,7 @@ namespace FartakProjectService.Controllers
                     {
                         IsSuccess = false,
                         Message = result.Message,
-                        Service = "InboxUser",
+                        Service = "Comment",
                         ResponseCode = 409,
                     }));
             }
@@ -283,7 +366,7 @@ namespace FartakProjectService.Controllers
                     {
                         IsSuccess = false,
                         Message = "Server Error : LIne Number=" + line + " *** Message= " + e.Message,
-                        Service = "InboxUser",
+                        Service = "Comment",
                         ResponseCode = 500,
                     }
                 });
@@ -294,12 +377,12 @@ namespace FartakProjectService.Controllers
 
 
         /// <summary>
-        /// دریافت لیست صندوق کاربران
+        /// دریافت لیست صندوق ادمین
         /// </summary>
         /// <response code="200">Success</response>
         /// <response code="403">Not Authorized - Value Content:</response>
         /// <response code="500">Server Error - Value Content:</response>
-        [ProducesResponseType(typeof(ResultGetInboxUserDto), 200)]
+        [ProducesResponseType(typeof(ResultGetCommentDto), 200)]
         [ProducesResponseType(typeof(ErrorDto), 403)]
         [ProducesResponseType(typeof(ErrorDto), 500)]
         [HttpPost]
@@ -331,7 +414,7 @@ namespace FartakProjectService.Controllers
                 {
                     return StatusCode(403, Json(new ErrorDto { IsSuccess = false, Message = "توکن نامعتبر است", ResponseCode = 403, Service = "User" }));
                 }
-                var result = _getInboxUserService.GetAll();
+                var result = _getCommentService.GetAll();
                 return Json(result);
             }
             catch (Exception e)
@@ -351,7 +434,7 @@ namespace FartakProjectService.Controllers
                     {
                         IsSuccess = false,
                         Message = "Server Error : LIne Number=" + line + " *** Message= " + e.Message,
-                        Service = "InboxUser",
+                        Service = "Comment",
                         ResponseCode = 500,
                     }
                 });
@@ -359,17 +442,17 @@ namespace FartakProjectService.Controllers
         }
 
         /// <summary>
-        /// دریافت لیست صندوق کاربران بر اساس InboxUserId
+        /// دریافت لیست صندوق ادمین بر اساس CommentId
         /// </summary>
         /// <response code="200">Success</response>
         /// <response code="403">Not Authorized - Value Content:</response>
         /// <response code="500">Server Error - Value Content:</response>
-        [ProducesResponseType(typeof(ResultGetInboxUserDto), 200)]
+        [ProducesResponseType(typeof(ResultGetCommentDto), 200)]
         [ProducesResponseType(typeof(ErrorDto), 403)]
         [ProducesResponseType(typeof(ErrorDto), 500)]
         [HttpPost]
         [Route("GetById")]
-        public ActionResult GetById(RequestGetInboxUserByIdDto dto)
+        public ActionResult GetById(RequestGetCommentByIdDto dto)
         {
             try
             {
@@ -397,7 +480,7 @@ namespace FartakProjectService.Controllers
                     return StatusCode(403, Json(new ErrorDto { IsSuccess = false, Message = "توکن نامعتبر است", ResponseCode = 403, Service = "User" }));
                 }
 
-                var result = _getInboxUserService.GetById(dto);
+                var result = _getCommentService.GetById(dto);
 
                 return Json(result);
             }
@@ -418,7 +501,7 @@ namespace FartakProjectService.Controllers
                     {
                         IsSuccess = false,
                         Message = "Server Error : LIne Number=" + line + " *** Message= " + e.Message,
-                        Service = "InboxUser",
+                        Service = "Comment",
                         ResponseCode = 500,
                     }
                 });
@@ -427,17 +510,17 @@ namespace FartakProjectService.Controllers
 
 
         /// <summary>
-        /// دریافت لیست صندوق کاربران بر اساس UserId
+        /// دریافت لیست صندوق ادمین بر اساس UserId
         /// </summary>
         /// <response code="200">Success</response>
         /// <response code="403">Not Authorized - Value Content:</response>
         /// <response code="500">Server Error - Value Content:</response>
-        [ProducesResponseType(typeof(ResultGetInboxUserDto), 200)]
+        [ProducesResponseType(typeof(ResultGetCommentDto), 200)]
         [ProducesResponseType(typeof(ErrorDto), 403)]
         [ProducesResponseType(typeof(ErrorDto), 500)]
         [HttpPost]
         [Route("GetByUserId")]
-        public ActionResult GetByUserId(RequestGetInboxUserByUserIdDto dto)
+        public ActionResult GetByUserId(RequestGetCommentByUserIdDto dto)
         {
             try
             {
@@ -465,7 +548,7 @@ namespace FartakProjectService.Controllers
                     return StatusCode(403, Json(new ErrorDto { IsSuccess = false, Message = "توکن نامعتبر است", ResponseCode = 403, Service = "User" }));
                 }
 
-                var result = _getInboxUserService.GetByUserId(dto);
+                var result = _getCommentService.GetByUserId(dto);
 
                 return Json(result);
             }
@@ -486,7 +569,7 @@ namespace FartakProjectService.Controllers
                     {
                         IsSuccess = false,
                         Message = "Server Error : LIne Number=" + line + " *** Message= " + e.Message,
-                        Service = "InboxUser",
+                        Service = "Comment",
                         ResponseCode = 500,
                     }
                 });
@@ -494,18 +577,20 @@ namespace FartakProjectService.Controllers
         }
 
 
+
+
         /// <summary>
-        /// دریافت لیست صندوق کاربران بر اساس UserId خوانده نشده
+        /// دریافت لیست صندوق ادمین خوانده نشده
         /// </summary>
         /// <response code="200">Success</response>
         /// <response code="403">Not Authorized - Value Content:</response>
         /// <response code="500">Server Error - Value Content:</response>
-        [ProducesResponseType(typeof(ResultGetInboxUserDto), 200)]
+        [ProducesResponseType(typeof(ResultGetCommentDto), 200)]
         [ProducesResponseType(typeof(ErrorDto), 403)]
         [ProducesResponseType(typeof(ErrorDto), 500)]
         [HttpPost]
-        [Route("GetByUserIdUnRead")]
-        public ActionResult GetByUserIdUnRead(RequestGetInboxUserByUserIdDto dto)
+        [Route("GetAllUnRead")]
+        public ActionResult GetAllUnRead()
         {
             try
             {
@@ -533,7 +618,7 @@ namespace FartakProjectService.Controllers
                     return StatusCode(403, Json(new ErrorDto { IsSuccess = false, Message = "توکن نامعتبر است", ResponseCode = 403, Service = "User" }));
                 }
 
-                var result = _getInboxUserService.GetByUserIdUnRead(dto);
+                var result = _getCommentService.GetAllUnRead();
 
                 return Json(result);
             }
@@ -554,7 +639,7 @@ namespace FartakProjectService.Controllers
                     {
                         IsSuccess = false,
                         Message = "Server Error : LIne Number=" + line + " *** Message= " + e.Message,
-                        Service = "InboxUser",
+                        Service = "Comment",
                         ResponseCode = 500,
                     }
                 });

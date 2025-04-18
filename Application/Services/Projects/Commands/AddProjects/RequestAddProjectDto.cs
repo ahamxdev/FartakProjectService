@@ -9,7 +9,9 @@ namespace Application.Services.Projects.Commands.AddProjects
         public required string Description { get; set; }
         public long OwnerId { get; set; }
         public long Duration { get; set; }
-        public long Price { get; set; }
+        public long FinishPrice { get; set; }
+        public long StartPrice { get; set; }
+        public long EndPrice { get; set; }
 
         public IFormFile? FileImage { get; set; }
         public required string CreateDate { get; set; }

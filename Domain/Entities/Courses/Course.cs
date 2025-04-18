@@ -11,6 +11,7 @@
         public int status { get; set; } //0 Waiting , 1 Accept , 2 Reject
         public required string VideoName { get; set; }
         public long Duration { get; set; }
+        public int PercentOff { get; set; }
 
     }
 }

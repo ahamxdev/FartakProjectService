@@ -42,7 +42,9 @@ namespace Application.Services.Projects.Commands.AddProjects
 
                             Description = request.Description,
                             OwnerId = request.OwnerId,
-                            Price = request.Price,
+                            FinishPrice = request.FinishPrice,
+                            StartPrice = request.StartPrice,
+                            EndPrice = request.EndPrice,
                             ProjectTypeId = request.ProjectTypeId,
                             Title = request.Title,
                             Duration = request.Duration,
@@ -84,7 +86,9 @@ namespace Application.Services.Projects.Commands.AddProjects
 
                         Description = request.Description,
                         OwnerId = request.OwnerId,
-                        Price = request.Price,
+                        FinishPrice = request.FinishPrice,
+                        StartPrice = request.StartPrice,
+                        EndPrice = request.EndPrice,
                         ProjectTypeId = request.ProjectTypeId,
                         Title = request.Title,
                         Duration = request.Duration,

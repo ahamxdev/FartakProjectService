@@ -137,6 +137,9 @@ namespace Application.Services.TeacherUsers.Commands.EditTeacherUsers
                 TeacherUser.TeacherTypeId = request.TeacherTypeId;
                 TeacherUser.LanguageTeach = request.LanguageTeach;
                 TeacherUser.Place = request.Place;
+                TeacherUser.PercentOff = request.PercentOff;
+                TeacherUser.Duration = request.Duration;    
+                TeacherUser.OurSelect = request.OurSelect;
                 TeacherUser.AllowUploadCourse = request.AllowUploadCourse;
 
                 _context.SaveChanges();

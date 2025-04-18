@@ -14,8 +14,10 @@
         public int TypeTeaching { get; set; } // 0 Online 1 InPerson
         public long OnlinePrice { get; set; }
         public long TeacherTypeId { get; set; }
+        public int OurSelect { get; set; } // 0 Not in fartak , 1 yes
         public long InPersonPrice { get; set; }
-
+        public int PercentOff { get; set; }
+        public long Duration { get; set; }
         public required string TeacherName { get; set; }
         public required string TeacherTypeTitle { get; set; }
         public int AllowUploadCourse { get; set; }

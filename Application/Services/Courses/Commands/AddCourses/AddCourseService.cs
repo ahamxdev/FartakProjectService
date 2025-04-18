@@ -43,6 +43,7 @@ namespace Application.Services.Courses.Commands.AddCourses
                         Title = request.Title,
                         CourseTypeId = request.CourseTypeId,
                         Price = request.Price,
+                        PercentOff = request.PercentOff,
                         VideoName = fileNameVideo,
                         Duration = request.Duration,
 

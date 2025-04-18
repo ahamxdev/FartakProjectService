@@ -12,6 +12,7 @@ namespace Application.Services.Users.Commands.AddUsers
         public int status { get; set; } //0 NotAccept , 1 Accept
         public required IFormFile FileVideo { get; set; }
         public long Duration { get; set; }
+        public int PercentOff { get; set; }
 
     }
 }

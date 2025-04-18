@@ -11,6 +11,7 @@
         public int status { get; set; } //0 NotAccept , 1 Accept
         public required string VideoName { get; set; }
         public long Duration { get; set; }
+        public int percentOff { get; set; }
         public required string TeacherName { get; set; }
     }
 }

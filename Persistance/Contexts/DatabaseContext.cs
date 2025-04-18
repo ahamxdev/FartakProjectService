@@ -21,6 +21,7 @@ namespace Persistence.Contexts
         public DbSet<CourseUser> CourseUsers { get; set; }
         public DbSet<CourseType> CourseTypes { get; set; }
         public DbSet<TeacherUser> TeacherUsers { get; set; }
+        public DbSet<Comment> Comments { get; set; }
         public DbSet<TeacherUserResume> TeacherUserResumes { get; set; }
         public DbSet<TeacherUserSelect> TeacherUserSelects { get; set; }
         public DbSet<Payment> Payments { get; set; }
@@ -73,6 +74,7 @@ namespace Persistence.Contexts
             modelBuilder.Entity<PaymentUse>().HasIndex(u => u.PaymentUseId).IsUnique();
             modelBuilder.Entity<ProjectFile>().HasIndex(u => u.ProjectFileId).IsUnique();
             modelBuilder.Entity<ProjectPhase>().HasIndex(u => u.ProjectPhaseId).IsUnique();
+            modelBuilder.Entity<Comment>().HasIndex(u => u.CommentId).IsUnique();
         }
     }
 

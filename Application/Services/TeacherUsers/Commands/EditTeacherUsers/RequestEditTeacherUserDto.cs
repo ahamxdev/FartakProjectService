@@ -15,9 +15,12 @@ namespace Application.Services.TeacherUsers.Commands.EditTeacherUsers
         public int LanguageTeach { get; set; } // 0 Farsi 1 English
         public int Place { get; set; } //0Iran 1 Other
         public long InPersonPrice { get; set; }
+        public int OurSelect { get; set; } // 0 Not in fartak , 1 yes
         public IFormFile? FileVideo { get; set; }
         public IFormFile? FileImage { get; set; }
         public int AllowUploadCourse { get; set; }
+        public long Duration { get; set; }
+        public int PercentOff { get; set; }
 
     }
 }

@@ -84,8 +84,11 @@ namespace Application.Services.TeacherUsers.Commands.AddTeacherUsers
                     UserId = request.UserId,
                     ImageName = fileNameImage,
                     LanguageTeach = request.LanguageTeach,
+                    OurSelect = request.OurSelect,
                     Place = request.Place,
+                    Duration = request.Duration,
                     VideoName = fileNameVideo,
+                    PercentOff=request.PercentOff,
                     TeacherTypeId = request.TeacherTypeId,
                     AllowUploadCourse = request.AllowUploadCourse,
 

@@ -84,6 +84,7 @@ namespace Application.Services.Courses.Commands.EditCourses
                 course.Description = request.Description;
                 course.status = request.status;
                 course.CourseTypeId = request.CourseTypeId;
+                course.PercentOff=request.PercentOff;
                 course.Title = request.Title;
 
                 _context.SaveChanges();

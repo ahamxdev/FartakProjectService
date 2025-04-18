@@ -8,6 +8,10 @@ using Application.Services.Blogs.Commands.AddBlog;
 using Application.Services.Blogs.Commands.EditBlog;
 using Application.Services.Blogs.Commands.RemoveBlog;
 using Application.Services.Blogs.Queries.GetBlog;
+using Application.Services.Commants.Commands.AddComments;
+using Application.Services.Commants.Commands.EditComments;
+using Application.Services.Commants.Commands.RemoveComments;
+using Application.Services.Commants.Queries.GetComments;
 using Application.Services.Courses.Commands.AddCourses;
 using Application.Services.Courses.Commands.EditCourses;
 using Application.Services.Courses.Commands.RemoveCourses;
@@ -243,6 +247,13 @@ builder.Services.AddScoped<IEditBlogContentService, EditBlogContentService>();
 builder.Services.AddScoped<IRemoveBlogContentService, RemoveBlogContentService>();
 builder.Services.AddScoped<IGetBlogContentService, GetBlogContentService>();
 
+
+
+//Comment
+builder.Services.AddScoped<IAddCommentService, AddCommentService>();
+builder.Services.AddScoped<IEditCommentService, EditCommentService>();
+builder.Services.AddScoped<IRemoveCommentService, RemoveCommentService>();
+builder.Services.AddScoped<IGetCommentService, GetCommentService>();
 
 
 // ProjectLike

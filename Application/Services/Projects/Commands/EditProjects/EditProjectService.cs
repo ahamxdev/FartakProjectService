@@ -97,7 +97,9 @@ namespace Application.Services.Projects.Commands.EditProjects
                 project.Description = request.Description;
                 project.Title = request.Title;
                 project.OwnerId = request.OwnerId;
-                project.Price = request.Price;
+                project.EndPrice = request.EndPrice;
+                project.StartPrice = request.StartPrice;
+                project.FinishPrice = request.FinishPrice;
                 project.Status = request.Status;
                 project.DeadLine = request.DeadLine;
                 project.Duration = request.Duration;
