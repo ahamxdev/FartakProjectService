@@ -360,8 +360,11 @@ namespace Application.Services.TeacherUsers.Queries.GetTeacherUsers
                 })
                 .ToList();
 
+                var minScore = request.Score;
+                var maxScore = request.Score + 1;
+
                 var teacherIdsWithScore = teacherScores
-                    .Where(x => x.AverageScore == request.Score)
+                    .Where(x => x.AverageScore >= minScore && x.AverageScore < maxScore)
                     .Select(x => x.TeacherId)
                     .ToList();
 
