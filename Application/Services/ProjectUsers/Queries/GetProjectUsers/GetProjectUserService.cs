@@ -20,7 +20,7 @@ namespace Application.Services.ProjectUsers.Commands.AddProjectUsers
                 ProjectUserId = p.ProjectUserId,
                 ProjectId = p.ProjectId,
                 UserId = p.UserId,
-                Status = p.Status
+                Status = p.Status,
 
             }).OrderBy(x => x.ProjectUserId).ToList();
             return new ResultGetProjectUserDto
