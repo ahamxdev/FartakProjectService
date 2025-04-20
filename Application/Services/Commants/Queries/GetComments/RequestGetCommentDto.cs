@@ -17,4 +17,9 @@ namespace Application.Services.Commants.Queries.GetComments
     }
 
 
+    public class RequestGetCommentByForIdDto
+    {
+        public long ForId { get; set; }
+    }
+
 }

@@ -139,6 +139,7 @@ namespace Application.Services.TeacherUsers.Commands.EditTeacherUsers
                 TeacherUser.Place = request.Place;
                 TeacherUser.PercentOff = request.PercentOff;
                 TeacherUser.Duration = request.Duration;    
+                TeacherUser.MaxUser = request.MaxUser;    
                 TeacherUser.OurSelect = request.OurSelect;
                 TeacherUser.AllowUploadCourse = request.AllowUploadCourse;
 

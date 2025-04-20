@@ -21,6 +21,8 @@ namespace Application.Services.Commants.Queries.GetComments
                 CommentId = p.CommentId,
                 CreateDate=p.CreateDate,
                 UpdateDate=p.UpdateDate,
+                action=p.action,
+                ForId=p.ForId,
 
             }).OrderBy(x => x.CommentId).ToList();
             return new ResultGetCommentDto()
@@ -44,6 +46,8 @@ namespace Application.Services.Commants.Queries.GetComments
                 CommentId = p.CommentId,
                 CreateDate = p.CreateDate,
                 UpdateDate = p.UpdateDate,
+                action = p.action,
+                ForId = p.ForId,
 
             }).OrderBy(x => x.CommentId).ToList();
             return new ResultGetCommentDto()
@@ -67,6 +71,33 @@ namespace Application.Services.Commants.Queries.GetComments
                 CommentId = p.CommentId,
                 CreateDate = p.CreateDate,
                 UpdateDate = p.UpdateDate,
+                action = p.action,
+                ForId = p.ForId,
+
+            }).OrderBy(x => x.CommentId).ToList();
+            return new ResultGetCommentDto()
+            {
+
+                Comments = CommentList,
+                Rows = CommentList.Count,
+
+            };
+        }
+
+
+        public ResultGetCommentDto GetByForId(RequestGetCommentByForIdDto request)
+        {
+            var Comments = _context.Comments.Where(x => x.ForId == request.ForId);
+            var CommentList = Comments.Select(p => new GetCommentDto
+            {
+                Message = p.Message,
+                Read = p.Read,
+                UserId = p.UserId,
+                CommentId = p.CommentId,
+                CreateDate = p.CreateDate,
+                UpdateDate = p.UpdateDate,
+                action = p.action,
+                ForId = p.ForId,
 
             }).OrderBy(x => x.CommentId).ToList();
             return new ResultGetCommentDto()
@@ -90,6 +121,8 @@ namespace Application.Services.Commants.Queries.GetComments
                 CommentId = p.CommentId,
                 CreateDate = p.CreateDate,
                 UpdateDate = p.UpdateDate,
+                action = p.action,
+                ForId = p.ForId,
 
             }).OrderBy(x => x.CommentId).ToList();
             return new ResultGetCommentDto()

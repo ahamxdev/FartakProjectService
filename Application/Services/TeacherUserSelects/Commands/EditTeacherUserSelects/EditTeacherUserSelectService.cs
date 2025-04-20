@@ -29,6 +29,7 @@ namespace Application.Services.TeacherUserSelects.Commands.EditTeacherUserSelect
 
             }
 
+         
 
             var TeacherUserSelect = _context.TeacherUserSelects.Find(request.TeacherUserSelectId);
             if (TeacherUserSelect == null)
@@ -43,10 +44,29 @@ namespace Application.Services.TeacherUserSelects.Commands.EditTeacherUserSelect
 
             try
             {
-
+                int oldStatus = TeacherUserSelect.Status;
+                int newStatus = request.Status;
                 TeacherUserSelect.Status = request.Status;
                 TeacherUserSelect.Score = request.Score;
                 TeacherUserSelect.TeacherId = request.TeacherId;
+
+
+                if (oldStatus != 1 && newStatus == 1) {
+
+
+                    Random random = new Random();
+                    string code;
+
+                    do
+                    {
+                        code = random.Next(10000000, 99999999).ToString();
+                    }
+                    while (_context.TeacherUserSelects.Where(t=>t.OrderCode == code).Count()>0);
+
+                    TeacherUserSelect.OrderCode = code;
+
+
+                }
 
 
                 _context.SaveChanges();

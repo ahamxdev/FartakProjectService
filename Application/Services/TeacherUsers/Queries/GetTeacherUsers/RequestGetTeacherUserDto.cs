@@ -22,6 +22,10 @@
         public int Place { get; set; } //0Iran 1 English
         public int TypeTeaching { get; set; } // 0 Online 1 InPerson
         public long TeacherTypeId { get; set; }
+        public int MaxUser { get; set; }
+        public int PercentOff { get; set; }
+
+        public int Score {  get; set; }
     }
 
 

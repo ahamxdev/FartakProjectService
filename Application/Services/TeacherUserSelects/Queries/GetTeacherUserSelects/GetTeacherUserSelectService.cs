@@ -21,6 +21,18 @@ namespace Application.Services.TeacherUserSelects.Commands.AddTeacherUserSelects
                 StudentId = p.StudentId,
                 TeacherId = p.TeacherId,
                 TeacherUserSelectId = p.TeacherUserSelectId,
+                LastName = p.LastName,
+                Name = p.Name,
+                MemberWho = p.MemberWho,
+                MemberCount = p.MemberCount,
+                Level = p.Level,
+                Goal= p.Goal,
+                ClassDate = p.ClassDate,
+                UntilDate = p.UntilDate,
+                Description = p.Description,
+                CountDay= p.CountDay,
+                OrderCode=p.OrderCode,
+               
 
             }).OrderBy(x => x.TeacherUserSelectId).ToList();
             return new ResultGetTeacherUserSelectDto
@@ -41,6 +53,17 @@ namespace Application.Services.TeacherUserSelects.Commands.AddTeacherUserSelects
                 StudentId = p.StudentId,
                 TeacherId = p.TeacherId,
                 TeacherUserSelectId = p.TeacherUserSelectId,
+                LastName = p.LastName,
+                Name = p.Name,
+                MemberWho = p.MemberWho,
+                MemberCount = p.MemberCount,
+                Level = p.Level,
+                Goal = p.Goal,
+                ClassDate = p.ClassDate,
+                UntilDate = p.UntilDate,
+                Description = p.Description,
+                CountDay = p.CountDay,
+                OrderCode = p.OrderCode,
 
             }).OrderBy(x => x.TeacherUserSelectId).ToList();
             return new ResultGetTeacherUserSelectDto
@@ -61,6 +84,17 @@ namespace Application.Services.TeacherUserSelects.Commands.AddTeacherUserSelects
                 StudentId = p.StudentId,
                 TeacherId = p.TeacherId,
                 TeacherUserSelectId = p.TeacherUserSelectId,
+                LastName = p.LastName,
+                Name = p.Name,
+                MemberWho = p.MemberWho,
+                MemberCount = p.MemberCount,
+                Level = p.Level,
+                Goal = p.Goal,
+                ClassDate = p.ClassDate,
+                UntilDate = p.UntilDate,
+                Description = p.Description,
+                CountDay = p.CountDay,
+                OrderCode = p.OrderCode,
 
             }).OrderBy(x => x.TeacherUserSelectId).ToList();
             return new ResultGetTeacherUserSelectDto
@@ -81,6 +115,17 @@ namespace Application.Services.TeacherUserSelects.Commands.AddTeacherUserSelects
                 StudentId = p.StudentId,
                 TeacherId = p.TeacherId,
                 TeacherUserSelectId = p.TeacherUserSelectId,
+                LastName = p.LastName,
+                Name = p.Name,
+                MemberWho = p.MemberWho,
+                MemberCount = p.MemberCount,
+                Level = p.Level,
+                Goal = p.Goal,
+                ClassDate = p.ClassDate,
+                UntilDate = p.UntilDate,
+                Description = p.Description,
+                CountDay = p.CountDay,
+                OrderCode = p.OrderCode,
 
             }).OrderBy(x => x.TeacherUserSelectId).ToList();
             return new ResultGetTeacherUserSelectDto

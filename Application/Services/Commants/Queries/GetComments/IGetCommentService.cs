@@ -12,5 +12,7 @@ namespace Application.Services.Commants.Queries.GetComments
         ResultGetCommentDto GetById(RequestGetCommentByIdDto request);
         ResultGetCommentDto GetByUserId(RequestGetCommentByUserIdDto request);
         ResultGetCommentDto GetAllUnRead();
+        ResultGetCommentDto GetByForId(RequestGetCommentByForIdDto request);
+
     }
 }

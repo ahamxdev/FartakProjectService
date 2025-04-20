@@ -42,8 +42,19 @@ namespace Application.Services.TeacherUserSelects.Commands.AddTeacherUserSelects
                 {
                     Score = request.Score,
                     Status = request.Status,
+                    LastName = request.LastName,
+                    Name = request.Name,
+                    Goal = request.Goal,
+                    Level = request.Level,
+                    MemberCount = request.MemberCount,
+                    MemberWho = request.MemberWho,
                     StudentId = request.StudentId,
                     TeacherId = request.TeacherId,
+                    ClassDate = request.ClassDate,
+                    UntilDate = request.UntilDate,
+                    CountDay = request.CountDay,
+                    OrderCode = request.OrderCode,
+                    Description = request.Description,
                 };
                 _context.TeacherUserSelects.Add(teacherUserSelect);
                 _context.SaveChanges();

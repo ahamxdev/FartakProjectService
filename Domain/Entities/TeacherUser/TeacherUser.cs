@@ -19,5 +19,7 @@
         public int AllowUploadCourse {  get; set; } // 0 No 1 Yes
         public long Duration {  get; set; }
         public int OurSelect { get; set; } // 0 Not in fartak , 1 yes
+
+        public int MaxUser {  get; set; }
     }
 }

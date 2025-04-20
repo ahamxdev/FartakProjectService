@@ -20,6 +20,6 @@ namespace Application.Services.TeacherUsers.Commands.AddTeacherUsers
         public int AllowUploadCourse { get; set; }
         public long Duration { get; set; }
         public int PercentOff { get; set; }
-
+        public int MaxUser { get; set; }
     }
 }

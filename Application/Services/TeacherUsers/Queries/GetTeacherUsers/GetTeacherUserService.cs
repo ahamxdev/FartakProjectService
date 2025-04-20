@@ -1,5 +1,6 @@
 ﻿using Application.Interfaces.Contexts;
 using Application.Services.TeacherTypes.Queries.GetTeacherTypes;
+using Application.Services.TeacherUserSelects.Queries.GetTeacherUserSelects;
 using Application.Services.Users.Queries.GetUsers;
 
 namespace Application.Services.TeacherUsers.Queries.GetTeacherUsers
@@ -9,10 +10,12 @@ namespace Application.Services.TeacherUsers.Queries.GetTeacherUsers
         private readonly IDatabaseContext _context;
         private readonly IGetUserService _getUserService;
         private readonly IGetTeacherTypeService _getTeacherTypeService;
+        private readonly IGetTeacherUserSelectService _getTeacherUserSelectService;
         public GetTeacherUserService(IDatabaseContext context, IGetUserService getUserService,
-            IGetTeacherTypeService getTeacherTypeService)
+            IGetTeacherTypeService getTeacherTypeService,IGetTeacherUserSelectService getTeacherUserSelectService)
         {
             _context = context;
+            _getTeacherUserSelectService=getTeacherUserSelectService;
             _getTeacherTypeService = getTeacherTypeService;
             _getUserService = getUserService;
         }
@@ -64,6 +67,7 @@ namespace Application.Services.TeacherUsers.Queries.GetTeacherUsers
                     OurSelect= teacherUser.OurSelect,   
                     UserId = teacherUser.UserId,
                     Duration= teacherUser.Duration,
+                    MaxUser=teacherUser.MaxUser,
                     PercentOff=teacherUser.PercentOff,
                     TeacherTypeTitle = teacherTypeName,
                     AllowUploadCourse=teacherUser.AllowUploadCourse,
@@ -114,6 +118,7 @@ namespace Application.Services.TeacherUsers.Queries.GetTeacherUsers
                     Description = teacherUser.Description,
                     ImageName = teacherUser.ImageName,
                     TeacherName = teacherName,
+                    MaxUser = teacherUser.MaxUser,
                     VideoName = teacherUser.VideoName,
                     Gender = teacherUser.Gender,
                     InPersonPrice = teacherUser.InPersonPrice,
@@ -188,7 +193,8 @@ namespace Application.Services.TeacherUsers.Queries.GetTeacherUsers
                     UserId = teacherUser.UserId,
                     PercentOff = teacherUser.PercentOff,
                     TeacherTypeTitle = teacherTypeName,
-                    OurSelect=teacherUser.OurSelect,
+                    MaxUser = teacherUser.MaxUser,
+                    OurSelect =teacherUser.OurSelect,
                     AllowUploadCourse = teacherUser.AllowUploadCourse,
                 });
             }
@@ -243,6 +249,7 @@ namespace Application.Services.TeacherUsers.Queries.GetTeacherUsers
                     InPersonPrice = teacherUser.InPersonPrice,
                     OnlinePrice = teacherUser.OnlinePrice,
                     TeacherTypeId = teacherUser.TeacherTypeId,
+                    MaxUser = teacherUser.MaxUser,
                     TeacherUserId = teacherUser.TeacherUserId,
                     TypeTeaching = teacherUser.TypeTeaching,
                     Place = teacherUser.Place,
@@ -311,6 +318,7 @@ namespace Application.Services.TeacherUsers.Queries.GetTeacherUsers
                     OurSelect = teacherUser.OurSelect,
                     TeacherTypeTitle = teacherTypeName,
                     PercentOff = teacherUser.PercentOff,
+                    MaxUser = teacherUser.MaxUser,
                     AllowUploadCourse = teacherUser.AllowUploadCourse,
                 });
             }
@@ -325,6 +333,42 @@ namespace Application.Services.TeacherUsers.Queries.GetTeacherUsers
         {
             var teacherUsers = _context.TeacherUsers.Where(x => x.LanguageTeach == request.LanguageTeach &&
              x.Place == request.Place && x.TypeTeaching == request.TypeTeaching && x.TeacherTypeId == request.TeacherTypeId);
+
+
+            if (request.PercentOff != 0) {
+
+                teacherUsers = teacherUsers.Where(t => t.PercentOff > 0);
+            
+            }
+
+            if (request.MaxUser > 0)
+            {
+
+                teacherUsers = teacherUsers.Where(t => request.MaxUser <= t.MaxUser);
+
+            }
+
+            if (request.Score > 0)
+            {
+                var teacherScores = _getTeacherUserSelectService.GetAll()
+                .TeacherUserSelects
+                .GroupBy(t => t.TeacherId)
+                .Select(group => new
+                {
+                    TeacherId = group.Key,
+                    AverageScore = group.Average(x => x.Score)
+                })
+                .ToList();
+
+                var teacherIdsWithScore = teacherScores
+                    .Where(x => x.AverageScore == request.Score)
+                    .Select(x => x.TeacherId)
+                    .ToList();
+
+                teacherUsers = teacherUsers
+                    .Where(t => teacherIdsWithScore.Contains(t.TeacherUserId));
+            }
+
 
             List<GetTeacherUserDto> teacherUserList = new List<GetTeacherUserDto>();
 
@@ -371,6 +415,7 @@ namespace Application.Services.TeacherUsers.Queries.GetTeacherUsers
                     PercentOff = teacherUser.PercentOff,
                     UserId = teacherUser.UserId,
                     Duration = teacherUser.Duration,
+                    MaxUser = teacherUser.MaxUser,
                     TeacherTypeTitle = teacherTypeName,
                     AllowUploadCourse = teacherUser.AllowUploadCourse,
                 });

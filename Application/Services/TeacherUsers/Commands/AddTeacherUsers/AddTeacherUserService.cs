@@ -86,6 +86,7 @@ namespace Application.Services.TeacherUsers.Commands.AddTeacherUsers
                     LanguageTeach = request.LanguageTeach,
                     OurSelect = request.OurSelect,
                     Place = request.Place,
+                    MaxUser=request.MaxUser,
                     Duration = request.Duration,
                     VideoName = fileNameVideo,
                     PercentOff=request.PercentOff,
