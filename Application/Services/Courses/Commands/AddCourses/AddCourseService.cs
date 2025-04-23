@@ -38,7 +38,7 @@ namespace Application.Services.Courses.Commands.AddCourses
                     {
 
                         Description = request.Description,
-                        status = 0,
+                        Status = 0,
                         TeacherId = request.TeacherId,
                         Title = request.Title,
                         CourseTypeId = request.CourseTypeId,

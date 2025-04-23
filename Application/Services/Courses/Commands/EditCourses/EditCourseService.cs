@@ -82,7 +82,7 @@ namespace Application.Services.Courses.Commands.EditCourses
                 course.Price = request.Price;
                 course.Duration = request.Duration;
                 course.Description = request.Description;
-                course.status = request.status;
+                course.Status = request.Status;
                 course.CourseTypeId = request.CourseTypeId;
                 course.PercentOff=request.PercentOff;
                 course.Title = request.Title;
@@ -124,7 +124,7 @@ namespace Application.Services.Courses.Commands.EditCourses
             try
             {
 
-                course.status = request.status;
+                course.Status = request.Status;
 
 
                 _context.SaveChanges();

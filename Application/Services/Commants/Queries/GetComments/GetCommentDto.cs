@@ -14,7 +14,7 @@ namespace Application.Services.Commants.Queries.GetComments
         public required string CreateDate { get; set; }
         public required string UpdateDate { get; set; }
         public int ForId { get; set; }
-        public required string action { get; set; }
+        public required string Action { get; set; }
         public required int Read { get; set; } //0Not 1Yes
     }
 }

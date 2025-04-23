@@ -25,7 +25,7 @@ namespace Application.Services.Commants.Commands.AddComments
                     Message = request.Message,
                     Read = 0,
                     UserId = request.UserId,
-                    action=request.action,
+                    Action=request.Action,
                     ForId=request.ForId,
                     CreateDate=request.CreateDate,
                     UpdateDate=request.UpdateDate,

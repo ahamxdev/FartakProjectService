@@ -15,6 +15,6 @@ namespace Domain.Entities.Users
         public required string UpdateDate { get; set;}
         public required int Read { get; set; } //0Not 1Yes
         public int ForId {  get; set; }
-        public required string action {  get; set; }
+        public required string Action {  get; set; }
     }
 }

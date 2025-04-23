@@ -14,7 +14,7 @@ namespace Application.Services.Commants.Commands.AddComments
         public required string CreateDate { get; set; }
         public required string UpdateDate { get; set; }
         public int ForId { get; set; }
-        public required string action { get; set; }
+        public required string Action { get; set; }
 
     }
 }

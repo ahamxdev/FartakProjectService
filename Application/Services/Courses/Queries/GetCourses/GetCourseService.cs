@@ -32,7 +32,7 @@ namespace Application.Services.Courses.Queries.GetCourses
                     courseList.Add(new GetCourseDto
                     {
                         Description = course.Description,
-                        status = course.status,
+                        Status = course.Status,
                         TeacherId = course.TeacherId,
                         Title = course.Title,
                         CourseTypeId = course.CourseTypeId,
@@ -61,7 +61,7 @@ namespace Application.Services.Courses.Queries.GetCourses
         public ResultGetCourseDto GetAllAccept()
         {
 
-            var Courses = _context.Courses.Where(c => c.status == 1).ToList();
+            var Courses = _context.Courses.Where(c => c.Status == 1).ToList();
 
             var courseList = new List<GetCourseDto>();
 
@@ -78,7 +78,7 @@ namespace Application.Services.Courses.Queries.GetCourses
                     courseList.Add(new GetCourseDto
                     {
                         Description = course.Description,
-                        status = course.status,
+                        Status = course.Status,
                         TeacherId = course.TeacherId,
                         Title = course.Title,
                         CourseTypeId = course.CourseTypeId,
@@ -108,7 +108,7 @@ namespace Application.Services.Courses.Queries.GetCourses
         public ResultGetCourseDto GetAllWaiting()
         {
 
-            var Courses = _context.Courses.Where(c => c.status == 0).ToList();
+            var Courses = _context.Courses.Where(c => c.Status == 0).ToList();
 
             var courseList = new List<GetCourseDto>();
 
@@ -125,7 +125,7 @@ namespace Application.Services.Courses.Queries.GetCourses
                     courseList.Add(new GetCourseDto
                     {
                         Description = course.Description,
-                        status = course.status,
+                        Status = course.Status,
                         TeacherId = course.TeacherId,
                         Title = course.Title,
                         CourseTypeId = course.CourseTypeId,
@@ -155,7 +155,7 @@ namespace Application.Services.Courses.Queries.GetCourses
         public ResultGetCourseDto GetAllReject()
         {
 
-            var Courses = _context.Courses.Where(c => c.status == 2).ToList();
+            var Courses = _context.Courses.Where(c => c.Status == 2).ToList();
 
             var courseList = new List<GetCourseDto>();
 
@@ -172,7 +172,7 @@ namespace Application.Services.Courses.Queries.GetCourses
                     courseList.Add(new GetCourseDto
                     {
                         Description = course.Description,
-                        status = course.status,
+                        Status = course.Status,
                         TeacherId = course.TeacherId,
                         Title = course.Title,
                         CourseTypeId = course.CourseTypeId,
@@ -218,7 +218,7 @@ namespace Application.Services.Courses.Queries.GetCourses
                     courseList.Add(new GetCourseDto
                     {
                         Description = course.Description,
-                        status = course.status,
+                        Status = course.Status,
                         TeacherId = course.TeacherId,
                         Title = course.Title,
                         CourseTypeId = course.CourseTypeId,
@@ -260,7 +260,7 @@ namespace Application.Services.Courses.Queries.GetCourses
                     courseList.Add(new GetCourseDto
                     {
                         Description = course.Description,
-                        status = course.status,
+                        Status = course.Status,
                         TeacherId = course.TeacherId,
                         Title = course.Title,
                         CourseTypeId = course.CourseTypeId,
@@ -301,7 +301,7 @@ namespace Application.Services.Courses.Queries.GetCourses
                     courseList.Add(new GetCourseDto
                     {
                         Description = course.Description,
-                        status = course.status,
+                        Status = course.Status,
                         TeacherId = course.TeacherId,
                         Title = course.Title,
                         CourseTypeId = course.CourseTypeId,
@@ -342,7 +342,7 @@ namespace Application.Services.Courses.Queries.GetCourses
                     courseList.Add(new GetCourseDto
                     {
                         Description = course.Description,
-                        status = course.status,
+                        Status = course.Status,
                         TeacherId = course.TeacherId,
                         Title = course.Title,
                         CourseTypeId = course.CourseTypeId,

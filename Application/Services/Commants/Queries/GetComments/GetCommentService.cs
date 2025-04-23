@@ -21,7 +21,7 @@ namespace Application.Services.Commants.Queries.GetComments
                 CommentId = p.CommentId,
                 CreateDate=p.CreateDate,
                 UpdateDate=p.UpdateDate,
-                action=p.action,
+                Action=p.Action,
                 ForId=p.ForId,
 
             }).OrderBy(x => x.CommentId).ToList();
@@ -46,7 +46,7 @@ namespace Application.Services.Commants.Queries.GetComments
                 CommentId = p.CommentId,
                 CreateDate = p.CreateDate,
                 UpdateDate = p.UpdateDate,
-                action = p.action,
+                Action = p.Action,
                 ForId = p.ForId,
 
             }).OrderBy(x => x.CommentId).ToList();
@@ -71,7 +71,7 @@ namespace Application.Services.Commants.Queries.GetComments
                 CommentId = p.CommentId,
                 CreateDate = p.CreateDate,
                 UpdateDate = p.UpdateDate,
-                action = p.action,
+                Action = p.Action,
                 ForId = p.ForId,
 
             }).OrderBy(x => x.CommentId).ToList();
@@ -96,7 +96,7 @@ namespace Application.Services.Commants.Queries.GetComments
                 CommentId = p.CommentId,
                 CreateDate = p.CreateDate,
                 UpdateDate = p.UpdateDate,
-                action = p.action,
+                Action = p.Action,
                 ForId = p.ForId,
 
             }).OrderBy(x => x.CommentId).ToList();
@@ -121,7 +121,7 @@ namespace Application.Services.Commants.Queries.GetComments
                 CommentId = p.CommentId,
                 CreateDate = p.CreateDate,
                 UpdateDate = p.UpdateDate,
-                action = p.action,
+                Action = p.Action,
                 ForId = p.ForId,
 
             }).OrderBy(x => x.CommentId).ToList();
