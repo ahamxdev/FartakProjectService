@@ -1,5 +1,6 @@
 ﻿namespace Domain.Entities.TeacherUser
 {
+
     public class TeacherUser
     {
         public long TeacherUserId { get; set; }
