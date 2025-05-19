@@ -1,0 +1,16 @@
+{
+  "HomeDescription": {
+    "student": "Student",
+    "teacher": "Teacher",
+    "project": "Project",
+    "course": "Course",
+    "collaboration": "Collaboration"
+  },
+  "ProjectCard": {
+    "submitOffer": "Submit Offer",
+    "viewProject": "View Project"
+  },
+  "List": {
+    "seeAll": "Show All"
+  }
+}

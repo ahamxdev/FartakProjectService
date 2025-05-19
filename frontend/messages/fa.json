@@ -1,0 +1,16 @@
+{
+  "HomeDescription": {
+    "student": "دانشجو",
+    "teacher": "استاد",
+    "project": "پروژه",
+    "course": "دوره آموزشی",
+    "collaboration": "همکاری"
+  },
+  "ProjectCard": {
+    "submitOffer": "ثبت پیشنهاد",
+    "viewProject": "مشاهده پروژه"
+  },
+  "List": {
+    "seeAll": "مشاهده همه"
+  }
+}
