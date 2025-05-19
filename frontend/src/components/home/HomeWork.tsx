@@ -1,7 +1,7 @@
 "use client";
 import IconChart from "@/icons/works/IconChart";
 import { memo, useCallback, useEffect, useRef, useState } from "react";
-import listIcon from "../../public/listIcon.png";
+import listIcon from "../../../public/listIcon.png";
 import Image from "next/image";
 import IconWebCoding from "@/icons/works/IconWebCoding";
 import IconMechanicEng from "@/icons/works/IconMechanicEng";

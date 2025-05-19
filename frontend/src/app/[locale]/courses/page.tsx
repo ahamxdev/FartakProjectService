@@ -1,5 +1,5 @@
-import Courses from "@/components/Courses";
-import HomeWork from "@/components/HomeWork";
+import Courses from "@/components/courses/Courses";
+import HomeWork from "@/components/home/HomeWork";
 import IconBigLine from "@/icons/courses/IconBigLine";
 import IconSmallLine from "@/icons/courses/IconSmallLine";
 import IconMagnifier from "@/icons/IconMagnifier";

@@ -1,12 +1,12 @@
 import { aboutUsComments, courses, projects, teachers } from "@/api";
 import AboutUsCard from "@/components/AboutUsCard";
 import BackTeacherCard from "@/components/BackTeacherCard";
-import CourseCard from "@/components/CourseCard";
+import CourseCard from "@/components/courses/CourseCard";
 import FlipCard from "@/components/FlipCard";
 import FrontTeacherCard from "@/components/FrontTeacherCard";
-import HomeAcademic from "@/components/HomeAcademic";
-import HomeDescription from "@/components/HomeDescription";
-import HomeWork from "@/components/HomeWork";
+import HomeAcademic from "@/components/home/HomeAcademic";
+import HomeDescription from "@/components/home/HomeDescription";
+import HomeWork from "@/components/home/HomeWork";
 import List from "@/components/List";
 import ProjectCard from "@/components/ProjectCard";
 import { memo } from "react";

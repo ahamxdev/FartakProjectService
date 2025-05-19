@@ -272,7 +272,7 @@ const FilterDropDown = () => {
 								</Menu.Item>
 							</Menu.SubMenu>
 
-							<Menu.Item className="!w-fit !m-0 !mt-5 !mb-3 !mx-auto !p-0 !h-fit">
+							<Menu.Item key="submitBtn" className="!w-fit !m-0 !mt-5 !mb-3 !mx-auto !p-0 !h-fit">
 								<Button
 									color="#1d40d7"
 									className="!text-[18px] !py-0 !font-bold"

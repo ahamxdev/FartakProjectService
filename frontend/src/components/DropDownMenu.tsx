@@ -112,15 +112,19 @@ const DropDownMenu = ({
 				{selectedMainTitle && (
 					<motion.div
 						key={selectedMainTitle} // ✅ این خط باعث رندر مجدد میشه
-						initial={{ height: 0, opacity: 0 }}
-						animate={{ height: "auto", opacity: 1 }}
-						exit={{ height: 0, opacity: 0 }}
+						initial={{ height: 0, opacity: 0, y: -10 }}
+						animate={{
+							height: "auto",
+							opacity: 1,
+							y: 0,
+						}}
+						exit={{ height: 0, opacity: 0, y: -10 }}
 						transition={{
 							duration: 0.1,
 							ease: "circInOut",
 						}}
 						style={{
-							translateX: -1 * right,
+							left: -1 * right,
 						}}
 						onAnimationComplete={onAnimate}
 						ref={dropDownRef}

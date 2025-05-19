@@ -51,7 +51,6 @@ const Tabs = memo(({ tabs, onTabChange }: TabProps) => {
 				))}
 
 				<motion.div
-					layout
 					transition={{
 						type: "keyframes",
 						stiffness: 400,

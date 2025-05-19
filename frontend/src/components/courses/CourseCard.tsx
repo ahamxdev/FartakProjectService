@@ -1,7 +1,7 @@
 import Icon3Students from "@/icons/courseCar/Icon3Students";
 import IconClock from "@/icons/courseCar/IconClock";
 import IconStar from "@/icons/teacherCard/IconStar";
-import manPng from "../../public/mard.png";
+import manPng from "../../../public/mard.png";
 import Image from "next/image";
 import { memo } from "react";
 import { CourseCardType } from "@/types/card";

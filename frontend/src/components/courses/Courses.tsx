@@ -1,10 +1,10 @@
 "use client";
 import { memo, useState } from "react";
-import PageInation from "./PageInation";
+import PageInation from "../PageInation";
 import { courses } from "@/api";
 import CourseCard from "./CourseCard";
 import CourseHeader from "./CourseHeader";
-import FilterDropDown from "./FilterDropDown";
+import FilterDropDown from "../FilterDropDown";
 
 const Courses = () => {
 	const [page, setPage] = useState(1);

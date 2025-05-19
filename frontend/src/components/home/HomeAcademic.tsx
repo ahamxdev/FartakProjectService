@@ -1,7 +1,7 @@
-import IconScooter from "../../public/scooter.png";
-import IconBycicle from "../../public/bycicle.png";
+import IconScooter from "../../../public/scooter.png";
+import IconBycicle from "../../../public/bycicle.png";
 import Image from "next/image";
-import listIcon from "../../public/listIcon.png";
+import listIcon from "../../../public/listIcon.png";
 import IconScooterDasti from "@/icons/academic/IconScooterDasti";
 // import IconBycicle from "@/icons/academic/IconBycicle";
 import IconMotorcycle from "@/icons/academic/IconMotorcycle";
