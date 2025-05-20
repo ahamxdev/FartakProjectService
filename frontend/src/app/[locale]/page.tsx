@@ -1,15 +1,22 @@
 import { aboutUsComments, courses, projects, teachers } from "@/api";
-import AboutUsCard from "@/components/AboutUsCard";
-import BackTeacherCard from "@/components/BackTeacherCard";
-import CourseCard from "@/components/courses/CourseCard";
-import FlipCard from "@/components/FlipCard";
-import FrontTeacherCard from "@/components/FrontTeacherCard";
-import HomeAcademic from "@/components/home/HomeAcademic";
-import HomeDescription from "@/components/home/HomeDescription";
-import HomeWork from "@/components/home/HomeWork";
-import List from "@/components/List";
-import ProjectCard from "@/components/ProjectCard";
-import { memo } from "react";
+import { lazy, memo } from "react";
+
+const AboutUsCard = lazy(() => import("@/components/AboutUsCard"));
+const BackTeacherCard = lazy(
+	() => import("@/components/BackTeacherCard"),
+);
+const CourseCard = lazy(() => import("@/components/courses/CourseCard"));
+const FlipCard = lazy(() => import("@/components/FlipCard"));
+const FrontTeacherCard = lazy(
+	() => import("@/components/FrontTeacherCard"),
+);
+const HomeAcademic = lazy(() => import("@/components/home/HomeAcademic"));
+const HomeDescription = lazy(
+	() => import("@/components/home/HomeDescription"),
+);
+const HomeWork = lazy(() => import("@/components/home/HomeWork"));
+const List = lazy(() => import("@/components/List"));
+const ProjectCard = lazy(() => import("@/components/ProjectCard"));
 
 const Home = () => {
 	return (

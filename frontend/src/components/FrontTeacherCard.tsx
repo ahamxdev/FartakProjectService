@@ -1,9 +1,15 @@
-import IconBookMark from "@/icons/teacherCard/IconBookMark";
 import Image from "next/image";
-import { memo } from "react";
-import IconStar from "@/icons/teacherCard/IconStar";
+import { lazy, memo } from "react";
 import { TeacherCardType } from "@/types/card";
-import IconTeacherCardArrow from "@/icons/teacherCard/IconTeacherCardArrow";
+
+const IconBookMark = lazy(
+	() => import("@/icons/teacherCard/IconBookMark"),
+);
+const IconStar = lazy(() => import("@/icons/teacherCard/IconStar"));
+const IconTeacherCardArrow = lazy(
+	() => import("@/icons/teacherCard/IconTeacherCardArrow"),
+);
+
 const AboutUsCard = ({
 	fullName,
 	profile,

@@ -1,18 +1,19 @@
-import FirstInfoItem from "@/components/FirstInfoItem";
 import personImg from "../../../public/homePerson.png";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import bg from "../../../public/bg.png";
-import Button from "../Button";
-import IconStudent from "@/icons/IconStudent";
-import IconTraining from "@/icons/IconTraining";
-import IconArchive from "@/icons/IconArchive";
-import IconELearning from "@/icons/IconELearning";
-import IconInteractive from "@/icons/IconInteractive";
-import { memo } from "react";
+import { lazy, memo } from "react";
 import dorehaPng from "../../../public/doreha.png";
 import tadrisPng from "../../../public/tadris.png";
 import prozhePng from "../../../public/prozhe.png";
+
+const FirstInfoItem = lazy(() => import("@/components/FirstInfoItem"));
+const Button = lazy(() => import("../Button"));
+const IconStudent = lazy(() => import("@/icons/IconStudent"));
+const IconTraining = lazy(() => import("@/icons/IconTraining"));
+const IconArchive = lazy(() => import("@/icons/IconArchive"));
+const IconELearning = lazy(() => import("@/icons/IconELearning"));
+const IconInteractive = lazy(() => import("@/icons/IconInteractive"));
 
 const HomeDescription = () => {
 	const t = useTranslations("HomeDescription");

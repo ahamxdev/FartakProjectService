@@ -1,26 +1,36 @@
 "use client";
-import IconChart from "@/icons/works/IconChart";
-import { memo, useCallback, useEffect, useRef, useState } from "react";
+import {
+	lazy,
+	memo,
+	useCallback,
+	useEffect,
+	useRef,
+	useState,
+} from "react";
 import listIcon from "../../../public/listIcon.png";
 import Image from "next/image";
-import IconWebCoding from "@/icons/works/IconWebCoding";
-import IconMechanicEng from "@/icons/works/IconMechanicEng";
-import IconPython from "@/icons/works/IconPython";
-import IconBourse from "@/icons/works/IconBourse";
-import IconHonar from "@/icons/works/IconHonar";
-import IconMath from "@/icons/works/IconMath";
-import IconHoush from "@/icons/works/IconHoush";
-import IconExcel from "@/icons/works/IconExcel";
-import IconBargh from "@/icons/works/IconBargh";
-import IconBinary from "@/icons/works/IconBinary";
-import IconSparkles from "@/icons/works/IconSparkles";
-import IconMemari from "@/icons/works/IconMemari";
-import IconBuilding from "@/icons/works/IconBuilding";
-import IconLanguage from "@/icons/works/IconLanguage";
-import IconSanaye from "@/icons/works/IconSanaye";
-import IconArrow from "@/icons/IconArrow";
 import clsx from "clsx";
 import { usePrevious, useWindowSize } from "@reactuses/core";
+
+const IconChart = lazy(() => import("@/icons/works/IconChart"));
+const IconWebCoding = lazy(() => import("@/icons/works/IconWebCoding"));
+const IconMechanicEng = lazy(
+	() => import("@/icons/works/IconMechanicEng"),
+);
+const IconPython = lazy(() => import("@/icons/works/IconPython"));
+const IconBourse = lazy(() => import("@/icons/works/IconBourse"));
+const IconHonar = lazy(() => import("@/icons/works/IconHonar"));
+const IconMath = lazy(() => import("@/icons/works/IconMath"));
+const IconHoush = lazy(() => import("@/icons/works/IconHoush"));
+const IconExcel = lazy(() => import("@/icons/works/IconExcel"));
+const IconBargh = lazy(() => import("@/icons/works/IconBargh"));
+const IconBinary = lazy(() => import("@/icons/works/IconBinary"));
+const IconSparkles = lazy(() => import("@/icons/works/IconSparkles"));
+const IconMemari = lazy(() => import("@/icons/works/IconMemari"));
+const IconBuilding = lazy(() => import("@/icons/works/IconBuilding"));
+const IconLanguage = lazy(() => import("@/icons/works/IconLanguage"));
+const IconSanaye = lazy(() => import("@/icons/works/IconSanaye"));
+const IconArrow = lazy(() => import("@/icons/IconArrow"));
 
 const HomeWork = () => {
 	const [canScrollRight, setCanScrollRight] = useState(false);

@@ -1,7 +1,9 @@
 "use client";
-import IconSquerArrow from "@/icons/IconSquerArrow";
 import { toPersianDigits } from "@/utils/string";
-import { memo, ReactNode, useMemo } from "react";
+import { lazy, memo, ReactNode, useMemo } from "react";
+
+const IconSquerArrow = lazy(() => import("@/icons/IconSquerArrow"));
+
 interface Props {
 	children: ReactNode;
 	page: number;

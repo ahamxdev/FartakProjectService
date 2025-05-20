@@ -1,9 +1,10 @@
-import IconEnamad from "@/icons/footer/IconEnamad";
-import IconInstagram from "@/icons/footer/IconInstagram";
-import IconTelegram from "@/icons/footer/IconTelegram";
-import IconTwitter from "@/icons/footer/IconTwitter";
-import IconWhatsApp from "@/icons/footer/IconWhatsApp";
-import { memo } from "react";
+import { lazy, memo } from "react";
+
+const IconEnamad = lazy(() => import("@/icons/footer/IconEnamad"));
+const IconInstagram = lazy(() => import("@/icons/footer/IconInstagram"));
+const IconTelegram = lazy(() => import("@/icons/footer/IconTelegram"));
+const IconTwitter = lazy(() => import("@/icons/footer/IconTwitter"));
+const IconWhatsApp = lazy(() => import("@/icons/footer/IconWhatsApp"));
 
 const Footer = () => {
 	return (

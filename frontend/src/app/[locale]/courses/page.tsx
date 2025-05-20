@@ -1,9 +1,4 @@
-import Courses from "@/components/courses/Courses";
-import HomeWork from "@/components/home/HomeWork";
-import IconBigLine from "@/icons/courses/IconBigLine";
-import IconSmallLine from "@/icons/courses/IconSmallLine";
-import IconMagnifier from "@/icons/IconMagnifier";
-import { memo } from "react";
+import { lazy, memo } from "react";
 import mosalase30 from "../../../../public/couresEndPoster/mosals30.svg";
 import mosalase50 from "../../../../public/couresEndPoster/mosals50.svg";
 import mosalase100 from "../../../../public/couresEndPoster/mosals100.svg";
@@ -20,6 +15,12 @@ import circleGooshe50 from "../../../../public/couresEndPoster/circlegooshe50.sv
 import circleGooshe100 from "../../../../public/couresEndPoster/circlegooshe100.svg";
 import redArrow from "../../../../public/couresEndPoster/arrow.svg";
 import Image from "next/image";
+
+const Courses = lazy(() => import("@/components/courses/Courses"));
+const HomeWork = lazy(() => import("@/components/home/HomeWork"));
+const IconBigLine = lazy(() => import("@/icons/courses/IconBigLine"));
+const IconSmallLine = lazy(() => import("@/icons/courses/IconSmallLine"));
+const IconMagnifier = lazy(() => import("@/icons/IconMagnifier"));
 
 const page = () => {
 	return (

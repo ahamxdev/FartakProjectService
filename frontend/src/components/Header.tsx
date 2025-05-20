@@ -2,16 +2,17 @@
 
 import Image from "next/image";
 import logo from "../../public/logo.png";
-import Button from "./Button";
-import IconSearch from "@/icons/IconSearch";
-import IconThemeToggle from "@/icons/IconThemeToggle";
-import IconShoppingBag from "@/icons/IconShoppingBag";
-import IconBurgerMenu from "@/icons/IconBurgerMenu";
-import { memo, useEffect, useState } from "react";
+import { lazy, memo, useEffect, useState } from "react";
 import clsx from "clsx";
 import { useWindowSize } from "@reactuses/core";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+
+const Button = lazy(() => import("./Button"));
+const IconSearch = lazy(() => import("@/icons/IconSearch"));
+const IconThemeToggle = lazy(() => import("@/icons/IconThemeToggle"));
+const IconShoppingBag = lazy(() => import("@/icons/IconShoppingBag"));
+const IconBurgerMenu = lazy(() => import("@/icons/IconBurgerMenu"));
 
 const Header = () => {
 	const [scrolled, setScrolled] = useState(false);

@@ -1,8 +1,9 @@
-import { memo } from "react";
-import Button from "./Button";
+import { lazy, memo } from "react";
 import { useTranslations } from "next-intl";
-import IconWallet from "@/icons/IconWallet";
 import { ProjectCardType } from "@/types/card";
+
+const Button = lazy(() => import("./Button"));
+const IconWallet = lazy(() => import("@/icons/IconWallet"));
 
 const ProjectCard = ({
 	createDate,

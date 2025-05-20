@@ -1,6 +1,5 @@
 "use client";
 
-import IconArrow from "@/icons/IconArrow";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import {
@@ -10,12 +9,15 @@ import {
 	useState,
 	FC,
 	ReactNode,
+	lazy,
 } from "react";
 import Image from "next/image";
 import listIcon from "../../public/listIcon.png";
 import { usePrevious, useWindowSize } from "@reactuses/core";
 import clsx from "clsx";
-import Tabs from "./Tabs";
+
+const IconArrow =lazy(()=>import( "@/icons/IconArrow"))
+const Tabs =lazy(()=>import( "./Tabs"))
 
 interface Props {
 	title: string;

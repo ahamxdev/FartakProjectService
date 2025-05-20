@@ -1,10 +1,11 @@
 "use client";
-import { memo, useState } from "react";
-import PageInation from "../PageInation";
+import { lazy, memo, useState } from "react";
 import { courses } from "@/api";
-import CourseCard from "./CourseCard";
-import CourseHeader from "./CourseHeader";
-import FilterDropDown from "../FilterDropDown";
+
+const PageInation = lazy(() => import("../PageInation"));
+const CourseCard = lazy(() => import("./CourseCard"));
+const CourseHeader = lazy(() => import("./CourseHeader"));
+const FilterDropDown = lazy(() => import("../FilterDropDown"));
 
 const Courses = () => {
 	const [page, setPage] = useState(1);

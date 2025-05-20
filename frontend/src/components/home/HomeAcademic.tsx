@@ -2,11 +2,16 @@ import IconScooter from "../../../public/scooter.png";
 import IconBycicle from "../../../public/bycicle.png";
 import Image from "next/image";
 import listIcon from "../../../public/listIcon.png";
-import IconScooterDasti from "@/icons/academic/IconScooterDasti";
+import { lazy, memo } from "react";
+
+const IconScooterDasti = lazy(
+	() => import("@/icons/academic/IconScooterDasti"),
+);
+const IconMotorcycle = lazy(
+	() => import("@/icons/academic/IconMotorcycle"),
+);
+const IconCar = lazy(() => import("@/icons/academic/IconCar"));
 // import IconBycicle from "@/icons/academic/IconBycicle";
-import IconMotorcycle from "@/icons/academic/IconMotorcycle";
-import IconCar from "@/icons/academic/IconCar";
-import { memo } from "react";
 
 const HomeAcademic = () => {
 	return (

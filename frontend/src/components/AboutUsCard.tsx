@@ -1,8 +1,10 @@
-import IconCap from "@/icons/aboutUsCard/IconCap";
-import IconVirgool from "@/icons/aboutUsCard/IconVirgool";
 import { AboutUsCommentType } from "@/types/card";
 import Image from "next/image";
-import { memo } from "react";
+import { lazy, memo } from "react";
+
+const IconCap = lazy(() => import("@/icons/aboutUsCard/IconCap"));
+const IconVirgool = lazy(() => import("@/icons/aboutUsCard/IconVirgool"));
+
 const AboutUsCard = ({
 	description,
 	fullName,

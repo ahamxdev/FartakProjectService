@@ -1,12 +1,15 @@
 "use client";
 
-import IconFilter from "@/icons/filterDropDown/IconFilter";
-import IconArrow from "@/icons/IconArrow";
 import { fromPersianDigits, toPersianPrice } from "@/utils/string";
-import { memo, useState } from "react";
+import { lazy, memo, useState } from "react";
 import { Checkbox, Input, Menu, Slider } from "antd";
 import { AnimatePresence, motion } from "framer-motion";
-import Button from "./Button";
+
+const IconFilter = lazy(
+	() => import("@/icons/filterDropDown/IconFilter"),
+);
+const IconArrow = lazy(() => import("@/icons/IconArrow"));
+const Button = lazy(() => import("./Button"));
 
 const FilterDropDown = () => {
 	const [price, setPrice] = useState([20000, 1200000]);
@@ -272,7 +275,9 @@ const FilterDropDown = () => {
 								</Menu.Item>
 							</Menu.SubMenu>
 
-							<Menu.Item key="submitBtn" className="!w-fit !m-0 !mt-5 !mb-3 !mx-auto !p-0 !h-fit">
+							<Menu.Item
+								key="submitBtn"
+								className="!w-fit !m-0 !mt-5 !mb-3 !mx-auto !p-0 !h-fit">
 								<Button
 									color="#1d40d7"
 									className="!text-[18px] !py-0 !font-bold"

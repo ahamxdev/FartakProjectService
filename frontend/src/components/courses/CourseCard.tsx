@@ -1,11 +1,15 @@
-import Icon3Students from "@/icons/courseCar/Icon3Students";
-import IconClock from "@/icons/courseCar/IconClock";
-import IconStar from "@/icons/teacherCard/IconStar";
 import manPng from "../../../public/mard.png";
 import Image from "next/image";
-import { memo } from "react";
+import { lazy, memo } from "react";
 import { CourseCardType } from "@/types/card";
 import { toPersianDigits } from "@/utils/string";
+
+const Icon3Students = lazy(
+	() => import("@/icons/courseCar/Icon3Students"),
+);
+const IconClock = lazy(() => import("@/icons/courseCar/IconClock"));
+const IconStar = lazy(() => import("@/icons/teacherCard/IconStar"));
+
 const CourseCard = ({
 	courseDuration,
 	price,

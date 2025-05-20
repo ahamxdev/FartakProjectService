@@ -1,6 +1,10 @@
-import { memo, ReactNode } from "react";
-import IconTeacherCardArrow from "@/icons/teacherCard/IconTeacherCardArrow";
-import AmozeshgahBg from "@/icons/AmozeshgahBg";
+import { lazy, memo, ReactNode } from "react";
+
+const IconTeacherCardArrow = lazy(
+	() => import("@/icons/teacherCard/IconTeacherCardArrow"),
+);
+const AmozeshgahBg = lazy(() => import("@/icons/AmozeshgahBg"));
+
 const AmozeshgahCard = ({
 	color,
 	children,

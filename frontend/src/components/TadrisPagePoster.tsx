@@ -1,17 +1,20 @@
 import Image from "next/image";
-import { memo } from "react";
-import poster from "../../public/poster.png";
-import IconStudent from "@/icons/tadrisPage/IconStudent";
-import IconTeacher from "@/icons/tadrisPage/IconTeacher";
-import IconCircle from "@/icons/tadrisPage/IconCircle";
-import IconYoungGirl from "@/icons/tadrisPage/IconYoungGirl";
-import IconTable from "@/icons/tadrisPage/IconTable";
+import { lazy, memo } from "react";
+
+const IconStudent = lazy(() => import("@/icons/tadrisPage/IconStudent"));
+const IconTeacher = lazy(() => import("@/icons/tadrisPage/IconTeacher"));
+const IconCircle = lazy(() => import("@/icons/tadrisPage/IconCircle"));
+const IconYoungGirl = lazy(
+	() => import("@/icons/tadrisPage/IconYoungGirl"),
+);
+const IconTable = lazy(() => import("@/icons/tadrisPage/IconTable"));
+
 const TadrisPagePoster = () => {
 	return (
 		<div className="my-10">
 			<div className="m-5 relative w-fit">
 				<Image
-					src={poster}
+					src="/poster.png"
 					alt="poster"
 				/>
 				<div className="p-1 md:p-2 bg-white rounded-lg left-[50vw] gap-2 -top-8 shadow-[0px_18.360000610351562px_38.25px_0px_rgba(0,0,0,0.15)] flex w-fit md:flex-row-reverse justify-center items-center md:gap-6 absolute md:-left-[95px] md:top-[115px] scale-80 md:scale-100">

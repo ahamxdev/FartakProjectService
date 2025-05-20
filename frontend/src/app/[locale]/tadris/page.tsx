@@ -1,19 +1,27 @@
 import { aboutUsComments, dropDownMenuItems, teachers } from "@/api";
-import AmozeshgahCard from "@/components/AmozeshgahCard";
-import List from "@/components/List";
-import FlipCard from "@/components/FlipCard";
-import { memo } from "react";
-import FrontTeacherCard from "@/components/FrontTeacherCard";
-import BackTeacherCard from "@/components/BackTeacherCard";
+import { lazy, memo } from "react";
 import Image from "next/image";
 import ebtedayi from "../../../../public/amozeshgahCard/ebtedayiCardBoy.png";
 import motovasete from "../../../../public/amozeshgahCard/motovaseteAvalCardBoy.png";
 import nahayi from "../../../../public/amozeshgahCard/nahayiCardBoy.png";
 import konkur from "../../../../public/amozeshgahCard/konkurCardBoy.png";
 import afterKonkur from "../../../../public/amozeshgahCard/afterKonkurCardBoy.png";
-import DropDownMenu from "@/components/DropDownMenu";
-import TadrisPagePoster from "@/components/TadrisPagePoster";
-import AboutUsCard from "@/components/AboutUsCard";
+
+const AmozeshgahCard = lazy(() => import("@/components/AmozeshgahCard"));
+const List = lazy(() => import("@/components/List"));
+const FlipCard = lazy(() => import("@/components/FlipCard"));
+const FrontTeacherCard = lazy(
+	() => import("@/components/FrontTeacherCard"),
+);
+const BackTeacherCard = lazy(
+	() => import("@/components/BackTeacherCard"),
+);
+const DropDownMenu = lazy(() => import("@/components/DropDownMenu"));
+const TadrisPagePoster = lazy(
+	() => import("@/components/TadrisPagePoster"),
+);
+const AboutUsCard = lazy(() => import("@/components/AboutUsCard"));
+
 const page = () => {
 	return (
 		<div className="flex flex-col justify-center items-center w-full">

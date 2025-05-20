@@ -1,14 +1,8 @@
 "use client";
 
-import IconBook from "@/icons/courses/IconBook";
-import IconCalculator from "@/icons/courses/IconCalculator";
-import IconCPU from "@/icons/courses/IconCPU";
-import IconGlobal from "@/icons/courses/IconGlobal";
-import IconMonitorMobile from "@/icons/courses/IconMonitorMobile";
-import IconMusic from "@/icons/courses/IconMusic";
-import IconPenTool from "@/icons/courses/IconPenTool";
 import {
 	createRef,
+	lazy,
 	memo,
 	useCallback,
 	useLayoutEffect,
@@ -22,8 +16,21 @@ import {
 	useWindowSize,
 } from "@reactuses/core";
 import { isInViewport } from "@/utils/screen";
-import IconArrow from "@/icons/IconArrow";
 import { Menu } from "antd";
+
+const IconBook = lazy(() => import("@/icons/courses/IconBook"));
+const IconCalculator = lazy(
+	() => import("@/icons/courses/IconCalculator"),
+);
+const IconCPU = lazy(() => import("@/icons/courses/IconCPU"));
+const IconGlobal = lazy(() => import("@/icons/courses/IconGlobal"));
+const IconMonitorMobile = lazy(
+	() => import("@/icons/courses/IconMonitorMobile"),
+);
+const IconMusic = lazy(() => import("@/icons/courses/IconMusic"));
+const IconPenTool = lazy(() => import("@/icons/courses/IconPenTool"));
+const IconArrow = lazy(() => import("@/icons/IconArrow"));
+
 const CourseHeader = () => {
 	const { height, width } = useWindowSize();
 	const [selectedTab, setSelectedTab] = useState<
