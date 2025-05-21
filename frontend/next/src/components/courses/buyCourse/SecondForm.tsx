@@ -9,9 +9,9 @@ const SecondForm = () => {
 						در چه زمینه ای میخوای آموزش ببینی ؟
 					</span>
 					<div className="flex items-center justify-center gap-10">
-						<div className="flex justify-between items-center w-[385px] h-[47px] rounded-[8px] px-5 border-2">
+						<div className="flex justify-between items-center w-[385px] rounded-[8px] pe-2 border-2">
 							<input
-								className="grow outline-none pe-3.5"
+								className="grow outline-none px-2 h-[47px]"
 								type="text"
 								placeholder="دوست داری چی یاد بگیری؟"
 							/>
