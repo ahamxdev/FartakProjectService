@@ -365,3 +365,7 @@ FodyWeavers.xsd
 # Manually added
 builds/
 .github/
+
+frontend/node_modules/
+frontend/.vscode/
+frontend/.next/
