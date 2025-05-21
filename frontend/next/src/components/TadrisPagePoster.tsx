@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { lazy, memo } from "react";
+import poster from "../../public/poster.png";
 
 const IconStudent = lazy(() => import("@/icons/tadrisPage/IconStudent"));
 const IconTeacher = lazy(() => import("@/icons/tadrisPage/IconTeacher"));
@@ -14,7 +15,7 @@ const TadrisPagePoster = () => {
 		<div className="my-10">
 			<div className="m-5 relative w-fit">
 				<Image
-					src="/poster.png"
+					src={poster}
 					alt="poster"
 				/>
 				<div className="p-1 md:p-2 bg-white rounded-lg left-[50vw] gap-2 -top-8 shadow-[0px_18.360000610351562px_38.25px_0px_rgba(0,0,0,0.15)] flex w-fit md:flex-row-reverse justify-center items-center md:gap-6 absolute md:-left-[95px] md:top-[115px] scale-80 md:scale-100">
