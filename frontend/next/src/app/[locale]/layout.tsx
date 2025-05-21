@@ -35,9 +35,11 @@ const RootLayout = async ({
 			<body className={`font-yekan antialiased select-none ms-auto`}>
 				<NextIntlClientProvider locale={locale}>
 					<AntdRegistry>
-						<Header />
-						{children}
-						<Footer />
+						<div className="flex flex-col min-h-screen">
+							<Header />
+							<div className="grow">{children}</div>
+							<Footer />
+						</div>
 					</AntdRegistry>
 				</NextIntlClientProvider>
 			</body>
