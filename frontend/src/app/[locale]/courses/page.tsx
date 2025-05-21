@@ -43,7 +43,7 @@ const page = () => {
 			<div className="flex mt-13 justify-between mx-auto appearance-none items-center w-[296px] lg:w-[420px] h-[56px] rounded-[16px] bg-[#D3D3D3] px-5">
 				<input
 					className="grow outline-none pe-3.5"
-					type="search"
+					type="text"
 					placeholder="دوست داری چی یاد بگیری؟"
 				/>
 				<IconMagnifier />

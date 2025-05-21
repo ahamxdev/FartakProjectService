@@ -1,8 +1,8 @@
+@import "tailwindcss";
+
 @layer theme, base, antd, components, utilities,reset;
 
-@import url(globals.css) layer(reset);
-
-@import "tailwindcss";
+/* @import url(globals.css) layer(reset); */
 
 /* Webfont: Yekan */
 @font-face {
@@ -99,7 +99,7 @@ body {
 }
 
 .ant-checkbox-checked .ant-checkbox-inner {
-	@apply !bg-bluePrimary !border-bluePrimary
+	@apply !bg-bluePrimary !border-bluePrimary;
 }
 
 .ant-slider-handle::after,
