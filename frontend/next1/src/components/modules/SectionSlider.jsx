@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -37,23 +37,23 @@ const SectionSlider = ({ title, viewAllUrl, slidesPerView, children }) => {
                                                 <path d="M1 1.47852L0.999999 17.4785" stroke="#1E2531" strokeWidth="2" strokeLinecap="round" />
                                           </svg>
                                     </span>
-                                    <h2 className="text-2xl font-black">{title}</h2>
+                                    <h2 className="md:text-2xl text-base font-black">{title}</h2>
                               </div>
 
                               <div className={`hidden lg:block h-[3px] bg-[#E6E6E8] ${showNavigation ? "w-[596px]" : "w-[895px]"}`}>
                               </div>
                               {showNavigation && (
                                     <div className="flex items-center space-x-4">
-                                          <Link href={viewAllUrl} className="text-base font-bold text-[#1E2531]">مشاهده همه</Link>
+                                          <Link href={viewAllUrl} className="md:text-base text-xs font-bold text-[#1E2531]">مشاهده همه</Link>
                                           <div className="w-px h-5 bg-gray-300"></div>
                                           <div className="flex items-center gap-6">
                                                 <span ref={prevRef} onClick={() => setSlider(true)} className="w-4 h-4 cursor-pointer text-[#1e2531]">
-                                                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="#1E2531" className="size-6">
+                                                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="#1E2531" className="100%">
                                                             <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                                                       </svg>
                                                 </span>
                                                 <span ref={nextRef} onClick={() => setSlider(true)} className="w-4 h-4 cursor-pointer text-[#1e2531]">
-                                                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="#1E2531" className="size-6">
+                                                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="#1E2531" className="100%">
                                                             <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
                                                       </svg>
                                                 </span>

@@ -1,7 +1,11 @@
 @import "tailwindcss";
-
+@import "./font.css";
 body {
   direction: rtl;
+  font-family: "IRANYekan";
+}
+* {
+  font-family: "IRANYekan";
 }
 #new-project-box {
   box-shadow: 0px 0px 16px 0px #00000040;
@@ -30,9 +34,23 @@ body {
   );
 }
 #skill-box,
-#new-project-box {
+#new-project-box,
+#ChooseTranslationLanguageBox,
+#TranslationCategory,
+#ProgrammingLanguageBox {
   box-shadow: 0px 0px 5px 0px #00000040;
 }
 #confirm-btn {
   box-shadow: 0px 2px 7.9px 0px #00000040;
+}
+#category-submenu {
+  box-shadow: 0px 1px 16px 0px #0000001a;
+}
+#order-detail-box,
+#project-registration-form,
+#waySpeed-project-registration-box {
+  box-shadow: 0px 0px 8px 0px #0000001a;
+}
+#pay-way {
+  box-shadow: 0px 4px 10px 0px #0000001a;
 }

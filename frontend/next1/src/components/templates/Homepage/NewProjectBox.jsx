@@ -20,8 +20,8 @@ const NewProjectBox = () => {
                         لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با ...
                   </p>
                   <div className="flex items-center gap-3 mt-4">
-                        <Link className='rounded-lg flex justify-center items-center md:px-10 px-5 md:py-3 py-2 bg-[#1E2531] font-extrabold md:text-base text-sm text-white' href={"/"}>ثبت پیشنهاد</Link>
-                        <Link className='rounded-lg flex justify-center items-center md:px-10 px-5 md:py-3 py-2 bg-none font-extrabold md:text-base text-sm text-[#1E2531] border border-[#1E2531]' href={"/"}>مشاهده پروژه</Link>
+                        <Link className='rounded-lg flex justify-center items-center md:px-10 px-5 whitespace-nowrap md:py-3 py-2 bg-[#1E2531] font-extrabold md:text-base text-sm text-white' href={"/"}>ثبت پیشنهاد</Link>
+                        <Link className='rounded-lg flex justify-center items-center md:px-10 px-5 whitespace-nowrap md:py-3 py-2 bg-none font-extrabold md:text-base text-sm text-[#1E2531] border border-[#1E2531]' href={"/"}>مشاهده پروژه</Link>
                   </div>
             </div>
       )
