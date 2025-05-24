@@ -12,5 +12,10 @@
   },
   "List": {
     "seeAll": "مشاهده همه"
+  },
+  "BuyCourseForm": {
+    "info": "اطلاعات",
+    "lessonSelection": "انتخاب درس",
+    "teacherSelection": "انتخاب استاد"
   }
 }
