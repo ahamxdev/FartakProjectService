@@ -341,8 +341,6 @@ const FirstForm = ({
 						))}
 					</div>
 				</div>
-
-				<button type="button">submit</button>
 			</form>
 
 			{/* mobile  */}

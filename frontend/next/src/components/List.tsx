@@ -16,16 +16,25 @@ import listIcon from "../../public/listIcon.png";
 import { usePrevious, useWindowSize } from "@reactuses/core";
 import clsx from "clsx";
 
-const IconArrow =lazy(()=>import( "@/icons/IconArrow"))
-const Tabs =lazy(()=>import( "./Tabs"))
+const IconArrow = lazy(() => import("@/icons/IconArrow"));
+const Tabs = lazy(() => import("./Tabs"));
 
 interface Props {
 	title: string;
 	tabs?: string[];
+	bottomArrow?: true;
+	start?: true;
 	gap?: number;
 	children: ReactNode;
 }
-const List: FC<Props> = ({ title, children, tabs, gap }) => {
+const List: FC<Props> = ({
+	bottomArrow,
+	start,
+	title,
+	children,
+	tabs,
+	gap,
+}) => {
 	const t = useTranslations("List");
 	const list = useRef<HTMLDivElement>(null);
 	const [currentCard, setCurrentCard] = useState(0);
@@ -108,42 +117,46 @@ const List: FC<Props> = ({ title, children, tabs, gap }) => {
 		<div className="w-full">
 			<div className="flex justify-between items-center">
 				<div className="flex gap-3 lg:gap-10 items-center relative start-4 lg:start-[72px]">
-					<Image
-						src={listIcon}
-						alt="icon"
-					/>
+					{title && (
+						<Image
+							src={listIcon}
+							alt="icon"
+						/>
+					)}
 					<span className="font-black text-[16px] lg:text-2xl">
 						{title}
 					</span>
 				</div>
-				<div className="flex gap-4 items-center relative end-4 lg:end-[72px]">
-					<Link
-						href="#"
-						className="text-[12px] lg:text-[18px] font-medium transition-opacity duration-300 hover:opacity-60">
-						{t("seeAll")}
-					</Link>
-					<div className=" hidden lg:block bg-[rgba(30,37,49,0.45)] w-[1px] h-[60%]" />
-					<div className=" hidden lg:flex  gap-7">
-						<button
-							disabled={!canScrollRight}
-							onClick={onRightArrowClick}
-							className={clsx("transition-opacity duration-300", {
-								"cursor-pointer hover:opacity-60": canScrollRight,
-								"opacity-20": !canScrollRight,
-							})}>
-							<IconArrow right />
-						</button>
-						<button
-							disabled={!canScrollLeft}
-							onClick={onLeftArrowClick}
-							className={clsx("transition-opacity duration-300", {
-								"cursor-pointer hover:opacity-60": canScrollLeft,
-								"opacity-20": !canScrollLeft,
-							})}>
-							<IconArrow />
-						</button>
+				{!bottomArrow && (
+					<div className="flex gap-4 items-center relative end-4 lg:end-[72px]">
+						<Link
+							href="#"
+							className="text-[12px] lg:text-[18px] font-medium transition-opacity duration-300 hover:opacity-60">
+							{t("seeAll")}
+						</Link>
+						<div className=" hidden lg:block bg-[rgba(30,37,49,0.45)] w-[1px] h-[60%]" />
+						<div className=" hidden lg:flex items-center  gap-7">
+							<button
+								disabled={!canScrollRight}
+								onClick={onRightArrowClick}
+								className={clsx("transition-opacity duration-300", {
+									"cursor-pointer hover:opacity-60": canScrollRight,
+									"opacity-20": !canScrollRight,
+								})}>
+								<IconArrow right />
+							</button>
+							<button
+								disabled={!canScrollLeft}
+								onClick={onLeftArrowClick}
+								className={clsx("transition-opacity duration-300", {
+									"cursor-pointer hover:opacity-60": canScrollLeft,
+									"opacity-20": !canScrollLeft,
+								})}>
+								<IconArrow />
+							</button>
+						</div>
 					</div>
-				</div>
+				)}
 			</div>
 			{tabs && (
 				<div className="relative start-4 mt-4 lg:start-[72px] w-[95vw] overflow-hidden">
@@ -154,10 +167,15 @@ const List: FC<Props> = ({ title, children, tabs, gap }) => {
 				id="list"
 				ref={list}
 				style={{ gap: gap ? gap : 48 }}
-				className="flex p-5 lg:px-[72px] overflow-x-auto overflow-y-hidden">
+				className={`flex ${
+					!start ? "lg:px-[72px] p-5" : "py-5"
+				} overflow-x-auto overflow-y-hidden`}>
 				{children}
 			</div>
-			<div className="flex mx-auto w-fit lg:hidden gap-7 pb-10 pt-3">
+			<div
+				className={`flex mx-auto w-fit ${
+					!bottomArrow && "lg:hidden"
+				} gap-7 pb-10 pt-3`}>
 				<button
 					disabled={!canScrollRight}
 					onClick={onRightArrowClick}
