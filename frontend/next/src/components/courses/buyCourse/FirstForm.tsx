@@ -1,42 +1,44 @@
-import IconInfoNotif from "@/icons/IconInfoNotif";
+import { Dispatch, Fragment, lazy, memo, SetStateAction } from "react";
+import { Divider, Radio } from "@mui/material";
 import { IFirstBuyCourseForm } from "@/types/zod";
-import { firstBuyCourseFormSchema } from "@/zodObjects";
-import { Dispatch, memo, SetStateAction } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Radio } from "@mui/material";
+import {
+	UseFormGetValues,
+	UseFormRegister,
+	UseFormSetValue,
+} from "react-hook-form";
+
+const IconInfoNotif = lazy(() => import("@/icons/IconInfoNotif"));
+const IconArrow = lazy(() => import("@/icons/IconArrow"));
+
+const dasteBandi = [
+	"دبستان",
+	"متوسطه اول",
+	"متوسطه دوم",
+	"کنکور",
+	"دانشگاه",
+];
 
 const FirstForm = ({
 	completeForm,
+	getValues,
+	register,
+	setFormState,
+	setValue,
+	setBussinesBreadCrumbs,
+	setEducationBreadCrumbs,
 }: {
 	completeForm: Dispatch<SetStateAction<true[]>>;
+	setBussinesBreadCrumbs: Dispatch<SetStateAction<string[]>>;
+	setEducationBreadCrumbs: Dispatch<SetStateAction<string[]>>;
+	setValue: UseFormSetValue<IFirstBuyCourseForm>;
+	setFormState: Dispatch<SetStateAction<number>>;
+	register: UseFormRegister<IFirstBuyCourseForm>;
+	getValues: UseFormGetValues<IFirstBuyCourseForm>;
 }) => {
-	const { register, handleSubmit, getValues, setValue } =
-		useForm<IFirstBuyCourseForm>({
-			resolver: zodResolver(
-				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-				// @ts-ignore
-				firstBuyCourseFormSchema,
-			),
-			defaultValues: {
-				countOfCustomers: 1,
-				firstName: "",
-				forWho: "",
-				goal: "",
-				language: "",
-				lastName: "",
-				level: "",
-				region: "",
-			},
-		});
 	return (
 		<>
-			<form
-				onSubmit={handleSubmit((data: IFirstBuyCourseForm) => {
-					completeForm((prev) => [...prev, true]);
-					console.log(data);
-				})}
-				className="w-full hidden md:block">
+			{/* mobile */}
+			<form className="w-full hidden md:block">
 				<div className="mt-10 w-full flex flex-col gap-3 items-center">
 					<div className="flex items-center w-full h-[68px] gap-3">
 						<div className="w-full h-[68px] border-2 rounded-[8px] grow flex items-center justify-between px-5">
@@ -286,248 +288,342 @@ const FirstForm = ({
 						</div>
 					</div>
 				</div>
-				<button
-					type="button"
-					onClick={() => {
-						console.log(getValues());
-					}}>
-					submit
-				</button>
+
+				<div className="flex mt-3 flex-col">
+					<div className="text-[13px] cursor-pointer hover:opacity-80 transition-opacity duration-200 w-fit lg:text-[16px] py-[10px] px-4 bg-[#000] rounded-sm text-[#fff]">
+						تحصیلی
+					</div>
+					<div className="flex flex-col px-6 py-4">
+						{dasteBandi.map((item, index) => (
+							<Fragment key={index}>
+								<div
+									onClick={() => {
+										setFormState((prev) => ++prev);
+										completeForm((prev) => {
+											if (prev.length < 2) return [...prev, true];
+											return prev;
+										});
+										setEducationBreadCrumbs((prev) => [...prev, item]);
+									}}
+									className="w-full p-4 cursor-pointer transition-colors duration-200 rounded-sm hover:bg-gray-200 flex justify-between items-center">
+									{item}
+									<IconArrow />
+								</div>
+								{index !== dasteBandi.length - 1 && (
+									<Divider color="#B1BFFA" />
+								)}
+							</Fragment>
+						))}
+					</div>
+					<div className="text-[13px] cursor-pointer hover:opacity-80 transition-opacity duration-200 w-fit lg:text-[16px] py-[10px] px-4 bg-[#000] rounded-sm text-[#fff]">
+						کسب و کار
+					</div>
+					<div className="flex flex-col px-6 py-4">
+						{dasteBandi.map((item, index) => (
+							<Fragment key={index}>
+								<div
+									onClick={() => {
+										setFormState((prev) => ++prev);
+										completeForm((prev) => {
+											if (prev.length < 2) return [...prev, true];
+											return prev;
+										});
+										setBussinesBreadCrumbs((prev) => [...prev, item]);
+									}}
+									className="w-full p-4 cursor-pointer transition-colors duration-200 rounded-sm hover:bg-gray-200 flex justify-between items-center">
+									{item}
+									<IconArrow />
+								</div>
+								{index !== dasteBandi.length - 1 && (
+									<Divider color="#B1BFFA" />
+								)}
+							</Fragment>
+						))}
+					</div>
+				</div>
+
+				<button type="button">submit</button>
 			</form>
 
-			<form
-				onSubmit={handleSubmit((data: IFirstBuyCourseForm) => {
-					console.log(JSON.stringify(data, null, 2));
-				})}
-				className="md:hidden border flex flex-col gap-3 rounded-[8px] p-3">
-				<div className="w-full h-[68px] grow flex flex-col justify-between">
-					<div className="md:text-[20px] flex gap-3 items-center lg:text-[24px] font-[700] shrink-0">
-						<span>مکان خود را انتخاب کنید</span>
-						<IconInfoNotif className="text-[#000] scale-130" />
-					</div>
-					<div className="flex gap-15 items-center">
-						<div className="flex items-center gap-3">
-							<input
-								id="mobileRegion1"
-								type="radio"
-								className="w-4 h-4"
-								name="mobileRegion"
-							/>
-							<label htmlFor="mobileRegion1">ایران</label>
+			{/* mobile  */}
+			<form className="md:hidden">
+				<div className="border flex flex-col gap-3 p-3 rounded-lg">
+					<div className="w-full h-[68px] grow flex flex-col justify-between">
+						<div className="md:text-[20px] flex gap-3 items-center lg:text-[24px] font-[700] shrink-0">
+							<span>مکان خود را انتخاب کنید</span>
+							<IconInfoNotif className="text-[#000] scale-130" />
 						</div>
-						<div className="flex items-center gap-3">
-							<input
-								id="mobileRegion2"
-								type="radio"
-								className="w-4 h-4"
-								name="mobileRegion"
-							/>
-							<label htmlFor="mobileRegion2">خارج از ایران</label>
-						</div>
-					</div>
-				</div>
-				<div className="bg-[#B1BFFA] h-[1px] w-full" />
-
-				<div className="w-full h-[68px] grow flex flex-col justify-between">
-					<div className="md:text-[20px] flex gap-3 items-center lg:text-[24px] font-[700] shrink-0">
-						<span>زبان تدریس خود را انتخاب کنید</span>
-						<IconInfoNotif className="text-[#000] scale-130" />
-					</div>
-					<div className="flex gap-15 items-center">
-						<div className="flex items-center gap-3">
-							<input
-								id="mobileLang1"
-								type="radio"
-								className="w-4 h-4"
-								name="mobileLanguage"
-							/>
-							<label htmlFor="mobileLang1">فارسی</label>
-						</div>
-						<div className="flex items-center gap-3">
-							<input
-								id="mobileLang2"
-								type="radio"
-								className="w-4 h-4"
-								name="mobileLanguage"
-							/>
-							<label htmlFor="mobileLang2">انگلیسی</label>
+						<div className="flex gap-15 items-center">
+							<div className="flex items-center gap-3">
+								<input
+									id="mobileRegion1"
+									type="radio"
+									className="w-4 h-4"
+									name="mobileRegion"
+								/>
+								<label htmlFor="mobileRegion1">ایران</label>
+							</div>
+							<div className="flex items-center gap-3">
+								<input
+									id="mobileRegion2"
+									type="radio"
+									className="w-4 h-4"
+									name="mobileRegion"
+								/>
+								<label htmlFor="mobileRegion2">خارج از ایران</label>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div className="bg-[#B1BFFA] h-[1px] w-full" />
-
-				<div className="w-full h-[68px] grow flex flex-col justify-between">
-					<div className="md:text-[20px] flex gap-3 items-center lg:text-[24px] font-[700] shrink-0">
-						<span>کلاس را برای چه کسی میخواهید ؟</span>
-						<IconInfoNotif className="text-[#000] scale-130" />
-					</div>
-					<div className="flex gap-15 items-center">
-						<div className="flex items-center gap-3">
-							<input
-								id="mobileForWho1"
-								type="radio"
-								className="w-4 h-4"
-								name="mobileForWho"
-							/>
-							<label htmlFor="mobileForWho1">خودم</label>
+					<div className="bg-[#B1BFFA] h-[1px] w-full" />
+					<div className="w-full h-[68px] grow flex flex-col justify-between">
+						<div className="md:text-[20px] flex gap-3 items-center lg:text-[24px] font-[700] shrink-0">
+							<span>زبان تدریس خود را انتخاب کنید</span>
+							<IconInfoNotif className="text-[#000] scale-130" />
 						</div>
-						<div className="flex items-center gap-3">
-							<input
-								id="mobileForWho2"
-								type="radio"
-								className="w-4 h-4"
-								name="mobileForWho"
-							/>
-							<label htmlFor="mobileForWho2">فرزندم</label>
-						</div>
-						<div className="flex items-center gap-3">
-							<input
-								id="mobileForWho3"
-								type="radio"
-								className="w-4 h-4"
-								name="mobileForWho"
-							/>
-							<label htmlFor="mobileForWho3">دیگران</label>
+						<div className="flex gap-15 items-center">
+							<div className="flex items-center gap-3">
+								<input
+									id="mobileLang1"
+									type="radio"
+									className="w-4 h-4"
+									name="mobileLanguage"
+								/>
+								<label htmlFor="mobileLang1">فارسی</label>
+							</div>
+							<div className="flex items-center gap-3">
+								<input
+									id="mobileLang2"
+									type="radio"
+									className="w-4 h-4"
+									name="mobileLanguage"
+								/>
+								<label htmlFor="mobileLang2">انگلیسی</label>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div className="bg-[#B1BFFA] h-[1px] w-full" />
-
-				<div className="w-full grow flex flex-col gap-2">
-					<div className="md:text-[20px] flex gap-3 items-center justify-between lg:text-[24px] font-[700] shrink-0">
-						<span>تعداد شرکت کنندگان</span>
-						<div className="flex items-center gap-1.5">
-							<button className="rounded-full border-[1px] w-[20px] h-[20px] flex items-center justify-center pb-0.5">
-								+
-							</button>
+					<div className="bg-[#B1BFFA] h-[1px] w-full" />
+					<div className="w-full h-[68px] grow flex flex-col justify-between">
+						<div className="md:text-[20px] flex gap-3 items-center lg:text-[24px] font-[700] shrink-0">
+							<span>کلاس را برای چه کسی میخواهید ؟</span>
+							<IconInfoNotif className="text-[#000] scale-130" />
+						</div>
+						<div className="flex gap-15 items-center">
+							<div className="flex items-center gap-3">
+								<input
+									id="mobileForWho1"
+									type="radio"
+									className="w-4 h-4"
+									name="mobileForWho"
+								/>
+								<label htmlFor="mobileForWho1">خودم</label>
+							</div>
+							<div className="flex items-center gap-3">
+								<input
+									id="mobileForWho2"
+									type="radio"
+									className="w-4 h-4"
+									name="mobileForWho"
+								/>
+								<label htmlFor="mobileForWho2">فرزندم</label>
+							</div>
+							<div className="flex items-center gap-3">
+								<input
+									id="mobileForWho3"
+									type="radio"
+									className="w-4 h-4"
+									name="mobileForWho"
+								/>
+								<label htmlFor="mobileForWho3">دیگران</label>
+							</div>
+						</div>
+					</div>
+					<div className="bg-[#B1BFFA] h-[1px] w-full" />
+					<div className="w-full grow flex flex-col gap-2">
+						<div className="md:text-[20px] flex gap-3 items-center justify-between lg:text-[24px] font-[700] shrink-0">
+							<span>تعداد شرکت کنندگان</span>
+							<div className="flex items-center gap-1.5">
+								<button className="rounded-full border-[1px] w-[20px] h-[20px] flex items-center justify-center pb-0.5">
+									+
+								</button>
+								<input
+									className="w-[28px] text-[14px] text-center outline-none h-[28px] border p-1 rounded-[4px]"
+									type="text"
+								/>
+								<button className="rounded-full border-[1px] w-[20px] h-[20px] flex items-center justify-center pb-0.5">
+									-
+								</button>
+							</div>
+						</div>
+						<ul className="list-disc text-[13px] list-inside text-[#EA0017]">
+							<li className="marker:relative marker:top-1">
+								به ازای هر نفر 20 درصد به قیمت اضافه می شود
+							</li>
+						</ul>
+					</div>
+					<div className="bg-[#B1BFFA] h-[1px] w-full" />
+					<div className="w-full gap-2 grow flex flex-col">
+						<div className="md:text-[20px] flex gap-3 items-center lg:text-[24px] font-[700] shrink-0">
+							<span>نام و نام خانوادگی را وارد کنید </span>
+							<IconInfoNotif className="text-[#000] scale-130" />
+						</div>
+						<div className="w-full h-[47px] flex gap-5">
 							<input
-								className="w-[28px] text-[14px] text-center outline-none h-[28px] border p-1 rounded-[4px]"
+								className="w-1/3 outline-none border rounded-[8px] px-5"
 								type="text"
+								placeholder="نام"
 							/>
-							<button className="rounded-full border-[1px] w-[20px] h-[20px] flex items-center justify-center pb-0.5">
-								-
-							</button>
+							<input
+								className="border outline-none rounded-[8px] px-5"
+								type="text"
+								placeholder="نام خانوادگی"
+							/>
 						</div>
 					</div>
-					<ul className="list-disc text-[13px] list-inside text-[#EA0017]">
-						<li className="marker:relative marker:top-1">
-							به ازای هر نفر 20 درصد به قیمت اضافه می شود
-						</li>
-					</ul>
+					<div className="bg-[#B1BFFA] h-[1px] w-full" />
+					<div className="w-full h-[68px] grow flex flex-col justify-between">
+						<div className="md:text-[20px] flex gap-3 items-center lg:text-[24px] font-[700] shrink-0">
+							<span>سطح شاگرد را انتخاب کنید</span>
+							<IconInfoNotif className="text-[#000] scale-130" />
+						</div>
+						<div className="flex justify-between mx-1 items-center">
+							<div className="flex items-center gap-3">
+								<input
+									id="mobileLevel1"
+									type="radio"
+									className="w-4 h-4"
+									name="levmobileLevelel"
+								/>
+								<label htmlFor="mobileLevel1">ضعیف</label>
+							</div>
+							<div className="flex items-center gap-3">
+								<input
+									id="mobileLevel2"
+									type="radio"
+									className="w-4 h-4"
+									name="mobileLevel"
+								/>
+								<label htmlFor="mobileLevel2">متوسط</label>
+							</div>
+							<div className="flex items-center gap-3">
+								<input
+									id="mobileLevel3"
+									type="radio"
+									className="w-4 h-4"
+									name="mobileLevel"
+								/>
+								<label htmlFor="mobileLevel3">خوب</label>
+							</div>
+							<div className="flex items-center gap-3">
+								<input
+									id="mobileLevel4"
+									type="radio"
+									className="w-4 h-4"
+									name="mobileLevel"
+								/>
+								<label htmlFor="mobileLevel4">عالی</label>
+							</div>
+						</div>
+					</div>
+					<div className="bg-[#B1BFFA] h-[1px] w-full" />
+					<div className="w-full grow flex flex-col gap-2 justify-between">
+						<div className="md:text-[20px] flex gap-3 items-center lg:text-[24px] font-[700] shrink-0">
+							<span>هدف شما از گرفتن معلم در این درس چیست</span>
+							<IconInfoNotif className="text-[#000] scale-130" />
+						</div>
+						<div className="flex justify-between space-y-2 flex-wrap mx-1 items-center">
+							<div className="flex items-center gap-3">
+								<input
+									id="mobileGoal1"
+									type="radio"
+									className="w-4 h-4"
+									name="mobileGoal"
+								/>
+								<label
+									htmlFor="mobileGoal1"
+									className="text-[16px]">
+									آموزش پایه
+								</label>
+							</div>
+							<div className="flex items-center gap-3">
+								<input
+									id="mobileGoal2"
+									type="radio"
+									className="w-4 h-4"
+									name="mobileGoal"
+								/>
+								<label
+									htmlFor="mobileGoal2"
+									className="text-[16px]">
+									رفع اشکال و آمادگی برای امتحان
+								</label>
+							</div>
+							<div className="flex items-center gap-3">
+								<input
+									id="mobileGoal3"
+									type="radio"
+									className="w-4 h-4"
+									name="mobileGoal"
+								/>
+								<label
+									htmlFor="mobileGoal3"
+									className="text-[16px]">
+									خوب
+								</label>
+							</div>
+						</div>
+					</div>
 				</div>
-				<div className="bg-[#B1BFFA] h-[1px] w-full" />
 
-				<div className="w-full gap-2 grow flex flex-col">
-					<div className="md:text-[20px] flex gap-3 items-center lg:text-[24px] font-[700] shrink-0">
-						<span>نام و نام خانوادگی را وارد کنید </span>
-						<IconInfoNotif className="text-[#000] scale-130" />
+				<div className="flex mt-3 flex-col">
+					<div className="text-[13px] cursor-pointer hover:opacity-80 transition-opacity duration-200 w-fit lg:text-[16px] py-[10px] px-4 bg-[#000] rounded-sm text-[#fff]">
+						تحصیلی
 					</div>
-					<div className="w-full h-[47px] flex gap-5">
-						<input
-							className="w-1/3 outline-none border rounded-[8px] px-5"
-							type="text"
-							placeholder="نام"
-						/>
-						<input
-							className="border outline-none rounded-[8px] px-5"
-							type="text"
-							placeholder="نام خانوادگی"
-						/>
+					<div className="flex flex-col px-6 py-4">
+						{dasteBandi.map((item, index) => (
+							<Fragment key={index}>
+								<div
+									onClick={() => {
+										setFormState((prev) => ++prev);
+										completeForm((prev) => {
+											if (prev.length < 2) return [...prev, true];
+											return prev;
+										});
+										setEducationBreadCrumbs((prev) => [...prev, item]);
+									}}
+									className="w-full p-4 cursor-pointer transition-colors duration-200 rounded-sm hover:bg-gray-200 flex justify-between items-center">
+									{item}
+									<IconArrow />
+								</div>
+								{index !== dasteBandi.length - 1 && (
+									<Divider color="#B1BFFA" />
+								)}
+							</Fragment>
+						))}
 					</div>
-				</div>
-				<div className="bg-[#B1BFFA] h-[1px] w-full" />
-
-				<div className="w-full h-[68px] grow flex flex-col justify-between">
-					<div className="md:text-[20px] flex gap-3 items-center lg:text-[24px] font-[700] shrink-0">
-						<span>سطح شاگرد را انتخاب کنید</span>
-						<IconInfoNotif className="text-[#000] scale-130" />
+					<div className="text-[13px] cursor-pointer hover:opacity-80 transition-opacity duration-200 w-fit lg:text-[16px] py-[10px] px-4 bg-[#000] rounded-sm text-[#fff]">
+						کسب و کار
 					</div>
-					<div className="flex justify-between mx-1 items-center">
-						<div className="flex items-center gap-3">
-							<input
-								id="mobileLevel1"
-								type="radio"
-								className="w-4 h-4"
-								name="levmobileLevelel"
-							/>
-							<label htmlFor="mobileLevel1">ضعیف</label>
-						</div>
-						<div className="flex items-center gap-3">
-							<input
-								id="mobileLevel2"
-								type="radio"
-								className="w-4 h-4"
-								name="mobileLevel"
-							/>
-							<label htmlFor="mobileLevel2">متوسط</label>
-						</div>
-						<div className="flex items-center gap-3">
-							<input
-								id="mobileLevel3"
-								type="radio"
-								className="w-4 h-4"
-								name="mobileLevel"
-							/>
-							<label htmlFor="mobileLevel3">خوب</label>
-						</div>
-						<div className="flex items-center gap-3">
-							<input
-								id="mobileLevel4"
-								type="radio"
-								className="w-4 h-4"
-								name="mobileLevel"
-							/>
-							<label htmlFor="mobileLevel4">عالی</label>
-						</div>
-					</div>
-				</div>
-				<div className="bg-[#B1BFFA] h-[1px] w-full" />
-
-				<div className="w-full grow flex flex-col gap-2 justify-between">
-					<div className="md:text-[20px] flex gap-3 items-center lg:text-[24px] font-[700] shrink-0">
-						<span>هدف شما از گرفتن معلم در این درس چیست</span>
-						<IconInfoNotif className="text-[#000] scale-130" />
-					</div>
-					<div className="flex justify-between space-y-2 flex-wrap mx-1 items-center">
-						<div className="flex items-center gap-3">
-							<input
-								id="mobileGoal1"
-								type="radio"
-								className="w-4 h-4"
-								name="mobileGoal"
-							/>
-							<label
-								htmlFor="mobileGoal1"
-								className="text-[16px]">
-								آموزش پایه
-							</label>
-						</div>
-						<div className="flex items-center gap-3">
-							<input
-								id="mobileGoal2"
-								type="radio"
-								className="w-4 h-4"
-								name="mobileGoal"
-							/>
-							<label
-								htmlFor="mobileGoal2"
-								className="text-[16px]">
-								رفع اشکال و آمادگی برای امتحان
-							</label>
-						</div>
-						<div className="flex items-center gap-3">
-							<input
-								id="mobileGoal3"
-								type="radio"
-								className="w-4 h-4"
-								name="mobileGoal"
-							/>
-							<label
-								htmlFor="mobileGoal3"
-								className="text-[16px]">
-								خوب
-							</label>
-						</div>
+					<div className="flex flex-col px-6 py-4">
+						{dasteBandi.map((item, index) => (
+							<Fragment key={index}>
+								<div
+									onClick={() => {
+										setFormState((prev) => ++prev);
+										completeForm((prev) => {
+											if (prev.length < 2) return [...prev, true];
+											return prev;
+										});
+										setBussinesBreadCrumbs((prev) => [...prev, item]);
+									}}
+									className="w-full p-4 cursor-pointer transition-colors duration-200 rounded-sm hover:bg-gray-200 flex justify-between items-center">
+									{item}
+									<IconArrow />
+								</div>
+								{index !== dasteBandi.length - 1 && (
+									<Divider color="#B1BFFA" />
+								)}
+							</Fragment>
+						))}
 					</div>
 				</div>
 			</form>
