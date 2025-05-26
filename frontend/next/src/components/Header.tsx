@@ -52,6 +52,7 @@ const Header = () => {
 				<Image
 					className="w-[142px] h-[142px] hidden md:block"
 					src={logo}
+					priority
 					alt="logo"
 				/>
 				<div className="grow mx-5">

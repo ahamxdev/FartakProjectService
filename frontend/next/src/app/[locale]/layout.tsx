@@ -7,7 +7,7 @@ import { routing } from "@/i18n/routing";
 import { yekan } from "../../fonts";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { AntdRegistry } from "@ant-design/nextjs-registry";
+import ThemeRegistry from "@/theme/ThemeRegistry";
 
 export const metadata: Metadata = {
 	title: "فرتاک",
@@ -34,13 +34,13 @@ const RootLayout = async ({
 			lang={locale}>
 			<body className={`font-yekan antialiased select-none ms-auto`}>
 				<NextIntlClientProvider locale={locale}>
-					<AntdRegistry>
+					<ThemeRegistry>
 						<div className="flex flex-col min-h-screen">
 							<Header />
 							<div className="grow">{children}</div>
 							<Footer />
 						</div>
-					</AntdRegistry>
+					</ThemeRegistry>
 				</NextIntlClientProvider>
 			</body>
 		</html>

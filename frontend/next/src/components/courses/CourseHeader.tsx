@@ -16,7 +16,11 @@ import {
 	useWindowSize,
 } from "@reactuses/core";
 import { isInViewport } from "@/utils/screen";
-import { Menu } from "antd";
+import {
+	Accordion,
+	AccordionDetails,
+	AccordionSummary,
+} from "@mui/material";
 
 const IconBook = lazy(() => import("@/icons/courses/IconBook"));
 const IconCalculator = lazy(
@@ -372,14 +376,14 @@ const CourseHeader = () => {
 				</AnimatePresence>
 			</div>
 
-			<div className="lg:hidden !shadow-[0px_0px_16px_0px_rgba(0,0,0,0.25)] rounded-2xl grow relative">
+			<div className="lg:hidden !shadow-[0px_0px_16px_0px_rgba(0,0,0,0.25)] !w-fit !h-fit rounded-2xl grow relative">
 				<div
 					onClick={() => {
 						setMobileDropDown((prev) => !prev);
 					}}
 					className={`flex ${
 						mobileDropDonw ? "rounded-t-2xl" : "rounded-2xl"
-					} cursor-pointer hover:opacity-80 h-full transition-opacity duration-200 bg-[#D3D3D3] py-2 lg:p-4 lg:w-[236px] items-center justify-between text-[#1E2531] !px-4`}>
+					} cursor-pointer hover:opacity-80 transition-opacity duration-200 bg-[#D3D3D3] py-2 lg:p-4 lg:w-[236px] items-center justify-between text-[#1E2531] !px-4`}>
 					<div className="flex gap-2 lg:gap-4 items-center">
 						<div className="flex gap-2 items-center">همه دروس</div>
 					</div>
@@ -388,83 +392,23 @@ const CourseHeader = () => {
 				<AnimatePresence initial={false}>
 					{mobileDropDonw && (
 						<motion.div
+							layout
 							initial={{ opacity: 0, y: -10 }}
 							animate={{ opacity: 1, y: 0 }}
-							exit={{ opacity: 0, y: -10 }}>
-							<Menu
-								className="!absolute !w-full !font-yekan !rounded-b-2xl [&_.ant-menu-submenu-selected_.ant-menu-title-content]:!text-[#1E2531] [&_.ant-menu-submenu-selected_.ant-menu-submenu-title]:!text-[#1E2531] !bg-[#D3D3D3]"
-								mode="inline">
-								<Menu.Divider />
-								<Menu.SubMenu
-									className="font-bold [&_.ant-menu-item-selected]:!bg-transparent [&_.ant-menu-inline]:!bg-transparent my-2 text-[18px]"
-									title="برنامه نویسی"
-									key="programing">
-									<div className="py-[13px] px-4 flex flex-col justify-center rounded-2xl">
-										<div className="flex flex-col lg:flex-row">
-											<div>
-												<h4 className="text-[16px] mb-7 font-semibold">
-													فصل اول
-												</h4>
-												<ul className="list-disc space-y-5 ms-3 text-[16px] !font-light list-inside">
-													<li>مقدمه</li>
-													<li>توضیحات اولیه</li>
-													<li>توضیحات اضافی</li>
-													<li>تمرین های فصل اول</li>
-													<li>ارزیابی و پایان</li>
-												</ul>
-											</div>
-											<div className="bg-[#1E2531] opacity-15 w-full h-[1px] lg:w-[1px] lg:h-full my-6 lg:my-0 lg:mx-6" />
-										</div>
-										<div className="flex flex-col lg:flex-row">
-											<div>
-												<h4 className="text-[16px] mb-7 font-semibold">
-													فصل دوم
-												</h4>
-												<ul className="list-disc space-y-5 ms-3 text-[16px] !font-light list-inside">
-													<li>مقدمه</li>
-													<li>توضیحات اولیه</li>
-													<li>توضیحات اضافی</li>
-													<li>تمرین های فصل اول</li>
-													<li>ارزیابی و پایان</li>
-												</ul>
-											</div>
-											<div className="bg-[#1E2531] opacity-15 w-full h-[1px] lg:w-[1px] lg:h-full my-6 lg:my-0 lg:mx-6" />
-										</div>
-										<div className="flex flex-col lg:flex-row">
-											<div>
-												<h4 className="text-[16px] mb-7 font-semibold">
-													فصل سوم
-												</h4>
-												<ul className="list-disc space-y-5 ms-3 text-[16px] !font-light list-inside">
-													<li>مقدمه</li>
-													<li>توضیحات اولیه</li>
-													<li>توضیحات اضافی</li>
-													<li>تمرین های فصل اول</li>
-													<li>ارزیابی و پایان</li>
-												</ul>
-											</div>
-											<div className="bg-[#1E2531] opacity-15 w-full h-[1px] lg:w-[1px] lg:h-full my-6 lg:my-0 lg:mx-6" />
-										</div>
-										<div className="flex flex-col lg:flex-row">
-											<div>
-												<h4 className="text-[16px] mb-7 font-semibold">
-													فصل چهارم
-												</h4>
-												<ul className="list-disc space-y-5 ms-3 text-[16px] !font-light list-inside">
-													<li>مقدمه</li>
-													<li>توضیحات اولیه</li>
-													<li>توضیحات اضافی</li>
-													<li>تمرین های فصل اول</li>
-													<li>ارزیابی و پایان</li>
-												</ul>
-											</div>
-											<div className="bg-[#1E2531] opacity-15 w-full h-[1px] lg:w-[1px] lg:h-full my-6 lg:my-0 lg:mx-6" />
-										</div>
+							exit={{ opacity: 0, y: -10 }}
+							className="!font-yekan !rounded-b-2xl">
+							<Accordion className="!mt-0 !rounded-t-none !bg-[#D3D3D3]">
+								<AccordionSummary
+									expandIcon={<IconArrow className="-rotate-90" />}>
+									برنامه نویسی
+								</AccordionSummary>
+								<AccordionDetails className="p-4 flex flex-col justify-center rounded-2xl">
+									<div className="flex flex-col lg:flex-row">
 										<div>
 											<h4 className="text-[16px] mb-7 font-semibold">
-												فصل پنجم
+												فصل اول
 											</h4>
-											<ul className="list-disc space-y-5 ms-3 text-[16px] !font-light list-inside">
+											<ul className="list-disc w-fit relative start-5 space-y-1 scale-130 text-[10px] !font-light list-inside">
 												<li>مقدمه</li>
 												<li>توضیحات اولیه</li>
 												<li>توضیحات اضافی</li>
@@ -472,79 +416,14 @@ const CourseHeader = () => {
 												<li>ارزیابی و پایان</li>
 											</ul>
 										</div>
+										<div className="bg-[#1E2531] opacity-15 w-full h-[1px] lg:w-[1px] lg:h-full my-6 lg:my-0 lg:mx-6" />
 									</div>
-								</Menu.SubMenu>
-								<Menu.Divider />
-								<Menu.SubMenu
-									className="font-bold [&_.ant-menu-item-selected]:!bg-transparent [&_.ant-menu-inline]:!bg-transparent my-2 text-[18px]"
-									title="گرافیک"
-									key="graphice">
-									<div className="py-[13px] px-4 flex flex-col justify-center rounded-2xl">
-										<div className="flex flex-col lg:flex-row">
-											<div>
-												<h4 className="text-[16px] mb-7 font-semibold">
-													فصل اول
-												</h4>
-												<ul className="list-disc space-y-5 ms-3 text-[16px] !font-light list-inside">
-													<li>مقدمه</li>
-													<li>توضیحات اولیه</li>
-													<li>توضیحات اضافی</li>
-													<li>تمرین های فصل اول</li>
-													<li>ارزیابی و پایان</li>
-												</ul>
-											</div>
-											<div className="bg-[#1E2531] opacity-15 w-full h-[1px] lg:w-[1px] lg:h-full my-6 lg:my-0 lg:mx-6" />
-										</div>
-										<div className="flex flex-col lg:flex-row">
-											<div>
-												<h4 className="text-[16px] mb-7 font-semibold">
-													فصل دوم
-												</h4>
-												<ul className="list-disc space-y-5 ms-3 text-[16px] !font-light list-inside">
-													<li>مقدمه</li>
-													<li>توضیحات اولیه</li>
-													<li>توضیحات اضافی</li>
-													<li>تمرین های فصل اول</li>
-													<li>ارزیابی و پایان</li>
-												</ul>
-											</div>
-											<div className="bg-[#1E2531] opacity-15 w-full h-[1px] lg:w-[1px] lg:h-full my-6 lg:my-0 lg:mx-6" />
-										</div>
-										<div className="flex flex-col lg:flex-row">
-											<div>
-												<h4 className="text-[16px] mb-7 font-semibold">
-													فصل سوم
-												</h4>
-												<ul className="list-disc space-y-5 ms-3 text-[16px] !font-light list-inside">
-													<li>مقدمه</li>
-													<li>توضیحات اولیه</li>
-													<li>توضیحات اضافی</li>
-													<li>تمرین های فصل اول</li>
-													<li>ارزیابی و پایان</li>
-												</ul>
-											</div>
-											<div className="bg-[#1E2531] opacity-15 w-full h-[1px] lg:w-[1px] lg:h-full my-6 lg:my-0 lg:mx-6" />
-										</div>
-										<div className="flex flex-col lg:flex-row">
-											<div>
-												<h4 className="text-[16px] mb-7 font-semibold">
-													فصل چهارم
-												</h4>
-												<ul className="list-disc space-y-5 ms-3 text-[16px] !font-light list-inside">
-													<li>مقدمه</li>
-													<li>توضیحات اولیه</li>
-													<li>توضیحات اضافی</li>
-													<li>تمرین های فصل اول</li>
-													<li>ارزیابی و پایان</li>
-												</ul>
-											</div>
-											<div className="bg-[#1E2531] opacity-15 w-full h-[1px] lg:w-[1px] lg:h-full my-6 lg:my-0 lg:mx-6" />
-										</div>
+									<div className="flex flex-col lg:flex-row">
 										<div>
 											<h4 className="text-[16px] mb-7 font-semibold">
-												فصل پنجم
+												فصل دوم
 											</h4>
-											<ul className="list-disc space-y-5 ms-3 text-[16px] !font-light list-inside">
+											<ul className="list-disc w-fit relative start-5 space-y-1 scale-130 text-[10px] !font-light list-inside">
 												<li>مقدمه</li>
 												<li>توضیحات اولیه</li>
 												<li>توضیحات اضافی</li>
@@ -552,79 +431,14 @@ const CourseHeader = () => {
 												<li>ارزیابی و پایان</li>
 											</ul>
 										</div>
+										<div className="bg-[#1E2531] opacity-15 w-full h-[1px] lg:w-[1px] lg:h-full my-6 lg:my-0 lg:mx-6" />
 									</div>
-								</Menu.SubMenu>
-								<Menu.Divider />
-								<Menu.SubMenu
-									className="font-bold [&_.ant-menu-item-selected]:!bg-transparent [&_.ant-menu-inline]:!bg-transparent my-2 text-[18px]"
-									title="زبان انگلیسی"
-									key="english language">
-									<div className="py-[13px] px-4 flex flex-col justify-center rounded-2xl">
-										<div className="flex flex-col lg:flex-row">
-											<div>
-												<h4 className="text-[16px] mb-7 font-semibold">
-													فصل اول
-												</h4>
-												<ul className="list-disc space-y-5 ms-3 text-[16px] !font-light list-inside">
-													<li>مقدمه</li>
-													<li>توضیحات اولیه</li>
-													<li>توضیحات اضافی</li>
-													<li>تمرین های فصل اول</li>
-													<li>ارزیابی و پایان</li>
-												</ul>
-											</div>
-											<div className="bg-[#1E2531] opacity-15 w-full h-[1px] lg:w-[1px] lg:h-full my-6 lg:my-0 lg:mx-6" />
-										</div>
-										<div className="flex flex-col lg:flex-row">
-											<div>
-												<h4 className="text-[16px] mb-7 font-semibold">
-													فصل دوم
-												</h4>
-												<ul className="list-disc space-y-5 ms-3 text-[16px] !font-light list-inside">
-													<li>مقدمه</li>
-													<li>توضیحات اولیه</li>
-													<li>توضیحات اضافی</li>
-													<li>تمرین های فصل اول</li>
-													<li>ارزیابی و پایان</li>
-												</ul>
-											</div>
-											<div className="bg-[#1E2531] opacity-15 w-full h-[1px] lg:w-[1px] lg:h-full my-6 lg:my-0 lg:mx-6" />
-										</div>
-										<div className="flex flex-col lg:flex-row">
-											<div>
-												<h4 className="text-[16px] mb-7 font-semibold">
-													فصل سوم
-												</h4>
-												<ul className="list-disc space-y-5 ms-3 text-[16px] !font-light list-inside">
-													<li>مقدمه</li>
-													<li>توضیحات اولیه</li>
-													<li>توضیحات اضافی</li>
-													<li>تمرین های فصل اول</li>
-													<li>ارزیابی و پایان</li>
-												</ul>
-											</div>
-											<div className="bg-[#1E2531] opacity-15 w-full h-[1px] lg:w-[1px] lg:h-full my-6 lg:my-0 lg:mx-6" />
-										</div>
-										<div className="flex flex-col lg:flex-row">
-											<div>
-												<h4 className="text-[16px] mb-7 font-semibold">
-													فصل چهارم
-												</h4>
-												<ul className="list-disc space-y-5 ms-3 text-[16px] !font-light list-inside">
-													<li>مقدمه</li>
-													<li>توضیحات اولیه</li>
-													<li>توضیحات اضافی</li>
-													<li>تمرین های فصل اول</li>
-													<li>ارزیابی و پایان</li>
-												</ul>
-											</div>
-											<div className="bg-[#1E2531] opacity-15 w-full h-[1px] lg:w-[1px] lg:h-full my-6 lg:my-0 lg:mx-6" />
-										</div>
+									<div className="flex flex-col lg:flex-row">
 										<div>
 											<h4 className="text-[16px] mb-7 font-semibold">
-												فصل پنجم
+												فصل سوم
 											</h4>
-											<ul className="list-disc space-y-5 ms-3 text-[16px] !font-light list-inside">
+											<ul className="list-disc w-fit relative start-5 space-y-1 scale-130 text-[10px] !font-light list-inside">
 												<li>مقدمه</li>
 												<li>توضیحات اولیه</li>
 												<li>توضیحات اضافی</li>
@@ -632,79 +446,14 @@ const CourseHeader = () => {
 												<li>ارزیابی و پایان</li>
 											</ul>
 										</div>
+										<div className="bg-[#1E2531] opacity-15 w-full h-[1px] lg:w-[1px] lg:h-full my-6 lg:my-0 lg:mx-6" />
 									</div>
-								</Menu.SubMenu>
-								<Menu.Divider />
-								<Menu.SubMenu
-									className="font-bold [&_.ant-menu-item-selected]:!bg-transparent [&_.ant-menu-inline]:!bg-transparent my-2 text-[18px]"
-									title="ریاضی"
-									key="math">
-									<div className="py-[13px] px-4 flex flex-col justify-center rounded-2xl">
-										<div className="flex flex-col lg:flex-row">
-											<div>
-												<h4 className="text-[16px] mb-7 font-semibold">
-													فصل اول
-												</h4>
-												<ul className="list-disc space-y-5 ms-3 text-[16px] !font-light list-inside">
-													<li>مقدمه</li>
-													<li>توضیحات اولیه</li>
-													<li>توضیحات اضافی</li>
-													<li>تمرین های فصل اول</li>
-													<li>ارزیابی و پایان</li>
-												</ul>
-											</div>
-											<div className="bg-[#1E2531] opacity-15 w-full h-[1px] lg:w-[1px] lg:h-full my-6 lg:my-0 lg:mx-6" />
-										</div>
-										<div className="flex flex-col lg:flex-row">
-											<div>
-												<h4 className="text-[16px] mb-7 font-semibold">
-													فصل دوم
-												</h4>
-												<ul className="list-disc space-y-5 ms-3 text-[16px] !font-light list-inside">
-													<li>مقدمه</li>
-													<li>توضیحات اولیه</li>
-													<li>توضیحات اضافی</li>
-													<li>تمرین های فصل اول</li>
-													<li>ارزیابی و پایان</li>
-												</ul>
-											</div>
-											<div className="bg-[#1E2531] opacity-15 w-full h-[1px] lg:w-[1px] lg:h-full my-6 lg:my-0 lg:mx-6" />
-										</div>
-										<div className="flex flex-col lg:flex-row">
-											<div>
-												<h4 className="text-[16px] mb-7 font-semibold">
-													فصل سوم
-												</h4>
-												<ul className="list-disc space-y-5 ms-3 text-[16px] !font-light list-inside">
-													<li>مقدمه</li>
-													<li>توضیحات اولیه</li>
-													<li>توضیحات اضافی</li>
-													<li>تمرین های فصل اول</li>
-													<li>ارزیابی و پایان</li>
-												</ul>
-											</div>
-											<div className="bg-[#1E2531] opacity-15 w-full h-[1px] lg:w-[1px] lg:h-full my-6 lg:my-0 lg:mx-6" />
-										</div>
-										<div className="flex flex-col lg:flex-row">
-											<div>
-												<h4 className="text-[16px] mb-7 font-semibold">
-													فصل چهارم
-												</h4>
-												<ul className="list-disc space-y-5 ms-3 text-[16px] !font-light list-inside">
-													<li>مقدمه</li>
-													<li>توضیحات اولیه</li>
-													<li>توضیحات اضافی</li>
-													<li>تمرین های فصل اول</li>
-													<li>ارزیابی و پایان</li>
-												</ul>
-											</div>
-											<div className="bg-[#1E2531] opacity-15 w-full h-[1px] lg:w-[1px] lg:h-full my-6 lg:my-0 lg:mx-6" />
-										</div>
+									<div className="flex flex-col lg:flex-row">
 										<div>
 											<h4 className="text-[16px] mb-7 font-semibold">
-												فصل پنجم
+												فصل چهارم
 											</h4>
-											<ul className="list-disc space-y-5 ms-3 text-[16px] !font-light list-inside">
+											<ul className="list-disc w-fit relative start-5 space-y-1 scale-130 text-[10px] !font-light list-inside">
 												<li>مقدمه</li>
 												<li>توضیحات اولیه</li>
 												<li>توضیحات اضافی</li>
@@ -712,79 +461,14 @@ const CourseHeader = () => {
 												<li>ارزیابی و پایان</li>
 											</ul>
 										</div>
+										<div className="bg-[#1E2531] opacity-15 w-full h-[1px] lg:w-[1px] lg:h-full my-6 lg:my-0 lg:mx-6" />
 									</div>
-								</Menu.SubMenu>
-								<Menu.Divider />
-								<Menu.SubMenu
-									className="font-bold [&_.ant-menu-item-selected]:!bg-transparent [&_.ant-menu-inline]:!bg-transparent my-2 text-[18px]"
-									title="آی تی"
-									key="it">
-									<div className="py-[13px] px-4 flex flex-col justify-center rounded-2xl">
-										<div className="flex flex-col lg:flex-row">
-											<div>
-												<h4 className="text-[16px] mb-7 font-semibold">
-													فصل اول
-												</h4>
-												<ul className="list-disc space-y-5 ms-3 text-[16px] !font-light list-inside">
-													<li>مقدمه</li>
-													<li>توضیحات اولیه</li>
-													<li>توضیحات اضافی</li>
-													<li>تمرین های فصل اول</li>
-													<li>ارزیابی و پایان</li>
-												</ul>
-											</div>
-											<div className="bg-[#1E2531] opacity-15 w-full h-[1px] lg:w-[1px] lg:h-full my-6 lg:my-0 lg:mx-6" />
-										</div>
-										<div className="flex flex-col lg:flex-row">
-											<div>
-												<h4 className="text-[16px] mb-7 font-semibold">
-													فصل دوم
-												</h4>
-												<ul className="list-disc space-y-5 ms-3 text-[16px] !font-light list-inside">
-													<li>مقدمه</li>
-													<li>توضیحات اولیه</li>
-													<li>توضیحات اضافی</li>
-													<li>تمرین های فصل اول</li>
-													<li>ارزیابی و پایان</li>
-												</ul>
-											</div>
-											<div className="bg-[#1E2531] opacity-15 w-full h-[1px] lg:w-[1px] lg:h-full my-6 lg:my-0 lg:mx-6" />
-										</div>
-										<div className="flex flex-col lg:flex-row">
-											<div>
-												<h4 className="text-[16px] mb-7 font-semibold">
-													فصل سوم
-												</h4>
-												<ul className="list-disc space-y-5 ms-3 text-[16px] !font-light list-inside">
-													<li>مقدمه</li>
-													<li>توضیحات اولیه</li>
-													<li>توضیحات اضافی</li>
-													<li>تمرین های فصل اول</li>
-													<li>ارزیابی و پایان</li>
-												</ul>
-											</div>
-											<div className="bg-[#1E2531] opacity-15 w-full h-[1px] lg:w-[1px] lg:h-full my-6 lg:my-0 lg:mx-6" />
-										</div>
-										<div className="flex flex-col lg:flex-row">
-											<div>
-												<h4 className="text-[16px] mb-7 font-semibold">
-													فصل چهارم
-												</h4>
-												<ul className="list-disc space-y-5 ms-3 text-[16px] !font-light list-inside">
-													<li>مقدمه</li>
-													<li>توضیحات اولیه</li>
-													<li>توضیحات اضافی</li>
-													<li>تمرین های فصل اول</li>
-													<li>ارزیابی و پایان</li>
-												</ul>
-											</div>
-											<div className="bg-[#1E2531] opacity-15 w-full h-[1px] lg:w-[1px] lg:h-full my-6 lg:my-0 lg:mx-6" />
-										</div>
+									<div className="flex flex-col lg:flex-row">
 										<div>
 											<h4 className="text-[16px] mb-7 font-semibold">
 												فصل پنجم
 											</h4>
-											<ul className="list-disc space-y-5 ms-3 text-[16px] !font-light list-inside">
+											<ul className="list-disc w-fit relative start-5 space-y-1 scale-130 text-[10px] !font-light list-inside">
 												<li>مقدمه</li>
 												<li>توضیحات اولیه</li>
 												<li>توضیحات اضافی</li>
@@ -792,79 +476,22 @@ const CourseHeader = () => {
 												<li>ارزیابی و پایان</li>
 											</ul>
 										</div>
+										<div className="bg-[#1E2531] opacity-15 w-full h-[1px] lg:w-[1px] lg:h-full my-6 lg:my-0 lg:mx-6" />
 									</div>
-								</Menu.SubMenu>
-								<Menu.Divider />
-								<Menu.SubMenu
-									className="font-bold [&_.ant-menu-item-selected]:!bg-transparent [&_.ant-menu-inline]:!bg-transparent my-2 text-[18px]"
-									title="موسیقی"
-									key="song">
-									<div className="py-[13px] px-4 flex flex-col justify-center rounded-2xl">
-										<div className="flex flex-col lg:flex-row">
-											<div>
-												<h4 className="text-[16px] mb-7 font-semibold">
-													فصل اول
-												</h4>
-												<ul className="list-disc space-y-5 ms-3 text-[16px] !font-light list-inside">
-													<li>مقدمه</li>
-													<li>توضیحات اولیه</li>
-													<li>توضیحات اضافی</li>
-													<li>تمرین های فصل اول</li>
-													<li>ارزیابی و پایان</li>
-												</ul>
-											</div>
-											<div className="bg-[#1E2531] opacity-15 w-full h-[1px] lg:w-[1px] lg:h-full my-6 lg:my-0 lg:mx-6" />
-										</div>
-										<div className="flex flex-col lg:flex-row">
-											<div>
-												<h4 className="text-[16px] mb-7 font-semibold">
-													فصل دوم
-												</h4>
-												<ul className="list-disc space-y-5 ms-3 text-[16px] !font-light list-inside">
-													<li>مقدمه</li>
-													<li>توضیحات اولیه</li>
-													<li>توضیحات اضافی</li>
-													<li>تمرین های فصل اول</li>
-													<li>ارزیابی و پایان</li>
-												</ul>
-											</div>
-											<div className="bg-[#1E2531] opacity-15 w-full h-[1px] lg:w-[1px] lg:h-full my-6 lg:my-0 lg:mx-6" />
-										</div>
-										<div className="flex flex-col lg:flex-row">
-											<div>
-												<h4 className="text-[16px] mb-7 font-semibold">
-													فصل سوم
-												</h4>
-												<ul className="list-disc space-y-5 ms-3 text-[16px] !font-light list-inside">
-													<li>مقدمه</li>
-													<li>توضیحات اولیه</li>
-													<li>توضیحات اضافی</li>
-													<li>تمرین های فصل اول</li>
-													<li>ارزیابی و پایان</li>
-												</ul>
-											</div>
-											<div className="bg-[#1E2531] opacity-15 w-full h-[1px] lg:w-[1px] lg:h-full my-6 lg:my-0 lg:mx-6" />
-										</div>
-										<div className="flex flex-col lg:flex-row">
-											<div>
-												<h4 className="text-[16px] mb-7 font-semibold">
-													فصل چهارم
-												</h4>
-												<ul className="list-disc space-y-5 ms-3 text-[16px] !font-light list-inside">
-													<li>مقدمه</li>
-													<li>توضیحات اولیه</li>
-													<li>توضیحات اضافی</li>
-													<li>تمرین های فصل اول</li>
-													<li>ارزیابی و پایان</li>
-												</ul>
-											</div>
-											<div className="bg-[#1E2531] opacity-15 w-full h-[1px] lg:w-[1px] lg:h-full my-6 lg:my-0 lg:mx-6" />
-										</div>
+								</AccordionDetails>
+							</Accordion>
+							<Accordion className="!mt-0 !rounded-t-none !bg-[#D3D3D3]">
+								<AccordionSummary
+									expandIcon={<IconArrow className="-rotate-90" />}>
+									گرافیک
+								</AccordionSummary>
+								<AccordionDetails className="p-4 flex flex-col justify-center rounded-2xl">
+									<div className="flex flex-col lg:flex-row">
 										<div>
 											<h4 className="text-[16px] mb-7 font-semibold">
-												فصل پنجم
+												فصل اول
 											</h4>
-											<ul className="list-disc space-y-5 ms-3 text-[16px] !font-light list-inside">
+											<ul className="list-disc w-fit relative start-5 space-y-1 scale-130 text-[10px] !font-light list-inside">
 												<li>مقدمه</li>
 												<li>توضیحات اولیه</li>
 												<li>توضیحات اضافی</li>
@@ -872,9 +499,402 @@ const CourseHeader = () => {
 												<li>ارزیابی و پایان</li>
 											</ul>
 										</div>
+										<div className="bg-[#1E2531] opacity-15 w-full h-[1px] lg:w-[1px] lg:h-full my-6 lg:my-0 lg:mx-6" />
 									</div>
-								</Menu.SubMenu>
-							</Menu>
+									<div className="flex flex-col lg:flex-row">
+										<div>
+											<h4 className="text-[16px] mb-7 font-semibold">
+												فصل دوم
+											</h4>
+											<ul className="list-disc w-fit relative start-5 space-y-1 scale-130 text-[10px] !font-light list-inside">
+												<li>مقدمه</li>
+												<li>توضیحات اولیه</li>
+												<li>توضیحات اضافی</li>
+												<li>تمرین های فصل اول</li>
+												<li>ارزیابی و پایان</li>
+											</ul>
+										</div>
+										<div className="bg-[#1E2531] opacity-15 w-full h-[1px] lg:w-[1px] lg:h-full my-6 lg:my-0 lg:mx-6" />
+									</div>
+									<div className="flex flex-col lg:flex-row">
+										<div>
+											<h4 className="text-[16px] mb-7 font-semibold">
+												فصل سوم
+											</h4>
+											<ul className="list-disc w-fit relative start-5 space-y-1 scale-130 text-[10px] !font-light list-inside">
+												<li>مقدمه</li>
+												<li>توضیحات اولیه</li>
+												<li>توضیحات اضافی</li>
+												<li>تمرین های فصل اول</li>
+												<li>ارزیابی و پایان</li>
+											</ul>
+										</div>
+										<div className="bg-[#1E2531] opacity-15 w-full h-[1px] lg:w-[1px] lg:h-full my-6 lg:my-0 lg:mx-6" />
+									</div>
+									<div className="flex flex-col lg:flex-row">
+										<div>
+											<h4 className="text-[16px] mb-7 font-semibold">
+												فصل چهارم
+											</h4>
+											<ul className="list-disc w-fit relative start-5 space-y-1 scale-130 text-[10px] !font-light list-inside">
+												<li>مقدمه</li>
+												<li>توضیحات اولیه</li>
+												<li>توضیحات اضافی</li>
+												<li>تمرین های فصل اول</li>
+												<li>ارزیابی و پایان</li>
+											</ul>
+										</div>
+										<div className="bg-[#1E2531] opacity-15 w-full h-[1px] lg:w-[1px] lg:h-full my-6 lg:my-0 lg:mx-6" />
+									</div>
+									<div className="flex flex-col lg:flex-row">
+										<div>
+											<h4 className="text-[16px] mb-7 font-semibold">
+												فصل پنجم
+											</h4>
+											<ul className="list-disc w-fit relative start-5 space-y-1 scale-130 text-[10px] !font-light list-inside">
+												<li>مقدمه</li>
+												<li>توضیحات اولیه</li>
+												<li>توضیحات اضافی</li>
+												<li>تمرین های فصل اول</li>
+												<li>ارزیابی و پایان</li>
+											</ul>
+										</div>
+										<div className="bg-[#1E2531] opacity-15 w-full h-[1px] lg:w-[1px] lg:h-full my-6 lg:my-0 lg:mx-6" />
+									</div>
+								</AccordionDetails>
+							</Accordion>
+							<Accordion className="!mt-0 !rounded-t-none !bg-[#D3D3D3]">
+								<AccordionSummary
+									expandIcon={<IconArrow className="-rotate-90" />}>
+									زبان انگلیسی
+								</AccordionSummary>
+								<AccordionDetails className="p-4 flex flex-col justify-center rounded-2xl">
+									<div className="flex flex-col lg:flex-row">
+										<div>
+											<h4 className="text-[16px] mb-7 font-semibold">
+												فصل اول
+											</h4>
+											<ul className="list-disc w-fit relative start-5 space-y-1 scale-130 text-[10px] !font-light list-inside">
+												<li>مقدمه</li>
+												<li>توضیحات اولیه</li>
+												<li>توضیحات اضافی</li>
+												<li>تمرین های فصل اول</li>
+												<li>ارزیابی و پایان</li>
+											</ul>
+										</div>
+										<div className="bg-[#1E2531] opacity-15 w-full h-[1px] lg:w-[1px] lg:h-full my-6 lg:my-0 lg:mx-6" />
+									</div>
+									<div className="flex flex-col lg:flex-row">
+										<div>
+											<h4 className="text-[16px] mb-7 font-semibold">
+												فصل دوم
+											</h4>
+											<ul className="list-disc w-fit relative start-5 space-y-1 scale-130 text-[10px] !font-light list-inside">
+												<li>مقدمه</li>
+												<li>توضیحات اولیه</li>
+												<li>توضیحات اضافی</li>
+												<li>تمرین های فصل اول</li>
+												<li>ارزیابی و پایان</li>
+											</ul>
+										</div>
+										<div className="bg-[#1E2531] opacity-15 w-full h-[1px] lg:w-[1px] lg:h-full my-6 lg:my-0 lg:mx-6" />
+									</div>
+									<div className="flex flex-col lg:flex-row">
+										<div>
+											<h4 className="text-[16px] mb-7 font-semibold">
+												فصل سوم
+											</h4>
+											<ul className="list-disc w-fit relative start-5 space-y-1 scale-130 text-[10px] !font-light list-inside">
+												<li>مقدمه</li>
+												<li>توضیحات اولیه</li>
+												<li>توضیحات اضافی</li>
+												<li>تمرین های فصل اول</li>
+												<li>ارزیابی و پایان</li>
+											</ul>
+										</div>
+										<div className="bg-[#1E2531] opacity-15 w-full h-[1px] lg:w-[1px] lg:h-full my-6 lg:my-0 lg:mx-6" />
+									</div>
+									<div className="flex flex-col lg:flex-row">
+										<div>
+											<h4 className="text-[16px] mb-7 font-semibold">
+												فصل چهارم
+											</h4>
+											<ul className="list-disc w-fit relative start-5 space-y-1 scale-130 text-[10px] !font-light list-inside">
+												<li>مقدمه</li>
+												<li>توضیحات اولیه</li>
+												<li>توضیحات اضافی</li>
+												<li>تمرین های فصل اول</li>
+												<li>ارزیابی و پایان</li>
+											</ul>
+										</div>
+										<div className="bg-[#1E2531] opacity-15 w-full h-[1px] lg:w-[1px] lg:h-full my-6 lg:my-0 lg:mx-6" />
+									</div>
+									<div className="flex flex-col lg:flex-row">
+										<div>
+											<h4 className="text-[16px] mb-7 font-semibold">
+												فصل پنجم
+											</h4>
+											<ul className="list-disc w-fit relative start-5 space-y-1 scale-130 text-[10px] !font-light list-inside">
+												<li>مقدمه</li>
+												<li>توضیحات اولیه</li>
+												<li>توضیحات اضافی</li>
+												<li>تمرین های فصل اول</li>
+												<li>ارزیابی و پایان</li>
+											</ul>
+										</div>
+										<div className="bg-[#1E2531] opacity-15 w-full h-[1px] lg:w-[1px] lg:h-full my-6 lg:my-0 lg:mx-6" />
+									</div>
+								</AccordionDetails>
+							</Accordion>
+							<Accordion className="!mt-0 !rounded-t-none !bg-[#D3D3D3]">
+								<AccordionSummary
+									expandIcon={<IconArrow className="-rotate-90" />}>
+									ریاضی
+								</AccordionSummary>
+								<AccordionDetails className="p-4 flex flex-col justify-center rounded-2xl">
+									<div className="flex flex-col lg:flex-row">
+										<div>
+											<h4 className="text-[16px] mb-7 font-semibold">
+												فصل اول
+											</h4>
+											<ul className="list-disc w-fit relative start-5 space-y-1 scale-130 text-[10px] !font-light list-inside">
+												<li>مقدمه</li>
+												<li>توضیحات اولیه</li>
+												<li>توضیحات اضافی</li>
+												<li>تمرین های فصل اول</li>
+												<li>ارزیابی و پایان</li>
+											</ul>
+										</div>
+										<div className="bg-[#1E2531] opacity-15 w-full h-[1px] lg:w-[1px] lg:h-full my-6 lg:my-0 lg:mx-6" />
+									</div>
+									<div className="flex flex-col lg:flex-row">
+										<div>
+											<h4 className="text-[16px] mb-7 font-semibold">
+												فصل دوم
+											</h4>
+											<ul className="list-disc w-fit relative start-5 space-y-1 scale-130 text-[10px] !font-light list-inside">
+												<li>مقدمه</li>
+												<li>توضیحات اولیه</li>
+												<li>توضیحات اضافی</li>
+												<li>تمرین های فصل اول</li>
+												<li>ارزیابی و پایان</li>
+											</ul>
+										</div>
+										<div className="bg-[#1E2531] opacity-15 w-full h-[1px] lg:w-[1px] lg:h-full my-6 lg:my-0 lg:mx-6" />
+									</div>
+									<div className="flex flex-col lg:flex-row">
+										<div>
+											<h4 className="text-[16px] mb-7 font-semibold">
+												فصل سوم
+											</h4>
+											<ul className="list-disc w-fit relative start-5 space-y-1 scale-130 text-[10px] !font-light list-inside">
+												<li>مقدمه</li>
+												<li>توضیحات اولیه</li>
+												<li>توضیحات اضافی</li>
+												<li>تمرین های فصل اول</li>
+												<li>ارزیابی و پایان</li>
+											</ul>
+										</div>
+										<div className="bg-[#1E2531] opacity-15 w-full h-[1px] lg:w-[1px] lg:h-full my-6 lg:my-0 lg:mx-6" />
+									</div>
+									<div className="flex flex-col lg:flex-row">
+										<div>
+											<h4 className="text-[16px] mb-7 font-semibold">
+												فصل چهارم
+											</h4>
+											<ul className="list-disc w-fit relative start-5 space-y-1 scale-130 text-[10px] !font-light list-inside">
+												<li>مقدمه</li>
+												<li>توضیحات اولیه</li>
+												<li>توضیحات اضافی</li>
+												<li>تمرین های فصل اول</li>
+												<li>ارزیابی و پایان</li>
+											</ul>
+										</div>
+										<div className="bg-[#1E2531] opacity-15 w-full h-[1px] lg:w-[1px] lg:h-full my-6 lg:my-0 lg:mx-6" />
+									</div>
+									<div className="flex flex-col lg:flex-row">
+										<div>
+											<h4 className="text-[16px] mb-7 font-semibold">
+												فصل پنجم
+											</h4>
+											<ul className="list-disc w-fit relative start-5 space-y-1 scale-130 text-[10px] !font-light list-inside">
+												<li>مقدمه</li>
+												<li>توضیحات اولیه</li>
+												<li>توضیحات اضافی</li>
+												<li>تمرین های فصل اول</li>
+												<li>ارزیابی و پایان</li>
+											</ul>
+										</div>
+										<div className="bg-[#1E2531] opacity-15 w-full h-[1px] lg:w-[1px] lg:h-full my-6 lg:my-0 lg:mx-6" />
+									</div>
+								</AccordionDetails>
+							</Accordion>
+							<Accordion className="!mt-0 !rounded-t-none !bg-[#D3D3D3]">
+								<AccordionSummary
+									expandIcon={<IconArrow className="-rotate-90" />}>
+									آی تی
+								</AccordionSummary>
+								<AccordionDetails className="p-4 flex flex-col justify-center rounded-2xl">
+									<div className="flex flex-col lg:flex-row">
+										<div>
+											<h4 className="text-[16px] mb-7 font-semibold">
+												فصل اول
+											</h4>
+											<ul className="list-disc w-fit relative start-5 space-y-1 scale-130 text-[10px] !font-light list-inside">
+												<li>مقدمه</li>
+												<li>توضیحات اولیه</li>
+												<li>توضیحات اضافی</li>
+												<li>تمرین های فصل اول</li>
+												<li>ارزیابی و پایان</li>
+											</ul>
+										</div>
+										<div className="bg-[#1E2531] opacity-15 w-full h-[1px] lg:w-[1px] lg:h-full my-6 lg:my-0 lg:mx-6" />
+									</div>
+									<div className="flex flex-col lg:flex-row">
+										<div>
+											<h4 className="text-[16px] mb-7 font-semibold">
+												فصل دوم
+											</h4>
+											<ul className="list-disc w-fit relative start-5 space-y-1 scale-130 text-[10px] !font-light list-inside">
+												<li>مقدمه</li>
+												<li>توضیحات اولیه</li>
+												<li>توضیحات اضافی</li>
+												<li>تمرین های فصل اول</li>
+												<li>ارزیابی و پایان</li>
+											</ul>
+										</div>
+										<div className="bg-[#1E2531] opacity-15 w-full h-[1px] lg:w-[1px] lg:h-full my-6 lg:my-0 lg:mx-6" />
+									</div>
+									<div className="flex flex-col lg:flex-row">
+										<div>
+											<h4 className="text-[16px] mb-7 font-semibold">
+												فصل سوم
+											</h4>
+											<ul className="list-disc w-fit relative start-5 space-y-1 scale-130 text-[10px] !font-light list-inside">
+												<li>مقدمه</li>
+												<li>توضیحات اولیه</li>
+												<li>توضیحات اضافی</li>
+												<li>تمرین های فصل اول</li>
+												<li>ارزیابی و پایان</li>
+											</ul>
+										</div>
+										<div className="bg-[#1E2531] opacity-15 w-full h-[1px] lg:w-[1px] lg:h-full my-6 lg:my-0 lg:mx-6" />
+									</div>
+									<div className="flex flex-col lg:flex-row">
+										<div>
+											<h4 className="text-[16px] mb-7 font-semibold">
+												فصل چهارم
+											</h4>
+											<ul className="list-disc w-fit relative start-5 space-y-1 scale-130 text-[10px] !font-light list-inside">
+												<li>مقدمه</li>
+												<li>توضیحات اولیه</li>
+												<li>توضیحات اضافی</li>
+												<li>تمرین های فصل اول</li>
+												<li>ارزیابی و پایان</li>
+											</ul>
+										</div>
+										<div className="bg-[#1E2531] opacity-15 w-full h-[1px] lg:w-[1px] lg:h-full my-6 lg:my-0 lg:mx-6" />
+									</div>
+									<div className="flex flex-col lg:flex-row">
+										<div>
+											<h4 className="text-[16px] mb-7 font-semibold">
+												فصل پنجم
+											</h4>
+											<ul className="list-disc w-fit relative start-5 space-y-1 scale-130 text-[10px] !font-light list-inside">
+												<li>مقدمه</li>
+												<li>توضیحات اولیه</li>
+												<li>توضیحات اضافی</li>
+												<li>تمرین های فصل اول</li>
+												<li>ارزیابی و پایان</li>
+											</ul>
+										</div>
+										<div className="bg-[#1E2531] opacity-15 w-full h-[1px] lg:w-[1px] lg:h-full my-6 lg:my-0 lg:mx-6" />
+									</div>
+								</AccordionDetails>
+							</Accordion>
+							<Accordion className="!mt-0 !rounded-t-none !bg-[#D3D3D3]">
+								<AccordionSummary
+									expandIcon={<IconArrow className="-rotate-90" />}>
+									موسیقی
+								</AccordionSummary>
+								<AccordionDetails className="p-4 flex flex-col justify-center rounded-2xl">
+									<div className="flex flex-col lg:flex-row">
+										<div>
+											<h4 className="text-[16px] mb-7 font-semibold">
+												فصل اول
+											</h4>
+											<ul className="list-disc w-fit relative start-5 space-y-1 scale-130 text-[10px] !font-light list-inside">
+												<li>مقدمه</li>
+												<li>توضیحات اولیه</li>
+												<li>توضیحات اضافی</li>
+												<li>تمرین های فصل اول</li>
+												<li>ارزیابی و پایان</li>
+											</ul>
+										</div>
+										<div className="bg-[#1E2531] opacity-15 w-full h-[1px] lg:w-[1px] lg:h-full my-6 lg:my-0 lg:mx-6" />
+									</div>
+									<div className="flex flex-col lg:flex-row">
+										<div>
+											<h4 className="text-[16px] mb-7 font-semibold">
+												فصل دوم
+											</h4>
+											<ul className="list-disc w-fit relative start-5 space-y-1 scale-130 text-[10px] !font-light list-inside">
+												<li>مقدمه</li>
+												<li>توضیحات اولیه</li>
+												<li>توضیحات اضافی</li>
+												<li>تمرین های فصل اول</li>
+												<li>ارزیابی و پایان</li>
+											</ul>
+										</div>
+										<div className="bg-[#1E2531] opacity-15 w-full h-[1px] lg:w-[1px] lg:h-full my-6 lg:my-0 lg:mx-6" />
+									</div>
+									<div className="flex flex-col lg:flex-row">
+										<div>
+											<h4 className="text-[16px] mb-7 font-semibold">
+												فصل سوم
+											</h4>
+											<ul className="list-disc w-fit relative start-5 space-y-1 scale-130 text-[10px] !font-light list-inside">
+												<li>مقدمه</li>
+												<li>توضیحات اولیه</li>
+												<li>توضیحات اضافی</li>
+												<li>تمرین های فصل اول</li>
+												<li>ارزیابی و پایان</li>
+											</ul>
+										</div>
+										<div className="bg-[#1E2531] opacity-15 w-full h-[1px] lg:w-[1px] lg:h-full my-6 lg:my-0 lg:mx-6" />
+									</div>
+									<div className="flex flex-col lg:flex-row">
+										<div>
+											<h4 className="text-[16px] mb-7 font-semibold">
+												فصل چهارم
+											</h4>
+											<ul className="list-disc w-fit relative start-5 space-y-1 scale-130 text-[10px] !font-light list-inside">
+												<li>مقدمه</li>
+												<li>توضیحات اولیه</li>
+												<li>توضیحات اضافی</li>
+												<li>تمرین های فصل اول</li>
+												<li>ارزیابی و پایان</li>
+											</ul>
+										</div>
+										<div className="bg-[#1E2531] opacity-15 w-full h-[1px] lg:w-[1px] lg:h-full my-6 lg:my-0 lg:mx-6" />
+									</div>
+									<div className="flex flex-col lg:flex-row">
+										<div>
+											<h4 className="text-[16px] mb-7 font-semibold">
+												فصل پنجم
+											</h4>
+											<ul className="list-disc w-fit relative start-5 space-y-1 scale-130 text-[10px] !font-light list-inside">
+												<li>مقدمه</li>
+												<li>توضیحات اولیه</li>
+												<li>توضیحات اضافی</li>
+												<li>تمرین های فصل اول</li>
+												<li>ارزیابی و پایان</li>
+											</ul>
+										</div>
+										<div className="bg-[#1E2531] opacity-15 w-full h-[1px] lg:w-[1px] lg:h-full my-6 lg:my-0 lg:mx-6" />
+									</div>
+								</AccordionDetails>
+							</Accordion>
 						</motion.div>
 					)}
 				</AnimatePresence>

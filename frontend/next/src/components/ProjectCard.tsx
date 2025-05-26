@@ -16,7 +16,7 @@ const ProjectCard = ({
 	return (
 		<div className="shadow-[0px_0px_16px_0px_rgba(0,0,0,0.25)] rounded-[20px] p-5 w-[328px] md:w-[436px] bg-white shrink-0">
 			<div className="text-[14px] text-darkBlue mb-2">{createDate}</div>
-			<h3 className="text-[16px] md:text-[20px] font-bold text-blueText">
+			<h3 className="text-[16px] md:text-[20px] font-bold text-bluePrimary">
 				{title}
 			</h3>
 			<div className="flex gap-2 items-center my-3 md:my-5">

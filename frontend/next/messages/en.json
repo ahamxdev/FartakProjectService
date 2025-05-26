@@ -12,5 +12,10 @@
   },
   "List": {
     "seeAll": "Show All"
+  },
+  "BuyCourseForm": {
+    "info": "Information",
+    "lessonSelection": "Lesson Selection",
+    "teacherSelection": "Teacher Selection"
   }
 }
