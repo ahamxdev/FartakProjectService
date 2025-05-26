@@ -10,23 +10,23 @@ import Link from "next/link";
 import Footer from "@/components/modules/Footer";
 import SectionSlider from "@/components/modules/SectionSlider";
 import { SwiperSlide } from "swiper/react";
+import Header from "@/components/modules/Header";
 
 export default function Home() {
   return (
     <>
+      <Header />
+
       <MainHeader />
       <ProjectSteps />
-      <section className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 md:my-8 my-4 w-[90%] mx-auto">
-        <CategoryBox />
-        <CategoryBox />
-        <CategoryBox />
-        <CategoryBox />
+      <section className="grid py-20 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 gap-y-16 md:my-8 my-4 w-[90%] mx-auto">
+        <CategoryBox src={"/images/Index.png"} title={"محتوا و ترجمه"} />
+        <CategoryBox src={"/images/Laptop Coding-ctg.png"} hasScale={true} title={"توسعه نرم افزار و ای تی"} />
+        <CategoryBox src={"/images/Increase-ctg.png"} title={"بازاریابی و فروش"} />
+        <CategoryBox src={"/images/Paint Palette-ctg.png"} title={"طراحی و خلاقیت"} />
+        <CategoryBox src={"/images/Goal.png"} title={"کسب و کار"} hasScale={true} />
+        <CategoryBox src={"/images/Drafting Compass.png"} title={"مهندسی و معماری"} />
       </section>
-      {/* <section className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 md:my-8 my-4 w-[90%] mx-auto">
-          <NewProjectBox />
-          <NewProjectBox />
-          <NewProjectBox />
-        </section> */}
       <SectionSlider slidesPerView={3} title="پروژه های جدید فرتاک" viewAllUrl="/category/all">
         {[...Array(10)].map((_, i) => (
           <SwiperSlide key={i}>
@@ -34,11 +34,6 @@ export default function Home() {
           </SwiperSlide>
         ))}
       </SectionSlider>
-      {/* <section className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 md:my-8 my-4 w-[90%] mx-auto">
-        <FartakUser />
-        <FartakUser />
-        <FartakUser />
-      </section> */}
       <SectionSlider slidesPerView={3} title="گروه فریلنسری فرتاک" viewAllUrl="/category/all">
         {[...Array(10)].map((_, i) => (
           <SwiperSlide key={i}>

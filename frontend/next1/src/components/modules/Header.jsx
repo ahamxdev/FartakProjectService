@@ -12,7 +12,7 @@ const Header = () => {
                   <div className='w-[90%] mx-auto py-2'>
                         <div className="flex items-center gap-2 justify-between w-full">
                               <div className="flex items-center">
-                                    <span className='block md:hidden' onClick={() => setIsSidebarOpen(true)}>
+                                    <span className='block md:hidden cursor-pointer' onClick={() => setIsSidebarOpen(true)}>
                                           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                                                 <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                                           </svg>
@@ -47,31 +47,31 @@ const Header = () => {
                               </div>
                         </div>
                         <ul className='md:flex hidden items-center gap-2 w-[73%] mx-auto justify-between border-t-[1px] border-t-[#00000040] pt-3'>
-                              <li>
+                              <li className='cursor-pointer'>
                                     <Link className='text-base font-bold text-[#00060F]' href={"/"}>خانه</Link>
                               </li>
-                              <li>
+                              <li className='cursor-pointer'>
                                     <Link className='text-base font-bold text-[#00060F]' href={"/"}>تدریس</Link>
                               </li>
-                              <li>
+                              <li className='cursor-pointer'>
                                     <Link className='text-base font-bold text-[#00060F]' href={"/skills"}>پروژه ها</Link>
                               </li>
-                              <li className='text-base font-bold text-[#00060F] flex items-center gap-2'>
+                              <li className='text-base font-bold cursor-pointer text-[#00060F] flex items-center gap-2'>
                                     دوره ها
                                     <svg width="12" height="6" viewBox="0 0 12 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                                           <path d="M1 0.839844L6 4.83984L11 0.839844" stroke="#00060F" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                                     </svg>
                               </li>
-                              <li>
+                              <li className='cursor-pointer'>
                                     <Link className='text-base font-bold text-[#00060F]' href={"/"}>وبلاگ</Link>
                               </li>
-                              <li>
+                              <li className='cursor-pointer'>
                                     <Link className='text-base font-bold text-[#00060F]' href={"/"}>درباره ما</Link>
                               </li>
-                              <li>
+                              <li className='cursor-pointer'>
                                     <Link className='text-base font-bold text-[#00060F]' href={"/"}>تماس با ما</Link>
                               </li>
-                              <li>
+                              <li className='cursor-pointer'>
                                     <Link className='text-base font-bold text-[#00060F]' href={"/"}>پشتیبانی</Link>
                               </li>
                         </ul>

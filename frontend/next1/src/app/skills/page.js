@@ -4,11 +4,14 @@ import SkillBox from '@/components/modules/SkillBox'
 import MainFooter from '@/components/modules/MainFooter'
 import SectionSlider from '@/components/modules/SectionSlider'
 import { SwiperSlide } from 'swiper/react'
+import Header from '@/components/modules/Header'
 // import { SwiperSlide } from 'swiper/react';
 
 const Skills = () => {
       return (
             <>
+                  <Header />
+
                   <section id='skill-header' className='relative' >
                         <div id='skill-header-bg' className='w-full h-full rounded-[16px]'></div>
                         <div className="w-[70%] mx-auto absolute bottom-30 left-1/6">
@@ -20,7 +23,7 @@ const Skills = () => {
                   <div className="w-[90%] mx-auto border-[2px] my-8 border-[#1E1E1E] rounded-lg px-3 py-2 flex flex-col lg:flex-row gap-3 justify-between items-center">
                         <p className='lg:text-2xl md:text-xl text-base font-bold'>دنبال چه مهارتی هستی ؟ </p>
                         <div className="flex items-center gap-3">
-                              <button className='rounded-lg border-[2px] border-[#1E1E1E] px-3 py-1 w-md:[200px] sm:w-[130px] w-[100px] flex justify-between items-center text-lg font-normal cursor-pointer text-[#00000080]'>
+                              <button className='rounded-lg border-[2px] border-[#1E1E1E] px-3 py-1 md:w-[200px] sm:w-[130px] w-[100px] flex justify-between items-center text-lg font-normal cursor-pointer text-[#00000080]'>
                                     فیلتر
                                     <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
                                           <path d="M1 1.47852L6 5.47852L11 1.47852" stroke="black" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
