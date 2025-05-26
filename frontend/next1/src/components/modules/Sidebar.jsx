@@ -11,29 +11,29 @@ const Sidebar = ({ isSidebarOpen }) => {
                               className="w-full h-full" alt='logo' />
                   </div>
                   <ul className={`flex-col gap-5 pr-3.5 ${isSidebarOpen ? "flex" : "hidden"}`}>
-                        <li>
-                              <Link className='text-base font-bold text-[#00060F]' href={"/"}>خانه</Link>
+                        <li className='block'>
+                              <Link className='text-base font-bold text-[#00060F] flex' href={"/"}>خانه</Link>
                         </li>
-                        <li>
-                              <Link className='text-base font-bold text-[#00060F]' href={"/"}>تدریس</Link>
+                        <li className='block'>
+                              <Link className='text-base font-bold text-[#00060F] flex' href={"/"}>تدریس</Link>
                         </li>
-                        <li>
-                              <Link className='text-base font-bold text-[#00060F]' href={"/skills"}>پروژه ها</Link>
+                        <li className='block'>
+                              <Link className='text-base font-bold text-[#00060F] flex' href={"/skills"}>پروژه ها</Link>
                         </li>
                         <li className='text-base font-bold text-[#00060F] flex items-center gap-2'>
                               دوره ها
                         </li>
-                        <li>
-                              <Link className='text-base font-bold text-[#00060F]' href={"/"}>وبلاگ</Link>
+                        <li className='block'>
+                              <Link className='text-base font-bold text-[#00060F] flex' href={"/"}>وبلاگ</Link>
                         </li>
-                        <li>
-                              <Link className='text-base font-bold text-[#00060F]' href={"/"}>درباره ما</Link>
+                        <li className='block'>
+                              <Link className='text-base font-bold text-[#00060F] flex' href={"/"}>درباره ما</Link>
                         </li>
-                        <li>
-                              <Link className='text-base font-bold text-[#00060F]' href={"/"}>تماس با ما</Link>
+                        <li className='block'>
+                              <Link className='text-base font-bold text-[#00060F] flex' href={"/"}>تماس با ما</Link>
                         </li>
-                        <li>
-                              <Link className='text-base font-bold text-[#00060F]' href={"/"}>پشتیبانی</Link>
+                        <li className='block'>
+                              <Link className='text-base font-bold text-[#00060F] flex' href={"/"}>پشتیبانی</Link>
                         </li>
                   </ul>
             </div>
