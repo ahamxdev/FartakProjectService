@@ -34,10 +34,12 @@ const HomeDescription = () => {
 					</div>
 					<div className="flex flex-col sm:flex-row gap-4">
 						<Button
+							onClick={() => {}}
 							text="button"
 							color="#1d40d7"
 						/>
 						<Button
+							onClick={() => {}}
 							text="button"
 							color="#1d40d7"
 							outline

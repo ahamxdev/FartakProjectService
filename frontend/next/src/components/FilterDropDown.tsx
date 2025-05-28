@@ -299,6 +299,7 @@ const FilterDropDown = () => {
 						</Accordion>
 						<div className="!bg-[#D3D3D3] flex justify-center py-2">
 							<Button
+								onClick={() => {}}
 								color="#1d40d7"
 								className="!text-[18px] !py-0 !font-bold"
 								text="اعمال تغییرات"

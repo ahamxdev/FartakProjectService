@@ -71,6 +71,7 @@ const Header = () => {
 								<IconShoppingBag />
 							</div>
 							<Button
+								onClick={() => {}}
 								color="#1d40d7"
 								className="hidden md:block py-2 px-5"
 								text="ورود | عضویت"

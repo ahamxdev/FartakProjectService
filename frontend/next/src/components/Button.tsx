@@ -1,15 +1,22 @@
 "use client";
 import { getTextColor } from "@/utils/color";
-import { memo, useMemo, useState } from "react";
+import { memo, MouseEvent, useMemo, useState } from "react";
 
 interface ButtonProps {
 	text: string;
 	color: string;
+	onClick: (event: MouseEvent) => void;
 	outline?: boolean;
 	className?: string;
 }
 
-const Button = ({ text, color, outline, className }: ButtonProps) => {
+const Button = ({
+	text,
+	color,
+	onClick,
+	outline,
+	className,
+}: ButtonProps) => {
 	const [hovered, setHovered] = useState(false);
 
 	const baseStyle = useMemo(() => {
@@ -30,6 +37,7 @@ const Button = ({ text, color, outline, className }: ButtonProps) => {
 
 	return (
 		<button
+			onClick={onClick}
 			onMouseEnter={() => setHovered(true)}
 			onMouseLeave={() => setHovered(false)}
 			className={`rounded-lg cursor-pointer transition duration-300 px-6 py-2 ${
