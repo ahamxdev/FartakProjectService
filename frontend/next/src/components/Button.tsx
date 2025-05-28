@@ -1,11 +1,13 @@
 "use client";
+import { ActionsButtons, buttonActions } from "@/utils";
 import { getTextColor } from "@/utils/color";
-import { memo, MouseEvent, useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
+import { memo, useMemo, useState } from "react";
 
 interface ButtonProps {
 	text: string;
 	color: string;
-	onClick: (event: MouseEvent) => void;
+	action?: ActionsButtons;
 	outline?: boolean;
 	className?: string;
 }
@@ -13,10 +15,11 @@ interface ButtonProps {
 const Button = ({
 	text,
 	color,
-	onClick,
+	action = "empty",
 	outline,
 	className,
 }: ButtonProps) => {
+	const router = useRouter();
 	const [hovered, setHovered] = useState(false);
 
 	const baseStyle = useMemo(() => {
@@ -37,7 +40,9 @@ const Button = ({
 
 	return (
 		<button
-			onClick={onClick}
+			onClick={() => {
+				buttonActions[action](router);
+			}}
 			onMouseEnter={() => setHovered(true)}
 			onMouseLeave={() => setHovered(false)}
 			className={`rounded-lg cursor-pointer transition duration-300 px-6 py-2 ${

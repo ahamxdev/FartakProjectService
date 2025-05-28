@@ -30,13 +30,11 @@ const ProjectCard = ({
 			</p>
 			<div className="flex justify-between mt-6">
 				<Button
-					onClick={() => {}}
 					color="#00001a"
 					className="text-[13px] md:text-[16px]"
 					text={t("submitOffer")}
 				/>
 				<Button
-					onClick={() => {}}
 					outline
 					color="#00001a"
 					className="text-[13px] md:text-[16px]"
