@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 const Dashboard = () => {
   return (
     <>
@@ -40,55 +40,31 @@ const Dashboard = () => {
         </div>
       </header>
 
-      <div className="container">
-        <div className="sidebar">
-          <ul>
-            <div className="sidebar--order">
-              <img src="img/search%2001.svg" alt="" />
-              <li>بستن سایدبار</li>
-            </div>
-
-            <div className="sidebar--order">
-              <img src="img/search%2001.svg" alt="" />
-              <li>خانه</li>
-            </div>
-
-            <div className="sidebar--order">
-              <img src="img/search%2001.svg" alt="" />
-              <li>دوره های خریداری شده </li>
-            </div>
-
-            <div className="sidebar--order">
-              <img src="img/search%2001.svg" alt="" />
-              <li>دوره های آنلاین</li>
-            </div>
-            <div className="sidebar--order">
-              <img src="img/search%2001.svg" alt="" />
-              <li>کلاس های من</li>
-            </div>
-            <div className="sidebar--order">
-              <img src="img/search%2001.svg" alt="" />
-              <li>مدیریت درخواست ها</li>
-            </div>
-            <div className="sidebar--order">
-              <img src="img/search%2001.svg" alt="" />
-              <li>کیف پول</li>
-            </div>
-            <div className="sidebar--order">
-              <img src="img/search%2001.svg" alt="" />
-              <li>کد تخفیف</li>
-            </div>
-            <div className="sidebar--order">
-              <img src="img/search%2001.svg" alt="" />
-              <li>تیکت پشتیبانی</li>
-            </div>
-            <div className="sidebar--order">
-              <img src="img/search%2001.svg" alt="" />
-              <li>سوالات متداول</li>
-            </div>
+      <div className="container " style={{marginRight:"-20rem"}}>
+        <div className="sidebar-request" >
+          <ul style={{marginRight:"150px",width:"100px"}}>
+          {[
+                        { icon: "../img/لوگو/کارفرما/بستن سایدبار.svg",  path: "/#" },
+                        { icon: "../img/لوگو/کارفرما/خانه.svg",  path: "/Home" },
+                        { icon: "../img/لوگو/پنل دانشجو/دوره های خریداری شده.svg",path: "/PurchasedCourses" },
+                        { icon: "../img/لوگو/پنل دانشجو/دوره های آنلاین.svg", path: "/OnlineCourses"},
+                        { icon: "../img/لوگو/پنل دانشجو/کلاس های من.svg", path: "/MyClasses" },
+                        { icon: "../img/لوگو/پنل دانشجو/مدریت درخواست ها.svg",  path: "/RequestManagement" },
+                        { icon: "../img/لوگو/پنل دانشجو/کیف پول.svg", path: "/Wallet" },
+                        { icon: "../img/لوگو/پنل دانشجو/کد تخفیف.svg",  path: "/DiscountCode" },
+                        { icon: "../img/لوگو/پنل دانشجو/تیکت پشتیبانی.svg",  path: "/SupportTicket"},
+                        { icon: "../img/لوگو/پنل دانشجو/سوالات متداول.svg", path: "/FAQ" },
+                         ].map((item, index) => (
+                           <li key={index}>
+                             <Link to={item.path} className="sidebar--order">
+                               <img src={item.icon} alt={item.label} />
+                               <span>{item.label}</span>
+                             </Link>
+                           </li>
+                         ))}
           </ul>
 
-          <div className="body--empty">
+          <div className="body--empty-moneyTwo">
             <div className="body--empty-money">
               <div
                 style={{

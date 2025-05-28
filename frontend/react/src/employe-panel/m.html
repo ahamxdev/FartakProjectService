@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>تایید رزومه</title>
+<style>
+
+
+body {
+    font-family: "IRANSans", sans-serif;
+    margin: 0;
+    background: #f9f9f9;
+    direction: rtl;
+  }
+  
+  .container {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .sidebar {
+    width: 250px;
+    background: #fff;
+    border-left: 1px solid #ddd;
+    padding: 20px;
+  }
+  
+  .sidebar .profile {
+    text-align: center;
+  }
+  
+  .sidebar img {
+    width: 60px;
+    border-radius: 50%;
+  }
+  
+  .sidebar .name {
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  .sidebar nav ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sidebar nav li {
+    padding: 10px 0;
+    cursor: pointer;
+  }
+  
+  .sidebar nav .active {
+    font-weight: bold;
+    color: #0066cc;
+  }
+  
+  .content {
+    flex: 1;
+    padding: 30px;
+    overflow-y: auto;
+  }
+  
+  .card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.05);
+  }
+  
+  .resume-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .actions button {
+    margin-right: 10px;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .approve {
+    background: #28a745;
+    color: white;
+  }
+  
+  .reject {
+    background: #dc3545;
+    color: white;
+  }
+  
+  .resume-body h3 {
+    margin-top: 30px;
+  }
+  
+  .tags span {
+    display: inline-block;
+    background: #e6f7ff;
+    border: 1px solid #91d5ff;
+    padding: 4px 10px;
+    border-radius: 20px;
+    margin: 5px 5px 0 0;
+  }
+  
+  .video-thumbnail {
+    position: relative;
+    max-width: 480px;
+    margin-top: 20px;
+  }
+  
+  .video-thumbnail img {
+    width: 100%;
+    border-radius: 10px;
+  }
+  
+  .play-button {
+    position: absolute;
+    top: 45%;
+    left: 45%;
+    font-size: 30px;
+    color: white;
+    background: rgba(0,0,0,0.4);
+    border-radius: 50%;
+    padding: 10px 14px;
+  }
+  
+</style>
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="profile">
+        <img src="avatar.png" alt="شهناز ایمانی" />
+        <p class="name">شهناز ایمانی</p>
+        <p class="level">ادمین سطح ۲</p>
+      </div>
+      <nav>
+        <ul>
+          <li>مدیر گروه ها</li>
+          <li>پنل رزومه ها</li>
+          <li class="active">تایید رزومه</li>
+          <li>راهنما</li>
+          <li>تنظیمات</li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="content">
+      <div class="card">
+        <div class="resume-header">
+          <h2>محمد ایمانی در انتظار تایید رزومه</h2>
+          <div class="actions">
+            <button class="approve">تایید</button>
+            <button class="reject">رد</button>
+          </div>
+        </div>
+
+        <section class="resume-body">
+          <h3>درباره من</h3>
+          <p>
+            طراحی رابط کاربری شامل ساختار متن، استفاده از تایپوگرافی،...
+          </p>
+
+          <h3>اطلاعات علمی رزومه</h3>
+          <ul>
+            <li><strong>مدرک فعلی:</strong> دانشجو</li>
+            <li><strong>رشته:</strong> مهندسی نرم‌افزار</li>
+            <li><strong>دانشگاه:</strong> آزاد قزوین</li>
+            <li><strong>شماره تماس:</strong> 09034531612</li>
+            <li><strong>ایمیل:</strong> azad@azad.com</li>
+          </ul>
+
+          <h3>سابقه تحصیلی</h3>
+          <ul>
+            <li>کارشناسی مهندسی نرم‌افزار، آزاد قزوین، از 1401 تا کنون</li>
+            <li>کارشناسی توسعه نرم‌افزار، آزاد قزوین، از 1401 تا کنون</li>
+          </ul>
+
+          <h3>مسلط به دروس و زبان‌ها</h3>
+          <div class="tags">
+            <span>Bootstrap</span>
+            <span>نرم‌افزار</span>
+            <span>توسعه نرم‌افزار</span>
+          </div>
+
+          <h3>سوابق کاری</h3>
+          <p>معلم کامپیوتر در دبیرستان از 1399 تا 1400</p>
+
+          <h3>ویدیو معرفی</h3>
+          <div class="video-thumbnail">
+            <img src="video-thumbnail.jpg" alt="ویدیو معرفی" />
+            <div class="play-button">&#9658;</div>
+            <p class="video-title">من رو بیشتر بشناسین!</p>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
+
+
+
+
+
+

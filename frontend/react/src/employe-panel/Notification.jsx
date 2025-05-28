@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 const Dashboard = () => {
   return (
     <>
@@ -22,7 +23,7 @@ const Dashboard = () => {
               <button className="add-project">
                 <img src="../img/plus.svg" alt="add-project" />
               </button>
-              <p className="add-project-para">افزودن پروژه</p>
+              <Link href="#" className="add-project-para">افزودن پروژه</Link>
               <input
                 type="text"
                 className="search-input-home"
@@ -53,19 +54,19 @@ const Dashboard = () => {
         <div className="sidebar">
           <ul>
             {[
-              { icon: "Vector.svg", label: "بستن سایدبار" },
-              { icon: "search%2001.svg", label: "خانه" },
-              { icon: "Vecto1r.svg", label: "ثبت سفارش" },
-              { icon: "search%2001.svg", label: "سفارش ها" },
-              { icon: "search%2001.svg", label: "اتاق کار" },
-              { icon: "search%2001.svg", label: "درصد پیشرفت سفارش" },
-              { icon: "search%2001.svg", label: "اطلاعیه ها" },
-              { icon: "search%2001.svg", label: "صفحه چت و پیام ها" },
-              { icon: "search%2001.svg", label: "کیف پول و امور مالیاتی" },
-              { icon: "search%2001.svg", label: "کیف پول کارفرما" },
-              { icon: "search%2001.svg", label: "جستجو" },
-              { icon: "search%2001.svg", label: "مجری های سفارش" },
-              { icon: "search%2001.svg", label: "ارتباط با مدیرعامل" },
+      { icon: "../img/لوگو/کارفرما/بستن سایدبار.svg", label: "بستن سایدبار", path: "/#" },
+      { icon: "../img/لوگو/کارفرما/خانه.svg", label: "خانه", path: "/Home" },
+      { icon: "../img/لوگو/کارفرما/ثبت سفارش.svg", label: "ثبت سفارش", path: "/PlaceOrder" },
+      { icon: "../img/لوگو/کارفرما/سفارش ها.svg", label: "سفارش ها", path: "/Orders"},
+      { icon: "../img/لوگو/کارفرما/اتاق کار.svg", label: "اتاق کار", path: "/Room" },
+      { icon: "../img/لوگو/کارفرما/درصد پیشرفت سفارش.svg", label: "درصد پیشرفت سفارش", path: "/OrderProgress" },
+      { icon: "../img/لوگو/کارفرما/اطلاعیه ها.svg", label: "اطلاعیه ها", path: "/Notification" },
+      { icon: "../img/لوگو/کارفرما/صفحه چت و پیام ها.svg", label: "صفحه چت و پیام ها", path: "/Chat" },
+      { icon: "../img/لوگو/کارفرما/کیف پول و امور مالی.svg", label: "کیف پول و امور مالیاتی", path: "/BagMoney"},
+      { icon: "../img/لوگو/کارفرما/تنظیمات پنل کارفرما.svg", label: "تنظیمات  کارفرما", path: "/Setting" },
+      { icon: "../img/لوگو/کارفرما/جستجو.svg", label: "جستجو", path: "/Search" },
+      { icon: "../img/لوگو/کارفرما/مجری های سفارش.svg", label: "مجری های سفارش", path: "/Workers" },
+      { icon: "../img/لوگو/کارفرما/ارتباط با مدیرعامل.svg", label: "ارتباط با مدیرعامل", path: "/" },
             ].map((item, index) => (
               <div className="sidebar--order" key={index}>
                 <img src={`../img/${item.icon}`} alt="" />
@@ -74,16 +75,16 @@ const Dashboard = () => {
             ))}
           </ul>
 
-          <div className="body--empty--room--container">
+          <div className="body--empty--room-notification-container">
             <div className="body--empty-room-work">
-              <div className="body--empty-right">
+              <div className="body--empty-notification-right">
                 <div className="body--empty-left-items">
                   <h5 className="body--empty--para">جدید ترین اطلاعیه ها</h5>
 
                   {[
                     "مهلت پرداخت برای پروژه زبان در حال اتمام است.",
-                    "فرصت ویژه: تخفیف روی پروژه‌های بعدی شما!",
-                    "یک فایل جدید به پروژه شما اضافه شد.",
+                    "  فرصت ویژه : تخفیف روی پروژه‌های بعدی شما!",
+                    "یک فایل جدید به پروژه شما اضافه شده است",
                   ].map((text, index) => (
                     <div key={index} className="body__empty-left-news">
                       <p>{text}</p>
