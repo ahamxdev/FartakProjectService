@@ -366,6 +366,7 @@ FodyWeavers.xsd
 builds/
 .github/
 
-frontend/next/node_modules/
-frontend/next/.vscode/
-frontend/next/.next/
+**/node_modules/
+**/.vscode/
+**/.next/
+package-lock.json
