@@ -30,7 +30,7 @@ const HomeDescription = () => {
 				<div className="absolute flex md:!top-1/3 md:-translate-y-1/4 sm:top-1/4 sm:-translate-y-1/4 start-[10%] xl:!start-[20%] w-[245px] sm:w-[480px] flex-col justify-center items-start gap-5 grow">
 					<div className="font-black text-2xl md:text-5xl leading-11 md:leading-[75px]">
 						ما رویای شما را به
-						<span className="text-yellowPrimary">واقعیت</span> تبدیل
+						<span className="text-yellowPrimary"> واقعیت</span> تبدیل
 						میکنیم !
 					</div>
 					<div className="flex flex-col sm:flex-row gap-4">
