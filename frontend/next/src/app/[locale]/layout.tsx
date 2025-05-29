@@ -8,6 +8,7 @@ import { yekan } from "../../fonts";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ThemeRegistry from "@/theme/ThemeRegistry";
+import MyDrawer from "@/components/MyDrawer";
 
 export const metadata: Metadata = {
 	title: "فرتاک",
@@ -36,6 +37,7 @@ const RootLayout = async ({
 				<NextIntlClientProvider locale={locale}>
 					<ThemeRegistry>
 						<div className="flex flex-col min-h-screen">
+							<MyDrawer />
 							<Header />
 							<div className="grow">{children}</div>
 							<Footer />

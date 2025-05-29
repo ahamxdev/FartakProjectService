@@ -3,7 +3,7 @@ import { lazy, memo, useState } from "react";
 import { useTranslations } from "next-intl";
 import { AnimatePresence, motion } from "framer-motion";
 import { Step, StepLabel, Stepper } from "@mui/material";
-import { Connector, StepIcon } from "@/utils/stepper";
+import { Connector, StepIcon } from "@/utils/mui";
 import { useForm } from "react-hook-form";
 import { IFirstBuyCourseForm } from "@/types/zod";
 import { zodResolver } from "@hookform/resolvers/zod";

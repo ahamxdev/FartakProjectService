@@ -39,6 +39,7 @@
 	--color-icon: #28303f;
 	--color-darkBlue: #1e2531;
 	--breakpoint-md: 929px;
+	--breakpoint-xl: 1280px;
 }
 
 @media (prefers-color-scheme: dark) {

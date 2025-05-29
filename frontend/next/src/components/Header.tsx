@@ -7,6 +7,7 @@ import clsx from "clsx";
 import { useWindowSize } from "@reactuses/core";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useDrawerStore } from "@/store";
 
 const Button = lazy(() => import("./Button"));
 const IconSearch = lazy(() => import("@/icons/IconSearch"));
@@ -18,6 +19,7 @@ const Header = () => {
 	const [scrolled, setScrolled] = useState(false);
 	const { width } = useWindowSize();
 	const path = usePathname();
+	const { setOpen } = useDrawerStore();
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -58,7 +60,12 @@ const Header = () => {
 				<div className="grow mx-5">
 					<div className="flex justify-between items-center">
 						<div className="flex items-center gap-3">
-							<IconBurgerMenu className="text-icon scale-150 md:hidden" />
+							<IconBurgerMenu
+								onClick={() => {
+									setOpen(true);
+								}}
+								className="text-icon cursor-pointer scale-150 md:hidden"
+							/>
 							<span className="md:text-yellowPrimary font-extrabold text-[16px] md:text-[32px]">
 								فرتاک پروژه
 							</span>
