@@ -7,11 +7,11 @@ import logo from "../../public/logo.png";
 import {
 	Box,
 	Divider,
-	Drawer,
 	IconButton,
 	List,
 	ListItem,
 	ListItemButton,
+	SwipeableDrawer,
 	Typography,
 } from "@mui/material";
 import { useWindowSize } from "@reactuses/core";
@@ -26,7 +26,10 @@ const MyDrawer = () => {
 	return (
 		<>
 			{width < 929 && (
-				<Drawer
+				<SwipeableDrawer
+					onOpen={() => {
+						setOpen(true);
+					}}
 					aria-hidden={false}
 					ModalProps={{ disableEnforceFocus: true }}
 					keepMounted={false}
@@ -103,7 +106,7 @@ const MyDrawer = () => {
 							</ListItem>
 						))}
 					</List>
-				</Drawer>
+				</SwipeableDrawer>
 			)}
 		</>
 	);
