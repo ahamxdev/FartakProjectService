@@ -1,5 +1,4 @@
-﻿using System.Reflection;
-using Application.Interfaces.Contexts;
+﻿using Application.Interfaces.Contexts;
 using Application.Services.BlogContents.Commands.AddBlogContent;
 using Application.Services.BlogContents.Commands.EditBlogContent;
 using Application.Services.BlogContents.Commands.RemoveBlogContent;
@@ -101,6 +100,7 @@ using Application.Services.ZarinpalSettings.Commands.RemoveZarinpalSettings;
 using Application.Services.ZarinpalSettings.Queries.GetZarinpalSettings;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Contexts;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -120,8 +120,7 @@ builder.Services.AddSwaggerGen(c =>
 });
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddEntityFrameworkSqlServer().
-    AddDbContext<DatabaseContext>
+builder.Services.AddDbContext<DatabaseContext>
     (option => option.UseSqlServer(connectionString));
 
 
@@ -377,11 +376,18 @@ app.MapHub<ChatHub>("/chathub");
 
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
+//if (app.Environment.IsDevelopment())
+//{
+//    app.UseSwagger();
+//    app.UseSwaggerUI();
+//}
+
+app.UseSwagger();
+app.UseSwaggerUI(c =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+    c.RoutePrefix = string.Empty;
+});
 
 app.UseCors("AllowAll");
 
