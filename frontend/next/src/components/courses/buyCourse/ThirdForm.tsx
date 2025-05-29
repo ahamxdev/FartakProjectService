@@ -1,10 +1,12 @@
 import Image from "next/image";
 import { lazy, memo } from "react";
 import profile from "../../../../public/buyCourse/selectTeacherCardProfile.png";
-import List from "@/components/List";
 
 const IconFilter = lazy(() => import("@/icons/courses/IconFilter"));
 const IconStar = lazy(() => import("@/icons/teacherCard/IconStar"));
+const List = lazy(() => import("@/components/List"));
+
+const Button = lazy(() => import("@/components/Button"));
 
 const ThirdForm = () => {
 	return (
@@ -60,12 +62,16 @@ const ThirdForm = () => {
 							</ul>
 						</div>
 						<div className="flex items-center mt-5 justify-center gap-8 text-[14px] font-[400]">
-							<button className="border-[#1450A3] border grow py-2 rounded-[8px] text-[#1450A3]">
-								انتخاب استاد
-							</button>
-							<button className="bg-[#1450A3] grow py-2 rounded-[8px] text-white">
-								رزومه استاد
-							</button>
+							<Button
+								text="انتخاب استاد"
+								color="#1450A3"
+								outline
+							/>
+							<Button
+								action="goToTeacherResume"
+								text="رزومه استاد"
+								color="#1450A3"
+							/>
 						</div>
 					</div>
 				))}

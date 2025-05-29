@@ -6,6 +6,7 @@ import { lazy, memo } from "react";
 import dorehaPng from "../../../public/doreha.png";
 import tadrisPng from "../../../public/tadris.png";
 import prozhePng from "../../../public/prozhe.png";
+import Link from "next/link";
 
 const FirstInfoItem = lazy(() => import("@/components/FirstInfoItem"));
 const Button = lazy(() => import("../Button"));
@@ -28,8 +29,8 @@ const HomeDescription = () => {
 			<div className="flex justify-between overflow-hidden">
 				<div className="absolute flex md:!top-1/3 md:-translate-y-1/4 sm:top-1/4 sm:-translate-y-1/4 start-[10%] xl:!start-[20%] w-[245px] sm:w-[480px] flex-col justify-center items-start gap-5 grow">
 					<div className="font-black text-2xl md:text-5xl leading-11 md:leading-[75px]">
-						ما رویای شما را به{" "}
-						<span className="text-yellowPrimary">واقعیت</span> تبدیل
+						ما رویای شما را به
+						<span className="text-yellowPrimary"> واقعیت</span> تبدیل
 						میکنیم !
 					</div>
 					<div className="flex flex-col sm:flex-row gap-4">
@@ -81,14 +82,15 @@ const HomeDescription = () => {
 				</div>
 			</div>
 			<div className="w-full flex items-center justify-center flex-col lg:flex-row gap-10 mt-20 px-5">
-				<div className="w-full max-w-[386px] cursor-pointer hover:shadow-xl transition-shadow duration-300 h-[121px] bg-gradient-to-r from-[#0062CC] to-[#007BFF] rounded-[20px] flex items-center justify-between">
+				<Link
+					href="/courses"
+					className="w-full max-w-[386px] cursor-pointer hover:shadow-xl transition-shadow duration-300 h-[121px] bg-gradient-to-r from-[#0062CC] to-[#007BFF] rounded-[20px] flex items-center justify-between">
 					<div className="px-6">
 						<h2 className="text-white font-extrabold text-[24px] py-2">
 							دوره ها
 						</h2>
 						<span className="text-white text-[16px]">
-							{" "}
-							آکادمیک ، کسب وکار{" "}
+							آکادمیک ، کسب وکار
 						</span>
 					</div>
 					<Image
@@ -96,8 +98,10 @@ const HomeDescription = () => {
 						src={dorehaPng}
 						alt=""
 					/>
-				</div>
-				<div className="w-full max-w-[386px] cursor-pointer hover:shadow-xl transition-shadow duration-300 h-[121px] bg-gradient-to-r from-[#FCE638] to-[#FCE94C] rounded-[20px] flex items-center justify-between">
+				</Link>
+				<Link
+					href="/tadris"
+					className="w-full max-w-[386px] cursor-pointer hover:shadow-xl transition-shadow duration-300 h-[121px] bg-gradient-to-r from-[#FCE638] to-[#FCE94C] rounded-[20px] flex items-center justify-between">
 					<div className="px-6">
 						<h2 className="text-black font-extrabold text-[24px] py-2">
 							تدریس
@@ -109,7 +113,7 @@ const HomeDescription = () => {
 						alt="تدریس"
 						className="h-[160px] w-auto relative bottom-5"
 					/>
-				</div>
+				</Link>
 				<div className="w-full max-w-[386px] cursor-pointer hover:shadow-xl transition-shadow duration-300 h-[121px] bg-gradient-to-r from-[#B02A37] to-[#DC3545] rounded-[20px] flex items-center justify-between">
 					<div className="px-6">
 						<h2 className="text-white font-extrabold text-[24px] py-2">
