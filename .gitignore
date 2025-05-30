@@ -364,9 +364,5 @@ FodyWeavers.xsd
 
 # Manually added
 builds/
-.github/
-
-**/node_modules/
 **/.vscode/
 **/.next/
-package-lock.json
