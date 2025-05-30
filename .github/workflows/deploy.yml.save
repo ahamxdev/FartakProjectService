@@ -25,8 +25,9 @@ jobs:
             git pull origin main
             cd /root/FartakProjectService/frontend/next
             rm -rf node_modules .next
+            systemctl stop fartak-frontend-next.service
             npm install
             npm run build
-            systemctl restart fartak-frontend-next.service
+            systemctl start fartak-frontend-next.service
             systemctl restart fartak-frontend-next1.service
             systemctl restart fartak-frontend-react.service
