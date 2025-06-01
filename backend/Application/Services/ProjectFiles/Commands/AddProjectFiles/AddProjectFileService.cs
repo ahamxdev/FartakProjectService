@@ -10,11 +10,13 @@ namespace Application.Services.ProjectFiles.Commands.AddProjectFiles
     {
         private readonly IDatabaseContext _context;
         private readonly IConfiguration _configuration;
+
         public AddProjectFileService(IDatabaseContext context, IConfiguration configuration)
         {
             _context = context;
             _configuration = configuration;
         }
+
         public ResultDto<ResultAddProjectFileDto> Execute(RequestAddProjectFileDto request)
         {
             try
@@ -39,11 +41,9 @@ namespace Application.Services.ProjectFiles.Commands.AddProjectFiles
                     {
                         ProjectFile ProjectFile = new ProjectFile
                         {
-                            FileAddress=fileNameImage,
-                            OwnerAtach=item.OwnerAtach,
-                            ProjectId=item.ProjectId,   
-                           
-
+                            FileAddress = fileNameImage,
+                            OwnerAtach = item.OwnerAtach,
+                            ProjectId = item.ProjectId,
                         };
                         _context.ProjectFiles.Add(ProjectFile);
                         _context.SaveChanges();
@@ -54,7 +54,7 @@ namespace Application.Services.ProjectFiles.Commands.AddProjectFiles
                         {
                             Data = new ResultAddProjectFileDto
                             {
-                               ProjectFileIds= projectFileIds
+                                ProjectFileIds = projectFileIds
                             },
                             IsSuccess = true,
                             Message = "با موفقیت ثبت شد."
@@ -67,34 +67,26 @@ namespace Application.Services.ProjectFiles.Commands.AddProjectFiles
                             Data = new ResultAddProjectFileDto() { ProjectFileIds = projectFileIds },
                             IsSuccess = false,
                             Message = "آپلود با خطا مواجه شد",
-
                         };
                     }
-
-
-
                 }
+
                 return new ResultDto<ResultAddProjectFileDto>()
                 {
                     Data = new ResultAddProjectFileDto() { ProjectFileIds = projectFileIds },
                     IsSuccess = false,
                     Message = "فایلی وجود ندارد",
-
                 };
-
-
             }
             catch
             {
                 return new ResultDto<ResultAddProjectFileDto>
                 {
-                    Data = new ResultAddProjectFileDto { ProjectFileIds = [] },
+                    Data = new ResultAddProjectFileDto { ProjectFileIds = new() },
                     IsSuccess = false,
                     Message = "ثبت با خطا مواجه شد."
                 };
-
             }
         }
-
     }
 }

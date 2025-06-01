@@ -10,8 +10,20 @@
         public required string Mobile { get; set; }
         public string? Email { get; set; }
         public string? Verify { get; set; }
-        public int Status { get; set; } // 0 Active 1 Deactive 
-        public int Kind { get; set; } // 0 Admin , 1 User , 2 Teacher , 3 Owner, 4 Freelancer
+        public int Status { get; set; } // 1 Active 0 Deactive 
+        public int Kind { get; set; } // user role
     }
 
+    // user roles
+    public enum UserRoles
+    {
+        Master = 0,
+        Student = 1,
+        Admin1 = 2,
+        Admin2 = 3,
+        Freelancer = 4,
+        Employer = 5,
+        ProjectManager = 6,
+        SuperAdmin = 7,
+    }
 }
