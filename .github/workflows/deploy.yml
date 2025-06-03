@@ -21,13 +21,35 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           script: |
-            cd /root/FartakProjectService
-            git pull origin main
-            cd /root/FartakProjectService/frontend/next
+            exec > >(tee -a /var/log/deploy.log) 2>&1
+            echo "Deployment started at $(date)"
+            systemctl stop fartak-backend.service
             systemctl stop fartak-frontend-next.service
+            systemctl stop fartak-frontend-next1.service
+            systemctl stop fartak-frontend-react.service
+            cd /root/FartakProjectService/ || exit
+            git reset --hard
+            git clean -fd
+            git pull origin main
+            cd /var/www/fartak-backend/ || exit
+            rm -rf ./*
+            cd /root/FartakProjectService/backend/ || exit
+            dotnet publish FartakProjectService/FartakProjectService.csproj -c Release -o /var/www/fartak-backend/
+            cd /root/FartakProjectService/frontend/next/ || exit
             rm -rf node_modules .next
+            npm install || { echo "npm install failed (next)"; exit 1; }
+            npm run build || { echo "Build failed for Next.js"; exit 1; }
+            cd /root/FartakProjectService/frontend/next1/ || exit
+            rm -rf node_modules
             npm install
-            npm run build
+            cd /root/FartakProjectService/frontend/react/ || exit
+            rm -rf node_modules
+            npm install
+            systemctl start fartak-backend.service
             systemctl start fartak-frontend-next.service
-            systemctl restart fartak-frontend-next1.service
-            systemctl restart fartak-frontend-react.service
+            systemctl start fartak-frontend-next1.service
+            systemctl start fartak-frontend-react.service
+            systemctl status fartak-backend.service
+            systemctl status fartak-frontend-next.service
+            systemctl status fartak-frontend-next1.service
+            systemctl status fartak-frontend-react.service
