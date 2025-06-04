@@ -3,6 +3,8 @@ using System.Security.Claims;
 using System.Text;
 using Application.Services.Users.Commands.AddUsers;
 using Application.Services.Users.Queries.GetUsers;
+using Application.Services.UserToken.Commands.AddUserToken;
+using Application.Services.UserToken.Queries.GetUserToken;
 using Domain.Entities.Users;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -16,12 +18,21 @@ public class AuthController : ControllerBase
     private readonly IAddUserService _addUserService;
     private readonly IGetUserService _getUserService;
     private readonly IConfiguration _configuration;
+    private readonly IGetUserTokenService _getUserTokenService;
+    private readonly IAddUserTokenService _addUserTokenService;
 
-    public AuthController(IAddUserService addUserService, IGetUserService getUserService, IConfiguration configuration)
+    public AuthController(IAddUserService addUserService,
+        IGetUserService getUserService,
+        IConfiguration configuration,
+        IGetUserTokenService getUserTokenService,
+        IAddUserTokenService addUserTokenService
+    )
     {
         _addUserService = addUserService;
         _getUserService = getUserService;
         _configuration = configuration;
+        _addUserTokenService = addUserTokenService;
+        _getUserTokenService = getUserTokenService;
     }
 
     /// <summary>
@@ -38,15 +49,54 @@ public class AuthController : ControllerBase
 
         try
         {
-            var res = _getUserService.GetByMobilePassword(userByMobilePasswordDto);
-            if (res.IsSuccess == true)
+            #region validation with token and userId
+
+            var tokenDto = new RequestCheckTokenDto { Token = "", SelfUserId = 0 };
+            if (Request.Headers["token"].Count() > 0)
+            {
+                tokenDto.Token = Request.Headers["token"];
+            }
+
+            if (Request.Headers["userId"].Count() > 0)
+            {
+                tokenDto.SelfUserId = long.Parse(Request.Headers["userId"]);
+            }
+
+            if (tokenDto.Token == null || tokenDto.SelfUserId == 0)
+            {
+                return Ok(new
+                {
+                    IsSuccess = false,
+                    ResponseCode = 409,
+                    Message = "مقادیر توکن نامعتبر میباشد",
+                    Service = "User",
+                });
+            }
+
+            if (_getUserTokenService.GetToken(tokenDto) == false)
+            {
+                return Ok(new
+                {
+                    IsSuccess = false,
+                    Message = "توکن نامعتبر است",
+                    ResponseCode = 403,
+                    Service = "User"
+                });
+            }
+
+            #endregion
+
+
+            var user = _getUserService.GetByMobilePassword(userByMobilePasswordDto);
+
+            if (user.IsSuccess == true)
             {
                 // jwt auth
                 var authClaims = new List<Claim>
                 {
-                    new Claim(ClaimTypes.Name, res.Data.Name),
+                    new Claim(ClaimTypes.Name, user.Data.Name),
                     new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                    new Claim(ClaimTypes.Role, res.Data.Kind.ToString())
+                    new Claim(ClaimTypes.Role, user.Data.Kind.ToString())
                 };
                 var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Secret"]));
 
@@ -57,13 +107,17 @@ public class AuthController : ControllerBase
                     claims: authClaims,
                     signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)
                 );
-                var role = (UserRoles)Enum.Parse(typeof(UserRoles), res.Data.Kind.ToString());
+
+                var role = (UserRoles)Enum.Parse(typeof(UserRoles), user.Data.Kind.ToString());
                 return Ok(new
                 {
+                    mobile = user.Data.Mobile,
                     role = role.ToString(),
-                    token = new JwtSecurityTokenHandler().WriteToken(token),
                     expiration = token.ValidTo,
-                    message = res.Message
+                    message = user.Message,
+                    jwt = new JwtSecurityTokenHandler().WriteToken(token),
+                    token = tokenDto.Token,
+                    userId = tokenDto.SelfUserId
                 });
                 // end jwt auth
             }
@@ -71,8 +125,8 @@ public class AuthController : ControllerBase
             {
                 return Unauthorized(new
                 {
-                    data = res.Data,
-                    message = res.Message,
+                    data = user.Data,
+                    message = user.Message,
                 });
             }
         }
@@ -110,15 +164,25 @@ public class AuthController : ControllerBase
                 Status = userDto.Status,
                 Kind = userRole
             };
-            var res = _addUserService.Execute(newUser);
+            var user = _addUserService.Execute(newUser);
+            Int32 minutes = Convert.ToInt32(_configuration["AppSettings:TokenMinutes"]);
 
+            var res = _addUserTokenService.Execute(new RequestAddUserTokenDto
+            {
+                UserId = user.Data.UserId,
+                ExpireDate = DateTime.Now.AddMinutes(minutes),
+            });
+
+            var outputResult = new
+            {
+                IsSuccess = user.IsSuccess,
+                Message = user.Message,
+                UserId = user.Data.UserId,
+                Token = res.Data.Token,
+            };
             if (res.IsSuccess == true)
             {
-                return Ok(new
-                {
-                    data = res.Data,
-                    message = res.Message
-                });
+                return Ok(outputResult);
             }
             else
             {
