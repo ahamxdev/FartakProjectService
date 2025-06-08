@@ -72,13 +72,6 @@ export const projects: ProjectCardType[] = [
 		description:
 			"	لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با ...",
 	},
-	{
-		createDate: "1 ساعت پیش",
-		priceRange: "بودجه از 5.000.000 تا 10.000.000 تومان",
-		title: "طراحی رابط کاربری سایت مواد غذایی",
-		description:
-			"	لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با ...",
-	},
 ];
 
 export const aboutUsComments: AboutUsCommentType[] = [
@@ -203,6 +196,14 @@ export const teachers: TeacherCardType[] = [
 		description:
 			"لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی موردنیاز، و کاربردهای متنوع با",
 	},
+	{
+		fullName: "مصطفی غلامی",
+		profile: teacherProfile,
+		role: "طراح گرافیک",
+		star: 4.5,
+		description:
+			"لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی موردنیاز، و کاربردهای متنوع با",
+	},
 ];
 
 export const courses: CourseCardType[] = [
@@ -215,6 +216,8 @@ export const courses: CourseCardType[] = [
 		studentCount: 12,
 		teacherName: "سعید سعادتی فر",
 		title: "عنوان دوره",
+		id: "course-1",
+		locale: "fa"
 	},
 	{
 		courseDuration: 36,
@@ -225,6 +228,8 @@ export const courses: CourseCardType[] = [
 		studentCount: 12,
 		teacherName: "سعید سعادتی فر",
 		title: "عنوان دوره",
+		id: "course-2",
+		locale: "fa"
 	},
 	{
 		courseDuration: 36,
@@ -235,6 +240,8 @@ export const courses: CourseCardType[] = [
 		studentCount: 12,
 		teacherName: "سعید سعادتی فر",
 		title: "عنوان دوره",
+		id: "course-3",
+		locale: "fa"
 	},
 	{
 		courseDuration: 36,
@@ -245,6 +252,8 @@ export const courses: CourseCardType[] = [
 		studentCount: 12,
 		teacherName: "سعید سعادتی فر",
 		title: "عنوان دوره",
+		id: "course-4",
+		locale: "fa"
 	},
 	{
 		courseDuration: 36,
@@ -255,6 +264,8 @@ export const courses: CourseCardType[] = [
 		studentCount: 12,
 		teacherName: "سعید سعادتی فر",
 		title: "عنوان دوره",
+		id: "course-5",
+		locale: "fa"
 	},
 	{
 		courseDuration: 36,
@@ -265,6 +276,8 @@ export const courses: CourseCardType[] = [
 		studentCount: 12,
 		teacherName: "سعید سعادتی فر",
 		title: "عنوان دوره",
+		id: "course-6",
+		locale: "fa"
 	},
 	{
 		courseDuration: 36,
@@ -275,6 +288,8 @@ export const courses: CourseCardType[] = [
 		studentCount: 12,
 		teacherName: "سعید سعادتی فر",
 		title: "عنوان دوره",
+		id: "course-7",
+		locale: "fa"
 	},
 	{
 		courseDuration: 36,
@@ -285,6 +300,8 @@ export const courses: CourseCardType[] = [
 		studentCount: 12,
 		teacherName: "سعید سعادتی فر",
 		title: "عنوان دوره",
+		id: "course-8",
+		locale: "fa"
 	},
 ];
 

@@ -26,6 +26,8 @@ export interface CourseCardType {
 	profile: StaticImageData;
 	teacherName: string;
 	title: string;
+	id: string;
+	locale: string; 
 	reshte: string;
 	price: string;
 	studentCount: number;

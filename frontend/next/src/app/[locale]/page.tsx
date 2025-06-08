@@ -1,5 +1,8 @@
+"use client";
+
 import { aboutUsComments, courses, projects, teachers } from "@/api";
 import { lazy, memo } from "react";
+import { useParams } from "next/navigation";
 
 const AboutUsCard = lazy(() => import("@/components/AboutUsCard"));
 const BackTeacherCard = lazy(
@@ -19,6 +22,9 @@ const List = lazy(() => import("@/components/List"));
 const ProjectCard = lazy(() => import("@/components/ProjectCard"));
 
 const Home = () => {
+	const params = useParams();
+	const locale = params.locale as string;
+
 	return (
 		<div className="flex flex-col justify-center gap-20 items-center w-full">
 			<HomeDescription />
@@ -47,6 +53,7 @@ const Home = () => {
 							studentCount,
 							teacherName,
 							title,
+							id,
 						},
 						index,
 					) => (
@@ -60,6 +67,8 @@ const Home = () => {
 							teacherName={teacherName}
 							studentCount={studentCount}
 							title={title}
+							id={id}
+							locale={locale}
 						/>
 					),
 				)}
