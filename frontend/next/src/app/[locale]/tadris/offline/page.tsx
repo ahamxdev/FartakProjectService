@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { lazy } from "react";
-import yellowBg from "../../../../../public/buyCourse/yellow.svg";
+import yellowBg from "../../../../../public/buyCourse/yellowGray.svg";
 import yellowMobileBg from "../../../../../public/buyCourse/yellowmobile.svg";
-import youngGirl from "../../../../../public/buyCourse/youngWoman.svg";
+import youngGirl from "../../../../../public/buyCourse/youngWomanWorking.svg";
 
 const MainForm = lazy(
 	() => import("@/components/courses/buyCourse/MainForm"),
@@ -24,10 +24,10 @@ const Page = () => {
 							alt=""
 						/>
 						<div className="flex flex-col gap-5">
-							<span className="text-[32px] font-[800]">
-								تدریس خصوصی آنلاین
+							<span className="text-[32px] font-[800] mx-auto">
+								تدریس حضوری در منزل
 							</span>
-							<span className="text-[24px] font-[400]">
+							<span className="text-[24px] font-[400] mr-3">
 								نگران هیچی نباش با فرتاک همیشه و همه جا آموزش ببین.
 							</span>
 						</div>
