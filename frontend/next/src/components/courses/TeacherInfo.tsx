@@ -2,13 +2,12 @@ import Image from "next/image";
 
 type TeacherInfoProps = {
   name: string;
-  profile: string;
   bio: string;
   degree: string;
   specialty: string;
 };
 
-export default function TeacherInfo({ name, profile, bio, degree, specialty }: TeacherInfoProps) {
+export default function TeacherInfo({ name, bio, degree, specialty }: TeacherInfoProps) {
   return (
     <div className="my-6 text-right ">
     <h2 className="font-bold text-2xl mb-4">درباره استاد</h2>

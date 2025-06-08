@@ -14,7 +14,7 @@ interface PageProps {
 }
 
 export default function CourseDetailPage({ params }: PageProps) {
-  const { id, locale } = use(params);
+  const { id } = use(params);
   
   const course = {
     id: id,
@@ -42,10 +42,6 @@ export default function CourseDetailPage({ params }: PageProps) {
       { user: "کاربر ۱", text: "خیلی خوب بود!" },
       { user: "کاربر ۲", text: "عالی و کاربردی" },
     ],
-  };
-
-  const handleBuy = () => {
-    console.log("Buying course:", id);
   };
 
   return (
@@ -115,7 +111,12 @@ export default function CourseDetailPage({ params }: PageProps) {
         </div>
 
         <CourseSyllabus syllabus={course.syllabus} />
-        <TeacherInfo {...course.teacher} />
+        <TeacherInfo
+        name={course.teacher.name}
+        bio={course.teacher.bio}
+        degree={course.teacher.degree}
+        specialty={course.teacher.specialty}
+        />
         <CourseComments comments={course.comments} />
       </div>
     </div>
