@@ -12,27 +12,6 @@ const CategorySkillSliderSection = ({ children }) => {
                         modules={[Navigation]}
                         spaceBetween={16}
                         slidesPerView={1}
-                        // navigation={{
-                        //       prevEl: prevRef.current,
-                        //       nextEl: nextRef.current,
-                        // }}
-                        // onInit={(swiper) => {
-                        //       // if (typeof swiper.params.navigation !== 'boolean') {
-                        //       swiper.params.navigation.prevEl = prevRef.current;
-                        //       swiper.params.navigation.nextEl = nextRef.current;
-                        //       swiper.navigation.init();
-                        //       swiper.navigation.update();
-                        //       // }
-                        //       const perView =
-                        //             swiper.params.breakpoints?.[swiper.currentBreakpoint]?.slidesPerView ||
-                        //             swiper.params.slidesPerView;
-
-                        //       if (swiper.slides.length > perView) {
-                        //             setShowNavigation(true);
-                        //       } else {
-                        //             setShowNavigation(false);
-                        //       }
-                        // }}
                         breakpoints={{
                               0: {
                                     slidesPerView: 1
