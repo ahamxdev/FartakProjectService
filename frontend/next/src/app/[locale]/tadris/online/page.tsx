@@ -24,10 +24,10 @@ const Page = () => {
 							alt=""
 						/>
 						<div className="flex flex-col gap-5">
-							<span className="text-[32px] font-[800]">
+							<span className="text-[32px] font-[800] mx-auto">
 								تدریس خصوصی آنلاین
 							</span>
-							<span className="text-[24px] font-[400]">
+							<span className="text-[24px] font-[400] mr-3">
 								نگران هیچی نباش با فرتاک همیشه و همه جا آموزش ببین.
 							</span>
 						</div>

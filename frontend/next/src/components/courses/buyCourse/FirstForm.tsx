@@ -113,7 +113,7 @@ const FirstForm = ({
 							<div className="!flex w-1/2 !items-center !justify-between">
 								<label
 									htmlFor="mySelf"
-									className="flex gap-2 items-center">
+									className="flex items-center">
 									<Radio
 										id="mySelf"
 										value="mySelf"
@@ -123,7 +123,7 @@ const FirstForm = ({
 								</label>
 								<label
 									htmlFor="mySon"
-									className="flex gap-2 items-center">
+									className="flex items-center">
 									<Radio
 										id="mySon"
 										value="mySon"
@@ -133,7 +133,7 @@ const FirstForm = ({
 								</label>
 								<label
 									htmlFor="other"
-									className="flex gap-2 items-center">
+									className="flex items-center">
 									<Radio
 										id="other"
 										value="other"
@@ -179,7 +179,7 @@ const FirstForm = ({
 									-
 								</button>
 							</div>
-							<ul className="absolute list-disc text-[16px] list-inside -bottom-7 start-1 text-[#EA0017]">
+							<ul className="absolute list-disc text-[16px] list-inside -bottom-8 start-1 text-[#EA0017]">
 								<li className="marker:relative marker:top-1">
 									به ازای هر نفر 20 درصد به قیمت اضافه می شود
 								</li>
@@ -290,7 +290,7 @@ const FirstForm = ({
 				</div>
 
 				<div className="flex mt-3 flex-col">
-					<div className="text-[13px] cursor-pointer hover:opacity-80 transition-opacity duration-200 w-fit lg:text-[16px] py-[10px] px-4 bg-[#000] rounded-sm text-[#fff]">
+					<div className="text-[13px] cursor-pointer hover:opacity-80 transition-opacity duration-200 w-fit lg:text-[16px] py-[10px] px-4 bg-[#000] rounded-md text-[#fff]">
 						تحصیلی
 					</div>
 					<div className="flex flex-col px-6 py-4">
@@ -315,7 +315,7 @@ const FirstForm = ({
 							</Fragment>
 						))}
 					</div>
-					<div className="text-[13px] cursor-pointer hover:opacity-80 transition-opacity duration-200 w-fit lg:text-[16px] py-[10px] px-4 bg-[#000] rounded-sm text-[#fff]">
+					<div className="text-[13px] cursor-pointer hover:opacity-80 transition-opacity duration-200 w-fit lg:text-[16px] py-[10px] px-4 bg-[#000] rounded-md text-[#fff]">
 						کسب و کار
 					</div>
 					<div className="flex flex-col px-6 py-4">
