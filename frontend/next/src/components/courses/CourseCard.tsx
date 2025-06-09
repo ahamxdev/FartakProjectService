@@ -3,6 +3,7 @@ import Image from "next/image";
 import { lazy, memo } from "react";
 import { CourseCardType } from "@/types/card";
 import { toPersianDigits } from "@/utils/string";
+import { useRouter } from "next/navigation";
 
 const Icon3Students = lazy(
 	() => import("@/icons/courseCar/Icon3Students"),
@@ -19,7 +20,11 @@ const CourseCard = ({
 	studentCount,
 	teacherName,
 	title,
+	id,
+	locale,
 }: CourseCardType) => {
+	const router = useRouter();
+
 	return (
 		<div className="bg-[#FFFFFF] shrink-0 p-3 rounded-[16px] shadow-[0px_0px_16px_0px_rgba(0,0,0,0.25)] mt-2">
 			<div className="flex justify-center w-full">
@@ -64,7 +69,10 @@ const CourseCard = ({
 				</div>
 			</div>
 			<div className="flex justify-between w-full items-center">
-				<button className="hover:opacity-85 cursor-pointer transition-opacity duration-200 py-1.5 px-3 bg-darkBlue rounded-[8px] mr-3 text-[14px] font-[800] text-[#FFFFFF]">
+				<button
+					className="hover:opacity-85 cursor-pointer transition-opacity duration-200 py-1.5 px-3 bg-darkBlue rounded-[8px] mr-3 text-[14px] font-[800] text-[#FFFFFF]"
+					onClick={() => router.push(`/${locale}/${id}`)}
+				>
 					مشاهده اطلاعات دوره
 				</button>
 				<div>

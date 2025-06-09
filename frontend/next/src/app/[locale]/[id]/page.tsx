@@ -4,6 +4,8 @@ import { use } from "react";
 import TeacherInfo from "@/components/courses/TeacherInfo";
 import CourseSyllabus from "@/components/courses/CourseSyllabus";
 import CourseComments from "@/components/courses/CourseComments";
+import Prerequisites from "@/components/courses/Prerequisites";
+import ComputerScienceCategories from "@/components/courses/ComputerScienceCategories";
 import Image from "next/image";
 
 interface PageProps {
@@ -55,7 +57,9 @@ export default function CourseDetailPage({ params }: PageProps) {
   />
 </div>
 
-      <div className="container mx-auto p-4 max-w-3xl">
+    
+
+      <div className="container mx-auto px-6 py-4 max-w-[1200px]">
         <div className="flex justify-start gap-8 text-lg font-semibold my-4">
           <span>مشخصات آموزش</span>
           <span>نظرات (365 نفر)</span>
@@ -117,6 +121,8 @@ export default function CourseDetailPage({ params }: PageProps) {
         degree={course.teacher.degree}
         specialty={course.teacher.specialty}
         />
+          <Prerequisites />
+          <ComputerScienceCategories />
         <CourseComments comments={course.comments} />
       </div>
     </div>
