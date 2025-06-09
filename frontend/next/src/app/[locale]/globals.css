@@ -6,108 +6,104 @@
 
 /* Webfont: Yekan */
 @font-face {
-	font-family: "yekan";
-	src: url("../../../public/fonts/Yekan.eot"); /* IE9 Compat Modes */
-	src: url("../../../public/fonts/Yekan.eot?#iefix")
-			format("embedded-opentype"),
-		/* IE6-IE8 */ url("../../../public/fonts/Yekan.woff2") format("woff2"),
-		/* Modern Browsers */ url("../../../public/fonts/Yekan.woff")
-			format("woff"),
-		/* Modern Browsers */ url("../../../public/fonts/Yekan.otf")
-			format("opentype"),
-		/* Open Type Font */ url("../../../public/fonts/Yekan.ttf")
-			format("truetype"); /* Safari, Android, iOS */
-	font-weight: normal;
-	font-style: normal;
-	text-rendering: optimizeLegibility;
-	font-display: swap;
+  font-family: "yekan";
+  src: url("../../../public/fonts/Yekan.eot"); /* IE9 Compat Modes */
+  src: url("../../../public/fonts/Yekan.eot?#iefix") format("embedded-opentype"),
+    /* IE6-IE8 */ url("../../../public/fonts/Yekan.woff2") format("woff2"),
+    /* Modern Browsers */ url("../../../public/fonts/Yekan.woff") format("woff"),
+    /* Modern Browsers */ url("../../../public/fonts/Yekan.otf")
+      format("opentype"),
+    /* Open Type Font */ url("../../../public/fonts/Yekan.ttf")
+      format("truetype"); /* Safari, Android, iOS */
+  font-weight: normal;
+  font-style: normal;
+  text-rendering: optimizeLegibility;
+  font-display: swap;
 }
 
 :root {
-	--background: #fbfbfb;
-	--foreground: #00001a;
+  --background: #fbfbfb;
+  --foreground: #00001a;
 }
 
 @theme inline {
-	--color-background: var(--background);
-	--color-foreground: var(--foreground);
-	--font-yekan: var(--font-yekan);
-	--color-yellowPrimary: #fab437;
-	--color-bluePrimary: #1d40d7;
-	--color-white: #fbfbfb;
-	--color-black: #00001a;
-	--color-icon: #28303f;
-	--color-darkBlue: #1e2531;
-	--breakpoint-md: 929px;
-	--breakpoint-xl: 1280px;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-yekan: var(--font-yekan);
+  --color-yellowPrimary: #fab437;
+  --color-bluePrimary: #1d40d7;
+  --color-white: #fbfbfb;
+  --color-black: #00001a;
+  --color-icon: #28303f;
+  --color-darkBlue: #1e2531;
+  --breakpoint-md: 929px;
+  --breakpoint-xl: 1280px;
 }
 
 @media (prefers-color-scheme: dark) {
-	:root {
-		--background: #fbfbfb;
-		--foreground: #00001a;
-		/* --background: #00001a;
+  :root {
+    --background: #fbfbfb;
+    --foreground: #00001a;
+    /* --background: #00001a;
 		--foreground: #fbfbfb; */
-	}
+  }
 }
 
 body {
-	background: var(--background);
-	color: var(--foreground);
-	overflow-x: hidden;
+  background: var(--background);
+  color: var(--foreground);
+  overflow-x: hidden;
 }
 
 #list {
-	scrollbar-width: none; /* برای فایرفاکس */
-	-ms-overflow-style: none; /* برای IE و Edge */
+  scrollbar-width: none; /* برای فایرفاکس */
+  -ms-overflow-style: none; /* برای IE و Edge */
 }
 
 #list::-webkit-scrollbar {
-	display: none; /* برای کروم، سافاری و اپرا */
+  display: none; /* برای کروم، سافاری و اپرا */
 }
 
 /* برای مرورگرهای WebKit مثل Chrome و Edge */
 ::-webkit-scrollbar {
-	width: 6px; /* عرض اسکرول‌بار */
-	height: 6px; /* برای اسکرول افقی */
-	@apply transition-all duration-300;
+  width: 6px; /* عرض اسکرول‌بار */
+  height: 6px; /* برای اسکرول افقی */
+  @apply transition-all duration-300;
 }
 
 ::-webkit-scrollbar-track {
-	background: transparent; /* بک‌گراند مسیر اسکرول */
-	@apply mx-3;
+  background: transparent; /* بک‌گراند مسیر اسکرول */
+  @apply mx-3;
 }
 
 ::-webkit-scrollbar-thumb {
-	border-radius: 10px; /* گرد کردن گوشه‌ها */
-	border: 1px solid transparent;
-	background-clip: content-box;
-	@apply bg-gray-400/40;
+  border-radius: 10px; /* گرد کردن گوشه‌ها */
+  border: 1px solid transparent;
+  background-clip: content-box;
+  @apply bg-gray-400/40;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-	@apply bg-gray-400/90;
+  @apply bg-gray-400/90;
 }
 
 .ant-checkbox-input,
 .ant-checkbox-inner,
 .ant-checkbox {
-	width: 20px !important;
-	height: 20px !important;
-	background-color: transparent !important;
-	@apply !border-black;
+  width: 20px !important;
+  height: 20px !important;
+  background-color: transparent !important;
+  @apply !border-black;
 }
 
 .ant-checkbox-checked .ant-checkbox-inner {
-	@apply !bg-bluePrimary !border-bluePrimary;
+  @apply !bg-bluePrimary !border-bluePrimary;
 }
 
 .ant-slider-handle::after,
 .ant-slider-handle::before {
-	display: none !important;
+  display: none !important;
 }
-
-
 
 /* Skill Screen */
 #skill-header-bg {
@@ -122,7 +118,12 @@ body {
 #new-project-box,
 #ChooseTranslationLanguageBox,
 #TranslationCategory,
-#ProgrammingLanguageBox {
+#ProgrammingLanguageBox,
+#fartak-user,
+#step-right-section,
+#portfolio-box,
+#confirm-btn,
+#category-submenu {
   box-shadow: 0px 0px 5px 0px #00000040;
 }
 
@@ -145,4 +146,21 @@ body {
 }
 #pay-way {
   box-shadow: 0px 4px 10px 0px #0000001a;
+}
+#category-header {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+}
+#dream-box {
+  width: 90%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url("/images/rectangle100.png");
+  box-shadow: 0px 4px 10px 0px #00000040;
+  border: 1px solid #cbc2ff;
+  border-radius: 16px;
 }

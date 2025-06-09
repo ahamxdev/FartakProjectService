@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef, useState, ReactNode } from 'react';
+import React, { useRef, useState, ReactNode } from 'react';
 import { Swiper } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import { Swiper as SwiperType } from 'swiper';
@@ -23,9 +23,9 @@ const SectionSlider: React.FC<SectionSliderProps> = ({ title, viewAllUrl, slides
       // const [slider, setSlider] = useState<boolean>(false);
       // const [slidesCount, setSlidesCount] = useState<number>(0);
 
-      useEffect(() => {
+      // useEffect(() => {
             // setSlidesCount(React.Children.count(children));
-      }, [children]);
+      // }, [children]);
 
       // useEffect(() => {
             // if (slider) {
