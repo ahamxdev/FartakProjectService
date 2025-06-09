@@ -1,8 +1,6 @@
 "use client"
 import SectionSlider from '@/components/skills/SectionSlider'
 import SkillBox from '@/components/skills/SkillBox'
-import SkillFooter from '@/components/skills/SkillFooter'
-import SkillHeader from '@/components/skills/SkillHeader'
 import React from 'react'
 import { SwiperSlide } from 'swiper/react'
 

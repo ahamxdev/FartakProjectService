@@ -20,18 +20,18 @@ const SectionSlider: React.FC<SectionSliderProps> = ({ title, viewAllUrl, slides
       const nextRef = useRef<HTMLSpanElement>(null);
 
       const [showNavigation, setShowNavigation] = useState<boolean>(false);
-      const [slider, setSlider] = useState<boolean>(false);
-      const [slidesCount, setSlidesCount] = useState<number>(0);
+      // const [slider, setSlider] = useState<boolean>(false);
+      // const [slidesCount, setSlidesCount] = useState<number>(0);
 
       useEffect(() => {
-            setSlidesCount(React.Children.count(children));
+            // setSlidesCount(React.Children.count(children));
       }, [children]);
 
-      useEffect(() => {
-            if (slider) {
-                  setSlidesCount(React.Children.count(children));
-            }
-      }, [React.Children.count(children), slider]);
+      // useEffect(() => {
+            // if (slider) {
+            //       setSlidesCount(React.Children.count(children));
+            // }
+      // }, [React.Children.count(children), slider]);
 
       return (
             <>
@@ -56,12 +56,14 @@ const SectionSlider: React.FC<SectionSliderProps> = ({ title, viewAllUrl, slides
                                           <Link href={viewAllUrl} className="md:text-base text-xs font-bold text-[#1E2531]">مشاهده همه</Link>
                                           <div className="w-px h-5 bg-gray-300"></div>
                                           <div className="flex items-center gap-6">
-                                                <span ref={prevRef} onClick={() => setSlider(true)} className="w-4 h-4 cursor-pointer text-[#1e2531]">
+                                                {/* <span ref={prevRef} onClick={() => setSlider(true)} className="w-4 h-4 cursor-pointer text-[#1e2531]"> */}
+                                                <span ref={prevRef}  className="w-4 h-4 cursor-pointer text-[#1e2531]">
                                                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="#1E2531" className="100%">
                                                             <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                                                       </svg>
                                                 </span>
-                                                <span ref={nextRef} onClick={() => setSlider(true)} className="w-4 h-4 cursor-pointer text-[#1e2531]">
+                                                {/* <span ref={nextRef} onClick={() => setSlider(true)} className="w-4 h-4 cursor-pointer text-[#1e2531]"> */}
+                                                <span ref={nextRef}  className="w-4 h-4 cursor-pointer text-[#1e2531]">
                                                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="#1E2531" className="100%">
                                                             <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
                                                       </svg>

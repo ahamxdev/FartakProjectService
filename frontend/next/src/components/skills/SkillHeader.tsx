@@ -1,16 +1,14 @@
 "use client"
-import React, { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
 const SkillHeader = () => {
-      const [isSidebarOpen, setIsSidebarOpen] = useState(false)
       return (
             <>
                   <div className='w-[90%] mx-auto py-2'>
                         <div className="flex items-center gap-2 justify-between w-full">
                               <div className="flex items-center">
-                                    <span className='block md:hidden cursor-pointer' onClick={() => setIsSidebarOpen(true)}>
+                                    <span className='block md:hidden cursor-pointer' >
                                           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                                                 <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                                           </svg>
