@@ -36,10 +36,10 @@ const List: FC<Props> = ({
 	gap,
 }) => {
 	const t = useTranslations("List");
-	const list = useRef<HTMLDivElement>(null);
-	const [currentCard, setCurrentCard] = useState(0);
-	const [canScrollLeft, setCanScrollLeft] = useState(true);
-	const [canScrollRight, setCanScrollRight] = useState(false);
+	const list = useRef<HTMLDivElement | null>(null);
+	const [currentCard, setCurrentCard] = useState<number>(0);
+	const [canScrollLeft, setCanScrollLeft] = useState<boolean>(true);
+	const [canScrollRight, setCanScrollRight] = useState<boolean>(false);
 	const { width } = useWindowSize();
 
 	const onLeftArrowClick = useCallback(() => {

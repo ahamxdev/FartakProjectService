@@ -1,17 +1,17 @@
 "use client"
 import React, { useRef } from 'react'
-import BreadCrumb from '@/components/modules/BreadCrumb'
-import Image from 'next/image'
-import Link from 'next/link'
-import SectionTitle from '@/components/modules/SectionTitle'
-import ProgrammingLanguageBox from '@/components/modules/ProgrammingLanguageBox'
-import CategorySkillSliderSection from '@/components/modules/CategorySkillSliderSection'
+// import BreadCrumb from '@/components/modules/BreadCrumb'
+// import Image from 'next/image'
+// import Link from 'next/link'
 import { SwiperSlide } from 'swiper/react'
-import NewestProjectBox from '@/components/modules/NewestProjectBox'
-import SkillBox from '@/components/modules/SkillBox'
+import SectionTitle from './SectionTitile'
+import ProgrammingLanguageBox from './ProgrammingLanguageBox'
+import CategorySkillSliderSection from './CategorySkillSliderSection'
+import NewestProjectBox from './NewestProjectBox'
+import SkillBox from './SkillBox'
 
 const ContentCreation = () => {
-      const inputRef = useRef()
+      const inputRef = useRef<HTMLInputElement | null>(null)
 
       return (
             <>

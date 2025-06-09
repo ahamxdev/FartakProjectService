@@ -1,19 +1,27 @@
 "use client"
 import React, { useState } from 'react'
-import BreadCrumb from '@/components/modules/BreadCrumb'
-import Image from 'next/image'
-import Link from 'next/link'
-import InputCheckbox from '@/components/modules/InputCheckbox'
-import CategorySkillSliderSection from '@/components/modules/CategorySkillSliderSection'
+// import BreadCrumb from '@/components/modules/BreadCrumb'
+// import Image from 'next/image'
+// import Link from 'next/link'
+// import InputCheckbox from '@/components/modules/InputCheckbox'
+// import CategorySkillSliderSection from '@/components/modules/CategorySkillSliderSection'
 import { SwiperSlide } from 'swiper/react'
-import NewestProjectBox from '@/components/modules/NewestProjectBox'
-import SkillBox from '@/components/modules/SkillBox'
-import SectionTitle from '@/components/modules/SectionTitle'
-import WebCreationStepBox from '@/components/modules/WebCreationStepBox'
+import SectionTitle from './SectionTitile'
+import WebCreationStepBox from './WebCreationStepBox'
+import InputCheckbox from './InputCheckbox'
+import CategorySkillSliderSection from './CategorySkillSliderSection'
+import NewestProjectBox from './NewestProjectBox'
+import SkillBox from './SkillBox'
+// import NewestProjectBox from '@/components/modules/NewestProjectBox'
+// import SkillBox from '@/components/modules/SkillBox'
+// import SectionTitle from '@/components/modules/SectionTitle'
+// import WebCreationStepBox from '@/components/modules/WebCreationStepBox'
 
 const WebDesign = () => {
-      const [webCreationStep, setWebCreationStep] = useState("web-sub")
-      const [webCreationStepIndex, setWebCreationStepIndex] = useState(0)
+      const [webCreationStep, setWebCreationStep] = useState<string>("web-sub")
+      const [webCreationStepIndex, setWebCreationStepIndex] = useState<number>(0)
+      console.log(webCreationStepIndex);
+      
 
       return (
             <>

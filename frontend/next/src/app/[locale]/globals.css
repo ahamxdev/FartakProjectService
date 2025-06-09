@@ -95,7 +95,14 @@ body {
   background-color: transparent !important;
   @apply !border-black;
 }
-
+#main-header {
+  background-image: url("/images/fartakprojectprojectbanner.jpg");
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 .ant-checkbox-checked .ant-checkbox-inner {
   @apply !bg-bluePrimary !border-bluePrimary;
 }

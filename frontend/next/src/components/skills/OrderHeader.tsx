@@ -5,7 +5,7 @@ import Link from 'next/link'
 import BgDark from './BgDark'
 import OrderSidebar from './OrderSidebar'
 
-const ManagerListHeader = () => {
+const OrderHeader = () => {
       const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false)
 
       return (
@@ -13,14 +13,16 @@ const ManagerListHeader = () => {
                   <header className='w-[90%] mx-auto md:my-5 my-2 flex justify-between items-center'>
                         <div className="flex items-center gap-4">
                               <div className='flex items-center gap-3'>
-                                    <span className='block md:hidden cursor-pointer'
-                                          onClick={() => setIsSidebarOpen(true)}
-                                    >
+                                    <span className='block md:hidden cursor-pointer' onClick={() => setIsSidebarOpen(true)}>
                                           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                                                 <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                                           </svg>
                                     </span>
-                                    <h2 className='font-semibold md:text-2xl text-lg text-black'>فرتاک</h2>
+                                    <div className="relative lg:w-[79px] w-[50px] lg:h-[79px] h-[50px]">
+                                          <Image src={"/images/logo.png"} fill
+                                                sizes="(max-width: 768px) 100vw, auto"
+                                                className="w-full h-full" alt='logo' />
+                                    </div>
                               </div>
                               <ul className="md:flex hidden items-center gap-6">
                                     <li>
@@ -59,10 +61,7 @@ const ManagerListHeader = () => {
                                           className="w-full h-full" alt='logo' />
                               </div>
                         </div>
-
-                        
                   </header>
-
                   <div className="flex md:hidden bg-[#C9E4F933] justify-between items-center w-[90%] mx-auto rounded-lg py-1 md:py-2 px-2 md:px-3">
                         <input type="text" className='bg-transparent border-none outline-none' />
                         <span>
@@ -72,6 +71,7 @@ const ManagerListHeader = () => {
                               </svg>
                         </span>
                   </div>
+
 
                   {
                         isSidebarOpen && (
@@ -83,4 +83,4 @@ const ManagerListHeader = () => {
       )
 }
 
-export default ManagerListHeader
+export default OrderHeader

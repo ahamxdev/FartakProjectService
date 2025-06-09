@@ -1,19 +1,19 @@
 "use client"
 import React, { useRef } from 'react'
-import BreadCrumb from '@/components/modules/BreadCrumb'
-import Image from 'next/image'
-import Link from 'next/link'
-import MobileApplicationPointsBox from '@/components/modules/MobileApplicationPointsBox'
-import ApplicationCreationPointsBox from '@/components/modules/ApplicationCreationPointsBox'
-import CategorySkillSliderSection from '@/components/modules/CategorySkillSliderSection'
+// import BreadCrumb from '@/components/modules/BreadCrumb'
+// import Image from 'next/image'
+// import Link from 'next/link'
 import { SwiperSlide } from 'swiper/react'
-import NewestProjectBox from '@/components/modules/NewestProjectBox'
-import SkillBox from '@/components/modules/SkillBox'
-import InputCheckbox from '@/components/modules/InputCheckbox'
-import SectionTitle from '@/components/modules/SectionTitle'
+import SectionTitle from './SectionTitile'
+import ApplicationCreationPointsBox from './ApplicationCreationPointsBox'
+import MobileApplicationPointsBox from './MobileApplicationPointsBox'
+import CategorySkillSliderSection from './CategorySkillSliderSection'
+import NewestProjectBox from './NewestProjectBox'
+import SkillBox from './SkillBox'
+import InputCheckbox from './InputCheckbox'
 
 const ApplicationWebsiteDesign = () => {
-      const inputRef = useRef()
+      const inputRef = useRef<HTMLInputElement | null>(null)
 
       return (
             <>

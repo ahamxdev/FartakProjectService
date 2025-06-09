@@ -34,7 +34,7 @@ const Skills: React.FC = () => {
 
                   </div>
 
-                  <SectionSlider title="طراحی سایت و اپلیکیشن" slidesPerView={4} viewAllUrl="/category/web">
+                  <SectionSlider title="طراحی سایت و اپلیکیشن" viewAllUrl="/category/web">
                         {[...Array(10)].map((_, i: number) => (
                               <SwiperSlide key={i}>
                                     <SkillBox />
@@ -42,7 +42,7 @@ const Skills: React.FC = () => {
                         ))}
                   </SectionSlider>
 
-                  <SectionSlider title="تولید محتوا و سئو" slidesPerView={4} viewAllUrl="/category/seo">
+                  <SectionSlider title="تولید محتوا و سئو" viewAllUrl="/category/seo">
                         {[...Array(10)].map((_, i: number) => (
                               <SwiperSlide key={i}>
                                     <SkillBox />
@@ -50,7 +50,7 @@ const Skills: React.FC = () => {
                         ))}
                   </SectionSlider>
 
-                  <SectionSlider title="ترجمه و نگارش" slidesPerView={4} viewAllUrl="/category/translation">
+                  <SectionSlider title="ترجمه و نگارش" viewAllUrl="/category/translation">
                         {[...Array(10)].map((_, i: number) => (
                               <SwiperSlide key={i}>
                                     <SkillBox />
@@ -58,7 +58,7 @@ const Skills: React.FC = () => {
                         ))}
                   </SectionSlider>
 
-                  <SectionSlider title="رسانه و ویدیو" slidesPerView={4} viewAllUrl="/category/media">
+                  <SectionSlider title="رسانه و ویدیو" viewAllUrl="/category/media">
                         {[...Array(10)].map((_, i: number) => (
                               <SwiperSlide key={i}>
                                     <SkillBox />
@@ -67,7 +67,7 @@ const Skills: React.FC = () => {
                   </SectionSlider>
 
 
-                  <SectionSlider title="طراحی گرافیک و هنر های دیجیتال" slidesPerView={4} viewAllUrl="/category/digital">
+                  <SectionSlider title="طراحی گرافیک و هنر های دیجیتال" viewAllUrl="/category/digital">
                         {[...Array(10)].map((_, i: number) => (
                               <SwiperSlide key={i}>
                                     <SkillBox />
@@ -75,7 +75,7 @@ const Skills: React.FC = () => {
                         ))}
                   </SectionSlider>
 
-                  <SectionSlider title="برنامه نویسی و کد نویسی" slidesPerView={4} viewAllUrl="/category/programming">
+                  <SectionSlider title="برنامه نویسی و کد نویسی" viewAllUrl="/category/programming">
                         {[...Array(10)].map((_, i: number) => (
                               <SwiperSlide key={i}>
                                     <SkillBox />
@@ -83,7 +83,7 @@ const Skills: React.FC = () => {
                         ))}
                   </SectionSlider>
 
-                  <SectionSlider title="پشتیبانی و مدیریت" slidesPerView={4} viewAllUrl="/category/translation">
+                  <SectionSlider title="پشتیبانی و مدیریت" viewAllUrl="/category/translation">
                         {[...Array(2)].map((_, i: number) => (
                               <SwiperSlide key={i}>
                                     <SkillBox />
@@ -91,7 +91,7 @@ const Skills: React.FC = () => {
                         ))}
                   </SectionSlider>
 
-                  <SectionSlider title="خدمات ویژه" slidesPerView={4} viewAllUrl="/category/media">
+                  <SectionSlider title="خدمات ویژه" viewAllUrl="/category/media">
                         {[...Array(10)].map((_, i: number) => (
                               <SwiperSlide key={i}>
                                     <SkillBox />
@@ -99,7 +99,7 @@ const Skills: React.FC = () => {
                         ))}
                   </SectionSlider>
 
-                  <SectionSlider title="عکاسی و محتوای تصویری" slidesPerView={4} viewAllUrl="/category/media">
+                  <SectionSlider title="عکاسی و محتوای تصویری" viewAllUrl="/category/media">
                         {[...Array(1)].map((_, i: number) => (
                               <SwiperSlide key={i}>
                                     <SkillBox />

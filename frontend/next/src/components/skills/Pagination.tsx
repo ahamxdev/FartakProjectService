@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from "react";
 
-const Pagination = ({ totalPages = 5 }) => {
+const Pagination = ({ totalPages = 5 }: { totalPages?: number }) => {
       const [currentPage, setCurrentPage] = useState(1);
 
       const handlePrev = () => {

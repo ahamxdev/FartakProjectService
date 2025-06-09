@@ -11,7 +11,7 @@ const SkillBox = () => {
                               className="w-full h-full" alt='skill-box-image' />
                   </div>
                   <h6 className='text-[#1D40D7] md:text-xl text-base font-bold'>طراحی لندینگ پیچ</h6>
-                  <Link href={"/skills/ui"} className='rounded-lg bg-[#1d40d7] flex justify-center items-center w-full py-1 text-white text-sm font-normal'>مشاهده اطلاعات</Link>
+                  <Link href={"/projects/skills/ui"} className='rounded-lg bg-[#1d40d7] flex justify-center items-center w-full py-1 text-white text-sm font-normal'>مشاهده اطلاعات</Link>
             </div>
       )
 }

@@ -25,7 +25,7 @@ const ManagerList = () => {
                   </div>
 
                   <section className='w-[90%] mx-auto md:my-12 my-5 flex justify-between items-center gap-6 flex-wrap'>
-                        <Link href={"/managerlist/website"} className="flex flex-col items-center gap-2">
+                        <Link href={"/projects/managerlist/website"} className="flex flex-col items-center gap-2">
                               <div className="flex justify-center items-center px-14 py-6 bg-[#1E2531] rounded-lg">
                                     <div className="relative lg:w-[56px] w-[35px] lg:h-[56px] h-[35px]">
                                           <Image src={"/images/web-coding 1.png"} fill
@@ -35,7 +35,7 @@ const ManagerList = () => {
                               </div>
                               <span className='font-normal text-[#1E2531] md:text-lg text-sm'>طراحی و گرافیک</span>
                         </Link>
-                        <Link href={"/managerlist/website"} className="flex flex-col items-center gap-2">
+                        <Link href={"/projects/managerlist/website"} className="flex flex-col items-center gap-2">
                               <div className="flex justify-center items-center px-14 py-6 bg-[#1E2531] rounded-lg">
                                     <div className="relative lg:w-[56px] w-[35px] lg:h-[56px] h-[35px]">
                                           <Image src={"/images/web-coding 1.png"} fill
@@ -45,7 +45,7 @@ const ManagerList = () => {
                               </div>
                               <span className='font-normal text-[#1E2531] md:text-lg text-sm'>طراحی و گرافیک</span>
                         </Link>
-                        <Link href={"/managerlist/website"} className="flex flex-col items-center gap-2">
+                        <Link href={"/projects/managerlist/website"} className="flex flex-col items-center gap-2">
                               <div className="flex justify-center items-center px-14 py-6 bg-[#1E2531] rounded-lg">
                                     <div className="relative lg:w-[56px] w-[35px] lg:h-[56px] h-[35px]">
                                           <Image src={"/images/web-coding 1.png"} fill
@@ -55,7 +55,7 @@ const ManagerList = () => {
                               </div>
                               <span className='font-normal text-[#1E2531] md:text-lg text-sm'>طراحی و گرافیک</span>
                         </Link>
-                        <Link href={"/managerlist/website"} className="flex flex-col items-center gap-2">
+                        <Link href={"/projects/managerlist/website"} className="flex flex-col items-center gap-2">
                               <div className="flex justify-center items-center px-14 py-6 bg-[#1E2531] rounded-lg">
                                     <div className="relative lg:w-[56px] w-[35px] lg:h-[56px] h-[35px]">
                                           <Image src={"/images/web-coding 1.png"} fill
@@ -65,7 +65,7 @@ const ManagerList = () => {
                               </div>
                               <span className='font-normal text-[#1E2531] md:text-lg text-sm'>طراحی و گرافیک</span>
                         </Link>
-                        <Link href={"/managerlist/website"} className="flex flex-col items-center gap-2">
+                        <Link href={"/projects/managerlist/website"} className="flex flex-col items-center gap-2">
                               <div className="flex justify-center items-center px-14 py-6 bg-[#1E2531] rounded-lg">
                                     <div className="relative lg:w-[56px] w-[35px] lg:h-[56px] h-[35px]">
                                           <Image src={"/images/web-coding 1.png"} fill

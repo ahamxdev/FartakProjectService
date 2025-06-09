@@ -2,11 +2,13 @@
 import React, { useRef } from "react";
 // import Header from '@/components/modules/Header'
 import Image from "next/image";
-import InputCheckbox from "@/components/skills/InputCheckbox";
+import InputCheckbox from "@/components/InputCheckbox";
 import SkillFooter from "@/components/skills/SkillFooter";
+// import InputCheckbox from "@/components/skills/InputCheckbox";
+// import SkillFooter from "@/components/skills/SkillFooter";
 
 const OrderProject = () => {
-  const inputRef = useRef();
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
   return (
     <>
@@ -198,17 +200,17 @@ const OrderProject = () => {
             <div
               className={`flex justify-center items-center rounded-lg border-[1px] border-[#DC3545] px-4 py-2`}
             >
-              <InputCheckbox />
+              <InputCheckbox label={"متن تستی"} />
             </div>
             <div
               className={`flex justify-center items-center rounded-lg border-[1px] border-[#DC3545] px-4 py-2`}
             >
-              <InputCheckbox />
+              <InputCheckbox label={"متن تستی"} />
             </div>
             <div
               className={`flex justify-center items-center rounded-lg border-[1px] border-[#DC3545] px-4 py-2`}
             >
-              <InputCheckbox />
+              <InputCheckbox label={"متن تستی"} />
             </div>
           </div>
           <span className="md:text-base text-sm text-[##00060F] font-normal">
@@ -236,17 +238,17 @@ const OrderProject = () => {
             <div
               className={`flex justify-center items-center rounded-lg border-[1px] border-[#DC3545] px-4 py-2`}
             >
-              <InputCheckbox />
+              <InputCheckbox label={"متن تستی"} />
             </div>
             <div
               className={`flex justify-center items-center rounded-lg border-[1px] border-[#DC3545] px-4 py-2`}
             >
-              <InputCheckbox />
+              <InputCheckbox label={"متن تستی"} />
             </div>
             <div
               className={`flex justify-center items-center rounded-lg border-[1px] border-[#DC3545] px-4 py-2`}
             >
-              <InputCheckbox />
+              <InputCheckbox label={"متن تستی"} />
             </div>
           </div>
           <button

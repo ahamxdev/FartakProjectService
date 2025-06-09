@@ -1,20 +1,26 @@
 "use client"
 import React, { useRef, useState } from 'react'
-import BreadCrumb from '@/components/modules/BreadCrumb'
-import Image from 'next/image'
-import Link from 'next/link'
-import SectionTitle from '@/components/modules/SectionTitle'
-import ProgrammingLanguageBox from '@/components/modules/ProgrammingLanguageBox'
-import CategorySkillSliderSection from '@/components/modules/CategorySkillSliderSection'
-import NewestProjectBox from '@/components/modules/NewestProjectBox'
+// import BreadCrumb from '@/components/modules/BreadCrumb'
+// import Image from 'next/image'
+// import Link from 'next/link'
+// import SectionTitle from '@/components/modules/SectionTitle'
+// import ProgrammingLanguageBox from '@/components/modules/ProgrammingLanguageBox'
+// import CategorySkillSliderSection from '@/components/modules/CategorySkillSliderSection'
+// import NewestProjectBox from '@/components/modules/NewestProjectBox'
 import { SwiperSlide } from 'swiper/react'
-import SkillBox from '@/components/modules/SkillBox'
-import SubMenu from '@/components/modules/SubMenu'
+import SectionTitle from './SectionTitile'
+import ProgrammingLanguageBox from './ProgrammingLanguageBox'
+import CategorySkillSliderSection from './CategorySkillSliderSection'
+import NewestProjectBox from './NewestProjectBox'
+import SkillBox from './SkillBox'
+import SubMenu from './SubMenu'
+// import SkillBox from '@/components/modules/SkillBox'
+// import SubMenu from '@/components/modules/SubMenu'
 
 const Programming = () => {
-      const inputRef = useRef()
+      const inputRef = useRef<HTMLInputElement | null>(null)
 
-      const [isSubMenuOpen, setIsSubMenuOpen] = useState(false)
+      const [isSubMenuOpen, setIsSubMenuOpen] = useState<boolean>(false)
 
       return (
             <>
@@ -87,7 +93,7 @@ const Programming = () => {
                                                       <path d="M1 1.47852L6 5.47852L11 1.47852" stroke="black" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                                                 </svg>
                                           </button>
-                                          <SubMenu isSubMenuOpen={isSubMenuOpen} />
+                                          <SubMenu items={["تست 1 ", "تست 2"]} isSubMenuOpen={isSubMenuOpen} />
                                     </div>
                               </div>
                               <div className="flex flex-col gap-3.5 md:w-[50%] w-full">

@@ -39,7 +39,7 @@ const ProjectSteps = () => {
                               <span className='font-normal lg:text-xl md:text-base text-[8px] text-[#000] w-fit'>تحویل پروژه</span>
                         </div>
                   </div>
-                  <Link className='bg-[#00C83F] lg:w-[22%] w-full md:text-sm text-xs font-normal text-white px-8 md:py-3 py-1.5 rounded-lg mt-3 md:mt-0 flex justify-center items-center' href={"/project-registration"}>همین حالا پروژه خود را سفارش دهید </Link>
+                  <Link className='bg-[#00C83F] lg:w-[22%] w-full md:text-sm text-xs font-normal text-white px-8 md:py-3 py-1.5 rounded-lg mt-3 md:mt-0 flex justify-center items-center' href={"/projects/project-registration"}>همین حالا پروژه خود را سفارش دهید </Link>
             </div>
       )
 }

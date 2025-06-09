@@ -4,13 +4,13 @@ import React from 'react'
 import Link from 'next/link'
 import { SwiperSlide } from 'swiper/react'
 import Image from 'next/image'
+import CategoryHeader from '@/components/skills/CategoryHeader'
 import ProjectSteps from '@/components/skills/ProjectSteps'
 import CategoryBox from '@/components/skills/CategoryBox'
-import SectionSlider from '@/components/skills/SectionSlider'
 import NewProjectBox from '@/components/skills/NewProjectBox'
+import SectionSlider from '@/components/skills/SectionSlider'
 import FartakUser from '@/components/skills/FartakUser'
 import SkillFooter from '@/components/skills/SkillFooter'
-import CategoryHeader from '@/components/skills/CategoryHeader'
 
 const CategoryPage = () => {
       return (
@@ -44,7 +44,7 @@ const CategoryPage = () => {
                               <p className='font-bold lg:text-lg md:text-base text-sm text-[#fff]'>
                                     ما در کنار شما هستیم تا از مرحله ایده‌پردازی و مشاوره اولیه تا اجرای کامل پروژه‌های برنامه‌نویسی و توسعه نرم‌افزار، تمامی مراحل را به بهترین شکل انجام دهیم.
                               </p>
-                              <Link className='bg-[#00C83F] w-full md:text-lg text-xs font-normal text-white px-8 md:py-3 py-1.5 rounded-lg mt-3 md:mt-0 flex justify-center items-center' href={"/translation/order-project"}>همین حالا پروژه خود را ثبت کنید </Link>
+                              <Link className='bg-[#00C83F] w-full md:text-lg text-xs font-normal text-white px-8 md:py-3 py-1.5 rounded-lg mt-3 md:mt-0 flex justify-center items-center' href={"translation/order-project"}>همین حالا پروژه خود را ثبت کنید </Link>
                         </div>
                   </section>
 
