@@ -56,6 +56,7 @@ const MainForm = () => {
 			<Stepper
 				alternativeLabel
 				activeStep={currentStep}
+				className="max-w-5xl w-full mx-auto"
 				connector={<Connector />}>
 				{[
 					{

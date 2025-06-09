@@ -28,7 +28,7 @@ const RootLayout = async ({
 	}
 
 	return (
-		<html
+		<html  
 			bbai-tooltip-injected="true"
 			className={`${yekan.variable}`}
 			dir={locale === "fa" ? "rtl" : "ltr"}

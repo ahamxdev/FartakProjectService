@@ -1,11 +1,21 @@
 "use client"
 import React, { useRef } from 'react'
 import BreadCrumb from '@/components/modules/BreadCrumb'
+import NewestProjectBox from '@/components/modules/NewestProjectBox'
 import Image from 'next/image'
 import Link from 'next/link'
+import SkillBox from '@/components/modules/SkillBox'
 import MainFooter from '@/components/modules/MainFooter'
+import SectionTitle from '@/components/modules/SectionTitle'
+import CategorySkillSliderSection from '@/components/modules/CategorySkillSliderSection'
+import { SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
+import WebDesign from '@/components/templates/CategorySkill/WebDesign'
+import ApplicationWebsiteDesign from '@/components/templates/CategorySkill/ApplicationWebsiteDesign'
+import Programming from '@/components/templates/CategorySkill/Programming'
+import ContentCreation from '@/components/templates/CategorySkill/ContentCreation'
+import Translation from '@/components/templates/CategorySkill/Translation'
 import OnlineStoreDesign from '@/components/templates/CategorySkill/OnlineStoreDesign'
 import Header from '@/components/modules/Header'
 const CategoryInfo = () => {
@@ -14,7 +24,7 @@ const CategoryInfo = () => {
     <>
       <Header />
 
-      <BreadCrumb items={["مهارت ها شما", "طراحی سایت و اپلیکیشن", "طراحی رابط کاربری"]} />
+      {/* <BreadCrumb items={["مهارت ها شما", "طراحی سایت و اپلیکیشن", "طراحی رابط کاربری"]} />
       <section className='flex flex-col lg:flex-row lg:gap-16 gap-8 w-[90%] mx-auto md:my-10 my-5'>
         <div className="relative lg:w-[55%] w-full lg:h-[530px] h-[350px]">
           <Image
@@ -40,6 +50,96 @@ const CategoryInfo = () => {
           <Link href={"/"} className='bg-[#1D40D7] text-white rounded-lg flex justify-center items-center md:text-lg text-xs font-bold w-full py-2 my-6 lg:my-0'>همین الان پروژت رو ثبت کن</Link>
         </div>
       </section>
+      <SectionTitle title={"مراحل ثبت سفارش طراحی رابط کاربری"} />
+      <section className="w-[90%] mx-auto md:my-10 my-5 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="flex flex-col items-center gap-2">
+          <div className="relative md:w-[225px] md:h-[225px] w-[170px] h-[170px]">
+            <Image src={"/images/image 17.png"} fill sizes="(max-width: 768px) 100vw, auto"
+              className="w-full h-full" alt='step-of-order' />
+          </div>
+          <span className='font-bold md:text-[22px] text-sm text-[#1450A3]'>1.ثبت پروژه</span>
+        </div>
+        <div className="flex flex-col items-center gap-2">
+          <div className="relative md:w-[225px] md:h-[225px] w-[170px] h-[170px]">
+            <Image src={"/images/image 17.png"} fill sizes="(max-width: 768px) 100vw, auto"
+              className="w-full h-full" alt='step-of-order' />
+          </div>
+          <span className='font-bold md:text-[22px] text-sm text-[#1450A3]'>2.انتخاب متخصص</span>
+        </div>
+        <div className="flex flex-col items-center gap-2">
+          <div className="relative md:w-[225px] md:h-[225px] w-[170px] h-[170px]">
+            <Image src={"/images/image 17.png"} fill sizes="(max-width: 768px) 100vw, auto"
+              className="w-full h-full" alt='step-of-order' />
+          </div>
+          <span className='font-bold md:text-[22px] text-sm text-[#1450A3]'>3.انجام پروژه</span>
+        </div>
+        <div className="flex flex-col items-center gap-2">
+          <div className="relative md:w-[225px] md:h-[225px] w-[170px] h-[170px]">
+            <Image src={"/images/image 17.png"} fill sizes="(max-width: 768px) 100vw, auto"
+              className="w-full h-full" alt='step-of-order' />
+          </div>
+          <span className='font-bold md:text-[22px] text-sm text-[#1450A3]'>4.دریافت نهایی</span>
+        </div>
+      </section> */}
+
+      {/* <SectionTitle title={"جدیدترین پروژه های ثبت شده"} />
+      <CategorySkillSliderSection>
+        {[...Array(10)].map((_, i) => (
+          <SwiperSlide key={i}>
+            <NewestProjectBox />
+          </SwiperSlide>
+        ))}
+      </CategorySkillSliderSection>
+
+      <SectionTitle title={"نمونه کار های طراحی سایت"} />
+      <CategorySkillSliderSection>
+        {[...Array(10)].map((_, i) => (
+          <SwiperSlide key={i}>
+            <SkillBox />
+          </SwiperSlide>
+        ))}
+      </CategorySkillSliderSection> */}
+
+      <SectionTitle title={"پروژتون در کمترین زمان ممکن ثبت کنید"} />
+      <section className='w-[90%] flex flex-col gap-4 mx-auto md:my-10 my-5 bg-[#EEF5FF] rounded-2xl border-[2px] border-[#1E1E1E] py-5 lg:py-10 px-4 sm:px-8 md:px-12 lg:px-16'>
+        <div className="flex flex-col md:flex-row items-center gap-2 w-full justify-between">
+          <div className="flex flex-col gap-3.5 md:w-[50%] w-full">
+            <label className='font-bold md:text-[22px] text-sm text-[#000]' htmlFor="">یک عنوان برای پروژه خود وارد کنید .</label>
+            <input type="text" className='border bg-white border-[#000] rounded-lg py-4 px-4 placeholder:text[#aaa] placeholder:text-base placeholder:font-normal' placeholder='عنوان پروژه خود را وارد کنید' />
+          </div>
+          <div className="flex flex-col gap-3.5 md:w-[50%] w-full">
+            <label className='font-bold md:text-[22px] text-sm text-[#000]' htmlFor="">زمان پیشنهادی شما برای تحویل پروژه چقدر است .</label>
+            <input type="text" className='border bg-white border-[#000] rounded-lg py-4 px-4 placeholder:text[#aaa] placeholder:text-base placeholder:font-normal' placeholder='تعداد روز' />
+          </div>
+        </div>
+
+        <div className="flex flex-col md:flex-row items-center justify-between gap-2">
+          <div className="md:w-[60%] w-full flex flex-col gap-2">
+            <label className='font-bold md:text-[22px] text-sm text-[#000]' htmlFor="">بیشتر درباره پروژه بگویید .</label>
+            <textarea className='w-full h-[150px] md:h-[190px] border border-[#000] rounded-lg py-4 px-4 placeholder:text[#aaa] bg-white placeholder:text-base placeholder:font-normal' placeholder='توضیحات تکمیلی'></textarea>
+          </div>
+          <div onClick={() => {
+            if (inputRef.current) {
+              inputRef.current.click();
+            }
+          }} className="md:w-[40%] bg-white w-full mt-9 h-[120px] md:h-[190px] flex justify-center items-center cursor-pointer border border-[#000] rounded-lg text-xs md:text-base font-bold">
+            <input ref={inputRef} type="file" hidden />
+            آپلود عکس یا فایل
+          </div>
+        </div>
+
+        <button className='w-full bg-[#1D40D7] py-3 flex items-center justify-center rounded-lg font-bold md:text-lg text-xs text-white cursor-pointer my-4' id='confirm-btn'>ثبت رایگان پروژه</button>
+      </section>
+
+      {/* <WebDesign /> */}
+
+      {/* <ApplicationWebsiteDesign /> */}
+
+      {/* <Programming /> */}
+
+      {/* <ContentCreation /> */}
+
+      {/* <Translation /> */}
 
       <OnlineStoreDesign />
 

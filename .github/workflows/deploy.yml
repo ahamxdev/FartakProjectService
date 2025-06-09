@@ -53,3 +53,4 @@ jobs:
             systemctl status fartak-frontend-next.service
             systemctl status fartak-frontend-next1.service
             systemctl status fartak-frontend-react.service
+            reboot

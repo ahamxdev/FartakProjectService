@@ -1,6 +1,7 @@
 "use client";
 import { lazy, memo, useState } from "react";
 import { courses } from "@/api";
+import { useParams } from "next/navigation";
 
 const PageInation = lazy(() => import("../PageInation"));
 const CourseCard = lazy(() => import("./CourseCard"));
@@ -9,6 +10,9 @@ const FilterDropDown = lazy(() => import("../FilterDropDown"));
 
 const Courses = () => {
 	const [page, setPage] = useState(1);
+	const params = useParams();
+	const locale = params.locale as string;
+
 	return (
 		<div className="w-full px-5 flex flex-col items-center">
 			<div className="flex w-full justify-center gap-6 mt-10">
@@ -29,6 +33,7 @@ const Courses = () => {
 							studentCount,
 							teacherName,
 							title,
+							id,
 						},
 						index,
 					) => (
@@ -42,6 +47,8 @@ const Courses = () => {
 							teacherName={teacherName}
 							studentCount={studentCount}
 							title={title}
+							id={id}
+							locale={locale}
 						/>
 					),
 				)}
