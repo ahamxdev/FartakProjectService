@@ -32,9 +32,21 @@ import HomeStudent from './panel-professor/HomeStudent';
 
 
 
+
+
+import PanelProffesor from './admin-panel/PanelProffesor'
+
+
+
+
 import HomeFreelancer from './freelancer/Home'
-
-
+import PanelFreelanser from './admin-panel/PanelFreelancer'
+import TaskProject from './admin-panel/TaskProject'
+import PanelEmployer from './admin-panel/PanelEmployer'
+import RegisteringEmployerNotification from './admin-panel/RegisteringEmployerNotification'
+import FileTaskProject from './admin-panel/FileTaskProject'
+import StatusProject from './admin-panel/StatusProject'
+import ResoumeProfessor from './admin-panel/ResoumeProfessor'
 function App() {
   return (
     <>
@@ -77,6 +89,19 @@ function App() {
 
         <Route path="/HomeFreelancer" element={<HomeFreelancer />} />
 
+
+
+        {/* ADMIN */}
+        <Route path="/PanelProffesor" element={<PanelProffesor/>} />
+        <Route path="/PanelFreelanser" element={<PanelFreelanser/>} />
+        <Route path="/PanelEmployer" element={<PanelEmployer/>} />
+        <Route path="/TaskProject" element={<TaskProject/>} />
+        <Route path="/RegisteringEmployerNotification" element={<RegisteringEmployerNotification/>} />
+        <Route path="/StatusProject" element={<StatusProject/>} />
+        <Route path="/FileTaskProject" element={<FileTaskProject/>} />
+        <Route path="/ResoumeProfessor" element={<ResoumeProfessor/>} />
+
+        ResoumeProfessor
 
       </Routes>
     </>

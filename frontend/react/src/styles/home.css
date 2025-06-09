@@ -2513,3 +2513,513 @@ margin-top: 0.2rem;
     gap: 20rem;
     margin-top: 0.5rem;
 }
+
+
+
+/* Admin home */
+.dashbord-admin-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+.dashbord-admin-profile{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    border:1px solid rgb(235, 233, 233) ;
+    width: 210px;
+    gap: 1rem;
+    padding: 10px 0;
+    margin-right: -10rem;
+}
+.dashbord-admin{
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    margin-top: -5rem;
+    margin-right: 10rem;
+    
+      
+
+  
+}
+.dashbord-admin-profile img{
+    width:48px ;
+    height:48px;
+    border-radius: 50%;
+}
+
+
+.dashbord-admin-left-body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border:1px solid rgb(235, 233, 233) ;
+    width: 1118px;
+    height: 758px;
+    margin-right: 14rem;
+    border-radius: 18px;
+    
+  
+}
+.dashbord-admin-left-body-status{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border:1px solid rgb(235, 233, 233) ;
+    width: 1118px;
+    height: 558px;
+    margin-right: 14rem;
+    border-radius: 18px;
+
+    
+  
+}
+
+.admin-dashbord-Acordin{
+    margin-right: -10.2rem;
+    width: 207px;
+   
+}
+.btn-img {
+display: flex;
+gap: 1rem;
+
+    }
+.btn-img img{
+width: 24px;
+height: 24px;
+margin-right: 4px;
+}
+.professor-font{
+   color: black;
+   font-weight: 300;
+   padding:10px;
+  font-size: 12px;
+  display: block;
+
+}
+.professor-font:hover{
+ background-color: rgba(40, 48, 63, 1);
+ color: white;
+ border-radius: 8px;
+
+ }
+
+.button-showPerson{
+    display: flex;
+    flex-direction: row;
+    gap: 0.8rem;
+    border-radius: 8px;
+    background-color: #ffffff;
+    color: black;
+    border: 1px solid black;
+    height: 50px;
+}
+
+
+
+.dashboard-admin-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+
+.dashbord-admin-left-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+
+
+.dashbord-admin-up-body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border:1px solid rgb(235, 233, 233) ;
+    width: 1118px;
+    height: 758px;
+    margin-right: 14rem;
+    border-radius: 18px;
+    margin-top: -9rem;
+}
+
+
+.dashbord-admin-inputs{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 4.8rem;
+}
+.dashbord-admin-inputs input, select{
+    width: 250px;
+    height: 35px;
+    border-radius: 5px;
+    border: 1px solid rgb(235, 234, 234);
+}
+.dashbord-admin-col{
+    display: flex;
+    flex-direction: column;
+}
+.dashbord-admin-input-secondary{
+    margin-top: 3rem;
+    margin-right: -20rem;
+}
+.dashbord-admin-col-lang{
+    width: 520px;
+    height: 68px;
+    border-radius: 5px;
+    border: 1px solid rgb(221, 219, 219);
+    display: block;
+    gap: 1rem;
+}
+.dashbord-admin-col-lang button{
+    margin-top: 0.5rem;
+    margin-right: 1rem;
+    background-color: white;
+    color: black;
+    border: 1px solid rgba(23, 162, 184, 1);
+    border-radius: 8px;
+   
+}
+.dashbord-admin-col-lable-lang{
+    margin-right: 17rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.dasbord-admin-left-paragraph{
+     width:350px ;
+     display: flex;
+     flex-direction: column;
+     justify-content: start;
+     align-items: start;
+     border: 1px solid rgb(226, 225, 225);
+     border-radius: 10px;
+     padding: 10px 10px;
+     box-shadow: rgba(0, 0, 0, 0.25);
+     position: absolute;
+     
+}
+.dasbord-admin-left-paragraph-employe{
+    width:350px ;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    border: 1px solid rgb(226, 225, 225);
+    border-radius: 10px;
+    padding: 10px 10px;
+    box-shadow: rgba(0, 0, 0, 0.25);
+    position: absolute;
+    margin-right: -45rem;
+}
+.dasbord-admin-left-paragraph-left{
+    width:350px ;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    border: 1px solid rgb(226, 225, 225);
+    border-radius: 10px;
+    padding: 10px 10px;
+    box-shadow: rgba(0, 0, 0, 0.25);
+    position: absolute;
+    margin-right:45rem;
+    margin-top: 6rem;
+}
+.dasbord-admin-left-paragraph-status{
+    width:350px ;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    border: 1px solid rgb(226, 225, 225);
+    border-radius: 10px;
+    padding: 10px 10px;
+    box-shadow: rgba(0, 0, 0, 0.25);
+    position: absolute;
+    margin-right:45rem;
+   
+}
+.dasbord-admin-left-paragraph-project{
+    width:350px ;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    border: 1px solid rgb(226, 225, 225);
+    border-radius: 10px;
+    padding: 10px 10px;
+    box-shadow: rgba(0, 0, 0, 0.25);
+    position: absolute;
+    margin-right:-45rem;
+    margin-top: 6rem;
+}
+.dasbord-admin-left-paragraph2{
+    width:350px ;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    border: 1px solid rgb(226, 225, 225);
+    border-radius: 10px;
+    padding: 10px 10px;
+    box-shadow: rgba(0, 0, 0, 0.25);
+    position: absolute;
+    margin-right: 48rem;
+    height: 700px;
+}
+.dasbord-admin-left-para{
+    width:350px ;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    position: absolute;
+    border: 1px solid rgb(226, 225, 225);
+   border-radius: 10px;
+   padding: 10px 10px;
+   box-shadow: rgba(0, 0, 0, 0.25);
+   margin-left:47.5rem;
+  
+}
+
+.dashbord-admin-left-container-newProject{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 2rem;
+    width:1100px;
+    margin-right: 14rem;
+  position: relative;
+margin-top: 22rem;
+
+    
+}
+.dashbord-admin-left-btn1{
+    background-color: rgb(49, 204, 176);
+    color: black;
+    border-radius: 5px;
+    width: 105px;
+    height: 37px;
+    font-size: 11px;
+    margin-top: 5rem;
+}
+.dashbord-admin-left-btn2{
+    background-color:rgba(251, 236, 93, 1);
+    color: black;
+    border-radius: 5px;
+    width: 219px;
+    height: 37px;
+   margin-top: 5rem;
+    font-size: 13px;
+    
+
+}
+
+
+/* task project */
+
+
+
+.task-project-p {
+    text-align: right;
+
+}
+.project-task-div1{
+    width: 252px;
+    height: 163px;
+    border-radius: 10px 10px 10px 0;
+ margin-top: 150px;
+    background-color:rgba(183, 226, 233, 1) ;
+    margin-right: 40px;
+}
+.project-task-div2{
+    width: 252px;
+    height: 98px;
+    border-radius: 10px 10px 0 10px;
+    background-color:rgba(241, 241, 241, 1);
+    margin-right: 40px;
+margin-top: 10px;
+}
+.project-task-div3{
+    width: 252px;
+    height: 58px;
+    border-radius: 10px 10px 0 10px;
+    background-color:rgba(183, 226, 233, 1) ;
+    margin-right: 40px;
+}
+.project-task-div4{
+    width: 252px;
+    height: 58px;
+    border-radius: 10px 10px 0 10px;
+    background-color:rgba(241, 241, 241, 1);
+    margin-top: 10px;
+margin-bottom: 10px;
+margin-right: 40px;
+}
+
+.task-project-div3-p{
+    text-align: center;
+    border-bottom: 1px solid rgb(223, 223, 221);
+}
+.task-project-inputs{
+    display: flex;
+    flex-direction: column;
+}
+
+/* regesteremploye notification */
+
+
+
+.dasbord-admin-left-btns{
+   display: flex;
+   flex-direction: row;
+   
+}
+.dasbord-admin-left-btns button{
+    width: 250px;
+    border-radius: 0px 10px 0 0;
+    margin-top: -10px;
+   
+    
+}
+
+.dasbord-admin-left-checkBox{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+}
+.dasbord-admin-left-checkBox p{
+    margin-top: 1.4rem;
+    margin-right: 0.4rem;
+}
+.dasbord-admin-left-divBig{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: 750px;
+  border: 1px solid #dfdcdc;
+  height: 500px;
+  margin-right: 23rem;
+  margin-top:-12.5rem;
+  border-radius: 10px;
+  padding-right: 10px;
+  
+  
+}
+.dasbord-admin-left-divBig-input1{
+   width: 300px;
+   height: 40px;
+margin-top: 1rem;
+border: 1px solid #e7e5e5;
+border-radius: 10px;
+}
+.dasbord-admin-left-divBig-input2{
+    width: 718px;
+    height: 227px;
+    margin-top: 1rem;
+    border: 1px solid #e7e5e5;
+    border-radius: 10px;
+   
+ }
+
+
+
+ /* file task project */
+.dashbord-admin-left-container-fileTask{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 2rem;
+    width:1100px;
+    margin-right: 14rem;
+     position: relative;
+    margin-top: 0rem;
+   
+}
+.title-accordion{
+    display: flex;
+    flex-direction: row;
+    gap: 13rem;
+}
+.div-formated{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgb(223, 220, 220);
+    border-radius: 10px;
+    padding: 10px;
+    width: 75%;
+    margin-right: 10rem;
+    gap: 1.5rem;
+}
+
+/* resome professor */
+
+.title-accordion-row{
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}
+.title-accordion-rows{
+    display: flex;
+    flex-direction: row;
+    gap: 39rem;
+}
+.title-accordion-row button{
+   border-radius: 5px;
+
+}
+.resome-info  {
+    display: flex;
+    flex-direction: row;
+    gap: 5rem;
+   text-align: start;
+   width: 100%;
+}
+.resome-info p {
+   width: 820px;
+}
+.lesson-languaghe{
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    margin-right: 1rem;
+}
+.lesson-languaghe button{
+  border-radius:15px ;
+  border: 1.5px solid rgba(41, 172, 149, 1);
+  background-color: white;
+  color: black;
+  padding: 5px;
+
+}
+.video-resome-professor{
+    width:736px;
+    height: 413px;
+margin-right: 10rem;
+    border-radius:15px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+
+}
