@@ -4,6 +4,11 @@ import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import './styles/home.css';
 import App from './App';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/js/bootstrap.bundle.min.js'
+import "bootstrap-icons/font/bootstrap-icons.css";
+
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
