@@ -9,7 +9,7 @@ import prozhePng from "../../../public/prozhe.png";
 import Link from "next/link";
 
 const FirstInfoItem = lazy(() => import("@/components/FirstInfoItem"));
-const Button = lazy(() => import("../Button"));
+// const Button = lazy(() => import("../Button"));
 const IconStudent = lazy(() => import("@/icons/IconStudent"));
 const IconTraining = lazy(() => import("@/icons/IconTraining"));
 const IconArchive = lazy(() => import("@/icons/IconArchive"));
