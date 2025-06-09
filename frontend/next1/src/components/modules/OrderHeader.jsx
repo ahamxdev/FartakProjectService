@@ -32,7 +32,7 @@ const OrderHeader = () => {
                                           <Link className='text-sm font-normal text-[#000]' href={"/"}>پروژه‌ها</Link>
                                     </li>
                                     <li>
-                                          <Link className='text-sm font-normal text-[#000]' href={"/"}>پروژه‌ها</Link>
+                                          <Link className='text-sm font-normal text-[#000]' href={"/"}>فریلنسر ها</Link>
                                     </li>
                                     <li>
                                           <Link className='text-sm font-normal text-[#000]' href={"/"}>راهنما</Link>
