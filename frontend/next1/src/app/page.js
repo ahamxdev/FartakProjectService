@@ -27,28 +27,35 @@ export default function Home() {
         <CategoryBox src={"/images/Goal.png"} title={"کسب و کار"} hasScale={true} />
         <CategoryBox src={"/images/Drafting Compass.png"} title={"مهندسی و معماری"} />
       </section>
-      <SectionSlider slidesPerView={3} title="پروژه های جدید فرتاک" viewAllUrl="/category/all">
+      <SectionSlider title="پروژه های جدید فرتاک" viewAllUrl="/category/all">
         {[...Array(10)].map((_, i) => (
-          <SwiperSlide key={i}>
+          <SwiperSlide key={i} className="py-6">
             <NewProjectBox />
           </SwiperSlide>
         ))}
       </SectionSlider>
-      <SectionSlider slidesPerView={3} title="گروه فریلنسری فرتاک" viewAllUrl="/category/all">
+      <SectionSlider title="گروه فریلنسری فرتاک" viewAllUrl="/category/all">
         {[...Array(10)].map((_, i) => (
-          <SwiperSlide key={i}>
+          <SwiperSlide key={i} className="py-6">
             <FartakUser />
           </SwiperSlide>
         ))}
       </SectionSlider>
 
       <section className="w-[90%] flex flex-col lg:flex-row gap-10 mx-auto md:my-16 my-6">
-        <div className="lg:w-[40%] w-full px-6 py-10 lg:py-10 flex flex-col justify-end pb-8 gap-3 border border-[#CBC2FF] bg-[#fbfbfb]" id="step-right-section">
-          <h4 className="md:text-2xl text-lg font-black text-[#000]">فرتاک برترین پلتفرم ایران</h4>
-          <p className="md:text-lg text-sm font-medium text-[#000]">
-            فرتاک خانه کارفرما هست .
-            پروژه خود را به راحتی برون سپاری کنید و بهترین شکل فرتاک در این راه به شما کمک خواهد کرد.
-          </p>
+        <div className="lg:w-[40%] w-full  flex flex-col  gap-3 border border-[#CBC2FF] bg-[#fbfbfb]" id="step-right-section">
+          <div className="relative w-full h-[400px]">
+            <Image src={"/images/photo_2025-06-05_14-59-16.jpg"} fill
+              sizes="(max-width: 768px) 100vw, auto"
+              className="w-full h-full" alt='logo' />
+          </div>
+          <div className="px-6 py-10 lg:py-10 pb-8">
+            <h4 className="md:text-2xl text-lg font-black text-[#000]">فرتاک برترین پلتفرم ایران</h4>
+            <p className="md:text-lg text-sm font-medium text-[#000]">
+              فرتاک خانه کارفرما هست .
+              پروژه خود را به راحتی برون سپاری کنید و بهترین شکل فرتاک در این راه به شما کمک خواهد کرد.
+            </p>
+          </div>
         </div>
         <div className="flex lg:w-[60%] w-full flex-col gap-4 py-10">
           <h6 className="font-black lg:text-3xl text-xl">مراحل انجام پروژه</h6>

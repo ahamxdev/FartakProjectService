@@ -19,7 +19,7 @@ const OrderSidebar = ({ isSidebarOpen }) => {
                                     <Link className='text-sm font-normal text-[#000] flex' href={"/"}>پروژه‌ها</Link>
                               </li>
                               <li className='block'>
-                                    <Link className='text-sm font-normal text-[#000] flex' href={"/"}>پروژه‌ها</Link>
+                                    <Link className='text-sm font-normal text-[#000] flex' href={"/"}>فریلنسر ها</Link>
                               </li>
                               <li className='block'>
                                     <Link className='text-sm font-normal text-[#000] flex' href={"/"}>راهنما</Link>

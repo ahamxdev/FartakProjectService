@@ -24,7 +24,7 @@ const CategoryInfo = () => {
     <>
       <Header />
 
-      <BreadCrumb items={["مهارت ها شما", "طراحی سایت و اپلیکیشن", "طراحی رابط کاربری"]} />
+      {/* <BreadCrumb items={["مهارت ها شما", "طراحی سایت و اپلیکیشن", "طراحی رابط کاربری"]} />
       <section className='flex flex-col lg:flex-row lg:gap-16 gap-8 w-[90%] mx-auto md:my-10 my-5'>
         <div className="relative lg:w-[55%] w-full lg:h-[530px] h-[350px]">
           <Image
@@ -50,7 +50,6 @@ const CategoryInfo = () => {
           <Link href={"/"} className='bg-[#1D40D7] text-white rounded-lg flex justify-center items-center md:text-lg text-xs font-bold w-full py-2 my-6 lg:my-0'>همین الان پروژت رو ثبت کن</Link>
         </div>
       </section>
-      {/*}
       <SectionTitle title={"مراحل ثبت سفارش طراحی رابط کاربری"} />
       <section className="w-[90%] mx-auto md:my-10 my-5 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         <div className="flex flex-col items-center gap-2">
@@ -81,9 +80,9 @@ const CategoryInfo = () => {
           </div>
           <span className='font-bold md:text-[22px] text-sm text-[#1450A3]'>4.دریافت نهایی</span>
         </div>
-      </section>
+      </section> */}
 
-      <SectionTitle title={"جدیدترین پروژه های ثبت شده"} />
+      {/* <SectionTitle title={"جدیدترین پروژه های ثبت شده"} />
       <CategorySkillSliderSection>
         {[...Array(10)].map((_, i) => (
           <SwiperSlide key={i}>
@@ -99,7 +98,7 @@ const CategoryInfo = () => {
             <SkillBox />
           </SwiperSlide>
         ))}
-      </CategorySkillSliderSection>
+      </CategorySkillSliderSection> */}
 
       <SectionTitle title={"پروژتون در کمترین زمان ممکن ثبت کنید"} />
       <section className='w-[90%] flex flex-col gap-4 mx-auto md:my-10 my-5 bg-[#EEF5FF] rounded-2xl border-[2px] border-[#1E1E1E] py-5 lg:py-10 px-4 sm:px-8 md:px-12 lg:px-16'>
@@ -130,7 +129,7 @@ const CategoryInfo = () => {
         </div>
 
         <button className='w-full bg-[#1D40D7] py-3 flex items-center justify-center rounded-lg font-bold md:text-lg text-xs text-white cursor-pointer my-4' id='confirm-btn'>ثبت رایگان پروژه</button>
-      </section> */}
+      </section>
 
       {/* <WebDesign /> */}
 

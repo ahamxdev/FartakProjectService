@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { lazy, memo } from "react";
+import { lazy } from "react";
 import yellowBg from "../../../../../public/buyCourse/yellow.svg";
 import yellowMobileBg from "../../../../../public/buyCourse/yellowmobile.svg";
 import youngGirl from "../../../../../public/buyCourse/youngWoman.svg";
@@ -63,4 +63,4 @@ const Page = () => {
 		</div>
 	);
 };
-export default memo(Page);
+export default Page;

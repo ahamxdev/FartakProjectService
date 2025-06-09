@@ -45,7 +45,7 @@ const ProjectRegistration = () => {
                                     <span className='md:text-base text-xs font-bold text-[#000]'>
                                           نگران هیچی نباش با فرتاک همیشه و همه جا آموزش ببین.
                                     </span>
-                                    <Link href={"/"} className='bg-[#FFE401] flex md:hidden justify-center items-center rounded-lg px-1.5 py-1.5 text-sm font-bold text-[#000]'>مشاهده اطلاعات</Link>
+                                    <Link href={"/portfolio"} className='bg-[#FFE401] flex md:hidden justify-center items-center rounded-lg px-1.5 py-1.5 text-sm font-bold text-[#000]'>مشاهده اطلاعات</Link>
                               </div>
                               <div className="md:flex hidden flex-col gap-3">
                                     <div className="relative -mt-26 lg:w-[126px] w-[60px] lg:h-[154px] h-[85px]">
@@ -53,7 +53,7 @@ const ProjectRegistration = () => {
                                                 sizes="(max-width: 768px) 100vw, auto"
                                                 className="w-full h-full" alt='logo' />
                                     </div>
-                                    <Link href={"/"} className='bg-[#FFE401] md:flex hidden justify-center items-center rounded-lg px-1.5 py-1.5 text-sm font-bold text-[#000]'>مشاهده اطلاعات</Link>
+                                    <Link href={"/portfolio"} className='bg-[#FFE401] md:flex hidden justify-center items-center rounded-lg px-1.5 py-1.5 text-sm font-bold text-[#000]'>مشاهده اطلاعات</Link>
                               </div>
                         </div>
                         <div className="flex items-center rounded-[20px] w-full md:w-auto px-4 py-6 gap-6" id='order-detail-box'>
@@ -64,7 +64,7 @@ const ProjectRegistration = () => {
                                     <span className='md:text-base text-xs font-bold text-[#000]'>
                                           نگران هیچی نباش با فرتاک همیشه و همه جا آموزش ببین.
                                     </span>
-                                    <Link href={"/"} className='bg-[#FFE401] flex md:hidden justify-center items-center rounded-lg px-1.5 py-1.5 text-sm font-bold text-[#000]'>مشاهده اطلاعات</Link>
+                                    <Link href={"/skills"} className='bg-[#FFE401] flex md:hidden justify-center items-center rounded-lg px-1.5 py-1.5 text-sm font-bold text-[#000]'>مشاهده اطلاعات</Link>
                               </div>
                               <div className="md:flex hidden flex-col gap-3">
                                     <div className="relative -mt-26 lg:w-[126px] w-[60px] lg:h-[154px] h-[85px]">
@@ -72,7 +72,7 @@ const ProjectRegistration = () => {
                                                 sizes="(max-width: 768px) 100vw, auto"
                                                 className="w-full h-full" alt='logo' />
                                     </div>
-                                    <Link href={"/"} className='bg-[#FFE401] md:flex hidden justify-center items-center rounded-lg px-1.5 py-1.5 text-sm font-bold text-[#000]'>مشاهده اطلاعات</Link>
+                                    <Link href={"/skills"} className='bg-[#FFE401] md:flex hidden justify-center items-center rounded-lg px-1.5 py-1.5 text-sm font-bold text-[#000]'>مشاهده اطلاعات</Link>
                               </div>
                         </div>
                         <div className="flex items-center rounded-[20px] w-full md:w-auto px-4 py-6 gap-6" id='order-detail-box'>
@@ -83,7 +83,7 @@ const ProjectRegistration = () => {
                                     <span className='md:text-base text-xs font-bold text-[#000]'>
                                           نگران هیچی نباش با فرتاک همیشه و همه جا آموزش ببین.
                                     </span>
-                                    <Link href={"/"} className='bg-[#FFE401] flex md:hidden justify-center items-center rounded-lg px-1.5 py-1.5 text-sm font-bold text-[#000]'>مشاهده اطلاعات</Link>
+                                    <Link href={"/managerlist"} className='bg-[#FFE401] flex md:hidden justify-center items-center rounded-lg px-1.5 py-1.5 text-sm font-bold text-[#000]'>مشاهده اطلاعات</Link>
                               </div>
                               <div className="md:flex hidden flex-col gap-3">
                                     <div className="relative -mt-26 lg:w-[126px] w-[60px] lg:h-[154px] h-[85px]">
@@ -91,7 +91,7 @@ const ProjectRegistration = () => {
                                                 sizes="(max-width: 768px) 100vw, auto"
                                                 className="w-full h-full" alt='logo' />
                                     </div>
-                                    <Link href={"/"} className='bg-[#FFE401] md:flex hidden justify-center items-center rounded-lg px-1.5 py-1.5 text-sm font-bold text-[#000]'>مشاهده اطلاعات</Link>
+                                    <Link href={"/managerlist"} className='bg-[#FFE401] md:flex hidden justify-center items-center rounded-lg px-1.5 py-1.5 text-sm font-bold text-[#000]'>مشاهده اطلاعات</Link>
                               </div>
                         </div>
                   </section>

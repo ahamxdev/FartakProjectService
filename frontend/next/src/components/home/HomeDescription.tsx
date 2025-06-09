@@ -33,17 +33,6 @@ const HomeDescription = () => {
 						<span className="text-yellowPrimary"> واقعیت</span> تبدیل
 						میکنیم !
 					</div>
-					<div className="flex flex-col sm:flex-row gap-4">
-						<Button
-							text="button"
-							color="#1d40d7"
-						/>
-						<Button
-							text="button"
-							color="#1d40d7"
-							outline
-						/>
-					</div>
 				</div>
 				<Image
 					src={personImg}
@@ -83,6 +72,21 @@ const HomeDescription = () => {
 			</div>
 			<div className="w-full flex items-center justify-center flex-col lg:flex-row gap-10 mt-20 px-5">
 				<Link
+					href="/tadris"
+					className="w-full max-w-[386px] cursor-pointer hover:shadow-xl transition-shadow duration-300 h-[121px] bg-gradient-to-r from-[#FCE638] to-[#FCE94C] rounded-[20px] flex items-center justify-between">
+					<div className="px-6">
+						<h2 className="text-black font-extrabold text-[24px] py-2">
+							تدریس
+						</h2>
+						<span className="text-black text-[16px]">آنلاین و حضوری</span>
+					</div>
+					<Image
+						src={tadrisPng}
+						alt="تدریس"
+						className="h-[160px] w-auto relative bottom-5"
+					/>
+				</Link>
+				<Link
 					href="/courses"
 					className="w-full max-w-[386px] cursor-pointer hover:shadow-xl transition-shadow duration-300 h-[121px] bg-gradient-to-r from-[#0062CC] to-[#007BFF] rounded-[20px] flex items-center justify-between">
 					<div className="px-6">
@@ -99,22 +103,10 @@ const HomeDescription = () => {
 						alt=""
 					/>
 				</Link>
+				
 				<Link
-					href="/tadris"
-					className="w-full max-w-[386px] cursor-pointer hover:shadow-xl transition-shadow duration-300 h-[121px] bg-gradient-to-r from-[#FCE638] to-[#FCE94C] rounded-[20px] flex items-center justify-between">
-					<div className="px-6">
-						<h2 className="text-black font-extrabold text-[24px] py-2">
-							تدریس
-						</h2>
-						<span className="text-black text-[16px]">آنلاین و حضوری</span>
-					</div>
-					<Image
-						src={tadrisPng}
-						alt="تدریس"
-						className="h-[160px] w-auto relative bottom-5"
-					/>
-				</Link>
-				<div className="w-full max-w-[386px] cursor-pointer hover:shadow-xl transition-shadow duration-300 h-[121px] bg-gradient-to-r from-[#B02A37] to-[#DC3545] rounded-[20px] flex items-center justify-between">
+					href='/projects'
+					className="w-full max-w-[386px] cursor-pointer hover:shadow-xl transition-shadow duration-300 h-[121px] bg-gradient-to-r from-[#B02A37] to-[#DC3545] rounded-[20px] flex items-center justify-between">
 					<div className="px-6">
 						<h2 className="text-white font-extrabold text-[24px] py-2">
 							پروژه ها
@@ -128,7 +120,7 @@ const HomeDescription = () => {
 						alt="پروژه‌ها"
 						className="h-[165px] w-auto relative bottom-5"
 					/>
-				</div>
+				</Link>
 			</div>
 		</div>
 	);

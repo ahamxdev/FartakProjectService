@@ -6,23 +6,23 @@ import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import Link from 'next/link';
-const SectionSlider = ({ title, viewAllUrl, slidesPerView, children }) => {
+const SectionSlider = ({ title, viewAllUrl, children }) => {
       const prevRef = useRef(null);
       const nextRef = useRef(null);
 
       const [showNavigation, setShowNavigation] = useState(false);
       const [slider, setSlider] = useState(false);
-      const [slidesCount, setSlidesCount] = useState(0);
+      // const [slidesCount, setSlidesCount] = useState(0);
 
-      useEffect(() => {
-            setSlidesCount(React.Children.count(children));
-      }, []);
+      // useEffect(() => {
+      //       setSlidesCount(React.Children.count(children));
+      // }, []);
 
-      useEffect(() => {
-            if (slider) {
-                  setSlidesCount(React.Children.count(children));
-            }
-      }, [React.Children.count(children)]);
+      // useEffect(() => {
+      //       if (slider) {
+      //             setSlidesCount(React.Children.count(children));
+      //       }
+      // }, [React.Children.count(children)]);
 
       return (
             <>
@@ -37,7 +37,7 @@ const SectionSlider = ({ title, viewAllUrl, slidesPerView, children }) => {
                                                 <path d="M1 1.47852L0.999999 17.4785" stroke="#1E2531" strokeWidth="2" strokeLinecap="round" />
                                           </svg>
                                     </span>
-                                    <h2 className="md:text-2xl text-base font-black">{title}</h2>
+                                    <h2 className="md:text-2xl text-sm font-black">{title}</h2>
                               </div>
 
                               <div className={`hidden lg:block h-[3px] bg-[#E6E6E8] ${showNavigation ? "w-[596px]" : "w-[895px]"}`}>
@@ -74,12 +74,12 @@ const SectionSlider = ({ title, viewAllUrl, slidesPerView, children }) => {
                               observer={true}
                               observeParents={true}
                               onInit={(swiper) => {
-                                    // if (typeof swiper.params.navigation !== 'boolean') {
-                                    swiper.params.navigation.prevEl = prevRef.current;
-                                    swiper.params.navigation.nextEl = nextRef.current;
-                                    swiper.navigation.init();
-                                    swiper.navigation.update();
-                                    // }
+                                    if (typeof swiper.params.navigation !== 'boolean') {
+                                          swiper.params.navigation.prevEl = prevRef.current;
+                                          swiper.params.navigation.nextEl = nextRef.current;
+                                          swiper.navigation.init();
+                                          swiper.navigation.update();
+                                    }
                                     const perView =
                                           swiper.params.breakpoints?.[swiper.currentBreakpoint]?.slidesPerView ||
                                           swiper.params.slidesPerView;
@@ -90,19 +90,33 @@ const SectionSlider = ({ title, viewAllUrl, slidesPerView, children }) => {
                                           setShowNavigation(false);
                                     }
                               }}
+                              // breakpoints={{
+                              //       0: {
+                              //             slidesPerView: slidesPerView - 3,
+                              //       },
+                              //       640: {
+                              //             slidesPerView: slidesPerView - 2,
+                              //       },
+                              //       768: {
+                              //             slidesPerView: slidesPerView - 1,
+                              //       },
+                              //       1024: {
+                              //             slidesPerView: slidesPerView,
+                              //       },
+                              // }}
                               breakpoints={{
                                     0: {
-                                          slidesPerView: slidesPerView - 3,
+                                          slidesPerView: 1,
                                     },
                                     640: {
-                                          slidesPerView: slidesPerView - 2,
+                                          slidesPerView: 2,
                                     },
                                     768: {
-                                          slidesPerView: slidesPerView - 1,
+                                          slidesPerView: 3,
                                     },
-                                    1024: {
-                                          slidesPerView: slidesPerView,
-                                    },
+                                    // 1024: {
+                                    //       slidesPerView: 4,
+                                    // },
                               }}
                         >
                               {children}
