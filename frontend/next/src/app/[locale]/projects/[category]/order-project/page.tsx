@@ -2,7 +2,7 @@
 import React, { useRef } from "react";
 // import Header from '@/components/modules/Header'
 import Image from "next/image";
-import InputCheckbox from "@/components/InputCheckbox";
+// import InputCheckbox from "@/components/InputCheckbox";
 import SkillFooter from "@/components/skills/SkillFooter";
 // import InputCheckbox from "@/components/skills/InputCheckbox";
 // import SkillFooter from "@/components/skills/SkillFooter";
@@ -301,21 +301,99 @@ const OrderProject = () => {
               </div>
             </div>
           </div>
-          <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 justify-between flex-wrap my-6">
+          <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 my-6">
             <div
               className={`flex justify-center items-center rounded-lg border-[1px] border-[#DC3545] px-4 py-2`}
             >
-              <InputCheckbox label={"متن تستی"} />
+              <div className="flex items-center gap-2">
+                <label className="relative inline-block">
+                  <input
+                    type="checkbox"
+                    className="peer w-4 h-4 md:w-6 md:h-6 border-2 border-[#495AFF] rounded-md appearance-none bg-white checked:bg-[#495AFF] checked:border-[#495AFF]"
+                  />
+                  <svg
+                    className="absolute top-1/2 left-1/2 w-3 h-3 md:w-4 md:h-4 text-white transform -translate-x-1/2 -translate-y-1/2 opacity-0 peer-checked:opacity-100 pointer-events-none"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                </label>
+                <div className="flex flex-col items-center gap-3">
+                  <span className="md:text-xl text-base font-bold text-[#1d40d7]">
+                    پروژه ساده
+                  </span>
+                  <span className="md:text-base text-sm font-bold text-[#000]">
+                    5,000,000 تا 30,000,000 میلیون تومان
+                  </span>
+                </div>
+              </div>
             </div>
             <div
               className={`flex justify-center items-center rounded-lg border-[1px] border-[#DC3545] px-4 py-2`}
             >
-              <InputCheckbox label={"متن تستی"} />
+              <div className="flex items-center gap-2">
+                <label className="relative inline-block">
+                  <input
+                    type="checkbox"
+                    className="peer w-4 h-4 md:w-6 md:h-6 border-2 border-[#495AFF] rounded-md appearance-none bg-white checked:bg-[#495AFF] checked:border-[#495AFF]"
+                  />
+                  <svg
+                    className="absolute top-1/2 left-1/2 w-3 h-3 md:w-4 md:h-4 text-white transform -translate-x-1/2 -translate-y-1/2 opacity-0 peer-checked:opacity-100 pointer-events-none"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                </label>
+                <div className="flex flex-col items-center gap-3">
+                  <span className="md:text-xl text-base font-bold text-[#1d40d7]">
+                    پروژه متوسط
+                  </span>
+                  <span className="md:text-base text-sm font-bold text-[#000]">
+                    30,000,000 تا 50,000,000 میلیون تومان
+                  </span>
+                </div>
+              </div>
             </div>
             <div
               className={`flex justify-center items-center rounded-lg border-[1px] border-[#DC3545] px-4 py-2`}
             >
-              <InputCheckbox label={"متن تستی"} />
+              <div className="flex items-center gap-2">
+                <label className="relative inline-block">
+                  <input
+                    type="checkbox"
+                    className="peer w-4 h-4 md:w-6 md:h-6 border-2 border-[#495AFF] rounded-md appearance-none bg-white checked:bg-[#495AFF] checked:border-[#495AFF]"
+                  />
+                  <svg
+                    className="absolute top-1/2 left-1/2 w-3 h-3 md:w-4 md:h-4 text-white transform -translate-x-1/2 -translate-y-1/2 opacity-0 peer-checked:opacity-100 pointer-events-none"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                </label>
+                <div className="flex flex-col items-center gap-3">
+                  <span className="md:text-xl text-base font-bold text-[#1d40d7]">
+                    پروژه بزرگ
+                  </span>
+                  <span className="md:text-base text-sm font-bold text-[#000]">
+                    50,000,000 تا 300,000,000 میلیون تومان
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
           <button
