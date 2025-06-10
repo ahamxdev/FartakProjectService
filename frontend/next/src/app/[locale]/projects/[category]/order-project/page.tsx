@@ -28,7 +28,7 @@ const OrderProject = () => {
             />
           </div>
         </div>
-        <div className="flex justify-center items-center lg:mt-[15%] mt-[16%] sm:mt-[40%] md:mt-[24%] relative z-10 flex-col gap-5">
+        <div className="flex justify-center items-center lg:mt-[11%] mt-[16%] sm:mt-[40%] md:mt-[24%] relative z-10 flex-col gap-5">
           <h1 className="font-bold md:text-4xl text-xl text-[#fff] flex justify-center items-end">
             ثبت پروژه
           </h1>
@@ -200,17 +200,84 @@ const OrderProject = () => {
             <div
               className={`flex justify-center items-center rounded-lg border-[1px] border-[#DC3545] px-4 py-2`}
             >
-              <InputCheckbox label={"متن تستی"} />
+              <div className="flex items-center gap-2">
+                <label className="relative inline-block">
+                  <input
+                    type="checkbox"
+                    className="peer w-4 h-4 md:w-6 md:h-6 border-2 border-[#495AFF] rounded-md appearance-none bg-white checked:bg-[#495AFF] checked:border-[#495AFF]"
+                  />
+                  <svg
+                    className="absolute top-1/2 left-1/2 w-3 h-3 md:w-4 md:h-4 text-white transform -translate-x-1/2 -translate-y-1/2 opacity-0 peer-checked:opacity-100 pointer-events-none"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                </label>
+                <label className="text-base font-extrabold pb-1.5 text-[#000]">
+                  برای من <span className="text-[#495AFF]">قیمت</span> بالاترین
+                  درجه اهمیت را دارد
+                </label>
+              </div>{" "}
             </div>
             <div
               className={`flex justify-center items-center rounded-lg border-[1px] border-[#DC3545] px-4 py-2`}
             >
-              <InputCheckbox label={"متن تستی"} />
+              <div className="flex items-center gap-2">
+                <label className="relative inline-block">
+                  <input
+                    type="checkbox"
+                    className="peer w-4 h-4 md:w-6 md:h-6 border-2 border-[#495AFF] rounded-md appearance-none bg-white checked:bg-[#495AFF] checked:border-[#495AFF]"
+                  />
+                  <svg
+                    className="absolute top-1/2 left-1/2 w-3 h-3 md:w-4 md:h-4 text-white transform -translate-x-1/2 -translate-y-1/2 opacity-0 peer-checked:opacity-100 pointer-events-none"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                </label>
+                <label className="text-base font-extrabold pb-1.5 text-[#000]">
+                  برای من <span className="text-[#495aff]">کیفیت</span> بالاترین
+                  درجه اهمیت را دارد
+                </label>
+              </div>{" "}
             </div>
             <div
               className={`flex justify-center items-center rounded-lg border-[1px] border-[#DC3545] px-4 py-2`}
             >
-              <InputCheckbox label={"متن تستی"} />
+              <div className="flex items-center gap-2">
+                <label className="relative inline-block">
+                  <input
+                    type="checkbox"
+                    className="peer w-4 h-4 md:w-6 md:h-6 border-2 border-[#495AFF] rounded-md appearance-none bg-white checked:bg-[#495AFF] checked:border-[#495AFF]"
+                  />
+                  <svg
+                    className="absolute top-1/2 left-1/2 w-3 h-3 md:w-4 md:h-4 text-white transform -translate-x-1/2 -translate-y-1/2 opacity-0 peer-checked:opacity-100 pointer-events-none"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                </label>
+                <label className="text-base font-extrabold pb-1.5 text-[#000]">
+                  برای من ترکیبی از{" "}
+                  <span className="text-[#495aff]">کیفیت</span> و{" "}
+                  <span className="text-[#495aff]">قیمت</span> اهمیت را دارد
+                </label>
+              </div>{" "}
             </div>
           </div>
           <span className="md:text-base text-sm text-[##00060F] font-normal">
