@@ -35,6 +35,22 @@ export interface CourseCardType {
 	star: number;
 }
 
+// export interface DropDownMenuItemsType {
+// 	[title: string]: { [key: string]: string[] } | string[];
+// }
+
+// تعریف تایپ برای زوج [string, number]
+type ItemPair = [string, number];
+
+// تعریف تایپ برای آرایه‌های تو در تو (مثل بخش "کسب و کار")
+type arrySubCategory = ItemPair[][];
+
+// تعریف تایپ برای بخش "دبستان"
+type simpleSubCategory = string[];
+
+// تعریف تایپ اصلی برای کل آبجکت
 export interface DropDownMenuItemsType {
-	[title: string]: string[];
+  [key: string]: {
+    [subKey: string]: arrySubCategory | simpleSubCategory;
+  };
 }

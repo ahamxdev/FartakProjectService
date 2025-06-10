@@ -17,6 +17,8 @@ const DropDownMenu = ({
 	mainItems,
 }: DropDownMenuProps) => {
 	const [selectedMainTitle, setSelectedMainTitle] = useState("");
+	const [selectedSubTitle, setSelectedSubTitle] = useState("");
+
 	const containerRef = useRef<HTMLDivElement>(null);
 	const dropDownRef = useRef<HTMLDivElement>(null);
 	const titleRefs = useRef<{ [key: string]: HTMLSpanElement | null }>({});
@@ -78,6 +80,13 @@ const DropDownMenu = ({
 		event.stopPropagation();
 		setSelectedMainTitle((prev) => (prev === item ? "" : item));
 	};
+	const handleSubItemClick = (
+		event: React.MouseEvent<HTMLSpanElement>,
+		item: string,
+	) => {
+		event.stopPropagation();
+		setSelectedSubTitle((prev) => (prev === item ? "" : item));
+	};
 	return (
 		<div
 			ref={containerRef}
@@ -123,30 +132,67 @@ const DropDownMenu = ({
 							duration: 0.1,
 							ease: "circInOut",
 						}}
-						style={{
-							left: -1 * right,
-						}}
 						onAnimationComplete={onAnimate}
 						ref={dropDownRef}
-						className="overflow-hidden transition-transform duration-600 w-fit relative -top-5">
-						<div
-							style={{
-								backgroundColor: dropDownColor,
-								color: getTextColor(dropDownColor),
-							}}
-							className="flex flex-col flex-wrap rounded-2xl lg:min-w-72 w-fit max-w-[90vw] h-96 py-10 lg:py-16 px-11 gap-y-4 gap-x-32 overflow-x-auto">
-							<AnimatePresence mode="sync">
-								{mainItems[selectedMainTitle].map((item, index) => (
-									<motion.span
+						className="overflow-hidden transition-transform duration-600 relative -top-5"
+					>
+						<div className='bg-[#222222] text-white rounded-2xl mx-2 p-2 flex'>
+							<div className='w-1/6 border-e-2'>
+								{Object.keys(mainItems[selectedMainTitle]).map((item, index) => (
+									<p
 										key={`${selectedMainTitle}-${index}`}
-										initial={{ opacity: 0, y: 10 }}
-										animate={{ opacity: 1, y: 0 }}
-										exit={{ opacity: 0, y: -10 }}
-										transition={{ duration: 0.25 }}>
+										onClick={(e) => handleSubItemClick(e, item)}
+										className={`
+											${Object.keys(mainItems[selectedMainTitle]).length !== index+1 && 'border-b-2'}
+											${selectedSubTitle == item && 'text-gray-500 font-bold'}
+											border-slate-200 mx-4 py-4
+										`}
+									>
 										{item}
-									</motion.span>
+									</p>
 								))}
-							</AnimatePresence>
+							</div>
+							<div className='flex w-5/6 m-4'>
+								<div className='w-1/3'>
+									{((Array.isArray(mainItems[selectedMainTitle]?.[selectedSubTitle]?.[0]) ?
+										mainItems[selectedMainTitle]?.[selectedSubTitle]?.[0] : []) || []).map((item: [string, number], index: number) => (
+										<div key={index}
+											className={`
+												${ item[1] === 1 ? 'text-amber-300 font-bold' : 'ms-8'}
+												mb-4
+											`}
+										>
+											{item[0]}{item[1] === 1 && '>'}
+										</div>
+									))}
+								</div>
+								<div className='w-1/3'>
+									{((Array.isArray(mainItems[selectedMainTitle]?.[selectedSubTitle]?.[1]) ?
+										mainItems[selectedMainTitle]?.[selectedSubTitle]?.[1] : []) || []).map((item: [string, number], index: number) => (
+										<div key={index}
+											className={`
+												${ item[1] === 1 ? 'text-amber-300 font-bold' : 'ms-8'}
+												mb-4
+											`}
+										>
+											{item[0]}{item[1] === 1 && '>'}
+										</div>
+									))}
+								</div>
+								<div className='w-1/3'>
+									{((Array.isArray(mainItems[selectedMainTitle]?.[selectedSubTitle]?.[2]) ?
+										mainItems[selectedMainTitle]?.[selectedSubTitle]?.[2] : []) || []).map((item: [string, number], index: number) => (
+										<div key={index}
+											className={`
+												${ item[1] === 1 ? 'text-amber-300 font-bold' : 'ms-8'}
+												mb-4
+											`}
+										>
+											{item[0]}{item[1] === 1 && '>'}
+										</div>
+									))}
+								</div>
+							</div>
 						</div>
 					</motion.div>
 				)}
