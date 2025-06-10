@@ -42,7 +42,7 @@ const ManagerList = () => {
 
       <section className="w-[90%] mx-auto md:my-12 my-5 flex justify-between items-center gap-6 flex-wrap">
         <Link
-          href={"/managerlist/website"}
+          href={"/projects/managerlist/website"}
           className="flex flex-col items-center gap-2"
         >
           <div className="flex justify-center items-center px-14 py-6 bg-[#1E2531] rounded-lg">
@@ -61,7 +61,7 @@ const ManagerList = () => {
           </span>
         </Link>
         <Link
-          href={"/managerlist/website"}
+          href={"/projects/managerlist/website"}
           className="flex flex-col items-center gap-2"
         >
           <div className="flex justify-center items-center px-14 py-6 bg-[#1E2531] rounded-lg">
@@ -80,7 +80,7 @@ const ManagerList = () => {
           </span>
         </Link>
         <Link
-          href={"/managerlist/website"}
+          href={"/projects/managerlist/website"}
           className="flex flex-col items-center gap-2"
         >
           <div className="flex justify-center items-center px-14 py-6 bg-[#1E2531] rounded-lg">
@@ -99,7 +99,7 @@ const ManagerList = () => {
           </span>
         </Link>
         <Link
-          href={"/managerlist/website"}
+          href={"/projects/managerlist/website"}
           className="flex flex-col items-center gap-2"
         >
           <div className="flex justify-center items-center px-14 py-6 bg-[#1E2531] rounded-lg">
@@ -118,7 +118,7 @@ const ManagerList = () => {
           </span>
         </Link>
         <Link
-          href={"/managerlist/website"}
+          href={"/projects/managerlist/website"}
           className="flex flex-col items-center gap-2"
         >
           <div className="flex justify-center items-center px-14 py-6 bg-[#1E2531] rounded-lg">
@@ -137,7 +137,7 @@ const ManagerList = () => {
           </span>
         </Link>
         <Link
-          href={"/managerlist/website"}
+          href={"/projects/managerlist/website"}
           className="flex flex-col items-center gap-2"
         >
           <div className="flex justify-center items-center px-14 py-6 bg-[#1E2531] rounded-lg">
