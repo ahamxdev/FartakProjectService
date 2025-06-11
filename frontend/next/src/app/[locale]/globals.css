@@ -36,6 +36,7 @@
   --color-black: #00001a;
   --color-icon: #28303f;
   --color-darkBlue: #1e2531;
+  --breakpoint-smd: 768px;
   --breakpoint-md: 929px;
   --breakpoint-xl: 1280px;
 }
