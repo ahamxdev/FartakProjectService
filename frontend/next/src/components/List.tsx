@@ -26,6 +26,8 @@ interface Props {
 	start?: true;
 	gap?: number;
 	children: ReactNode;
+	className?: string;
+	pagination?: boolean;
 }
 const List: FC<Props> = ({
 	bottomArrow,
@@ -34,6 +36,8 @@ const List: FC<Props> = ({
 	children,
 	tabs,
 	gap,
+	className,
+	pagination = true,
 }) => {
 	const t = useTranslations("List");
 	const list = useRef<HTMLDivElement | null>(null);
@@ -114,7 +118,7 @@ const List: FC<Props> = ({
 	}, [currentCard, width]);
 
 	return (
-		<div className="w-full">
+		<div className={clsx("w-full", className)}>
 			<div className="flex justify-between items-center">
 				<div className="flex gap-3 lg:gap-10 items-center relative start-4 lg:start-[72px]">
 					{title && (
@@ -167,9 +171,14 @@ const List: FC<Props> = ({
 				id="list"
 				ref={list}
 				style={{ gap: gap ? gap : 48 }}
-				className={`flex ${
+				className={clsx(
+					"flex",
+					{
+						"overflow-x-auto overflow-y-hidden": pagination,
+						"flex-wrap justify-center": !pagination,
+					},
 					!start ? "lg:px-[72px] p-5" : "py-5"
-				} overflow-x-auto overflow-y-hidden`}>
+				)}>
 				{children}
 			</div>
 			<div
