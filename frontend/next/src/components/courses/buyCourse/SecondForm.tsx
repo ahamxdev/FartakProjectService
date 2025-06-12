@@ -45,7 +45,7 @@ const SecondForm = ({
     let current = dasteBandi;
     for (const key of educationBreadCrumbs) {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      //@ts-ignore
+      // @ts-expect-error
       current = current?.[key];
       if (!current || typeof current !== "object") break;
     }
@@ -55,7 +55,7 @@ const SecondForm = ({
     let current = dasteBandi;
     for (const key of bussinesBreadCrumbs) {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      //@ts-ignore
+      // @ts-expect-error
       current = current?.[key];
       if (!current || typeof current !== "object") break;
     }

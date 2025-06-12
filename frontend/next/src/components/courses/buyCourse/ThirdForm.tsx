@@ -132,8 +132,7 @@ const ThirdForm = () => {
                         {[...Array(6)].map((_, index) => (
                           <input
                             key={index}
-                            // @ts-ignore
-                            ref={(el) => (inputRefs.current[index] = el)}
+                            ref={(el) => { inputRefs.current[index] = el; }}
                             type="text"
 							style={{ borderRadius: "0 .5rem" }}
                             inputMode="numeric"
