@@ -1,10 +1,10 @@
 export interface IFirstBuyCourseForm {
 	countOfCustomers: number;
-	firstName: "";
-	forWho: "";
-	goal: "";
-	language: "";
-	lastName: "";
-	level: "";
-	region: "";
+	firstName: string;
+	forWho: string;
+	goal: string;
+	language: string;
+	lastName: string;
+	level: string;
+	region: string;
 }

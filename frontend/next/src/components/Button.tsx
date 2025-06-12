@@ -10,6 +10,7 @@ interface ButtonProps {
 	action?: ActionsButtons;
 	outline?: boolean;
 	className?: string;
+	click?: () => void;
 }
 
 const Button = ({
@@ -18,6 +19,7 @@ const Button = ({
 	action = "empty",
 	outline,
 	className,
+	click = () => {}, // Default click function
 }: ButtonProps) => {
 	const router = useRouter();
 	const [hovered, setHovered] = useState(false);
@@ -42,6 +44,7 @@ const Button = ({
 		<button
 			onClick={() => {
 				buttonActions[action](router);
+				click();
 			}}
 			onMouseEnter={() => setHovered(true)}
 			onMouseLeave={() => setHovered(false)}
