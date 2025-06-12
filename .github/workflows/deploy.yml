@@ -27,7 +27,6 @@ jobs:
             # Stop services
             systemctl stop fartak-backend.service
             systemctl stop fartak-frontend-next.service
-            systemctl stop fartak-frontend-next1.service
             systemctl stop fartak-frontend-react.service
 
             # Update repo
@@ -61,11 +60,9 @@ jobs:
             # Start services
             systemctl start fartak-backend.service
             systemctl start fartak-frontend-next.service
-            systemctl start fartak-frontend-next1.service
             systemctl start fartak-frontend-react.service
 
             # Check status
             systemctl status fartak-backend.service
             systemctl status fartak-frontend-next.service
-            systemctl status fartak-frontend-next1.service
             systemctl status fartak-frontend-react.service
