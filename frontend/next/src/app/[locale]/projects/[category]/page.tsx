@@ -10,7 +10,6 @@ import CategoryBox from '@/components/skills/CategoryBox'
 import NewProjectBox from '@/components/skills/NewProjectBox'
 import SectionSlider from '@/components/skills/SectionSlider'
 import FartakUser from '@/components/skills/FartakUser'
-import SkillFooter from '@/components/skills/SkillFooter'
 
 const CategoryPage = () => {
       return (
@@ -218,7 +217,6 @@ const CategoryPage = () => {
                         </div>
                   </section>
 
-                  <SkillFooter />
             </>
       )
 }

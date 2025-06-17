@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import ManagerListHeader from "@/components/skills/ManagerListHeader";
 import ManagerListBox from "@/components/skills/ManagerListBox";
-import SkillFooter from "@/components/skills/SkillFooter";
 
 const page = () => {
   return (
@@ -238,7 +237,6 @@ const page = () => {
         <ManagerListBox />
       </section>
 
-      <SkillFooter />
     </>
   );
 };

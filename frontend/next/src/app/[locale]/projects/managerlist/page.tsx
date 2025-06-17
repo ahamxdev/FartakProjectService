@@ -1,7 +1,6 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import SkillFooter from "@/components/skills/SkillFooter";
 import ManagerListHeader from "@/components/skills/ManagerListHeader";
 import ManagerListBox from "@/components/skills/ManagerListBox";
 
@@ -202,7 +201,6 @@ const ManagerList = () => {
         <ManagerListBox />
       </section>
 
-      <SkillFooter />
     </>
   );
 };

@@ -1,7 +1,6 @@
 "use client"
 import React, { useState } from 'react'
 import Image from 'next/image'
-import SkillFooter from '@/components/skills/SkillFooter'
 import SubMenu from '@/components/skills/SubMenu'
 import PortfolioBox from '@/components/skills/PortfolioBox'
 import Pagination from '@/components/skills/Pagination'
@@ -73,7 +72,6 @@ const Portfolio = () => {
 
                   <Pagination />
 
-                  <SkillFooter />
             </>
       )
 }

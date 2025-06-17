@@ -243,7 +243,7 @@ const ProjectRegistration = () => {
                 بودجه و زمان بندی
               </span>
               <div className="flex flex-col mt-4 gap-3">
-                <span className="text-sm font-semibold text-[#0C0C0C]">
+                <span className="text-base font-semibold text-[#0C0C0C]">
                   بودجه مالی
                 </span>
                 <span className="text-sm font-normal text-[#7c7c7c]">
@@ -284,7 +284,7 @@ const ProjectRegistration = () => {
                       زمان بندی
                     </label>
                     <input
-                      className="rounded-lg md:h-[40px] border-[1px] w-full border-[#7c7c7c55] px-3 py-1 flex justify-between items-center text-base bg-[#fff] font-normal text-[#0c0c0c] placeholder:text-[10px] placeholder:md:text-base placeholder:text-[#7c7c7c] gap-4"
+                      className="rounded-lg md:h-[40px] border-[1px] w-full border-[#7c7c7c55] px-3 py-1 flex justify-between items-center text-base bg-[#fff] font-normal text-[#0c0c0c] placeholder:text-[8px] placeholder:md:text-sm placeholder:text-[#7c7c7c] gap-4"
                       placeholder="میزان زمانی که درنظر دارید پروژه خود را تحوبل بگیرید وارد کنید."
                     />
                   </div>
@@ -356,11 +356,20 @@ const ProjectRegistration = () => {
                 نحوه و فوریت خود را انتخاب کنید
               </span>
               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 mt-8 gap-5">
-                <WaySpeedProjectRegistrationBox />
-                <WaySpeedProjectRegistrationBox />
-                <WaySpeedProjectRegistrationBox />
-                <WaySpeedProjectRegistrationBox />
-                <WaySpeedProjectRegistrationBox />
+                <WaySpeedProjectRegistrationBox title={"معمولی"} factor={"1"} />
+                <WaySpeedProjectRegistrationBox
+                  title={"برجسته و فوری"}
+                  factor={"1.5"}
+                />
+                <WaySpeedProjectRegistrationBox title={"متمایز"} factor={"2"} />
+                <WaySpeedProjectRegistrationBox
+                  title={"تمام وقت"}
+                  factor={"2.5"}
+                />
+                <WaySpeedProjectRegistrationBox
+                  title={"حضوری و یا محرمانه"}
+                  factor={"3"}
+                />
               </div>
             </div>
             <div className="flex flex-col w-full">
@@ -484,17 +493,3 @@ const ProjectRegistration = () => {
 };
 
 export default ProjectRegistration;
-
-// const WaySpeedProjectRegistrationBox = () => {
-//       return (
-//             <div className='py-6 px-10 cursor-pointer rounded-[20px] flex flex-col items-center gap-5' id='waySpeed-project-registration-box'>
-//                   <span className='md:text-xl text-sm font-medium text-[#000]'>متمایز</span>
-//                   <div className="relative lg:w-[140px] w-[70px] lg:h-[130px] h-[60px]">
-//                         <Image src={"/projectRegistration/approved.png"} fill
-//                               sizes="(max-width: 768px) 100vw, auto"
-//                               className="w-full h-full" alt='logo' />
-//                   </div>
-//                   <span className='md:text-xl text-sm font-medium text-[#000]'>price * 3</span>
-//             </div>
-//       )
-// }

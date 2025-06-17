@@ -3,9 +3,7 @@ import React, { useRef } from "react";
 // import Header from '@/components/modules/Header'
 import Image from "next/image";
 // import InputCheckbox from "@/components/InputCheckbox";
-import SkillFooter from "@/components/skills/SkillFooter";
 // import InputCheckbox from "@/components/skills/InputCheckbox";
-// import SkillFooter from "@/components/skills/SkillFooter";
 
 const OrderProject = () => {
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -404,7 +402,6 @@ const OrderProject = () => {
         </div>
       </section>
 
-      <SkillFooter />
     </>
   );
 };
