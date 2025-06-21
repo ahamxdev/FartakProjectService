@@ -47,11 +47,6 @@ jobs:
             npm install || echo "npm install failed (next)"
             npm run build || echo "Build failed for Next"
 
-            # Frontend: Next1
-            cd /root/FartakProjectService/frontend/next1/ || exit
-            rm -rf node_modules
-            npm install || echo "npm install failed (next1)"
-
             # Frontend: React
             cd /root/FartakProjectService/frontend/react/ || exit
             rm -rf node_modules
