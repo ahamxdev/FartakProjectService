@@ -2,7 +2,7 @@
 import { usePathname } from "next/navigation";
 import { lazy, memo } from "react";
 
-const IconEnamad = lazy(() => import("@/icons/footer/IconEnamad"));
+// const IconEnamad = lazy(() => import("@/icons/footer/IconEnamad"));
 const IconInstagram = lazy(() => import("@/icons/footer/IconInstagram"));
 const IconTelegram = lazy(() => import("@/icons/footer/IconTelegram"));
 const IconTwitter = lazy(() => import("@/icons/footer/IconTwitter"));
@@ -111,7 +111,20 @@ const Footer = () => {
               <IconWhatsApp className="text-white" />
               <IconInstagram className="text-white" />
             </div>
-            <IconEnamad className="size-[100px] text-white" />
+            <a
+              referrerPolicy="origin"
+              target="_blank"
+              href="https://trustseal.enamad.ir/?id=622700&Code=VsbzEV6HdD5FHsDVcSNp533o3gsp6Qep"
+            >
+              <img
+                referrerPolicy="origin"
+                src="https://trustseal.enamad.ir/logo.aspx?id=622700&Code=VsbzEV6HdD5FHsDVcSNp533o3gsp6Qep"
+                alt=""
+                style={{ cursor: "pointer" }}
+                data-code="VsbzEV6HdD5FHsDVcSNp533o3gsp6Qep"
+              />
+            </a>
+            {/* <IconEnamad className="size-[100px] text-white" /> */}
           </div>
         </footer>
       )}
