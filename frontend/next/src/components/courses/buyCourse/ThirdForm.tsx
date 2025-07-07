@@ -1,14 +1,15 @@
 import Image from "next/image";
 import { lazy, memo, useEffect, useState, useRef } from "react";
 import profile from "../../../../public/buyCourse/selectTeacherCardProfile.png";
+import ThirdFormAfterVerified from "./ThirdFormAfterVerified";
 
 const IconFilter = lazy(() => import("@/icons/courses/IconFilter"));
 const IconStar = lazy(() => import("@/icons/teacherCard/IconStar"));
 const List = lazy(() => import("@/components/List"));
-
 const Button = lazy(() => import("@/components/Button"));
 
 const ThirdForm = () => {
+  const [isVerified, setIsVerified] = useState(false);
   const [pagination, setPagination] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [phone, setPhone] = useState("");
@@ -17,6 +18,13 @@ const ThirdForm = () => {
   const [error, setError] = useState("");
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setPagination(window.innerWidth > 640);
+      setIsVerified(localStorage.getItem("verified") === "true");
+    }
+  }, []);
+
   const handleSendOtp = () => {
     if (!phone.match(/^09\d{9}$/)) {
       setError("شماره موبایل معتبر نیست.");
@@ -24,7 +32,6 @@ const ThirdForm = () => {
     }
     setError("");
     setOtpSent(true);
-    // Here you would call your API to send OTP
   };
 
   const handleVerifyOtp = () => {
@@ -32,19 +39,17 @@ const ThirdForm = () => {
       setError("کد تایید باید ۶ رقمی باشد.");
       return;
     }
+    localStorage.setItem("verified", "true");
+    setIsVerified(true);
     setError("");
-    // Here you would call your API to verify OTP
     setShowModal(false);
     setOtp("");
     setOtpSent(false);
-	
   };
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setPagination(window.innerWidth > 640);
-    }
-  }, []);
+  if (isVerified) {
+    return <ThirdFormAfterVerified />;
+  }
 
   return (
     <div className="flex w-full flex-col mt-10">
@@ -73,11 +78,9 @@ const ThirdForm = () => {
                 </span>
               </div>
               <div className="flex items-center gap-1 mt-2 sm:mt-0">
-                <IconStar className="w-[10px] h-[10px]" />
-                <IconStar className="w-[10px] h-[10px]" />
-                <IconStar className="w-[10px] h-[10px]" />
-                <IconStar className="w-[10px] h-[10px]" />
-                <IconStar className="w-[10px] h-[10px]" />
+                {[...Array(5)].map((_, i) => (
+                  <IconStar key={i} className="w-[10px] h-[10px]" />
+                ))}
               </div>
             </div>
             <div className="flex flex-col items-center gap-5">
@@ -113,9 +116,7 @@ const ThirdForm = () => {
             {showModal && (
               <div
                 className="fixed inset-0 z-50 flex items-center justify-center"
-                style={{
-                  backdropFilter: "blur(2px)",
-                }}
+                style={{ backdropFilter: "blur(2px)" }}
                 onClick={() => setShowModal(false)}
               >
                 <div
@@ -129,48 +130,42 @@ const ThirdForm = () => {
                         کد ارسال شده را وارد کنید.
                       </span>
                       <div className="flex justify-center gap-2" dir="ltr">
-                        {[...Array(6)].map((_, index) => (
+                        {[...Array(6)].map((_, idx) => (
                           <input
-                            key={index}
-                            ref={(el) => { inputRefs.current[index] = el; }}
+                            key={idx}
+                            ref={(el) => {
+                              inputRefs.current[idx] = el;
+                            }}
                             type="text"
-							style={{ borderRadius: "0 .5rem" }}
+                            style={{ borderRadius: "0 .5rem" }}
                             inputMode="numeric"
                             pattern="[0-9]*"
                             maxLength={1}
                             className="border rounded-lg w-10 h-10 text-center text-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            value={otp[index] || ""}
+                            value={otp[idx] || ""}
                             onChange={(e) => {
-                              const value = e.target.value.replace(
-                                /[^0-9]/g,
-                                ""
-                              );
+                              const value = e.target.value.replace(/[^0-9]/g, "");
                               if (!value) {
-                                // If input is cleared, update otp and stay on this input
                                 const newOtp = otp.split("");
-                                newOtp[index] = "";
+                                newOtp[idx] = "";
                                 setOtp(newOtp.join(""));
                                 return;
                               }
-                              // Only allow one digit
                               const newOtp = otp.split("");
-                              newOtp[index] = value[0];
+                              newOtp[idx] = value[0];
                               setOtp(newOtp.join(""));
-                              // Move to next input if not last
-                              if (index < 5 && value) {
-                                inputRefs.current[index + 1]?.focus();
+                              if (idx < 5 && value) {
+                                inputRefs.current[idx + 1]?.focus();
                               }
                             }}
                             onKeyDown={(e) => {
                               if (e.key === "Backspace") {
-                                if (otp[index]) {
-                                  // Clear current input
+                                if (otp[idx]) {
                                   const newOtp = otp.split("");
-                                  newOtp[index] = "";
+                                  newOtp[idx] = "";
                                   setOtp(newOtp.join(""));
-                                } else if (index > 0) {
-                                  // Move to previous input
-                                  inputRefs.current[index - 1]?.focus();
+                                } else if (idx > 0) {
+                                  inputRefs.current[idx - 1]?.focus();
                                 }
                               }
                             }}
@@ -181,7 +176,6 @@ const ThirdForm = () => {
                                 .slice(0, 6);
                               if (pasted.length) {
                                 setOtp(pasted.padEnd(6, ""));
-                                // Fill inputs visually
                                 setTimeout(() => {
                                   for (let i = 0; i < pasted.length; i++) {
                                     inputRefs.current[i]?.focus();
