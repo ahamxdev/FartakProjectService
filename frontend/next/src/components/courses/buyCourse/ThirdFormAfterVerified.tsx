@@ -1,7 +1,9 @@
-"use client";
+'use client';
 
-import { lazy, useState } from "react";
+import { lazy, useState } from "react"; // Import useRouter
 const Button = lazy(() => import("@/components/Button"));
+import { useRouter } from "next/navigation";
+const IconArrow = lazy(() => import("@/icons/IconArrow"));
 
 type Day = {
   id: number;
@@ -75,7 +77,11 @@ const ThirdFormAfterVerified = () => {
     day: number;
     slot: string;
   } | null>(null);
-  const IconArrow = lazy(() => import("@/icons/IconArrow"));
+  const router = useRouter(); // Initialize useRouter
+
+  const handleConfirm = () => {
+    router.push('/fa/tadris/result'); // Redirect to the result page
+  };
 
   return (
     <section className="w-full max-w-7xl mx-auto mt-8 px-4 lg:px-0" dir="rtl">
@@ -236,13 +242,17 @@ const ThirdFormAfterVerified = () => {
           <div className="h-[55px] md:w-[80%] flex items-center justify-center rounded-lg py-3 px-3 bg-[#FFEE98]">
             <input
               type="file"
-              className="w-full h-full opacity-0 absolute cursor-pointer"
+              className="w-full opacity-0 absolute cursor-pointer"
             />
             <span className="text-center text-[#1E1E1E]">فایل انتخاب کنید</span>
           </div>
         </div>
-      </div>
-      <Button text="تایید" color="#1D40D7" className="mt-4 w-full" />
+      </div> 
+      <button 
+         
+        className="mt-4 w-full bg-[#1D40D7] text-white h-[40px] rounded-lg cursor-pointer" 
+        onClick={() => router.push('/fa/tadris/result')}
+      >تایید زمان انتخاب شده</button>
     </section>
   );
 };
