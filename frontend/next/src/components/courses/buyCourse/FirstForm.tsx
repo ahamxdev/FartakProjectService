@@ -1,3 +1,4 @@
+"use client";
 import {
   Dispatch,
   Fragment,
@@ -15,6 +16,16 @@ import {
   UseFormSetValue,
 } from "react-hook-form";
 import IconSearch from "@/icons/IconSearch";
+import dynamic from "next/dynamic";
+import { LatLngLiteral } from "leaflet";
+import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
+
+
+// Lazy-load MapPicker to avoid SSR issues with Leaflet
+const MapPicker = dynamic(() => import("@/components/MapPicker"), {
+  ssr: false,
+});
 
 const IconInfoNotif = lazy(() => import("@/icons/IconInfoNotif"));
 const IconArrow = lazy(() => import("@/icons/IconArrow"));
@@ -38,13 +49,23 @@ const FirstForm = ({
   register: UseFormRegister<IFirstBuyCourseForm>;
   getValues: UseFormGetValues<IFirstBuyCourseForm>;
 }) => {
+  const router = useRouter();
   const [region, setRegion] = useState<string>(getValues("region"));
   const [language, setLanguage] = useState<string>(getValues("language"));
   const [forWho, setForWho] = useState<string>(getValues("forWho"));
   const [countOfCustomers, setCountOfCustomers] = useState<number>(
     getValues("countOfCustomers")
   );
+  const currentPath = usePathname();
+  const [showMap, setShowMap] = useState(false);
+  const [selectedLocation, setSelectedLocation] =
+    useState<LatLngLiteral | null>(null);
 
+  const handleMapSelect = (latlng: LatLngLiteral) => {
+    setSelectedLocation(latlng);
+    setShowMap(false);
+    console.log("Selected Location:", latlng);
+  };
   const [firstName, setFirstName] = useState<string>(getValues("firstName"));
   const [lastName, setLastName] = useState<string>(getValues("lastName"));
   const [goal, setGoal] = useState<string>(getValues("goal"));
@@ -52,20 +73,18 @@ const FirstForm = ({
   const [formValid, setFormValid] = useState<boolean>(false);
 
   useEffect(() => {
-	if (
-	  region &&
-	  language &&
-	  forWho &&
-	  countOfCustomers &&
-	  firstName &&
-	  lastName &&
-	  goal &&
-	  level
-	)
-	  setFormValid(true);
-	else
-	  setFormValid(false);
-	
+    if (
+      region &&
+      language &&
+      forWho &&
+      countOfCustomers &&
+      firstName &&
+      lastName &&
+      goal &&
+      level
+    )
+      setFormValid(true);
+    else setFormValid(false);
   }, [
     region,
     language,
@@ -75,48 +94,142 @@ const FirstForm = ({
     lastName,
     goal,
     level,
-	formValid,
+    // formValid,
   ]);
+  
 
+
+  const isOffline = currentPath === "/fa/tadris/offline";
+  const isOnline = currentPath === "/fa/tadris/online";
   return (
     <>
       {/* mobile */}
-      <form className="w-full hidden md:block">
+      <div className="w-full hidden md:block">
         <div className="mt-10 w-full flex flex-col gap-3 items-center">
-          <div className="flex items-center w-full h-[68px] gap-3">
-            <div
-              className={`w-full h-[68px] border-2 ${
-                region ? "" : "border-[#EA0017]"
-              } rounded-[8px] grow flex items-center justify-between px-5`}
-            >
-              <span className="md:text-[20px] lg:text-[24px] font-[700] shrink-0">
-                مکان خود را انتخاب کنید
-              </span>
-              <div className="flex justify-between w-1/2 items-center">
-                <label htmlFor="iran" className="flex items-center gap-3">
+          {isOffline && (
+            <>
+              {/* 📍 Offline: Select City */}
+              <div
+                className={`w-full h-[68px] border-2 ${
+                  region ? "" : "border-[#EA0017]"
+                } rounded-[8px] grow flex items-center justify-between px-5`}
+              >
+                <span className="md:text-[20px] lg:text-[24px] font-[700] shrink-0">
+                  شهر خود را انتخاب کنید
+                </span>
+                <div className="relative w-2xs">
                   <input
-                    type="radio"
-                    className="w-4 h-4"
-                    value="iran"
-                    onClick={() => setRegion("iran")}
-                    id="iran"
-                    {...register("region", { required: true })}
+                    type="text"
+                    className="border-2 rounded-[6px] pr-3 py-1.5 w-full"
+                    placeholder="جستجو"
                   />
-                  ایران
-                </label>
-                <label htmlFor="outOfIran" className="flex items-center gap-3">
-                  <input
-                    type="radio"
-                    className="w-4 h-4"
-                    value="outOfIran"
-                    onClick={() => setRegion("outOfIran")}
-                    id="outOfIran"
-                    {...register("region", { required: true })}
-                  />
-                  خارج از ایران
-                </label>
+                  <IconSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
+                </div>
+
+                <div className="relative">
+                  <select
+                    id="class-duration"
+                    className="w-80 appearance-none bg-white border  border-[2px] rounded-lg px-4 py-2 text-sm text-gray-800 focus:ring-2 focus:ring-[#158AFF] focus:border-[#158AFF] hover:border-gray-400 transition-colors duration-200 pr-10"
+                    aria-label="مدت زمان ادامه کلاس"
+                  >
+                    <option value="1">انتخاب شهر</option>
+                    <option value="2">تبریز</option>
+                    <option value="3">تهران</option>
+                    <option value="6">مشهد</option>
+                    <option value="12">شیراز</option>
+                  </select>
+                  <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none">
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </span>
+                </div>
               </div>
-            </div>
+
+              {/* 🏠 Offline: Address Input */}
+              <div
+                className={`w-full h-[68px] border-2 ${
+                  region ? "" : "border-[#EA0017]"
+                } rounded-[8px] grow flex items-center justify-between px-5`}
+              >
+                <span className="md:text-[20px] lg:text-[24px] font-[700] shrink-0">
+                  آدرس خود را وارد کنید .
+                </span>
+                <div className="relative w-100">
+                  <input
+                    type="text"
+                    className="border-2 rounded-[6px] pr-3 py-1.5 w-full"
+                    placeholder="وارد کردن ادرس"
+                  />
+                </div>
+
+                <div className="relative">
+                  <button
+                    className="bg-[#1D40D7] text-white font-semibold rounded-[8px] px-20 py-2 w-full"
+                    onClick={() => setShowMap(true)}
+                  >
+                    <span className="shrink-0">انتخاب از نقشه</span>
+                  </button>
+                  {showMap && (
+                    <MapPicker
+                      onClose={() => setShowMap(false)}
+                      onSelect={handleMapSelect}
+                    />
+                  )}
+                </div>
+              </div>
+            </>
+          )}
+          <div className="flex items-center w-full h-[68px] gap-3">
+            {isOnline && (
+              <div
+                className={`w-full h-[68px] border-2 ${
+                  region ? "" : "border-[#EA0017]"
+                } rounded-[8px] grow flex items-center justify-between px-5`}
+              >
+                <span className="md:text-[20px] lg:text-[24px] font-[700] shrink-0">
+                  مکان خود را انتخاب کنید
+                </span>
+                <div className="flex justify-between w-1/2 items-center">
+                  <label htmlFor="iran" className="flex items-center gap-3">
+                    <input
+                      type="radio"
+                      className="w-4 h-4"
+                      value="iran"
+                      onClick={() => setRegion("iran")}
+                      id="iran"
+                      {...register("region", { required: true })}
+                    />
+                    ایران
+                  </label>
+                  <label
+                    htmlFor="outOfIran"
+                    className="flex items-center gap-3"
+                  >
+                    <input
+                      type="radio"
+                      className="w-4 h-4"
+                      value="outOfIran"
+                      onClick={() => setRegion("outOfIran")}
+                      id="outOfIran"
+                      {...register("region", { required: true })}
+                    />
+                    خارج از ایران
+                  </label>
+                </div>
+              </div>
+            )}
             <div
               className={`w-full h-[68px] border-2 ${
                 language ? "" : "border-[#EA0017]"
@@ -272,7 +385,11 @@ const FirstForm = ({
             />
           </div>
 
-          <div className={`w-full h-[68px] border-2 ${level ? "" : "border-[#EA0017]"} rounded-[8px] flex justify-between px-5 items-center`}>
+          <div
+            className={`w-full h-[68px] border-2 ${
+              level ? "" : "border-[#EA0017]"
+            } rounded-[8px] flex justify-between px-5 items-center`}
+          >
             <span className="md:text-[20px] lg:text-[24px] font-[700]">
               سطح شاگرد را انتخاب کنید
             </span>
@@ -324,7 +441,11 @@ const FirstForm = ({
             </div>
           </div>
 
-          <div className={`w-full h-[68px] border-2 ${goal ? "" : "border-[#EA0017]"} rounded-[8px] flex flex-col lg:flex-row lg:items-center px-5 justify-between`}>
+          <div
+            className={`w-full h-[68px] border-2 ${
+              goal ? "" : "border-[#EA0017]"
+            } rounded-[8px] flex flex-col lg:flex-row lg:items-center px-5 justify-between`}
+          >
             <span className="md:text-[20px] lg:text-[24px] font-[700]">
               هدف شما از گرفتن معلم در این درس چیست ؟
             </span>
@@ -334,9 +455,9 @@ const FirstForm = ({
                   type="radio"
                   className="w-4 h-4"
                   id="baseLearning"
-				  value="baseLearning"
+                  value="baseLearning"
                   name="goal"
-				  onClick={() => setGoal("baseLearning")}
+                  onClick={() => setGoal("baseLearning")}
                 />
                 <label htmlFor="baseLearning">آموزش از پایه</label>
               </div>
@@ -345,9 +466,9 @@ const FirstForm = ({
                   type="radio"
                   className="w-4 h-4"
                   id="resolveProblem"
-				  value="resolveProblem"
+                  value="resolveProblem"
                   name="goal"
-				  onClick={() => setGoal("resolveProblem")}
+                  onClick={() => setGoal("resolveProblem")}
                 />
                 <label htmlFor="resolveProblem">
                   رفع اشکال و آمادگی برای امتحان
@@ -358,9 +479,9 @@ const FirstForm = ({
                   type="radio"
                   className="w-4 h-4"
                   id="practice"
-				  value="practice"
+                  value="practice"
                   name="goal"
-				  onClick={() => setGoal("practice")}
+                  onClick={() => setGoal("practice")}
                 />
                 <label htmlFor="practice">حل سوال</label>
               </div>
@@ -397,12 +518,14 @@ const FirstForm = ({
                       if (prev.length < 2) return [...prev, true];
                       return prev;
                     });
-					setEducationBreadCrumbs((prev) => [...prev, item]);
-				  }}
-				  className={`w-full ${formValid ? "" : "opacity-50 pointer-events-none"} p-4 cursor-pointer transition-colors duration-200 rounded-sm hover:bg-gray-200 flex justify-center items-center`}
-				>
+                    setEducationBreadCrumbs((prev) => [...prev, item]);
+                  }}
+                  className={`w-full ${
+                    formValid ? "" : "opacity-50 pointer-events-none"
+                  } p-4 cursor-pointer transition-colors duration-200 rounded-sm hover:bg-gray-200 flex justify-center items-center`}
+                >
                   {item}
-                  <IconArrow className="rotate-[-90deg] mr-4"/>
+                  <IconArrow className="rotate-[-90deg] mr-4" />
                 </div>
                 {index !== dasteBandi.length - 1 && <Divider color="#B1BFFA" />}
               </Fragment>
@@ -423,20 +546,22 @@ const FirstForm = ({
                     });
                     setBussinesBreadCrumbs((prev) => [...prev, item]);
                   }}
-                  className={`w-full ${formValid ? "" : "opacity-50 pointer-events-none"} p-4 cursor-pointer transition-colors duration-200 rounded-sm hover:bg-gray-200 flex justify-center items-center`}
+                  className={`w-full ${
+                    formValid ? "" : "opacity-50 pointer-events-none"
+                  } p-4 cursor-pointer transition-colors duration-200 rounded-sm hover:bg-gray-200 flex justify-center items-center`}
                 >
                   {item}
-                  <IconArrow className="rotate-[-90deg] mr-4"/>
+                  <IconArrow className="rotate-[-90deg] mr-4" />
                 </div>
                 {index !== dasteBandi.length - 1 && <Divider color="#B1BFFA" />}
               </Fragment>
             ))}
           </div>
         </div>
-      </form>
+      </div>
 
       {/* mobile  */}
-      <form className="md:hidden">
+      <div className="md:hidden">
         <div className="border flex flex-col gap-3 p-3 rounded-lg">
           <div className="w-full h-[68px] grow flex flex-col justify-between">
             <div className="md:text-[20px] flex gap-3 items-center lg:text-[24px] font-[700] shrink-0">
@@ -708,7 +833,7 @@ const FirstForm = ({
             ))}
           </div>
         </div>
-      </form>
+      </div>
     </>
   );
 };
