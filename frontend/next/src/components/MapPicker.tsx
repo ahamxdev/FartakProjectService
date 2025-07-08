@@ -23,21 +23,33 @@ function CustomMarker({ position }: { position: LatLngLiteral }) {
   const customIcon = L.divIcon({
     html: `
       <div style="
-        width: 40px;
-        height: 40px;
-        background: conic-gradient(red 0deg 90deg, green 90deg 180deg, blue 180deg 270deg, orange 270deg 360deg);
-        border-radius: 50%;
-        clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-        transform: translate(-50%, -100%);
-      "></div>
+        position: relative;
+        width: 30px;
+        height: 30px;
+        background: #e74c3c;
+        border-radius: 50% 50% 50% 0;
+        transform: rotate(-45deg);
+        box-shadow: 0 0 5px rgba(0,0,0,0.3);
+      ">
+        <div style="
+          position: absolute;
+          width: 12px;
+          height: 12px;
+          background: white;
+          border-radius: 50%;
+          top: 9px;
+          left: 9px;
+        "></div>
+      </div>
     `,
     className: '',
-    iconSize: [40, 40],
-    iconAnchor: [20, 40],
+    iconSize: [30, 30],
+    iconAnchor: [15, 30], // Aligns the pointed tip to the location
   })
 
   return <Marker position={position} icon={customIcon} />
 }
+
 
 function LocationMarker({
   onSelect,
@@ -103,12 +115,10 @@ export default function MapPicker({ onSelect, onClose }: MapPickerProps) {
 
 
   return (
-   <div className="fixed inset-0 z-50 backdrop-blur-sm bg-black/30 flex items-center justify-center">
-      <div className="bg-white p-4 rounded-lg w-[40%] h-[80%] relative flex flex-col items-center">
-        <button onClick={onClose} className="absolute top-2 right-2 text-black text-xl">✕</button>
-        <h2 className="text-2xl font-bold mb-4">انتخاب موقعیت جغرافیایی</h2>
-
-        {/* Address field (auto-filled on click) */}
+   <div className="fixed inset-0 z-50 backdrop-blur-sm bg-black/30 flex items-center justify-center ">
+      <div className="bg-white p-12 rounded-lg w-[30%] h-[80%] relative flex flex-col items-center" >
+        <button onClick={onClose} className="absolute top-12 cursor-pointer right-12 text-black text-xl">✕</button>
+        <h2 className="text-2xl font-bold mb-4">انتخاب از روی نقشه</h2>
         <input
           type="text"
           value={address}
@@ -122,7 +132,7 @@ export default function MapPicker({ onSelect, onClose }: MapPickerProps) {
           center={[35.6892, 51.3890]}
           zoom={13}
           style={{ height: '100%', width: '100%', position: 'relative' }}
-          className="relative"
+          className="relative rounded-lg"
         >
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -141,9 +151,9 @@ export default function MapPicker({ onSelect, onClose }: MapPickerProps) {
               onClose()
             }
           }}
-          className="mt-4 bg-blue-600 text-white p-2 rounded w-full"
+          className="mt-4 bg-[#1D40D7] text-white p-2 rounded-lg w-full"
         >
-          تایید موقعیت
+          تایید 
         </button>
       </div>
     </div>
