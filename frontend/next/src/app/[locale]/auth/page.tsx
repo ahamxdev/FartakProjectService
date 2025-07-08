@@ -4,10 +4,36 @@ import Image from "next/image";
 import Link from "next/link";
 import SectionTitle from "@/components/skills/SectionTitile";
 
+interface FormDataRegister {
+  fullName: string;
+  phone: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+}
+
 const Auth = () => {
   const [loginUser, setLoginUser] = useState<string>("student");
   const [loginMode, setLoginMode] = useState<string>("login");
   const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [showConfirmPassword, setShowConfirmPassword] =
+    useState<boolean>(false);
+
+  const [formDataRegister, setFormDataRegister] = useState<FormDataRegister>({
+    fullName: "",
+    phone: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormDataRegister((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
 
   const changeLoginMode = () => {
     if (loginMode === "login") {
@@ -158,6 +184,9 @@ const Auth = () => {
                 </label>
                 <input
                   type="text"
+                  name="fullName"
+                  value={formDataRegister.fullName || ""}
+                  onChange={handleChange}
                   className="border-[2px] border-[#1D40D7] rounded-[9999px] py-2 px-4"
                   placeholder="نام و نام خانوادگی خود را وارد کنید"
                 />
@@ -168,6 +197,9 @@ const Auth = () => {
                 </label>
                 <input
                   type="tel"
+                  name="phone"
+                  value={formDataRegister.phone || ""}
+                  onChange={handleChange}
                   className="border-[2px] border-[#1D40D7] rounded-[9999px] py-2 px-4"
                   placeholder="لطفا شماره خود را وارد کنید"
                 />
@@ -178,6 +210,9 @@ const Auth = () => {
                 </label>
                 <input
                   type="email"
+                  name="email"
+                  value={formDataRegister.email || ""}
+                  onChange={handleChange}
                   className="border-[2px] border-[#1D40D7] rounded-[9999px] py-2 px-4"
                   placeholder="ایمیل خود را وارد کنید"
                 />
@@ -188,6 +223,9 @@ const Auth = () => {
                 </label>
                 <input
                   type={showPassword ? "text" : "password"}
+                  name="password"
+                  value={formDataRegister.password || ""}
+                  onChange={handleChange}
                   className="border-[2px] border-[#1D40D7] rounded-[9999px] py-2 px-4 pr-10"
                   placeholder="رمز عبور خود را وارد کنید"
                 />
@@ -230,7 +268,7 @@ const Auth = () => {
                         d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
                       />
                     </svg>
-                  )}
+                  )}{" "}
                 </span>
               </div>
               <div className="flex flex-col gap-3 w-full relative">
@@ -238,15 +276,18 @@ const Auth = () => {
                   تکرار رمز عبور
                 </label>
                 <input
-                  type={showPassword ? "text" : "password"}
+                  type={showConfirmPassword ? "text" : "password"}
+                  name="confirmPassword"
+                  value={formDataRegister.confirmPassword || ""}
+                  onChange={handleChange}
                   className="border-[2px] border-[#1D40D7] rounded-[9999px] py-2 px-4 pr-10"
                   placeholder="تکرار رمز عبور خود را وارد کنید"
                 />
                 <span
                   className="absolute left-4 top-[45px] cursor-pointer text-[#1D40D7]"
-                  onClick={() => setShowPassword((prev) => !prev)}
+                  onClick={() => setShowConfirmPassword((prev) => !prev)}
                 >
-                  {showPassword ? (
+                  {showConfirmPassword ? (
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -281,7 +322,7 @@ const Auth = () => {
                         d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
                       />
                     </svg>
-                  )}
+                  )}{" "}
                 </span>
               </div>
               <button className="bg-[#2EBFA5] rounded-[9999px] flex justify-center items-center w-full py-3 text-sm font-normal cursor-pointer hover:bg-[#2ebfa4bd] transition-all text-white my-5">
