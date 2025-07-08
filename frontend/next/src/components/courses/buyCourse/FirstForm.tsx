@@ -21,7 +21,6 @@ import { LatLngLiteral } from "leaflet";
 import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
 
-
 // Lazy-load MapPicker to avoid SSR issues with Leaflet
 const MapPicker = dynamic(() => import("@/components/MapPicker"), {
   ssr: false,
@@ -31,7 +30,18 @@ const IconInfoNotif = lazy(() => import("@/icons/IconInfoNotif"));
 const IconArrow = lazy(() => import("@/icons/IconArrow"));
 
 const dasteBandi = ["دبستان", "متوسطه اول", "متوسطه دوم", "کنکور", "دانشگاه"];
-const business = ["هنر و موسیقی و مهارت ها", " برنامه نویسی و آی تی", " آمار داده و ریاضی", "بورس سهام و ارز دیجیتال", "دیجیتال مارکتینگ وهوش مصنوعی", " مایکروسافت( اکسل ، ورد و پاورپوینت)", "گرافیک دیزاین", "زبان انگلیسی", "کنکور", "ترجمه و محتوا"];
+const business = [
+  "هنر و موسیقی و مهارت ها",
+  " برنامه نویسی و آی تی",
+  " آمار داده و ریاضی",
+  "بورس سهام و ارز دیجیتال",
+  "دیجیتال مارکتینگ وهوش مصنوعی",
+  " مایکروسافت( اکسل ، ورد و پاورپوینت)",
+  "گرافیک دیزاین",
+  "زبان انگلیسی",
+  "کنکور",
+  "ترجمه و محتوا",
+];
 
 const FirstForm = ({
   completeForm,
@@ -97,8 +107,6 @@ const FirstForm = ({
     level,
     // formValid,
   ]);
-  
-
 
   const isOffline = currentPath === "/fa/tadris/offline";
   const isOnline = currentPath === "/fa/tadris/online";
@@ -276,32 +284,56 @@ const FirstForm = ({
                 کلاس را برای چه کسی میخواهید ؟
               </span>
               <div className="!flex w-1/2 !items-center !justify-between">
-                <label htmlFor="mySelf" className="flex items-center">
-                  <Radio
+                 <label htmlFor="mySelf" className="flex items-center gap-3">
+                 {/* <Radio
                     id="mySelf"
                     value="mySelf"
                     onClick={() => setForWho("mySelf")}
                     {...register("forWho", { required: true })}
-                  />
-                  خودم
+                  /> */}
+                <input
+                  id="mySelf"
+                  value="mySelf"
+                  type="radio"
+                  className="w-4 h-4"
+                  onClick={() => setForWho("mySelf")}
+                  {...register("forWho", { required: true })}
+                />
+                خودم
                 </label>
-                <label htmlFor="mySon" className="flex items-center">
-                  <Radio
+                 <label htmlFor="mySon" className="flex items-center gap-3">
+                 {/* <Radio
                     id="mySon"
                     value="mySon"
                     onClick={() => setForWho("mySon")}
                     {...register("forWho", { required: true })}
-                  />
-                  فرزندم
+                  /> */}
+                <input
+                  id="mySon"
+                  value="mySon"
+                  type="radio"
+                  className="w-4 h-4"
+                  onClick={() => setForWho("mySon")}
+                  {...register("forWho", { required: true })}
+                />
+                فرزندم
                 </label>
-                <label htmlFor="other" className="flex items-center">
-                  <Radio
+                <label htmlFor="other" className="flex items-center gap-3">
+                  {/* <Radio
                     id="other"
                     value="other"
                     onClick={() => setForWho("other")}
                     {...register("forWho", { required: true })}
+                  /> */}
+                  <input
+                    id="other"
+                    value="other"
+                    type="radio"
+                    className="w-4 h-4"
+                    onClick={() => setForWho("other")}
+                    {...register("forWho", { required: true })}
                   />
-                  دیگران
+                     دیگران
                 </label>
               </div>
             </div>
@@ -551,9 +583,7 @@ const FirstForm = ({
                     formValid ? "" : "opacity-50 pointer-events-none"
                   } p-4 cursor-pointer transition-colors duration-200 rounded-sm hover:bg-gray-200 flex justify-center items-center`}
                 >
-                  <span className="min-w-40">
-                  {item}
-                  </span>
+                  <span className="min-w-40">{item}</span>
                   <IconArrow className="rotate-[-90deg] mr-4" />
                 </div>
                 {index !== business.length - 1 && <Divider color="#B1BFFA" />}
