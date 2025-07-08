@@ -12,6 +12,12 @@ const ProjectRegistration = () => {
     api("/api/ProjectTypes/GetAll", "POST").then((data) => {
       console.log(data);
     });
+    api("/api/ProjectTeamMembers/GetAll", "POST").then((data) => {
+      console.log(data);
+    });
+    api("/api/Projects/GetAll", "POST").then((data) => {
+      console.log(data);
+    });
   }, []);
 
   return (
