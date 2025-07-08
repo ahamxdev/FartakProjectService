@@ -63,7 +63,7 @@ const FirstForm = ({
 
   const handleMapSelect = (latlng: LatLngLiteral) => {
     setSelectedLocation(latlng);
-    setShowMap(false);
+    // setShowMap(false);
     console.log("Selected Location:", latlng);
   };
   const [firstName, setFirstName] = useState<string>(getValues("firstName"));
