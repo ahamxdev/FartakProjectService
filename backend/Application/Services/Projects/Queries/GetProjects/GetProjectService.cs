@@ -29,7 +29,10 @@ namespace Application.Services.Projects.Queries.GetProjects
                 CreateDate=p.CreateDate,
                 DeadLine = p.DeadLine,
                 Status=p.Status,
-                ProjectTypeId = p.ProjectTypeId
+                Priority = p.Priority,
+                PriceType = p.PriceType,
+                ProjectTypeId = p.ProjectTypeId,
+                ProjectSkillId = p.ProjectSkillId
 
             }).OrderBy(x => x.ProjectId).ToList();
             return new ResultGetProjectDto
@@ -58,8 +61,11 @@ namespace Application.Services.Projects.Queries.GetProjects
                 CreateDate = p.CreateDate,
                 DeadLine = p.DeadLine,
                 Status = p.Status,
+                Priority = p.Priority,
+                PriceType = p.PriceType,
                 OwnerId = p.OwnerId,
-                ProjectTypeId = p.ProjectTypeId
+                ProjectTypeId = p.ProjectTypeId,
+                ProjectSkillId = p.ProjectSkillId
 
             }).OrderBy(x => x.ProjectId).ToList();
             return new ResultGetProjectDto
@@ -87,7 +93,10 @@ namespace Application.Services.Projects.Queries.GetProjects
                 CreateDate = p.CreateDate,
                 DeadLine = p.DeadLine,
                 Status = p.Status,
-                ProjectTypeId = p.ProjectTypeId
+                Priority = p.Priority,
+                PriceType = p.PriceType,
+                ProjectTypeId = p.ProjectTypeId,
+                ProjectSkillId = p.ProjectSkillId
 
             }).OrderBy(x => x.ProjectId).ToList();
             return new ResultGetProjectDto
@@ -115,8 +124,11 @@ namespace Application.Services.Projects.Queries.GetProjects
                 CreateDate = p.CreateDate,
                 DeadLine = p.DeadLine,
                 Status = p.Status,
+                Priority = p.Priority,
+                PriceType = p.PriceType,
                 Duration = p.Duration,
-                ProjectTypeId = p.ProjectTypeId
+                ProjectTypeId = p.ProjectTypeId,
+                ProjectSkillId = p.ProjectSkillId
 
             }).OrderBy(x => x.ProjectId).ToList();
             return new ResultGetProjectDto

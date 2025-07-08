@@ -31,6 +31,7 @@ namespace Persistence.Contexts
         public DbSet<ProjectLike> ProjectLikes { get; set; }
         public DbSet<ProjectSeen> ProjectSeens { get; set; }
         public DbSet<ProjectType> ProjectTypes { get; set; }
+        public DbSet<ProjectSkill> ProjectSkills { get; set; }
         public DbSet<ProjectUser> ProjectUsers { get; set; }
         public DbSet<ProjectTeam> ProjectTeams { get; set; }
         public DbSet<ProjectTeamMember> ProjectTeamMembers { get; set; }

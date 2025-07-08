@@ -28,6 +28,7 @@ namespace Application.Interfaces.Contexts
         DbSet<ProjectLike> ProjectLikes { get; set; }
         DbSet<ProjectSeen> ProjectSeens { get; set; }
         DbSet<ProjectType> ProjectTypes { get; set; }
+        DbSet<ProjectSkill> ProjectSkills { get; set; }
         DbSet<ProjectUser> ProjectUsers { get; set; }
         DbSet<RequestProjectTeam> RequestProjectTeams { get; set; }
         DbSet<MessageSetting> MessageSettings { get; set; }

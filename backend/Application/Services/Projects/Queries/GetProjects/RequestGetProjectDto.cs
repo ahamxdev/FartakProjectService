@@ -10,7 +10,10 @@
     {
         public long ProjectTypeId { get; set; }
     }
-
+    public class RequestGetProjectByProjectSkillIdDto
+    {
+        public long ProjectSkillId { get; set; }
+    }
     public class RequestGetProjectByOwnerIdDto
     {
         public long OwnerId { get; set; }

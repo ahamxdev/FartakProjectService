@@ -92,8 +92,8 @@ namespace Application.Services.Projects.Commands.EditProjects
                     project.Image = null;
 
                 }
-
                 project.ProjectTypeId = request.ProjectTypeId;
+                project.ProjectSkillId = request.ProjectSkillId;
                 project.Description = request.Description;
                 project.Title = request.Title;
                 project.OwnerId = request.OwnerId;
@@ -101,6 +101,8 @@ namespace Application.Services.Projects.Commands.EditProjects
                 project.StartPrice = request.StartPrice;
                 project.FinishPrice = request.FinishPrice;
                 project.Status = request.Status;
+                project.Priority = request.Priority;
+                project.PriceType = request.PriceType;
                 project.DeadLine = request.DeadLine;
                 project.Duration = request.Duration;
 

@@ -46,11 +46,14 @@ namespace Application.Services.Projects.Commands.AddProjects
                             StartPrice = request.StartPrice,
                             EndPrice = request.EndPrice,
                             ProjectTypeId = request.ProjectTypeId,
+                            ProjectSkillId = request.ProjectSkillId,
                             Title = request.Title,
                             Duration = request.Duration,
                             CreateDate=request.CreateDate,
                             DeadLine = request.DeadLine,
                             Status = request.Status,
+                            Priority = request.Priority,
+                            PriceType = request.PriceType,
                             Image = fileNameImage
 
                         };
@@ -90,11 +93,14 @@ namespace Application.Services.Projects.Commands.AddProjects
                         StartPrice = request.StartPrice,
                         EndPrice = request.EndPrice,
                         ProjectTypeId = request.ProjectTypeId,
+                        ProjectSkillId = request.ProjectSkillId,
                         Title = request.Title,
                         Duration = request.Duration,
                         CreateDate = request.CreateDate,
                         DeadLine= request.DeadLine,
                         Status= request.Status,
+                        Priority = request.Priority,
+                        PriceType = request.PriceType,
                         Image = null
 
                     };
