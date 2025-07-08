@@ -31,6 +31,7 @@ const IconInfoNotif = lazy(() => import("@/icons/IconInfoNotif"));
 const IconArrow = lazy(() => import("@/icons/IconArrow"));
 
 const dasteBandi = ["دبستان", "متوسطه اول", "متوسطه دوم", "کنکور", "دانشگاه"];
+const business = ["هنر و موسیقی و مهارت ها", " برنامه نویسی و آی تی", " آمار داده و ریاضی", "بورس سهام و ارز دیجیتال", "دیجیتال مارکتینگ وهوش مصنوعی", " مایکروسافت( اکسل ، ورد و پاورپوینت)", "گرافیک دیزاین", "زبان انگلیسی", "کنکور", "ترجمه و محتوا"];
 
 const FirstForm = ({
   completeForm,
@@ -534,8 +535,8 @@ const FirstForm = ({
           <div className="text-[13px] cursor-pointer hover:opacity-80 transition-opacity duration-200 w-fit lg:text-[16px] py-[10px] px-4 bg-[#000] rounded-md text-[#fff]">
             کسب و کار
           </div>
-          <div className="flex flex-row px-6 py-4">
-            {dasteBandi.map((item, index) => (
+          <div className="flex flex-row px-6 py-4 overflow-scroll">
+            {business.map((item, index) => (
               <Fragment key={index}>
                 <div
                   onClick={() => {
@@ -550,10 +551,12 @@ const FirstForm = ({
                     formValid ? "" : "opacity-50 pointer-events-none"
                   } p-4 cursor-pointer transition-colors duration-200 rounded-sm hover:bg-gray-200 flex justify-center items-center`}
                 >
+                  <span className="min-w-40">
                   {item}
+                  </span>
                   <IconArrow className="rotate-[-90deg] mr-4" />
                 </div>
-                {index !== dasteBandi.length - 1 && <Divider color="#B1BFFA" />}
+                {index !== business.length - 1 && <Divider color="#B1BFFA" />}
               </Fragment>
             ))}
           </div>
@@ -812,7 +815,7 @@ const FirstForm = ({
             کسب و کار
           </div>
           <div className="flex flex-col px-6 py-4">
-            {dasteBandi.map((item, index) => (
+            {business.map((item, index) => (
               <Fragment key={index}>
                 <div
                   onClick={() => {
@@ -828,7 +831,7 @@ const FirstForm = ({
                   {item}
                   <IconArrow />
                 </div>
-                {index !== dasteBandi.length - 1 && <Divider color="#B1BFFA" />}
+                {index !== business.length - 1 && <Divider color="#B1BFFA" />}
               </Fragment>
             ))}
           </div>
