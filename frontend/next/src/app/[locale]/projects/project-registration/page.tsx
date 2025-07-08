@@ -1,11 +1,19 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import WaySpeedProjectRegistrationBox from "@/components/skills/WaySpeedProjectRegistrationBox";
+import { api } from "@/utils/api";
 
 const ProjectRegistration = () => {
   const [payWay, setPayWay] = useState<string>("");
+
+  useEffect(() => {
+    api("/api/ProjectTypes/GetAll", "POST").then((data) => {
+      console.log(data);
+    });
+  }, []);
+
   return (
     <>
       <section className="flex flex-col lg:flex-row lg:gap-16 gap-8 w-[90%] mx-auto md:my-10 my-5">
@@ -314,37 +322,37 @@ const ProjectRegistration = () => {
               <span className="md:text-xl text-base font-bold">الویت شما</span>
               <div className="flex flex-wrap items-center gap-3 mt-4">
                 <div className="flex items-center gap-2">
-                  <input type="radio" />
+                  <input type="radio" name="priceFilter" id="lowestPrice" />
                   <label
                     className="font-medium md:text-base text-sm text-[#000]"
-                    htmlFor=""
+                    htmlFor="lowestPrice"
                   >
                     کم ترین قیمت
                   </label>
                 </div>
                 <div className="flex items-center gap-2">
-                  <input type="radio" />
+                  <input type="radio" name="priceFilter" id="median" />
                   <label
                     className="font-medium md:text-base text-sm text-[#000]"
-                    htmlFor=""
+                    htmlFor="median"
                   >
                     میانه
                   </label>
                 </div>
                 <div className="flex items-center gap-2">
-                  <input type="radio" />
+                  <input type="radio" name="priceFilter" id="fastDelivery" />
                   <label
                     className="font-medium md:text-base text-sm text-[#000]"
-                    htmlFor=""
+                    htmlFor="fastDelivery"
                   >
                     تحویل سریع
                   </label>
                 </div>
                 <div className="flex items-center gap-2">
-                  <input type="radio" />
+                  <input type="radio" name="priceFilter" id="highestPrice" />
                   <label
                     className="font-medium md:text-base text-sm text-[#000]"
-                    htmlFor=""
+                    htmlFor="highestPrice"
                   >
                     بالا ترین قیمت
                   </label>
