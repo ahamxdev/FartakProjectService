@@ -145,8 +145,8 @@ export default function Home() {
           </Link>
         </div>
 
-        <div className="flex justify-between items-center my-2">
-          <ul className="flex gap-3">
+        <div className="flex md:flex-row flex-col justify-between items-center my-2 gap-4">
+          <ul className="flex gap-3 w-full overflow-x-auto md:w-auto">
             {[
               { title: "همه" },
               { title: "عکاسی" },
@@ -160,7 +160,7 @@ export default function Home() {
               <li
                 key={index}
                 onClick={() => setShowField(item.title)}
-                className="flex flex-col items-center md:text-lg text-sm font-normal cursor-pointer"
+                className="flex flex-col items-center md:text-lg text-sm font-normal cursor-pointer whitespace-nowrap"
               >
                 {item.title}
                 {showField === item.title && (
