@@ -4,12 +4,12 @@ using Microsoft.Extensions.Configuration;
 
 namespace Application.Services.ProjectCategories.Commands.EditProjectCategories
 {
-    public class EditProjectCategorieservice : IEditProjectCategorieservice
+    public class EditProjectCategoryService : IEditProjectCategoryService
     {
         private readonly IDatabaseContext _context;
         private readonly IConfiguration _configuration;
 
-        public EditProjectCategorieservice(IDatabaseContext context, IConfiguration configuration)
+        public EditProjectCategoryService(IDatabaseContext context, IConfiguration configuration)
         {
             _context = context;
             _configuration = configuration;

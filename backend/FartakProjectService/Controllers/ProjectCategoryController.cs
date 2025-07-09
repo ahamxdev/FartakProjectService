@@ -18,27 +18,27 @@ namespace FartakProjectService.Controllers
     [Route("api/ProjectCategories")]
     public class ProjectCategoryController : Controller
     {
-        private readonly IAddProjectCategorieservice _addProjectCategorieservice;
+        private readonly IAddProjectCategoryService _addProjectCategoryService;
 
-        private readonly IEditProjectCategorieservice _editProjectCategorieservice;
-        private readonly IRemoveProjectCategorieservice _removeProjectCategorieservice;
-        private readonly IGetProjectCategorieservice _getProjectCategorieservice;
+        private readonly IEditProjectCategoryService _editProjectCategoryService;
+        private readonly IRemoveProjectCategoryService _removeProjectCategoryService;
+        private readonly IGetProjectCategoryService _getProjectCategoryService;
         private readonly IConfiguration _configuration;
         private readonly IGetUserTokenService _getUserTokenService;
         /// <summary>
         /// سازنده کنترلر
         /// </summary>
-        public ProjectCategoryController(IAddProjectCategorieservice addProjectCategorieservice,
-                              IEditProjectCategorieservice editProjectCategorieservice,
-                              IRemoveProjectCategorieservice removeProjectCategorieservice,
-                              IGetProjectCategorieservice getProjectCategorieservice,
+        public ProjectCategoryController(IAddProjectCategoryService addProjectCategoryService,
+                              IEditProjectCategoryService editProjectCategoryService,
+                              IRemoveProjectCategoryService removeProjectCategoryService,
+                              IGetProjectCategoryService getProjectCategoryService,
                               IConfiguration configuration,
                               IGetUserTokenService getUserTokenService)
         {
-            _addProjectCategorieservice = addProjectCategorieservice;
-            _editProjectCategorieservice = editProjectCategorieservice;
-            _removeProjectCategorieservice = removeProjectCategorieservice;
-            _getProjectCategorieservice = getProjectCategorieservice;
+            _addProjectCategoryService = addProjectCategoryService;
+            _editProjectCategoryService = editProjectCategoryService;
+            _removeProjectCategoryService = removeProjectCategoryService;
+            _getProjectCategoryService = getProjectCategoryService;
             _configuration = configuration;
             _getUserTokenService = getUserTokenService;
         }
@@ -83,7 +83,7 @@ namespace FartakProjectService.Controllers
                 {
                     return StatusCode(403, Json(new ErrorDto { IsSuccess = false, Message = "توکن نامعتبر است", ResponseCode = 403, Service = "User" }));
                 }
-                var ProjectCategory = _addProjectCategorieservice.Execute(dto);
+                var ProjectCategory = _addProjectCategoryService.Execute(dto);
                 return Json(ProjectCategory);
             }
             catch (Exception e)
@@ -151,7 +151,7 @@ namespace FartakProjectService.Controllers
                 {
                     return StatusCode(403, Json(new ErrorDto { IsSuccess = false, Message = "توکن نامعتبر است", ResponseCode = 403, Service = "User" }));
                 }
-                var result = _removeProjectCategorieservice.Execute(dto);
+                var result = _removeProjectCategoryService.Execute(dto);
                 if (result.IsSuccess == true)
                 {
                     return Json(new ResultDto
@@ -238,7 +238,7 @@ namespace FartakProjectService.Controllers
                 {
                     return StatusCode(403, Json(new ErrorDto { IsSuccess = false, Message = "توکن نامعتبر است", ResponseCode = 403, Service = "User" }));
                 }
-                var result = _editProjectCategorieservice.Execute(dto);
+                var result = _editProjectCategoryService.Execute(dto);
                 if (result.IsSuccess == true)
                     return Json(result);
                 else
@@ -292,7 +292,7 @@ namespace FartakProjectService.Controllers
             try
             {
 
-                var result = _getProjectCategorieservice.GetAll();
+                var result = _getProjectCategoryService.GetAll();
                 return Json(result);
             }
             catch (Exception e)
@@ -336,7 +336,7 @@ namespace FartakProjectService.Controllers
             {
 
 
-                var result = _getProjectCategorieservice.GetById(dto);
+                var result = _getProjectCategoryService.GetById(dto);
 
                 return Json(result);
             }

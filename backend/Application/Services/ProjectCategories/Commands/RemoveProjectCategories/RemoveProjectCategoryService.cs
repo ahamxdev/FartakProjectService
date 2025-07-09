@@ -4,13 +4,13 @@ using Common.Dto;
 
 namespace Application.Services.ProjectCategories.Commands.RemoveProjectCategories
 {
-    public class RemoveProjectCategorieservice : IRemoveProjectCategorieservice
+    public class RemoveProjectCategoryService : IRemoveProjectCategoryService
     {
 
         private readonly IDatabaseContext _context;
 
 
-        public RemoveProjectCategorieservice(IDatabaseContext context)
+        public RemoveProjectCategoryService(IDatabaseContext context)
         {
             _context = context;
         }

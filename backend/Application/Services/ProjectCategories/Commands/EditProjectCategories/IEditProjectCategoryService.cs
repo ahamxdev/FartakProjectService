@@ -2,7 +2,7 @@
 
 namespace Application.Services.ProjectCategories.Commands.EditProjectCategories
 {
-    public interface IEditProjectCategorieservice
+    public interface IEditProjectCategoryService
     {
         ResultDto Execute(RequestEditProjectCategoryDto request);
     }

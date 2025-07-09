@@ -2,7 +2,7 @@
 
 namespace Application.Services.ProjectCategories.Commands.AddProjectCategories
 {
-    public interface IAddProjectCategorieservice
+    public interface IAddProjectCategoryService
     {
         ResultDto<ResultAddProjectCategoryDto> Execute(RequestAddProjectCategoryDto request);
     }

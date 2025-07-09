@@ -1,6 +1,6 @@
 ﻿namespace Application.Services.ProjectCategories.Queries.GetProjectCategories
 {
-    public interface IGetProjectCategorieservice
+    public interface IGetProjectCategoryService
     {
         ResultGetProjectCategoryDto GetById(RequestGetProjectCategoryByIdDto request);
         ResultGetProjectCategoryDto GetAll();

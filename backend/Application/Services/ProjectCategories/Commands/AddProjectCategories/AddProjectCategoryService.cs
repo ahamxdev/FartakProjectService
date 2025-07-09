@@ -5,11 +5,11 @@ using Microsoft.Extensions.Configuration;
 
 namespace Application.Services.ProjectCategories.Commands.AddProjectCategories
 {
-    public class AddProjectCategorieservice : IAddProjectCategorieservice
+    public class AddProjectCategoryService : IAddProjectCategoryService
     {
         private readonly IDatabaseContext _context;
         private readonly IConfiguration _configuration;
-        public AddProjectCategorieservice(IDatabaseContext context,
+        public AddProjectCategoryService(IDatabaseContext context,
                               IConfiguration configuration)
         {
             _context = context;

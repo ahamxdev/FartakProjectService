@@ -3,10 +3,10 @@ using Application.Services.ProjectCategories.Queries.GetProjectCategories;
 
 namespace Application.Services.ProjectCategories.Commands.AddProjectCategories
 {
-    public class GetProjectCategorieservice : IGetProjectCategorieservice
+    public class GetProjectCategoryService : IGetProjectCategoryService
     {
         private readonly IDatabaseContext _context;
-        public GetProjectCategorieservice(IDatabaseContext context)
+        public GetProjectCategoryService(IDatabaseContext context)
         {
             _context = context;
         }

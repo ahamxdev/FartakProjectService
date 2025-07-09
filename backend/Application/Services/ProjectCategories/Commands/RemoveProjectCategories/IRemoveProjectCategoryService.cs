@@ -2,7 +2,7 @@
 
 namespace Application.Services.ProjectCategories.Commands.RemoveProjectCategories
 {
-    public interface IRemoveProjectCategorieservice
+    public interface IRemoveProjectCategoryService
     {
         ResultDto Execute(RequestRemoveProjectCategoryDto request);
     }
