@@ -14,7 +14,7 @@ namespace Application.Services.ProjectCategories.Commands.EditProjectCategories
             _context = context;
             _configuration = configuration;
         }
-        public ResultDto Execute(RequestEditProjectCategoriesDto request)
+        public ResultDto Execute(RequestEditProjectCategoryDto request)
         {
 
             var ProjectCategories = _context.ProjectCategories.Find(request.ProjectCategoryId);

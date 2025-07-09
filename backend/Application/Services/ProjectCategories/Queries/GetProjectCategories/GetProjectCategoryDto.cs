@@ -1,6 +1,6 @@
 ﻿namespace Application.Services.ProjectCategories.Queries.GetProjectCategories
 {
-    public class GetProjectCategoriesDto
+    public class GetProjectCategoryDto
     {
         public long ProjectCategoryId { get; set; }
         public required string Title { get; set; }

@@ -2,9 +2,9 @@
 {
     public interface IGetProjectCategoryService
     {
-        ResultGetProjectCategoriesDto GetById(RequestGetProjectCategoriesByIdDto request);
-        ResultGetProjectCategoriesDto GetAll();
-        ResultGetProjectCategoriesDto GetAllParent();
-        ResultGetProjectCategoriesDto GetChildrenById(RequestGetProjectCategoriesByIdDto request);
+        ResultGetProjectCategoryDto GetById(RequestGetProjectCategoriesByIdDto request);
+        ResultGetProjectCategoryDto GetAll();
+        ResultGetProjectCategoryDto GetAllParent();
+        ResultGetProjectCategoryDto GetChildrenById(RequestGetProjectCategoriesByIdDto request);
     }
 }

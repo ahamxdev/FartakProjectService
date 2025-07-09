@@ -4,6 +4,6 @@ namespace Application.Services.ProjectCategories.Commands.RemoveProjectCategorie
 {
     public interface IRemoveProjectCategoryService
     {
-        ResultDto Execute(RequestRemoveProjectCategoriesDto request);
+        ResultDto Execute(RequestRemoveProjectCategoryDto request);
     }
 }

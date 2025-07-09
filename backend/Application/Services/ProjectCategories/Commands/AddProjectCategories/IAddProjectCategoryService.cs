@@ -4,7 +4,7 @@ namespace Application.Services.ProjectCategories.Commands.AddProjectCategories
 {
     public interface IAddProjectCategoryService
     {
-        ResultDto<ResultAddProjectCategoriesDto> ExecuteParent(RequestAddProjectCategoriesParentDto request);
-        ResultDto<ResultAddProjectCategoriesDto> ExecuteChild(RequestAddProjectCategoriesChildDto request);
+        ResultDto<ResultAddProjectCategoryDto> ExecuteParent(RequestAddProjectCategoriesParentDto request);
+        ResultDto<ResultAddProjectCategoryDto> ExecuteChild(RequestAddProjectCategoriesChildDto request);
     }
 }

@@ -15,7 +15,7 @@ namespace Application.Services.ProjectCategories.Commands.RemoveProjectCategorie
             _context = context;
         }
 
-        public ResultDto Execute(RequestRemoveProjectCategoriesDto request)
+        public ResultDto Execute(RequestRemoveProjectCategoryDto request)
         {
             var ProjectCategories = _context.ProjectCategories.Find(request.ProjectCategoryId);
             if (ProjectCategories == null)
