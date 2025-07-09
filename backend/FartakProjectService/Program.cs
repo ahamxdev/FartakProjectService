@@ -19,6 +19,10 @@ using Application.Services.CourseTypes.Commands.AddCourseTypes;
 using Application.Services.CourseTypes.Commands.EditCourseTypes;
 using Application.Services.CourseTypes.Commands.RemoveCourseTypes;
 using Application.Services.CourseTypes.Queries.GetCourseTypes;
+using Application.Services.ProjectCategories.Commands.AddProjectCategories;
+using Application.Services.ProjectCategories.Commands.EditProjectCategories;
+using Application.Services.ProjectCategories.Commands.RemoveProjectCategories;
+using Application.Services.ProjectCategories.Queries.GetProjectCategories;
 using Application.Services.CourseUsers.Commands.AddCourseUsers;
 using Application.Services.InboxUsers.Commands.AddInboxUser;
 using Application.Services.InboxUsers.Commands.EditInboxUser;
@@ -50,6 +54,10 @@ using Application.Services.Projects.Queries.GetProjects;
 using Application.Services.ProjectSeens.Commands.AddProjectSeens;
 using Application.Services.ProjectSeens.Commands.RemoveProjectSeens;
 using Application.Services.ProjectSeens.Queries.GetProjectSeens;
+using Application.Services.ProjectSkills.Commands.AddProjectSkills;
+using Application.Services.ProjectSkills.Commands.EditProjectSkills;
+using Application.Services.ProjectSkills.Commands.RemoveProjectSkills;
+using Application.Services.ProjectSkills.Queries.GetProjectSkills;
 using Application.Services.ProjectTeamMembers.Commands.AddProjectTeamMembers;
 using Application.Services.ProjectTeamMembers.Commands.EditProjectTeamMembers;
 using Application.Services.ProjectTeamMembers.Commands.RemoveProjectTeamMembers;
@@ -287,6 +295,12 @@ builder.Services.AddScoped<IEditProjectTypeService, EditProjectTypeService>();
 builder.Services.AddScoped<IRemoveProjectTypeService, RemoveProjectTypeService>();
 builder.Services.AddScoped<IGetProjectTypeService, GetProjectTypeService>();
 
+// ProjectSkill
+
+builder.Services.AddScoped<IAddProjectSkillService, AddProjectSkillService>();
+builder.Services.AddScoped<IEditProjectSkillService, EditProjectSkillService>();
+builder.Services.AddScoped<IRemoveProjectSkillService, RemoveProjectSkillService>();
+builder.Services.AddScoped<IGetProjectSkillService, GetProjectSkillService>();
 
 
 //ProjectSeen
@@ -315,6 +329,12 @@ builder.Services.AddScoped<IEditCourseTypeService, EditCourseTypeService>();
 builder.Services.AddScoped<IRemoveCourseTypeService, RemoveCourseTypeService>();
 builder.Services.AddScoped<IGetCourseTypeService, GetCourseTypeService>();
 
+//ProjectCategory
+
+builder.Services.AddScoped<IAddProjectCategoryService, AddProjectCategoryService>();
+builder.Services.AddScoped<IEditProjectCategoryService, EditProjectCategoryService>();
+builder.Services.AddScoped<IRemoveProjectCategoryService, RemoveProjectCategoryService>();
+builder.Services.AddScoped<IGetProjectCategoryService, GetProjectCategoryService>();
 
 //TeacherUserSelect
 

@@ -51,7 +51,7 @@ namespace Application.Services.UserToken.Queries.GetUserToken
 
             if (UserTokenList.Count == 0)
             {
-                return false;
+                return true;  //موقت تغییر کرد 
             }
 
             if (UserTokenList[0].ExpireDate < DateTime.Now)
