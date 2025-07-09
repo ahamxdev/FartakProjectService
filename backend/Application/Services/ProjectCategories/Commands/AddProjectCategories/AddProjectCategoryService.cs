@@ -1,6 +1,6 @@
 ﻿using Application.Interfaces.Contexts;
 using Common.Dto;
-using Domain.Entities.TeacherUser;
+using Domain.Entities.Projects;
 using Microsoft.Extensions.Configuration;
 
 namespace Application.Services.ProjectCategories.Commands.AddProjectCategories
@@ -15,7 +15,7 @@ namespace Application.Services.ProjectCategories.Commands.AddProjectCategories
             _context = context;
             _configuration = configuration;
         }
-        public ResultDto<ResultAddProjectCategoriesDto> ExecuteParent(RequestAddProjectCategoriesParentDto request)
+        public ResultDto<ResultAddProjectCategoryDto> ExecuteParent(RequestAddProjectCategoriesParentDto request)
         {
 
 
@@ -29,9 +29,9 @@ namespace Application.Services.ProjectCategories.Commands.AddProjectCategories
                 };
                 _context.ProjectCategories.Add(ProjectCategories);
                 _context.SaveChanges();
-                return new ResultDto<ResultAddProjectCategoriesDto>
+                return new ResultDto<ResultAddProjectCategoryDto>
                 {
-                    Data = new ResultAddProjectCategoriesDto
+                    Data = new ResultAddProjectCategoryDto
                     {
                         ProjectCategoryId = ProjectCategories.ProjectCategoryId
                     },
@@ -41,9 +41,9 @@ namespace Application.Services.ProjectCategories.Commands.AddProjectCategories
             }
             catch
             {
-                return new ResultDto<ResultAddProjectCategoriesDto>
+                return new ResultDto<ResultAddProjectCategoryDto>
                 {
-                    Data = new ResultAddProjectCategoriesDto { ProjectCategoryId = 0 },
+                    Data = new ResultAddProjectCategoryDto { ProjectCategoryId = 0 },
                     IsSuccess = false,
                     Message = "ثبت با خطا مواجه شد."
                 };
@@ -52,7 +52,7 @@ namespace Application.Services.ProjectCategories.Commands.AddProjectCategories
         }
 
 
-        public ResultDto<ResultAddProjectCategoriesDto> ExecuteChild(RequestAddProjectCategoriesChildDto request)
+        public ResultDto<ResultAddProjectCategoryDto> ExecuteChild(RequestAddProjectCategoriesChildDto request)
         {
 
 
@@ -66,9 +66,9 @@ namespace Application.Services.ProjectCategories.Commands.AddProjectCategories
                 };
                 _context.ProjectCategories.Add(ProjectCategories);
                 _context.SaveChanges();
-                return new ResultDto<ResultAddProjectCategoriesDto>
+                return new ResultDto<ResultAddProjectCategoryDto>
                 {
-                    Data = new ResultAddProjectCategoriesDto
+                    Data = new ResultAddProjectCategoryDto
                     {
                         ProjectCategoryId = ProjectCategories.ProjectCategoryId
                     },
@@ -78,9 +78,9 @@ namespace Application.Services.ProjectCategories.Commands.AddProjectCategories
             }
             catch
             {
-                return new ResultDto<ResultAddProjectCategoriesDto>
+                return new ResultDto<ResultAddProjectCategoryDto>
                 {
-                    Data = new ResultAddProjectCategoriesDto { ProjectCategoryId = 0 },
+                    Data = new ResultAddProjectCategoryDto { ProjectCategoryId = 0 },
                     IsSuccess = false,
                     Message = "ثبت با خطا مواجه شد."
                 };

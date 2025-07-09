@@ -50,7 +50,7 @@ namespace FartakProjectCategoriesService.Controllers
         /// <response code="400">Validation Error</response>
         /// <response code="409">Not Success - Value Content:</response>
         /// <response code="500">Server Error - Value Content:</response>
-        [ProducesResponseType(typeof(ResultDto<ResultAddProjectCategoriesDto>), 200)]
+        [ProducesResponseType(typeof(ResultDto<ResultAddProjectCategoryDto>), 200)]
         [ProducesResponseType(typeof(ValidationResult), 400)]
         [ProducesResponseType(typeof(ErrorDto), 409)]
         [ProducesResponseType(typeof(ErrorDto), 500)]
@@ -122,7 +122,7 @@ namespace FartakProjectCategoriesService.Controllers
         /// <response code="400">Validation Error</response>
         /// <response code="409">Not Success - Value Content:</response>
         /// <response code="500">Server Error - Value Content:</response>
-        [ProducesResponseType(typeof(ResultDto<ResultAddProjectCategoriesDto>), 200)]
+        [ProducesResponseType(typeof(ResultDto<ResultAddProjectCategoryDto>), 200)]
         [ProducesResponseType(typeof(ValidationResult), 400)]
         [ProducesResponseType(typeof(ErrorDto), 409)]
         [ProducesResponseType(typeof(ErrorDto), 500)]
@@ -193,14 +193,14 @@ namespace FartakProjectCategoriesService.Controllers
         /// <response code="400">Validation Error</response>
         /// <response code="409">Not Success - Value Content:</response>
         /// <response code="500">Server Error - Value Content:</response>
-        [ProducesResponseType(typeof(ResultDto<ResultAddProjectCategoriesDto>), 200)]
+        [ProducesResponseType(typeof(ResultDto<ResultAddProjectCategoryDto>), 200)]
         [ProducesResponseType(typeof(ValidationResult), 400)]
         [ProducesResponseType(typeof(ErrorDto), 409)]
         [ProducesResponseType(typeof(ErrorDto), 500)]
         [HttpPut]
         [Route("Edit")]
 
-        public ActionResult Edit(RequestEditProjectCategoriesDto dto)
+        public ActionResult Edit(RequestEditProjectCategoryDto dto)
         {
             try
             {
@@ -274,7 +274,7 @@ namespace FartakProjectCategoriesService.Controllers
         [ProducesResponseType(typeof(ErrorDto), 500)]
         [HttpDelete]
         [Route("Delete")]
-        public ActionResult Delete(RequestRemoveProjectCategoriesDto dto)
+        public ActionResult Delete(RequestRemoveProjectCategoryDto dto)
         {
             try
             {
@@ -354,7 +354,7 @@ namespace FartakProjectCategoriesService.Controllers
         /// <response code="200">Success</response>
         /// <response code="403">Not Authorized - Value Content:</response>
         /// <response code="500">Server Error - Value Content:</response>
-        [ProducesResponseType(typeof(ResultGetProjectCategoriesDto), 200)]
+        [ProducesResponseType(typeof(ResultGetProjectCategoryDto), 200)]
         [ProducesResponseType(typeof(ErrorDto), 403)]
         [ProducesResponseType(typeof(ErrorDto), 500)]
         [HttpPost]
@@ -398,7 +398,7 @@ namespace FartakProjectCategoriesService.Controllers
         /// <response code="200">Success</response>
         /// <response code="403">Not Authorized - Value Content:</response>
         /// <response code="500">Server Error - Value Content:</response>
-        [ProducesResponseType(typeof(ResultGetProjectCategoriesDto), 200)]
+        [ProducesResponseType(typeof(ResultGetProjectCategoryDto), 200)]
         [ProducesResponseType(typeof(ErrorDto), 403)]
         [ProducesResponseType(typeof(ErrorDto), 500)]
         [HttpPost]
@@ -443,7 +443,7 @@ namespace FartakProjectCategoriesService.Controllers
         /// <response code="200">Success</response>
         /// <response code="403">Not Authorized - Value Content:</response>
         /// <response code="500">Server Error - Value Content:</response>
-        [ProducesResponseType(typeof(ResultGetProjectCategoriesDto), 200)]
+        [ProducesResponseType(typeof(ResultGetProjectCategoryDto), 200)]
         [ProducesResponseType(typeof(ErrorDto), 403)]
         [ProducesResponseType(typeof(ErrorDto), 500)]
         [HttpPost]
@@ -487,7 +487,7 @@ namespace FartakProjectCategoriesService.Controllers
         /// <response code="200">Success</response>
         /// <response code="403">Not Authorized - Value Content:</response>
         /// <response code="500">Server Error - Value Content:</response>
-        [ProducesResponseType(typeof(ResultGetProjectCategoriesDto), 200)]
+        [ProducesResponseType(typeof(ResultGetProjectCategoryDto), 200)]
         [ProducesResponseType(typeof(ErrorDto), 403)]
         [ProducesResponseType(typeof(ErrorDto), 500)]
         [HttpPost]

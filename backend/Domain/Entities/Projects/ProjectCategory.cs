@@ -1,4 +1,4 @@
-﻿namespace Domain.Entities.TeacherUser
+﻿namespace Domain.Entities.Projects
 {
     public class ProjectCategory
     {
