@@ -19,6 +19,7 @@ namespace Application.Interfaces.Contexts
         DbSet<Course> Courses { get; set; }
         DbSet<CourseUser> CourseUsers { get; set; }
         DbSet<CourseType> CourseTypes { get; set; }
+        DbSet<ProjectCategory> ProjectCategories { get; set; }
         DbSet<TeacherUser> TeacherUsers { get; set; }
         DbSet<TeacherUserResume> TeacherUserResumes { get; set; }
         DbSet<TeacherUserSelect> TeacherUserSelects { get; set; }

@@ -20,6 +20,7 @@ namespace Persistence.Contexts
         public DbSet<Course> Courses { get; set; }
         public DbSet<CourseUser> CourseUsers { get; set; }
         public DbSet<CourseType> CourseTypes { get; set; }
+        public DbSet<ProjectCategory> ProjectCategories { get; set; }
         public DbSet<TeacherUser> TeacherUsers { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<TeacherUserResume> TeacherUserResumes { get; set; }
