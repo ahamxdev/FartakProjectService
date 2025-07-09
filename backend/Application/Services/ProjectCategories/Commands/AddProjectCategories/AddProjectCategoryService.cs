@@ -1,6 +1,6 @@
 ﻿using Application.Interfaces.Contexts;
 using Common.Dto;
-using Domain.Entities;
+using Domain.Entities.TeacherUser;
 using Microsoft.Extensions.Configuration;
 
 namespace Application.Services.ProjectCategories.Commands.AddProjectCategories
@@ -15,23 +15,25 @@ namespace Application.Services.ProjectCategories.Commands.AddProjectCategories
             _context = context;
             _configuration = configuration;
         }
-        public ResultDto<ResultAddProjectCategoryDto> Execute(RequestAddProjectCategoryDto request)
+        public ResultDto<ResultAddProjectCategoriesDto> ExecuteParent(RequestAddProjectCategoriesParentDto request)
         {
 
 
             try
             {
-                ProjectCategory ProjectCategory = new ProjectCategory
+                ProjectCategory ProjectCategories = new ProjectCategory
                 {
-                    Name = request.Name,
+                    Title = request.Title,
+                    ProjectCategoryParentId = 0
+
                 };
-                _context.ProjectCategories.Add(ProjectCategory);
+                _context.ProjectCategories.Add(ProjectCategories);
                 _context.SaveChanges();
-                return new ResultDto<ResultAddProjectCategoryDto>
+                return new ResultDto<ResultAddProjectCategoriesDto>
                 {
-                    Data = new ResultAddProjectCategoryDto
+                    Data = new ResultAddProjectCategoriesDto
                     {
-                        ProjectCategoryId = ProjectCategory.ProjectCategoryId,
+                        ProjectCategoryId = ProjectCategories.ProjectCategoryId
                     },
                     IsSuccess = true,
                     Message = "با موفقیت ثبت شد."
@@ -39,9 +41,9 @@ namespace Application.Services.ProjectCategories.Commands.AddProjectCategories
             }
             catch
             {
-                return new ResultDto<ResultAddProjectCategoryDto>
+                return new ResultDto<ResultAddProjectCategoriesDto>
                 {
-                    Data = new ResultAddProjectCategoryDto { ProjectCategoryId = 0 },
+                    Data = new ResultAddProjectCategoriesDto { ProjectCategoryId = 0 },
                     IsSuccess = false,
                     Message = "ثبت با خطا مواجه شد."
                 };
@@ -49,5 +51,41 @@ namespace Application.Services.ProjectCategories.Commands.AddProjectCategories
             }
         }
 
+
+        public ResultDto<ResultAddProjectCategoriesDto> ExecuteChild(RequestAddProjectCategoriesChildDto request)
+        {
+
+
+            try
+            {
+                ProjectCategory ProjectCategories = new ProjectCategory
+                {
+                    Title = request.Title,
+                    ProjectCategoryParentId = request.ProjectCategoryParentId,
+
+                };
+                _context.ProjectCategories.Add(ProjectCategories);
+                _context.SaveChanges();
+                return new ResultDto<ResultAddProjectCategoriesDto>
+                {
+                    Data = new ResultAddProjectCategoriesDto
+                    {
+                        ProjectCategoryId = ProjectCategories.ProjectCategoryId
+                    },
+                    IsSuccess = true,
+                    Message = "با موفقیت ثبت شد."
+                };
+            }
+            catch
+            {
+                return new ResultDto<ResultAddProjectCategoriesDto>
+                {
+                    Data = new ResultAddProjectCategoriesDto { ProjectCategoryId = 0 },
+                    IsSuccess = false,
+                    Message = "ثبت با خطا مواجه شد."
+                };
+
+            }
+        }
     }
 }

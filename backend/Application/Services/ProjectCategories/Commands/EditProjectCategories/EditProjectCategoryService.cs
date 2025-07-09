@@ -14,11 +14,11 @@ namespace Application.Services.ProjectCategories.Commands.EditProjectCategories
             _context = context;
             _configuration = configuration;
         }
-        public ResultDto Execute(RequestEditProjectCategoryDto request)
+        public ResultDto Execute(RequestEditProjectCategoriesDto request)
         {
 
-            var ProjectCategory = _context.ProjectCategories.Find(request.ProjectCategoryId);
-            if (ProjectCategory == null)
+            var ProjectCategories = _context.ProjectCategories.Find(request.ProjectCategoryId);
+            if (ProjectCategories == null)
             {
                 return new ResultDto
                 {
@@ -31,7 +31,7 @@ namespace Application.Services.ProjectCategories.Commands.EditProjectCategories
             try
             {
 
-                ProjectCategory.Name = request.Name;
+                ProjectCategories.Title = request.Title;
 
 
                 _context.SaveChanges();

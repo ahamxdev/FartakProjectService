@@ -1,7 +1,7 @@
 ﻿using Application.Interfaces.Contexts;
-using Application.Services.ProjectCategories.Queries.GetProjectCategories;
 
-namespace Application.Services.ProjectCategories.Commands.AddProjectCategories
+
+namespace Application.Services.ProjectCategories.Queries.GetProjectCategories
 {
     public class GetProjectCategoryService : IGetProjectCategoryService
     {
@@ -11,35 +11,74 @@ namespace Application.Services.ProjectCategories.Commands.AddProjectCategories
             _context = context;
         }
 
-        public ResultGetProjectCategoryDto GetById(RequestGetProjectCategoryByIdDto request)
+        public ResultGetProjectCategoriesDto GetById(RequestGetProjectCategoriesByIdDto request)
         {
-            var ProjectCategory = _context.ProjectCategories.Where(x => x.ProjectCategoryId == request.ProjectCategoryId);
-            var ProjectCategoryList = ProjectCategory.Select(p => new GetProjectCategoryDto
+            var ProjectCategories = _context.ProjectCategories.Where(x => x.ProjectCategoryId == request.ProjectCategoryId);
+            var ProjectCategoriesList = ProjectCategories.Select(p => new GetProjectCategoriesDto
             {
-                Name = p.Name,
+                Title = p.Title,
                 ProjectCategoryId = p.ProjectCategoryId,
+                ProjectCategoryParentId = p.ProjectCategoryParentId,
 
             }).OrderBy(x => x.ProjectCategoryId).ToList();
-            return new ResultGetProjectCategoryDto
+            return new ResultGetProjectCategoriesDto
             {
-                ProjectCategories = ProjectCategoryList,
-                Rows = ProjectCategoryList.Count,
+                ProjectCategories = ProjectCategoriesList,
+                Rows = ProjectCategoriesList.Count,
             };
         }
 
-        public ResultGetProjectCategoryDto GetAll()
+
+        public ResultGetProjectCategoriesDto GetChildrenById(RequestGetProjectCategoriesByIdDto request)
         {
-            var ProjectCategory = _context.ProjectCategories;
-            var ProjectCategoryList = ProjectCategory.Select(p => new GetProjectCategoryDto
+            var ProjectCategories = _context.ProjectCategories.Where(x => x.ProjectCategoryParentId == request.ProjectCategoryId);
+            var ProjectCategoriesList = ProjectCategories.Select(p => new GetProjectCategoriesDto
             {
-                Name = p.Name,
+                Title = p.Title,
                 ProjectCategoryId = p.ProjectCategoryId,
+                ProjectCategoryParentId = p.ProjectCategoryParentId,
 
             }).OrderBy(x => x.ProjectCategoryId).ToList();
-            return new ResultGetProjectCategoryDto
+            return new ResultGetProjectCategoriesDto
             {
-                ProjectCategories = ProjectCategoryList,
-                Rows = ProjectCategoryList.Count,
+                ProjectCategories = ProjectCategoriesList,
+                Rows = ProjectCategoriesList.Count,
+            };
+        }
+
+
+        public ResultGetProjectCategoriesDto GetAll()
+        {
+            var ProjectCategories = _context.ProjectCategories;
+            var ProjectCategoriesList = ProjectCategories.Select(p => new GetProjectCategoriesDto
+            {
+                Title = p.Title,
+                ProjectCategoryId = p.ProjectCategoryId,
+                ProjectCategoryParentId = p.ProjectCategoryParentId,
+
+            }).OrderBy(x => x.ProjectCategoryId).ToList();
+            return new ResultGetProjectCategoriesDto
+            {
+                ProjectCategories = ProjectCategoriesList,
+                Rows = ProjectCategoriesList.Count,
+            };
+        }
+
+
+        public ResultGetProjectCategoriesDto GetAllParent()
+        {
+            var ProjectCategories = _context.ProjectCategories.Where(t => t.ProjectCategoryParentId == 0).ToList();
+            var ProjectCategoriesList = ProjectCategories.Select(p => new GetProjectCategoriesDto
+            {
+                Title = p.Title,
+                ProjectCategoryId = p.ProjectCategoryId,
+                ProjectCategoryParentId = p.ProjectCategoryParentId,
+
+            }).OrderBy(x => x.ProjectCategoryId).ToList();
+            return new ResultGetProjectCategoriesDto
+            {
+                ProjectCategories = ProjectCategoriesList,
+                Rows = ProjectCategoriesList.Count,
             };
         }
     }

@@ -4,6 +4,6 @@ namespace Application.Services.ProjectCategories.Commands.EditProjectCategories
 {
     public interface IEditProjectCategoryService
     {
-        ResultDto Execute(RequestEditProjectCategoryDto request);
+        ResultDto Execute(RequestEditProjectCategoriesDto request);
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Application.Services.ProjectCategories.Commands.AddProjectCategories
 {
-    public class ResultAddProjectCategoryDto
+    public class ResultAddProjectCategoriesDto
     {
         public long ProjectCategoryId { get; set; }
     }

@@ -15,10 +15,10 @@ namespace Application.Services.ProjectCategories.Commands.RemoveProjectCategorie
             _context = context;
         }
 
-        public ResultDto Execute(RequestRemoveProjectCategoryDto request)
+        public ResultDto Execute(RequestRemoveProjectCategoriesDto request)
         {
-            var ProjectCategory = _context.ProjectCategories.Find(request.ProjectCategoryId);
-            if (ProjectCategory == null)
+            var ProjectCategories = _context.ProjectCategories.Find(request.ProjectCategoryId);
+            if (ProjectCategories == null)
             {
                 return new ResultDto
                 {
@@ -27,7 +27,7 @@ namespace Application.Services.ProjectCategories.Commands.RemoveProjectCategorie
                 };
             }
 
-            _context.ProjectCategories.Remove(ProjectCategory);
+            _context.ProjectCategories.Remove(ProjectCategories);
             _context.SaveChanges();
             return new ResultDto()
             {
