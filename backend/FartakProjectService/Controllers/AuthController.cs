@@ -40,7 +40,7 @@ public class AuthController : ControllerBase
     /// </summary>
     /// <returns></returns>
     [HttpPost("login")]
-    public async Task<ActionResult> Login([FromBody] RequestGetUserByMobilePasswordDto userByMobilePasswordDto)
+    public async Task<ActionResult> Login([FromBody] RequestGetUserByEmailPasswordDto userByMobilePasswordDto)
     {
         if (!ModelState.IsValid)
         {
@@ -49,42 +49,42 @@ public class AuthController : ControllerBase
 
         try
         {
-            #region validation with token and userId
+            //#region validation with token and userId
 
-            var tokenDto = new RequestCheckTokenDto { Token = "", SelfUserId = 0 };
-            if (Request.Headers["token"].Count() > 0)
-            {
-                tokenDto.Token = Request.Headers["token"];
-            }
+            //var tokenDto = new RequestCheckTokenDto { Token = "", SelfUserId = 0 };
+            //if (Request.Headers["token"].Count() > 0)
+            //{
+            //    tokenDto.Token = Request.Headers["token"];
+            //}
 
-            if (Request.Headers["userId"].Count() > 0)
-            {
-                tokenDto.SelfUserId = long.Parse(Request.Headers["userId"]);
-            }
+            //if (Request.Headers["userId"].Count() > 0)
+            //{
+            //    tokenDto.SelfUserId = long.Parse(Request.Headers["userId"]);
+            //}
 
-            if (tokenDto.Token == null || tokenDto.SelfUserId == 0)
-            {
-                return Ok(new
-                {
-                    IsSuccess = false,
-                    ResponseCode = 409,
-                    Message = "مقادیر توکن نامعتبر میباشد",
-                    Service = "User",
-                });
-            }
+            //if (tokenDto.Token == null || tokenDto.SelfUserId == 0)
+            //{
+            //    return Ok(new
+            //    {
+            //        IsSuccess = false,
+            //        ResponseCode = 409,
+            //        Message = "مقادیر توکن نامعتبر میباشد",
+            //        Service = "User",
+            //    });
+            //}
 
-            if (_getUserTokenService.GetToken(tokenDto) == false)
-            {
-                return Ok(new
-                {
-                    IsSuccess = false,
-                    Message = "توکن نامعتبر است",
-                    ResponseCode = 403,
-                    Service = "User"
-                });
-            }
+            //if (_getUserTokenService.GetToken(tokenDto) == false)
+            //{
+            //    return Ok(new
+            //    {
+            //        IsSuccess = false,
+            //        Message = "توکن نامعتبر است",
+            //        ResponseCode = 403,
+            //        Service = "User"
+            //    });
+            //}
 
-            #endregion
+            //#endregion
 
 
             var user = _getUserService.GetByMobilePassword(userByMobilePasswordDto);
@@ -107,7 +107,7 @@ public class AuthController : ControllerBase
                     claims: authClaims,
                     signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)
                 );
-
+                var Request = new RequestGetUserTokenByUserIdDto { UserId = user.Data.UserId };
                 var role = (UserRoles)Enum.Parse(typeof(UserRoles), user.Data.Kind.ToString());
                 return Ok(new
                 {
@@ -116,8 +116,8 @@ public class AuthController : ControllerBase
                     expiration = token.ValidTo,
                     message = user.Message,
                     jwt = new JwtSecurityTokenHandler().WriteToken(token),
-                    token = tokenDto.Token,
-                    userId = tokenDto.SelfUserId
+                    token = _getUserTokenService.GetByUserId(Request).UserToken.FirstOrDefault().Token,
+                    userId = user.Data.UserId
                 });
                 // end jwt auth
             }

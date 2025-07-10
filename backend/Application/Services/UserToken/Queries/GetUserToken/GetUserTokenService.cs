@@ -14,7 +14,7 @@ namespace Application.Services.UserToken.Queries.GetUserToken
 
         public bool GetToken(RequestCheckTokenDto request)
         {
-            var UserToken = _context.UserTokens.Where(x => x.UserId == request.SelfUserId && x.Token == request.Token);
+            var UserToken = _context.UserTokens.Where(x => x.UserId == request.SelfUserId && x.Token == request.Token).ToList();
             var UserTokenList = UserToken.Select(p => new GetUserTokenDto
             {
                 UserTokenId = p.UserTokenId,
@@ -49,15 +49,15 @@ namespace Application.Services.UserToken.Queries.GetUserToken
                 }
             }
 
-            if (UserTokenList.Count == 0)
+            if (UserToken.Count == 0)
             {
-                return true;  //موقت تغییر کرد 
+                return false;   
             }
 
-            if (UserTokenList[0].ExpireDate < DateTime.Now)
-            {
-                return false;
-            }
+            //if (UserTokenList[0].ExpireDate < DateTime.Now)
+            //{
+            //    return false;
+            //}
 
             return true;
         }
