@@ -24,6 +24,8 @@
     "react-hook-form": "^7.56.4",
     "stylis": "^4.3.6",
     "stylis-plugin-rtl": "^2.1.1",
+    "sweetalert": "^2.1.2",
+    "sweetalert2": "^11.22.2",
     "swiper": "^11.2.8",
     "zod": "^3.25.23",
     "zustand": "^5.0.5"
