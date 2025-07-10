@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { SwiperSlide } from "swiper/react";
@@ -9,6 +9,7 @@ import MainHeader from "@/components/skills/MainHeader";
 import ProjectSteps from "@/components/skills/ProjectSteps";
 import NewProjectBox from "@/components/skills/NewProjectBox";
 import FartakUser from "@/components/skills/FartakUser";
+import { api } from "@/utils/api";
 
 const items = [
   {
@@ -53,36 +54,73 @@ const items = [
   },
 ];
 
+type ItemType = {
+  projectCategoryId: number;
+  title: string;
+  projectCategoryParentId: number;
+};
+
 export default function Home() {
   const [showField, setShowField] = useState<string>("همه");
+
+  const [category, setCategory] = useState<ItemType[]>([]);
+
+  useEffect(() => {
+    api("/api/ProjectCategories/GetAllParent", "POST")
+      .then((res) => {
+        if (res.status == 200) {
+          return res.json();
+        }
+      })
+      .then((data) => {
+        console.log(data);
+        setCategory(data.projectCategories);
+      });
+  }, []);
+
   return (
     <>
       <MainHeader />
       <ProjectSteps />
       <section className="grid py-20 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 gap-y-16 md:my-8 my-4 w-[90%] mx-auto">
-        <CategoryBox src={"/skills/Index.png"} title={"محتوا و ترجمه"} />
+        {/* <CategoryBox src={"/skills/Index.png"} title={category[1]?.title}
+        id={category[1]?.projectCategoryId} />
         <CategoryBox
           src={"/skills/Laptop Coding-ctg.png"}
           hasScale={true}
-          title={"توسعه نرم افزار و ای تی"}
+          title={category[0]?.title}
+          id={category[0]?.projectCategoryId}
         />
         <CategoryBox
           src={"/skills/Increase-ctg.png"}
-          title={"بازاریابی و فروش"}
+          title={category[3]?.title}
+          id={category[3]?.projectCategoryId}
         />
         <CategoryBox
           src={"/skills/Paint Palette-ctg.png"}
-          title={"طراحی و خلاقیت"}
+          title={category[2]?.title}
+          id={category[2]?.projectCategoryId}
         />
         <CategoryBox
           src={"/skills/Goal.png"}
-          title={"کسب و کار"}
+          title={category[4]?.title}
+          id={category[4]?.projectCategoryId}
           hasScale={true}
         />
         <CategoryBox
           src={"/skills/Drafting Compass.png"}
-          title={"مهندسی و معماری"}
-        />
+          title={category[5]?.title}
+          id={category[1]?.projectCategoryId}
+        /> */}
+        {category?.map((item, index) => (
+          <CategoryBox
+            key={item?.projectCategoryId}
+            src={`/images/ctg/${item?.projectCategoryId}.png`}
+            title={item?.title}
+            hasScale={index == 1 || index == 4 ? true : false}
+            id={item?.projectCategoryId}
+          />
+        ))}
       </section>
       <SectionSlider title="پروژه های جدید فرتاک" viewAllUrl="/category/all">
         {[...Array(10)].map((_, i) => (
