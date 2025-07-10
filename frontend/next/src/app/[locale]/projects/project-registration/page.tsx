@@ -4,21 +4,72 @@ import Image from "next/image";
 import Link from "next/link";
 import WaySpeedProjectRegistrationBox from "@/components/skills/WaySpeedProjectRegistrationBox";
 import { api } from "@/utils/api";
+import SubMenu from "@/components/skills/SubMenu";
 
 const ProjectRegistration = () => {
-  const [payWay, setPayWay] = useState<string>("");
+  const [priceType, setPriceType] = useState<string>("");
+  const [title, setTitle] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
+  const [startPrice, setStartPrice] = useState<string>("");
+  const [finishPrice, setFinishPrice] = useState<string>("");
+  const [selectedFilter, setSelectedFilter] = useState<string>("");
+  const [allCtgs, setAllCtgs] = useState<[]>([]);
+  const [priority, setPriority] = useState<string>();
+  const [projectSkillId, setProjectSkillId] = useState<number>(0);
+  const [projectSkillTitle, setProjectSkillTitle] = useState<string>("دسته‌بندی پروژه خود را انتخاب کنید");
+
+  const [isSubMenuOpen, setIsSubMenuOpen] = useState<boolean>(false);
 
   useEffect(() => {
-    api("/api/ProjectTypes/GetAll", "POST").then((data) => {
-      console.log(data);
-    });
-    api("/api/ProjectTeamMembers/GetAll", "POST").then((data) => {
-      console.log(data);
-    });
-    api("/api/Projects/GetAll", "POST").then((data) => {
-      console.log(data);
-    });
+    api("/api/ProjectCategories/GetAllParent", "POST")
+      .then((res) => {
+        if (res.status == 200) {
+          return res.json();
+        }
+      })
+      .then((data) => {
+        console.log(data);
+        setAllCtgs(data.projectCategories);
+      });
+      api("/api/ProjectSkills/GetAll", "POST")
+      .then((res) => {
+        if (res.status == 200) {
+          return res.json();
+        }
+      })
+      .then((data) => {
+        console.log(data);
+        // setAllCtgs(data.projectTypes);
+      });
+    // api("/api/ProjectTeamMembers/GetAll", "POST").then((data) => {
+    //   console.log(data);
+    // });
+    // api("/api/Projects/GetAll", "POST").then((data) => {
+    //   console.log(data);
+    // });
   }, []);
+
+  const submitPriority = (title: string) => {
+    setPriority(title);
+  };
+
+  const handleChange = (
+    setValue: (value: string) => void,
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const rawValue = e.target.value.replace(/,/g, "").replace(/\D/g, "");
+    if (rawValue === "") {
+      setValue("");
+      return;
+    }
+
+    const formattedValue = Number(rawValue).toLocaleString("en-US");
+    setValue(formattedValue);
+  };
+
+  const addProject = () => {
+
+  }
 
   return (
     <>
@@ -199,16 +250,16 @@ const ProjectRegistration = () => {
               <div className="flex lg:flex-row flex-col w-full gap-4 my-5">
                 <div className="flex flex-col w-full lg:w-[50%]  justify-between">
                   <div className="flex flex-col gap-2 w-full">
-                    <label
-                      className="text-sm font-semibold text-[#0C0C0C]"
-                      htmlFor=""
-                    >
+                    <span className="text-sm font-semibold text-[#0C0C0C]">
                       دسته بندی
-                    </label>
+                    </span>
                     <div className="flex flex-col gap-3.5 w-full">
                       <div className="flex relative items-center gap-4 w-full">
-                        <button className="rounded-lg border-[1px] w-full border-[#7c7c7c55] px-3 py-1 flex justify-between items-center text-base bg-[#fff] font-normal cursor-pointer text-[#7c7c7c] gap-4">
-                          دسته‌بندی پروژه خود را انتخاب کنید
+                        <button
+                          onClick={() => setIsSubMenuOpen(prev => !prev)}
+                          className="rounded-lg border-[1px] w-full border-[#7c7c7c55] px-3 py-1 flex justify-between items-center text-base bg-[#fff] font-normal cursor-pointer text-[#7c7c7c] gap-4"
+                        >
+                          {projectSkillTitle}
                           <svg
                             width="14"
                             height="8"
@@ -222,6 +273,14 @@ const ProjectRegistration = () => {
                             />
                           </svg>
                         </button>
+
+                        <SubMenu
+                          isSubMenuOpen={isSubMenuOpen}
+                          items={allCtgs || []}
+                          setProjectSkillId={setProjectSkillId}
+                          setIsSubMenuOpen={setIsSubMenuOpen}
+                          setProjectSkillTitle={setProjectSkillTitle}
+                        />
                       </div>
                     </div>
                   </div>
@@ -233,8 +292,10 @@ const ProjectRegistration = () => {
                       عنوان
                     </label>
                     <input
-                      className="rounded-lg border-[1px] w-full border-[#7c7c7c55] px-3 py-1 flex justify-between items-center text-base bg-[#fff] font-normal cursor-pointer text-[#7c7c7c] placeholder:text-[#7c7c7c] gap-4"
+                      className="rounded-lg border-[1px] w-full border-[#7c7c7c55] px-3 py-1 flex justify-between items-center text-base bg-[#fff] font-normal text-[#7c7c7c] placeholder:text-[#7c7c7c] gap-4"
                       placeholder="عنوان پروژه خود را وارد کنید"
+                      value={title}
+                      onChange={(e) => setTitle(e.target.value)}
                     />
                   </div>
                 </div>
@@ -248,6 +309,8 @@ const ProjectRegistration = () => {
                   <textarea
                     placeholder="توضیحاتی برای شفاف‌تر شدن درخواست خود بنویسید."
                     className="w-full h-[160px] p-4 border border-[#7c7c7c55] rounded-lg"
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
                   ></textarea>
                 </div>
               </div>
@@ -275,6 +338,8 @@ const ProjectRegistration = () => {
                       type="text"
                       id="from"
                       className="border-[1px] border-[#7C7C7C] rounded-lg w-[100px] md:w-[190px] lg:w-[240px] md:h-[40px] text-center text-base font-medium"
+                      value={startPrice}
+                      onChange={(e) => handleChange(setStartPrice, e)}
                     />
                   </div>
                   <div className="flex items-center gap-2">
@@ -288,6 +353,8 @@ const ProjectRegistration = () => {
                       type="text"
                       id="to"
                       className="border-[1px] border-[#7C7C7C] rounded-lg w-[100px] md:w-[190px] lg:w-[240px] md:h-[40px] text-center text-base font-medium"
+                      value={finishPrice}
+                      onChange={(e) => handleChange(setFinishPrice, e)}
                     />
                   </div>
                   <div className="flex flex-col gap-2 w-[250px] lg:flex-1 mb-[27px]">
@@ -325,10 +392,17 @@ const ProjectRegistration = () => {
               </div>
             </div>
             <div className="flex flex-col w-full">
-              <span className="md:text-xl text-base font-bold">الویت شما</span>
+              <span className="md:text-xl text-base font-bold">اولویت شما</span>
               <div className="flex flex-wrap items-center gap-3 mt-4">
                 <div className="flex items-center gap-2">
-                  <input type="radio" name="priceFilter" id="lowestPrice" />
+                  <input
+                    type="radio"
+                    name="priceFilter"
+                    id="lowestPrice"
+                    value="lowestPrice"
+                    checked={selectedFilter === "lowestPrice"}
+                    onChange={(e) => setSelectedFilter(e.target.value)}
+                  />
                   <label
                     className="font-medium md:text-base text-sm text-[#000]"
                     htmlFor="lowestPrice"
@@ -337,7 +411,14 @@ const ProjectRegistration = () => {
                   </label>
                 </div>
                 <div className="flex items-center gap-2">
-                  <input type="radio" name="priceFilter" id="median" />
+                  <input
+                    type="radio"
+                    name="priceFilter"
+                    id="median"
+                    value="median"
+                    checked={selectedFilter === "median"}
+                    onChange={(e) => setSelectedFilter(e.target.value)}
+                  />
                   <label
                     className="font-medium md:text-base text-sm text-[#000]"
                     htmlFor="median"
@@ -346,7 +427,14 @@ const ProjectRegistration = () => {
                   </label>
                 </div>
                 <div className="flex items-center gap-2">
-                  <input type="radio" name="priceFilter" id="fastDelivery" />
+                  <input
+                    type="radio"
+                    name="priceFilter"
+                    id="fastDelivery"
+                    value="fastDelivery"
+                    checked={selectedFilter === "fastDelivery"}
+                    onChange={(e) => setSelectedFilter(e.target.value)}
+                  />
                   <label
                     className="font-medium md:text-base text-sm text-[#000]"
                     htmlFor="fastDelivery"
@@ -355,7 +443,14 @@ const ProjectRegistration = () => {
                   </label>
                 </div>
                 <div className="flex items-center gap-2">
-                  <input type="radio" name="priceFilter" id="highestPrice" />
+                  <input
+                    type="radio"
+                    name="priceFilter"
+                    id="highestPrice"
+                    value="highestPrice"
+                    checked={selectedFilter === "highestPrice"}
+                    onChange={(e) => setSelectedFilter(e.target.value)}
+                  />
                   <label
                     className="font-medium md:text-base text-sm text-[#000]"
                     htmlFor="highestPrice"
@@ -370,17 +465,33 @@ const ProjectRegistration = () => {
                 نحوه و فوریت خود را انتخاب کنید
               </span>
               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 mt-8 gap-5">
-                <WaySpeedProjectRegistrationBox title={"معمولی"} factor={"1"} />
                 <WaySpeedProjectRegistrationBox
+                  onHandle={() => submitPriority("معمولی")}
+                  title={"معمولی"}
+                  factor={"1"}
+                  priority={priority}
+                />
+                <WaySpeedProjectRegistrationBox
+                  onHandle={() => submitPriority("برجسته و فوری")}
                   title={"برجسته و فوری"}
                   factor={"1.5"}
+                  priority={priority}
                 />
-                <WaySpeedProjectRegistrationBox title={"متمایز"} factor={"2"} />
                 <WaySpeedProjectRegistrationBox
+                  onHandle={() => submitPriority("متمایز")}
+                  title={"متمایز"}
+                  factor={"2"}
+                  priority={priority}
+                />
+                <WaySpeedProjectRegistrationBox
+                  onHandle={() => submitPriority("تمام وقت")}
                   title={"تمام وقت"}
+                  priority={priority}
                   factor={"2.5"}
                 />
                 <WaySpeedProjectRegistrationBox
+                  onHandle={() => submitPriority("حضوری و یا محرمانه")}
+                  priority={priority}
                   title={"حضوری و یا محرمانه"}
                   factor={"3"}
                 />
@@ -392,9 +503,11 @@ const ProjectRegistration = () => {
               </span>
               <div className="flex md:flex-row flex-col w-[80%] mt-6 mx-auto justify-between items-center gap-6">
                 <button
-                  onClick={() => setPayWay("zarrin")}
+                  onClick={() => setPriceType("zarrin")}
                   className={`${
-                    payWay === "zarrin" ? "border-[2px] border-[#1D40D7]" : ""
+                    priceType === "zarrin"
+                      ? "border-[2px] border-[#1D40D7]"
+                      : ""
                   } flex items-center justify-between cursor-pointer md:px-5 px-2.5 md:py-4 py-2 rounded-[50px] md:w-[50%] w-full`}
                   id="pay-way"
                 >
@@ -414,16 +527,18 @@ const ProjectRegistration = () => {
                   </div>
                   <span
                     className={`w-[20px] h-[20px] rounded-full cursor-pointer border ${
-                      payWay === "zarrin"
+                      priceType === "zarrin"
                         ? "bg-[#1D40D7] border-zinc-400 "
                         : "bg-white border-[#000]"
                     }`}
                   ></span>
                 </button>
                 <button
-                  onClick={() => setPayWay("wallet")}
+                  onClick={() => setPriceType("wallet")}
                   className={`${
-                    payWay === "wallet" ? "border-[2px] border-[#1D40D7]" : ""
+                    priceType === "wallet"
+                      ? "border-[2px] border-[#1D40D7]"
+                      : ""
                   } not-visited:flex items-center justify-between cursor-pointer md:px-5 px-2.5 md:py-4 py-2 rounded-[50px] md:w-[50%] w-full`}
                   id="pay-way"
                 >
@@ -443,7 +558,7 @@ const ProjectRegistration = () => {
                   </div>
                   <span
                     className={`w-[20px] h-[20px] rounded-full cursor-pointer border ${
-                      payWay === "wallet"
+                      priceType === "wallet"
                         ? "bg-[#1D40D7] border-zinc-400 "
                         : "bg-white border-[#000]"
                     }`}
@@ -451,7 +566,7 @@ const ProjectRegistration = () => {
                 </button>
               </div>
             </div>
-            <button className="bg-[#FFE401] rounded-[25px] flex justify-center items-center w-fit self-center text-center md:py-5 py-2 cursor-pointer md:px-8 px-3 md:text-xl font-bold">
+            <button onClick={addProject} className="bg-[#FFE401] rounded-[25px] flex justify-center items-center w-fit self-center text-center md:py-5 py-2 cursor-pointer md:px-8 px-3 md:text-xl font-bold">
               ثبت پروژه
             </button>
           </div>
