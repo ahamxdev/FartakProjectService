@@ -3,9 +3,13 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import SectionTitle from "@/components/skills/SectionTitile";
+import { api } from "@/utils/api";
+import { useRouter } from "next/navigation";
+import Swal from "sweetalert2";
 
 interface FormDataRegister {
-  fullName: string;
+  name: string;
+  lastName: string;
   phone: string;
   email: string;
   password: string;
@@ -13,14 +17,20 @@ interface FormDataRegister {
 }
 
 const Auth = () => {
-  const [loginUser, setLoginUser] = useState<string>("student");
+  const router = useRouter();
+
+  const [loginUser, setLoginUser] = useState<number>(1);
   const [loginMode, setLoginMode] = useState<string>("login");
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [showConfirmPassword, setShowConfirmPassword] =
     useState<boolean>(false);
 
+  const [loginEmail, setLoginEmail] = useState<string>("");
+  const [loginPass, setLoginPass] = useState<string>("");
+
   const [formDataRegister, setFormDataRegister] = useState<FormDataRegister>({
-    fullName: "",
+    name: "",
+    lastName: "",
     phone: "",
     email: "",
     password: "",
@@ -43,30 +53,65 @@ const Auth = () => {
     }
   };
 
+  const loginHandle = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    let loginInfo = {
+      email: loginEmail,
+      password: loginPass,
+    };
+
+    api("/api/Auth/login", "POST", loginInfo)
+      .then((res) => {
+        if (res.status === 200) {
+          return res.json();
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "ورود نا موفق",
+            text: "اطلاعات وارد شده نادرست است",
+            confirmButtonText: "امتحان دوباره",
+          });
+        }
+      })
+      .then((data) => {
+        localStorage.setItem("token", data.token);
+        Swal.fire({
+          icon: "success",
+          title: "ورود موفق",
+          text: "با موفقیت وارد شدید",
+          confirmButtonText: "باشه",
+        }).then(() => {
+          router.push("/");
+        });
+      });
+  };
+
   return (
     <div className="w-[90%] mx-auto my-10 flex lg:flex-row flex-col-reverse gap-30 items-center">
       <div className="lg:w-[35%] w-full flex flex-col items-center gap-4">
         <span className="font-normal text-base text-black text-center">
           {loginMode === "login" ? "وارد شوید" : "ایجاد حساب کاربری"}
         </span>
-        <div className={`w-full bg-[#FFE401] rounded-[33px] py-5 px-4 flex`}>
-          <button
-            onClick={() => setLoginUser("karfarma")}
-            className={`w-1/2 ${
-              loginUser === "karfarma" ? "bg-white" : "bg-transparent"
-            }  flex justify-center items-center rounded-[9999px] py-2 border-none outline-none font-normal text-base text-black cursor-pointer`}
-          >
-            کارفرما
-          </button>
-          <button
-            onClick={() => setLoginUser("student")}
-            className={`w-1/2 ${
-              loginUser === "student" ? "bg-white" : "bg-transparent"
-            } flex justify-center items-center rounded-[9999px] py-2 border-none outline-none font-normal text-base text-black cursor-pointer`}
-          >
-            دانشجو
-          </button>
-        </div>
+        {loginMode === "register" && (
+          <div className={`w-full bg-[#FFE401] rounded-[33px] py-5 px-4 flex`}>
+            <button
+              onClick={() => setLoginUser(5)}
+              className={`w-1/2 ${
+                loginUser == 5 ? "bg-white" : "bg-transparent"
+              }  flex justify-center items-center rounded-[9999px] py-2 border-none outline-none font-normal text-base text-black cursor-pointer`}
+            >
+              کارفرما
+            </button>
+            <button
+              onClick={() => setLoginUser(1)}
+              className={`w-1/2 ${
+                loginUser == 1 ? "bg-white" : "bg-transparent"
+              } flex justify-center items-center rounded-[9999px] py-2 border-none outline-none font-normal text-base text-black cursor-pointer`}
+            >
+              دانشجو
+            </button>
+          </div>
+        )}
         <p className="font-light text-base text-black flex items-center gap-1">
           آیا قبلا ثبت نام کرده اید؟{" "}
           <button
@@ -76,8 +121,7 @@ const Auth = () => {
             {loginMode === "login" ? "ثبت نام" : "ورود"}
           </button>
         </p>
-        {(loginMode === "login" && loginUser === "student") ||
-        loginUser === "karfarma" ? (
+        {(loginMode === "login" && loginUser == 1) || loginUser == 5 ? (
           <Link
             href={"/"}
             className="bg-[#E9F1FF] w-full rounded-[9px] px-8 py-4 flex justify-between items-center"
@@ -111,8 +155,8 @@ const Auth = () => {
             </span>
           </Link>
         ) : (
-          (loginMode === "register" && loginUser === "student") ||
-          (loginUser === "karfarma" && (
+          (loginMode === "register" && loginUser == 1) ||
+          (loginUser == 5 && (
             <Link
               href={"/"}
               className="bg-[#E9F1FF] w-full rounded-[9px] px-8 py-4 flex justify-between items-center"
@@ -147,11 +191,45 @@ const Auth = () => {
             </Link>
           ))
         )}
-        <SectionTitle title={"یا"} />
-
-        <form className="flex flex-col gap-3 w-full">
+        <div className="w-[90%] mx-auto my-2 flex justify-between items-center gap-2">
+          <span className="lg:w-[366px] lg:h-[13px] md:w-[230px] md:h-[9px] sm:w-[170px] sm:h-[7px] w-[80px] h-[5px]">
+            <svg
+              width="100%"
+              height="100%"
+              viewBox="0 0 366 13"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0.226497 6.47852L6 0.705013L11.7735 6.47852L6 12.252L0.226497 6.47852ZM6 6.47852V5.47852L366 5.47852V6.47852V7.47852L6 7.47852V6.47852Z"
+                fill="#6E7A86"
+              />
+            </svg>
+          </span>
+          <span className="lg:text-2xl md:text-lg sm:text-base text-sm text-center font-bold">
+            یا
+          </span>
+          <span className="lg:w-[366px] lg:h-[13px] md:w-[230px] md:h-[9px] sm:w-[170px] sm:h-[7px] w-[80px] h-[5px]">
+            <svg
+              width="100%"
+              height="100%"
+              viewBox="0 0 366 13"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M365.774 6.47852L360 0.705013L354.226 6.47852L360 12.252L365.774 6.47852ZM360 6.47852V5.47852L0 5.47852V6.47852V7.47852L360 7.47852V6.47852Z"
+                fill="#6E7A86"
+              />
+            </svg>
+          </span>
+        </div>
+        <section className="flex flex-col gap-3 w-full">
           {loginMode === "login" ? (
-            <>
+            <form
+              className="flex flex-col gap-3"
+              onSubmit={(e) => loginHandle(e)}
+            >
               <div className="flex flex-col gap-3 w-full">
                 <label className="font-normal text-base text-black">
                   آدرس ایمیل
@@ -160,6 +238,8 @@ const Auth = () => {
                   type="email"
                   className="border-[2px] border-[#1D40D7] rounded-[9999px] py-2 px-4"
                   placeholder="ایمیل خود را وارد کنید"
+                  value={loginEmail}
+                  onChange={(e) => setLoginEmail(e.target.value)}
                 />
               </div>
               <div className="flex flex-col gap-3 w-full">
@@ -170,25 +250,41 @@ const Auth = () => {
                   type="password"
                   className="border-[2px] border-[#1D40D7] rounded-[9999px] py-2 px-4"
                   placeholder="رمز عبور خود را وارد کنید"
+                  value={loginPass}
+                  onChange={(e) => setLoginPass(e.target.value)}
                 />
               </div>
-              <button className="bg-[#2EBFA5] rounded-[9999px] flex justify-center items-center w-full py-3 text-sm font-normal cursor-pointer hover:bg-[#2ebfa4bd] transition-all text-white my-5">
+              <button
+                type="submit"
+                className="bg-[#2EBFA5] rounded-[9999px] flex justify-center items-center w-full py-3 text-sm font-normal cursor-pointer hover:bg-[#2ebfa4bd] transition-all text-white my-5"
+              >
                 ورود
               </button>
-            </>
+            </form>
           ) : (
-            <>
+            <form className="flex flex-col gap-3">
+              <div className="flex flex-col gap-3 w-full">
+                <label className="font-normal text-base text-black">نام</label>
+                <input
+                  type="text"
+                  name="name"
+                  value={formDataRegister.name || ""}
+                  onChange={handleChange}
+                  className="border-[2px] border-[#1D40D7] rounded-[9999px] py-2 px-4"
+                  placeholder="نام خود را وارد کنید"
+                />
+              </div>
               <div className="flex flex-col gap-3 w-full">
                 <label className="font-normal text-base text-black">
-                  نام و نام خانوادگی
+                  نام خانوادگی
                 </label>
                 <input
                   type="text"
-                  name="fullName"
-                  value={formDataRegister.fullName || ""}
+                  name="lastName"
+                  value={formDataRegister.lastName || ""}
                   onChange={handleChange}
                   className="border-[2px] border-[#1D40D7] rounded-[9999px] py-2 px-4"
-                  placeholder="نام و نام خانوادگی خود را وارد کنید"
+                  placeholder="نام خانوادگی خود را وارد کنید"
                 />
               </div>
               <div className="flex flex-col gap-3 w-full">
@@ -328,15 +424,13 @@ const Auth = () => {
               <button className="bg-[#2EBFA5] rounded-[9999px] flex justify-center items-center w-full py-3 text-sm font-normal cursor-pointer hover:bg-[#2ebfa4bd] transition-all text-white my-5">
                 ثبت نام
               </button>
-            </>
+            </form>
           )}
-        </form>
+        </section>
       </div>
       <div className="relative lg:w-[65%] w-[100%] lg:h-[820px] h-[400px]">
         <Image
-          src={`/images/${
-            loginUser === "student" ? "Group 231" : "Group 23122"
-          }.png`}
+          src={`/images/${loginUser == 1 ? "Group 231" : "Group 23122"}.png`}
           fill
           sizes="(max-width: 768px) 100vw, auto"
           className="w-full h-full"
