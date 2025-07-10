@@ -669,7 +669,7 @@ namespace FartakProjectService.Controllers
         [ProducesResponseType(typeof(ErrorDto), 500)]
         [HttpPost]
         [Route("GetByMobilePassword")]
-        public ActionResult GetByMobilePassword(RequestGetUserByMobilePasswordDto dto)
+        public ActionResult GetByMobilePassword(RequestGetUserByEmailPasswordDto dto)
         {
             try
             {
@@ -735,7 +735,7 @@ namespace FartakProjectService.Controllers
         [ProducesResponseType(typeof(ErrorDto), 500)]
         [HttpPost]
         [Route("GetByMobilePasswordAdmin")]
-        public ActionResult GetByMobilePasswordAdmin(RequestGetUserByMobilePasswordDto dto)
+        public ActionResult GetByMobilePasswordAdmin(RequestGetUserByEmailPasswordDto dto)
         {
             try
             {

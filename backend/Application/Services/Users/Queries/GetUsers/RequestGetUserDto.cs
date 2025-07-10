@@ -1,4 +1,6 @@
-﻿namespace Application.Services.Users.Queries.GetUsers
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Application.Services.Users.Queries.GetUsers
 {
     public class RequestGetUserByIdDto
     {
@@ -24,6 +26,13 @@
     public class RequestGetUserByMobilePasswordDto
     {
         public required string Mobile { get; set; }
+        public required string Password { get; set; }
+    }
+    public class RequestGetUserByEmailPasswordDto
+    {
+        [Required(ErrorMessage = "The email address is required")]
+        [EmailAddress(ErrorMessage = "Invalid Email Address")]
+        public required string Email { get; set; }
         public required string Password { get; set; }
     }
 }
