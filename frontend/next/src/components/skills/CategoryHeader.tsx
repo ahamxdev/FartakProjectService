@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 
 const CategoryHeader = ({ title }: { title: string }) => {
-  // console.log(title);
+  console.log(title);
 
   return (
     <>

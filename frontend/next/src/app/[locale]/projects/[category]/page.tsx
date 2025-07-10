@@ -25,7 +25,7 @@ const CategoryPage = () => {
 
   const [category, setCategory] = useState<ItemType[]>([]);
 
-  let getCtgs = {
+  const getCtgs = {
     projectCategoryId: id.split("-")[0],
   };
   useEffect(() => {

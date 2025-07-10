@@ -18,6 +18,8 @@ const ProjectRegistration = () => {
   const [projectSkillId, setProjectSkillId] = useState<number>(0);
   const [projectSkillTitle, setProjectSkillTitle] = useState<string>("دسته‌بندی پروژه خود را انتخاب کنید");
 
+  console.log(projectSkillId);
+  
   const [isSubMenuOpen, setIsSubMenuOpen] = useState<boolean>(false);
 
   useEffect(() => {

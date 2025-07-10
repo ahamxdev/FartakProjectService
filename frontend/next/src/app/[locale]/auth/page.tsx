@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import SectionTitle from "@/components/skills/SectionTitile";
 import { api } from "@/utils/api";
 import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
@@ -55,7 +54,7 @@ const Auth = () => {
 
   const loginHandle = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    let loginInfo = {
+    const loginInfo = {
       email: loginEmail,
       password: loginPass,
     };
