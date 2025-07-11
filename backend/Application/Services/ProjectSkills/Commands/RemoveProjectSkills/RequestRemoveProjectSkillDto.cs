@@ -1,4 +1,4 @@
-﻿namespace Application.Services.ProjectCategories.Commands.RemoveProjectCategories
+﻿namespace Application.Services.ProjectSkills.Commands.RemoveProjectSkills
 {
     public class RequestRemoveProjectSkillDto
     {

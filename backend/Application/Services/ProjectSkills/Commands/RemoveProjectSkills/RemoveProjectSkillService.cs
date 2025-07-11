@@ -1,5 +1,5 @@
 ﻿using Application.Interfaces.Contexts;
-using Application.Services.ProjectCategories.Commands.RemoveProjectCategories;
+using Application.Services.ProjectSkills.Commands.RemoveProjectSkills;
 using Common.Dto;
 
 

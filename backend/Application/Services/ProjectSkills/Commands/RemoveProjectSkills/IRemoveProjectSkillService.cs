@@ -1,4 +1,4 @@
-﻿using Application.Services.ProjectCategories.Commands.RemoveProjectCategories;
+﻿using Application.Services.ProjectSkills.Commands.RemoveProjectSkills;
 using Common.Dto;
 
 namespace Application.Services.ProjectSkills.Commands.RemoveProjectSkills

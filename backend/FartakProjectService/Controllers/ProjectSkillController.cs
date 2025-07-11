@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace FartakProjectSkillsService.Controllers
 {
     /// <summary>
-    /// این سرویس ، سرویس  دسته بندی می باشد.
+    /// این سرویس ، سرویس  مهارت می باشد.
     /// •	تمامی رویدادهای موجود در این سرویس قبل از اجرا به سرویس ProjectSkill مراجعه و چک می کنند آیا درخواست توسط کاربر معتبر ارسال شده یا خیر
     /// </summary>
     [ApiController]
@@ -45,7 +45,7 @@ namespace FartakProjectSkillsService.Controllers
             _getUserTokenService = getUserTokenService;
         }
         /// <summary>
-        /// اضافه کردن  دسته بندی  والد
+        /// اضافه کردن  مهارت  والد
         /// </summary>
         /// <response code="200">Success</response>
         /// <response code="400">Validation Error</response>
@@ -117,7 +117,7 @@ namespace FartakProjectSkillsService.Controllers
 
 
         /// <summary>
-        /// اضافه کردن  دسته بندی  فرزند
+        /// اضافه کردن  مهارت  فرزند
         /// </summary>
         /// <response code="200">Success</response>
         /// <response code="400">Validation Error</response>
@@ -188,7 +188,7 @@ namespace FartakProjectSkillsService.Controllers
 
 
         /// <summary>
-        /// ویرایش کردن  دسته بندی 
+        /// ویرایش کردن  مهارت 
         /// </summary>
         /// <response code="200">Success</response>
         /// <response code="400">Validation Error</response>
@@ -263,7 +263,7 @@ namespace FartakProjectSkillsService.Controllers
 
 
         /// <summary>
-        /// حذف  دسته بندی
+        /// حذف  مهارت
         /// </summary>
         /// <response code="200">Success</response>
         /// <response code="400">Validation Error</response>
@@ -350,7 +350,7 @@ namespace FartakProjectSkillsService.Controllers
 
 
         /// <summary>
-        /// دریافت لیست  دسته بندی
+        /// دریافت لیست  مهارت
         /// </summary>
         /// <response code="200">Success</response>
         /// <response code="403">Not Authorized - Value Content:</response>
@@ -394,7 +394,7 @@ namespace FartakProjectSkillsService.Controllers
 
 
         /// <summary>
-        /// دریافت لیست  دسته بندی
+        /// دریافت لیست  مهارت
         /// </summary>
         /// <response code="200">Success</response>
         /// <response code="403">Not Authorized - Value Content:</response>
@@ -439,7 +439,7 @@ namespace FartakProjectSkillsService.Controllers
 
 
         /// <summary>
-        /// دریافت لیست  دسته بندی
+        /// دریافت لیست  مهارت
         /// </summary>
         /// <response code="200">Success</response>
         /// <response code="403">Not Authorized - Value Content:</response>
@@ -449,7 +449,7 @@ namespace FartakProjectSkillsService.Controllers
         [ProducesResponseType(typeof(ErrorDto), 500)]
         [HttpPost]
         [Route("GetChildrenById")]
-        public ActionResult GetChildrenById(RequestGetProjectSkillsByIdDto dto)
+        public ActionResult GetChildrenById(RequestGetProjectSkillByIdDto dto)
         {
             try
             {
@@ -483,7 +483,7 @@ namespace FartakProjectSkillsService.Controllers
 
 
         /// <summary>
-        /// دریافت لیست  دسته بندی
+        /// دریافت لیست  مهارت
         /// </summary>
         /// <response code="200">Success</response>
         /// <response code="403">Not Authorized - Value Content:</response>
@@ -493,7 +493,7 @@ namespace FartakProjectSkillsService.Controllers
         [ProducesResponseType(typeof(ErrorDto), 500)]
         [HttpPost]
         [Route("GetById")]
-        public ActionResult GetById(RequestGetProjectSkillsByIdDto dto)
+        public ActionResult GetById(RequestGetProjectSkillByIdDto dto)
         {
             try
             {

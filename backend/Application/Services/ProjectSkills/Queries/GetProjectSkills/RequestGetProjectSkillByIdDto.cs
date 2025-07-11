@@ -1,6 +1,6 @@
 ﻿namespace Application.Services.ProjectSkills.Queries.GetProjectSkills
 {
-    public class RequestGetProjectSkillsByIdDto
+    public class RequestGetProjectSkillByIdDto
     {
         public long ProjectSkillId { get; set; }
     }
