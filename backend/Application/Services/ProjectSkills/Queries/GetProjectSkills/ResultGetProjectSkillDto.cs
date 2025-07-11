@@ -1,6 +1,4 @@
-﻿
-
-namespace Application.Services.ProjectSkills.Queries.GetProjectSkills
+﻿namespace Application.Services.ProjectSkills.Queries.GetProjectSkills
 {
     public class ResultGetProjectSkillDto
     {
