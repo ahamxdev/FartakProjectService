@@ -1,7 +1,7 @@
 ﻿using Application.Interfaces.Contexts;
-using Application.Services.ProjectSkills.Queries.GetProjectSkills;
 
-namespace Application.Services.ProjectSkills.Commands.AddProjectSkills
+
+namespace Application.Services.ProjectSkills.Queries.GetProjectSkills
 {
     public class GetProjectSkillService : IGetProjectSkillService
     {
@@ -11,39 +11,82 @@ namespace Application.Services.ProjectSkills.Commands.AddProjectSkills
             _context = context;
         }
 
-        public ResultGetProjectSkillDto GetById(RequestGetProjectSkillByIdDto request)
+        public ResultGetProjectSkillDto GetById(RequestGetProjectSkillsByIdDto request)
         {
-            var ProjectSkill = _context.ProjectSkills.Where(x => x.ProjectSkillId == request.ProjectSkillId);
-            var ProjectSkillList = ProjectSkill.Select(p => new GetProjectSkillDto
+            var ProjectSkills = _context.ProjectSkills.Where(x => x.ProjectSkillId == request.ProjectSkillId);
+            var ProjectSkillsList = ProjectSkills.Select(p => new GetProjectSkillDto
             {
+                Image = p.Image,
                 Title = p.Title,
+                Description = p.Description,
                 ProjectSkillId = p.ProjectSkillId,
+                ProjectSkillParentId = p.ProjectSkillParentId,
 
             }).OrderBy(x => x.ProjectSkillId).ToList();
             return new ResultGetProjectSkillDto
             {
-                ProjectSkills = ProjectSkillList,
-                Rows = ProjectSkillList.Count,
+                ProjectSkills = ProjectSkillsList,
+                Rows = ProjectSkillsList.Count,
             };
         }
 
 
-
-
-
-        public ResultGetProjectSkillDto GetAll()
+        public ResultGetProjectSkillDto GetChildrenById(RequestGetProjectSkillsByIdDto request)
         {
-            var ProjectSkill = _context.ProjectSkills;
-            var ProjectSkillList = ProjectSkill.Select(p => new GetProjectSkillDto
+            var ProjectSkills = _context.ProjectSkills.Where(x => x.ProjectSkillParentId == request.ProjectSkillId);
+            var ProjectSkillsList = ProjectSkills.Select(p => new GetProjectSkillDto
             {
+                Image = p.Image,
                 Title = p.Title,
+                Description = p.Description,
                 ProjectSkillId = p.ProjectSkillId,
+                ProjectSkillParentId = p.ProjectSkillParentId,
 
             }).OrderBy(x => x.ProjectSkillId).ToList();
             return new ResultGetProjectSkillDto
             {
-                ProjectSkills = ProjectSkillList,
-                Rows = ProjectSkillList.Count,
+                ProjectSkills = ProjectSkillsList,
+                Rows = ProjectSkillsList.Count,
+            };
+        }
+
+
+        public ResultGetProjectSkillDto GetAll()
+        {
+            var ProjectSkills = _context.ProjectSkills;
+            var ProjectSkillsList = ProjectSkills.Select(p => new GetProjectSkillDto
+            {
+                Image = p.Image,
+                Title = p.Title,
+                Description = p.Description,
+                ProjectSkillId = p.ProjectSkillId,
+                ProjectSkillParentId = p.ProjectSkillParentId,
+
+            }).OrderBy(x => x.ProjectSkillId).ToList();
+            return new ResultGetProjectSkillDto
+            {
+                ProjectSkills = ProjectSkillsList,
+                Rows = ProjectSkillsList.Count,
+            };
+        }
+
+
+        public ResultGetProjectSkillDto GetAllParent()
+        {
+            var ProjectSkills = _context.ProjectSkills.Where(t => t.ProjectSkillParentId == 0).ToList();
+            var ProjectSkillsList = ProjectSkills.Select(p => new GetProjectSkillDto
+            {
+                Image = p.Image,
+                Title = p.Title,
+                Description = p.Description,
+                ProjectSkillId = p.ProjectSkillId,
+                ProjectSkillParentId = p.ProjectSkillParentId,
+
+            }).OrderBy(x => x.ProjectSkillId).ToList();
+            return new ResultGetProjectSkillDto
+            {
+                ProjectSkills = ProjectSkillsList,
+                Rows = ProjectSkillsList.Count,
             };
         }
     }

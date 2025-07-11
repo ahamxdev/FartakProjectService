@@ -3,7 +3,7 @@
     public class GetProjectDto
     {
         public long ProjectId { get; set; }
-        public long ProjectTypeId { get; set; }
+        public long ProjectCategoryId { get; set; }
         public long ProjectSkillId { get; set; }
         public required string Title { get; set; }
         public required string Description { get; set; }

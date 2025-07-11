@@ -2,7 +2,9 @@
 {
     public interface IGetProjectSkillService
     {
+        ResultGetProjectSkillDto GetById(RequestGetProjectSkillsByIdDto request);
         ResultGetProjectSkillDto GetAll();
-        ResultGetProjectSkillDto GetById(RequestGetProjectSkillByIdDto request);
+        ResultGetProjectSkillDto GetAllParent();
+        ResultGetProjectSkillDto GetChildrenById(RequestGetProjectSkillsByIdDto request);
     }
 }

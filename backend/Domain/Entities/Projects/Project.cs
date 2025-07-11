@@ -3,7 +3,7 @@
     public class Project
     {
         public long ProjectId { get; set; }
-        public long ProjectTypeId { get; set; }
+        public long ProjectCategoryId { get; set; }
         public long ProjectSkillId { get; set; }
         public long Duration { get; set; }
         public required string Title { get; set; }

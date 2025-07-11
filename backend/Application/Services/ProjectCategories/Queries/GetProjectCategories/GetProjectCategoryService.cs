@@ -16,6 +16,7 @@ namespace Application.Services.ProjectCategories.Queries.GetProjectCategories
             var ProjectCategories = _context.ProjectCategories.Where(x => x.ProjectCategoryId == request.ProjectCategoryId);
             var ProjectCategoriesList = ProjectCategories.Select(p => new GetProjectCategoryDto
             {
+                Image = p.Image,
                 Title = p.Title,
                 ProjectCategoryId = p.ProjectCategoryId,
                 ProjectCategoryParentId = p.ProjectCategoryParentId,
@@ -34,6 +35,7 @@ namespace Application.Services.ProjectCategories.Queries.GetProjectCategories
             var ProjectCategories = _context.ProjectCategories.Where(x => x.ProjectCategoryParentId == request.ProjectCategoryId);
             var ProjectCategoriesList = ProjectCategories.Select(p => new GetProjectCategoryDto
             {
+                Image = p.Image,
                 Title = p.Title,
                 ProjectCategoryId = p.ProjectCategoryId,
                 ProjectCategoryParentId = p.ProjectCategoryParentId,
@@ -52,6 +54,7 @@ namespace Application.Services.ProjectCategories.Queries.GetProjectCategories
             var ProjectCategories = _context.ProjectCategories;
             var ProjectCategoriesList = ProjectCategories.Select(p => new GetProjectCategoryDto
             {
+                Image = p.Image,
                 Title = p.Title,
                 ProjectCategoryId = p.ProjectCategoryId,
                 ProjectCategoryParentId = p.ProjectCategoryParentId,
@@ -70,6 +73,7 @@ namespace Application.Services.ProjectCategories.Queries.GetProjectCategories
             var ProjectCategories = _context.ProjectCategories.Where(t => t.ProjectCategoryParentId == 0).ToList();
             var ProjectCategoriesList = ProjectCategories.Select(p => new GetProjectCategoryDto
             {
+                Image = p.Image,
                 Title = p.Title,
                 ProjectCategoryId = p.ProjectCategoryId,
                 ProjectCategoryParentId = p.ProjectCategoryParentId,
