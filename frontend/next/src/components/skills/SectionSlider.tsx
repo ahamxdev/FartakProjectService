@@ -191,10 +191,9 @@ const SectionSlider: React.FC<SectionSliderProps> = ({
             768: {
               slidesPerView: 3,
             },
-            // ,
-            // 1024: {
-            //   slidesPerView: slidesPerView,
-            // },
+            1024: {
+              slidesPerView: 4,
+            },
           }}
         >
           {children}
