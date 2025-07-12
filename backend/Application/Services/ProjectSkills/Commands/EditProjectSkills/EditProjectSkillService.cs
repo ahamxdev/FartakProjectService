@@ -17,8 +17,8 @@ namespace Application.Services.ProjectSkills.Commands.EditProjectSkills
         public ResultDto Execute(RequestEditProjectSkillDto request)
         {
 
-            var ProjectSkill = _context.ProjectSkills.Find(request.ProjectSkillId);
-            if (ProjectSkill == null)
+            var ProjectSkills = _context.ProjectSkills.Find(request.ProjectSkillId);
+            if (ProjectSkills == null)
             {
                 return new ResultDto
                 {
@@ -30,9 +30,9 @@ namespace Application.Services.ProjectSkills.Commands.EditProjectSkills
 
             try
             {
-
-                ProjectSkill.Title = request.Title;
-
+                ProjectSkills.Title = request.Title;
+                ProjectSkills.Description = request.Description;
+                ProjectSkills.Image = request.Image;
 
                 _context.SaveChanges();
 

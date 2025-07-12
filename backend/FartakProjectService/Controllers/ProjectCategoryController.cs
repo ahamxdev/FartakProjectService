@@ -448,7 +448,7 @@ namespace FartakProjectCategoriesService.Controllers
         [ProducesResponseType(typeof(ErrorDto), 500)]
         [HttpPost]
         [Route("GetChildrenById")]
-        public ActionResult GetChildrenById(RequestGetProjectCategoriesByIdDto dto)
+        public ActionResult GetChildrenById(RequestGetProjectCategoryByIdDto dto)
         {
             try
             {
@@ -492,7 +492,7 @@ namespace FartakProjectCategoriesService.Controllers
         [ProducesResponseType(typeof(ErrorDto), 500)]
         [HttpPost]
         [Route("GetById")]
-        public ActionResult GetById(RequestGetProjectCategoriesByIdDto dto)
+        public ActionResult GetById(RequestGetProjectCategoryByIdDto dto)
         {
             try
             {

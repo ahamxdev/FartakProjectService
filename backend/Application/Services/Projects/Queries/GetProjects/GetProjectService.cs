@@ -31,7 +31,7 @@ namespace Application.Services.Projects.Queries.GetProjects
                 Status=p.Status,
                 Priority = p.Priority,
                 PriceType = p.PriceType,
-                ProjectTypeId = p.ProjectTypeId,
+                ProjectCategoryId = p.ProjectCategoryId,
                 ProjectSkillId = p.ProjectSkillId
 
             }).OrderBy(x => x.ProjectId).ToList();
@@ -64,7 +64,7 @@ namespace Application.Services.Projects.Queries.GetProjects
                 Priority = p.Priority,
                 PriceType = p.PriceType,
                 OwnerId = p.OwnerId,
-                ProjectTypeId = p.ProjectTypeId,
+                ProjectCategoryId = p.ProjectCategoryId,
                 ProjectSkillId = p.ProjectSkillId
 
             }).OrderBy(x => x.ProjectId).ToList();
@@ -95,7 +95,7 @@ namespace Application.Services.Projects.Queries.GetProjects
                 Status = p.Status,
                 Priority = p.Priority,
                 PriceType = p.PriceType,
-                ProjectTypeId = p.ProjectTypeId,
+                ProjectCategoryId = p.ProjectCategoryId,
                 ProjectSkillId = p.ProjectSkillId
 
             }).OrderBy(x => x.ProjectId).ToList();
@@ -108,9 +108,9 @@ namespace Application.Services.Projects.Queries.GetProjects
         }
 
 
-        public ResultGetProjectDto GetByProjectTypeId(RequestGetProjectByProjectTypeIdDto request)
+        public ResultGetProjectDto GetByProjectCategoryId(RequestGetProjectByProjectCategoryIdDto request)
         {
-            var Project = _context.Projects.Where(x => x.ProjectTypeId == request.ProjectTypeId);
+            var Project = _context.Projects.Where(x => x.ProjectCategoryId == request.ProjectCategoryId);
             var ProjectList = Project.Select(p => new GetProjectDto
             {
                 Description = p.Description,
@@ -127,7 +127,7 @@ namespace Application.Services.Projects.Queries.GetProjects
                 Priority = p.Priority,
                 PriceType = p.PriceType,
                 Duration = p.Duration,
-                ProjectTypeId = p.ProjectTypeId,
+                ProjectCategoryId = p.ProjectCategoryId,
                 ProjectSkillId = p.ProjectSkillId
 
             }).OrderBy(x => x.ProjectId).ToList();

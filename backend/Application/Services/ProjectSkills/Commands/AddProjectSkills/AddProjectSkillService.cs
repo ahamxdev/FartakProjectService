@@ -15,24 +15,27 @@ namespace Application.Services.ProjectSkills.Commands.AddProjectSkills
             _context = context;
             _configuration = configuration;
         }
-        public ResultDto<ResultAddProjectSkillDto> Execute(RequestAddProjectSkillDto request)
+        public ResultDto<ResultAddProjectSkillDto> ExecuteParent(RequestAddProjectSkillsParentDto request)
         {
 
 
             try
             {
-                ProjectSkill ProjectSkill = new ProjectSkill
+                ProjectSkill ProjectSkills = new ProjectSkill
                 {
+                    Image = request.Image,
                     Title = request.Title,
+                    Description = request.Description,
+                    ProjectSkillParentId = 0
 
                 };
-                _context.ProjectSkills.Add(ProjectSkill);
+                _context.ProjectSkills.Add(ProjectSkills);
                 _context.SaveChanges();
                 return new ResultDto<ResultAddProjectSkillDto>
                 {
                     Data = new ResultAddProjectSkillDto
                     {
-                        ProjectSkillId = ProjectSkill.ProjectSkillId
+                        ProjectSkillId = ProjectSkills.ProjectSkillId
                     },
                     IsSuccess = true,
                     Message = "با موفقیت ثبت شد."
@@ -50,5 +53,43 @@ namespace Application.Services.ProjectSkills.Commands.AddProjectSkills
             }
         }
 
+
+        public ResultDto<ResultAddProjectSkillDto> ExecuteChild(RequestAddProjectSkillsChildDto request)
+        {
+
+
+            try
+            {
+                ProjectSkill ProjectSkills = new ProjectSkill
+                {
+                    Image = request.Image,
+                    Title = request.Title,
+                    Description = request.Description,
+                    ProjectSkillParentId = request.ProjectSkillParentId,
+
+                };
+                _context.ProjectSkills.Add(ProjectSkills);
+                _context.SaveChanges();
+                return new ResultDto<ResultAddProjectSkillDto>
+                {
+                    Data = new ResultAddProjectSkillDto
+                    {
+                        ProjectSkillId = ProjectSkills.ProjectSkillId
+                    },
+                    IsSuccess = true,
+                    Message = "با موفقیت ثبت شد."
+                };
+            }
+            catch
+            {
+                return new ResultDto<ResultAddProjectSkillDto>
+                {
+                    Data = new ResultAddProjectSkillDto { ProjectSkillId = 0 },
+                    IsSuccess = false,
+                    Message = "ثبت با خطا مواجه شد."
+                };
+
+            }
+        }
     }
 }

@@ -9,8 +9,8 @@ namespace Application.Services.Users.Queries.GetUsers
         ResultGetUserDto GetById(RequestGetUserByIdDto request);
         ResultGetUserDto GetByFullNameTeacher(RequestGetUserByNameDto request);
         ResultGetUserDto GetByMobile(RequestGetUserByMobileDto request);
-        ResultDto<GetUserDto> GetByMobilePassword(RequestGetUserByEmailPasswordDto request);
-        ResultDto<GetUserDto> GetByMobilePasswordAdmin(RequestGetUserByEmailPasswordDto request);
+        ResultDto<GetUserDto> GetByMobilePassword(RequestGetUserByMobilePasswordDto request);
+        ResultDto<GetUserDto> GetByMobilePasswordAdmin(RequestGetUserByMobilePasswordDto request);
         ResultGetUserDto GetByKind(RequestGetUserByKindDto request);
     }
 }

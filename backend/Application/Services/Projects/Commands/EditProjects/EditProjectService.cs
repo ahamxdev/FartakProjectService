@@ -92,7 +92,7 @@ namespace Application.Services.Projects.Commands.EditProjects
                     project.Image = null;
 
                 }
-                project.ProjectTypeId = request.ProjectTypeId;
+                project.ProjectCategoryId = request.ProjectCategoryId;
                 project.ProjectSkillId = request.ProjectSkillId;
                 project.Description = request.Description;
                 project.Title = request.Title;

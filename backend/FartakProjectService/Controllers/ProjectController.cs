@@ -423,13 +423,13 @@ namespace FartakProjectService.Controllers
         [ProducesResponseType(typeof(ErrorDto), 500)]
         [HttpPost]
         [Route("GetByProjectTypeId")]
-        public ActionResult GetByProjectTypeId(RequestGetProjectByProjectTypeIdDto dto)
+        public ActionResult GetByProjectTypeId(RequestGetProjectByProjectCategoryIdDto dto)
         {
             try
             {
 
 
-                var result = _getProjectService.GetByProjectTypeId(dto);
+                var result = _getProjectService.GetByProjectCategoryId(dto);
 
                 return Json(result);
             }

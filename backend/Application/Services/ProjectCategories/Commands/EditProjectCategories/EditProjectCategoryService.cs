@@ -32,7 +32,7 @@ namespace Application.Services.ProjectCategories.Commands.EditProjectCategories
             {
 
                 ProjectCategories.Title = request.Title;
-
+                ProjectCategories.Image = request.Image;
 
                 _context.SaveChanges();
 
