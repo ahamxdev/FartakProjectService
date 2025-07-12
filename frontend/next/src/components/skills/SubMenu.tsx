@@ -25,12 +25,12 @@ const SubMenu = ({
         }`}
         id="category-submenu"
       >
-        {items?.map((item) => (
+        {items?.map((item , index) => (
           <li
             className={`text-sm cursor-pointer hover:bg-zinc-600 rounded-md transition-all duration-75 hover:text-white py-2 px-2 font-bold text-[#000] ${
               isSubMenuOpen ? "block" : "hidden"
             } `}
-            key={item.projectTypeId}
+            key={index}
             onClick={() => {
               setProjectSkillId(item.projectTypeId);
               setIsSubMenuOpen(false);
