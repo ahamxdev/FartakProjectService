@@ -151,10 +151,10 @@ namespace Application.Services.Users.Queries.GetUsers
         }
 
 
-        public ResultDto<GetUserDto> GetByMobilePassword(RequestGetUserByEmailPasswordDto request)
+        public ResultDto<GetUserDto> GetByMobilePassword(RequestGetUserByMobilePasswordDto request)
         {
 
-            var user = _context.Users.FirstOrDefault(x => x.Email == request.Email);
+            var user = _context.Users.FirstOrDefault(x => x.Mobile == request.Mobile);
             if (user != null && user.PassWord == EncodePassword(request.Password, user.Salt))
             {
                 if (user.Status != 1)
@@ -218,10 +218,10 @@ namespace Application.Services.Users.Queries.GetUsers
 
         }
 
-        public ResultDto<GetUserDto> GetByMobilePasswordAdmin(RequestGetUserByEmailPasswordDto request)
+        public ResultDto<GetUserDto> GetByMobilePasswordAdmin(RequestGetUserByMobilePasswordDto request)
         {
 
-            var user = _context.Users.FirstOrDefault(x => x.Email == request.Email && x.Kind == 0);
+            var user = _context.Users.FirstOrDefault(x => x.Mobile == request.Mobile && x.Kind == 0);
             if (user != null && user.PassWord == EncodePassword(request.Password, user.Salt))
             {
                 if (user.Status != 1)
