@@ -119,6 +119,7 @@ export default function Home() {
             title={item?.title}
             hasScale={index == 1 || index == 4 ? true : false}
             id={item?.projectCategoryId}
+            addProject={false}
           />
         ))}
       </section>
@@ -605,10 +606,10 @@ export default function Home() {
             </div>
           </div>
           <Link
-            href={"/"}
+            href={"/projects/project-registration"}
             className="bg-[#00C83F] flex justify-center items-center rounded-lg py-3 md:w-[400px] w-[200px] text-white md:text-xl text-base font-extrabold md:ml-22"
           >
-            ثبت پروژه
+            ثبت سریع پروژه
           </Link>
         </div>
       </section>

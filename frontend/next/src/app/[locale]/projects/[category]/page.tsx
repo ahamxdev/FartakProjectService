@@ -95,6 +95,7 @@ const CategoryPage = () => {
                 ? true
                 : false
             }
+            addProject={true}
           />
         ))}
       </section>

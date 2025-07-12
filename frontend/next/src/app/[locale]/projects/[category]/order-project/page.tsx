@@ -1,12 +1,37 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 // import Header from '@/components/modules/Header'
 import Image from "next/image";
+import { api } from "@/utils/api";
+import SubMenu from "@/components/skills/SubMenu";
 // import InputCheckbox from "@/components/InputCheckbox";
 // import InputCheckbox from "@/components/skills/InputCheckbox";
 
 const OrderProject = () => {
   const inputRef = useRef<HTMLInputElement | null>(null);
+
+  const [category, setCategory] = useState<[]>([]);
+  const [projectSkillId, setProjectSkillId] = useState<number>(0);
+  const [projectSkillTitle, setProjectSkillTitle] = useState<string>(
+    "دسته‌بندی پروژه خود را انتخاب کنید"
+  );
+
+  console.log(projectSkillId);
+
+  const [isSubMenuOpen, setIsSubMenuOpen] = useState<boolean>(false);
+
+  useEffect(() => {
+    api("/api/ProjectCategories/GetAllParent", "POST")
+      .then((res) => {
+        if (res.status == 200) {
+          return res.json();
+        }
+      })
+      .then((data) => {
+        console.log(data);
+        setCategory(data.projectCategories);
+      });
+  }, []);
 
   return (
     <>
@@ -48,11 +73,12 @@ const OrderProject = () => {
             <label className="text-[##00060F] text-sm font-normal" htmlFor="">
               سرویس مورد نظر خود را انتخاب کنید .
             </label>
-            <div className="flex items-center gap-4 w-full">
+            <div className="flex items-center relative gap-4 w-full">
               <button
+                onClick={() => setIsSubMenuOpen((prev) => !prev)}
                 className={`rounded-lg border-[2px] border-[#DC3545] w-full px-3 py-2 flex justify-between items-center text-base bg-[#fff] font-normal cursor-pointer text-[#00000080]`}
               >
-                دسته بندی
+                {projectSkillTitle}
                 <svg
                   width="12"
                   height="7"
@@ -69,6 +95,13 @@ const OrderProject = () => {
                   />
                 </svg>
               </button>
+              <SubMenu
+                isSubMenuOpen={isSubMenuOpen}
+                items={category || []}
+                setProjectSkillId={setProjectSkillId}
+                setIsSubMenuOpen={setIsSubMenuOpen}
+                setProjectSkillTitle={setProjectSkillTitle}
+              />
             </div>
           </div>
           <div className="flex flex-col gap-4 md:w-[50%] w-full">
@@ -401,7 +434,6 @@ const OrderProject = () => {
           </button>
         </div>
       </section>
-
     </>
   );
 };
