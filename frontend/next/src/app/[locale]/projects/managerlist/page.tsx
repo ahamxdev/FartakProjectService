@@ -1,13 +1,13 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import ManagerListHeader from "@/components/skills/ManagerListHeader";
+// import ManagerListHeader from "@/components/skills/ManagerListHeader";
 import ManagerListBox from "@/components/skills/ManagerListBox";
 
 const ManagerList = () => {
   return (
     <>
-      <ManagerListHeader />
+      {/* <ManagerListHeader /> */}
 
       <div className="flex w-[50%] mx-auto md:my-10 my-5 justify-center items-center">
         <h6 className="text-center text-[#1E1E1E] md:text-3xl text-xl font-bold">

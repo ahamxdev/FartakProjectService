@@ -70,23 +70,23 @@ const PortfolioDetail = () => {
       <section className="w-[90%] mx-auto md:my-10 my-5 lg:mt-[210px]">
         <SectionTitle title={"گالری تصاویر"} />
 
-        <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 grid-cols-1 gap-4">
           <Image
             src={"/images/portfoliodetail.png"}
             alt="details-of-portfolio"
-            width={350}
+            width={300}
             height={350}
           />
           <Image
             src={"/images/portfoliodetail.png"}
             alt="details-of-portfolio"
-            width={350}
+            width={300}
             height={350}
           />
           <Image
             src={"/images/portfoliodetail.png"}
             alt="details-of-portfolio"
-            width={350}
+            width={300}
             height={350}
           />
         </div>
