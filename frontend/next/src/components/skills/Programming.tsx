@@ -12,10 +12,8 @@ import SectionTitle from './SectionTitile'
 import ProgrammingLanguageBox from './ProgrammingLanguageBox'
 import CategorySkillSliderSection from './CategorySkillSliderSection'
 import NewestProjectBox from './NewestProjectBox'
-import SkillBox from './SkillBox'
+// import SkillBox from './SkillBox'
 // import SubMenu from './SubMenu'
-// import SkillBox from '@/components/modules/SkillBox'
-// import SubMenu from '@/components/modules/SubMenu'
 
 const Programming = () => {
       const inputRef = useRef<HTMLInputElement | null>(null)
@@ -74,13 +72,13 @@ const Programming = () => {
                   </CategorySkillSliderSection>
 
                   <SectionTitle title={"نمونه کار های طراحی سایت"} />
-                  <CategorySkillSliderSection>
+                  {/* <CategorySkillSliderSection>
                         {[...Array(10)].map((_, i) => (
                               <SwiperSlide key={i}>
                                     <SkillBox />
                               </SwiperSlide>
                         ))}
-                  </CategorySkillSliderSection>
+                  </CategorySkillSliderSection> */}
 
 
                   <SectionTitle title={"پروژتون در کمترین زمان ممکن ثبت کنید"} />

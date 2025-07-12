@@ -9,7 +9,7 @@ import ApplicationCreationPointsBox from './ApplicationCreationPointsBox'
 import MobileApplicationPointsBox from './MobileApplicationPointsBox'
 import CategorySkillSliderSection from './CategorySkillSliderSection'
 import NewestProjectBox from './NewestProjectBox'
-import SkillBox from './SkillBox'
+// import SkillBox from './SkillBox'
 import InputCheckbox from './InputCheckbox'
 
 const ApplicationWebsiteDesign = () => {
@@ -74,13 +74,13 @@ const ApplicationWebsiteDesign = () => {
                   </CategorySkillSliderSection>
 
                   <SectionTitle title={"نمونه کار های طراحی سایت"} />
-                  <CategorySkillSliderSection>
+                  {/* <CategorySkillSliderSection>
                         {[...Array(10)].map((_, i) => (
                               <SwiperSlide key={i}>
                                     <SkillBox />
                               </SwiperSlide>
                         ))}
-                  </CategorySkillSliderSection>
+                  </CategorySkillSliderSection> */}
 
 
                   <SectionTitle title={"پروژتون در کمترین زمان ممکن ثبت کنید"} />
