@@ -86,7 +86,7 @@ const Auth = () => {
   };
 
   return (
-    <div className="w-[90%] mx-auto my-10 flex lg:flex-row flex-col-reverse gap-30 items-center">
+    <div className="w-[90%] mx-auto my-10 flex lg:flex-row flex-col-reverse gap-30">
       <div className="lg:w-[35%] w-full flex flex-col items-center gap-4">
         <span className="font-normal text-base text-black text-center">
           {loginMode === "login" ? "وارد شوید" : "ایجاد حساب کاربری"}
