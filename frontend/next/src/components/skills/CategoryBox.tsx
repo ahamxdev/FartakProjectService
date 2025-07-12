@@ -7,15 +7,17 @@ const CategoryBox = ({
   title,
   hasScale,
   id,
+  addProject
 }: {
   src: string;
   title: string;
   hasScale?: boolean;
   id?: number;
+  addProject : boolean
 }) => {
   return (
     <Link
-      href={`/projects/${id}-${encodeURIComponent(title)}`}
+      href={`${addProject ? `/projects/${id}-${encodeURIComponent(title)}/order-project` : `/projects/${id}-${encodeURIComponent(title)}`}`}
       // href={`/projects/${title}`}
       className={`flex flex-col items-center gap-2 ${
         hasScale ? `md:scale-[1.2]` : ""
