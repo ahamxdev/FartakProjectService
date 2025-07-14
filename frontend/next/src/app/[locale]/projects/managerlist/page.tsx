@@ -5,27 +5,30 @@ import Link from "next/link";
 // import ManagerListHeader from "@/components/skills/ManagerListHeader";
 import ManagerListBox from "@/components/skills/ManagerListBox";
 import { api } from "@/utils/api";
+import { useCategory } from "@/contexts/CategoryContext";
 
-type ItemType = {
-  projectCategoryId: number;
-  title: string;
-  projectCategoryParentId: number;
-};
+// type ItemType = {
+//   projectCategoryId: number;
+//   title: string;
+//   projectCategoryParentId: number;
+// };
 const ManagerList = () => {
-  const [category, setCategory] = useState<ItemType[]>([]);
+  const { category } = useCategory();
 
-  useEffect(() => {
-    api("/api/ProjectCategories/GetAllParent", "POST")
-      .then((res) => {
-        if (res.status == 200) {
-          return res.json();
-        }
-      })
-      .then((data) => {
-        console.log(data);
-        setCategory(data.projectCategories);
-      });
-  }, []);
+  // const [category, setCategory] = useState<ItemType[]>([]);
+
+  // useEffect(() => {
+  //   api("/api/ProjectCategories/GetAllParent", "POST")
+  //     .then((res) => {
+  //       if (res.status == 200) {
+  //         return res.json();
+  //       }
+  //     })
+  //     .then((data) => {
+  //       console.log(data);
+  //       setCategory(data.projectCategories);
+  //     });
+  // }, []);
   return (
     <>
       {/* <ManagerListHeader /> */}

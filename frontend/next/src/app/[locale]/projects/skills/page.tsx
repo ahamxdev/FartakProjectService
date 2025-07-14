@@ -101,7 +101,7 @@ const Skills: React.FC = () => {
             <input
               type="text"
               placeholder="جست و جوی مهارت"
-              className="placeholder:text-lg placeholder:font-normal placeholder:text-[#00000080]"
+              className="placeholder:text-lg placeholder:font-normal placeholder:text-[#00000080] border-none outline-none"
             />
             <svg
               width="24"
@@ -129,12 +129,14 @@ const Skills: React.FC = () => {
             key={parentId}
             title={categoryTitles[+parentId] || "دسته‌بندی نامشخص"}
             viewAllUrl={`/category/${parentId}`}
+            sliderPerview={4}
           >
             {skills.map((skill) => (
               <SwiperSlide key={skill.projectSkillId}>
                 <SkillBox
                   title={skill.title}
-                  src={`/images/${skill.image}`}
+                  // src={`https://www.fartakproject.ir/upload/Projects/${skill.image}`}
+                  src={`https://api.fartakproject.ir/upload/Projects/${skill.image}`}
                   id={skill.projectSkillId}
                 />
               </SwiperSlide>

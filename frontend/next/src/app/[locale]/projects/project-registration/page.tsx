@@ -5,8 +5,11 @@ import Link from "next/link";
 import WaySpeedProjectRegistrationBox from "@/components/skills/WaySpeedProjectRegistrationBox";
 import { api } from "@/utils/api";
 import SubMenu from "@/components/skills/SubMenu";
+import { useCategory } from "@/contexts/CategoryContext";
 
 const ProjectRegistration = () => {
+  const { category } = useCategory();
+
   const [priceType, setPriceType] = useState<string>("");
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
@@ -16,24 +19,28 @@ const ProjectRegistration = () => {
   const [allCtgs, setAllCtgs] = useState<[]>([]);
   const [priority, setPriority] = useState<string>();
   const [projectSkillId, setProjectSkillId] = useState<number>(0);
-  const [projectSkillTitle, setProjectSkillTitle] = useState<string>("دسته‌بندی پروژه خود را انتخاب کنید");
+  const [projectSkillTitle, setProjectSkillTitle] = useState<string>(
+    "دسته‌بندی پروژه خود را انتخاب کنید"
+  );
+  const [projectTimeTitle, setProjectTimeTitle] = useState<string>("روز");
 
   console.log(projectSkillId);
-  
+
   const [isSubMenuOpen, setIsSubMenuOpen] = useState<boolean>(false);
+  const [isSubMenuTimeOpen, setIsSubMenuTimeOpen] = useState<boolean>(false);
 
   useEffect(() => {
-    api("/api/ProjectCategories/GetAllParent", "POST")
-      .then((res) => {
-        if (res.status == 200) {
-          return res.json();
-        }
-      })
-      .then((data) => {
-        console.log(data);
-        setAllCtgs(data.projectCategories);
-      });
-      api("/api/ProjectSkills/GetAll", "POST")
+    // api("/api/ProjectCategories/GetAllParent", "POST")
+    //   .then((res) => {
+    //     if (res.status == 200) {
+    //       return res.json();
+    //     }
+    //   })
+    //   .then((data) => {
+    //     console.log(data);
+    //     setAllCtgs(data.projectCategories);
+    //   });
+    api("/api/ProjectSkills/GetAll", "POST")
       .then((res) => {
         if (res.status == 200) {
           return res.json();
@@ -69,9 +76,7 @@ const ProjectRegistration = () => {
     setValue(formattedValue);
   };
 
-  const addProject = () => {
-
-  }
+  const addProject = () => {};
 
   return (
     <>
@@ -258,7 +263,7 @@ const ProjectRegistration = () => {
                     <div className="flex flex-col gap-3.5 w-full">
                       <div className="flex relative items-center gap-4 w-full">
                         <button
-                          onClick={() => setIsSubMenuOpen(prev => !prev)}
+                          onClick={() => setIsSubMenuOpen((prev) => !prev)}
                           className="rounded-lg border-[1px] w-full border-[#7c7c7c55] px-3 py-1 flex justify-between items-center text-base bg-[#fff] font-normal cursor-pointer text-[#7c7c7c] gap-4"
                         >
                           {projectSkillTitle}
@@ -278,7 +283,7 @@ const ProjectRegistration = () => {
 
                         <SubMenu
                           isSubMenuOpen={isSubMenuOpen}
-                          items={allCtgs || []}
+                          items={category || []}
                           setProjectSkillId={setProjectSkillId}
                           setIsSubMenuOpen={setIsSubMenuOpen}
                           setProjectSkillTitle={setProjectSkillTitle}
@@ -373,8 +378,11 @@ const ProjectRegistration = () => {
                   </div>
                   <div className="flex flex-col self-center gap-3.5 lg:w-[120px] md:w-[80px] w-[120px] md:h-[40px]">
                     <div className="flex relative items-center gap-4 w-full">
-                      <button className="rounded-lg border-[1px] w-full border-[#7c7c7c55] px-3 py-1 flex justify-between items-center text-base bg-[#fff] font-normal cursor-pointer h-full text-[#7c7c7c] gap-4">
-                        روز
+                      <button
+                        onClick={() => setIsSubMenuTimeOpen((prev) => !prev)}
+                        className="rounded-lg border-[1px] w-full border-[#7c7c7c55] px-3 py-1 flex justify-between items-center text-base bg-[#fff] font-normal cursor-pointer h-full text-[#7c7c7c] gap-4"
+                      >
+                        {projectTimeTitle}
                         <svg
                           width="14"
                           height="8"
@@ -387,6 +395,51 @@ const ProjectRegistration = () => {
                             fill="#7C7C7C"
                           />
                         </svg>
+                        <ul
+                          className={`absolute top-[105%] z-50 left-2 right-2 flex flex-col gap-2 bg-white rounded-sm transition-all duration-100 ${
+                            isSubMenuTimeOpen
+                              ? "h-auto py-1 px-4"
+                              : "h-0 py-0 px-0"
+                          }`}
+                          id="category-submenu"
+                        >
+                          <li
+                            className={`text-sm cursor-pointer hover:bg-zinc-600 rounded-md transition-all duration-75 hover:text-white py-2 px-2 font-bold text-[#000] ${
+                              isSubMenuTimeOpen ? "block" : "hidden"
+                            } `}
+                            onClick={(e) => {
+                              e.stopPropagation(); // جلوی تداخل کلیک‌ها رو می‌گیره
+                              setIsSubMenuTimeOpen(false);
+                              setProjectTimeTitle("روز");
+                            }}
+                          >
+                            روز
+                          </li>
+                          <li
+                            className={`text-sm cursor-pointer hover:bg-zinc-600 rounded-md transition-all duration-75 hover:text-white py-2 px-2 font-bold text-[#000] ${
+                              isSubMenuTimeOpen ? "block" : "hidden"
+                            } `}
+                            onClick={(e) => {
+                              e.stopPropagation(); // جلوی تداخل کلیک‌ها رو می‌گیره
+                              setIsSubMenuTimeOpen(false);
+                              setProjectTimeTitle("ماه");
+                            }}
+                          >
+                            ماه{" "}
+                          </li>
+                          <li
+                            className={`text-sm cursor-pointer hover:bg-zinc-600 rounded-md transition-all duration-75 hover:text-white py-2 px-2 font-bold text-[#000] ${
+                              isSubMenuTimeOpen ? "block" : "hidden"
+                            } `}
+                            onClick={(e) => {
+                              e.stopPropagation(); // جلوی تداخل کلیک‌ها رو می‌گیره
+                              setIsSubMenuTimeOpen(false);
+                              setProjectTimeTitle("سال");
+                            }}
+                          >
+                            سال
+                          </li>
+                        </ul>
                       </button>
                     </div>
                   </div>
@@ -568,7 +621,10 @@ const ProjectRegistration = () => {
                 </button>
               </div>
             </div>
-            <button onClick={addProject} className="bg-[#FFE401] rounded-[25px] flex justify-center items-center w-fit self-center text-center md:py-5 py-2 cursor-pointer md:px-8 px-3 md:text-xl font-bold">
+            <button
+              onClick={addProject}
+              className="bg-[#FFE401] rounded-[25px] flex justify-center items-center w-fit self-center text-center md:py-5 py-2 cursor-pointer md:px-8 px-3 md:text-xl font-bold"
+            >
               ثبت پروژه
             </button>
           </div>

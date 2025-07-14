@@ -12,6 +12,12 @@ const SkillBox = ({
   id: number;
 }) => {
   console.log(id);
+  console.log(src);
+  const imageUrl =
+    "/wwwroot/upload/Projects/image 13-5.png";
+  const encodedUrl = encodeURI(imageUrl);
+  console.log(encodedUrl);
+  
   return (
     <div
       id="skill-box"

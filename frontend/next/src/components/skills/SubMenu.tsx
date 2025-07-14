@@ -1,8 +1,13 @@
 import React from "react";
 
+// type ItemType = {
+//   projectTypeId: number;
+//   title: string;
+// };
 type ItemType = {
-  projectTypeId: number;
+  projectCategoryId: number;
   title: string;
+  projectCategoryParentId: number;
 };
 const SubMenu = ({
   items,
@@ -25,14 +30,15 @@ const SubMenu = ({
         }`}
         id="category-submenu"
       >
-        {items?.map((item , index) => (
+        {items?.map((item, index) => (
           <li
             className={`text-sm cursor-pointer hover:bg-zinc-600 rounded-md transition-all duration-75 hover:text-white py-2 px-2 font-bold text-[#000] ${
               isSubMenuOpen ? "block" : "hidden"
             } `}
             key={index}
             onClick={() => {
-              setProjectSkillId(item.projectTypeId);
+              // setProjectSkillId(item.projectTypeId);
+              setProjectSkillId(item.projectCategoryId);
               setIsSubMenuOpen(false);
               setProjectSkillTitle(item.title);
             }}

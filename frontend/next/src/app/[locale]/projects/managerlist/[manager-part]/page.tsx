@@ -1,10 +1,14 @@
+"use client"
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 // import ManagerListHeader from "@/components/skills/ManagerListHeader";
 import ManagerListBox from "@/components/skills/ManagerListBox";
+import { useCategory } from "@/contexts/CategoryContext";
 
 const page = () => {
+  const { category } = useCategory();
+
   return (
     <>
       {/* <ManagerListHeader /> */}
@@ -17,7 +21,30 @@ const page = () => {
       </div>
 
       <section className="w-[90%] mx-auto md:my-12 my-5 flex justify-between items-center gap-6 flex-wrap">
-        <Link
+        {category?.map((item) => (
+          <Link
+            href={"/projects/managerlist/website"}
+            className="flex flex-col items-center gap-2"
+            key={item?.projectCategoryId}
+          >
+            <div className="flex justify-center items-center px-14 py-6 bg-[#1E2531] rounded-lg">
+              <div className="relative lg:w-[56px] w-[35px] lg:h-[56px] h-[35px]">
+                <Image
+                  src={`/images/ctg/${item?.projectCategoryId}.png`}
+                  fill
+                  sizes="(max-width: 768px) 100vw, auto"
+                  className="w-full h-full"
+                  alt="logo"
+                />
+              </div>
+            </div>
+            <span className="font-normal text-[#1E2531] md:text-lg text-sm">
+              {item?.title}
+            </span>
+          </Link>
+        ))}
+
+        {/* <Link
           href={"/managerlist/website"}
           className="flex flex-col items-center gap-2"
         >
@@ -130,7 +157,7 @@ const page = () => {
           <span className="font-normal text-[#1E2531] md:text-lg text-sm">
             مهندسی معماری
           </span>
-        </Link>
+        </Link> */}
       </section>
 
       <div className="flex items-center gap-3.5 w-[90%] mx-auto md:my-6 my-3">
@@ -236,7 +263,6 @@ const page = () => {
         <ManagerListBox />
         <ManagerListBox />
       </section>
-
     </>
   );
 };

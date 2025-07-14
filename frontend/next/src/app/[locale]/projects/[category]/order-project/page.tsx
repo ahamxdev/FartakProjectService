@@ -15,6 +15,8 @@ const OrderProject = () => {
   const [projectSkillTitle, setProjectSkillTitle] = useState<string>(
     "دسته‌بندی پروژه خود را انتخاب کنید"
   );
+  const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const [projectMode, setProjectMode] = useState<string | null>(null);
 
   console.log(projectSkillId);
 
@@ -236,9 +238,11 @@ const OrderProject = () => {
                   <input
                     type="checkbox"
                     className="peer w-4 h-4 md:w-6 md:h-6 border-2 border-[#495AFF] rounded-md appearance-none bg-white checked:bg-[#495AFF] checked:border-[#495AFF]"
+                    checked={selectedOption === "price"}
+                    onChange={() => setSelectedOption("price")}
                   />
                   <svg
-                    className="absolute top-1/2 left-1/2 w-3 h-3 md:w-4 md:h-4 text-white transform -translate-x-1/2 -translate-y-1/2 opacity-0 peer-checked:opacity-100 pointer-events-none"
+                    className="absolute top-1/3 left-1/2 w-3 h-3 md:w-4 md:h-4 text-white transform -translate-x-1/2 -translate-y-1/2 opacity-0 peer-checked:opacity-100 pointer-events-none"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -263,9 +267,11 @@ const OrderProject = () => {
                   <input
                     type="checkbox"
                     className="peer w-4 h-4 md:w-6 md:h-6 border-2 border-[#495AFF] rounded-md appearance-none bg-white checked:bg-[#495AFF] checked:border-[#495AFF]"
+                    checked={selectedOption === "quality"}
+                    onChange={() => setSelectedOption("quality")}
                   />
                   <svg
-                    className="absolute top-1/2 left-1/2 w-3 h-3 md:w-4 md:h-4 text-white transform -translate-x-1/2 -translate-y-1/2 opacity-0 peer-checked:opacity-100 pointer-events-none"
+                    className="absolute top-1/3 left-1/2 w-3 h-3 md:w-4 md:h-4 text-white transform -translate-x-1/2 -translate-y-1/2 opacity-0 peer-checked:opacity-100 pointer-events-none"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -290,9 +296,11 @@ const OrderProject = () => {
                   <input
                     type="checkbox"
                     className="peer w-4 h-4 md:w-6 md:h-6 border-2 border-[#495AFF] rounded-md appearance-none bg-white checked:bg-[#495AFF] checked:border-[#495AFF]"
+                    checked={selectedOption === "both"}
+                    onChange={() => setSelectedOption("both")}
                   />
                   <svg
-                    className="absolute top-1/2 left-1/2 w-3 h-3 md:w-4 md:h-4 text-white transform -translate-x-1/2 -translate-y-1/2 opacity-0 peer-checked:opacity-100 pointer-events-none"
+                    className="absolute top-1/3 left-1/2 w-3 h-3 md:w-4 md:h-4 text-white transform -translate-x-1/2 -translate-y-1/2 opacity-0 peer-checked:opacity-100 pointer-events-none"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -341,9 +349,11 @@ const OrderProject = () => {
                   <input
                     type="checkbox"
                     className="peer w-4 h-4 md:w-6 md:h-6 border-2 border-[#495AFF] rounded-md appearance-none bg-white checked:bg-[#495AFF] checked:border-[#495AFF]"
+                    checked={projectMode === "simple"}
+                    onChange={() => setProjectMode("simple")}
                   />
                   <svg
-                    className="absolute top-1/2 left-1/2 w-3 h-3 md:w-4 md:h-4 text-white transform -translate-x-1/2 -translate-y-1/2 opacity-0 peer-checked:opacity-100 pointer-events-none"
+                    className="absolute top-1/3 left-1/2 w-3 h-3 md:w-4 md:h-4 text-white transform -translate-x-1/2 -translate-y-1/2 opacity-0 peer-checked:opacity-100 pointer-events-none"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -372,9 +382,11 @@ const OrderProject = () => {
                   <input
                     type="checkbox"
                     className="peer w-4 h-4 md:w-6 md:h-6 border-2 border-[#495AFF] rounded-md appearance-none bg-white checked:bg-[#495AFF] checked:border-[#495AFF]"
+                    checked={projectMode === "middle"}
+                    onChange={() => setProjectMode("middle")}
                   />
                   <svg
-                    className="absolute top-1/2 left-1/2 w-3 h-3 md:w-4 md:h-4 text-white transform -translate-x-1/2 -translate-y-1/2 opacity-0 peer-checked:opacity-100 pointer-events-none"
+                    className="absolute top-1/3 left-1/2 w-3 h-3 md:w-4 md:h-4 text-white transform -translate-x-1/2 -translate-y-1/2 opacity-0 peer-checked:opacity-100 pointer-events-none"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -403,9 +415,11 @@ const OrderProject = () => {
                   <input
                     type="checkbox"
                     className="peer w-4 h-4 md:w-6 md:h-6 border-2 border-[#495AFF] rounded-md appearance-none bg-white checked:bg-[#495AFF] checked:border-[#495AFF]"
+                    checked={projectMode === "advanced"}
+                    onChange={() => setProjectMode("advanced")}
                   />
                   <svg
-                    className="absolute top-1/2 left-1/2 w-3 h-3 md:w-4 md:h-4 text-white transform -translate-x-1/2 -translate-y-1/2 opacity-0 peer-checked:opacity-100 pointer-events-none"
+                    className="absolute top-1/3 left-1/2 w-3 h-3 md:w-4 md:h-4 text-white transform -translate-x-1/2 -translate-y-1/2 opacity-0 peer-checked:opacity-100 pointer-events-none"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"

@@ -17,6 +17,7 @@ type ItemType = {
   projectCategoryId: number;
   title: string;
   projectCategoryParentId: number;
+  image : string;
 };
 
 const CategoryPage = () => {
@@ -83,7 +84,7 @@ const CategoryPage = () => {
         {category?.map((item, index) => (
           <CategoryBox
             key={item?.projectCategoryId}
-            src={"/skills/Drafting Compass.png"}
+            src={`${item?.image ? `https://api.fartakproject.ir/upload/Projects/${item.image}` : "/images/ctg/2.png"}`}
             title={item?.title}
             id={item?.projectCategoryParentId}
             hasScale={
@@ -132,14 +133,14 @@ const CategoryPage = () => {
         </div>
       </section>
 
-      <SectionSlider title="جدیدترین پروژه ها" viewAllUrl="/category/all">
+      <SectionSlider sliderPerview={3} title="جدیدترین پروژه ها" viewAllUrl="/category/all">
         {[...Array(10)].map((_, i) => (
           <SwiperSlide className="py-6" key={i}>
             <NewProjectBox />
           </SwiperSlide>
         ))}
       </SectionSlider>
-      <SectionSlider title="برترین تیم ها" viewAllUrl="/category/all">
+      <SectionSlider sliderPerview={3} title="برترین تیم ها" viewAllUrl="/category/all">
         {[...Array(10)].map((_, i) => (
           <SwiperSlide key={i} className="py-6">
             <FartakUser />

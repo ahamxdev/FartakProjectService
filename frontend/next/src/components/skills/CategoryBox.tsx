@@ -7,17 +7,23 @@ const CategoryBox = ({
   title,
   hasScale,
   id,
-  addProject
+  addProject,
 }: {
   src: string;
   title: string;
   hasScale?: boolean;
   id?: number;
-  addProject : boolean
+  addProject: boolean;
 }) => {
+  console.log(src);
+
   return (
     <Link
-      href={`${addProject ? `/projects/${id}-${encodeURIComponent(title)}/order-project` : `/projects/${id}-${encodeURIComponent(title)}`}`}
+      href={`${
+        addProject
+          ? `/projects/${id}-${encodeURIComponent(title)}/order-project`
+          : `/projects/${id}-${encodeURIComponent(title)}`
+      }`}
       // href={`/projects/${title}`}
       className={`flex flex-col items-center gap-2 ${
         hasScale ? `md:scale-[1.2]` : ""
@@ -35,6 +41,7 @@ const CategoryBox = ({
             className="w-full h-full"
           />
         </div>
+        {/* <img src={src} className="w-[96px] h-[96px]" alt="ctg-image" /> */}
         <span className="font-medium md:text-lg text-sm text-center text-white">
           {title}
         </span>

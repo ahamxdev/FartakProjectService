@@ -9,7 +9,8 @@ import MainHeader from "@/components/skills/MainHeader";
 import ProjectSteps from "@/components/skills/ProjectSteps";
 import NewProjectBox from "@/components/skills/NewProjectBox";
 import FartakUser from "@/components/skills/FartakUser";
-import { api } from "@/utils/api";
+// import { api } from "@/utils/api";
+import { useCategory } from "@/contexts/CategoryContext";
 
 const items = [
   {
@@ -54,29 +55,31 @@ const items = [
   },
 ];
 
-type ItemType = {
-  projectCategoryId: number;
-  title: string;
-  projectCategoryParentId: number;
-};
+// type ItemType = {
+//   projectCategoryId: number;
+//   title: string;
+//   projectCategoryParentId: number;
+// };
 
 export default function Home() {
   const [showField, setShowField] = useState<string>("همه");
+  const { category } = useCategory();
 
-  const [category, setCategory] = useState<ItemType[]>([]);
 
-  useEffect(() => {
-    api("/api/ProjectCategories/GetAllParent", "POST")
-      .then((res) => {
-        if (res.status == 200) {
-          return res.json();
-        }
-      })
-      .then((data) => {
-        console.log(data);
-        setCategory(data.projectCategories);
-      });
-  }, []);
+  // const [category, setCategory] = useState<ItemType[]>([]);
+
+  // useEffect(() => {
+  //   api("/api/ProjectCategories/GetAllParent", "POST")
+  //     .then((res) => {
+  //       if (res.status == 200) {
+  //         return res.json();
+  //       }
+  //     })
+  //     .then((data) => {
+  //       console.log(data);
+  //       setCategory(data.projectCategories);
+  //     });
+  // }, []);
 
   return (
     <>
@@ -123,14 +126,14 @@ export default function Home() {
           />
         ))}
       </section>
-      <SectionSlider title="پروژه های جدید فرتاک" viewAllUrl="/category/all">
+      <SectionSlider sliderPerview={3} title="پروژه های جدید فرتاک" viewAllUrl="/category/all">
         {[...Array(10)].map((_, i) => (
           <SwiperSlide key={i}>
             <NewProjectBox />
           </SwiperSlide>
         ))}
       </SectionSlider>
-      <SectionSlider title="گروه فریلنسری فرتاک" viewAllUrl="/category/all">
+      <SectionSlider sliderPerview={3} title="گروه فریلنسری فرتاک" viewAllUrl="/category/all">
         {[...Array(10)].map((_, i) => (
           <SwiperSlide key={i}>
             <FartakUser />
@@ -316,7 +319,7 @@ export default function Home() {
             </p>
             <Link
               className="bg-transparent w-fit md:text-lg text-xs font-normal text-white px-8 md:py-3 py-1.5 rounded-lg border border-white mt-3 md:mt-0 flex justify-center items-center"
-              href={"/"}
+              href={"/projects/project-registration"}
             >
               ثبت پروژه
             </Link>
