@@ -42,7 +42,37 @@ namespace Application.Services.Projects.Queries.GetProjects
             };
 
         }
+         
+        public ResultGetProjectDto GetAllPortfolio()
+        {
+            var Project = _context.Projects.Where(p => p.Status == 2 && p.Image != null); 
+            var ProjectList = Project.Select(p => new GetProjectDto
+            {
+                Description = p.Description,
+                Image = p.Image,
+                Duration = p.Duration,
+                Title = p.Title,
+                EndPrice = p.EndPrice,
+                FinishPrice = p.FinishPrice,
+                StartPrice = p.StartPrice,
+                ProjectId = p.ProjectId,
+                OwnerId = p.OwnerId,
+                CreateDate = p.CreateDate,
+                DeadLine = p.DeadLine,
+                Status = p.Status,
+                Priority = p.Priority,
+                PriceType = p.PriceType,
+                ProjectCategoryId = p.ProjectCategoryId,
+                ProjectSkillId = p.ProjectSkillId
 
+            }).OrderBy(x => x.ProjectId).ToList();
+            return new ResultGetProjectDto
+            {
+                Projects = ProjectList,
+                Rows = ProjectList.Count,
+            };
+
+        }
 
 
         public ResultGetProjectDto GetById(RequestGetProjectByIdDto request)
