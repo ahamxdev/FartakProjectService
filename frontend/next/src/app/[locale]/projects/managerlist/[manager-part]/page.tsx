@@ -4,10 +4,10 @@ import Image from "next/image";
 import Link from "next/link";
 // import ManagerListHeader from "@/components/skills/ManagerListHeader";
 import ManagerListBox from "@/components/skills/ManagerListBox";
-import { useCategory } from "@/contexts/CategoryContext";
+import { UseCategory } from "@/contexts/CategoryContext";
 
 const page = () => {
-  const { category } = useCategory();
+  const { category } = UseCategory();
 
   return (
     <>

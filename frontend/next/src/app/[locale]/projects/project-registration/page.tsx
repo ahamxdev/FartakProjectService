@@ -5,10 +5,10 @@ import Link from "next/link";
 import WaySpeedProjectRegistrationBox from "@/components/skills/WaySpeedProjectRegistrationBox";
 import { api } from "@/utils/api";
 import SubMenu from "@/components/skills/SubMenu";
-import { useCategory } from "@/contexts/CategoryContext";
+import { UseCategory } from "@/contexts/CategoryContext";
 
 const ProjectRegistration = () => {
-  const { category } = useCategory();
+  const { category } = UseCategory();
 
   const [priceType, setPriceType] = useState<string>("");
   const [title, setTitle] = useState<string>("");
@@ -16,7 +16,7 @@ const ProjectRegistration = () => {
   const [startPrice, setStartPrice] = useState<string>("");
   const [finishPrice, setFinishPrice] = useState<string>("");
   const [selectedFilter, setSelectedFilter] = useState<string>("");
-  const [allCtgs, setAllCtgs] = useState<[]>([]);
+  // const [allCtgs, setAllCtgs] = useState<[]>([]);
   const [priority, setPriority] = useState<string>();
   const [projectSkillId, setProjectSkillId] = useState<number>(0);
   const [projectSkillTitle, setProjectSkillTitle] = useState<string>(

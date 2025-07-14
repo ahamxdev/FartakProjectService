@@ -59,10 +59,10 @@ export const CategoryProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-export const useCategory = (): CategoryContextType => {
+export const UseCategory = (): CategoryContextType => {
   const context = useContext(CategoryContext);
   if (!context) {
-    throw new Error("useCategory باید داخل CategoryProvider استفاده شود");
+    throw new Error("UseCategory باید داخل CategoryProvider استفاده شود");
   }
   return context;
 };

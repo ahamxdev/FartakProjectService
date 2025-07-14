@@ -1,11 +1,11 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 // import ManagerListHeader from "@/components/skills/ManagerListHeader";
 import ManagerListBox from "@/components/skills/ManagerListBox";
-import { api } from "@/utils/api";
-import { useCategory } from "@/contexts/CategoryContext";
+// import { api } from "@/utils/api";
+import { UseCategory } from "@/contexts/CategoryContext";
 
 // type ItemType = {
 //   projectCategoryId: number;
@@ -13,7 +13,7 @@ import { useCategory } from "@/contexts/CategoryContext";
 //   projectCategoryParentId: number;
 // };
 const ManagerList = () => {
-  const { category } = useCategory();
+  const { category } = UseCategory();
 
   // const [category, setCategory] = useState<ItemType[]>([]);
 

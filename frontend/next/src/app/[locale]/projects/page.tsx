@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { SwiperSlide } from "swiper/react";
@@ -10,7 +10,7 @@ import ProjectSteps from "@/components/skills/ProjectSteps";
 import NewProjectBox from "@/components/skills/NewProjectBox";
 import FartakUser from "@/components/skills/FartakUser";
 // import { api } from "@/utils/api";
-import { useCategory } from "@/contexts/CategoryContext";
+import { UseCategory } from "@/contexts/CategoryContext";
 
 const items = [
   {
@@ -63,7 +63,7 @@ const items = [
 
 export default function Home() {
   const [showField, setShowField] = useState<string>("همه");
-  const { category } = useCategory();
+  const { category } = UseCategory();
 
 
   // const [category, setCategory] = useState<ItemType[]>([]);
