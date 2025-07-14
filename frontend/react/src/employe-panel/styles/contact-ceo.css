@@ -1,0 +1,17 @@
+.contact-ceo {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 32px;
+}
+.contact-ceo-card {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 16px;
+}
+.contact-ceo-card:last-child {
+  grid-column: 2 / 3;
+}

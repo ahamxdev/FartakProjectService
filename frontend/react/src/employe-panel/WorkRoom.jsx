@@ -1,4 +1,4 @@
-import "../styles/work-room.css";
+import "./styles/work-room.css";
 
 const projects = [
   {
@@ -51,7 +51,7 @@ const WorkRoom = () => {
       <div className="work-room__right container-effects">
         <h2>همه پروژه ها</h2>
         <table>
-          <tr>
+          <tr className="workroom-th">
             <th>وضعیت</th>
             <th>نام</th>
             <th>فاز</th>
@@ -62,7 +62,7 @@ const WorkRoom = () => {
               <td>{project.status}</td>
               <td>{project.name}</td>
               <td>{project.faze}</td>
-              <td>{project.progress}%</td>
+              <td>{project.progress}% پیشرفت</td>
             </tr>
           ))}
         </table>

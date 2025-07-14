@@ -236,6 +236,7 @@ header {
   align-items: center;
 }
 .sidebar {
+  height: 100%;
   overflow: hidden;
 }
 .sidebar ul {
@@ -1400,12 +1401,12 @@ th,
 td {
   padding: 8px 10px;
   border-bottom: 1px solid #ddd;
-  text-align: right;
+  text-align: center !important;
 }
-th {
+/* th {
   background: #001f3f;
   color: white;
-}
+} */
 .status {
   font-weight: bold;
 }
@@ -2869,4 +2870,35 @@ select {
   background-color: red;
   margin-right: 20px;
   border-radius: 100%;
+}
+.btn-secondary {
+  padding: 5px 24px;
+  background-color: #3083dc;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.btn-secondary:hover {
+  background-color: #5595da;
+}
+.home-container {
+  height: 100%;
+}
+.rounded-table {
+  margin-bottom: 20px;
+}
+.rounded-table th {
+  background-color: #28303f;
+  color: white;
+  /* padding: 10px; */
+}
+
+.rounded-table th:first-child {
+  border-radius: 0 10px 10px 0;
+}
+
+.rounded-table th:last-child {
+  border-radius: 10px 0 0 10px;
 }

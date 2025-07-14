@@ -1,4 +1,4 @@
-import "../styles/create-order.css";
+import "./styles/create-order.css";
 const infoCards = [
   {
     title: "مهارت بهتر فرتاک",

@@ -1,8 +1,7 @@
 .work-room {
   display: flex;
   gap: 20px;
-  margin-bottom: 40px;
-  height: 94%;
+  height: 100%;
 }
 .work-room h2 {
   font-size: 20px;
@@ -13,11 +12,11 @@
   padding: 32px;
   width: 58%;
 }
-th {
+.workroom-th {
   background-color: #d9d9d9;
   color: #111;
 }
-table tr:not(:last-child) {
+table tr:not(:first-child):not(:last-child) {
   border-bottom: 1px solid #d9d9d9;
 }
 .work-room__left {
@@ -45,8 +44,8 @@ table tr:not(:last-child) {
   color: #fff;
   height: 80px;
   padding-top: 20px;
-
-  background-color: #28303f;
+  background: url("/public/img/employer/bg-redirect.png");
+  background-position: center;
   border-radius: 12px;
   margin-bottom: 10px;
 }

@@ -3,16 +3,14 @@ import {
   Route,
   createBrowserRouter,
   RouterProvider,
+  Link,
 } from "react-router-dom";
 import "./App.css";
-import Home from "./employe-panel/Home";
 import Chat from "./employe-panel/Chat";
 import Notification from "./employe-panel/Notification";
-import Pay from "./employe-panel/Pay";
-import WorkSpace from "./employe-panel/WorkSpace";
+import ContactCEO from "./employe-panel/ContactCEO";
 // import Setting from "./employe-panel/Setting";
 // import Search from "./employe-panel/Search";
-// import ContactCEO from "./employe-panel/ContactCEO";
 // import OrderExcutors from "./employe-panel/OrderExecutors";
 // import OrderProgress from "./employe-panel/OrderProgress";
 
@@ -42,19 +40,49 @@ import WorkSpace from "./employe-panel/WorkSpace";
 import CreateOrder from "./employe-panel/CreateOrder";
 import Orders from "./employe-panel/Orders";
 import WorkRoom from "./employe-panel/WorkRoom";
+import EmployerLayout from "./employe-panel/EmployerLayout";
+import OrderExecutors from "./employe-panel/OrderExecutors";
+import Search from "./employe-panel/Search";
+import Setting from "./employe-panel/Settings";
+import Payment from "./employe-panel/Payment";
+import EmployerHome from "./employe-panel/EmployerHome";
+import OrderProgress from "./employe-panel/OrderProgress";
+import FreelancerLayout from "./freelancer/FreelancerLayout";
+import FreelancerHome from "./freelancer/FreelancerHome";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    Component: Home,
+    Component: () => (
+      <>
+        <Link to="/employer">کارفرما</Link>{" "}
+        <Link to="/freelancer">فریلنسر</Link>
+      </>
+    ),
+  },
+  {
+    path: "/employer",
+    Component: EmployerLayout,
+    // index: Home,
     children: [
+      { path: "", Component: EmployerHome },
       { path: "chat", Component: Chat },
       { path: "notification", Component: Notification },
-      { path: "pay", Component: Pay },
       { path: "work-room", Component: WorkRoom },
       { path: "orders", Component: Orders },
       { path: "create-order", Component: CreateOrder },
+      { path: "contact-ceo", Component: ContactCEO },
+      { path: "executors", Component: OrderExecutors },
+      { path: "search", Component: Search },
+      { path: "settings", Component: Setting },
+      { path: "payment", Component: Payment },
+      { path: "order-progress", Component: OrderProgress },
     ],
+  },
+  {
+    path: "/freelancer",
+    Component: FreelancerLayout,
+    children: [{ path: "", Component: FreelancerHome }],
   },
 ]);
 

@@ -1,0 +1,28 @@
+.chat-container {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr 60px;
+  padding: 20px;
+}
+.chat-form {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+}
+.chat-form input {
+  width: 100%;
+  border: 1px solid #b0b2b6;
+  padding: 8px 8px 8px 40px;
+  border-radius: 10px;
+}
+.chat-form button {
+  position: absolute;
+  left: 24px;
+  bottom: 1px;
+  padding: 6px;
+  background-color: transparent;
+}
+.chat-form button img {
+  width: 24px;
+  height: 24px;
+}

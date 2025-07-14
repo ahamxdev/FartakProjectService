@@ -1,0 +1,70 @@
+.accordion {
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.accordion input {
+  display: none;
+}
+
+.accordion label {
+  display: block;
+  padding: 1rem;
+  cursor: pointer;
+  position: relative;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.accordion label div {
+  display: flex;
+  gap: 24px;
+}
+
+.accordion .content {
+  max-height: 0;
+  overflow: hidden;
+  background: #fff;
+  transition: all 0.3s ease-in-out;
+  opacity: 0;
+}
+
+.accordion input:checked ~ .content {
+  opacity: 100%;
+  padding: 1rem 0;
+  overflow: visible;
+  max-height: 500px;
+}
+.accordion .arrow {
+  transition: transform 0.3s;
+}
+.accordion input:checked ~ label .arrow {
+  transform: rotate(540deg);
+}
+.content-container {
+  display: flex;
+  gap: 20px;
+}
+.accordion-card {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  align-items: center;
+  width: 250px;
+  height: 488px;
+  padding: 10px;
+}
+.accordion-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+}
+.accordion-card ul {
+  align-self: flex-start;
+  list-style: none;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  line-height: 1.7;
+}
