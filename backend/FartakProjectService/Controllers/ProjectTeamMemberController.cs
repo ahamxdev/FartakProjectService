@@ -391,7 +391,7 @@ namespace FartakProjectService.Controllers
         }
 
         /// <summary>
-        /// اعضای تیم 
+        ///نمابش مدیران برتر 
         /// </summary>
         /// <response code="200">Success</response>
         /// <response code="409">Not Success - Value Content:</response>
