@@ -6,8 +6,9 @@ import Image from "next/image";
 import ManagerListBox from "@/components/skills/ManagerListBox";
 import { UseCategory } from "@/contexts/CategoryContext";
 import { useParams } from "next/navigation";
+// import { useParams } from "next/navigation";
 
-const page = () => {
+const Managerpart = () => {
   const params = useParams<{ managerpart : string }>();
   console.log(params);
   
@@ -274,4 +275,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Managerpart;
