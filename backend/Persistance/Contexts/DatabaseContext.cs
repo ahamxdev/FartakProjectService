@@ -32,7 +32,7 @@ namespace Persistence.Contexts
         public DbSet<ProjectLike> ProjectLikes { get; set; }
         public DbSet<ProjectSeen> ProjectSeens { get; set; }
         public DbSet<ProjectType> ProjectTypes { get; set; }
-        public DbSet<ProjectSkill> ProjectSkills { get; set; }
+         public DbSet<ProjectSkill> ProjectSkills { get; set; }
         public DbSet<ProjectUser> ProjectUsers { get; set; }
         public DbSet<ProjectTeam> ProjectTeams { get; set; }
         public DbSet<ProjectTeamMember> ProjectTeamMembers { get; set; }
@@ -40,6 +40,7 @@ namespace Persistence.Contexts
         public DbSet<BlogContent> BlogContents { get; set; }
         public DbSet<MessageSetting> MessageSettings { get; set; }
         public DbSet<TeacherType> TeacherTypes { get; set; }
+        public DbSet<ProjectHashtag> ProjectHashtags { get; set; }
         public DbSet<PaymentUse> PaymentUses { get; set; }
         public DbSet<RequestProjectTeam> RequestProjectTeams { get; set; }
         public DbSet<ProjectFile> ProjectFiles { get; set; }
@@ -63,7 +64,7 @@ namespace Persistence.Contexts
             modelBuilder.Entity<ProjectLike>().HasIndex(u => u.ProjectLikeId).IsUnique();
             modelBuilder.Entity<ProjectSeen>().HasIndex(u => u.ProjectSeenId).IsUnique();
             modelBuilder.Entity<ProjectType>().HasIndex(u => u.ProjectTypeId).IsUnique();
-            modelBuilder.Entity<ProjectUser>().HasIndex(u => u.ProjectUserId).IsUnique();
+             modelBuilder.Entity<ProjectUser>().HasIndex(u => u.ProjectUserId).IsUnique();
             modelBuilder.Entity<ProjectTeam>().HasIndex(u => u.ProjectTeamId).IsUnique();
             modelBuilder.Entity<RequestProjectTeam>().HasIndex(u => u.RequestProjectTeamId).IsUnique();
             modelBuilder.Entity<ProjectTeamMember>().HasIndex(u => u.ProjectTeamMemberId).IsUnique();
@@ -73,6 +74,7 @@ namespace Persistence.Contexts
             modelBuilder.Entity<Payment>().HasIndex(u => u.PaymentId).IsUnique();
             modelBuilder.Entity<ZarinpalSetting>().HasIndex(u => u.ZarinpalSettingId).IsUnique();
             modelBuilder.Entity<TeacherType>().HasIndex(u => u.TeacherTypeId).IsUnique();
+            modelBuilder.Entity<ProjectHashtag>().HasIndex(u => u.ProjectHashtagId).IsUnique();
             modelBuilder.Entity<PaymentUse>().HasIndex(u => u.PaymentUseId).IsUnique();
             modelBuilder.Entity<ProjectFile>().HasIndex(u => u.ProjectFileId).IsUnique();
             modelBuilder.Entity<ProjectPhase>().HasIndex(u => u.ProjectPhaseId).IsUnique();
