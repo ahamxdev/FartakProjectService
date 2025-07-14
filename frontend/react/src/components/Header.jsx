@@ -2,11 +2,11 @@ function Header() {
   return (
     <header className=" header__left container-effects">
       <div className="header--dashobord">
-        <img src="../img/Link → logo.png" alt="" />
+        <img src="/img/Link → logo.png" alt="" />
         <span className="header__right--para"></span>
         <img
           className="header__right--img"
-          src="../img/img-person.jpg"
+          src="/img/img-person.jpg"
           alt="person"
         />
         <div className="header--dashbord-p-home">
@@ -16,7 +16,7 @@ function Header() {
 
       <div className="add-project-container">
         <button className="add-project">
-          <img src="../img/plus.svg" alt="add-project" />
+          <img src="/img/plus.svg" alt="add-project" />
         </button>
         <p className="add-project-para mb-0">افزودن پروژه</p>
       </div>
@@ -29,7 +29,7 @@ function Header() {
           />
           <button className="header-search-btn">
             <img
-              src="../img/search 01.svg"
+              src="/img/search 01.svg"
               className="search-icon-home"
               alt="search"
             />
@@ -37,15 +37,15 @@ function Header() {
         </form>
         <span className="header__right--para"></span>
 
-        <img className="header__left--img" src="../img/setting.svg" alt="" />
+        <img className="header__left--img" src="/img/setting.svg" alt="" />
         <span className="header__right--para"></span>
         <img
           className="header__left--img"
-          src="../img/notification 03.svg"
+          src="/img/notification 03.svg"
           alt=""
         />
         <span className="header__right--para"></span>
-        <img className="header__left--img" src="../img/out.svg" alt="" />
+        <img className="header__left--img" src="/img/out.svg" alt="" />
       </div>
     </header>
   );

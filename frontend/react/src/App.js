@@ -54,6 +54,7 @@ import FreelancerPayment from "./freelancer/FreelancerPayment";
 import CreatedOrders from "./freelancer/CreatedOrders";
 import Cuts from "./freelancer/Cuts";
 import Charts from "./pages/Charts";
+import OrderId from "./freelancer/OrderId";
 
 const router = createBrowserRouter([
   {
@@ -92,6 +93,7 @@ const router = createBrowserRouter([
       { path: "payment", Component: FreelancerPayment },
       { path: "orders", Component: CreatedOrders },
       { path: "cuts", Component: Cuts },
+      { path: "orders/:orderId", Component: OrderId },
     ],
   },
 ]);

@@ -280,3 +280,45 @@
   color: #777777;
   font-size: 20px;
 }
+/* Order ID */
+.order-id {
+  padding: 24px;
+}
+.order-id h2 {
+  font-size: 20px;
+  font-weight: 800;
+  border-bottom: 1px solid #b0b2b6;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+.order-id-links {
+  padding-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  border-bottom: 1px solid #b0b2b6;
+  margin-bottom: 20px;
+}
+.order-id-links span {
+  border: 3px solid #238f7c;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 20px;
+}
+
+.done-task-title {
+  display: flex;
+  justify-content: space-between;
+}
+.order-id-task {
+  padding: 20px;
+}
+.done-task-title {
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #b0b2b6;
+}
+.done-task-message {
+  display: flex;
+  flex-direction: column;
+}
