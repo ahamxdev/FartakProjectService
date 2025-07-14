@@ -1,12 +1,19 @@
-"use client"
+"use client";
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
+// import Link from "next/link";
 // import ManagerListHeader from "@/components/skills/ManagerListHeader";
 import ManagerListBox from "@/components/skills/ManagerListBox";
 import { UseCategory } from "@/contexts/CategoryContext";
+import { useParams } from "next/navigation";
 
 const page = () => {
+  const params = useParams<{ managerpart : string }>();
+  console.log(params);
+  
+  const id = params.managerpart;
+  console.log(id);
+
   const { category } = UseCategory();
 
   return (
@@ -22,12 +29,12 @@ const page = () => {
 
       <section className="w-[90%] mx-auto md:my-12 my-5 flex justify-between items-center gap-6 flex-wrap">
         {category?.map((item) => (
-          <Link
-            href={"/projects/managerlist/website"}
-            className="flex flex-col items-center gap-2"
+          <div
+            // href={"/projects/managerlist/website"}
+            className={`flex flex-col items-center gap-2 ${item.projectCategoryId != parseInt(id) && "opacity-70"}`}
             key={item?.projectCategoryId}
           >
-            <div className="flex justify-center items-center px-14 py-6 bg-[#1E2531] rounded-lg">
+            <div className="flex justify-center items-center bg-[#1E2531] px-14 py-6 rounded-lg">
               <div className="relative lg:w-[56px] w-[35px] lg:h-[56px] h-[35px]">
                 <Image
                   src={`/images/ctg/${item?.projectCategoryId}.png`}
@@ -41,14 +48,14 @@ const page = () => {
             <span className="font-normal text-[#1E2531] md:text-lg text-sm">
               {item?.title}
             </span>
-          </Link>
+          </div>
         ))}
 
         {/* <Link
           href={"/managerlist/website"}
           className="flex flex-col items-center gap-2"
         >
-          <div className="flex justify-center items-center px-14 py-6 bg-[#1E2531] rounded-lg">
+          <div className="flex justify-center items-center px-14 py-6 bg-[#1E2531] opacity-70 rounded-lg">
             <div className="relative lg:w-[56px] w-[35px] lg:h-[56px] h-[35px]">
               <Image
                 src={"/images/Index.png"}

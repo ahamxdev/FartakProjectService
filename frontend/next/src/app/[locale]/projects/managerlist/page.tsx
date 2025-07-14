@@ -66,7 +66,7 @@ const ManagerList = () => {
       <section className="w-[90%] mx-auto md:my-12 my-5 flex justify-between items-center gap-6 flex-wrap">
         {category?.map((item) => (
           <Link
-            href={"/projects/managerlist/website"}
+            href={`/projects/managerlist/${item?.projectCategoryId}`}
             className="flex flex-col items-center gap-2"
             key={item?.projectCategoryId}
           >
