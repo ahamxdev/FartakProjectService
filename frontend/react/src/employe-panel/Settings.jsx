@@ -1,4 +1,3 @@
-import "./styles/settings.css";
 const settingsField = [
   { id: 0, title: "همه اعلان ها" },
   { id: 1, title: "ثبت پیشنهاد جدید" },

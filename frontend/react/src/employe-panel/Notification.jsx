@@ -1,5 +1,3 @@
-import "./styles/notifications.css";
-
 const notifications = [
   {
     id: 0,

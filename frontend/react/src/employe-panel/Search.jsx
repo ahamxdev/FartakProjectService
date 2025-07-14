@@ -1,4 +1,3 @@
-import "./styles/search.css";
 const popularServices = [
   {
     id: 0,

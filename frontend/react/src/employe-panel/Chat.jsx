@@ -1,5 +1,3 @@
-import "./styles/chat.css";
-
 const Chat = () => {
   return (
     <div className="container-effects chat-container">

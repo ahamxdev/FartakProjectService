@@ -1,4 +1,3 @@
-import "./styles/order-progress.css";
 const accordionData = [
   {
     id: 0,
@@ -97,7 +96,7 @@ const OrderProgress = () => {
     <>
       <div class="accordion">
         <input type="checkbox" id="section1" />
-        <label for="section1" className="container-effects">
+        <label htmlFor="section1" className="container-effects">
           <span>سفارش شماره 8 : وبسایت سفارش آنلاین غذا</span>
           <div>
             <span>درصد پیشرفت سفارش 42%</span>
@@ -154,9 +153,9 @@ const OrderProgress = () => {
                   {data.tasks.map((task, index) => (
                     <li key={index}>
                       {task.isDone ? (
-                        <img src="./img/employer/checked.png" alt="Done" />
+                        <img src="/img/employer/checked.png" alt="Done" />
                       ) : (
-                        <img src="./img/employer/unchecked.png" alt="Undone" />
+                        <img src="/img/employer/unchecked.png" alt="Undone" />
                       )}{" "}
                       {task.lable}
                     </li>

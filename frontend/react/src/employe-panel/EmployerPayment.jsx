@@ -1,4 +1,3 @@
-import "./styles/payment.css";
 const myPayments = [
   {
     id: 0,
@@ -19,7 +18,7 @@ const myWithdrawal = [
   { id: 0, fee: "۵۰۰,۰۰۰ تومان", status: "معلق", date: "۱۴۰۳/۰۲/۰۲" },
   { id: 1, fee: "۷۵۰,۰۰۰ تومان", status: "واریزشده", date: "۱۴۰۳/۰۱/۲۰" },
 ];
-const Payment = () => {
+const EmployerPayment = () => {
   return (
     <>
       <div className="payment-cards">
@@ -78,4 +77,4 @@ const Payment = () => {
   );
 };
 
-export default Payment;
+export default EmployerPayment;

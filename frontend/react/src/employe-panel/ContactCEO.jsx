@@ -1,5 +1,3 @@
-import "./styles/contact-ceo.css";
-
 const contactMethods = [
   {
     title: "واتس اپ",

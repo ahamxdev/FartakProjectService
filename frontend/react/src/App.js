@@ -44,11 +44,16 @@ import EmployerLayout from "./employe-panel/EmployerLayout";
 import OrderExecutors from "./employe-panel/OrderExecutors";
 import Search from "./employe-panel/Search";
 import Setting from "./employe-panel/Settings";
-import Payment from "./employe-panel/Payment";
+import EmployerPayment from "./employe-panel/EmployerPayment";
 import EmployerHome from "./employe-panel/EmployerHome";
 import OrderProgress from "./employe-panel/OrderProgress";
+// freelancer components
 import FreelancerLayout from "./freelancer/FreelancerLayout";
 import FreelancerHome from "./freelancer/FreelancerHome";
+import FreelancerPayment from "./freelancer/FreelancerPayment";
+import CreatedOrders from "./freelancer/CreatedOrders";
+import Cuts from "./freelancer/Cuts";
+import Charts from "./pages/Charts";
 
 const router = createBrowserRouter([
   {
@@ -60,10 +65,10 @@ const router = createBrowserRouter([
       </>
     ),
   },
+  { path: "/charts", Component: Charts },
   {
     path: "/employer",
     Component: EmployerLayout,
-    // index: Home,
     children: [
       { path: "", Component: EmployerHome },
       { path: "chat", Component: Chat },
@@ -75,14 +80,19 @@ const router = createBrowserRouter([
       { path: "executors", Component: OrderExecutors },
       { path: "search", Component: Search },
       { path: "settings", Component: Setting },
-      { path: "payment", Component: Payment },
+      { path: "payment", Component: EmployerPayment },
       { path: "order-progress", Component: OrderProgress },
     ],
   },
   {
     path: "/freelancer",
     Component: FreelancerLayout,
-    children: [{ path: "", Component: FreelancerHome }],
+    children: [
+      { path: "", Component: FreelancerHome },
+      { path: "payment", Component: FreelancerPayment },
+      { path: "orders", Component: CreatedOrders },
+      { path: "cuts", Component: Cuts },
+    ],
   },
 ]);
 

@@ -1,5 +1,3 @@
-import "./styles/order-executors.css";
-
 const executorProfiles = [
   {
     id: 0,

@@ -1,5 +1,3 @@
-import "./styles/work-room.css";
-
 const projects = [
   {
     id: 0,

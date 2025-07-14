@@ -1,4 +1,5 @@
 import "../styles/home.css";
+import "../styles/employer.css";
 import Header from "../components/Header";
 import { NavLink, Outlet } from "react-router-dom";
 
