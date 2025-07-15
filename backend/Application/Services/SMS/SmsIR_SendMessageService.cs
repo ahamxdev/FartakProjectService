@@ -14,7 +14,21 @@ namespace Application.Services.SMS
             _getMessageSettingService = getMessageSettingService;
         }
 
+        public async Task<ResultDto> SMSSignup(SMSRequestDto request)
 
+        {
+
+            var MessageSetting = _getMessageSettingService.Execute().MessageSetting[0];
+            SmsIr smsIr = new SmsIr(MessageSetting.SMSApiKey);
+
+            //var bulkSendResult =await smsIr.BulkSendAsync(Convert.ToInt64( MessageSetting.SMSLineNumber), text, new string[] { to });
+            var verificationSendResult = await smsIr.VerifySendAsync(request.ToSMS, MessageSetting.SignupTemplateId, new VerifySendParameter[] { new("Code", request.Code) });
+            return new ResultDto
+            {
+                IsSuccess = true,
+                Message = "ارسال شد."
+            };
+        }
         public async Task<ResultDto> SMSForgetPassword(SMSRequestDto request)
 
         {

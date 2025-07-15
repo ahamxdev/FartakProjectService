@@ -295,7 +295,6 @@ namespace FartakProjectService.Controllers
 
 
 
-
         /// <summary>
         /// فراموشی رمز عبور
         /// </summary>
@@ -383,6 +382,97 @@ namespace FartakProjectService.Controllers
                 });
             }
         }
+
+
+
+
+        /// <summary>
+        /// ثب نام
+        /// </summary>
+        /// <response code="200">Success</response>
+        /// <response code="400">Validation Error</response>
+        /// <response code="409">Not Success - Value Content:</response>
+        /// <response code="500">Server Error - Value Content:</response>
+        [ProducesResponseType(typeof(ResultDto), 200)]
+        [ProducesResponseType(typeof(ValidationResult), 400)]
+        [ProducesResponseType(typeof(ErrorDto), 409)]
+        [ProducesResponseType(typeof(ErrorDto), 500)]
+        [HttpPut]
+        [Route("Singup")]
+        public async Task<ActionResult> SingupAsync(RequestEditUserForgetPasswordDto dto)
+        {
+            //try
+            //{
+            //    var result = _editUserService.ForgetPassword(dto);
+            //    if (result.IsSuccess == true)
+            //    {
+                    var SMS = await _smsService.SMSSignup(new SMSRequestDto
+                    {
+
+                        Code = new Random().Next(1000,9999).ToString(),
+                        ToSMS = dto.Mobile
+                    });
+                    if (SMS.IsSuccess == false)
+                    {
+                        return StatusCode(409, Json(new ErrorDto
+                        {
+                            IsSuccess = false,
+                            Message = SMS.Message,
+                            Service = "SMS",
+                            ResponseCode = 409,
+                        }));
+                    }
+                    var users = _getUserService.GetByMobile(new RequestGetUserByMobileDto { Mobile = dto.Mobile });
+                    if (users.Rows != 0)
+                    {
+                        var tokens = _getTokenService.GetByUserId(new RequestGetUserTokenByUserIdDto
+                        {
+                            UserId = users.Users[0].UserId
+                        });
+                        foreach (var item in tokens.UserToken)
+                            _removeUserTokenService.Execute(new RequestRemoveUserTokenDto
+                            {
+                                Token = item.Token
+                            });
+                    }
+                    return Json(new ResultDto
+                    {
+                        IsSuccess = true,
+                        Message = "موفق",
+                    });
+                }
+        //else
+        //    return StatusCode(409, Json(new ErrorDto
+        //    {
+        //        IsSuccess = false,
+        //        Message = result.Message,
+        //        Service = "User",
+        //        ResponseCode = 409,
+        //    }));
+        //}
+        //catch (Exception e)
+        //{
+        //    var st = new StackTrace(e, true);
+        //    var frame = st.GetFrame(0);
+        //    var line = 0;
+        //    if (frame != null)
+        //    {
+        //        line = frame.GetFileLineNumber();
+        //        // Proceed with line
+        //    }
+
+        //    return StatusCode(500, new
+        //    {
+        //        value = new ErrorDto
+        //        {
+        //            IsSuccess = false,
+        //            Message = "Server Error : LIne Number=" + line + " *** Message= " + e.Message,
+        //            Service = "User",
+        //            ResponseCode = 500,
+        //        }
+    //});
+    //}
+//}
 
 
         /// <summary>
