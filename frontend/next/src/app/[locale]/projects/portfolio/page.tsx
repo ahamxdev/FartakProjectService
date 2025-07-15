@@ -30,6 +30,7 @@ const Portfolio = () => {
   const [parentHashtagsId, setParentHashtagsId] = useState<number>(0);
   const [ChildrenHashtagsId, setChildrenHashtagsId] = useState<number>(0);
   console.log(isSubMenuOpen);
+  console.log(ChildrenHashtagsId);
 
   useEffect(() => {
     api("/api/ProjectHashtags/GetAllParent", "POST")
@@ -59,7 +60,7 @@ const Portfolio = () => {
   }, []);
 
   useEffect(() => {
-    let filteredHashtags = allHashtags.filter(
+    const filteredHashtags = allHashtags.filter(
       (item) => item.projectHashtagParentId == parentHashtagsId
     );
     setChildrenHashtags(filteredHashtags);

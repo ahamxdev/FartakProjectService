@@ -64,7 +64,7 @@ const Skills: React.FC = () => {
   }, [allSkills]);
 
   useEffect(() => {
-    let sendSkillId = {
+    const sendSkillId = {
       projectSkillId: skillsMenuId,
     };
     if (skillsMenuId > 0) {
@@ -171,8 +171,9 @@ const Skills: React.FC = () => {
 
       {childrenskillsMenu && childrenskillsMenu.length > 0 ? (
         <section className="w-[90%] my-6 mx-auto grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-4">
-          {childrenskillsMenu.map((skill) => (
+          {childrenskillsMenu.map((skill , index) => (
             <SkillBox
+              key={index}
               title={skill.title}
               src={`https://api.fartakproject.ir/upload/Projects/${skill.image}`}
               id={skill.projectSkillId}
