@@ -1,6 +1,7 @@
 "use client";
 import SectionSlider from "@/components/skills/SectionSlider";
 import SkillBox from "@/components/skills/SkillBox";
+import SubMenu from "@/components/skills/SubMenu";
 import { api } from "@/utils/api";
 import React, { useEffect, useState } from "react";
 import { SwiperSlide } from "swiper/react";
@@ -14,6 +15,12 @@ type Skill = {
 };
 
 const Skills: React.FC = () => {
+  const [isSubMenuOpen, setIsSubMenuOpen] = useState<boolean>(false);
+  const [skillTitle, setSkillTitle] = useState<string>("فیلتر");
+  const [skillsMenu, setSkillsMenu] = useState<Skill[]>([]);
+  const [childrenskillsMenu, setChildrenSkillsMenu] = useState<Skill[]>([]);
+  const [skillsMenuId, setSkillsMenuId] = useState<number>(0);
+
   const [allSkills, setAllSkills] = useState<Skill[]>([]);
   const [groupedSkills, setGroupedSkills] = useState<Record<number, Skill[]>>(
     {}
@@ -30,6 +37,16 @@ const Skills: React.FC = () => {
         console.log(data);
         setAllSkills(data.projectSkills);
       });
+    api("/api/ProjectSkills/GetAllParent", "POST")
+      .then((res) => {
+        if (res.status == 200) {
+          return res.json();
+        }
+      })
+      .then((data) => {
+        console.log(data);
+        setSkillsMenu(data.projectSkills);
+      });
   }, []);
 
   useEffect(() => {
@@ -45,6 +62,26 @@ const Skills: React.FC = () => {
       setGroupedSkills(grouped);
     }
   }, [allSkills]);
+
+  useEffect(() => {
+    let sendSkillId = {
+      projectSkillId: skillsMenuId,
+    };
+    if (skillsMenuId > 0) {
+      api("/api/ProjectSkills/GetChildrenById", "POST", sendSkillId)
+        .then((res) => {
+          if (res.status == 200) {
+            return res.json();
+          } else {
+            throw new Error("اروری رخ داده است");
+          }
+        })
+        .then((data) => {
+          console.log(data);
+          setChildrenSkillsMenu(data.projectSkills);
+        });
+    }
+  }, [skillsMenuId]);
 
   const categoryTitles: Record<number, string> = {
     2: "طراحی سایت و اپلیکیشن",
@@ -78,9 +115,12 @@ const Skills: React.FC = () => {
         <p className="lg:text-2xl md:text-xl text-base font-bold">
           دنبال چه مهارتی هستی ؟{" "}
         </p>
-        <div className="flex items-center gap-3">
-          <button className="rounded-lg border-[2px] border-[#1E1E1E] px-3 py-1 md:w-[200px] sm:w-[130px] w-[100px] flex justify-between items-center text-lg font-normal cursor-pointer text-[#00000080]">
-            فیلتر
+        <div className="flex relative items-center gap-3">
+          <button
+            onClick={() => setIsSubMenuOpen((prev) => !prev)}
+            className="rounded-lg border-[2px] border-[#1E1E1E] px-5 gap-4 py-1 flex justify-between items-center lg:text-lg text-sm font-normal cursor-pointer text-[#00000080]"
+          >
+            {skillTitle}
             <svg
               width="12"
               height="7"
@@ -97,7 +137,14 @@ const Skills: React.FC = () => {
               />
             </svg>
           </button>
-          <div className="flex justify-between items-center rounded-lg border-[2px] border-[#1E1E1E] px-3 py-1 md:w-[370px] sm:w-[280px] w-[210px] bg-white">
+          <SubMenu
+            isSubMenuOpen={isSubMenuOpen}
+            items={skillsMenu || []}
+            setProjectSkillId={setSkillsMenuId}
+            setIsSubMenuOpen={setIsSubMenuOpen}
+            setProjectSkillTitle={setSkillTitle}
+          />
+          <div className="flex justify-between items-center rounded-lg border-[2px] border-[#1E1E1E] px-3 py-1 md:w-[300px] sm:w-[240px] w-[170px] bg-white">
             <input
               type="text"
               placeholder="جست و جوی مهارت"
@@ -122,108 +169,38 @@ const Skills: React.FC = () => {
         </div>
       </div>
 
-      {Object.entries(groupedSkills)
-        .slice(1)
-        .map(([parentId, skills]) => (
-          <SectionSlider
-            key={parentId}
-            title={categoryTitles[+parentId] || "دسته‌بندی نامشخص"}
-            viewAllUrl={`/category/${parentId}`}
-            sliderPerview={4}
-          >
-            {skills.map((skill) => (
-              <SwiperSlide key={skill.projectSkillId}>
-                <SkillBox
-                  title={skill.title}
-                  // src={`https://www.fartakproject.ir/upload/Projects/${skill.image}`}
-                  src={`https://api.fartakproject.ir/upload/Projects/${skill.image}`}
-                  id={skill.projectSkillId}
-                />
-              </SwiperSlide>
-            ))}
-          </SectionSlider>
-        ))}
-
-      {/* <SectionSlider title="طراحی سایت و اپلیکیشن" viewAllUrl="/category/web">
-        {[...Array(10)].map((_, i: number) => (
-          <SwiperSlide key={i}>
-            <SkillBox />
-          </SwiperSlide>
-        ))}
-      </SectionSlider>
-
-      <SectionSlider title="تولید محتوا و سئو" viewAllUrl="/category/seo">
-        {[...Array(10)].map((_, i: number) => (
-          <SwiperSlide key={i}>
-            <SkillBox />
-          </SwiperSlide>
-        ))}
-      </SectionSlider>
-
-      <SectionSlider title="ترجمه و نگارش" viewAllUrl="/category/translation">
-        {[...Array(10)].map((_, i: number) => (
-          <SwiperSlide key={i}>
-            <SkillBox />
-          </SwiperSlide>
-        ))}
-      </SectionSlider>
-
-      <SectionSlider title="رسانه و ویدیو" viewAllUrl="/category/media">
-        {[...Array(10)].map((_, i: number) => (
-          <SwiperSlide key={i}>
-            <SkillBox />
-          </SwiperSlide>
-        ))}
-      </SectionSlider>
-
-      <SectionSlider
-        title="طراحی گرافیک و هنر های دیجیتال"
-        viewAllUrl="/category/digital"
-      >
-        {[...Array(10)].map((_, i: number) => (
-          <SwiperSlide key={i}>
-            <SkillBox />
-          </SwiperSlide>
-        ))}
-      </SectionSlider>
-
-      <SectionSlider
-        title="برنامه نویسی و کد نویسی"
-        viewAllUrl="/category/programming"
-      >
-        {[...Array(10)].map((_, i: number) => (
-          <SwiperSlide key={i}>
-            <SkillBox />
-          </SwiperSlide>
-        ))}
-      </SectionSlider>
-
-      <SectionSlider
-        title="پشتیبانی و مدیریت"
-        viewAllUrl="/category/translation"
-      >
-        {[...Array(2)].map((_, i: number) => (
-          <SwiperSlide key={i}>
-            <SkillBox />
-          </SwiperSlide>
-        ))}
-      </SectionSlider>
-
-      <SectionSlider title="خدمات ویژه" viewAllUrl="/category/media">
-        {[...Array(10)].map((_, i: number) => (
-          <SwiperSlide key={i}>
-            <SkillBox />
-          </SwiperSlide>
-        ))}
-      </SectionSlider>
-
-      <SectionSlider title="عکاسی و محتوای تصویری" viewAllUrl="/category/media">
-        {[...Array(1)].map((_, i: number) => (
-          <SwiperSlide key={i}>
-            <SkillBox />
-          </SwiperSlide>
-        ))}
-      </SectionSlider> */}
+      {childrenskillsMenu && childrenskillsMenu.length > 0 ? (
+        <section className="w-[90%] my-6 mx-auto grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-4">
+          {childrenskillsMenu.map((skill) => (
+            <SkillBox
+              title={skill.title}
+              src={`https://api.fartakproject.ir/upload/Projects/${skill.image}`}
+              id={skill.projectSkillId}
+            />
+          ))}
+        </section>
+      ) : (
+        Object.entries(groupedSkills)
+          .slice(1)
+          .map(([parentId, skills]) => (
+            <SectionSlider
+              key={parentId}
+              title={categoryTitles[+parentId] || "دسته‌بندی نامشخص"}
+              viewAllUrl={`/category/${parentId}`}
+              sliderPerview={4}
+            >
+              {skills.map((skill) => (
+                <SwiperSlide key={skill.projectSkillId}>
+                  <SkillBox
+                    title={skill.title}
+                    src={`https://api.fartakproject.ir/upload/Projects/${skill.image}`}
+                    id={skill.projectSkillId}
+                  />
+                </SwiperSlide>
+              ))}
+            </SectionSlider>
+          ))
+      )}
     </>
   );
 };
