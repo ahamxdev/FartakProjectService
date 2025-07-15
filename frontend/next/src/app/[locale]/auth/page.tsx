@@ -239,18 +239,6 @@ const Auth = () => {
               className="flex flex-col gap-3"
               onSubmit={(e) => loginHandle(e)}
             >
-              {/* <div className="flex flex-col gap-3 w-full">
-                <label className="font-normal text-base text-black">
-                  آدرس ایمیل
-                </label>
-                <input
-                  type="email"
-                  className="border-[2px] border-[#1D40D7] rounded-[9999px] py-2 px-4"
-                  placeholder="ایمیل خود را وارد کنید"
-                  value={loginPhone}
-                  onChange={(e) => setLoginPhone(e.target.value)}
-                />
-              </div> */}
               <div className="flex flex-col gap-3 w-full">
                 <label className="font-normal text-base text-black">
                   شماره تلفن
@@ -261,7 +249,7 @@ const Auth = () => {
                   value={loginPhone}
                   onChange={(e) => setLoginPhone(e.target.value)}
                   className="border-[2px] border-[#1D40D7] rounded-[9999px] py-2 px-4"
-                  placeholder="لطفا شماره خود را وارد کنید"
+                  placeholder="شماره تلفن خود را وارد کنید ."
                 />
               </div>
               <div className="flex flex-col gap-3 w-full relative">
@@ -317,6 +305,9 @@ const Auth = () => {
                   )}{" "}
                 </span>
               </div>
+              <Link href={"/auth/forgetpass"} className="text-black underline text-sm font-light">
+                فراموشی رمز عبور
+              </Link>
               <button
                 type="submit"
                 className="bg-[#2EBFA5] rounded-[9999px] flex justify-center items-center w-full py-3 text-sm font-normal cursor-pointer hover:bg-[#2ebfa4bd] transition-all text-white my-5"
@@ -488,6 +479,9 @@ const Auth = () => {
                       )}{" "}
                     </span>
                   </div>
+                  <Link href={"/auth/forgetpass"} className="text-black underline text-sm font-light">
+                    فراموشی رمز عبور
+                  </Link>
                   <button
                     onClick={() => setRegisterStep(2)}
                     className="bg-[#2EBFA5] rounded-[9999px] flex justify-center items-center w-full py-3 text-sm font-normal cursor-pointer hover:bg-[#2ebfa4bd] transition-all text-white my-5"
