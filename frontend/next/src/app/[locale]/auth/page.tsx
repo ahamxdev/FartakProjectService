@@ -8,11 +8,14 @@ import Swal from "sweetalert2";
 
 interface FormDataRegister {
   name: string;
-  lastName: string;
-  phone: string;
+  lastname: string;
+  mobile: string;
   email: string;
-  password: string;
-  confirmPassword: string;
+  passWord: string;
+  verify: string;
+  salt: string;
+  status: number;
+  kind: number;
 }
 
 const Auth = () => {
@@ -28,14 +31,18 @@ const Auth = () => {
 
   const [loginPhone, setLoginPhone] = useState<string>("");
   const [loginPass, setLoginPass] = useState<string>("");
+  const [code, setCode] = useState<string[]>(["", "", "", "", "", ""]);
 
   const [formDataRegister, setFormDataRegister] = useState<FormDataRegister>({
     name: "",
-    lastName: "",
-    phone: "",
+    lastname: "",
+    passWord: "",
+    salt: "",
+    mobile: "",
     email: "",
-    password: "",
-    confirmPassword: "",
+    verify: "",
+    status: 0,
+    kind: 0,
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -85,6 +92,110 @@ const Auth = () => {
           router.push("/");
         });
       });
+  };
+
+  const handleVerifyCode = () => {
+    const verfiCodeInfo = {
+      mobile: formDataRegister,
+      otpCode: code.join(""),
+    };
+
+    api("/api/Users/OtpConfirm", "POST", verfiCodeInfo)
+      .then((res) => {
+        if (res.status == 200) {
+          return res.json();
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "مشکل در ثبت نام",
+            text: "کد وارد شده نادرست است",
+            confirmButtonText: "امتحان دوباره",
+          });
+        }
+      })
+      .then((data) => {
+        console.log(data);
+        Swal.fire({
+          icon: "success",
+          title: "ورود موفق",
+          text: "با موفقیت وارد شدید",
+          confirmButtonText: "باشه",
+        }).then(() => {
+          router.push("/");
+        });
+      });
+  };
+
+
+  const registerHandle = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const registerInfo = {
+      name: formDataRegister.name,
+      lastname: formDataRegister.lastname,
+      passWord: formDataRegister.passWord,
+      verify: formDataRegister.verify,
+      salt: formDataRegister.salt,
+      mobile: formDataRegister.mobile,
+      email: formDataRegister.email,
+      status: formDataRegister.status,
+      kind: loginUser,
+    };
+    try {
+      api("/api/Auth/register", "POST", registerInfo)
+        .then((res) => {
+          if (res.status == 200) {
+            setRegisterStep(2);
+            api("/api/Users/OtpSingup", "POST", {
+              mobile: formDataRegister.mobile,
+            })
+              .then((res) => {
+                if (res.status == 200) {
+                  return res.json();
+                }
+              })
+              .then((data) => {
+                console.log(data);
+              });
+            return res.json();
+          } else {
+            console.log(res);
+          }
+        })
+        .then((data) => {
+          console.log(data);
+        });
+    } catch (error) {
+      console.error("Register Error:", error);
+    }
+  };
+
+  const handleChangeCode = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    index: number
+  ) => {
+    const { value } = e.target;
+
+    if (!/^\d?$/.test(value)) return;
+
+    const newCode = [...code];
+    newCode[index] = value;
+    setCode(newCode);
+
+    if (value !== "" && index < code.length - 1) {
+      const nextInput = document.getElementById(`code-${index + 1}`);
+      if (nextInput) (nextInput as HTMLInputElement).focus();
+    }
+  };
+
+  const handleKeyDown = (
+    e: React.KeyboardEvent<HTMLInputElement>,
+    index: number
+  ) => {
+    if (e.key === "Backspace" && !code[index] && index > 0) {
+      const prevInput = document.getElementById(`code-${index - 1}`);
+      if (prevInput) (prevInput as HTMLInputElement).focus();
+    }
   };
 
   return (
@@ -305,7 +416,10 @@ const Auth = () => {
                   )}{" "}
                 </span>
               </div>
-              <Link href={"/auth/forgetpass"} className="text-black underline text-sm font-light">
+              <Link
+                href={"/auth/forgetpass"}
+                className="text-black underline text-sm font-light"
+              >
                 فراموشی رمز عبور
               </Link>
               <button
@@ -316,7 +430,10 @@ const Auth = () => {
               </button>
             </form>
           ) : (
-            <form className="flex flex-col gap-3">
+            <form
+              onSubmit={(e) => registerHandle(e)}
+              className="flex flex-col gap-3"
+            >
               {registerStep == 1 ? (
                 <>
                   <div className="flex flex-col gap-3 w-full">
@@ -338,8 +455,8 @@ const Auth = () => {
                     </label>
                     <input
                       type="text"
-                      name="lastName"
-                      value={formDataRegister.lastName || ""}
+                      name="lastname"
+                      value={formDataRegister.lastname || ""}
                       onChange={handleChange}
                       className="border-[2px] border-[#1D40D7] rounded-[9999px] py-2 px-4"
                       placeholder="نام خانوادگی خود را وارد کنید"
@@ -351,8 +468,8 @@ const Auth = () => {
                     </label>
                     <input
                       type="tel"
-                      name="phone"
-                      value={formDataRegister.phone || ""}
+                      name="mobile"
+                      value={formDataRegister.mobile || ""}
                       onChange={handleChange}
                       className="border-[2px] border-[#1D40D7] rounded-[9999px] py-2 px-4"
                       placeholder="لطفا شماره خود را وارد کنید"
@@ -377,8 +494,8 @@ const Auth = () => {
                     </label>
                     <input
                       type={showPassword ? "text" : "password"}
-                      name="password"
-                      value={formDataRegister.password || ""}
+                      name="passWord"
+                      value={formDataRegister.passWord || ""}
                       onChange={handleChange}
                       className="border-[2px] border-[#1D40D7] rounded-[9999px] py-2 px-4 pr-10"
                       placeholder="رمز عبور خود را وارد کنید"
@@ -431,8 +548,8 @@ const Auth = () => {
                     </label>
                     <input
                       type={showConfirmPassword ? "text" : "password"}
-                      name="confirmPassword"
-                      value={formDataRegister.confirmPassword || ""}
+                      name="verify"
+                      value={formDataRegister.verify || ""}
                       onChange={handleChange}
                       className="border-[2px] border-[#1D40D7] rounded-[9999px] py-2 px-4 pr-10"
                       placeholder="تکرار رمز عبور خود را وارد کنید"
@@ -479,11 +596,14 @@ const Auth = () => {
                       )}{" "}
                     </span>
                   </div>
-                  <Link href={"/auth/forgetpass"} className="text-black underline text-sm font-light">
+                  <Link
+                    href={"/auth/forgetpass"}
+                    className="text-black underline text-sm font-light"
+                  >
                     فراموشی رمز عبور
                   </Link>
                   <button
-                    onClick={() => setRegisterStep(2)}
+                    type="submit"
                     className="bg-[#2EBFA5] rounded-[9999px] flex justify-center items-center w-full py-3 text-sm font-normal cursor-pointer hover:bg-[#2ebfa4bd] transition-all text-white my-5"
                   >
                     ثبت نام
@@ -493,34 +613,30 @@ const Auth = () => {
                 registerStep == 2 && (
                   <div className="lg:mt-16">
                     <h5>کد ارسال شده را وارد کنید .</h5>
-                    <div className="flex items-center justify-center lg:w-full w-[90%] mx-auto lg:mx-0 gap-2 mt-5 mb-2.5">
-                      <input
-                        type="text"
-                        maxLength={1}
-                        className="border-[2px] border-[#1D40D7] rounded-lg flex justify-center items-center w-[48px] h-[48px] text-[#212121] font-bold text-lg"
-                      />
-                      <input
-                        type="text"
-                        maxLength={1}
-                        className="border-[2px] border-[#1D40D7] rounded-lg flex justify-center items-center w-[48px] h-[48px] text-[#212121] font-bold text-lg"
-                      />
-                      <input
-                        type="text"
-                        maxLength={1}
-                        className="border-[2px] border-[#1D40D7] rounded-lg flex justify-center items-center w-[48px] h-[48px] text-[#212121] font-bold text-lg"
-                      />
-                      <input
-                        type="text"
-                        maxLength={1}
-                        className="border-[2px] border-[#1D40D7] rounded-lg flex justify-center items-center w-[48px] h-[48px] text-[#212121] font-bold text-lg"
-                      />
-                      <input
-                        type="text"
-                        maxLength={1}
-                        className="border-[2px] border-[#1D40D7] rounded-lg flex justify-center items-center w-[48px] h-[48px] text-[#212121] font-bold text-lg"
-                      />
+                    <div
+                      className="flex items-center justify-center lg:w-full w-[90%] mx-auto lg:mx-0 gap-2 mt-5 mb-2.5"
+                      style={{ direction: "ltr" }}
+                    >
+                      {code.map((digit, index) => (
+                        <input
+                          key={index}
+                          id={`code-${index}`}
+                          type="text"
+                          maxLength={1}
+                          value={digit}
+                          onChange={(e) => handleChangeCode(e, index)}
+                          onKeyDown={(e) => handleKeyDown(e, index)}
+                          className="border-2 border-blue-600 rounded-lg w-12 h-12 text-center text-lg font-bold"
+                          autoComplete="one-time-code"
+                          inputMode="numeric"
+                        />
+                      ))}
                     </div>
-                    <button className="bg-[#2EBFA5] rounded-[9999px] flex justify-center items-center w-full py-3 text-sm font-normal cursor-pointer hover:bg-[#2ebfa4bd] transition-all text-white my-5">
+
+                    <button
+                      onClick={handleVerifyCode}
+                      className="bg-[#2EBFA5] rounded-[9999px] flex justify-center items-center w-full py-3 text-sm font-normal cursor-pointer hover:bg-[#2ebfa4bd] transition-all text-white my-5"
+                    >
                       ورود
                     </button>
                   </div>
