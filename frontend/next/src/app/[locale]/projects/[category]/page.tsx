@@ -23,6 +23,8 @@ type ItemType = {
 const CategoryPage = () => {
   const params = useParams<{ category: string }>();
   const id = params.category;
+  console.log(id);
+  
 
   const [category, setCategory] = useState<ItemType[]>([]);
 
@@ -45,7 +47,7 @@ const CategoryPage = () => {
     <>
       {/* <Header /> */}
 
-      <CategoryHeader title={"متن تستی"} />
+      <CategoryHeader title={decodeURIComponent(id.split("-")[1])} />
       <ProjectSteps />
       <section className="grid py-20 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 gap-y-16 md:my-8 my-4 w-[90%] mx-auto">
         {/* <CategoryBox
