@@ -104,7 +104,7 @@ const ProjectRegistration = () => {
               سرآمد جهت انجام ماموریت های سازمانی در پروژه های مختلف در راستای
               ارائه خدمات مشاوره و مهندسی شامل مطالعه و طراحی توسعه نرم افزار و
               ای تی، محتوا و ترجمه ،طراحی و خلاقیت ،بازاریابی و فروش،کسب و کار و
-              و طراحی با بهره گیری از دانشروز مهندسی مهندسی معماری و عمران و
+              و طراحی با بهره گیری از دانش روز مهندسی مهندسی معماری و عمران و
               .... و توسعه خدمات با کیفیت فعالیت می نماید.{" "}
             </p>
           </div>
@@ -127,7 +127,7 @@ const ProjectRegistration = () => {
               دسترسی به نمونه کار ها
             </h4>
             <span className="md:text-base text-center lg:text-justify text-xs font-bold text-[#000]">
-              نگران هیچی نباش با فرتاک همیشه و همه جا آموزش ببین.
+              قراره یه عالمه ایده قشنگ ببینی!
             </span>
             <Link
               href={"/projects/portfolio"}
@@ -165,7 +165,7 @@ const ProjectRegistration = () => {
               مهارت بهتر فرتاک
             </h4>
             <span className="md:text-base text-xs text-center lg:text-justify font-bold text-[#000]">
-              نگران هیچی نباش با فرتاک همیشه و همه جا آموزش ببین.
+              اینجا نقطه قوت ماست! مهارت های برتر فرتاک
             </span>
             <Link
               href={"/projects/skills"}
@@ -203,7 +203,7 @@ const ProjectRegistration = () => {
               مشاوره با مدیر های موفق فرتاک
             </h4>
             <span className="md:text-base text-xs text-center lg:text-justify font-bold text-[#000]">
-              نگران هیچی نباش با فرتاک همیشه و همه جا آموزش ببین.
+              سوال داری؟ مدیرای فرتاک منتظرن کمکت کنن!
             </span>
             <Link
               href={"/projects/managerlist"}
