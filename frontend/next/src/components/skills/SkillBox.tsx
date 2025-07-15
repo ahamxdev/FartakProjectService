@@ -11,13 +11,6 @@ const SkillBox = ({
   src: string;
   id: number;
 }) => {
-  console.log(id);
-  console.log(src);
-  const imageUrl =
-    "/wwwroot/upload/Projects/image 13-5.png";
-  const encodedUrl = encodeURI(imageUrl);
-  console.log(encodedUrl);
-  
   return (
     <div
       id="skill-box"
@@ -25,7 +18,6 @@ const SkillBox = ({
     >
       <div className="relative lg:w-[220px] w-[150px] lg:h-[200px] h-[130px]">
         <Image
-          //     src={"/skills/image 13.png`}
           src={src}
           fill
           sizes="(max-width: 768px) 100vw, auto"
