@@ -6,6 +6,7 @@ import Image from "next/image";
 import ManagerListBox from "@/components/skills/ManagerListBox";
 import { UseCategory } from "@/contexts/CategoryContext";
 import { useParams } from "next/navigation";
+import Link from "next/link";
 // import { useParams } from "next/navigation";
 
 const Managerpart = () => {
@@ -30,8 +31,8 @@ const Managerpart = () => {
 
       <section className="w-[90%] mx-auto md:my-12 my-5 flex justify-between items-center gap-6 flex-wrap">
         {category?.map((item) => (
-          <div
-            // href={"/projects/managerlist/website"}
+          <Link
+            href={`/projects/managerlist/${item.title}`}
             className={`flex flex-col items-center gap-2 ${item.projectCategoryId != parseInt(id) && "opacity-70"}`}
             key={item?.projectCategoryId}
           >
@@ -49,7 +50,7 @@ const Managerpart = () => {
             <span className="font-normal text-[#1E2531] md:text-lg text-sm">
               {item?.title}
             </span>
-          </div>
+          </Link>
         ))}
 
         {/* <Link
