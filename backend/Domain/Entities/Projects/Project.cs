@@ -4,8 +4,7 @@
     {
         public long ProjectId { get; set; }
         public long ProjectCategoryId { get; set; }
-        public long ProjectSkillId { get; set; }
-        public long Duration { get; set; }
+         public long Duration { get; set; }
         public required string Title { get; set; }
         public required string Description { get; set; }
         public long OwnerId { get; set; }
@@ -21,5 +20,8 @@
         public string? Image { get; set; }
         public string? PortfolioImage { get; set; } // تصویر نمونه کار 
         public string? PortfolioDescription { get; set; } // توضیحات نمونه کار 
+        public string? ProjectSkillJson { get; set; }
+        public string? ProjectHashtagJson { get; set; }
+
     }
 }

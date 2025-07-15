@@ -5,7 +5,8 @@ namespace Application.Services.Projects.Commands.AddProjects
     public class RequestAddProjectDto
     {
         public long ProjectCategoryId { get; set; }
-        public long ProjectSkillId { get; set; }
+        public string? ProjectSkillJson { get; set; }
+        public string? ProjectHashtagJson { get; set; }
         public required string Title { get; set; }
         public required string Description { get; set; }
         public long OwnerId { get; set; }
