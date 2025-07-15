@@ -345,7 +345,7 @@ export default function Home() {
             <h4 className="md:text-2xl text-lg font-black text-[#000]">
               فرتاک برترین پلتفرم ایران
             </h4>
-            <p className="md:text-lg text-sm font-medium text-[#000]">
+            <p className="md:text-lg text-sm font-medium text-[#000] text-justify">
               فرتاک خانه کارفرما هست . پروژه خود را به راحتی برون سپاری کنید و
               بهترین شکل فرتاک در این راه به شما کمک خواهد کرد.
             </p>
