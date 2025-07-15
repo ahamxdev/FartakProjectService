@@ -117,11 +117,19 @@ const OrderProgress = () => {
                   {data.tasks.map((task, index) => (
                     <li key={index}>
                       {task.isDone ? (
-                        <img src="/img/employer/checked.png" alt="Done" />
+                        <img
+                          className="inline"
+                          src="/img/employer/checked.png"
+                          alt="Done"
+                        />
                       ) : (
-                        <img src="/img/employer/unchecked.png" alt="Undone" />
+                        <img
+                          className="inline"
+                          src="/img/employer/unchecked.png"
+                          alt="Undone"
+                        />
                       )}{" "}
-                      {task.lable}
+                      <span>{task.lable}</span>
                     </li>
                   ))}
                 </ul>
@@ -153,11 +161,19 @@ const OrderProgress = () => {
                   {data.tasks.map((task, index) => (
                     <li key={index}>
                       {task.isDone ? (
-                        <img src="/img/employer/checked.png" alt="Done" />
+                        <img
+                          className="inline"
+                          src="/img/employer/checked.png"
+                          alt="Done"
+                        />
                       ) : (
-                        <img src="/img/employer/unchecked.png" alt="Undone" />
+                        <img
+                          className="inline"
+                          src="/img/employer/unchecked.png"
+                          alt="Undone"
+                        />
                       )}{" "}
-                      {task.lable}
+                      <span>{task.lable}</span>
                     </li>
                   ))}
                 </ul>

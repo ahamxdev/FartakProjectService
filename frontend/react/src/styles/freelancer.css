@@ -306,12 +306,15 @@
   font-size: 20px;
 }
 
-.done-task-title {
+.task-title {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
 }
 .order-id-task {
   padding: 20px;
+  margin-bottom: 20px;
 }
 .done-task-title {
   padding-bottom: 20px;
@@ -321,4 +324,31 @@
 .done-task-message {
   display: flex;
   flex-direction: column;
+}
+.order-id-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.order-id-form input[type="file"] {
+  display: none;
+}
+.order-id-form input[type="text"] {
+  width: 100px;
+  height: 40px;
+  padding: 20px 10px;
+  border: none;
+}
+.order-id-form label span {
+  display: inline-block;
+  background-color: #d9d9d9;
+  border-radius: 10px;
+  width: 300px;
+  height: 30px;
+}
+.order-id-form label {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }

@@ -40,7 +40,7 @@ function FreelancerLayout() {
   return (
     <>
       <Header />
-      <main className="container">
+      <main className="container mx-auto px-2.5">
         <div className="sidebar container-effects">
           <ul>
             {sideBarLinks.map((item, index) => (
