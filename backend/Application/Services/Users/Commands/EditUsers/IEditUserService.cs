@@ -7,5 +7,6 @@ namespace Application.Services.Users.Commands.EditUsers
         ResultDto Execute(RequestEditUserDto request);
         ResultDto<ResultEditForgetPasseordDto> ForgetPassword(RequestEditUserForgetPasswordDto request);
         ResultDto ChangePassword(RequestChangeUserPasswordDto request);
+        ResultDto OtpConfirm(RequestEditUserOtpConfirmDto request);
     }
 }

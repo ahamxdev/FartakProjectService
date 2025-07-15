@@ -19,7 +19,11 @@
     {
         public required string Mobile { get; set; }
     }
-
+    public class RequestEditUserOtpConfirmDto
+    {
+        public required string Mobile { get; set; }
+        public string? OtpCode { get; set; }
+    }
 
     public class RequestChangeUserPasswordDto
     {

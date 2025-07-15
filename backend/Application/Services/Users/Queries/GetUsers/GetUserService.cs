@@ -132,13 +132,13 @@ namespace Application.Services.Users.Queries.GetUsers
                 UserId = p.UserId,
                 PassWord = "",
                 Email = p.Email,
-                Verify = "",
+                Verify = p.Verify ,
                 Status = p.Status,
                 Mobile = p.Mobile,
                 Kind = p.Kind,
                 Lastname = p.Lastname,
                 Name = p.Name,
-                Salt = ""
+                Salt = "" 
 
             }).OrderBy(x => x.UserId).ToList();
             return new ResultGetUserDto()

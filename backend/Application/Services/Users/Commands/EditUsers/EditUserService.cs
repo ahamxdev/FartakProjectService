@@ -67,7 +67,48 @@ namespace Application.Services.Users.Commands.EditUsers
             }
 
         }
+        public ResultDto OtpConfirm(RequestEditUserOtpConfirmDto request)
+        {
+             var user = _context.Users.Where (p=>p.Mobile== request.Mobile ).FirstOrDefault();
 
+            if (user == null)
+            {
+                return new ResultDto
+                {
+                    IsSuccess = false,
+                    Message = "یافت نشد"
+                };
+            }
+
+
+            try
+            {
+                 user.Name ="";
+                user.Lastname = "";
+                user.Status = 1;
+                user.PassWord = "";
+                user.Salt = ""; 
+                user.Mobile =   request.Mobile ;
+                user.Email = "";
+                user.Kind = 1;
+                 _context.SaveChanges();
+
+                return new ResultDto()
+                {
+                    IsSuccess = true,
+                    Message = "ویرایش انجام شد"
+                };
+            }
+            catch
+            {
+                return new ResultDto()
+                {
+                    IsSuccess = false,
+                    Message = "ویرایش با خطا مواجه شد"
+                };
+            }
+
+        }
         public ResultDto ChangePassword(RequestChangeUserPasswordDto request)
         {
             var salt = Guid.NewGuid().ToString("N");
