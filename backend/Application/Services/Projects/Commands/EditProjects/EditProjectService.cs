@@ -93,7 +93,8 @@ namespace Application.Services.Projects.Commands.EditProjects
 
                 }
                 project.ProjectCategoryId = request.ProjectCategoryId;
-                project.ProjectSkillId = request.ProjectSkillId;
+                project.ProjectSkillJson = request.ProjectSkillJson;
+                project.ProjectHashtagJson = request.ProjectHashtagJson;
                 project.Description = request.Description;
                 project.Title = request.Title;
                 project.OwnerId = request.OwnerId;

@@ -10,9 +10,9 @@
     {
         public long ProjectCategoryId { get; set; }
     }
-    public class RequestGetProjectByProjectSkillIdDto
+    public class RequestGetProjectByProjectSkillJsonDto
     {
-        public long ProjectSkillId { get; set; }
+        public long ProjectSkillJson { get; set; }
     }
     public class RequestGetProjectByOwnerIdDto
     {
