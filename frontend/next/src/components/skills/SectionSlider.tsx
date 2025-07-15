@@ -74,7 +74,7 @@ const SectionSlider: React.FC<SectionSliderProps> = ({
                 />
               </svg>
             </span>
-            <h2 className="md:text-2xl text-base font-black">{title}</h2>
+            <h3 className="md:text-xl text-base font-black">{title}</h3>
           </div>
 
           <div

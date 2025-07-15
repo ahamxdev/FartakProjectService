@@ -12,6 +12,7 @@ import {
 	Slider,
 } from "@mui/material";
 
+
 const IconFilter = lazy(
 	() => import("@/icons/filterDropDown/IconFilter"),
 );

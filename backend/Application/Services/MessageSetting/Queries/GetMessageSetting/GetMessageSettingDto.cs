@@ -6,5 +6,6 @@
         //SMS
         public string? SMSApiKey { get; set; }
         public int ForgetPasswordTemplateId { get; set; }
+        public int SignupTemplateId { get; set; }
     }
 }
