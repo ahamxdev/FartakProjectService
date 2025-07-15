@@ -105,7 +105,7 @@ const MainForm = () => {
               />
             </motion.div>
           )}
-
+          {currentStep}
           {currentStep === 1 && (
             <motion.div
               key="step-1"
