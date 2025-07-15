@@ -98,7 +98,7 @@ const ProjectRegistration = () => {
             <h1 className="text-[#003566] font-bold text-lg md:text-xl lg:text-[32px]">
               در فرتاک حرفه‌ای‌ها پروژه شما را انجام می‌دهند!
             </h1>
-            <p className="font-normal leading-7 text-sm md:text-base lg:text-xl">
+            <p className="font-normal leading-7 text-sm md:text-base lg:text-xl text-justify">
               شرکت فرتاک * (آینده) با داشتن تجربه یک دهه فعالیت و با شعار ما
               رویای شما به واقعیت تبدیل میکنیم،  هم اکنون به عنوان مجموعه‌ای
               سرآمد جهت انجام ماموریت های سازمانی در پروژه های مختلف در راستای
@@ -117,7 +117,7 @@ const ProjectRegistration = () => {
         </div>
       </section>
 
-      <section className="flex flex-wrap justify-between gap-4 gap-y-16 w-[90%] mx-auto md:my-30 my-5">
+      <section className="flex flex-wrap justify-between gap-4 w-[90%] mx-auto md:my-30 my-5">
         <div
           className="flex items-center rounded-[20px] w-full md:w-auto px-4 py-6 gap-6"
           id="order-detail-box"
@@ -126,7 +126,7 @@ const ProjectRegistration = () => {
             <h4 className="md:text-xl text-sm font-bold text-[#000]">
               دسترسی به نمونه کار ها
             </h4>
-            <span className="md:text-base text-xs font-bold text-[#000]">
+            <span className="md:text-base text-center lg:text-justify text-xs font-bold text-[#000]">
               نگران هیچی نباش با فرتاک همیشه و همه جا آموزش ببین.
             </span>
             <Link
@@ -136,8 +136,8 @@ const ProjectRegistration = () => {
               مشاهده اطلاعات
             </Link>
           </div>
-          <div className="md:flex hidden flex-col gap-3">
-            <div className="relative -mt-26 lg:w-[126px] w-[60px] lg:h-[154px] h-[85px]">
+          <div className="flex flex-col gap-3">
+            <div className="relative lg:-mt-26 mt-0 w-[126px] h-[154px]">
               <Image
                 src={
                   "/projectRegistration/man and woman working at table with laptop.png"
@@ -164,7 +164,7 @@ const ProjectRegistration = () => {
             <h4 className="md:text-xl text-sm font-bold text-[#000]">
               مهارت بهتر فرتاک
             </h4>
-            <span className="md:text-base text-xs font-bold text-[#000]">
+            <span className="md:text-base text-xs text-center lg:text-justify font-bold text-[#000]">
               نگران هیچی نباش با فرتاک همیشه و همه جا آموزش ببین.
             </span>
             <Link
@@ -174,8 +174,8 @@ const ProjectRegistration = () => {
               مشاهده اطلاعات
             </Link>
           </div>
-          <div className="md:flex hidden flex-col gap-3">
-            <div className="relative -mt-26 lg:w-[126px] w-[60px] lg:h-[154px] h-[85px]">
+          <div className="flex flex-col gap-3">
+            <div className="relative lg:-mt-26 mt-0 w-[126px] h-[154px]">
               <Image
                 src={
                   "/projectRegistration/Woman in vr glasses looking at website pages.png"
@@ -202,7 +202,7 @@ const ProjectRegistration = () => {
             <h4 className="md:text-xl text-sm font-bold text-[#000]">
               مشاوره با مدیر های موفق فرتاک
             </h4>
-            <span className="md:text-base text-xs font-bold text-[#000]">
+            <span className="md:text-base text-xs text-center lg:text-justify font-bold text-[#000]">
               نگران هیچی نباش با فرتاک همیشه و همه جا آموزش ببین.
             </span>
             <Link
@@ -212,8 +212,8 @@ const ProjectRegistration = () => {
               مشاهده اطلاعات
             </Link>
           </div>
-          <div className="md:flex hidden flex-col gap-3">
-            <div className="relative -mt-26 lg:w-[126px] w-[60px] lg:h-[154px] h-[85px]">
+          <div className="flex flex-col gap-3">
+            <div className="relative lg:-mt-26 mt-0 w-[126px] h-[154px]">
               <Image
                 src={
                   "/projectRegistration/man and woman working at the table.png"
