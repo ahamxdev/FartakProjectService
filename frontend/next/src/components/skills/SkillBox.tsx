@@ -11,6 +11,8 @@ const SkillBox = ({
   src: string;
   id: number;
 }) => {
+  console.log(id);
+  
   return (
     <div
       id="skill-box"
