@@ -22,7 +22,7 @@ const CategoryHeader = ({ title }: { title: string }) => {
           </div>
         </div>
         <h1 className="font-bold relative z-10 md:text-4xl text-xl mt-[30%] sm:mt-[19%] md:mt-[35%] lg:mt-[20%] text-[#fff] flex justify-center items-end">
-          توسعه نرم افزار و آی تی
+          {title}
         </h1>
       </div>
     </>
