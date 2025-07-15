@@ -132,7 +132,11 @@ const FartakQuality = () => {
       </div>
 
       {/* First Course Slider */}
-      <SectionSlider title="دوره های آنلاین دهم" viewAllUrl="/category/all">
+      <SectionSlider
+        title="دوره های آنلاین دهم"
+        viewAllUrl="/category/all"
+        sliderPerview={4}
+      >
         {[...Array(10)].map((_, i) => (
           <SwiperSlide key={i} className="py-6">
             <div className="bg-[#EEF5FF] rounded-2xl shadow-md border border-gray-200 w-[250px] p-4 flex flex-col items-center text-right font-sans">
@@ -179,7 +183,11 @@ const FartakQuality = () => {
       </div>
 
       {/* Second Course Slider */}
-      <SectionSlider title="دوره های آنلاین دهم" viewAllUrl="/category/all">
+      <SectionSlider
+        sliderPerview={4}
+        title="دوره های آنلاین دهم"
+        viewAllUrl="/category/all"
+      >
         {[...Array(10)].map((_, i) => (
           <SwiperSlide key={i} className="py-6">
             <div className="bg-[#EEF5FF] rounded-2xl shadow-md border border-gray-200 w-[250px] p-4 flex flex-col items-center text-right font-sans">
@@ -237,7 +245,9 @@ const FartakQuality = () => {
             />
           </div>
           <div>
-            <label className="font-normal text-base text-black">شماره تلفن</label>
+            <label className="font-normal text-base text-black">
+              شماره تلفن
+            </label>
             <input
               type="tel"
               className="border-[2px] border-[#1E1E1E] rounded-lg py-2 px-4 mt-2"
@@ -245,7 +255,9 @@ const FartakQuality = () => {
             />
           </div>
           <div>
-            <label className="font-normal text-base text-black">شماره تلفن</label>
+            <label className="font-normal text-base text-black">
+              شماره تلفن
+            </label>
             <input
               type="tel"
               className="border-[2px] border-[#1E1E1E] rounded-lg py-2 px-4 mt-2"
