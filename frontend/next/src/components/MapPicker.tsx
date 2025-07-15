@@ -2,7 +2,7 @@
 
 import { MapContainer, TileLayer, Marker, useMapEvents } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
-import { LatLng, LatLngLiteral } from 'leaflet'
+import { LatLngLiteral } from 'leaflet'
 import { useEffect, useState } from 'react'
 import L from 'leaflet'
 
@@ -12,7 +12,7 @@ interface MapPickerProps {
 }
 
 // Fix marker icon path issue
-delete (L.Icon.Default.prototype as any)._getIconUrl
+delete (L.Icon.Default.prototype as unknown as { _getIconUrl: unknown })._getIconUrl
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.3/dist/images/marker-icon-2x.png',
   iconUrl: 'https://unpkg.com/leaflet@1.9.3/dist/images/marker-icon.png',
@@ -44,12 +44,11 @@ function CustomMarker({ position }: { position: LatLngLiteral }) {
     `,
     className: '',
     iconSize: [30, 30],
-    iconAnchor: [15, 30], // Aligns the pointed tip to the location
+    iconAnchor: [15, 30],
   })
 
   return <Marker position={position} icon={customIcon} />
 }
-
 
 function LocationMarker({
   onSelect,
@@ -76,48 +75,60 @@ export default function MapPicker({ onSelect, onClose }: MapPickerProps) {
   const [address, setAddress] = useState('')
   const [selectedLatLng, setSelectedLatLng] = useState<LatLngLiteral | null>(null)
 
-  // Reset state on mount (optional, in case modal reuses same component)
   useEffect(() => {
     setAddress('')
     setSelectedLatLng(null)
   }, [])
 
   useEffect(() => {
-  if (!selectedLatLng) return
+    if (!selectedLatLng) return
 
-  const fetchAddress = async () => {
-    try {
-      const res = await fetch(
-        `https://nominatim.openstreetmap.org/reverse?lat=${selectedLatLng.lat}&lon=${selectedLatLng.lng}&format=json`
-      )
-      const data = await res.json()
-      const { address } = data
+    const fetchAddress = async () => {
+      try {
+        const res = await fetch(
+          `https://nominatim.openstreetmap.org/reverse?lat=${selectedLatLng.lat}&lon=${selectedLatLng.lng}&format=json`
+        )
+        const data = await res.json()
+        const addressData = data.address as Partial<{
+          road: string
+          pedestrian: string
+          street: string
+          city: string
+          town: string
+          village: string
+          county: string
+          state: string
+        }>
 
-      const road = address.road || address.pedestrian || address.street || ''
-      const city =
-        address.city ||
-        address.town ||
-        address.village ||
-        address.county ||
-        address.state ||
-        ''
-      
-      const display = `${city} ${road}`.trim()
-      setAddress(display || 'آدرس پیدا نشد')
-    } catch (err) {
-      console.error(err)
-      setAddress('خطا در دریافت آدرس')
+        const road = addressData.road || addressData.pedestrian || addressData.street || ''
+        const city =
+          addressData.city ||
+          addressData.town ||
+          addressData.village ||
+          addressData.county ||
+          addressData.state ||
+          ''
+
+        const display = `${city} ${road}`.trim()
+        setAddress(display || 'آدرس پیدا نشد')
+      } catch (err) {
+        console.error(err)
+        setAddress('خطا در دریافت آدرس')
+      }
     }
-  }
 
-  fetchAddress()
-}, [selectedLatLng])
-
+    fetchAddress()
+  }, [selectedLatLng])
 
   return (
-   <div className="fixed inset-0 z-50 backdrop-blur-sm bg-black/30 flex items-center justify-center ">
-      <div className="bg-white p-12 rounded-lg w-[30%] h-[80%] relative flex flex-col items-center" >
-        <button onClick={onClose} className="absolute top-12 cursor-pointer right-12 text-black text-xl">✕</button>
+    <div className="fixed inset-0 z-50 backdrop-blur-sm bg-black/30 flex items-center justify-center">
+      <div className="bg-white p-12 rounded-lg w-[30%] h-[80%] relative flex flex-col items-center">
+        <button
+          onClick={onClose}
+          className="absolute top-12 cursor-pointer right-12 text-black text-xl"
+        >
+          ✕
+        </button>
         <h2 className="text-2xl font-bold mb-4">انتخاب از روی نقشه</h2>
         <input
           type="text"
@@ -127,7 +138,6 @@ export default function MapPicker({ onSelect, onClose }: MapPickerProps) {
           className="w-full p-2 mb-4 border rounded"
         />
 
-        {/* Map */}
         <MapContainer
           center={[35.6892, 51.3890]}
           zoom={13}
@@ -153,7 +163,7 @@ export default function MapPicker({ onSelect, onClose }: MapPickerProps) {
           }}
           className="mt-4 bg-[#1D40D7] text-white p-2 rounded-lg w-full"
         >
-          تایید 
+          تایید
         </button>
       </div>
     </div>

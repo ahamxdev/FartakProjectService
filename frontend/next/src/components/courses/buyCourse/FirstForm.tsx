@@ -8,7 +8,7 @@ import {
   useEffect,
   useState,
 } from "react";
-import { Divider, Radio } from "@mui/material";
+import { Divider } from "@mui/material";
 import { IFirstBuyCourseForm } from "@/types/zod";
 import {
   UseFormGetValues,
@@ -18,7 +18,6 @@ import {
 import IconSearch from "@/icons/IconSearch";
 import dynamic from "next/dynamic";
 import { LatLngLiteral } from "leaflet";
-import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
 
 // Lazy-load MapPicker to avoid SSR issues with Leaflet
@@ -60,7 +59,7 @@ const FirstForm = ({
   register: UseFormRegister<IFirstBuyCourseForm>;
   getValues: UseFormGetValues<IFirstBuyCourseForm>;
 }) => {
-  const router = useRouter();
+  
   const [region, setRegion] = useState<string>(getValues("region"));
   const [language, setLanguage] = useState<string>(getValues("language"));
   const [forWho, setForWho] = useState<string>(getValues("forWho"));
@@ -74,8 +73,7 @@ const FirstForm = ({
 
   const handleMapSelect = (latlng: LatLngLiteral) => {
     setSelectedLocation(latlng);
-    // setShowMap(false);
-    console.log("Selected Location:", latlng);
+    console.log("Selected Location:", selectedLocation);
   };
   const [firstName, setFirstName] = useState<string>(getValues("firstName"));
   const [lastName, setLastName] = useState<string>(getValues("lastName"));

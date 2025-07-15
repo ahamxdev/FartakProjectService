@@ -1,9 +1,9 @@
 'use client';
 
-import { lazy, useState } from "react"; // Import useRouter
-const Button = lazy(() => import("@/components/Button"));
+import { useState } from "react"; 
+
 import { useRouter } from "next/navigation";
-const IconArrow = lazy(() => import("@/icons/IconArrow"));
+
 
 type Day = {
   id: number;
@@ -77,11 +77,7 @@ const ThirdFormAfterVerified = () => {
     day: number;
     slot: string;
   } | null>(null);
-  const router = useRouter(); // Initialize useRouter
-
-  const handleConfirm = () => {
-    router.push('/fa/tadris/result'); // Redirect to the result page
-  };
+  const router = useRouter();
 
   return (
     <section className="w-full max-w-7xl mx-auto mt-8 px-4 lg:px-0" dir="rtl">
@@ -103,7 +99,6 @@ const ThirdFormAfterVerified = () => {
         </span>
       </div>
 
-      {/* Days */}
       <div className="overflow-x-auto mt-4">
         <div className="flex justify-between gap-4 rounded-xl py-6">
           {week.map((d, idx) => {

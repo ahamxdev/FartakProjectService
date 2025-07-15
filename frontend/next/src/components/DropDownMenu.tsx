@@ -19,6 +19,13 @@ const DropDownMenu = ({
 
     const handleItemHover = (item: string) => {
         setSelectedMainTitle(item);
+        // Automatically select the first submenu item if available
+        const subMenuItems = Object.keys(mainItems[item] || {});
+        if (subMenuItems.length > 0) {
+            setSelectedSubTitle(subMenuItems[0]);
+        } else {
+            setSelectedSubTitle("");
+        }
     };
 
     const handleSubItemHover = (item: string) => {

@@ -4,11 +4,11 @@ import { lazy, memo, useEffect, useState, useRef } from "react";
 import charcater from "../../../../public/buyCourse/character.svg";
 import Image from "next/image";
 import profile from "../../../../public/buyCourse/selectTeacherCardProfile.png";
-const IconFilter = lazy(() => import("@/icons/courses/IconFilter"));
+// const IconFilter = lazy(() => import("@/icons/courses/IconFilter"));
 const IconStar = lazy(() => import("@/icons/teacherCard/IconStar"));
 const List = lazy(() => import("@/components/List"));
 const Button = lazy(() => import("@/components/Button"));
-const page = () => {
+const Page = () => {
     const [isVerified, setIsVerified] = useState(false);
   const [pagination, setPagination] = useState(true);
   const [showModal, setShowModal] = useState(false);
@@ -22,6 +22,7 @@ const page = () => {
     if (typeof window !== "undefined") {
       setPagination(window.innerWidth > 640);
       setIsVerified(localStorage.getItem("verified") === "true");
+      console.log(isVerified)
     }
   }, []);
 
@@ -254,4 +255,4 @@ const page = () => {
 	);
 };
 
-export default memo(page);
+export default memo(Page);
