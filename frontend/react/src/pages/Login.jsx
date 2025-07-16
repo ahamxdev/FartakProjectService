@@ -175,7 +175,7 @@ function Login() {
     }
   };
   return (
-    <div className="w-[90%] mx-auto my-10 flex lg:flex-row flex-col-reverse lg:gap-30 gap-10">
+    <div className="w-[90%]  my-10 flex justify-center lg:flex-row flex-col-reverse lg:gap-30 gap-10">
       <div className="lg:w-[35%] w-full flex flex-col items-center gap-4">
         <span className="font-normal text-base text-black text-center">
           {loginMode === "login"
@@ -586,7 +586,7 @@ function Login() {
                   </button>
                 </>
               ) : (
-                registerStep == 2 && (
+                registerStep === 2 && (
                   <div className="lg:mt-16">
                     <h5>کد ارسال شده را وارد کنید .</h5>
                     <div
@@ -622,15 +622,19 @@ function Login() {
           )}
         </section>
       </div>
-      <div className="relative lg:w-[65%] w-[100%] lg:h-[820px] h-[400px]">
+      {loginUser === 1 ? (
         <img
-          src={`/images/${loginUser == 1 ? "Group 231" : "Group 23122"}.png`}
-          fill
-          sizes="(max-width: 768px) 100vw, auto"
-          className="w-full h-full"
+          src="/img/login1.png"
           alt="logo"
+          className="relative lg:w-[65%] w-[100%] lg:h-[820px] h-[400px]"
         />
-      </div>
+      ) : (
+        <img
+          src="/img/login1.png"
+          alt="logo"
+          className="relative lg:w-[65%] w-[100%] lg:h-[820px] h-[400px]"
+        />
+      )}
     </div>
   );
 }
