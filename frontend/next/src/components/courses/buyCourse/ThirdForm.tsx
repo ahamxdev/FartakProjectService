@@ -7,6 +7,7 @@ const IconFilter = lazy(() => import("@/icons/courses/IconFilter"));
 const IconStar = lazy(() => import("@/icons/teacherCard/IconStar"));
 const List = lazy(() => import("@/components/List"));
 const Button = lazy(() => import("@/components/Button"));
+import Swal from "sweetalert2";
 
 const ThirdForm = () => {
   const [isVerified, setIsVerified] = useState(false);
@@ -47,7 +48,7 @@ const ThirdForm = () => {
           console.log(data);
         });
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   };
 
@@ -64,7 +65,7 @@ const ThirdForm = () => {
       otpCode: otp,
     };
     try {
-      api("/api/Users/OtpSingup", "POST", handleConfirmOtpInfo)
+      api("/api/Users/OtpConfirm", "POST", handleConfirmOtpInfo)
         .then((res) => {
           if (res.status == 200) {
             setIsVerified(true);
@@ -73,13 +74,20 @@ const ThirdForm = () => {
             setOtp("");
             setOtpSent(false);
             return res.json();
+          } else {
+            Swal.fire({
+              icon: "error",
+              title: "ورود نا موفق",
+              text: "اطلاعات وارد شده نادرست است",
+              confirmButtonText: "امتحان دوباره",
+            });
           }
         })
         .then((data) => {
           console.log(data);
         });
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   };
 
