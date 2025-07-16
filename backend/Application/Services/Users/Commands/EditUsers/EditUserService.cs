@@ -69,7 +69,7 @@ namespace Application.Services.Users.Commands.EditUsers
         }
         public ResultDto OtpConfirm(RequestEditUserOtpConfirmDto request)
         {
-             var user = _context.Users.Where (p=>p.Mobile== request.Mobile ).FirstOrDefault();
+             var user = _context.Users.Where (p=> p.Mobile== request.Mobile ).FirstOrDefault();
 
             if (user == null)
             {
@@ -83,15 +83,10 @@ namespace Application.Services.Users.Commands.EditUsers
 
             try
             {
-                 user.Name ="";
-                user.Lastname = "";
-                user.Status = 1;
-                user.PassWord = "";
-                user.Salt = ""; 
-                user.Mobile =   request.Mobile ;
-                user.Email = "";
-                user.Kind = 1;
-                 _context.SaveChanges();
+                
+                user.Status = 1;                
+                user.Mobile =   request.Mobile ;              
+                _context.SaveChanges();
 
                 return new ResultDto()
                 {
