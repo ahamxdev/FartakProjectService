@@ -2,7 +2,7 @@ import Image from "next/image";
 import { lazy, memo, useEffect, useState, useRef } from "react";
 import profile from "../../../../public/buyCourse/selectTeacherCardProfile.png";
 import ThirdFormAfterVerified from "./ThirdFormAfterVerified";
-
+import { api } from "@/utils/api";
 const IconFilter = lazy(() => import("@/icons/courses/IconFilter"));
 const IconStar = lazy(() => import("@/icons/teacherCard/IconStar"));
 const List = lazy(() => import("@/components/List"));
@@ -21,7 +21,7 @@ const ThirdForm = () => {
   useEffect(() => {
     if (typeof window !== "undefined") {
       setPagination(window.innerWidth > 640);
-      setIsVerified(localStorage.getItem("verified") === "true");
+      // setIsVerified(localStorage.getItem("verified") === "true");
     }
   }, []);
 
@@ -30,8 +30,25 @@ const ThirdForm = () => {
       setError("شماره موبایل معتبر نیست.");
       return;
     }
+    const handleSendOtpInfo = {
+      mobile: phone,
+    };
     setError("");
-    setOtpSent(true);
+
+    try {
+      api("/api/Users/OtpSingup", "POST", handleSendOtpInfo)
+        .then((res) => {
+          if (res.status == 200) {
+            setOtpSent(true);
+            return res.json();
+          }
+        })
+        .then((data) => {
+          console.log(data);
+        });
+    } catch (error) {
+      console.log(error)
+    }
   };
 
   const handleVerifyOtp = () => {
@@ -39,12 +56,31 @@ const ThirdForm = () => {
       setError("کد تایید باید ۶ رقمی باشد.");
       return;
     }
-    localStorage.setItem("verified", "true");
-    setIsVerified(true);
-    setError("");
-    setShowModal(false);
-    setOtp("");
-    setOtpSent(false);
+    // localStorage.setItem("verified", "true");
+    // setIsVerified(true);
+
+    const handleConfirmOtpInfo = {
+      mobile: phone,
+      otpCode: otp,
+    };
+    try {
+      api("/api/Users/OtpSingup", "POST", handleConfirmOtpInfo)
+        .then((res) => {
+          if (res.status == 200) {
+            setIsVerified(true);
+            setError("");
+            setShowModal(false);
+            setOtp("");
+            setOtpSent(false);
+            return res.json();
+          }
+        })
+        .then((data) => {
+          console.log(data);
+        });
+    } catch (error) {
+      console.log(error)
+    }
   };
 
   if (isVerified) {
@@ -144,7 +180,10 @@ const ThirdForm = () => {
                             className="border rounded-lg w-10 h-10 text-center text-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                             value={otp[idx] || ""}
                             onChange={(e) => {
-                              const value = e.target.value.replace(/[^0-9]/g, "");
+                              const value = e.target.value.replace(
+                                /[^0-9]/g,
+                                ""
+                              );
                               if (!value) {
                                 const newOtp = otp.split("");
                                 newOtp[idx] = "";
