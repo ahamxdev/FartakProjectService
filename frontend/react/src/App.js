@@ -34,7 +34,7 @@ import HomeStudent from './panel-professor/HomeStudent';
 
 
 
-import PanelProffesor from './admin-panel/PanelProffesor'
+import PanelProffesor from './admin-panel/panelProfessor/PanelProffesor'
 
 
 
