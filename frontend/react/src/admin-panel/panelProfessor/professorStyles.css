@@ -21,28 +21,50 @@
   position: fixed;
   top: 90px;
   right: 50px;
-  overflow-y: auto;
+  overflow: hidden;
   background-color: #f4f4f4;
   height: 650px;
   z-index: 1000;
 }
 .main-content {
   margin-right: 350px;
+  flex-grow: 1;
+  height: 650px;
+  margin-top: 40px;
+  overflow: hidden;
 }
-.sideShadow{
-    box-shadow: -1px 1px 5px 0 rgba(0, 0, 0, 0.25);
+.sideShadow {
+  box-shadow: -1px 1px 5px 0 rgba(0, 0, 0, 0.25);
 }
-.profImg{
-    width: 80px;
-    height: 80px;
+.profImg {
+  width: 80px;
+  height: 80px;
 }
-.profInfo{
-    font-size: 12px;
-    color: #777777;
+.profInfo {
+  font-size: 12px;
+  color: #777777;
 }
-.infoBorder{
-    border-left: 1px solid rgba(119, 119, 119, 0.5);
+.infoBorder {
+  border-left: 1px solid rgba(119, 119, 119, 0.5);
 }
-.h-1{
-    height: 110px;
+.h-1 {
+  height: 110px;
+}
+.custom-link {
+  color: black;
+  text-decoration: none;
+}
+.active-link {
+  color: blue;
+}
+.pi-container {
+  height: 100%;
+  background-color: #f1f1f1;
+  border-radius: 16px;
+}
+.piProfileImg {
+  height: 200px;
+  width: 200px;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.1);
 }
