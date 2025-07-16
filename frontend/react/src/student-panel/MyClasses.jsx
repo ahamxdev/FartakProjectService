@@ -1,130 +1,249 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import Header from "./components/header";
+import Sidebar from "./components/sidebar";
 
-const BodyEmptyClass = ({ title, description, buttonText, checkboxes, buttonStyle }) => (
-  <div className="body--empty--classes">
-    <h2>{title}</h2>
-    <p dangerouslySetInnerHTML={{ __html: description }} />
-    {checkboxes ? (
-      <div className="body--empty--checkBox">
-        <input type="checkbox" id={`${title}-done`} />
-        <label htmlFor={`${title}-done`}>برگزار شد</label>
-        <input type="checkbox" id={`${title}-notdone`} />
-        <label htmlFor={`${title}-notdone`}>برگزار نشد</label>
-      </div>
-    ) : null}
-    {buttonText && <button style={buttonStyle}>{buttonText}</button>}
-  </div>
-);
+function MyClasses() {
+  const [onlineStatus, setOnlineStatus] = useState("done");
+  const [inpersonStatus, setInpersonStatus] = useState("done");
+  const [courseStatus, setCourseStatus] = useState("done");
 
-const ContainerTicket = () => {
   return (
-    <>
-      <header>
-        <div className="header--container ">
-          <div className="header__left">
-            <div className="header--dashobord">
-              <img src="./img/Link → logo.png" alt="logo" />
-              <p className="header__right--para"> |</p>
-              <img className="header__right--img" src="./img/img-person.jpg" alt="person" />
-              <div className="header--dashbord-p-home"></div>
-            </div>
+    <div className="d-flex flex-column" style={{ minHeight: "100vh" }}>
+      <Header />
+      <div className="d-flex flex-grow-1">
+        <Sidebar />
+        <main className="flex-grow-1 p-3">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-3">
+                <div className="card m-3 rounded-4 shadow h-100">
+                  <div className="card-body d-flex flex-column">
+                    <h5 className="card-title font-bold text-center">
+                      کلاس های خصوصی انلاین
+                    </h5>
+                    <p className="card-text text-center flex-grow-1">
+                      دروس تخصصی هنرستان رشته کامپیوتر جلسه 6 شنبه 1404/06/12 در
+                      نرم افزار Google Meet ساعت 10 صبح
+                    </p>
+                    <div className="d-flex align-items-center justify-content-center mb-3">
+                      <span className="me-2">برگزار:</span>
+                      <div className="d-flex gap-3">
+                        <div className="form-check">
+                          <input
+                            type="radio"
+                            className="form-check-input"
+                            name="onlineStatus"
+                            id="onlineDone"
+                            checked={onlineStatus === "done"}
+                            onChange={() => setOnlineStatus("done")}
+                          />
+                          <label
+                            className="form-check-label"
+                            htmlFor="onlineDone"
+                          >
+                            شده
+                          </label>
+                        </div>
+                        <div className="form-check">
+                          <input
+                            type="radio"
+                            className="form-check-input"
+                            name="onlineStatus"
+                            id="onlineNotDone"
+                            checked={onlineStatus === "notDone"}
+                            onChange={() => setOnlineStatus("notDone")}
+                          />
+                          <label
+                            className="form-check-label"
+                            htmlFor="onlineNotDone"
+                          >
+                            نشده
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                    <button className="btn btn-dark w-100 mt-auto">
+                      چت با استاد
+                    </button>
+                  </div>
+                </div>
+              </div>
 
-            <div className="search-container">
-              <input
-                type="text"
-                className="search-input-home"
-                placeholder="دنبال چه چیزی میگردید؟"
-              />
-              <img src="./img/search 01.svg" className="search-icon-home" alt="search icon" />
+              <div className="col-md-3">
+                <div className="card m-3 rounded-4 shadow h-100">
+                  <div className="card-body d-flex flex-column">
+                    <h5 className="card-title font-bold text-center">
+                      کلاس های خصوصی حضوری
+                    </h5>
+                    <p className="card-text text-center flex-grow-1">
+                      دروس تخصصی هنرستان رشته کامپیوتر جلسه 5 استان قزوین جمعه
+                      1404/06/11 در دفتر نمایندگی شرکت فرتاک ساعت 10 صبح
+                    </p>
+                    <div className="d-flex align-items-center justify-content-center mb-3">
+                      <span className="me-2">برگزار:</span>
+                      <div className="d-flex gap-3">
+                        <div className="form-check">
+                          <input
+                            type="radio"
+                            className="form-check-input"
+                            name="inpersonStatus"
+                            id="inpersonDone"
+                            checked={inpersonStatus === "done"}
+                            onChange={() => setInpersonStatus("done")}
+                          />
+                          <label
+                            className="form-check-label"
+                            htmlFor="inpersonDone"
+                          >
+                            شده
+                          </label>
+                        </div>
+                        <div className="form-check">
+                          <input
+                            type="radio"
+                            className="form-check-input"
+                            name="inpersonStatus"
+                            id="inpersonNotDone"
+                            checked={inpersonStatus === "notDone"}
+                            onChange={() => setInpersonStatus("notDone")}
+                          />
+                          <label
+                            className="form-check-label"
+                            htmlFor="inpersonNotDone"
+                          >
+                            نشده
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                    <button className="btn btn-dark w-100 mt-auto">
+                      چت با استاد
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-md-3">
+                <div className="card m-3 rounded-4 shadow h-100">
+                  <div className="card-body d-flex flex-column">
+                    <h5 className="card-title font-bold text-center">
+                      دوره های کنکوری
+                    </h5>
+                    <p className="card-text text-center flex-grow-1">
+                      دوره آماده سازی برای امتحانات پایان ترم کلاس 11 تجربی
+                    </p>
+                    <div className="d-flex align-items-center justify-content-center mb-3">
+                      <span className="me-2">برگزار:</span>
+                      <div className="d-flex gap-3">
+                        <div className="form-check">
+                          <input
+                            type="radio"
+                            className="form-check-input"
+                            name="courseStatus"
+                            id="courseDone"
+                            checked={courseStatus === "done"}
+                            onChange={() => setCourseStatus("done")}
+                          />
+                          <label
+                            className="form-check-label"
+                            htmlFor="courseDone"
+                          >
+                            شده
+                          </label>
+                        </div>
+                        <div className="form-check">
+                          <input
+                            type="radio"
+                            className="form-check-input"
+                            name="courseStatus"
+                            id="courseNotDone"
+                            checked={courseStatus === "notDone"}
+                            onChange={() => setCourseStatus("notDone")}
+                          />
+                          <label
+                            className="form-check-label"
+                            htmlFor="courseNotDone"
+                          >
+                            نشده
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                    <button className="btn btn-dark w-100 mt-auto">
+                      چت با استاد
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
-            <p className="header__right--para"> |</p>
-            <img className="header__left--img" src="../img/setting.svg" alt="setting" />
-            <p className="header__right--para"> |</p>
-            <img className="header__left--img" src="../img/notification 03.svg" alt="notification" />
-            <p className="header__right--para">|</p>
-            <img className="header__left--img" src="../img/out.svg" alt="logout" />
           </div>
-        </div>
-      </header>
+          <div className="row">
+            <div className="col-8 mx-auto">
+              <div
+                className="py-4"
+                dir="rtl"
+                lang="fa"
+                style={{ fontFamily: "Vazirmatn, sans-serif" }}
+              >
+                <h4 className="text-end fs-5 mt-4">
+                  کلاس ها و دوره های پایان یافته
+                </h4>
 
-      <div className="container-ticket">
-        <div className="sidebar-ticket">
-          <ul>
-          {[
-                             { icon: "../img/لوگو/کارفرما/بستن سایدبار.svg",  path: "/#" },
-                             { icon: "../img/لوگو/کارفرما/خانه.svg",  path: "/Home" },
-                             { icon: "../img/لوگو/پنل دانشجو/دوره های خریداری شده.svg",path: "/PurchasedCourses" },
-                             { icon: "../img/لوگو/پنل دانشجو/دوره های آنلاین.svg", path: "/OnlineCourses"},
-                             { icon: "../img/لوگو/پنل دانشجو/کلاس های من.svg", path: "/MyClasses" },
-                             { icon: "../img/لوگو/پنل دانشجو/مدریت درخواست ها.svg",  path: "/RequestManagement" },
-                             { icon: "../img/لوگو/پنل دانشجو/کیف پول.svg", path: "/Wallet" },
-                             { icon: "../img/لوگو/پنل دانشجو/کد تخفیف.svg",  path: "/DiscountCode" },
-                             { icon: "../img/لوگو/پنل دانشجو/تیکت پشتیبانی.svg",  path: "/SupportTicket"},
-                             { icon: "../img/لوگو/پنل دانشجو/سوالات متداول.svg", path: "/FAQ" },
-                         ].map((item, index) => (
-                           <li key={index}>
-                             <Link to={item.path} className="sidebar--order">
-                               <img src={item.icon} alt={item.label} />
-                               <span>{item.label}</span>
-                             </Link>
-                           </li>
-                         ))}
-          </ul>
+                <div className="table-responsive text-center">
+                  <table className="table table-sm text-end align-middle">
+                    <thead className="table-dark text-white small fw-semibold text-center">
+                      <tr>
+                        <th>نام دوره</th>
+                        <th>نام استاد</th>
+                        <th className="text-center">هزینه جلسه</th>
+                        <th
+                          style={{ padding: "0.6rem" }}
+                          className="text-center"
+                        >
+                          تاریخ برگزاری جلسه
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td style={{ padding: "1rem" }} className="text-center">
+                          کلاس طراحی uml{" "}
+                        </td>
+                        <td style={{ padding: "1rem" }} className="text-center">
+                          مهرداد طاهرخانی
+                        </td>
+                        <td style={{ padding: "1rem" }} className="text-center">
+                          100 هزار تومن{" "}
+                        </td>
+                        <td style={{ padding: "1rem" }} className="text-center">
+                          1404/04/25{" "}
+                        </td>
+                      </tr>
 
-          <div className="body--empty-asked">
-            <div className="body--empty--cls">
-              <BodyEmptyClass
-                title="کلاس خصوصی آنلاین"
-                description={`استان قزوین <br/>جمعه 1404/06/11<br/> دروس تخصصی هنرستان رشته <br/> کامپیوتر جلسه 5`}
-                buttonText="چت با استاد"
-                buttonStyle={{ marginTop: "80px" }}
-              />
-              <BodyEmptyClass
-                title="کلاس خصوصی حضوری"
-                description={`دروس تخصصی هنرستان رشته <br/>کامپیونر جلسه 5<br/>در دفتر نمایندگی شرکت فرتاک<br/>ساعت 10 صبح`}
-                checkboxes={true}
-                buttonText="ارسال"
-              />
-              <BodyEmptyClass
-                title="دوره های آنلاین"
-                description={`دوره آماده سازی امتخانات <br/> پایان ترم کلاس 11 تجربی`}
-                buttonText="چت با استاد"
-                buttonStyle={{ marginTop: "130px" }}
-              />
-            </div>
-
-            <p className="body__class--para">کلاس ها و دوره های پایان یافته:</p>
-
-            <div className="body__info--class">
-              <p style={{ marginRight: "65px" }}>تاریخ قسط</p>
-              <p>مبلغ قسط</p>
-              <p>بابت  دوره</p>
-              <p style={{ marginRight: "100px" }}>وضیعت</p>
-            </div>
-
-            <div className="body__information-money">
-              <p>کلاس طراحی uml</p>
-              <p>1200000</p>
-              <p>
-                دوره آمادگی برای <br /> امتحانات پایانی کلاس 11
-              </p>
-              <p style={{ color: "lawngreen" }}>پرداخت شد</p>
-            </div>
-            <hr className="body__money-dashed" />
-            <div className="body__information-money">
-              <p>ریاضیات گسسته</p>
-              <p>1200000</p>
-              <p>
-                دوره آمادگی برای <br /> امتحانات پایانی کلاس 11
-              </p>
-              <p style={{ color: "lawngreen" }}>پرداخت شد</p>
+                      <tr>
+                        <td style={{ padding: "1rem" }} className="text-center">
+                          کلاس ریاضیات گسسته{" "}
+                        </td>
+                        <td style={{ padding: "1rem" }} className="text-center">
+                          مهرداد طاهرخانی
+                        </td>
+                        <td style={{ padding: "1rem" }} className="text-center">
+                          2 میلیون تومان{" "}
+                        </td>
+                        <td style={{ padding: "1rem" }} className="text-center">
+                          1404/05/20{" "}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+        </main>
       </div>
-    </>
+    </div>
   );
-};
+}
 
-export default ContainerTicket;
+export default MyClasses;

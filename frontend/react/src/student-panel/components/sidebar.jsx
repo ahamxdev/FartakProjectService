@@ -49,7 +49,7 @@ const Sidebar = () => {
     {
       icon: "./img/لوگو/پنل دانشجو/سوالات متداول.svg",
       text: "سوالات متداول",
-      link: "/FAQ",
+      link: "/faq",
     },
   ];
 
