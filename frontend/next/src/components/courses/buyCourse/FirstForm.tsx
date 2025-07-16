@@ -61,6 +61,8 @@ const FirstForm = ({
 }) => {
   
   const [region, setRegion] = useState<string>(getValues("region"));
+  const [city, setCity] = useState<string>(getValues("city"));
+  const [address, setAddress] = useState<string>(getValues("address"));
   const [language, setLanguage] = useState<string>(getValues("language"));
   const [forWho, setForWho] = useState<string>(getValues("forWho"));
   const [countOfCustomers, setCountOfCustomers] = useState<number>(
@@ -118,7 +120,7 @@ const FirstForm = ({
               {/* 📍 Offline: Select City */}
               <div
                 className={`w-full h-[68px] border-2 ${
-                  region ? "" : "border-[#EA0017]"
+                  city ? "" : "border-[#EA0017]"
                 } rounded-[8px] grow flex items-center justify-between px-5`}
               >
                 <span className="md:text-[20px] lg:text-[24px] font-[700] shrink-0">
@@ -129,6 +131,8 @@ const FirstForm = ({
                     type="text"
                     className="border-2 rounded-[6px] pr-3 py-1.5 w-full"
                     placeholder="جستجو"
+                    name="city"
+                    onClick={() => setCity("city")}
                   />
                   <IconSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
                 </div>
@@ -167,7 +171,7 @@ const FirstForm = ({
               {/* 🏠 Offline: Address Input */}
               <div
                 className={`w-full h-[68px] border-2 ${
-                  region ? "" : "border-[#EA0017]"
+                  address ? "" : "border-[#EA0017]"
                 } rounded-[8px] grow flex items-center justify-between px-5`}
               >
                 <span className="md:text-[20px] lg:text-[24px] font-[700] shrink-0">
@@ -178,6 +182,8 @@ const FirstForm = ({
                     type="text"
                     className="border-2 rounded-[6px] pr-3 py-1.5 w-full"
                     placeholder="وارد کردن ادرس"
+                    name="address"
+                    onClick={() => setAddress("address")}
                   />
                 </div>
 
@@ -552,7 +558,7 @@ const FirstForm = ({
                     setEducationBreadCrumbs((prev) => [...prev, item]);
                   }}
                   className={`w-full ${
-                    formValid ? "" : "opacity-50 pointer-events-none"
+                    formValid || isOffline? "" : "opacity-50 pointer-events-none"
                   } p-4 cursor-pointer transition-colors duration-200 rounded-sm hover:bg-gray-200 flex justify-center items-center`}
                 >
                   {item}
@@ -578,7 +584,7 @@ const FirstForm = ({
                     setBussinesBreadCrumbs((prev) => [...prev, item]);
                   }}
                   className={`w-full ${
-                    formValid ? "" : "opacity-50 pointer-events-none"
+                    formValid|| isOffline ? "" : "opacity-50 pointer-events-none"
                   } p-4 cursor-pointer transition-colors duration-200 rounded-sm hover:bg-gray-200 flex justify-center items-center`}
                 >
                   <span className="min-w-40">{item}</span>
