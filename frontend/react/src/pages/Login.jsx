@@ -84,7 +84,7 @@ function Login() {
 
     api("/api/Users/OtpConfirm", "POST", verfiCodeInfo)
       .then((res) => {
-        if (res.status == 200) {
+        if (res.status === 200) {
           return res.json();
         } else {
           Swal.fire({
@@ -127,13 +127,13 @@ function Login() {
     try {
       api("/api/Auth/register", "POST", registerInfo)
         .then((res) => {
-          if (res.status == 200) {
+          if (res.status === 200) {
             setRegisterStep(2);
             api("/api/Users/OtpSingup", "POST", {
               mobile: formDataRegister.mobile,
             })
               .then((res) => {
-                if (res.status == 200) {
+                if (res.status === 200) {
                   return res.json();
                 }
               })
@@ -181,15 +181,15 @@ function Login() {
           {loginMode === "login"
             ? "وارد شوید"
             : loginMode === "register" &&
-              registerStep != 2 &&
+              registerStep !== 2 &&
               "ایجاد حساب کاربری"}
         </span>
-        {loginMode === "register" && registerStep != 2 && (
+        {loginMode === "register" && registerStep !== 2 && (
           <div className={`w-full bg-[#FFE401] rounded-[33px] py-5 px-4 flex`}>
             <button
               onClick={() => setLoginUser(5)}
               className={`w-1/2 ${
-                loginUser == 5 ? "bg-white" : "bg-transparent"
+                loginUser === 5 ? "bg-white" : "bg-transparent"
               }  flex justify-center items-center rounded-[9999px] py-2 border-none outline-none font-normal text-base text-black cursor-pointer`}
             >
               کارفرما
@@ -197,7 +197,7 @@ function Login() {
             <button
               onClick={() => setLoginUser(1)}
               className={`w-1/2 ${
-                loginUser == 1 ? "bg-white" : "bg-transparent"
+                loginUser === 1 ? "bg-white" : "bg-transparent"
               } flex justify-center items-center rounded-[9999px] py-2 border-none outline-none font-normal text-base text-black cursor-pointer`}
             >
               دانشجو
@@ -249,8 +249,8 @@ function Login() {
             </span>
           </Link>
         ) : (
-          (loginMode === "register" && loginUser == 1) ||
-          (loginUser == 5 && (
+          (loginMode === "register" && loginUser === 1) ||
+          (loginUser === 5 && (
             <Link
               href={"/"}
               className="bg-[#E9F1FF] w-full rounded-[9px] px-8 py-4 flex justify-between items-center"
@@ -285,7 +285,7 @@ function Login() {
             </Link>
           ))
         )}
-        {loginMode !== "register" && registerStep != 2 && (
+        {loginMode !== "register" && registerStep !== 2 && (
           <div className="w-[90%] mx-auto my-2 flex justify-between items-center gap-2">
             <span className="lg:w-[366px] lg:h-[13px] md:w-[230px] md:h-[9px] sm:w-[170px] sm:h-[7px] w-[80px] h-[5px]">
               <svg
@@ -410,7 +410,7 @@ function Login() {
               onSubmit={(e) => registerHandle(e)}
               className="flex flex-col gap-3"
             >
-              {registerStep == 1 ? (
+              {registerStep === 1 ? (
                 <>
                   <div className="flex flex-col gap-3 w-full">
                     <label className="font-normal text-base text-black">
