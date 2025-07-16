@@ -1,10 +1,4 @@
-import {
-  Routes,
-  Route,
-  createBrowserRouter,
-  RouterProvider,
-  Link,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Link } from "react-router-dom";
 import "./App.css";
 // Employer Dashboard
 import Chat from "./employe-panel/Chat";
@@ -35,20 +29,37 @@ import PanelEmployer from "./admin-panel/PanelEmployer";
 import PanelFreelancer from "./admin-panel/PanelFreelancer";
 import PanelProffesor from "./admin-panel/PanelProffesor";
 import RegisteringEmployerNotification from "./admin-panel/RegisteringEmployerNotification";
-import ResoumeProffesor from "./admin-panel/ResoumeProffesor";
 import StatusProject from "./admin-panel/StatusProject";
 import TaskProject from "./admin-panel/TaskProject";
+import ProfessorResoume from "./admin-panel/ProfessorResoume";
+import ProfessorInfo from "./admin-panel/ProfessorInfo";
+import Login from "./pages/Login";
+// import Login from "./pages/Login";
 
 const router = createBrowserRouter([
   {
     path: "/",
     Component: () => (
-      <>
-        <Link to="/employer">کارفرما</Link>{" "}
-        <Link to="/freelancer">فریلنسر</Link>
-        <Link to="/admin">ادمین</Link>
-      </>
+      <div className="flex justify-center pt-24 gap-20">
+        <Link className="text-blue-500 hover:text-blue-300" to="/employer">
+          کارفرما
+        </Link>{" "}
+        <Link className="text-blue-500 hover:text-blue-300" to="/freelancer">
+          فریلنسر
+        </Link>
+        <Link className="text-blue-500 hover:text-blue-300" to="/admin">
+          ادمین
+        </Link>
+        <Link className="text-blue-500 hover:text-blue-300" to="/login">
+          Login
+        </Link>
+      </div>
     ),
+  },
+  // { path: "/login", Component: Login },
+  {
+    path: "/login",
+    Component: Login,
   },
   { path: "/charts", Component: Charts },
   // Empoyer dashboard
@@ -92,7 +103,8 @@ const router = createBrowserRouter([
       { path: "freelancer", Component: PanelFreelancer },
       { path: "professors", Component: PanelProffesor },
       { path: "register-employer", Component: RegisteringEmployerNotification },
-      { path: "resoume-proffesor", Component: ResoumeProffesor },
+      { path: "professor-resoume", Component: ProfessorResoume },
+      { path: "professor-info", Component: ProfessorInfo },
       { path: "status-project", Component: StatusProject },
       { path: "task-project", Component: TaskProject },
     ],

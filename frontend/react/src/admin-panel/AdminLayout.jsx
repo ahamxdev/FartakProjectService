@@ -1,5 +1,5 @@
 import "../styles/admin.css";
-import { Link, Links, NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 
 const sideBarLinks = [
   {
@@ -47,8 +47,8 @@ const sideBarLinks = [
     label: "پنل اساتید",
     Links: [
       { label: "نمایش اساتید و سطح بندی", to: "professors" },
-      { label: "تایید روزمه استاد", to: "" },
-      { label: "تایید اطلاعات شخصی", to: "" },
+      { label: "تایید روزمه استاد", to: "professor-resoume" },
+      { label: "تایید اطلاعات شخصی", to: "professor-info" },
       { label: "مدریت راهنما های عملکردی", to: "" },
       { label: "آموزش های ضبط شده", to: "#" },
       { label: "کلاس های ضبط شده", to: "#" },
@@ -73,7 +73,7 @@ const sideBarLinks = [
 
 function AdminLayout() {
   return (
-    <main className="container mx-auto px-5 grid grid-cols-[auto_1fr] gap-7">
+    <main className="container mx-auto px-5 grid grid-cols-[auto_1fr] gap-7 mt-5">
       <aside className="w-[250px] h-[762px] container-effects overflow-y-scroll">
         <div className="flex items-center justify-start gap-2 border-b p-4 border-[#D1D4D7]">
           <img
@@ -120,7 +120,7 @@ function AdminLayout() {
           ))}
         </div>
       </aside>
-      <div>
+      <div className="overflow-y-scroll h-[762px] pl-2 pr-0.5 pb-5">
         <Outlet />
       </div>
     </main>

@@ -65,21 +65,35 @@ const ProfessorsTable = () => {
             <td>{professor.address}</td>
             <td>{professor.level}</td>
             <td className="flex gap-2">
-              <button className="text-sm py-1.5 px-2 text-black transition-colors duration-300 bg-[#2EBFA5] hover:bg-[#7de3d0]">
+              <button className="text-sm py-1.5 px-2 rounded-md text-black transition-colors duration-300 bg-[#2EBFA5] hover:bg-[#7de3d0]">
                 افزایش رتبه
               </button>
-              <button className="text-sm py-1.5 px-2 text-black transition-colors duration-300 bg-yellow-400 hover:bg-yellow-300">
+              <button className="text-sm py-1.5 px-2 rounded-md text-black transition-colors duration-300 bg-yellow-400 hover:bg-yellow-300">
                 کاهش رتبه
               </button>
             </td>
             <td>
-              <button className="text-sm py-1.5 px-2 text-white transition-colors duration-300 bg-red-500 hover:bg-red-400">
+              <button className="text-sm py-1.5 px-2 rounded-md text-white transition-colors duration-300 bg-red-500 hover:bg-red-400">
                 حذف استاد
               </button>
             </td>
           </tr>
         ))}
       </table>
+      <div className="flex justify-center gap-4 items-center">
+        <button className="border border-black rounded-md px-2 py-1 hover:bg-slate-200 bg-transparent text-black">
+          صفحه قبلی
+        </button>
+        <div className="flex gap-1">
+          <span className="p-1.5 rounded-full border border-black inline-block bg-gray-400"></span>
+          <span className="p-1.5 rounded-full border border-black inline-block"></span>
+          <span className="p-1.5 rounded-full border border-black inline-block"></span>
+          <span className="p-1.5 rounded-full border border-black inline-block"></span>
+        </div>
+        <button className="border border-black rounded-md px-2 py-1 hover:bg-slate-200 bg-transparent text-black">
+          صفحه بعدی
+        </button>
+      </div>
     </div>
   );
 };

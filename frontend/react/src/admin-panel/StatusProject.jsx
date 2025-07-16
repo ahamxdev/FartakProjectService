@@ -1,5 +1,4 @@
 import React from "react";
-import "../styles/home.css";
 import { Link } from "react-router-dom";
 
 const DashboardLayout = () => {
@@ -14,8 +13,6 @@ const DashboardLayout = () => {
           position: "relative",
         }}
       >
-        
-
         <div className="dashbord-admin-left-body-status">
           <div style={{ marginRight: "55rem", marginTop: "-2rem" }}>
             <button className="button-showPerson" type="button">

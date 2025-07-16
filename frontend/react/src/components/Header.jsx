@@ -1,6 +1,6 @@
 function Header() {
   return (
-    <header className=" header__left container-effects">
+    <header className=" header__left container-effects container mx-auto px-2.5">
       <div className="header--dashobord">
         <img src="/img/Link → logo.png" alt="" />
         <span className="header__right--para"></span>

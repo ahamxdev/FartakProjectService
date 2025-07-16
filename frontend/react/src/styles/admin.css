@@ -25,3 +25,28 @@
   background-color: #28303f;
   color: #fff;
 }
+
+/* Professor resoume */
+.accordion-sidebar .professor-resoume-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  opacity: 0;
+  padding: 0 1rem;
+}
+.accordion-sidebar input:checked ~ .professor-resoume-content {
+  max-height: 1400px;
+  opacity: 100%;
+  padding: 1rem;
+  border-top: 1px solid black;
+}
+.professor-resoume-content h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+.professor-resoume-content p {
+  font-size: 14px;
+  line-height: 2;
+  margin-bottom: 16px;
+}

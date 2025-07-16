@@ -1,4 +1,3 @@
-import "../styles/home.css";
 import "../styles/freelancer.css";
 import Header from "../components/Header";
 import { NavLink, Outlet } from "react-router-dom";
@@ -40,8 +39,8 @@ function FreelancerLayout() {
   return (
     <>
       <Header />
-      <main className="container mx-auto px-2.5">
-        <div className="sidebar container-effects">
+      <main className="container mx-auto px-2.5 gap-4 grid grid-cols-[auto_1fr] mt-5">
+        <aside className="sidebar container-effects w-[220px] h-[666px]">
           <ul>
             {sideBarLinks.map((item, index) => (
               <li key={index}>
@@ -52,7 +51,7 @@ function FreelancerLayout() {
               </li>
             ))}
           </ul>
-        </div>
+        </aside>
         <div className="outlet-container">
           <Outlet />
         </div>

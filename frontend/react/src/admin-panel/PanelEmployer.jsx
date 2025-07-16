@@ -1,5 +1,4 @@
 import React from "react";
-import "../styles/home.css";
 import { Link } from "react-router-dom";
 
 const DashboardLayout = () => {
@@ -14,8 +13,6 @@ const DashboardLayout = () => {
           position: "relative",
         }}
       >
-       
-
         <div className="dashbord-admin-left-container-newProject">
           <div className="dasbord-admin-left-paragraph-employe">
             <p>سفارش شماره 194</p>

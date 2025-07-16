@@ -9,11 +9,7 @@
 //   return res.json();
 // };
 
-export const api = async (
-  url: string,
-  method: string = "GET",
-  body?: unknown
-) => {
+export const api = async (url, method, body?) => {
   const res = await fetch(`https://api.fartakproject.ir${url}`, {
     method,
     headers: {
