@@ -82,7 +82,8 @@ const Auth = () => {
         }
       })
       .then((data) => {
-        localStorage.setItem("token", data.token);
+        // localStorage.setItem("token", data.token);
+        console.log(data);
         Swal.fire({
           icon: "success",
           title: "ورود موفق",
@@ -96,7 +97,7 @@ const Auth = () => {
 
   const handleVerifyCode = () => {
     const verfiCodeInfo = {
-      mobile: formDataRegister,
+      mobile: formDataRegister.mobile,
       otpCode: code.join(""),
     };
 
@@ -112,9 +113,14 @@ const Auth = () => {
             confirmButtonText: "امتحان دوباره",
           });
         }
+        console.log(res);
       })
       .then((data) => {
         console.log(data);
+        console.log(data.userId);
+        console.log(data.token[0]);
+        localStorage.setItem("userId", JSON.stringify(data?.userId));
+        localStorage.setItem("token", JSON.stringify(data?.token));
         Swal.fire({
           icon: "success",
           title: "ورود موفق",
@@ -125,7 +131,6 @@ const Auth = () => {
         });
       });
   };
-
 
   const registerHandle = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
