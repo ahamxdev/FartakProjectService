@@ -132,7 +132,7 @@ const FirstForm = ({
                     className="border-2 rounded-[6px] pr-3 py-1.5 w-full"
                     placeholder="جستجو"
                     name="city"
-                    onClick={() => setRegion("city")}
+                    onClick={() => setCity("city")}
                   />
                   <IconSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
                 </div>
@@ -171,7 +171,7 @@ const FirstForm = ({
               {/* 🏠 Offline: Address Input */}
               <div
                 className={`w-full h-[68px] border-2 ${
-                  region ? "" : "border-[#EA0017]"
+                  address ? "" : "border-[#EA0017]"
                 } rounded-[8px] grow flex items-center justify-between px-5`}
               >
                 <span className="md:text-[20px] lg:text-[24px] font-[700] shrink-0">
@@ -183,7 +183,7 @@ const FirstForm = ({
                     className="border-2 rounded-[6px] pr-3 py-1.5 w-full"
                     placeholder="وارد کردن ادرس"
                     name="address"
-                    onClick={() => setRegion("ddress")}
+                    onClick={() => setAddress("address")}
                   />
                 </div>
 
