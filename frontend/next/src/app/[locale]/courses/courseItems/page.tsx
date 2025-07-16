@@ -233,7 +233,7 @@ const FartakQuality = () => {
         <p className="text-black my-3 text-sm">
           اطلاعاتت‌رو وارد کن تا همین الان ویدیوهای نمونه تدریس رو ببینی!
         </p>
-        <div className="flex justify-between items-center flex-wrap gap-4">
+        <div className="flex  items-center  gap-4">
           <div>
             <label className="font-normal text-base text-black">
               نام و نام خانوادگی
