@@ -29,7 +29,7 @@ const SkillBox = ({
       </div>
       <h6 className="text-[#1D40D7] md:text-xl text-base font-bold">{title}</h6>
       <Link
-        href={"/projects/skills/ui"}
+        href={`/projects/skills/${id}-${title}`}
         className="rounded-lg bg-[#1d40d7] flex justify-center items-center w-full py-1 text-white text-sm font-normal"
       >
         مشاهده اطلاعات
