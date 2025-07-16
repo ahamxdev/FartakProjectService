@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from "react";
 import Header from "./components/header";
 import Sidebar from "./components/sidebar";
@@ -52,7 +53,7 @@ function DiscountCode() {
       <div className="d-flex flex-grow-1">
         <Sidebar />
         <main className="flex-grow-1 p-4">
-          <div className="">
+          <div className="container">
             <div className="row">
               <div className="col-12 d-flex gap-3 flex-wrap">
                 {labels.map((label) => (
@@ -78,12 +79,17 @@ function DiscountCode() {
                 ))}
               </div>
             </div>
+          </div>
+          <div className="container">
             <div className="row">
               {discountCards.map((card, index) => (
                 <div className="col-md-6 col-lg-6 mt-3" key={index}>
                   <div
-                    className="d-flex border rounded overflow-hidden h-100"
-                    style={{ fontFamily: "Arial, sans-serif" }}
+                    className="d-flex rounded overflow-hidden h-100"
+                    style={{
+                      fontFamily: "Arial, sans-serif",
+                      border: "1px dashed #ccc",
+                    }}
                   >
                     <div
                       className="d-flex align-items-center justify-content-center px-3"
