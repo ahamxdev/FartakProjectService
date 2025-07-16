@@ -4,7 +4,7 @@ const professors = [
     name: "امیرحسین بازیار",
     gender: "مرد",
     address: "قزوین",
-    level: "",
+    level: "5 ستازه",
   },
   {
     id: "45AE",
@@ -14,21 +14,21 @@ const professors = [
     level: "1 ستاره",
   },
   {
-    id: "",
+    id: "45AF",
     name: "امیرحسین رحمانی",
     gender: "مرد",
     address: "تاکستان",
     level: "1 ستاره",
   },
   {
-    id: "",
+    id: "45AG",
     name: "امیرحسین رحمانی",
     gender: "مرد",
     address: "تاکستان",
-    level: "vip",
+    level: "VIP",
   },
   {
-    id: "",
+    id: "45AH",
     name: "امیرحسین رحمانی",
     gender: "مرد",
     address: "تاکستان",
@@ -57,6 +57,28 @@ const ProfessorsTable = () => {
           <th>رتبه استاد</th>
           <th>حذف استاد</th>
         </tr>
+        {professors.map((professor, index) => (
+          <tr key={index}>
+            <td>{professor.id}</td>
+            <td>{professor.name}</td>
+            <td>{professor.gender}</td>
+            <td>{professor.address}</td>
+            <td>{professor.level}</td>
+            <td className="flex gap-2">
+              <button className="text-sm py-1.5 px-2 text-black transition-colors duration-300 bg-[#2EBFA5] hover:bg-[#7de3d0]">
+                افزایش رتبه
+              </button>
+              <button className="text-sm py-1.5 px-2 text-black transition-colors duration-300 bg-yellow-400 hover:bg-yellow-300">
+                کاهش رتبه
+              </button>
+            </td>
+            <td>
+              <button className="text-sm py-1.5 px-2 text-white transition-colors duration-300 bg-red-500 hover:bg-red-400">
+                حذف استاد
+              </button>
+            </td>
+          </tr>
+        ))}
       </table>
     </div>
   );
