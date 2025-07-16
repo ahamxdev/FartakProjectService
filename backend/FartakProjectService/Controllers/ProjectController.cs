@@ -12,7 +12,7 @@ namespace FartakProjectService.Controllers
 {
     /// <summary>
     /// این سرویس ، سرویس پروژه می باشد.
-    /// •	تمامی رویدادهای موجود در این سرویس قبل از اجرا به سرویس Project مراجعه و چک می کنند آیا درخواست توسط کاربر معتبر ارسال شده یا خیر
+    /// •	تمامی رویدادهای موجود در این سرویس قبل از اجرا به سرویس Project مراجعه و چک می کنند آیا درخواست توسط پروژه معتبر ارسال شده یا خیر
     /// </summary>
     [ApiController]
     [Route("api/Projects")]
@@ -43,7 +43,7 @@ namespace FartakProjectService.Controllers
             _getUserTokenService = getUserTokenService;
         }
         /// <summary>
-        /// اضافه کردن یک کاربر جدید
+        /// اضافه کردن یک پروژه جدید
         /// </summary>
         /// <response code="200">Success</response>
         /// <response code="400">Validation Error</response>
@@ -112,7 +112,7 @@ namespace FartakProjectService.Controllers
         }
 
         /// <summary>
-        /// حذف کاربر
+        /// حذف پروژه
         /// </summary>
         /// <response code="200">Success</response>
         /// <response code="400">Validation Error</response>
@@ -197,7 +197,7 @@ namespace FartakProjectService.Controllers
 
 
         /// <summary>
-        /// ویرایش کاربر
+        /// ویرایش پروژه
         /// </summary>
         /// <response code="200">Success</response>
         /// <response code="400">Validation Error</response>
