@@ -5,7 +5,7 @@ import Chat from "./employe-panel/Chat";
 import Notification from "./employe-panel/Notification";
 import ContactCEO from "./employe-panel/ContactCEO";
 import CreateOrder from "./employe-panel/CreateOrder";
-import Orders from "./employe-panel/Orders";
+// import Orders from "./employe-panel/Orders";
 import WorkRoom from "./employe-panel/WorkRoom";
 import EmployerLayout from "./employe-panel/EmployerLayout";
 import OrderExecutors from "./employe-panel/OrderExecutors";
@@ -39,14 +39,13 @@ import RecordedCourses from "./admin-panel/RecordedCourses";
 import CourseField from "./admin-panel/CourseField";
 import { loader as CourseFieldLoader } from "./admin-panel/CourseField";
 // Student dashboard
+import StudentLayout from "./student-panel/components/StudentLayout";
 import Wallet from "./student-panel/Wallet";
 import MyClasses from "./student-panel/MyClasses";
 import OnlineCourses from "./student-panel/OnlineCourses";
 import PurchasedCourses from "./student-panel/PurchasedCourses";
 import FAQ from "./student-panel/FAQ";
-import Money from "./student-panel/Money";
-import MainOstad from "./student-panel/mainOstad";
-import MoneyTwo from "./student-panel/money2";
+
 import DiscountCode from "./student-panel/DiscountCode";
 import RequestManagement from "./student-panel/RequestManagement";
 import SupportTicket from "./student-panel/SupportTicket";
@@ -90,7 +89,7 @@ const router = createBrowserRouter([
       { path: "chat", Component: Chat },
       { path: "notification", Component: Notification },
       { path: "work-room", Component: WorkRoom },
-      { path: "orders", Component: Orders },
+      // { path: "orders", Component: Orders },
       { path: "create-order", Component: CreateOrder },
       { path: "contact-ceo", Component: ContactCEO },
       { path: "executors", Component: OrderExecutors },
@@ -138,9 +137,12 @@ const router = createBrowserRouter([
       },
     ],
   },
+
+
   // Student dashboard
   {
     path: "/student",
+    Component: StudentLayout,
     children: [
       { path: "", Component: HomeStudent },
       { path: "wallet", Component: Wallet },
