@@ -58,7 +58,7 @@
   color: blue;
 }
 .pi-container {
-  height: 100%;
+  padding: 10px 20px 20px 20px;
   background-color: #f1f1f1;
   border-radius: 16px;
 }
@@ -82,7 +82,7 @@
 }
 .card {
   border-style: none;
-  margin: 20px auto;
+  margin: 20px;
   width: 90%;
   background: #eaf3fc;
   height: 150px;
@@ -93,4 +93,27 @@
 }
 .cardInfo {
   font-size: 14px;
+}
+
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #cc9a06 #f1f1f1;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 12px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #cc9a06;
+  border-radius: 10px;
+  border: 2px solid #f1f1f1;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #3083dc;
 }

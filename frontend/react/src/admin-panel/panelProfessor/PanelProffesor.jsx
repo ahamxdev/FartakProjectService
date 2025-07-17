@@ -34,7 +34,14 @@ export default function PanelProfessorBootstrap() {
             </div>
           </div>
           <div className="h-75 d-flex flex-column gap-2">
-            <NavLink to="" className="custom-link">رزومه</NavLink>
+            <NavLink
+              to=""
+              className={({ isActive }) =>
+                isActive ? "active-link" : "custom-link"
+              }
+            >
+              رزومه
+            </NavLink>
             <NavLink
               to="personalInformation"
               className={({ isActive }) =>

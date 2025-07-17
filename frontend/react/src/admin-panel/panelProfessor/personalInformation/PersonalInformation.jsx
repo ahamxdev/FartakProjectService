@@ -2,7 +2,7 @@ import profImg from '../../../assest/img/proffesorPanelImg/3542 1.svg'
 
 const personalInformation = () => {
   return (
-    <div className="pi-container mx-5 d-flex justify-between p-2">
+    <div className="pi-container mx-5 d-flex justify-between">
       <div className="w-75 d-flex flex-column gap-3 mt-3">
         <div>نام : محمد</div>
         <div>نام خانوادگی : ایمانی</div>

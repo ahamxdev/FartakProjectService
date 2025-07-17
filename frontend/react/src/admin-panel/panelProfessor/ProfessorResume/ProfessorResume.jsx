@@ -1,6 +1,16 @@
+import arrow from "../../../assest/img/proffesorPanelImg/Vector 458.svg";
+import {
+  cardData,
+  jobData,
+  skillsData,
+  personalInfo,
+  contactInfo,
+  aboutMeVideo,
+} from "./fakeData";
+
 const ProfessorResume = () => {
   return (
-    <div className="pr-container p-2 mx-5 overflow-y-scroll">
+    <div className="pr-container p-2 mx-5 overflow-y-scroll custom-scrollbar">
       <div className="spanStyle py-3">درباره من</div>
       <div className="p-3 textStyle">
         لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
@@ -20,56 +30,61 @@ const ProfessorResume = () => {
         style={{ maxWidth: "800px" }}
       >
         <div className="d-flex flex-column gap-3">
-          <span>نام : محمد</span>
-          <span>نام خانوادگی : ایمانی</span>
-          <span>مرتبه علمی : دانشجو</span>
-          <span>رشته تخصصی : کامپیوتر</span>
-          <span>گرایش تخصصی : مهندسی حرفه ای نرم افزار</span>
+          {personalInfo.map((item, index) => (
+            <span key={index}>
+              {item.label} : {item.value}
+            </span>
+          ))}
         </div>
+
         <div className="d-flex flex-column gap-3">
-          <div>دانشگاه : دانشگاه آزاد واحد قزوین (باراجین)</div>
-          <div>ایمیل شخصی : jack@gmail.com</div>
-          <div>ایمیل دانشگاه : azad@azad.com</div>
-          <div>تلفن شخصی : 09045351612</div>
-          <div>لینک مقاله در گوگل اسکولار : google.com</div>
+          {contactInfo.map((item, index) => (
+            <span key={index}>
+              {item.label} : {item.value}
+            </span>
+          ))}
         </div>
       </div>
       <div className="spanStyle py-3">سوابق تحصیلی</div>
-      <div className="card">
-        <div className="cardSpan p-2 m-1">
-          کارشناسی ناپیوسته مهندسی حرفه ای نرم افزار
-        </div>
-        <div className="cardInfo p-2 d-flex justify-content-between flex-wrap m-1 gap-4">
-          <div className="w-25">دانشگاه : دانشگاه آزاد واحد باراجین</div>
-          <div className="w-50">
-            محل : ایران ، استان قزوین ، دانشگاه آزاد اسلامی واحد قزوین
+      {cardData.map((item) => (
+        <div className="card" key={item.id}>
+          <div className="cardSpan p-2 m-1">{item.title}</div>
+          <div className="cardInfo p-2 d-flex justify-content-between flex-wrap m-1 gap-4">
+            <div className="w-25">دانشگاه : {item.university}</div>
+            <div className="w-50">محل : {item.location}</div>
+            <div className="w-25">مدت : {item.duration}</div>
           </div>
-          <div className="w-25">مدت : از سال 1401 تا کنون</div>
         </div>
+      ))}
+      <div className="spanStyle py-3">مسلط به دروس و زبان های</div>
+      <div className="d-flex flex-wrap gap-2 mt-4" style={{ fontSize: "15px" }}>
+        {skillsData.map((item, index) => (
+          <span
+            key={index}
+            className={`rounded-pill ${item.bg} border ${item.border} text-dark px-3 py-2`}
+          >
+            {item.text}
+          </span>
+        ))}
       </div>
-      <div className="card">
-        <div className="cardSpan p-2 m-1">
-          کارشناسی ناپیوسته مهندسی حرفه ای نرم افزار
+      <div className="spanStyle py-3 mt-3">سوابق کاری</div>
+      {jobData.map((text, index) => (
+        <div key={index} className="mt-3 d-flex gap-3 align-items-center px-3">
+          <img src={arrow} alt="" />
+          <span>{text}</span>
         </div>
-        <div className="cardInfo p-2 d-flex justify-content-between flex-wrap m-1 gap-4">
-          <div className="w-25">دانشگاه : دانشگاه آزاد واحد باراجین</div>
-          <div className="w-50">
-            محل : ایران ، استان قزوین ، دانشگاه آزاد اسلامی واحد قزوین
+      ))}
+      <div className="spanStyle py-3 mt-3">بارگذاری ویدیو معرفی</div>
+      <div className="d-flex flex-column gap-3 mt-4 px-3">
+        {aboutMeVideo.map((item, index) => (
+          <div key={index}>
+            <span>{item.label}:</span>{" "}
+            <span style={{ fontSize: "14px" }}>
+              {item.value || <em>وارد نشده</em>}
+            </span>
           </div>
-          <div className="w-25">مدت : از سال 1401 تا کنون</div>
-        </div>
-      </div>
-      <div className="card">
-        <div className="cardSpan p-2 m-1">
-          کارشناسی ناپیوسته مهندسی حرفه ای نرم افزار
-        </div>
-        <div className="cardInfo p-2 d-flex justify-content-between flex-wrap m-1 gap-4">
-          <div className="w-25">دانشگاه : دانشگاه آزاد واحد باراجین</div>
-          <div className="w-50">
-            محل : ایران ، استان قزوین ، دانشگاه آزاد اسلامی واحد قزوین
-          </div>
-          <div className="w-25">مدت : از سال 1401 تا کنون</div>
-        </div>
+        ))}
+        <video className="border w-75 mt-3" controls></video>
       </div>
     </div>
   );
