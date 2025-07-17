@@ -183,10 +183,10 @@ const CreateOrder = () => {
             <div className="create-order-payment">
               {payments.map((payment, index) => (
                 <label key={index} htmlFor={payment.value}>
-                  <span>
-                    <img src={payment.img} alt="Payment method" />{" "}
-                    {payment.title}
-                  </span>
+                  <div className="flex gap-2">
+                    <img src={payment.img} alt="Payment method" />
+                    <span>{payment.title}</span>
+                  </div>
                   <input type="radio" name="payment" id={payment.value} />
                 </label>
               ))}

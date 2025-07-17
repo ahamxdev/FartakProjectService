@@ -82,6 +82,7 @@ const fields = [
     path: "industry-engineering",
   },
 ];
+
 function RecordedCourses() {
   return (
     <>
