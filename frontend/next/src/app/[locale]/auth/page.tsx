@@ -82,7 +82,8 @@ const Auth = () => {
         }
       })
       .then((data) => {
-        // localStorage.setItem("token", data.token);
+        localStorage.setItem("token", data?.token);
+        localStorage.setItem("userId", data?.userId);
         console.log(data);
         Swal.fire({
           icon: "success",
