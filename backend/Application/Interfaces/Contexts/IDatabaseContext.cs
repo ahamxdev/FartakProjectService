@@ -38,6 +38,7 @@ namespace Application.Interfaces.Contexts
         DbSet<Payment> Payments { get; set; }
         DbSet<ZarinpalSetting> ZarinpalSettings { get; set; }
         DbSet<TeacherType> TeacherTypes { get; set; }
+        DbSet<ProjectHashtag> ProjectHashtags { get; set; }
         DbSet<PaymentUse> PaymentUses { get; set; }
         DbSet<ProjectFile> ProjectFiles { get; set; }
         DbSet<ProjectPhase> ProjectPhases { get; set; }

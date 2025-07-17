@@ -15,6 +15,7 @@ const IconSearch = lazy(() => import("@/icons/IconSearch"));
 const IconThemeToggle = lazy(() => import("@/icons/IconThemeToggle"));
 const IconShoppingBag = lazy(() => import("@/icons/IconShoppingBag"));
 const IconBurgerMenu = lazy(() => import("@/icons/IconBurgerMenu"));
+const IconNotification = lazy(() => import("@/icons/IconNotification"));
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -44,7 +45,6 @@ const Header = () => {
   }, [width]);
 
   const isAuthPage = path.includes("/auth");
-  
 
   return (
     <>
@@ -85,6 +85,7 @@ const Header = () => {
                     <IconSearch />
                     <IconThemeToggle />
                     <IconShoppingBag />
+                    <IconNotification />
                   </div>
                   <Button
                     color="#1d40d7"

@@ -40,7 +40,7 @@ public class AuthController : ControllerBase
     /// </summary>
     /// <returns></returns>
     [HttpPost("login")]
-    public async Task<ActionResult> Login([FromBody] RequestGetUserByEmailPasswordDto userByMobilePasswordDto)
+    public async Task<ActionResult> Login([FromBody] RequestGetUserByMobilePasswordDto userByMobilePasswordDto)
     {
         if (!ModelState.IsValid)
         {

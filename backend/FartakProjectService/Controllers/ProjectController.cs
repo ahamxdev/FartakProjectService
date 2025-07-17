@@ -275,7 +275,6 @@ namespace FartakProjectService.Controllers
         }
 
 
-
         /// <summary>
         /// دریافت لیست پروژه
         /// </summary>
@@ -293,6 +292,49 @@ namespace FartakProjectService.Controllers
             {
 
                 var result = _getProjectService.GetAll();
+                return Json(result);
+            }
+            catch (Exception e)
+            {
+                var st = new StackTrace(e, true);
+                var frame = st.GetFrame(0);
+                var line = 0;
+                if (frame != null)
+                {
+                    line = frame.GetFileLineNumber();
+                    // Proceed with line
+                }
+
+                return StatusCode(500, new
+                {
+                    value = new ErrorDto
+                    {
+                        IsSuccess = false,
+                        Message = "Server Error : LIne Number=" + line + " *** Message= " + e.Message,
+                        Service = "Project",
+                        ResponseCode = 500,
+                    }
+                });
+            }
+        }
+
+        /// <summary>
+        /// دریافت لیست Portfolio
+        /// </summary>
+        /// <response code="200">Success</response>
+        /// <response code="403">Not Authorized - Value Content:</response>
+        /// <response code="500">Server Error - Value Content:</response>
+        [ProducesResponseType(typeof(ResultGetProjectDto), 200)]
+        [ProducesResponseType(typeof(ErrorDto), 403)]
+        [ProducesResponseType(typeof(ErrorDto), 500)]
+        [HttpPost]
+        [Route("GetAllPortfolio")]
+        public ActionResult GetAllPortfolio()
+        {
+            try
+            {
+
+                var result = _getProjectService.GetAllPortfolio();
                 return Json(result);
             }
             catch (Exception e)
@@ -423,13 +465,13 @@ namespace FartakProjectService.Controllers
         [ProducesResponseType(typeof(ErrorDto), 500)]
         [HttpPost]
         [Route("GetByProjectTypeId")]
-        public ActionResult GetByProjectTypeId(RequestGetProjectByProjectTypeIdDto dto)
+        public ActionResult GetByProjectTypeId(RequestGetProjectByProjectCategoryIdDto dto)
         {
             try
             {
 
 
-                var result = _getProjectService.GetByProjectTypeId(dto);
+                var result = _getProjectService.GetByProjectCategoryId(dto);
 
                 return Json(result);
             }

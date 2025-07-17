@@ -38,7 +38,19 @@ import ProfessorHelp from "./admin-panel/ProfessorHelp";
 import RecordedCourses from "./admin-panel/RecordedCourses";
 import CourseField from "./admin-panel/CourseField";
 import { loader as CourseFieldLoader } from "./admin-panel/CourseField";
-// import Login from "./pages/Login";
+// Student dashboard
+import Wallet from "./student-panel/Wallet";
+import MyClasses from "./student-panel/MyClasses";
+import OnlineCourses from "./student-panel/OnlineCourses";
+import PurchasedCourses from "./student-panel/PurchasedCourses";
+import FAQ from "./student-panel/FAQ";
+import Money from "./student-panel/Money";
+import MainOstad from "./student-panel/mainOstad";
+import MoneyTwo from "./student-panel/money2";
+import DiscountCode from "./student-panel/DiscountCode";
+import RequestManagement from "./student-panel/RequestManagement";
+import SupportTicket from "./student-panel/SupportTicket";
+import HomeStudent from "./student-panel/HomeStudent";
 
 const router = createBrowserRouter([
   {
@@ -56,6 +68,9 @@ const router = createBrowserRouter([
         </Link>
         <Link className="text-blue-500 hover:text-blue-300" to="/login">
           Login
+        </Link>
+        <Link className="text-blue-500 hover:text-blue-300" to="/student">
+          دانشجو
         </Link>
       </div>
     ),
@@ -121,6 +136,21 @@ const router = createBrowserRouter([
           { path: ":field", Component: CourseField, loader: CourseFieldLoader },
         ],
       },
+    ],
+  },
+  // Student dashboard
+  {
+    path: "/student",
+    children: [
+      { path: "", Component: HomeStudent },
+      { path: "wallet", Component: Wallet },
+      { path: "request-management", Component: RequestManagement },
+      { path: "my-classes", Component: MyClasses },
+      { path: "online-courses", Component: OnlineCourses },
+      { path: "purchased-courses", Component: PurchasedCourses },
+      { path: "faq", Component: FAQ },
+      { path: "support-ticket", Component: SupportTicket },
+      { path: "discount-code", Component: DiscountCode },
     ],
   },
 ]);

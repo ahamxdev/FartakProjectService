@@ -26,6 +26,7 @@ namespace Application.Services.MessageSetting.Commands.EditMessageSetting
             {
                 MessageSetting.SMSApiKey = request.SMSApiKey;
                 MessageSetting.ForgetPasswordTemplateId = request.ForgetPasswordTemplateId;
+                MessageSetting.SignupTemplateId = request.SignupTemplateId;
                 _context.SaveChanges();
 
                 return new ResultDto()

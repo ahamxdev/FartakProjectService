@@ -1,12 +1,40 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 // import Header from '@/components/modules/Header'
 import Image from "next/image";
+// import { api } from "@/utils/api";
+import SubMenu from "@/components/skills/SubMenu";
+import { UseCategory } from "@/contexts/CategoryContext";
 // import InputCheckbox from "@/components/InputCheckbox";
 // import InputCheckbox from "@/components/skills/InputCheckbox";
 
 const OrderProject = () => {
   const inputRef = useRef<HTMLInputElement | null>(null);
+  const {category} = UseCategory()
+  // const [category, setCategory] = useState<[]>([]);
+  const [projectSkillId, setProjectSkillId] = useState<number>(0);
+  const [projectSkillTitle, setProjectSkillTitle] = useState<string>(
+    "دسته‌بندی پروژه خود را انتخاب کنید"
+  );
+  const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const [projectMode, setProjectMode] = useState<string | null>(null);
+
+  console.log(projectSkillId);
+
+  const [isSubMenuOpen, setIsSubMenuOpen] = useState<boolean>(false);
+
+  // useEffect(() => {
+  //   api("/api/ProjectCategories/GetAllParent", "POST")
+  //     .then((res) => {
+  //       if (res.status == 200) {
+  //         return res.json();
+  //       }
+  //     })
+  //     .then((data) => {
+  //       console.log(data);
+  //       setCategory(data.projectCategories);
+  //     });
+  // }, []);
 
   return (
     <>
@@ -48,11 +76,12 @@ const OrderProject = () => {
             <label className="text-[##00060F] text-sm font-normal" htmlFor="">
               سرویس مورد نظر خود را انتخاب کنید .
             </label>
-            <div className="flex items-center gap-4 w-full">
+            <div className="flex items-center relative gap-4 w-full">
               <button
+                onClick={() => setIsSubMenuOpen((prev) => !prev)}
                 className={`rounded-lg border-[2px] border-[#DC3545] w-full px-3 py-2 flex justify-between items-center text-base bg-[#fff] font-normal cursor-pointer text-[#00000080]`}
               >
-                دسته بندی
+                {projectSkillTitle}
                 <svg
                   width="12"
                   height="7"
@@ -69,6 +98,13 @@ const OrderProject = () => {
                   />
                 </svg>
               </button>
+              <SubMenu
+                isSubMenuOpen={isSubMenuOpen}
+                items={category || []}
+                setProjectSkillId={setProjectSkillId}
+                setIsSubMenuOpen={setIsSubMenuOpen}
+                setProjectSkillTitle={setProjectSkillTitle}
+              />
             </div>
           </div>
           <div className="flex flex-col gap-4 md:w-[50%] w-full">
@@ -203,9 +239,12 @@ const OrderProject = () => {
                   <input
                     type="checkbox"
                     className="peer w-4 h-4 md:w-6 md:h-6 border-2 border-[#495AFF] rounded-md appearance-none bg-white checked:bg-[#495AFF] checked:border-[#495AFF]"
+                    checked={selectedOption === "price"}
+                    onChange={() => setSelectedOption("price")}
+                    id="price"
                   />
                   <svg
-                    className="absolute top-1/2 left-1/2 w-3 h-3 md:w-4 md:h-4 text-white transform -translate-x-1/2 -translate-y-1/2 opacity-0 peer-checked:opacity-100 pointer-events-none"
+                    className="absolute top-1/3 left-1/2 w-3 h-3 md:w-4 md:h-4 text-white transform -translate-x-1/2 -translate-y-1/2 opacity-0 peer-checked:opacity-100 pointer-events-none"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -216,7 +255,7 @@ const OrderProject = () => {
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
                 </label>
-                <label className="text-base font-extrabold pb-1.5 text-[#000]">
+                <label htmlFor="price" className="text-base font-extrabold pb-1.5 text-[#000]">
                   برای من <span className="text-[#495AFF]">قیمت</span> بالاترین
                   درجه اهمیت را دارد
                 </label>
@@ -230,9 +269,12 @@ const OrderProject = () => {
                   <input
                     type="checkbox"
                     className="peer w-4 h-4 md:w-6 md:h-6 border-2 border-[#495AFF] rounded-md appearance-none bg-white checked:bg-[#495AFF] checked:border-[#495AFF]"
+                    checked={selectedOption === "quality"}
+                    onChange={() => setSelectedOption("quality")}
+                    id="quality"
                   />
                   <svg
-                    className="absolute top-1/2 left-1/2 w-3 h-3 md:w-4 md:h-4 text-white transform -translate-x-1/2 -translate-y-1/2 opacity-0 peer-checked:opacity-100 pointer-events-none"
+                    className="absolute top-1/3 left-1/2 w-3 h-3 md:w-4 md:h-4 text-white transform -translate-x-1/2 -translate-y-1/2 opacity-0 peer-checked:opacity-100 pointer-events-none"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -243,7 +285,7 @@ const OrderProject = () => {
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
                 </label>
-                <label className="text-base font-extrabold pb-1.5 text-[#000]">
+                <label htmlFor="quality" className="text-base font-extrabold pb-1.5 text-[#000]">
                   برای من <span className="text-[#495aff]">کیفیت</span> بالاترین
                   درجه اهمیت را دارد
                 </label>
@@ -257,9 +299,12 @@ const OrderProject = () => {
                   <input
                     type="checkbox"
                     className="peer w-4 h-4 md:w-6 md:h-6 border-2 border-[#495AFF] rounded-md appearance-none bg-white checked:bg-[#495AFF] checked:border-[#495AFF]"
+                    checked={selectedOption === "both"}
+                    onChange={() => setSelectedOption("both")}
+                    id="both"
                   />
                   <svg
-                    className="absolute top-1/2 left-1/2 w-3 h-3 md:w-4 md:h-4 text-white transform -translate-x-1/2 -translate-y-1/2 opacity-0 peer-checked:opacity-100 pointer-events-none"
+                    className="absolute top-1/3 left-1/2 w-3 h-3 md:w-4 md:h-4 text-white transform -translate-x-1/2 -translate-y-1/2 opacity-0 peer-checked:opacity-100 pointer-events-none"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -270,7 +315,7 @@ const OrderProject = () => {
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
                 </label>
-                <label className="text-base font-extrabold pb-1.5 text-[#000]">
+                <label htmlFor="both" className="text-base font-extrabold pb-1.5 text-[#000]">
                   برای من ترکیبی از{" "}
                   <span className="text-[#495aff]">کیفیت</span> و{" "}
                   <span className="text-[#495aff]">قیمت</span> اهمیت را دارد
@@ -308,9 +353,12 @@ const OrderProject = () => {
                   <input
                     type="checkbox"
                     className="peer w-4 h-4 md:w-6 md:h-6 border-2 border-[#495AFF] rounded-md appearance-none bg-white checked:bg-[#495AFF] checked:border-[#495AFF]"
+                    checked={projectMode === "simple"}
+                    onChange={() => setProjectMode("simple")}
+                    id="simple"
                   />
                   <svg
-                    className="absolute top-1/2 left-1/2 w-3 h-3 md:w-4 md:h-4 text-white transform -translate-x-1/2 -translate-y-1/2 opacity-0 peer-checked:opacity-100 pointer-events-none"
+                    className="absolute top-1/3 left-1/2 w-3 h-3 md:w-4 md:h-4 text-white transform -translate-x-1/2 -translate-y-1/2 opacity-0 peer-checked:opacity-100 pointer-events-none"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -322,9 +370,9 @@ const OrderProject = () => {
                   </svg>
                 </label>
                 <div className="flex flex-col items-center gap-3">
-                  <span className="md:text-xl text-base font-bold text-[#1d40d7]">
+                  <label htmlFor="simple" className="md:text-xl text-base font-bold text-[#1d40d7]">
                     پروژه ساده
-                  </span>
+                  </label>
                   <span className="md:text-base text-sm font-bold text-[#000]">
                     5,000,000 تا 30,000,000 میلیون تومان
                   </span>
@@ -339,9 +387,12 @@ const OrderProject = () => {
                   <input
                     type="checkbox"
                     className="peer w-4 h-4 md:w-6 md:h-6 border-2 border-[#495AFF] rounded-md appearance-none bg-white checked:bg-[#495AFF] checked:border-[#495AFF]"
+                    checked={projectMode === "middle"}
+                    onChange={() => setProjectMode("middle")}
+                    id="middle"
                   />
                   <svg
-                    className="absolute top-1/2 left-1/2 w-3 h-3 md:w-4 md:h-4 text-white transform -translate-x-1/2 -translate-y-1/2 opacity-0 peer-checked:opacity-100 pointer-events-none"
+                    className="absolute top-1/3 left-1/2 w-3 h-3 md:w-4 md:h-4 text-white transform -translate-x-1/2 -translate-y-1/2 opacity-0 peer-checked:opacity-100 pointer-events-none"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -353,9 +404,9 @@ const OrderProject = () => {
                   </svg>
                 </label>
                 <div className="flex flex-col items-center gap-3">
-                  <span className="md:text-xl text-base font-bold text-[#1d40d7]">
+                  <label htmlFor="middle" className="md:text-xl text-base font-bold text-[#1d40d7]">
                     پروژه متوسط
-                  </span>
+                  </label>
                   <span className="md:text-base text-sm font-bold text-[#000]">
                     30,000,000 تا 50,000,000 میلیون تومان
                   </span>
@@ -370,9 +421,12 @@ const OrderProject = () => {
                   <input
                     type="checkbox"
                     className="peer w-4 h-4 md:w-6 md:h-6 border-2 border-[#495AFF] rounded-md appearance-none bg-white checked:bg-[#495AFF] checked:border-[#495AFF]"
+                    checked={projectMode === "advanced"}
+                    onChange={() => setProjectMode("advanced")}
+                    id="advanced"
                   />
                   <svg
-                    className="absolute top-1/2 left-1/2 w-3 h-3 md:w-4 md:h-4 text-white transform -translate-x-1/2 -translate-y-1/2 opacity-0 peer-checked:opacity-100 pointer-events-none"
+                    className="absolute top-1/3 left-1/2 w-3 h-3 md:w-4 md:h-4 text-white transform -translate-x-1/2 -translate-y-1/2 opacity-0 peer-checked:opacity-100 pointer-events-none"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -384,9 +438,9 @@ const OrderProject = () => {
                   </svg>
                 </label>
                 <div className="flex flex-col items-center gap-3">
-                  <span className="md:text-xl text-base font-bold text-[#1d40d7]">
+                  <label htmlFor="advanced" className="md:text-xl text-base font-bold text-[#1d40d7]">
                     پروژه بزرگ
-                  </span>
+                  </label>
                   <span className="md:text-base text-sm font-bold text-[#000]">
                     50,000,000 تا 300,000,000 میلیون تومان
                   </span>
@@ -401,7 +455,6 @@ const OrderProject = () => {
           </button>
         </div>
       </section>
-
     </>
   );
 };

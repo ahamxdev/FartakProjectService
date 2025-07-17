@@ -31,8 +31,9 @@ namespace Application.Services.Projects.Queries.GetProjects
                 Status=p.Status,
                 Priority = p.Priority,
                 PriceType = p.PriceType,
-                ProjectTypeId = p.ProjectTypeId,
-                ProjectSkillId = p.ProjectSkillId
+                ProjectCategoryId = p.ProjectCategoryId,
+                ProjectSkillJson = p.ProjectSkillJson,
+                ProjectHashtagJson = p.ProjectHashtagJson
 
             }).OrderBy(x => x.ProjectId).ToList();
             return new ResultGetProjectDto
@@ -42,7 +43,37 @@ namespace Application.Services.Projects.Queries.GetProjects
             };
 
         }
+         
+        public ResultGetProjectDto GetAllPortfolio()
+        {
+            var Project = _context.Projects.Where(p => p.Status == 2 && p.PortfolioImage != null); 
+            var ProjectList = Project.Select(p => new GetProjectDto
+            {
+                Description = p.Description,
+                Image = p.Image,
+                Duration = p.Duration,
+                Title = p.Title,
+                EndPrice = p.EndPrice,
+                FinishPrice = p.FinishPrice,
+                StartPrice = p.StartPrice,
+                ProjectId = p.ProjectId,
+                OwnerId = p.OwnerId,
+                CreateDate = p.CreateDate,
+                DeadLine = p.DeadLine,
+                Status = p.Status,
+                Priority = p.Priority,
+                PriceType = p.PriceType,
+                PortfolioDescription = p.PortfolioDescription,
+                PortfolioImage = p.PortfolioImage
 
+            }).OrderBy(x => x.ProjectId).ToList();
+            return new ResultGetProjectDto
+            {
+                Projects = ProjectList,
+                Rows = ProjectList.Count,
+            };
+
+        }
 
 
         public ResultGetProjectDto GetById(RequestGetProjectByIdDto request)
@@ -64,8 +95,9 @@ namespace Application.Services.Projects.Queries.GetProjects
                 Priority = p.Priority,
                 PriceType = p.PriceType,
                 OwnerId = p.OwnerId,
-                ProjectTypeId = p.ProjectTypeId,
-                ProjectSkillId = p.ProjectSkillId
+                ProjectCategoryId = p.ProjectCategoryId,
+                ProjectSkillJson = p.ProjectSkillJson,
+                 ProjectHashtagJson = p.ProjectHashtagJson,
 
             }).OrderBy(x => x.ProjectId).ToList();
             return new ResultGetProjectDto
@@ -95,8 +127,9 @@ namespace Application.Services.Projects.Queries.GetProjects
                 Status = p.Status,
                 Priority = p.Priority,
                 PriceType = p.PriceType,
-                ProjectTypeId = p.ProjectTypeId,
-                ProjectSkillId = p.ProjectSkillId
+                ProjectCategoryId = p.ProjectCategoryId,
+                ProjectSkillJson = p.ProjectSkillJson,
+                ProjectHashtagJson = p.ProjectHashtagJson,
 
             }).OrderBy(x => x.ProjectId).ToList();
             return new ResultGetProjectDto
@@ -108,9 +141,9 @@ namespace Application.Services.Projects.Queries.GetProjects
         }
 
 
-        public ResultGetProjectDto GetByProjectTypeId(RequestGetProjectByProjectTypeIdDto request)
+        public ResultGetProjectDto GetByProjectCategoryId(RequestGetProjectByProjectCategoryIdDto request)
         {
-            var Project = _context.Projects.Where(x => x.ProjectTypeId == request.ProjectTypeId);
+            var Project = _context.Projects.Where(x => x.ProjectCategoryId == request.ProjectCategoryId);
             var ProjectList = Project.Select(p => new GetProjectDto
             {
                 Description = p.Description,
@@ -127,8 +160,9 @@ namespace Application.Services.Projects.Queries.GetProjects
                 Priority = p.Priority,
                 PriceType = p.PriceType,
                 Duration = p.Duration,
-                ProjectTypeId = p.ProjectTypeId,
-                ProjectSkillId = p.ProjectSkillId
+                ProjectCategoryId = p.ProjectCategoryId,
+                ProjectSkillJson = p.ProjectSkillJson,
+                ProjectHashtagJson = p.ProjectHashtagJson,
 
             }).OrderBy(x => x.ProjectId).ToList();
             return new ResultGetProjectDto

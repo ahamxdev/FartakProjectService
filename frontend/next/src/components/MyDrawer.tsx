@@ -72,7 +72,7 @@ const MyDrawer = () => {
 						{[
 							{ title: "خانه", href: "/" },
 							{ title: "تدریس", href: "/tadris" },
-							{ title: "پروژه ها", href: "#" },
+							{ title: "پروژه ها", href: "/projects" },
 							{ title: "دوره ها", href: "/courses" },
 							{ title: "وبلاگ", href: "#" },
 							{ title: "درباره ما", href: "#" },

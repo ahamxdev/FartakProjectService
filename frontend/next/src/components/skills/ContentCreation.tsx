@@ -8,7 +8,7 @@ import SectionTitle from './SectionTitile'
 import ProgrammingLanguageBox from './ProgrammingLanguageBox'
 import CategorySkillSliderSection from './CategorySkillSliderSection'
 import NewestProjectBox from './NewestProjectBox'
-import SkillBox from './SkillBox'
+// import SkillBox from './SkillBox'
 
 const ContentCreation = () => {
       const inputRef = useRef<HTMLInputElement | null>(null)
@@ -63,13 +63,13 @@ const ContentCreation = () => {
                   </CategorySkillSliderSection>
 
                   <SectionTitle title={"نمونه کار های طراحی سایت"} />
-                  <CategorySkillSliderSection>
+                  {/* <CategorySkillSliderSection>
                         {[...Array(10)].map((_, i) => (
                               <SwiperSlide key={i}>
                                     <SkillBox />
                               </SwiperSlide>
                         ))}
-                  </CategorySkillSliderSection>
+                  </CategorySkillSliderSection> */}
 
 
                   <SectionTitle title={"پروژتون در کمترین زمان ممکن ثبت کنید"} />

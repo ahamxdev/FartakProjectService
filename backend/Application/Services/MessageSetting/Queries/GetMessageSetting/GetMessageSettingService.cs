@@ -18,6 +18,7 @@ namespace Application.Services.MessageSetting.Queries.GetMessageSetting
                 MessageSettingId = p.MessageSettingId,
                 SMSApiKey=p.SMSApiKey,
                 ForgetPasswordTemplateId = p.ForgetPasswordTemplateId,
+                SignupTemplateId = p.SignupTemplateId,
 
             }).OrderBy(x => x.MessageSettingId).Reverse().ToList();
             return new ResultGetMessageSettingDto

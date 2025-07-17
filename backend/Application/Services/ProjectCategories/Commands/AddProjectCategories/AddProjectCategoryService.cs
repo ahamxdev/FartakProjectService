@@ -23,6 +23,7 @@ namespace Application.Services.ProjectCategories.Commands.AddProjectCategories
             {
                 ProjectCategory ProjectCategories = new ProjectCategory
                 {
+                    Image = request.Image,
                     Title = request.Title,
                     ProjectCategoryParentId = 0
 
@@ -60,6 +61,7 @@ namespace Application.Services.ProjectCategories.Commands.AddProjectCategories
             {
                 ProjectCategory ProjectCategories = new ProjectCategory
                 {
+                    Image = request.Image,
                     Title = request.Title,
                     ProjectCategoryParentId = request.ProjectCategoryParentId,
 

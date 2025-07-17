@@ -389,5 +389,70 @@ namespace FartakProjectService.Controllers
                 });
             }
         }
+
+        /// <summary>
+        ///نمابش مدیران برتر 
+        /// </summary>
+        /// <response code="200">Success</response>
+        /// <response code="409">Not Success - Value Content:</response>
+        /// <response code="500">Server Error - Value Content:</response>
+        [ProducesResponseType(typeof(ResultGetProjectTeamMemberDto), 200)]
+        [ProducesResponseType(typeof(ErrorDto), 409)]
+        [ProducesResponseType(typeof(ErrorDto), 500)]
+        [HttpPost]
+        [Route("GetAllHead")]
+        public ActionResult GetAllHead()
+        {
+            try
+            {
+                var tokenDto = new RequestCheckTokenDto { Token = "", SelfUserId = 0 };
+                if (Request.Headers["token"].Count() > 0)
+                {
+                    tokenDto.Token = Request.Headers["token"];
+                }
+                if (Request.Headers["userId"].Count() > 0)
+                {
+                    tokenDto.SelfUserId = long.Parse(Request.Headers["userId"]);
+                }
+                if (tokenDto.Token == null || tokenDto.SelfUserId == 0)
+                {
+                    return StatusCode(409, Json(new ErrorDto
+                    {
+                        IsSuccess = false,
+                        ResponseCode = 409,
+                        Message = "مقادیر توکن نامعتبر میباشد",
+                        Service = "User",
+                    }));
+                }
+                if (_getUserTokenService.GetToken(tokenDto) == false)
+                {
+                    return StatusCode(403, Json(new ErrorDto { IsSuccess = false, Message = "توکن نامعتبر است", ResponseCode = 403, Service = "User" }));
+                }
+                var result = _getProjectTeamMemberService.GetAllHead();
+                return Json(result);
+            }
+            catch (Exception e)
+            {
+                var st = new StackTrace(e, true);
+                var frame = st.GetFrame(0);
+                var line = 0;
+                if (frame != null)
+                {
+                    line = frame.GetFileLineNumber();
+                    // Proceed with line
+                }
+
+                return StatusCode(500, new
+                {
+                    value = new ErrorDto
+                    {
+                        IsSuccess = false,
+                        Message = "Server Error : LIne Number=" + line + " *** Message= " + e.Message,
+                        Service = "ProjectTeamMember",
+                        ResponseCode = 500,
+                    }
+                });
+            }
+        }
     }
 }

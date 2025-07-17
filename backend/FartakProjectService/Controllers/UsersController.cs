@@ -9,6 +9,7 @@ using Application.Services.UserToken.Commands.AddUserToken;
 using Application.Services.UserToken.Commands.RemoveUserToken;
 using Application.Services.UserToken.Queries.GetUserToken;
 using Common.Dto;
+using Domain.Entities.Users;
 using Microsoft.AspNetCore.Mvc;
 using project.Application.Services.SMS;
 
@@ -295,7 +296,6 @@ namespace FartakProjectService.Controllers
 
 
 
-
         /// <summary>
         /// فراموشی رمز عبور
         /// </summary>
@@ -384,6 +384,208 @@ namespace FartakProjectService.Controllers
             }
         }
 
+
+
+
+        /// <summary>
+        /// ثب نام
+        /// </summary>
+        /// <response code="200">Success</response>
+        /// <response code="400">Validation Error</response>
+        /// <response code="409">Not Success - Value Content:</response>
+        /// <response code="500">Server Error - Value Content:</response>
+        [ProducesResponseType(typeof(ResultDto), 200)]
+        [ProducesResponseType(typeof(ValidationResult), 400)]
+        [ProducesResponseType(typeof(ErrorDto), 409)]
+        [ProducesResponseType(typeof(ErrorDto), 500)]
+        [HttpPost]
+        [Route("OtpSingup")]
+        public async Task<ActionResult> OtpSingupAsync(RequestEditUserForgetPasswordDto dto)
+        {
+
+            try
+            {
+                var newUser = new RequestAddUserDto()
+                {
+                    Name = "",
+                    Lastname = "",
+                    PassWord = "",
+                    Salt = "",
+                    Mobile = dto.Mobile,
+                    Email = "",
+                    Verify = "",
+                    Status = 0,
+                    Kind = 1
+                };
+                var user = _addUserService.Execute(newUser);
+                Int32 minutes = Convert.ToInt32(_configuration["AppSettings:TokenMinutes"]);
+
+                var res = _addUserTokenService.Execute(new RequestAddUserTokenDto
+                {
+                    UserId = user.Data.UserId,
+                    ExpireDate = DateTime.Now.AddMinutes(minutes),
+                });
+
+                //var outputResult = new
+                //{
+                //    IsSuccess = user.IsSuccess,
+                //    Message = user.Message,
+                //    UserId = user.Data.UserId,
+                //    Token = res.Data.Token,
+                //};
+                //if (res.IsSuccess == true)
+                //{
+                //    return Ok(outputResult);
+                //}
+                //else
+                //{
+                //    return BadRequest(new
+                //    {
+                //        data = res.Data,
+                //        message = res.Message
+                //    });
+                //}
+
+
+                var SMS = await _smsService.SMSSignup(new SMSRequestDto
+                {
+
+                    Code = user.Data.Verify ,
+                    ToSMS = dto.Mobile
+                });
+                if (SMS.IsSuccess == false)
+                {
+                    return StatusCode(409, Json(new ErrorDto
+                    {
+                        IsSuccess = false,
+                        Message = SMS.Message,
+                        Service = "SMS",
+                        ResponseCode = 409,
+                    }));
+                }
+                var users = _getUserService.GetByMobile(new RequestGetUserByMobileDto { Mobile = dto.Mobile });
+                if (users.Rows != 0)
+                {
+                    var tokens = _getTokenService.GetByUserId(new RequestGetUserTokenByUserIdDto
+                    {
+                        UserId = users.Users[0].UserId
+                    });
+                    foreach (var item in tokens.UserToken)
+                        _removeUserTokenService.Execute(new RequestRemoveUserTokenDto
+                        {
+                            Token = item.Token
+                        });
+                }
+                return Json(new ResultDto
+                {
+                    IsSuccess = true,
+                    Message = "موفق",
+                });
+            }
+
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return BadRequest("خطا در ثبت نام کاربر");
+            }
+        }
+        //else
+        //    return StatusCode(409, Json(new ErrorDto
+        //    {
+        //        IsSuccess = false,
+        //        Message = result.Message,
+        //        Service = "User",
+        //        ResponseCode = 409,
+        //    }));
+        //}
+        //catch (Exception e)
+        //{
+        //    var st = new StackTrace(e, true);
+        //    var frame = st.GetFrame(0);
+        //    var line = 0;
+        //    if (frame != null)
+        //    {
+        //        line = frame.GetFileLineNumber();
+        //        // Proceed with line
+        //    }
+
+        //    return StatusCode(500, new
+        //    {
+        //        value = new ErrorDto
+        //        {
+        //            IsSuccess = false,
+        //            Message = "Server Error : LIne Number=" + line + " *** Message= " + e.Message,
+        //            Service = "User",
+        //            ResponseCode = 500,
+        //        }
+        //});
+        //}
+        //}
+
+
+
+        /// <summary>
+        /// ثب نام
+        /// </summary>
+        /// <response code="200">Success</response>
+        /// <response code="400">Validation Error</response>
+        /// <response code="409">Not Success - Value Content:</response>
+        /// <response code="500">Server Error - Value Content:</response>
+        [ProducesResponseType(typeof(ResultDto), 200)]
+        [ProducesResponseType(typeof(ValidationResult), 400)]
+        [ProducesResponseType(typeof(ErrorDto), 409)]
+        [ProducesResponseType(typeof(ErrorDto), 500)]
+        [HttpPost]
+        [Route("OtpConfirm")]
+        public   ObjectResult OtpConfirmAsync(RequestEditUserOtpConfirmDto dto)
+        {
+
+            try
+            {
+                
+                var users = _getUserService.GetByMobile(new RequestGetUserByMobileDto { Mobile = dto.Mobile });
+                if (users.Rows != 0)
+                {
+                    var editUser = new RequestEditUserOtpConfirmDto()
+                    {
+                       
+                        Mobile = dto.Mobile,
+                       
+                    };
+                    if (users.Users[0].Verify==dto.OtpCode)
+                    {
+                        var result = _editUserService.OtpConfirm(editUser);
+                        if (result.IsSuccess == true)
+                            return StatusCode(409, Json(new ErrorDto
+                            {
+                                IsSuccess = true,
+                                Message = result.Message,
+                                Service = "User",
+                                ResponseCode = 200,
+                            }));
+                        else
+                            return StatusCode(409, Json(new ErrorDto
+                            {
+                                IsSuccess = false,
+                                Message = result.Message,
+                                Service = "User",
+                                ResponseCode = 409,
+                            }));
+                         
+                    }
+                }
+                
+            }
+
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return BadRequest("خطا در ثبت نام کاربر");
+            }
+            return BadRequest("خطا در ثبت نام کاربر");
+        }
+       
+        
 
         /// <summary>
         /// تغییر رمز عبور
@@ -669,7 +871,7 @@ namespace FartakProjectService.Controllers
         [ProducesResponseType(typeof(ErrorDto), 500)]
         [HttpPost]
         [Route("GetByMobilePassword")]
-        public ActionResult GetByMobilePassword(RequestGetUserByEmailPasswordDto dto)
+        public ActionResult GetByMobilePassword(RequestGetUserByMobilePasswordDto dto)
         {
             try
             {
@@ -735,7 +937,7 @@ namespace FartakProjectService.Controllers
         [ProducesResponseType(typeof(ErrorDto), 500)]
         [HttpPost]
         [Route("GetByMobilePasswordAdmin")]
-        public ActionResult GetByMobilePasswordAdmin(RequestGetUserByEmailPasswordDto dto)
+        public ActionResult GetByMobilePasswordAdmin(RequestGetUserByMobilePasswordDto dto)
         {
             try
             {

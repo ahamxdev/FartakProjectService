@@ -233,16 +233,16 @@ header {
   margin-top: 35px;
   margin-left: 1050px;
 } */
-.container {
-  /* display: grid;
+/* .container { */
+/* display: grid;
   gap: 10px;
   grid-template-columns: 220px 1fr;
   margin-top: 25px;
   max-width: 1320px !important;
   height: 665px;
   align-items: start; */
-  /* @apply */
-}
+/* @apply */
+/* } */
 .container-request {
   display: flex;
   flex-direction: row;

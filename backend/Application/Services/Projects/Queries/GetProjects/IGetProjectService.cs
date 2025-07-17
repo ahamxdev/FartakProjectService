@@ -3,8 +3,9 @@
     public interface IGetProjectService
     {
         ResultGetProjectDto GetAll();
+        ResultGetProjectDto GetAllPortfolio();
         ResultGetProjectDto GetById(RequestGetProjectByIdDto request);
         ResultGetProjectDto GetByOwnerId(RequestGetProjectByOwnerIdDto request);
-        ResultGetProjectDto GetByProjectTypeId(RequestGetProjectByProjectTypeIdDto request);
+        ResultGetProjectDto GetByProjectCategoryId(RequestGetProjectByProjectCategoryIdDto request);
     }
 }

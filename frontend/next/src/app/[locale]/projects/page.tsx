@@ -9,6 +9,8 @@ import MainHeader from "@/components/skills/MainHeader";
 import ProjectSteps from "@/components/skills/ProjectSteps";
 import NewProjectBox from "@/components/skills/NewProjectBox";
 import FartakUser from "@/components/skills/FartakUser";
+// import { api } from "@/utils/api";
+import { UseCategory } from "@/contexts/CategoryContext";
 
 const items = [
   {
@@ -53,45 +55,85 @@ const items = [
   },
 ];
 
+// type ItemType = {
+//   projectCategoryId: number;
+//   title: string;
+//   projectCategoryParentId: number;
+// };
+
 export default function Home() {
   const [showField, setShowField] = useState<string>("همه");
+  const { category } = UseCategory();
+
+
+  // const [category, setCategory] = useState<ItemType[]>([]);
+
+  // useEffect(() => {
+  //   api("/api/ProjectCategories/GetAllParent", "POST")
+  //     .then((res) => {
+  //       if (res.status == 200) {
+  //         return res.json();
+  //       }
+  //     })
+  //     .then((data) => {
+  //       console.log(data);
+  //       setCategory(data.projectCategories);
+  //     });
+  // }, []);
+
   return (
     <>
       <MainHeader />
       <ProjectSteps />
       <section className="grid py-20 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 gap-y-16 md:my-8 my-4 w-[90%] mx-auto">
-        <CategoryBox src={"/skills/Index.png"} title={"محتوا و ترجمه"} />
+        {/* <CategoryBox src={"/skills/Index.png"} title={category[1]?.title}
+        id={category[1]?.projectCategoryId} />
         <CategoryBox
           src={"/skills/Laptop Coding-ctg.png"}
           hasScale={true}
-          title={"توسعه نرم افزار و ای تی"}
+          title={category[0]?.title}
+          id={category[0]?.projectCategoryId}
         />
         <CategoryBox
           src={"/skills/Increase-ctg.png"}
-          title={"بازاریابی و فروش"}
+          title={category[3]?.title}
+          id={category[3]?.projectCategoryId}
         />
         <CategoryBox
           src={"/skills/Paint Palette-ctg.png"}
-          title={"طراحی و خلاقیت"}
+          title={category[2]?.title}
+          id={category[2]?.projectCategoryId}
         />
         <CategoryBox
           src={"/skills/Goal.png"}
-          title={"کسب و کار"}
+          title={category[4]?.title}
+          id={category[4]?.projectCategoryId}
           hasScale={true}
         />
         <CategoryBox
           src={"/skills/Drafting Compass.png"}
-          title={"مهندسی و معماری"}
-        />
+          title={category[5]?.title}
+          id={category[1]?.projectCategoryId}
+        /> */}
+        {category?.map((item, index) => (
+          <CategoryBox
+            key={item?.projectCategoryId}
+            src={`/images/ctg/${item?.projectCategoryId}.png`}
+            title={item?.title}
+            hasScale={index == 1 || index == 4 ? true : false}
+            id={item?.projectCategoryId}
+            addProject={false}
+          />
+        ))}
       </section>
-      <SectionSlider title="پروژه های جدید فرتاک" viewAllUrl="/category/all">
+      <SectionSlider sliderPerview={3} title="پروژه های جدید فرتاک" viewAllUrl="/category/all">
         {[...Array(10)].map((_, i) => (
           <SwiperSlide key={i}>
             <NewProjectBox />
           </SwiperSlide>
         ))}
       </SectionSlider>
-      <SectionSlider title="گروه فریلنسری فرتاک" viewAllUrl="/category/all">
+      <SectionSlider sliderPerview={3} title="گروه فریلنسری فرتاک" viewAllUrl="/category/all">
         {[...Array(10)].map((_, i) => (
           <SwiperSlide key={i}>
             <FartakUser />
@@ -277,7 +319,7 @@ export default function Home() {
             </p>
             <Link
               className="bg-transparent w-fit md:text-lg text-xs font-normal text-white px-8 md:py-3 py-1.5 rounded-lg border border-white mt-3 md:mt-0 flex justify-center items-center"
-              href={"/"}
+              href={"/projects/project-registration"}
             >
               ثبت پروژه
             </Link>
@@ -303,7 +345,7 @@ export default function Home() {
             <h4 className="md:text-2xl text-lg font-black text-[#000]">
               فرتاک برترین پلتفرم ایران
             </h4>
-            <p className="md:text-lg text-sm font-medium text-[#000]">
+            <p className="md:text-lg text-sm font-medium text-[#000] text-justify">
               فرتاک خانه کارفرما هست . پروژه خود را به راحتی برون سپاری کنید و
               بهترین شکل فرتاک در این راه به شما کمک خواهد کرد.
             </p>
@@ -567,10 +609,10 @@ export default function Home() {
             </div>
           </div>
           <Link
-            href={"/"}
+            href={"/projects/project-registration"}
             className="bg-[#00C83F] flex justify-center items-center rounded-lg py-3 md:w-[400px] w-[200px] text-white md:text-xl text-base font-extrabold md:ml-22"
           >
-            ثبت پروژه
+            ثبت سریع پروژه
           </Link>
         </div>
       </section>

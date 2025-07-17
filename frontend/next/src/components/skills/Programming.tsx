@@ -12,15 +12,15 @@ import SectionTitle from './SectionTitile'
 import ProgrammingLanguageBox from './ProgrammingLanguageBox'
 import CategorySkillSliderSection from './CategorySkillSliderSection'
 import NewestProjectBox from './NewestProjectBox'
-import SkillBox from './SkillBox'
-import SubMenu from './SubMenu'
-// import SkillBox from '@/components/modules/SkillBox'
-// import SubMenu from '@/components/modules/SubMenu'
+// import SkillBox from './SkillBox'
+// import SubMenu from './SubMenu'
 
 const Programming = () => {
       const inputRef = useRef<HTMLInputElement | null>(null)
 
       const [isSubMenuOpen, setIsSubMenuOpen] = useState<boolean>(false)
+      console.log(isSubMenuOpen);
+      
 
       return (
             <>
@@ -72,13 +72,13 @@ const Programming = () => {
                   </CategorySkillSliderSection>
 
                   <SectionTitle title={"نمونه کار های طراحی سایت"} />
-                  <CategorySkillSliderSection>
+                  {/* <CategorySkillSliderSection>
                         {[...Array(10)].map((_, i) => (
                               <SwiperSlide key={i}>
                                     <SkillBox />
                               </SwiperSlide>
                         ))}
-                  </CategorySkillSliderSection>
+                  </CategorySkillSliderSection> */}
 
 
                   <SectionTitle title={"پروژتون در کمترین زمان ممکن ثبت کنید"} />
@@ -93,7 +93,7 @@ const Programming = () => {
                                                       <path d="M1 1.47852L6 5.47852L11 1.47852" stroke="black" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                                                 </svg>
                                           </button>
-                                          <SubMenu items={["تست 1 ", "تست 2"]} isSubMenuOpen={isSubMenuOpen} />
+                                          {/* <SubMenu items={["تست 1 ", "تست 2"]} isSubMenuOpen={isSubMenuOpen} /> */}
                                     </div>
                               </div>
                               <div className="flex flex-col gap-3.5 md:w-[50%] w-full">

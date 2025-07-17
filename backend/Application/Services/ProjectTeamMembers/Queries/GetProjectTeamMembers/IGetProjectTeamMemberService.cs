@@ -11,5 +11,6 @@ namespace Application.Services.ProjectTeamMembers.Queries.GetProjectTeamMembers
         ResultGetProjectTeamMemberDto GetById(RequestGetProjectTeamMemberByIdDto request);
         ResultGetProjectTeamMemberDto GetByProjectTeamId(RequestGetProjectTeamMemberByProjectTeamIdDto request);
         ResultGetProjectTeamMemberDto GetAll();
+        ResultGetProjectTeamHeadDto GetAllHead();
     }
 }

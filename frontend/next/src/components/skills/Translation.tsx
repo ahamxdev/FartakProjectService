@@ -15,7 +15,7 @@ import TranslationCategory from "./TranslationCategory";
 import QualityProjectBox from "./QualityProjectBox";
 import NewestProjectBox from "./NewestProjectBox";
 import CategorySkillSliderSection from "./CategorySkillSliderSection";
-import SkillBox from "./SkillBox";
+// import SkillBox from "./SkillBox";
 
 const Translation = () => {
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -251,13 +251,13 @@ const Translation = () => {
       </CategorySkillSliderSection>
 
       <SectionTitle title={"نمونه کار های طراحی سایت"} />
-      <CategorySkillSliderSection>
+      {/* <CategorySkillSliderSection>
         {[...Array(10)].map((_, i) => (
           <SwiperSlide key={i}>
             <SkillBox />
           </SwiperSlide>
         ))}
-      </CategorySkillSliderSection>
+      </CategorySkillSliderSection> */}
 
       <SectionTitle title={"پروژتون در کمترین زمان ممکن ثبت کنید"} />
       <section className="w-[90%] flex flex-col gap-4 mx-auto md:my-10 my-5 bg-[#EEF5FF] rounded-2xl border-[2px] border-[#1E1E1E] py-5 lg:py-10 px-4 sm:px-8 md:px-12 lg:px-16">

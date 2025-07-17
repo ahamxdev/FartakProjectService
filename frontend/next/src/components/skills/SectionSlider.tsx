@@ -12,12 +12,14 @@ interface SectionSliderProps {
   title: string;
   viewAllUrl: string;
   children: ReactNode;
+  sliderPerview : number
 }
 
 const SectionSlider: React.FC<SectionSliderProps> = ({
   title,
   viewAllUrl,
   children,
+  sliderPerview
 }) => {
   const prevRef = useRef<HTMLSpanElement>(null);
   const nextRef = useRef<HTMLSpanElement>(null);
@@ -72,7 +74,7 @@ const SectionSlider: React.FC<SectionSliderProps> = ({
                 />
               </svg>
             </span>
-            <h2 className="md:text-2xl text-base font-black">{title}</h2>
+            <h3 className="md:text-xl text-base font-black">{title}</h3>
           </div>
 
           <div
@@ -191,10 +193,9 @@ const SectionSlider: React.FC<SectionSliderProps> = ({
             768: {
               slidesPerView: 3,
             },
-            // ,
-            // 1024: {
-            //   slidesPerView: slidesPerView,
-            // },
+            1024: {
+              slidesPerView: sliderPerview,
+            },
           }}
         >
           {children}

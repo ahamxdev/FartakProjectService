@@ -11,9 +11,8 @@ import WebCreationStepBox from './WebCreationStepBox'
 import InputCheckbox from './InputCheckbox'
 import CategorySkillSliderSection from './CategorySkillSliderSection'
 import NewestProjectBox from './NewestProjectBox'
-import SkillBox from './SkillBox'
+// import SkillBox from './SkillBox'
 // import NewestProjectBox from '@/components/modules/NewestProjectBox'
-// import SkillBox from '@/components/modules/SkillBox'
 // import SectionTitle from '@/components/modules/SectionTitle'
 // import WebCreationStepBox from '@/components/modules/WebCreationStepBox'
 
@@ -262,13 +261,13 @@ const WebDesign = () => {
                   </CategorySkillSliderSection>
 
                   <SectionTitle title={"نمونه کار های طراحی سایت"} />
-                  <CategorySkillSliderSection>
+                  {/* <CategorySkillSliderSection>
                         {[...Array(10)].map((_, i) => (
                               <SwiperSlide key={i}>
                                     <SkillBox />
                               </SwiperSlide>
                         ))}
-                  </CategorySkillSliderSection>
+                  </CategorySkillSliderSection> */}
             </>
       )
 }

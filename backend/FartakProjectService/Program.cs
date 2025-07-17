@@ -82,6 +82,10 @@ using Application.Services.TeacherTypes.Commands.AddTeacherTypes;
 using Application.Services.TeacherTypes.Commands.EditTeacherTypes;
 using Application.Services.TeacherTypes.Commands.RemoveTeacherTypes;
 using Application.Services.TeacherTypes.Queries.GetTeacherTypes;
+using Application.Services.ProjectHashtags.Commands.AddProjectHashtags;
+using Application.Services.ProjectHashtags.Commands.EditProjectHashtags;
+using Application.Services.ProjectHashtags.Commands.RemoveProjectHashtags;
+using Application.Services.ProjectHashtags.Queries.GetProjectHashtags;
 using Application.Services.TeacherUserResumes.Commands.AddTeacherUserResumes;
 using Application.Services.TeacherUserResumes.Commands.EditTeacherUserResumes;
 using Application.Services.TeacherUserResumes.Commands.RemoveTeacherUserResumes;
@@ -167,7 +171,12 @@ builder.Services.AddScoped<IEditTeacherTypeService, EditTeacherTypeService>();
 builder.Services.AddScoped<IRemoveTeacherTypeService, RemoveTeacherTypeService>();
 builder.Services.AddScoped<IGetTeacherTypeService, GetTeacherTypeService>();
 
+//ProjectHashtag
 
+builder.Services.AddScoped<IAddProjectHashtagService, AddProjectHashtagService>();
+builder.Services.AddScoped<IEditProjectHashtagService, EditProjectHashtagService>();
+builder.Services.AddScoped<IRemoveProjectHashtagService, RemoveProjectHashtagService>();
+builder.Services.AddScoped<IGetProjectHashtagService, GetProjectHashtagService>();
 
 //ProjectTeamMembers
 

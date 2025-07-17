@@ -6,13 +6,13 @@
     }
 
 
-    public class RequestGetProjectByProjectTypeIdDto
+    public class RequestGetProjectByProjectCategoryIdDto
     {
-        public long ProjectTypeId { get; set; }
+        public long ProjectCategoryId { get; set; }
     }
-    public class RequestGetProjectByProjectSkillIdDto
+    public class RequestGetProjectByProjectSkillJsonDto
     {
-        public long ProjectSkillId { get; set; }
+        public long ProjectSkillJson { get; set; }
     }
     public class RequestGetProjectByOwnerIdDto
     {
