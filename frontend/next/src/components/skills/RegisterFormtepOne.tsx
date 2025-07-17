@@ -72,8 +72,8 @@ const RegisterFormtepOne = () => {
               <InputCheckbox
                 key={label}
                 label={label}
-                checked={selected === label}
-                onChange={() => setSelected(label)}
+                checked={selected2 === label}
+                onChange={() => setSelected2(label)}
               />
             ))}
           </div>
@@ -92,8 +92,8 @@ const RegisterFormtepOne = () => {
                 <InputCheckbox
                   key={label}
                   label={label}
-                  checked={selected === label}
-                  onChange={() => setSelected(label)}
+                  checked={selected3 === label}
+                  onChange={() => setSelected3(label)}
                 />
               ))}
             </div>
