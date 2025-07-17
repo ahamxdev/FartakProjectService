@@ -68,36 +68,35 @@ const Auth = () => {
       password: loginPass,
     };
 
-    try {
-      api("/api/Auth/login", "POST", loginInfo)
-        .then((res) => {
-          if (res.status === 200) {
-            return res.json();
-          } else {
-            Swal.fire({
-              icon: "error",
-              title: "ورود نا موفق",
-              text: "اطلاعات وارد شده نادرست است",
-              confirmButtonText: "امتحان دوباره",
-            });
-          }
-        })
-        .then((data) => {
-          localStorage.setItem("token", data?.token);
-          localStorage.setItem("userId", data?.userId);
-          console.log(data);
-          Swal.fire({
-            icon: "success",
-            title: "ورود موفق",
-            text: "با موفقیت وارد شدید",
-            confirmButtonText: "باشه",
-          }).then(() => {
-            router.push("/");
-          });
+    api("/api/Auth/login", "POST", loginInfo)
+      .then((res) => {
+        if (res.status == 200) {
+          return res.json();
+        } else {
+          throw new Error("اطلاعات وارد شده نادرست است");
+        }
+      })
+      .then((data) => {
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("userId", data.userId);
+        Swal.fire({
+          icon: "success",
+          title: "ورود موفق",
+          text: "با موفقیت وارد شدید",
+          confirmButtonText: "باشه",
+        }).then(() => {
+          router.push("/");
         });
-    } catch (error) {
-      console.error("Login Error:", error);
-    }
+      })
+      .catch((error) => {
+        Swal.fire({
+          icon: "error",
+          title: "ورود نا موفق",
+          text: error.message || "خطایی رخ داده است",
+          confirmButtonText: "امتحان دوباره",
+        });
+        console.error("Login Error:", error);
+      });
   };
 
   const handleVerifyCode = () => {
@@ -151,7 +150,6 @@ const Auth = () => {
       !lastname.trim() ||
       !passWord.trim() ||
       !verify.trim() ||
-      !salt.trim() ||
       !mobile.trim() ||
       !email.trim()
     ) {
@@ -209,7 +207,15 @@ const Auth = () => {
     try {
       api("/api/Auth/register", "POST", registerInfo)
         .then((res) => {
+          console.log(res);
           if (res.status === 200) {
+            return res.json();
+          } else {
+            throw new Error("اطلاعات وارد شده نادرست است");
+          }
+        })
+        .then((data) => {
+          if (data?.isSuccess) {
             setRegisterStep(2);
             api("/api/Users/OtpSingup", "POST", { mobile })
               .then((res) => {
@@ -218,12 +224,14 @@ const Auth = () => {
               .then((data) => {
                 console.log(data);
               });
-            return res.json();
           } else {
-            console.log(res);
+            Swal.fire({
+              icon: "error",
+              title: "شماره تکراری",
+              text: "با این شماره قبلا ثبت نام کرده اید",
+              confirmButtonText: "امتحان دوباره",
+            });
           }
-        })
-        .then((data) => {
           console.log(data);
         });
     } catch (error) {
