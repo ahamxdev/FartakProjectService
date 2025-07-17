@@ -68,32 +68,36 @@ const Auth = () => {
       password: loginPass,
     };
 
-    api("/api/Auth/login", "POST", loginInfo)
-      .then((res) => {
-        if (res.status === 200) {
-          return res.json();
-        } else {
+    try {
+      api("/api/Auth/login", "POST", loginInfo)
+        .then((res) => {
+          if (res.status === 200) {
+            return res.json();
+          } else {
+            Swal.fire({
+              icon: "error",
+              title: "ورود نا موفق",
+              text: "اطلاعات وارد شده نادرست است",
+              confirmButtonText: "امتحان دوباره",
+            });
+          }
+        })
+        .then((data) => {
+          localStorage.setItem("token", data?.token);
+          localStorage.setItem("userId", data?.userId);
+          console.log(data);
           Swal.fire({
-            icon: "error",
-            title: "ورود نا موفق",
-            text: "اطلاعات وارد شده نادرست است",
-            confirmButtonText: "امتحان دوباره",
+            icon: "success",
+            title: "ورود موفق",
+            text: "با موفقیت وارد شدید",
+            confirmButtonText: "باشه",
+          }).then(() => {
+            router.push("/");
           });
-        }
-      })
-      .then((data) => {
-        localStorage.setItem("token", data?.token);
-        localStorage.setItem("userId", data?.userId);
-        console.log(data);
-        Swal.fire({
-          icon: "success",
-          title: "ورود موفق",
-          text: "با موفقیت وارد شدید",
-          confirmButtonText: "باشه",
-        }).then(() => {
-          router.push("/");
         });
-      });
+    } catch (error) {
+      console.error("Login Error:", error);
+    }
   };
 
   const handleVerifyCode = () => {
@@ -132,58 +136,6 @@ const Auth = () => {
         });
       });
   };
-
-  // const registerHandle = (e: React.FormEvent<HTMLFormElement>) => {
-  //   e.preventDefault();
-
-  //   const registerInfo = {
-  //     name: formDataRegister.name,
-  //     lastname: formDataRegister.lastname,
-  //     passWord: formDataRegister.passWord,
-  //     verify: formDataRegister.verify,
-  //     salt: formDataRegister.salt,
-  //     mobile: formDataRegister.mobile,
-  //     email: formDataRegister.email,
-  //     status: formDataRegister.status,
-  //     kind: loginUser,
-  //   };
-  //   if(formDataRegister.passWord.trim() == formDataRegister.verify.trim()) {
-  //     try {
-  //       api("/api/Auth/register", "POST", registerInfo)
-  //         .then((res) => {
-  //           if (res.status == 200) {
-  //             setRegisterStep(2);
-  //             api("/api/Users/OtpSingup", "POST", {
-  //               mobile: formDataRegister.mobile,
-  //             })
-  //               .then((res) => {
-  //                 if (res.status == 200) {
-  //                   return res.json();
-  //                 }
-  //               })
-  //               .then((data) => {
-  //                 console.log(data);
-  //               });
-  //             return res.json();
-  //           } else {
-  //             console.log(res);
-  //           }
-  //         })
-  //         .then((data) => {
-  //           console.log(data);
-  //         });
-  //     } catch (error) {
-  //       console.error("Register Error:", error);
-  //     }
-  //   } else {
-  //     Swal.fire({
-  //           icon: "error",
-  //           title: "مشکل در رمز عبور",
-  //           text: "رمز عبور با تایید رمز متفاوت هستن!!!",
-  //           confirmButtonText: "امتحان دوباره",
-  //         });
-  //   }
-  // };
 
   const registerHandle = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

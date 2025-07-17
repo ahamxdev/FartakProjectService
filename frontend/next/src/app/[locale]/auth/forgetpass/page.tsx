@@ -35,12 +35,20 @@ const ForgetPass = () => {
   const changePassHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     api("/api/Users/ChangePassword", "PUT", {
-      userId: 22,
+      mobile: forgetPassPhone,
       oldPassword: oldPass,
       newPassWord: newPass,
     })
     .then(res => {
-      console.log(res);
+      console.log(res)
+      if (res) {
+        return res.json()
+      } else {
+        throw new Error("مشکلی در فرآیند تغییر رمز رخ داده!!");
+      }
+    })
+    .then((data) => {
+      console.log(data);
     })
   };
   return (
@@ -57,7 +65,7 @@ const ForgetPass = () => {
             >
               <div className="flex flex-col gap-3 w-full">
                 <label className="font-normal text-base text-black">
-                  شماره تلفن
+                  شماره تماس
                 </label>
                 <input
                   type="tel"
@@ -65,7 +73,7 @@ const ForgetPass = () => {
                   value={forgetPassPhone}
                   onChange={(e) => setForgetPassPhone(e.target.value)}
                   className="border-[2px] border-[#1D40D7] rounded-[9999px] py-2 px-4"
-                  placeholder="شماره تلفن خود را وارد کنید ."
+                  placeholder="شماره تماس خود را وارد کنید ."
                 />
               </div>
               <button
