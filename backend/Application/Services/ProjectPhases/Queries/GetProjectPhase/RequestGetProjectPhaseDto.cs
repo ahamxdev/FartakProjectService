@@ -18,7 +18,14 @@ namespace Application.Services.ProjectPhases.Queries.GetProjectPhase
         public long ProjectId { get; set; }
 
     }
+    
+    public class RequestGetProgressPercentByIdDto
+    {
+        public long OwnerId { get; set; }
+        public long ProjectId { get; set; }
+    
 
+    }
 
     public class RequestGetProjectPhaseByProjectTeamIdDto
     {

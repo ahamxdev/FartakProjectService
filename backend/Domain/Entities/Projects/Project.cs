@@ -22,6 +22,8 @@
         public string? PortfolioDescription { get; set; } // توضیحات نمونه کار 
         public string? ProjectSkillJson { get; set; }
         public string? ProjectHashtagJson { get; set; }
+        public ICollection<ProjectPhase> ProjectPhases { get; set; }
+
 
     }
 }
