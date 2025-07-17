@@ -110,7 +110,7 @@ const OrderExecutors = () => {
         </table>
       </div>
       <div className="executor-left container-effects">
-        <h2 className="executors-title">برنامه نویسان و مدیران لاین ها</h2>
+        <h2 className="executors-title">مجری ها و مدیر پروژه ها</h2>
         <div className="executor-profiles">
           {executorProfiles.map((executor) => (
             <div className="executor-profile" key={executor.id}>
