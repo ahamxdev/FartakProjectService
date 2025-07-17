@@ -1,57 +1,10 @@
 import { Link } from "react-router-dom";
+import Header from "../components/Header";
 
 const TicketSidebar = () => {
   return (
     <>
-      <header>
-        <div className="header--container">
-          <div className="header__left">
-            <div className="header--dashobord">
-              <img src="./img/Link → logo.png" alt="logo" />
-              <p className="header__right--para"> |</p>
-              <img
-                className="header__right--img"
-                src="./img/img-person.jpg"
-                alt="person"
-              />
-              <div className="header--dashbord-p-home"></div>
-            </div>
-
-            <div className="search-container">
-              <input
-                type="text"
-                className="search-input-home"
-                placeholder="دنبال چه چیزی میگردید؟"
-              />
-              <img
-                src="./img/search 01.svg"
-                className="search-icon-home"
-                alt="search"
-              />
-            </div>
-
-            <p className="header__right--para"> |</p>
-            <img
-              className="header__left--img"
-              src="../img/setting.svg"
-              alt="setting"
-            />
-            <p className="header__right--para"> |</p>
-            <img
-              className="header__left--img"
-              src="../img/notification 03.svg"
-              alt="notification"
-            />
-            <p className="header__right--para">|</p>
-            <img
-              className="header__left--img"
-              src="../img/out.svg"
-              alt="logout"
-            />
-          </div>
-        </div>
-      </header>
-
+      <Header />
       <div className="container-ticket">
         <div className="sidebar-main">
           <ul>

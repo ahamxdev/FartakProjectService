@@ -1,4 +1,4 @@
-.sidebar {
+/* .sidebar {
   height: 100vh;
   transition: width 0.3s;
   overflow: hidden;
@@ -7,7 +7,7 @@
   -moz-transition: width 0.3s;
   -ms-transition: width 0.3s;
   -o-transition: width 0.3s;
-}
+} */
 
 .sidebar-open {
   width: 220px;

@@ -1,6 +1,6 @@
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
+import Header from "../components/Header";
 
-import Header from "./components/header";
 import Sidebar from "./components/sidebar";
 
 const DashboardLayout = ({ children }) => {

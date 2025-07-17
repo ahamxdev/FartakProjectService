@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 import "./Sidebar.css";
 import { NavLink } from "react-router-dom";
 
@@ -59,7 +59,7 @@ const Sidebar = () => {
 
   return (
     <div
-      className={`d-flex flex-column rounded-3 shadow sidebar mx-3 mt-2 ${
+      className={`d-flex flex-column rounded-3 shadow sidebar mx-3 mt-2 w-[666px] ${
         isOpen ? "sidebar-open" : "sidebar-closed"
       }`}
     >

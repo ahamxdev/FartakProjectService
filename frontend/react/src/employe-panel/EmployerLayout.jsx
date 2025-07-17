@@ -73,7 +73,7 @@ function EmployerLayout() {
   return (
     <>
       <Header />
-      <main className="container mx-auto px-2.5 gap-4 grid grid-cols-[auto_1fr] mt-5">
+      <main className="container mx-auto px-2.5 gap-4 grid grid-cols-[auto_1fr] mt-5 h-[666px]">
         <aside className="sidebar container-effects w-[220px] h-[666px]">
           <ul>
             {sideBarLinks.map((item, index) => (

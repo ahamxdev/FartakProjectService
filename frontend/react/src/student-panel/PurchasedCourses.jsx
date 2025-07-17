@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Header from "./components/header";
+import Header from "../components/Header";
+
 import Sidebar from "./components/sidebar";
 
 const Dashboard = () => {
