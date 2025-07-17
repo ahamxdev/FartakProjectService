@@ -132,32 +132,135 @@ const Auth = () => {
       });
   };
 
+  // const registerHandle = (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+
+  //   const registerInfo = {
+  //     name: formDataRegister.name,
+  //     lastname: formDataRegister.lastname,
+  //     passWord: formDataRegister.passWord,
+  //     verify: formDataRegister.verify,
+  //     salt: formDataRegister.salt,
+  //     mobile: formDataRegister.mobile,
+  //     email: formDataRegister.email,
+  //     status: formDataRegister.status,
+  //     kind: loginUser,
+  //   };
+  //   if(formDataRegister.passWord.trim() == formDataRegister.verify.trim()) {
+  //     try {
+  //       api("/api/Auth/register", "POST", registerInfo)
+  //         .then((res) => {
+  //           if (res.status == 200) {
+  //             setRegisterStep(2);
+  //             api("/api/Users/OtpSingup", "POST", {
+  //               mobile: formDataRegister.mobile,
+  //             })
+  //               .then((res) => {
+  //                 if (res.status == 200) {
+  //                   return res.json();
+  //                 }
+  //               })
+  //               .then((data) => {
+  //                 console.log(data);
+  //               });
+  //             return res.json();
+  //           } else {
+  //             console.log(res);
+  //           }
+  //         })
+  //         .then((data) => {
+  //           console.log(data);
+  //         });
+  //     } catch (error) {
+  //       console.error("Register Error:", error);
+  //     }
+  //   } else {
+  //     Swal.fire({
+  //           icon: "error",
+  //           title: "مشکل در رمز عبور",
+  //           text: "رمز عبور با تایید رمز متفاوت هستن!!!",
+  //           confirmButtonText: "امتحان دوباره",
+  //         });
+  //   }
+  // };
+
   const registerHandle = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const mobileRegex = /^09\d{9}$/;
+
+    const { name, lastname, passWord, verify, salt, mobile, email, status } =
+      formDataRegister;
+
+    if (
+      !name.trim() ||
+      !lastname.trim() ||
+      !passWord.trim() ||
+      !verify.trim() ||
+      !salt.trim() ||
+      !mobile.trim() ||
+      !email.trim()
+    ) {
+      Swal.fire({
+        icon: "error",
+        title: "فیلدهای ناقص",
+        text: "لطفاً همه‌ی فیلدها را به‌صورت کامل پر کنید.",
+        confirmButtonText: "باشه",
+      });
+      return;
+    }
+
+    if (!mobileRegex.test(mobile)) {
+      Swal.fire({
+        icon: "error",
+        title: "شماره موبایل نامعتبر است",
+        text: "شماره موبایل باید با 09 شروع شود و 11 رقم داشته باشد.",
+        confirmButtonText: "متوجه شدم",
+      });
+      return;
+    }
+
+    if (!emailRegex.test(email)) {
+      Swal.fire({
+        icon: "error",
+        title: "ایمیل نامعتبر است",
+        text: "لطفاً یک ایمیل صحیح وارد کنید. مانند: example@gmail.com",
+        confirmButtonText: "متوجه شدم",
+      });
+      return;
+    }
+
+    if (passWord.trim() !== verify.trim()) {
+      Swal.fire({
+        icon: "error",
+        title: "مشکل در رمز عبور",
+        text: "رمز عبور با تایید رمز متفاوت هستن!!!",
+        confirmButtonText: "امتحان دوباره",
+      });
+      return;
+    }
+
     const registerInfo = {
-      name: formDataRegister.name,
-      lastname: formDataRegister.lastname,
-      passWord: formDataRegister.passWord,
-      verify: formDataRegister.verify,
-      salt: formDataRegister.salt,
-      mobile: formDataRegister.mobile,
-      email: formDataRegister.email,
-      status: formDataRegister.status,
+      name,
+      lastname,
+      passWord,
+      verify,
+      salt,
+      mobile,
+      email,
+      status,
       kind: loginUser,
     };
+
     try {
       api("/api/Auth/register", "POST", registerInfo)
         .then((res) => {
-          if (res.status == 200) {
+          if (res.status === 200) {
             setRegisterStep(2);
-            api("/api/Users/OtpSingup", "POST", {
-              mobile: formDataRegister.mobile,
-            })
+            api("/api/Users/OtpSingup", "POST", { mobile })
               .then((res) => {
-                if (res.status == 200) {
-                  return res.json();
-                }
+                if (res.status === 200) return res.json();
               })
               .then((data) => {
                 console.log(data);
@@ -357,7 +460,7 @@ const Auth = () => {
             >
               <div className="flex flex-col gap-3 w-full">
                 <label className="font-normal text-base text-black">
-                  شماره تلفن
+                  شماره تماس
                 </label>
                 <input
                   type="tel"
@@ -365,7 +468,7 @@ const Auth = () => {
                   value={loginPhone}
                   onChange={(e) => setLoginPhone(e.target.value)}
                   className="border-[2px] border-[#1D40D7] rounded-[9999px] py-2 px-4"
-                  placeholder="شماره تلفن خود را وارد کنید ."
+                  placeholder="شماره تماس خود را وارد کنید ."
                 />
               </div>
               <div className="flex flex-col gap-3 w-full relative">
@@ -469,7 +572,7 @@ const Auth = () => {
                   </div>
                   <div className="flex flex-col gap-3 w-full">
                     <label className="font-normal text-base text-black">
-                      شماره تلفن
+                      شماره تماس
                     </label>
                     <input
                       type="tel"
