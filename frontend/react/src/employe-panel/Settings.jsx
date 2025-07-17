@@ -16,17 +16,31 @@ const Settings = () => {
         {settingsField.map((item) => (
           <div key={item.id} className="settings-field">
             <h2 className="settings-field-title">{item.title}</h2>
-            <label htmlFor="email">
-              <input type="checkbox" id="email" name="email" /> ایمیل
+            <label htmlFor={`email-${item.id}`}>
+              <input type="checkbox" id={`email-${item.id}`} name="email" />{" "}
+              ایمیل
             </label>
-            <label htmlFor="sms">
-              <input type="checkbox" id="sms" name="sms" /> پیامک
+            <label htmlFor={`sms-${item.id}`}>
+              <input
+                type="checkbox"
+                id={`sms-${item.id}`}
+                name="sms"
+                checked
+                disabled
+              />{" "}
+              پیامک
             </label>
-            <label htmlFor="site">
-              <input type="checkbox" id="site" name="site" /> نوتیفیکیشن سایت
+            <label htmlFor={`site-${item.id}`}>
+              <input type="checkbox" id={`site-${item.id}`} name="site" />{" "}
+              نوتیفیکیشن سایت
             </label>
-            <label htmlFor="telegram">
-              <input type="checkbox" id="telegram" name="telegram" /> تلگرام
+            <label htmlFor={`telegram-${item.id}`}>
+              <input
+                type="checkbox"
+                id={`telegram-${item.id}`}
+                name="telegram"
+              />{" "}
+              تلگرام
             </label>
           </div>
         ))}

@@ -117,6 +117,7 @@
   background-color: #ffe401;
   padding: 8px 4px;
   border-radius: 6px;
+  text-wrap: nowrap;
   transition: all 0.3s;
 }
 .create-order-card-img button:hover {

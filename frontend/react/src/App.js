@@ -34,6 +34,10 @@ import TaskProject from "./admin-panel/TaskProject";
 import ProfessorResoume from "./admin-panel/ProfessorResoume";
 import ProfessorInfo from "./admin-panel/ProfessorInfo";
 import Login from "./pages/Login";
+import ProfessorHelp from "./admin-panel/ProfessorHelp";
+import RecordedCourses from "./admin-panel/RecordedCourses";
+import CourseField from "./admin-panel/CourseField";
+import { loader as CourseFieldLoader } from "./admin-panel/CourseField";
 // import Login from "./pages/Login";
 
 const router = createBrowserRouter([
@@ -101,12 +105,22 @@ const router = createBrowserRouter([
       { path: "filetask", Component: FileTaskProject },
       { path: "employer", Component: PanelEmployer },
       { path: "freelancer", Component: PanelFreelancer },
-      { path: "professors", Component: PanelProffesor },
       { path: "register-employer", Component: RegisteringEmployerNotification },
-      { path: "professor-resoume", Component: ProfessorResoume },
-      { path: "professor-info", Component: ProfessorInfo },
       { path: "status-project", Component: StatusProject },
       { path: "task-project", Component: TaskProject },
+      // Professors
+      { path: "professors", Component: PanelProffesor },
+      { path: "professor-resoume", Component: ProfessorResoume },
+      { path: "professor-info", Component: ProfessorInfo },
+      { path: "professor-help", Component: ProfessorHelp },
+      {
+        path: "courses",
+        Component: RecordedCourses,
+        children: [
+          { path: "", Component: CourseField },
+          { path: ":field", Component: CourseField, loader: CourseFieldLoader },
+        ],
+      },
     ],
   },
 ]);

@@ -50,3 +50,7 @@
   line-height: 2;
   margin-bottom: 16px;
 }
+
+.course-field.active {
+  background-color: #c9bd4a;
+}

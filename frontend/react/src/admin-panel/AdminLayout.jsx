@@ -49,8 +49,8 @@ const sideBarLinks = [
       { label: "نمایش اساتید و سطح بندی", to: "professors" },
       { label: "تایید روزمه استاد", to: "professor-resoume" },
       { label: "تایید اطلاعات شخصی", to: "professor-info" },
-      { label: "مدریت راهنما های عملکردی", to: "" },
-      { label: "آموزش های ضبط شده", to: "#" },
+      { label: "مدریت راهنما های عملکردی", to: "professor-help" },
+      { label: "آموزش های ضبط شده", to: "courses" },
       { label: "کلاس های ضبط شده", to: "#" },
       { label: "کلاس های خصوصی آنلاین", to: "#" },
       { label: "کلاس های خصوصی حضوری", to: "#" },
@@ -109,7 +109,6 @@ function AdminLayout() {
                   <NavLink
                     key={index}
                     to={link.to}
-                    end
                     className="text-sm hover:bg-[#B0D6FF] rounded-lg p-1.5 sidebar-link transition-colors duration-300"
                   >
                     {link.label}
