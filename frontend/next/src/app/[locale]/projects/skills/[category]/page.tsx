@@ -1,15 +1,17 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import BreadCrumb from "@/components/skills/BreadCrumb";
-import OnlineStoreDesign from "@/components/skills/OnlineStoreDesign";
+// import OnlineStoreDesign from "@/components/skills/OnlineStoreDesign";
 import Image from "next/image";
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { api } from "@/utils/api";
 import SectionTitle from "@/components/skills/SectionTitile";
 import CategorySkillSliderSection from "@/components/skills/CategorySkillSliderSection";
 import { SwiperSlide } from "swiper/react";
-import InputCheckbox from "@/components/skills/InputCheckbox";
+// import { notFound } from "next/navigation";
+
+// import InputCheckbox from "@/components/skills/InputCheckbox";
 // import ContentCreation from "@/components/skills/ContentCreation"
 // import ApplicationWebsiteDesign from "@/components/skills/ApplicationWebsiteDesign"
 // import Programming from "@/components/skills/Programming"
@@ -30,8 +32,8 @@ const CategoryInfo = () => {
   console.log(id);
   const inputRef = useRef<HTMLInputElement | null>(null);
 
-
   const [skillInfo, setSkillInfo] = useState<skillInfo[]>([]);
+  const router = useRouter();
 
   const getCtgs = {
     projectSkillId: id.split("-")[0],
@@ -39,15 +41,24 @@ const CategoryInfo = () => {
   useEffect(() => {
     api("/api/ProjectSkills/GetById", "POST", getCtgs)
       .then((res) => {
+        console.log(res);
         if (res.status == 200) {
           return res.json();
         } else {
-          throw new Error("مشکلی در دریافت این دسته بندی به وجود آمد");
+          throw new Error("status not 200");
         }
       })
       .then((data) => {
         console.log(data);
-        setSkillInfo(data.projectSkills);
+        if (data?.projectSkills.length > 0) {
+          setSkillInfo(data.projectSkills);
+        } else {
+          throw new Error("status not 200");
+        }
+      })
+      .catch((err) => {
+        console.error("خطا:", err);
+        router.push("/404");
       });
   }, []);
   return (

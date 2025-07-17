@@ -5,7 +5,7 @@ import Image from "next/image";
 // import ManagerListHeader from "@/components/skills/ManagerListHeader";
 import ManagerListBox from "@/components/skills/ManagerListBox";
 import { UseCategory } from "@/contexts/CategoryContext";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { api } from "@/utils/api";
 // import { useParams } from "next/navigation";
@@ -28,6 +28,7 @@ const Managerpart = () => {
 
   const [subCategory, setSubCategory] = useState<ItemType[]>([]);
   const [subCategoryId, setSubCategoryId] = useState<number>(0);
+  const router = useRouter();
 
   const getCtgs = {
     projectCategoryId: parseInt(id),
@@ -37,11 +38,21 @@ const Managerpart = () => {
       .then((res) => {
         if (res.status == 200) {
           return res.json();
+        } else {
+          throw new Error("status not 200");
         }
       })
       .then((data) => {
         console.log(data);
-        setSubCategory(data.projectCategories);
+        if (data?.projectCategories.length > 0) {
+          setSubCategory(data.projectCategories);
+        } else {
+          throw new Error("status not 200");
+        }
+      })
+      .catch((err) => {
+        console.error("خطا:", err);
+        router.push("/404");
       });
   }, []);
 
