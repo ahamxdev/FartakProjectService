@@ -1,6 +1,7 @@
 ﻿using Application.Interfaces.Contexts;
 using Common.Dto;
 using Domain.Users;
+using Microsoft.VisualBasic;
 
 
 
@@ -21,6 +22,8 @@ namespace Application.Services.InboxUsers.Commands.AddInboxUser
 
                 InboxUser InboxUser = new InboxUser
                 {
+                    CreatedAt = DateAndTime.Now , 
+                    Title  = request.Title,
                     Message = request.Message,
                     Read = 0,
                     UserId = request.UserId,
