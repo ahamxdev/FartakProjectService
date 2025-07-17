@@ -107,7 +107,7 @@ namespace Application.Services.Users.Commands.EditUsers
         public ResultDto ChangePassword(RequestChangeUserPasswordDto request)
         {
             var salt = Guid.NewGuid().ToString("N");
-            var user = _context.Users.Find(request.UserId);
+            var user = _context.Users.Where(p=>p.Mobile == request.Mobile ).FirstOrDefault();
             if (user == null)
             {
                 return new ResultDto
