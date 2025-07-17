@@ -79,7 +79,14 @@ namespace Persistence.Contexts
             modelBuilder.Entity<ProjectFile>().HasIndex(u => u.ProjectFileId).IsUnique();
             modelBuilder.Entity<ProjectPhase>().HasIndex(u => u.ProjectPhaseId).IsUnique();
             modelBuilder.Entity<Comment>().HasIndex(u => u.CommentId).IsUnique();
-        }
+          
+            modelBuilder.Entity<Project>()
+                .HasMany(p => p.ProjectPhases)
+                .WithOne(pp => pp.Projects)
+                .HasForeignKey(pp => pp.ProjectId);
+        
+
     }
+}
 
 }
