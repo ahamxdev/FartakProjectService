@@ -10,6 +10,8 @@ namespace Application.Services.ProjectPhases.Queries.GetProjectPhase
     {
         ResultGetProjectPhaseDto GetById(RequestGetProjectPhaseByIdDto request);
         ResultGetProjectPhaseDto GetByProjectId(RequestGetProjectPhaseByProjectIdDto request);
+        ResultGetProjectPhaseDto GetByProjectOwnerId(RequestGetProgressPercentByIdDto request);
+        int GetByProjectProgressPercent(RequestGetProgressPercentByIdDto request);
         ResultGetProjectPhaseDto GetByProjectTeamId(RequestGetProjectPhaseByProjectTeamIdDto request);
         ResultGetProjectPhaseDto GetAll();
     }
