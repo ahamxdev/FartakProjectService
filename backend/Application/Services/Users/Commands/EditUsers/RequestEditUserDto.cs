@@ -27,7 +27,7 @@
 
     public class RequestChangeUserPasswordDto
     {
-        public long UserId { get; set; }
+        public required string Mobile { get; set; }
         public required string OldPassword { get; set; }
         public required string NewPassWord { get; set; }
 

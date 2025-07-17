@@ -31,7 +31,7 @@ namespace Application.Services.InboxUsers.Commands.EditInboxUser
 
                 InboxUser.Read = request.Read;
                 InboxUser.Message = request.Message;
-
+                InboxUser.Title = request.Title;
 
                 _context.SaveChanges();
 

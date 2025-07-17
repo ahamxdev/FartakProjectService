@@ -560,45 +560,11 @@ namespace FartakProjectService.Controllers
         public ActionResult ChangePassword(RequestChangeUserPasswordDto dto)
         {
             try
-            {
-                //var tokenDto = new RequestGetTokenDto { };
-                //if (Request.Headers["Authorization"].Count() > 0)
-                //{
-                //    tokenDto.Token = Request.Headers["Authorization"];
-                //}
-                //if (Request.Headers["selfUserId"].Count() > 0)
-                //{
-                //    tokenDto.SelfUserId = Request.Headers["selfUserId"];
-                //}
-                //if (tokenDto.Token == null)
-                //    tokenDto.Token = "";
-                //if (_getTokenService.GetToken(new RequestCheckTokenDto
-                //{
-                //    SelfUserId = Convert.ToInt64(tokenDto.SelfUserId),
-                //    Token = tokenDto.Token
-                //}).Rows == 0)
-                //{
-                //    return StatusCode(403, Json(new ErrorDto { IsSuccess = false, Message = "توکن نامعتبر است", ResponseCode = 403, Service = "User" }));
-                //}
+            { 
                 var result = _editUserService.ChangePassword(dto);
                 if (result.IsSuccess == true)
                 {
-                    var users = _getUserService.GetById(new RequestGetUserByIdDto
-                    {
-                        UserId = dto.UserId
-                    });
-                    if (users.Rows != 0)
-                    {
-                        var tokens = _getTokenService.GetByUserId(new RequestGetUserTokenByUserIdDto
-                        {
-                            UserId = users.Users[0].UserId
-                        });
-                        foreach (var item in tokens.UserToken)
-                            _removeUserTokenService.Execute(new RequestRemoveUserTokenDto
-                            {
-                                Token = item.Token
-                            });
-                    }
+                   
                     return Json(result);
                 }
                 else
