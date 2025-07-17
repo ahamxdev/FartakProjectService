@@ -37,6 +37,7 @@ import FileTaskProject from "./admin-panel/FileTaskProject";
 import StatusProject from "./admin-panel/StatusProject";
 import ResoumeProfessor from "./admin-panel/ResoumeProfessor";
 import PersonalInformation from "./admin-panel/panelProfessor/personalInformation/PersonalInformation";
+import ProfessorResume from "./admin-panel/panelProfessor/ProfessorResume/ProfessorResume";
 function App() {
   return (
     <>
@@ -71,6 +72,7 @@ function App() {
         <Route path="/HomeFreelancer" element={<HomeFreelancer />} />
         {/* ADMIN */}
         <Route path="/PanelProffesor" element={<PanelProffesor />}>
+          <Route path="/PanelProffesor" element={<ProfessorResume />} />
           <Route path="personalInformation" element={<PersonalInformation />} />
         </Route>
         <Route path="/PanelFreelanser" element={<PanelFreelanser />} />

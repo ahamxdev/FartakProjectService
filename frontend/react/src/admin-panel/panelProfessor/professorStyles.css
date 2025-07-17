@@ -62,9 +62,35 @@
   background-color: #f1f1f1;
   border-radius: 16px;
 }
+.pr-container {
+  height: 100%;
+  border-radius: 16px;
+}
 .piProfileImg {
   height: 200px;
   width: 200px;
   border-radius: 16px;
   box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.1);
+}
+.spanStyle {
+  border-bottom: 1px solid #3083dc;
+  font-size: 1.3rem;
+}
+.textStyle {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.card {
+  border-style: none;
+  margin: 20px auto;
+  width: 90%;
+  background: #eaf3fc;
+  height: 150px;
+}
+.cardSpan {
+  font-size: 15px;
+  border-bottom: 1px solid #3083dc;
+}
+.cardInfo {
+  font-size: 14px;
 }
