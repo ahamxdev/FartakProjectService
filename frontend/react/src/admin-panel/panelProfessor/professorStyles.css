@@ -64,11 +64,12 @@
 }
 .pr-container {
   height: 100%;
-  border-radius: 16px;
 }
 .oc-container {
   height: 100%;
-  border-radius: 16px;
+}
+.pw-container {
+  height: 100%;
 }
 .piProfileImg {
   height: 200px;

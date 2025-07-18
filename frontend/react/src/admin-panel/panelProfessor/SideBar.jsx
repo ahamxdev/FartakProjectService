@@ -42,7 +42,14 @@ const SideBar = () => {
         <div>آپلود برنامه کلاسی و کاری</div>
         <div>راهنمای موجود در بخش کلاس آنلاین</div>
         <div>درسنامه‌های مربوط به تکنیک‌های برگزاری کلاس آنلاین</div>
-        <div>کیف پول</div>
+        <NavLink
+          to="paymentAndWallet"
+          className={({ isActive }) =>
+            isActive ? "active-link" : "custom-link"
+          }
+        >
+          کیف پول
+        </NavLink>
         <div>تیکت پشتیبانی</div>
         <div>سوالات متداول</div>
         <div>ویرایش اطلاعات</div>

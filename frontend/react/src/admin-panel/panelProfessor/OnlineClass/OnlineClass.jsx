@@ -3,7 +3,7 @@ import trashIcon from "../../../assest/img/proffesorPanelImg/trash.svg";
 
 const OnlineClass = () => {
   return (
-    <div className="oc-container mx-5 border overflow-y-scroll custom-scrollbar">
+    <div className="oc-container mx-5 overflow-y-scroll custom-scrollbar">
       <div className="row g-3 section">
         <div className="col-12 col-md-6">
           <div
