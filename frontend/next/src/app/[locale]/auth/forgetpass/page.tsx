@@ -9,18 +9,18 @@ const ForgetPass = () => {
   const router = useRouter();
 
   const [forgetPassStep, setForgetPass] = useState<number>(1);
-  const [showPassword, setShowPassword] = useState<boolean>(false);
+  // const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const [forgetPassPhone, setForgetPassPhone] = useState<string>("");
   const [forgetPassPassWord, setForgetPassPassWord] = useState<string>("");
 
-  const [isPhoneNumberTrue, setIsPhoneNumberTrue] = useState<boolean>(true);
+  // const [isPhoneNumberTrue, setIsPhoneNumberTrue] = useState<boolean>(true);
 
   // const [oldPass, setOldPass] = useState<string>("");
   // const [newPass, setNewPass] = useState<string>("");
 
-  const [showConfirmPassword, setShowConfirmPassword] =
-    useState<boolean>(false);
+  // const [showConfirmPassword, setShowConfirmPassword] =
+    // useState<boolean>(false);
 
   const confirmPhoneNumber = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
