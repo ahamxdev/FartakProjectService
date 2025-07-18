@@ -38,6 +38,7 @@ import StatusProject from "./admin-panel/StatusProject";
 import ResoumeProfessor from "./admin-panel/ResoumeProfessor";
 import PersonalInformation from "./admin-panel/panelProfessor/personalInformation/PersonalInformation";
 import ProfessorResume from "./admin-panel/panelProfessor/ProfessorResume/ProfessorResume";
+import OnlineClass from "./admin-panel/panelProfessor/OnlineClass/OnlineClass";
 function App() {
   return (
     <>
@@ -74,6 +75,7 @@ function App() {
         <Route path="/PanelProffesor" element={<PanelProffesor />}>
           <Route path="/PanelProffesor" element={<ProfessorResume />} />
           <Route path="personalInformation" element={<PersonalInformation />} />
+          <Route path="onlineClass" element={<OnlineClass />} />
         </Route>
         <Route path="/PanelFreelanser" element={<PanelFreelanser />} />
         <Route path="/PanelEmployer" element={<PanelEmployer />} />

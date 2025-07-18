@@ -66,6 +66,10 @@
   height: 100%;
   border-radius: 16px;
 }
+.oc-container {
+  height: 100%;
+  border-radius: 16px;
+}
 .piProfileImg {
   height: 200px;
   width: 200px;
@@ -94,7 +98,17 @@
 .cardInfo {
   font-size: 14px;
 }
+.section {
+  width: 50%;
+  margin: 10px auto;
+}
+.flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+/* scroll bar */
 .custom-scrollbar {
   scrollbar-width: thin;
   scrollbar-color: #cc9a06 #f1f1f1;
