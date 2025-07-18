@@ -367,3 +367,4 @@ builds/
 **/.vscode/
 **/.next/
 .history/
+build/
