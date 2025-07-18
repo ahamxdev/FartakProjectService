@@ -15,6 +15,7 @@ namespace Application.Services.InboxUsers.Queries.GetInboxUser
             var InboxUsers = _context.InboxUsers;
             var InboxUserList = InboxUsers.Select(p => new GetInboxUserDto
             {
+                Title = p.Title,
                 Message = p.Message,
                 Read = p.Read,
                 UserId = p.UserId,
@@ -36,6 +37,7 @@ namespace Application.Services.InboxUsers.Queries.GetInboxUser
             var InboxUsers = _context.InboxUsers.Where(x => x.InboxUserId == request.InboxUserId);
             var InboxUserList = InboxUsers.Select(p => new GetInboxUserDto
             {
+                Title = p.Title,
                 Message = p.Message,
                 Read = p.Read,
                 UserId = p.UserId,
@@ -57,6 +59,7 @@ namespace Application.Services.InboxUsers.Queries.GetInboxUser
             var InboxUsers = _context.InboxUsers.Where(x => x.UserId == request.UserId);
             var InboxUserList = InboxUsers.Select(p => new GetInboxUserDto
             {
+                Title = p.Title,
                 Message = p.Message,
                 Read = p.Read,
                 UserId = p.UserId,
@@ -78,6 +81,7 @@ namespace Application.Services.InboxUsers.Queries.GetInboxUser
             var InboxUsers = _context.InboxUsers.Where(x => x.UserId == request.UserId && x.Read == 0);
             var InboxUserList = InboxUsers.Select(p => new GetInboxUserDto
             {
+                Title = p.Title,
                 Message = p.Message,
                 Read = p.Read,
                 UserId = p.UserId,

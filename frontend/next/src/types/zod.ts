@@ -8,4 +8,6 @@ export interface IFirstBuyCourseForm {
   level: string;
   // region: string;
   region: "" | "iran" | "outOfIran";
+  city: string
+  address: string
 }

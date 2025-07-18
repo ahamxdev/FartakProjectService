@@ -1,13 +1,56 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
+import { api } from "@/utils/api";
 
 const ForgetPass = () => {
   const [forgetPassStep, setForgetPass] = useState<number>(1);
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
+  const [forgetPassPhone, setForgetPassPhone] = useState<string>("");
+
+  const [oldPass, setOldPass] = useState<string>("");
+  const [newPass, setNewPass] = useState<string>("");
+
   const [showConfirmPassword, setShowConfirmPassword] =
     useState<boolean>(false);
+
+  const confirmPhoneNumber = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    api("/api/Users/ForgetPassword", "PUT", { mobile: forgetPassPhone })
+      .then((res) => {
+        console.log(res);
+        if (res.status == 200) {
+          setForgetPass(2);
+          return res.json();
+        } else {
+          throw new Error("اشکالی رخ داده است");
+        }
+      })
+      .then((data) => {
+        console.log(data);
+      });
+  };
+
+  const changePassHandler = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    api("/api/Users/ChangePassword", "PUT", {
+      mobile: forgetPassPhone,
+      oldPassword: oldPass,
+      newPassWord: newPass,
+    })
+    .then(res => {
+      console.log(res)
+      if (res) {
+        return res.json()
+      } else {
+        throw new Error("مشکلی در فرآیند تغییر رمز رخ داده!!");
+      }
+    })
+    .then((data) => {
+      console.log(data);
+    })
+  };
   return (
     <>
       <div className="w-[90%] mx-auto my-10 flex lg:flex-row flex-col-reverse lg:gap-30 gap-10">
@@ -18,23 +61,23 @@ const ForgetPass = () => {
           {forgetPassStep == 1 && (
             <form
               className="flex flex-col gap-3 w-full"
-              // onSubmit={(e) => loginHandle(e)}
+              onSubmit={(e) => confirmPhoneNumber(e)}
             >
               <div className="flex flex-col gap-3 w-full">
                 <label className="font-normal text-base text-black">
-                  شماره تلفن
+                  شماره تماس
                 </label>
                 <input
                   type="tel"
                   name="phone"
-                  //     value={loginPhone}
-                  //     onChange={(e) => setLoginPhone(e.target.value)}
+                  value={forgetPassPhone}
+                  onChange={(e) => setForgetPassPhone(e.target.value)}
                   className="border-[2px] border-[#1D40D7] rounded-[9999px] py-2 px-4"
-                  placeholder="شماره تلفن خود را وارد کنید ."
+                  placeholder="شماره تماس خود را وارد کنید ."
                 />
               </div>
               <button
-                onClick={() => setForgetPass(2)}
+                type="submit"
                 className="bg-[#2EBFA5] rounded-[9999px] flex justify-center items-center w-full py-3 text-sm font-normal cursor-pointer hover:bg-[#2ebfa4bd] transition-all text-white my-5"
               >
                 مرحله بعد
@@ -44,7 +87,7 @@ const ForgetPass = () => {
           {forgetPassStep == 2 && (
             <form
               className="flex flex-col gap-3 w-full"
-              // onSubmit={(e) => loginHandle(e)}
+              onSubmit={(e) => changePassHandler(e)}
             >
               <div className="flex flex-col gap-3 w-full relative">
                 <label className="font-normal text-base text-black">
@@ -53,8 +96,8 @@ const ForgetPass = () => {
                 <input
                   type={showPassword ? "text" : "password"}
                   name="password"
-                  // value={formDataRegister.password || ""}
-                  // onChange={handleChange}
+                  value={oldPass || ""}
+                  onChange={(e) => setOldPass(e.target.value)}
                   className="border-[2px] border-[#1D40D7] rounded-[9999px] py-2 px-4 pr-10"
                   placeholder="رمز عبور خود را وارد کنید"
                 />
@@ -107,8 +150,8 @@ const ForgetPass = () => {
                 <input
                   type={showConfirmPassword ? "text" : "password"}
                   name="confirmPassword"
-                  // value={formDataRegister.confirmPassword || ""}
-                  // onChange={handleChange}
+                  value={newPass || ""}
+                  onChange={(e) => setNewPass(e.target.value)}
                   className="border-[2px] border-[#1D40D7] rounded-[9999px] py-2 px-4 pr-10"
                   placeholder="تکرار رمز عبور خود را وارد کنید"
                 />
@@ -155,7 +198,7 @@ const ForgetPass = () => {
                 </span>
               </div>
               <button
-                onClick={() => setForgetPass(2)}
+                // onClick={() => setForgetPass(2)}
                 className="bg-[#2EBFA5] rounded-[9999px] flex justify-center items-center w-full py-3 text-sm font-normal cursor-pointer hover:bg-[#2ebfa4bd] transition-all text-white my-5"
               >
                 ثبت

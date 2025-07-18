@@ -11,22 +11,22 @@ import NewProjectBox from "@/components/skills/NewProjectBox";
 import SectionSlider from "@/components/skills/SectionSlider";
 import FartakUser from "@/components/skills/FartakUser";
 import { api } from "@/utils/api";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 
 type ItemType = {
   projectCategoryId: number;
   title: string;
   projectCategoryParentId: number;
-  image : string;
+  image: string;
 };
 
 const CategoryPage = () => {
   const params = useParams<{ category: string }>();
   const id = params.category;
   console.log(id);
-  
 
   const [category, setCategory] = useState<ItemType[]>([]);
+  const router = useRouter();
 
   const getCtgs = {
     projectCategoryId: id.split("-")[0],
@@ -36,11 +36,21 @@ const CategoryPage = () => {
       .then((res) => {
         if (res.status == 200) {
           return res.json();
+        } else {
+          throw new Error("status not 200");
         }
       })
       .then((data) => {
         console.log(data);
-        setCategory(data.projectCategories);
+        if (data?.projectCategories.length > 0) {
+          setCategory(data.projectCategories);
+        } else {
+          throw new Error("status not 200");
+        }
+      })
+      .catch((err) => {
+        console.error("خطا:", err);
+        router.push("/404");
       });
   }, []);
   return (
@@ -86,7 +96,11 @@ const CategoryPage = () => {
         {category?.map((item, index) => (
           <CategoryBox
             key={item?.projectCategoryId}
-            src={`${item?.image ? `https://api.fartakproject.ir/upload/Projects/${item.image}` : "/images/ctg/2.png"}`}
+            src={`${
+              item?.image
+                ? `https://api.fartakproject.ir/upload/Projects/${item.image}`
+                : "/images/ctg/2.png"
+            }`}
             title={item?.title}
             id={item?.projectCategoryParentId}
             hasScale={
@@ -135,14 +149,22 @@ const CategoryPage = () => {
         </div>
       </section>
 
-      <SectionSlider sliderPerview={3} title="جدیدترین پروژه ها" viewAllUrl="/category/all">
+      <SectionSlider
+        sliderPerview={3}
+        title="جدیدترین پروژه ها"
+        viewAllUrl="/category/all"
+      >
         {[...Array(10)].map((_, i) => (
           <SwiperSlide className="py-6" key={i}>
             <NewProjectBox />
           </SwiperSlide>
         ))}
       </SectionSlider>
-      <SectionSlider sliderPerview={3} title="برترین تیم ها" viewAllUrl="/category/all">
+      <SectionSlider
+        sliderPerview={3}
+        title="برترین تیم ها"
+        viewAllUrl="/category/all"
+      >
         {[...Array(10)].map((_, i) => (
           <SwiperSlide key={i} className="py-6">
             <FartakUser />

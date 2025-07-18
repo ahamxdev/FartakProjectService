@@ -36,7 +36,7 @@ const HomeAcademic = () => {
 							alt=""
 						/>
 						<button className="text-[20px] font-bold py-1 px-4">
-							دبستان
+							ابتدایی
 						</button>
 					</div>
 

@@ -19,6 +19,10 @@ using Application.Services.CourseTypes.Commands.AddCourseTypes;
 using Application.Services.CourseTypes.Commands.EditCourseTypes;
 using Application.Services.CourseTypes.Commands.RemoveCourseTypes;
 using Application.Services.CourseTypes.Queries.GetCourseTypes;
+using Application.Services.NotificationSettings.Commands.AddNotificationSettings;
+using Application.Services.NotificationSettings.Commands.EditNotificationSettings;
+using Application.Services.NotificationSettings.Commands.RemoveNotificationSettings;
+using Application.Services.NotificationSettings.Queries.GetNotificationSettings;
 using Application.Services.ProjectCategories.Commands.AddProjectCategories;
 using Application.Services.ProjectCategories.Commands.EditProjectCategories;
 using Application.Services.ProjectCategories.Commands.RemoveProjectCategories;
@@ -330,13 +334,19 @@ builder.Services.AddScoped<IGetCourseService, GetCourseService>();
 builder.Services.AddScoped<IAddPaymentUseService, AddPaymantUseService>();
 builder.Services.AddScoped<IGetPaymentUseService, GetPaymentUseService>();
 
-
 //CourseType
 
 builder.Services.AddScoped<IAddCourseTypeService, AddCourseTypeService>();
 builder.Services.AddScoped<IEditCourseTypeService, EditCourseTypeService>();
 builder.Services.AddScoped<IRemoveCourseTypeService, RemoveCourseTypeService>();
 builder.Services.AddScoped<IGetCourseTypeService, GetCourseTypeService>();
+
+//NotificationSetting
+
+builder.Services.AddScoped<IAddNotificationSettingService, AddNotificationSettingService>();
+builder.Services.AddScoped<IEditNotificationSettingService, EditNotificationSettingService>();
+builder.Services.AddScoped<IRemoveNotificationSettingService, RemoveNotificationSettingService>();
+builder.Services.AddScoped<IGetNotificationSettingService, GetNotificationSettingService>();
 
 //ProjectCategory
 
