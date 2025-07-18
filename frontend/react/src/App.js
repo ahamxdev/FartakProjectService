@@ -29,6 +29,7 @@ import HomeStudent from "./panel-professor/HomeStudent";
 import PanelProffesor from "./admin-panel/panelProfessor/PanelProffesor";
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import HomeFreelancer from "./freelancer/Home";
 import PanelFreelanser from "./admin-panel/PanelFreelancer";
 import TaskProject from "./admin-panel/TaskProject";
@@ -42,6 +43,8 @@ import ProfessorResume from "./admin-panel/panelProfessor/ProfessorResume/Profes
 import OnlineClass from "./admin-panel/panelProfessor/OnlineClass/OnlineClass";
 import PaymentAndWallet from "./admin-panel/panelProfessor/PaymentAndWallet/PaymentAndWallet";
 =======
+=======
+>>>>>>> cd8b1b5f897b78fd8f241af07307339f5313cabf
 import Wallet from './student-panel/Wallet';
 import MyClasses from './student-panel/MyClasses';
 import OnlineCourses from './student-panel/OnlineCourses';

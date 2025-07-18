@@ -79,7 +79,7 @@ const SubMenu: React.FC<SubMenuProps> = ({
   return (
     <ul
       className={`absolute top-[105%] overflow-y-auto z-50 left-2 right-2 flex flex-col gap-2 bg-white rounded-sm transition-all duration-100 ${
-        isSubMenuOpen ? "h-[200px] py-1 px-4" : "h-0 py-0 px-0"
+        isSubMenuOpen ? `${items.length > 0 ? "h-[200px] py-1 px-4" : "h-[20px] py-0 px-0"}` : "h-0 py-0 px-0"
       }`}
       id="category-submenu"
     >
