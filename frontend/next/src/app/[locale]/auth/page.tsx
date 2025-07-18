@@ -270,7 +270,7 @@ const Auth = () => {
   return (
     <div className="w-[90%] mx-auto my-10 flex lg:flex-row flex-col-reverse lg:gap-30 gap-10">
       <div className="lg:w-[35%] w-full flex flex-col items-center gap-4">
-        <span className="font-normal text-base text-black text-center">
+        <span className="font-bold text-2xl text-black text-center">
           {loginMode === "login"
             ? "وارد شوید"
             : loginMode === "register" &&
@@ -297,122 +297,7 @@ const Auth = () => {
             </button>
           </div>
         )}
-        {registerStep != 2 && (
-          <p className="font-light text-base text-black flex items-center gap-1">
-            آیا قبلا ثبت نام کرده اید؟{" "}
-            <button
-              onClick={changeLoginMode}
-              className="bg-none border-none outline-none cursor-pointer text-lg font-bold text-blue-800"
-            >
-              {loginMode === "login" ? "ثبت نام" : "ورود"}
-            </button>
-          </p>
-        )}
-        {(loginMode === "login" && loginUser == 1) || loginUser == 5 ? (
-          <Link
-            href={"/"}
-            className="bg-[#E9F1FF] w-full rounded-[9px] px-8 py-4 flex justify-between items-center"
-          >
-            ورود با گوگل
-            <span>
-              <svg
-                width="26"
-                height="26"
-                viewBox="0 0 26 26"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M24.3753 13.2533C24.3753 12.318 24.2978 11.6355 24.1302 10.9277H13.2324V15.1491H19.6292C19.5003 16.1981 18.8038 17.778 17.2562 18.8396L17.2345 18.9809L20.6802 21.5969L20.9189 21.6202C23.1113 19.6359 24.3753 16.7163 24.3753 13.2533Z"
-                  fill="#4285F4"
-                />
-                <path
-                  d="M13.2323 24.3754C16.3662 24.3754 18.9971 23.3642 20.9188 21.6201L17.2561 18.8394C16.2759 19.5093 14.9604 19.9769 13.2323 19.9769C10.1629 19.9769 7.55778 17.9927 6.62912 15.25L6.493 15.2613L2.91014 17.9787L2.86328 18.1064C4.77198 21.8222 8.69261 24.3754 13.2323 24.3754Z"
-                  fill="#34A853"
-                />
-                <path
-                  d="M6.63087 15.2491C6.38583 14.5413 6.24402 13.783 6.24402 12.9994C6.24402 12.2157 6.38583 11.4574 6.61797 10.7496L6.61148 10.5989L2.98371 7.83789L2.86502 7.89322C2.07835 9.43518 1.62695 11.1667 1.62695 12.9994C1.62695 14.832 2.07835 16.5635 2.86502 18.1055L6.63087 15.2491Z"
-                  fill="#FBBC05"
-                />
-                <path
-                  d="M13.2324 6.0233C15.4119 6.0233 16.8821 6.94594 17.7204 7.71696L20.9962 4.5825C18.9844 2.74987 16.3663 1.625 13.2324 1.625C8.69265 1.625 4.77199 4.17804 2.86328 7.89384L6.61625 10.7503C7.5578 8.00763 10.1629 6.0233 13.2324 6.0233Z"
-                  fill="#EB4335"
-                />
-              </svg>
-            </span>
-          </Link>
-        ) : (
-          (loginMode === "register" && loginUser == 1) ||
-          (loginUser == 5 && (
-            <Link
-              href={"/"}
-              className="bg-[#E9F1FF] w-full rounded-[9px] px-8 py-4 flex justify-between items-center"
-            >
-              ثبت نام با گوگل
-              <span>
-                <svg
-                  width="26"
-                  height="26"
-                  viewBox="0 0 26 26"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M24.3753 13.2533C24.3753 12.318 24.2978 11.6355 24.1302 10.9277H13.2324V15.1491H19.6292C19.5003 16.1981 18.8038 17.778 17.2562 18.8396L17.2345 18.9809L20.6802 21.5969L20.9189 21.6202C23.1113 19.6359 24.3753 16.7163 24.3753 13.2533Z"
-                    fill="#4285F4"
-                  />
-                  <path
-                    d="M13.2323 24.3754C16.3662 24.3754 18.9971 23.3642 20.9188 21.6201L17.2561 18.8394C16.2759 19.5093 14.9604 19.9769 13.2323 19.9769C10.1629 19.9769 7.55778 17.9927 6.62912 15.25L6.493 15.2613L2.91014 17.9787L2.86328 18.1064C4.77198 21.8222 8.69261 24.3754 13.2323 24.3754Z"
-                    fill="#34A853"
-                  />
-                  <path
-                    d="M6.63087 15.2491C6.38583 14.5413 6.24402 13.783 6.24402 12.9994C6.24402 12.2157 6.38583 11.4574 6.61797 10.7496L6.61148 10.5989L2.98371 7.83789L2.86502 7.89322C2.07835 9.43518 1.62695 11.1667 1.62695 12.9994C1.62695 14.832 2.07835 16.5635 2.86502 18.1055L6.63087 15.2491Z"
-                    fill="#FBBC05"
-                  />
-                  <path
-                    d="M13.2324 6.0233C15.4119 6.0233 16.8821 6.94594 17.7204 7.71696L20.9962 4.5825C18.9844 2.74987 16.3663 1.625 13.2324 1.625C8.69265 1.625 4.77199 4.17804 2.86328 7.89384L6.61625 10.7503C7.5578 8.00763 10.1629 6.0233 13.2324 6.0233Z"
-                    fill="#EB4335"
-                  />
-                </svg>
-              </span>
-            </Link>
-          ))
-        )}
-        {loginMode !== "register" && registerStep != 2 && (
-          <div className="w-[90%] mx-auto my-2 flex justify-between items-center gap-2">
-            <span className="lg:w-[366px] lg:h-[13px] md:w-[230px] md:h-[9px] sm:w-[170px] sm:h-[7px] w-[80px] h-[5px]">
-              <svg
-                width="100%"
-                height="100%"
-                viewBox="0 0 366 13"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M0.226497 6.47852L6 0.705013L11.7735 6.47852L6 12.252L0.226497 6.47852ZM6 6.47852V5.47852L366 5.47852V6.47852V7.47852L6 7.47852V6.47852Z"
-                  fill="#6E7A86"
-                />
-              </svg>
-            </span>
-            <span className="lg:text-2xl md:text-lg sm:text-base text-sm text-center font-bold">
-              یا
-            </span>
-            <span className="lg:w-[366px] lg:h-[13px] md:w-[230px] md:h-[9px] sm:w-[170px] sm:h-[7px] w-[80px] h-[5px]">
-              <svg
-                width="100%"
-                height="100%"
-                viewBox="0 0 366 13"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M365.774 6.47852L360 0.705013L354.226 6.47852L360 12.252L365.774 6.47852ZM360 6.47852V5.47852L0 5.47852V6.47852V7.47852L360 7.47852V6.47852Z"
-                  fill="#6E7A86"
-                />
-              </svg>
-            </span>
-          </div>
-        )}
+
         <section className="flex flex-col gap-3 w-full">
           {loginMode === "login" ? (
             <form
@@ -485,12 +370,23 @@ const Auth = () => {
                   )}{" "}
                 </span>
               </div>
-              <Link
-                href={"/auth/forgetpass"}
-                className="text-black underline text-sm font-light"
-              >
-                فراموشی رمز عبور
-              </Link>
+              <div className="flex justify-between items-center">
+                <Link
+                  href={"/auth/forgetpass"}
+                  className="text-black underline text-sm font-light"
+                >
+                  فراموشی رمز عبور
+                </Link>
+                  <p className="font-light text-sm text-black flex items-center gap-1">
+                    آیا قبلا ثبت نام کرده اید؟{" "}
+                    <button
+                      onClick={changeLoginMode}
+                      className="bg-none border-none outline-none cursor-pointer text-lg font-bold text-blue-800"
+                    >
+                      {loginMode === "login" ? "ثبت نام" : "ورود"}
+                    </button>
+                  </p>
+              </div>
               <button
                 type="submit"
                 className="bg-[#2EBFA5] rounded-[9999px] flex justify-center items-center w-full py-3 text-sm font-normal cursor-pointer hover:bg-[#2ebfa4bd] transition-all text-white my-5"
@@ -665,12 +561,23 @@ const Auth = () => {
                       )}{" "}
                     </span>
                   </div>
-                  <Link
-                    href={"/auth/forgetpass"}
-                    className="text-black underline text-sm font-light"
-                  >
-                    فراموشی رمز عبور
-                  </Link>
+                  <div className="flex justify-between items-center">
+                    <Link
+                      href={"/auth/forgetpass"}
+                      className="text-black underline text-sm font-light"
+                    >
+                      فراموشی رمز عبور
+                    </Link>
+                    <p className="font-light text-sm text-black flex items-center gap-1">
+                      آیا قبلا ثبت نام کرده اید؟{" "}
+                      <button
+                        onClick={changeLoginMode}
+                        className="bg-none border-none outline-none cursor-pointer text-lg font-bold text-blue-800"
+                      >
+                        {loginMode === "login" ? "ثبت نام" : "ورود"}
+                      </button>
+                    </p>
+                  </div>
                   <button
                     type="submit"
                     className="bg-[#2EBFA5] rounded-[9999px] flex justify-center items-center w-full py-3 text-sm font-normal cursor-pointer hover:bg-[#2ebfa4bd] transition-all text-white my-5"
@@ -714,6 +621,112 @@ const Auth = () => {
             </form>
           )}
         </section>
+
+        {loginMode !== "register" && registerStep != 2 && (
+          <div className="w-[90%] mx-auto my-2 flex justify-between items-center gap-2">
+            <span className="lg:w-[366px] lg:h-[13px] md:w-[230px] md:h-[9px] sm:w-[170px] sm:h-[7px] w-[80px] h-[5px]">
+              <svg
+                width="100%"
+                height="100%"
+                viewBox="0 0 366 13"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0.226497 6.47852L6 0.705013L11.7735 6.47852L6 12.252L0.226497 6.47852ZM6 6.47852V5.47852L366 5.47852V6.47852V7.47852L6 7.47852V6.47852Z"
+                  fill="#6E7A86"
+                />
+              </svg>
+            </span>
+            <span className="lg:text-2xl md:text-lg sm:text-base text-sm text-center font-bold">
+              یا
+            </span>
+            <span className="lg:w-[366px] lg:h-[13px] md:w-[230px] md:h-[9px] sm:w-[170px] sm:h-[7px] w-[80px] h-[5px]">
+              <svg
+                width="100%"
+                height="100%"
+                viewBox="0 0 366 13"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M365.774 6.47852L360 0.705013L354.226 6.47852L360 12.252L365.774 6.47852ZM360 6.47852V5.47852L0 5.47852V6.47852V7.47852L360 7.47852V6.47852Z"
+                  fill="#6E7A86"
+                />
+              </svg>
+            </span>
+          </div>
+        )}
+        {(loginMode === "login" && loginUser == 1) || loginUser == 5 ? (
+          <Link
+            href={"/"}
+            className="bg-[#E9F1FF] w-full rounded-[9px] px-8 py-4 flex justify-between items-center"
+          >
+            ورود با گوگل
+            <span>
+              <svg
+                width="26"
+                height="26"
+                viewBox="0 0 26 26"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M24.3753 13.2533C24.3753 12.318 24.2978 11.6355 24.1302 10.9277H13.2324V15.1491H19.6292C19.5003 16.1981 18.8038 17.778 17.2562 18.8396L17.2345 18.9809L20.6802 21.5969L20.9189 21.6202C23.1113 19.6359 24.3753 16.7163 24.3753 13.2533Z"
+                  fill="#4285F4"
+                />
+                <path
+                  d="M13.2323 24.3754C16.3662 24.3754 18.9971 23.3642 20.9188 21.6201L17.2561 18.8394C16.2759 19.5093 14.9604 19.9769 13.2323 19.9769C10.1629 19.9769 7.55778 17.9927 6.62912 15.25L6.493 15.2613L2.91014 17.9787L2.86328 18.1064C4.77198 21.8222 8.69261 24.3754 13.2323 24.3754Z"
+                  fill="#34A853"
+                />
+                <path
+                  d="M6.63087 15.2491C6.38583 14.5413 6.24402 13.783 6.24402 12.9994C6.24402 12.2157 6.38583 11.4574 6.61797 10.7496L6.61148 10.5989L2.98371 7.83789L2.86502 7.89322C2.07835 9.43518 1.62695 11.1667 1.62695 12.9994C1.62695 14.832 2.07835 16.5635 2.86502 18.1055L6.63087 15.2491Z"
+                  fill="#FBBC05"
+                />
+                <path
+                  d="M13.2324 6.0233C15.4119 6.0233 16.8821 6.94594 17.7204 7.71696L20.9962 4.5825C18.9844 2.74987 16.3663 1.625 13.2324 1.625C8.69265 1.625 4.77199 4.17804 2.86328 7.89384L6.61625 10.7503C7.5578 8.00763 10.1629 6.0233 13.2324 6.0233Z"
+                  fill="#EB4335"
+                />
+              </svg>
+            </span>
+          </Link>
+        ) : (
+          (loginMode === "register" && loginUser == 1) ||
+          (loginUser == 5 && (
+            <Link
+              href={"/"}
+              className="bg-[#E9F1FF] w-full rounded-[9px] px-8 py-4 flex justify-between items-center"
+            >
+              ثبت نام با گوگل
+              <span>
+                <svg
+                  width="26"
+                  height="26"
+                  viewBox="0 0 26 26"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M24.3753 13.2533C24.3753 12.318 24.2978 11.6355 24.1302 10.9277H13.2324V15.1491H19.6292C19.5003 16.1981 18.8038 17.778 17.2562 18.8396L17.2345 18.9809L20.6802 21.5969L20.9189 21.6202C23.1113 19.6359 24.3753 16.7163 24.3753 13.2533Z"
+                    fill="#4285F4"
+                  />
+                  <path
+                    d="M13.2323 24.3754C16.3662 24.3754 18.9971 23.3642 20.9188 21.6201L17.2561 18.8394C16.2759 19.5093 14.9604 19.9769 13.2323 19.9769C10.1629 19.9769 7.55778 17.9927 6.62912 15.25L6.493 15.2613L2.91014 17.9787L2.86328 18.1064C4.77198 21.8222 8.69261 24.3754 13.2323 24.3754Z"
+                    fill="#34A853"
+                  />
+                  <path
+                    d="M6.63087 15.2491C6.38583 14.5413 6.24402 13.783 6.24402 12.9994C6.24402 12.2157 6.38583 11.4574 6.61797 10.7496L6.61148 10.5989L2.98371 7.83789L2.86502 7.89322C2.07835 9.43518 1.62695 11.1667 1.62695 12.9994C1.62695 14.832 2.07835 16.5635 2.86502 18.1055L6.63087 15.2491Z"
+                    fill="#FBBC05"
+                  />
+                  <path
+                    d="M13.2324 6.0233C15.4119 6.0233 16.8821 6.94594 17.7204 7.71696L20.9962 4.5825C18.9844 2.74987 16.3663 1.625 13.2324 1.625C8.69265 1.625 4.77199 4.17804 2.86328 7.89384L6.61625 10.7503C7.5578 8.00763 10.1629 6.0233 13.2324 6.0233Z"
+                    fill="#EB4335"
+                  />
+                </svg>
+              </span>
+            </Link>
+          ))
+        )}
       </div>
       <div className="relative lg:w-[65%] w-[100%] lg:h-[820px] h-[400px]">
         <Image
