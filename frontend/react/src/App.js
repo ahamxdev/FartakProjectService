@@ -6,6 +6,7 @@ import Notification from "./employe-panel/Notification";
 import ContactCEO from "./employe-panel/ContactCEO";
 import CreateOrder from "./employe-panel/CreateOrder";
 import Orders from "./employe-panel/Orders";
+// import Orders from "./employe-panel/Orders";
 import WorkRoom from "./employe-panel/WorkRoom";
 import EmployerLayout from "./employe-panel/EmployerLayout";
 import OrderExecutors from "./employe-panel/OrderExecutors";
@@ -37,11 +38,13 @@ import RecordedClasses from "./admin-panel/professor/RecordedClasses";
 import OnlineClasses from "./admin-panel/professor/OnlineClasses";
 import InpersonClasses from "./admin-panel/professor/InpersonClasses";
 // Student dashboard
+import StudentLayout from "./student-panel/components/StudentLayout";
 import Wallet from "./student-panel/Wallet";
 import MyClasses from "./student-panel/MyClasses";
 import OnlineCourses from "./student-panel/OnlineCourses";
 import PurchasedCourses from "./student-panel/PurchasedCourses";
 import FAQ from "./student-panel/FAQ";
+
 import DiscountCode from "./student-panel/DiscountCode";
 import RequestManagement from "./student-panel/RequestManagement";
 import SupportTicket from "./student-panel/SupportTicket";
@@ -136,9 +139,11 @@ const router = createBrowserRouter([
       { path: "inperson-classes", Component: InpersonClasses },
     ],
   },
+
   // Student dashboard
   {
     path: "/student",
+    Component: StudentLayout,
     children: [
       { path: "", Component: HomeStudent },
       { path: "wallet", Component: Wallet },

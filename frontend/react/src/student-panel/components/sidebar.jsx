@@ -1,5 +1,4 @@
 import { useState } from "react";
-// import "bootstrap/dist/css/bootstrap.min.css";
 import "./Sidebar.css";
 import { NavLink } from "react-router-dom";
 
@@ -43,7 +42,7 @@ const Sidebar = () => {
     {
       icon: "./img/لوگو/پنل دانشجو/کد تخفیف.svg",
       text: "کد تخفیف",
-      link: "/discount-code",
+      link: "discount-code",
     },
     {
       icon: "./img/لوگو/پنل دانشجو/تیکت پشتیبانی.svg",
