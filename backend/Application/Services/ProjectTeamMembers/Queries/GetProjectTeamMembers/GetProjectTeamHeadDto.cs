@@ -6,7 +6,7 @@
         public string ProjectTitle { get; set; }
         public string CategoryTitle { get; set; }
         public string UserFullName { get; set; }
-        public int StarRating { get; set; } // یا nullable: int?
+        public int? StarRating { get; set; } // یا nullable: int?
     }
 
 }

@@ -27,6 +27,7 @@ namespace Application.Services.InboxUsers.Commands.AddInboxUser
                     Message = request.Message,
                     Read = 0,
                     UserId = request.UserId,
+                    SenderId = request.SenderId,
 
                 };
                 _context.InboxUsers.Add(InboxUser);

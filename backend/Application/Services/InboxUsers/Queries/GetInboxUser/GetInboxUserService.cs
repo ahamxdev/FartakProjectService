@@ -19,6 +19,7 @@ namespace Application.Services.InboxUsers.Queries.GetInboxUser
                 Message = p.Message,
                 Read = p.Read,
                 UserId = p.UserId,
+                SenderId = p.SenderId,
                 InboxUserId = p.InboxUserId
 
             }).OrderBy(x => x.InboxUserId).ToList();
@@ -41,6 +42,7 @@ namespace Application.Services.InboxUsers.Queries.GetInboxUser
                 Message = p.Message,
                 Read = p.Read,
                 UserId = p.UserId,
+                SenderId = p.SenderId,
                 InboxUserId = p.InboxUserId
 
             }).OrderBy(x => x.InboxUserId).ToList();
@@ -63,6 +65,7 @@ namespace Application.Services.InboxUsers.Queries.GetInboxUser
                 Message = p.Message,
                 Read = p.Read,
                 UserId = p.UserId,
+                SenderId = p.SenderId,
                 InboxUserId = p.InboxUserId
 
             }).OrderBy(x => x.InboxUserId).ToList();
@@ -85,6 +88,7 @@ namespace Application.Services.InboxUsers.Queries.GetInboxUser
                 Message = p.Message,
                 Read = p.Read,
                 UserId = p.UserId,
+                SenderId = p.SenderId,
                 InboxUserId = p.InboxUserId
 
             }).OrderBy(x => x.InboxUserId).ToList();
