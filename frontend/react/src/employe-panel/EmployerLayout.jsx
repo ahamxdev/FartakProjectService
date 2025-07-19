@@ -68,7 +68,7 @@ const sideBarLinks = [
 function EmployerLayout() {
   return (
     <>
-      <Header />
+      <Header addProject={true} />
       <main className="container mx-auto px-2.5 gap-4 grid grid-cols-[auto_1fr] mt-5 h-[666px]">
         <SideBar links={sideBarLinks} />
         <div className="outlet-container">
