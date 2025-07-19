@@ -3,14 +3,20 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { api } from "@/utils/api";
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
 >>>>>>> cd8b1b5f897b78fd8f241af07307339f5313cabf
+=======
+import Swal from "sweetalert2";
+import { useRouter } from "next/navigation";
+>>>>>>> 68e0518728d98227555524759677393c621674e9
 
 const ForgetPass = () => {
   const router = useRouter();
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   const [forgetPassPhone, setForgetPassPhone] = useState<string>("");
 
@@ -20,6 +26,8 @@ const ForgetPass = () => {
   const [showConfirmPassword, setShowConfirmPassword] =
     useState<boolean>(false);
 =======
+=======
+>>>>>>> 68e0518728d98227555524759677393c621674e9
   const [forgetPassStep, setForgetPass] = useState<number>(1);
   // const [showPassword, setShowPassword] = useState<boolean>(false);
 
@@ -33,7 +41,10 @@ const ForgetPass = () => {
 
   // const [showConfirmPassword, setShowConfirmPassword] =
     // useState<boolean>(false);
+<<<<<<< HEAD
 >>>>>>> cd8b1b5f897b78fd8f241af07307339f5313cabf
+=======
+>>>>>>> 68e0518728d98227555524759677393c621674e9
 
   const confirmPhoneNumber = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -52,6 +63,7 @@ const ForgetPass = () => {
       });
   };
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   const changePassHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -72,6 +84,8 @@ const ForgetPass = () => {
       console.log(data);
     })
 =======
+=======
+>>>>>>> 68e0518728d98227555524759677393c621674e9
   // const changePassHandler = (e: React.FormEvent<HTMLFormElement>) => {
   //   e.preventDefault();
   //   api("/api/Users/ChangePassword", "PUT", {
@@ -128,7 +142,10 @@ const ForgetPass = () => {
         });
         console.error("Login Error:", error);
       });
+<<<<<<< HEAD
 >>>>>>> cd8b1b5f897b78fd8f241af07307339f5313cabf
+=======
+>>>>>>> 68e0518728d98227555524759677393c621674e9
   };
   return (
     <>
@@ -167,16 +184,21 @@ const ForgetPass = () => {
             <form
               className="flex flex-col gap-3 w-full"
 <<<<<<< HEAD
+<<<<<<< HEAD
               onSubmit={(e) => changePassHandler(e)}
 =======
               onSubmit={(e) => loginHandle(e)}
 >>>>>>> cd8b1b5f897b78fd8f241af07307339f5313cabf
+=======
+              onSubmit={(e) => loginHandle(e)}
+>>>>>>> 68e0518728d98227555524759677393c621674e9
             >
               <div className="flex flex-col gap-3 w-full">
                 <label className="font-normal text-base text-black">
                   شماره تماس
                 </label>
                 <input
+<<<<<<< HEAD
 <<<<<<< HEAD
                   type={showPassword ? "text" : "password"}
                   name="password"
@@ -284,6 +306,8 @@ const ForgetPass = () => {
               <button
                 // onClick={() => setForgetPass(2)}
 =======
+=======
+>>>>>>> 68e0518728d98227555524759677393c621674e9
                   type="tel"
                   name="phone"
                   value={forgetPassPhone}
@@ -307,7 +331,10 @@ const ForgetPass = () => {
               </div>
               <button
                 type="submit"
+<<<<<<< HEAD
 >>>>>>> cd8b1b5f897b78fd8f241af07307339f5313cabf
+=======
+>>>>>>> 68e0518728d98227555524759677393c621674e9
                 className="bg-[#2EBFA5] rounded-[9999px] flex justify-center items-center w-full py-3 text-sm font-normal cursor-pointer hover:bg-[#2ebfa4bd] transition-all text-white my-5"
               >
                 مرحله بعد

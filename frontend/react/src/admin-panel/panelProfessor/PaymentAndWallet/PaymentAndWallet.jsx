@@ -2,71 +2,79 @@ import { transactions } from "./payFakeData";
 
 const PaymentAndWallet = () => {
   const getStatusBadge = (status) => {
+    const baseClass = "text-sm font-medium";
     switch (status) {
       case "انجام شد":
-        return <span className="text-success">{status}</span>;
+        return <span className={`${baseClass} text-green-600`}>{status}</span>;
       case "تایید شده":
-        return <span className="text-primary">{status}</span>;
+        return <span className={`${baseClass} text-blue-600`}>{status}</span>;
       case "در انتظار":
-        return <span className="text-warning">{status}</span>;
+        return <span className={`${baseClass} text-yellow-500`}>{status}</span>;
       case "رد شده":
-        return <span className="text-danger">{status}</span>;
+        return <span className={`${baseClass} text-red-600`}>{status}</span>;
       default:
-        return <span className="text-secondary">{status}</span>;
+        return <span className={`${baseClass} text-gray-500`}>{status}</span>;
     }
   };
 
   return (
-    <div className="pw-container mx-5">
-      <div className="w-100 h-25 d-flex justify-content-between gap-5 mt-2">
-        <div
-          className="h-75 w-50 rounded-5 d-flex flex-column justify-content-center align-items-center gap-2"
-          style={{
-            boxShadow: "-1px 1px 5px rgba(0, 0, 0, 0.25)",
-          }}
-        >
-          <div style={{ color: "#979797" }}>موجودی کل</div>
-          <div className="text-success">2,500,000 تومان</div>
+    <div className="mx-5">
+      <div className="flex flex-col lg:flex-row justify-between gap-5 mt-4">
+        <div className="flex flex-col justify-center items-center gap-2 bg-white shadow-md rounded-xl flex-1">
+          <div className="text-gray-400">موجودی کل</div>
+          <div className="text-green-600 text-lg font-bold">
+            ۲,۵۰۰,۰۰۰ تومان
+          </div>
         </div>
-        <div
-          className="h-75 w-50 border rounded-5 d-flex flex-column justify-content-center align-items-center gap-2"
-          style={{
-            boxShadow: "-1px 1px 5px rgba(0, 0, 0, 0.25)",
-          }}
-        >
-          <div style={{ color: "#979797" }}>قابل برداشت</div>
-          <div className="text-primary">2,500,000 تومان</div>
+
+        <div className="flex flex-col justify-center items-center gap-2 border bg-white shadow-md rounded-xl h-32 flex-1">
+          <div className="text-gray-400">قابل برداشت</div>
+          <div className="text-blue-600 text-lg font-bold">۲,۵۰۰,۰۰۰ تومان</div>
         </div>
-        <div
-          className="h-75 w-50 border rounded-5 d-flex flex-column justify-content-center align-items-center gap-2"
-          style={{
-            boxShadow: "-1px 1px 5px rgba(0, 0, 0, 0.25)",
-          }}
-        >
-          <div style={{ color: "#979797" }}>در انتظار تایید</div>
-          <div className="text-warning">5,000,000 تومان</div>
+
+        <div className="flex flex-col justify-center items-center gap-2 border bg-white shadow-md rounded-xl h-32 flex-1">
+          <div className="text-gray-400">در انتظار تایید</div>
+          <div className="text-yellow-500 text-lg font-bold">
+            ۵,۰۰۰,۰۰۰ تومان
+          </div>
         </div>
       </div>
-      <button className="btn btn-primary px-4 py-2 m-2">برداشت وجه</button>
-      <div className="table-responsive mt-5">
-        <table className="table table-bordered text-center align-middle">
-          <thead className="table-light">
+
+      <div className="mt-5 mb-5">
+        <button className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition-all">
+          برداشت وجه
+        </button>
+      </div>
+
+      <div className="overflow-x-auto mt-6">
+        <table className="min-w-full border border-gray-300 text-center text-sm">
+          <thead className="[background-color:#ef4444!important] text-white">
             <tr>
-              <td>تاریخ</td>
-              <td>نوع تراکنش</td>
-              <td>مبلغ</td>
-              <td>توضیحات</td>
-              <td>وضعیت</td>
+              <th className="border border-gray-300 py-2 px-4">تاریخ</th>
+              <th className="border border-gray-300 py-2 px-4">نوع تراکنش</th>
+              <th className="border border-gray-300 py-2 px-4">مبلغ</th>
+              <th className="border border-gray-300 py-2 px-4">توضیحات</th>
+              <th className="border border-gray-300 py-2 px-4">وضعیت</th>
             </tr>
           </thead>
           <tbody>
             {transactions.map((item, index) => (
-              <tr key={index}>
-                <td>{item.date}</td>
-                <td>{item.type}</td>
-                <td>{item.amount.toLocaleString("fa-IR")} تومان</td>
-                <td>{item.description}</td>
-                <td>{getStatusBadge(item.status)}</td>
+              <tr key={index} className="hover:bg-gray-50">
+                <td className="border border-gray-300 py-2 px-4">
+                  {item.date}
+                </td>
+                <td className="border border-gray-300 py-2 px-4">
+                  {item.type}
+                </td>
+                <td className="border border-gray-300 py-2 px-4">
+                  {item.amount.toLocaleString("fa-IR")} تومان
+                </td>
+                <td className="border border-gray-300 py-2 px-4">
+                  {item.description}
+                </td>
+                <td className="border border-gray-300 py-2 px-4">
+                  {getStatusBadge(item.status)}
+                </td>
               </tr>
             ))}
           </tbody>

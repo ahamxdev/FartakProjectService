@@ -25,6 +25,8 @@ namespace Application.Services.ProjectUsers.Commands.AddProjectUsers
                 {
                     ProjectId = request.ProjectId,
                     Status = request.Status,
+                    Price = request.Price,
+                    Days = request.Days,
                     UserId = request.UserId,
                 };
                 _context.ProjectUsers.Add(ProjectUser);

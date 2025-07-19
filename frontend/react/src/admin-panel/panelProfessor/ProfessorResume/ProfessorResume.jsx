@@ -10,34 +10,26 @@ import {
 
 const ProfessorResume = () => {
   return (
-    <div className="pr-container p-2 mx-5 overflow-y-scroll custom-scrollbar">
-      <div className="spanStyle py-3">درباره من</div>
-      <div className="p-3 textStyle">
+    <div className="h-full px-5 py-2 overflow-y-scroll scrollbar-thin scrollbar-thumb-yellow-600 scrollbar-track-gray-200">
+      {/* درباره من */}
+      <div className="border-b border-blue-600 text-xl py-3">درباره من</div>
+      <div className="text-base leading-7 p-3">
         لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
-        از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و
-        سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای
-        متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه
-        درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با
-        نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان
-        خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید
-        داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان
-        رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات
-        پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
+        از طراحان گرافیک است...
       </div>
-      <div className="spanStyle py-3">اطلاعات علمی رزومه</div>
-      <div
-        className="d-flex justify-content-between p-4"
-        style={{ maxWidth: "800px" }}
-      >
-        <div className="d-flex flex-column gap-3">
+
+      <div className="border-b border-blue-600 text-xl py-3">
+        اطلاعات علمی رزومه
+      </div>
+      <div className="flex flex-wrap justify-between max-w-3xl p-4 gap-4">
+        <div className="flex flex-col gap-3 text-sm">
           {personalInfo.map((item, index) => (
             <span key={index}>
               {item.label} : {item.value}
             </span>
           ))}
         </div>
-
-        <div className="d-flex flex-column gap-3">
+        <div className="flex flex-col gap-3 text-sm">
           {contactInfo.map((item, index) => (
             <span key={index}>
               {item.label} : {item.value}
@@ -45,46 +37,59 @@ const ProfessorResume = () => {
           ))}
         </div>
       </div>
-      <div className="spanStyle py-3">سوابق تحصیلی</div>
+
+      <div className="border-b border-blue-600 text-xl py-3">سوابق تحصیلی</div>
       {cardData.map((item) => (
-        <div className="card" key={item.id}>
-          <div className="cardSpan p-2 m-1">{item.title}</div>
-          <div className="cardInfo p-2 d-flex justify-content-between flex-wrap m-1 gap-4">
-            <div className="w-25">دانشگاه : {item.university}</div>
-            <div className="w-50">محل : {item.location}</div>
-            <div className="w-25">مدت : {item.duration}</div>
+        <div
+          className="bg-blue-100 w-[90%] rounded-xl my-4 p-3 shadow-sm"
+          key={item.id}
+        >
+          <div className="text-sm font-medium border-b border-blue-600 pb-2 mb-2">
+            {item.title}
+          </div>
+          <div className="flex flex-wrap justify-between gap-4 text-sm">
+            <div className="w-1/4">دانشگاه : {item.university}</div>
+            <div className="w-1/2">محل : {item.location}</div>
+            <div className="w-1/4">مدت : {item.duration}</div>
           </div>
         </div>
       ))}
-      <div className="spanStyle py-3">مسلط به دروس و زبان های</div>
-      <div className="d-flex flex-wrap gap-2 mt-4" style={{ fontSize: "15px" }}>
+
+      <div className="border-b border-blue-600 text-xl py-3">
+        مسلط به دروس و زبان های
+      </div>
+      <div className="flex flex-wrap gap-2 mt-4 text-sm">
         {skillsData.map((item, index) => (
           <span
             key={index}
-            className={`rounded-pill ${item.bg} border ${item.border} text-dark px-3 py-2`}
+            className={`rounded-full px-3 py-2 border text-gray-800 ${item.bg} ${item.border}`}
           >
             {item.text}
           </span>
         ))}
       </div>
-      <div className="spanStyle py-3 mt-3">سوابق کاری</div>
+
+      <div className="border-b border-blue-600 text-xl py-3 mt-4">
+        سوابق کاری
+      </div>
       {jobData.map((text, index) => (
-        <div key={index} className="mt-3 d-flex gap-3 align-items-center px-3">
-          <img src={arrow} alt="" />
+        <div key={index} className="flex items-center gap-3 mt-3 px-3">
+          <img src={arrow} alt="arrow" />
           <span>{text}</span>
         </div>
       ))}
-      <div className="spanStyle py-3 mt-3">بارگذاری ویدیو معرفی</div>
-      <div className="d-flex flex-column gap-3 mt-4 px-3">
+
+      <div className="border-b border-blue-600 text-xl py-3 mt-4">
+        بارگذاری ویدیو معرفی
+      </div>
+      <div className="flex flex-col gap-3 mt-4 mb-5 px-3">
         {aboutMeVideo.map((item, index) => (
           <div key={index}>
             <span>{item.label}:</span>{" "}
-            <span style={{ fontSize: "14px" }}>
-              {item.value || <em>وارد نشده</em>}
-            </span>
+            <span className="text-sm">{item.value || <em>وارد نشده</em>}</span>
           </div>
         ))}
-        <video className="border w-75 mt-3" controls></video>
+        <video className="border w-3/4 mt-3 rounded-md" controls></video>
       </div>
     </div>
   );
