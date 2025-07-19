@@ -14,28 +14,23 @@
 }
 
 .sidebar-closed {
-  width: 70px;
+  width: 60px;
 }
 
 .sidebar-item {
   color: #333;
   text-decoration: none;
   transition: background-color 0.3s;
-  border-radius: 0.5rem;
-  margin: 0.25rem 0;
   -webkit-transition: background-color 0.3s;
   -moz-transition: background-color 0.3s;
   -ms-transition: background-color 0.3s;
   -o-transition: background-color 0.3s;
 }
 
-.sidebar-item:hover {
-  background-color: #f0f0f0;
-}
-
 .sidebar-item.active {
-  background-color: #797979;
-  font-weight: bold;
+  background-color: #28303f;
+  color: white;
+  /* font-weight: bold; */
 }
 
 .sidebar-icon {

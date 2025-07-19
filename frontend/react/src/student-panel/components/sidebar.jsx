@@ -10,47 +10,47 @@ const Sidebar = () => {
 
   const menuItems = [
     {
-      icon: "./img/لوگو/پنل دانشجو/خانه.svg",
+      icon: "/img/لوگو/پنل دانشجو/خانه.svg",
       text: "خانه",
       link: "",
     },
     {
-      icon: "./img/لوگو/پنل دانشجو/دوره های خریداری شده.svg",
+      icon: "/img/لوگو/پنل دانشجو/دوره های خریداری شده.svg",
       text: "دوره‌های خریده‌شده",
       link: "purchased-courses",
     },
     {
-      icon: "./img/لوگو/پنل دانشجو/دوره های آنلاین.svg",
+      icon: "/img/لوگو/پنل دانشجو/دوره های آنلاین.svg",
       text: "دوره‌های آنلاین",
       link: "online-courses",
     },
     {
-      icon: "./img/لوگو/پنل دانشجو/کلاس های من.svg",
+      icon: "/img/لوگو/پنل دانشجو/کلاس های من.svg",
       text: "کلاس‌های من",
       link: "my-classes",
     },
     {
-      icon: "./img/لوگو/پنل دانشجو/مدریت درخواست ها.svg",
+      icon: "/img/لوگو/پنل دانشجو/مدریت درخواست ها.svg",
       text: "مدیریت درخواست‌ها",
       link: "request-management",
     },
     {
-      icon: "./img/لوگو/پنل دانشجو/کیف پول.svg",
+      icon: "/img/لوگو/پنل دانشجو/کیف پول.svg",
       text: "کیف پول",
       link: "wallet",
     },
     {
-      icon: "./img/لوگو/پنل دانشجو/کد تخفیف.svg",
+      icon: "/img/لوگو/پنل دانشجو/کد تخفیف.svg",
       text: "کد تخفیف",
       link: "discount-code",
     },
     {
-      icon: "./img/لوگو/پنل دانشجو/تیکت پشتیبانی.svg",
+      icon: "/img/لوگو/پنل دانشجو/تیکت پشتیبانی.svg",
       text: "تیکت پشتیبانی",
       link: "support-ticket",
     },
     {
-      icon: "./img/لوگو/پنل دانشجو/سوالات متداول.svg",
+      icon: "/img/لوگو/پنل دانشجو/سوالات متداول.svg",
       text: "سوالات متداول",
       link: "faq",
     },
@@ -58,30 +58,27 @@ const Sidebar = () => {
 
   return (
     <div
-      className={`d-flex flex-column rounded-3 shadow sidebar mx-3 mt-2 w-[666px] ${
+      className={`flex flex-col rounded-xl container-effects sidebar mx-3 mt-2 w-[666px] transition-all duration-300 ${
         isOpen ? "sidebar-open" : "sidebar-closed"
       }`}
     >
-      <div className="toggle-icon mx-3 mt-3 mb-4" onClick={toggleSidebar}>
+      <div className="mx-3 mt-3 mb-4" onClick={toggleSidebar}>
         <img
-          src="./img/لوگو/پنل دانشجو/بستن ساید بار.svg"
+          src="/img/لوگو/پنل دانشجو/بستن ساید بار.svg"
           alt="تغییر وضعیت"
-          style={{ cursor: "pointer" }}
+          className="cursor-pointer"
         />
       </div>
 
       {menuItems.map((item, index) => (
         <NavLink
+          end
           key={index}
           to={item.link}
-          className={({ isActive }) =>
-            `d-flex align-items-center px-3 py-3 sidebar-item ${
-              isActive ? "active" : ""
-            }`
-          }
+          className="flex items-center px-3 py-3 sidebar-item hover:bg-[#B0D6FF] transition-colors duration-300"
         >
-          <img src={item.icon} alt={item.text} className="sidebar-icon" />
-          {isOpen && <span className="mx-2">{item.text}</span>}
+          <img src={item.icon} alt={item.text} className="w-5 h-5" />
+          {isOpen && <span className="ml-2">{item.text}</span>}
         </NavLink>
       ))}
     </div>
