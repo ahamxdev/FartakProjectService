@@ -1,0 +1,354 @@
+/* General */
+.btn-tersiary {
+  color: white;
+  background-color: #5171fc;
+  padding: 6px 20px;
+  border-radius: 10px;
+  transition: all 0.3s;
+}
+.btn-tersiary:hover {
+  background-color: rgb(104, 131, 254);
+}
+.flex-end {
+  display: flex;
+  justify-content: end;
+}
+.flex-start {
+  display: flex;
+  justify-content: end;
+}
+/* Home */
+.freelancer-home-card {
+  width: 420px;
+  height: 290px;
+  padding: 20px;
+  display: grid;
+  column-gap: 16px;
+  grid-template-columns: repeat(2, 1frr);
+  align-items: center;
+}
+.freelancer-home-card div:first-child {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.freelancer-home-card div:last-child {
+  grid-column: span 2;
+}
+.freelancer-skills {
+  display: flex;
+  gap: 20px;
+}
+.freelancer-skills span {
+  min-width: 50px;
+  background-color: rgb(223, 247, 247);
+  text-align: center;
+  border-radius: 6px;
+  padding: 3px 6px;
+}
+
+/* Payment */
+.free-payment-container {
+  padding: 32px 56px;
+  margin-bottom: 16px;
+}
+.free-payment-infos {
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+.free-payment-infos div {
+  width: 280px;
+  height: 100px;
+  display: flex;
+  gap: 14px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  color: white;
+  background: url("/public/img/freelancer/circles.png");
+  background-position: top;
+}
+.free-pay-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+.free-pay-forms {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+.free-pay-forms form {
+  height: 190px;
+  padding: 10px 24px;
+}
+.free-pay-forms form label {
+  margin-bottom: 14px;
+}
+.free-pay-forms form input {
+  width: 100%;
+  border: none;
+  margin-bottom: 14px;
+  padding: 8px;
+}
+.free-card-id {
+  display: flex;
+  align-items: start;
+  gap: 10px;
+}
+.free-card-id span {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* Created Orders */
+.free-ordered-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 300px;
+  height: 350px;
+  padding: 10px;
+}
+.free-ordered-card img {
+  align-self: center;
+  width: 90px;
+  height: 90px;
+}
+.free-ordered-card div:not(:last-child) {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 10px;
+}
+.free-ordered-card p {
+  margin-bottom: 0 !important;
+}
+
+/* Cuts */
+.free-accordion {
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.free-accordion input {
+  display: none;
+}
+
+.free-accordion label {
+  display: block;
+  padding: 1rem;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.free-accordion .free-acc-content {
+  max-height: 0;
+  overflow: hidden;
+  background: #fff;
+  transition: all 0.3s ease-in-out;
+  opacity: 0;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-radius: 0 0 10px 10px;
+}
+.free-accordion input:checked ~ .free-acc-content {
+  opacity: 100%;
+  padding: 1rem;
+  overflow: visible;
+  max-height: 500px;
+  border-top: 1px solid #b0b2b6;
+}
+.free-acc-content div {
+  width: 450px;
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+}
+
+/* Project Management (Charts) */
+.charts-header {
+  background-color: #cbd5e1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0;
+  padding: 0 16px;
+  margin-bottom: 24px;
+}
+.charts-sidebar {
+  background-color: #f4f4f4;
+  width: 300px;
+  height: 700px;
+  border-radius: 15px;
+  box-shadow: -1px 1px 5px 0 rgba(0, 0, 0, 0.25);
+}
+.charts-sidebar img {
+  margin: 10px;
+}
+.charts-main-container {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  padding: 0 16px;
+}
+.charts-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  justify-items: center;
+  margin-bottom: 48px;
+}
+.charts h2 {
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.charts {
+  height: 700px;
+  overflow-y: scroll;
+}
+
+.charts-container div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+.charts-container div h3 {
+  font-size: 20px;
+}
+
+.charts-container div span {
+  opacity: 70%;
+}
+.charts-sidebar-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.charts-sidebar-info div {
+  position: relative;
+  font-size: 32px;
+  font-weight: 700;
+  color: #fff;
+  background-color: #1ba37f;
+  padding: 20px 26px;
+  border-radius: 100%;
+}
+.charts-sidebar-info div span {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  display: inline;
+  color: #000;
+  font-size: 20px;
+  background-color: #fffb00;
+  padding: 6px 6px 0 0;
+  border-radius: 100%;
+  top: 0;
+}
+.charts-sidebar-info span {
+  color: #777777;
+}
+.charts-sidebar-projects {
+  padding: 20px;
+  border-bottom: 1px solid #bbbbbb;
+  border-top: 1px solid #bbbbbb;
+  color: #777777;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 20px;
+}
+.charts-sidebar-links {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 20px;
+  color: #777777;
+  font-size: 20px;
+}
+/* Order ID */
+.order-id {
+  padding: 24px;
+}
+.order-id h2 {
+  font-size: 20px;
+  font-weight: 800;
+  border-bottom: 1px solid #b0b2b6;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+.order-id-links {
+  padding-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  border-bottom: 1px solid #b0b2b6;
+  margin-bottom: 20px;
+}
+.order-id-links span {
+  border: 3px solid #238f7c;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 20px;
+}
+
+.task-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+}
+.order-id-task {
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.done-task-title {
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #b0b2b6;
+}
+.done-task-message {
+  display: flex;
+  flex-direction: column;
+}
+.order-id-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.order-id-form input[type="file"] {
+  display: none;
+}
+.order-id-form input[type="text"] {
+  width: 100px;
+  height: 40px;
+  padding: 20px 10px;
+  border: none;
+}
+.order-id-form label span {
+  display: inline-block;
+  background-color: #d9d9d9;
+  border-radius: 10px;
+  width: 300px;
+  height: 30px;
+}
+.order-id-form label {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}

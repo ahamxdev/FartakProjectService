@@ -1,245 +1,189 @@
-import React from "react";
-import { Link } from "react-router-dom";
-const Setting = () => {
+const accordionData = [
+  {
+    id: 0,
+    title: "فاز 1 ",
+    subTitle: "تحلیل و طراحی",
+    tasks: [
+      { lable: "جسله با کارفرما برای تعیین نیاز مندی ها ", isDone: true },
+      { lable: "تحلیل بازار و رقبا", isDone: true },
+      {
+        lable:
+          "تعیین ویژگی‌های کلیدی (ثبت‌نام، منو غذا، سبد خرید، پرداخت آنلاین)",
+        isDone: true,
+      },
+      {
+        lable:
+          "طراحی وایرفریم صفحات اصلی (Home, منو، صفحه سفارش، داشبورد کاربر)",
+        isDone: true,
+      },
+      {
+        lable: "طراحی پایگاه داده (ERD ساده: کاربر، غذا، سفارش، پرداخت)",
+        isDone: true,
+      },
+      {
+        lable: "تعیین تکنولوژی‌ها (مثلاً: Next.js + Node.js + MongoDB)  ",
+        isDone: true,
+      },
+    ],
+    isActive: true,
+  },
+  {
+    id: 1,
+    title: "فاز 2 ",
+    subTitle: "توسعه اولیه",
+    tasks: [
+      {
+        lable: "ساخت ساختار پروژه (Frontend + Backend جدا یا مونو؟)",
+        isDone: true,
+      },
+      { lable: "پیاده‌سازی ثبت‌نام/ورود کاربران", isDone: true },
+      { lable: "ساخت صفحه منوی غذا و نمایش دسته‌بندی‌ها", isDone: true },
+      { lable: "اضافه کردن قابلیت اضافه به سبد خرید", isDone: true },
+      { lable: "ایجاد امکان ثبت سفارش", isDone: true },
+      { lable: "توسعه API برای مدیریت غذا و سفارش‌ها", isDone: false },
+      { lable: "تست واحد (Unit Test) روی بخش‌های حساس  ", isDone: false },
+    ],
+    isActive: true,
+  },
+  {
+    id: 2,
+    title: "فاز 3",
+    subTitle: "تست و بهینه‌سازی",
+    tasks: [
+      {
+        lable: "تست دستی تمامی سناریوها (ورود، ثبت سفارش، پرداخت)",
+        isDone: false,
+      },
+      {
+        lable: "تست امنیتی (بررسی آسیب‌پذیری فرم‌ها، SQL Injection و غیره)",
+        isDone: false,
+      },
+      {
+        lable:
+          "بهینه‌سازی سرعت بارگذاری صفحات (Lazy Loading, Optimization Images)",
+        isDone: false,
+      },
+      { lable: "تست ریسپانسیو روی موبایل و دسکتاپ", isDone: false },
+      { lable: "تست چند مرورگر (Chrome, Firefox, Safari)", isDone: false },
+      { lable: "دریافت بازخورد اولیه از کاربران محدود", isDone: false },
+    ],
+    isActive: false,
+  },
+  {
+    id: 3,
+    title: "فاز 4",
+    subTitle: "استقرار و پشتیبانی",
+    tasks: [
+      { lable: "آماده‌سازی هاست و دامنه", isDone: false },
+      { lable: "استقرار سرور Backend و Frontend", isDone: false },
+      { lable: "تنظیم SSL (https)", isDone: false },
+      { lable: "مانیتورینگ سرور و لاگ خطاها", isDone: false },
+      {
+        lable: "ایجاد مستندات پروژه (Docs برای توسعه‌دهندگان بعدی)",
+        isDone: false,
+      },
+      {
+        lable: "پشتیبانی اولیه (مثلاً رفع باگ‌های ۳۰ روز اول رایگان)",
+        isDone: false,
+      },
+      { lable: "دریافت فیدبک برای نسخه‌های آینده", isDone: false },
+    ],
+    isActive: false,
+  },
+];
+const OrderProgress = () => {
   return (
     <>
-      <header>
-        <div className="header--container">
-          <div className="header__left">
-            <div className="header--dashobord">
-              <img src="../img/Link → logo.png" alt="" />
-              <p className="header__right--para"> |</p>
-              <img
-                className="header__right--img"
-                src="../img/img-person.jpg"
-                alt="person"
-              />
-              <div className="header--dashbord-p-home">
-                <p>پروفایل شخصی</p>
-              </div>
-            </div>
-
-            <div className="search-container">
-              <button className="add-project">
-                <img src="../img/plus.svg" alt="add-project" />
-              </button>
-              <Link href="#" className="add-project-para">افزودن پروژه</Link>
-              <input
-                type="text"
-                className="search-input-home"
-                placeholder="دنبال چه چیزی میگردید؟"
-              />
-              <img
-               src="../img/search 01.svg" 
-               className="search-icon-home" 
-               alt=""
-               />
-            </div>
-
-            <p className="header__right--para"> |</p>
-            <img className="header__left--img" src="../img/setting.svg" alt="" />
-            <p className="header__right--para"> |</p>
-            <img
-              className="header__left--img"
-              src="../img/notification 03.svg"
-              alt=""
-            />
-            <p className="header__right--para">|</p>
-            <img className="header__left--img" src="../img/out.svg" alt="" />
+      <div class="accordion">
+        <input type="checkbox" id="section1" />
+        <label htmlFor="section1" className="container-effects">
+          <span>سفارش شماره 8 : وبسایت سفارش آنلاین غذا</span>
+          <div>
+            <span>درصد پیشرفت سفارش 42%</span>
+            <img src="/img/employer/arrow.png" alt="arrow" className="arrow" />
           </div>
-        </div>
-      </header>
-
-      <div className="container">
-        <div className="sidebar">
-          <ul>
-            {[
-      { icon: "../img/لوگو/کارفرما/بستن سایدبار.svg", label: "بستن سایدبار", path: "/#" },
-      { icon: "../img/لوگو/کارفرما/خانه.svg", label: "خانه", path: "/Home" },
-      { icon: "../img/لوگو/کارفرما/ثبت سفارش.svg", label: "ثبت سفارش", path: "/PlaceOrder" },
-      { icon: "../img/لوگو/کارفرما/سفارش ها.svg", label: "سفارش ها", path: "/Orders"},
-      { icon: "../img/لوگو/کارفرما/اتاق کار.svg", label: "اتاق کار", path: "/Room" },
-      { icon: "../img/لوگو/کارفرما/درصد پیشرفت سفارش.svg", label: "درصد پیشرفت سفارش", path: "/OrderProgress" },
-      { icon: "../img/لوگو/کارفرما/اطلاعیه ها.svg", label: "اطلاعیه ها", path: "/Notification" },
-      { icon: "../img/لوگو/کارفرما/صفحه چت و پیام ها.svg", label: "صفحه چت و پیام ها", path: "/Chat" },
-      { icon: "../img/لوگو/کارفرما/کیف پول و امور مالی.svg", label: "کیف پول و امور مالیاتی", path: "/BagMoney"},
-      { icon: "../img/لوگو/کارفرما/تنظیمات پنل کارفرما.svg", label: "تنظیمات  کارفرما", path: "/Setting" },
-      { icon: "../img/لوگو/کارفرما/جستجو.svg", label: "جستجو", path: "/Search" },
-      { icon: "../img/لوگو/کارفرما/مجری های سفارش.svg", label: "مجری های سفارش", path: "/Workers" },
-      { icon: "../img/لوگو/کارفرما/ارتباط با مدیرعامل.svg", label: "ارتباط با مدیرعامل", path: "/" },
-            ].map((item, index) => (
-              <div className="sidebar--order" key={index}>
-                <img src={`../img/${item.icon}`} alt="" />
-                <li>{item.label}</li>
+        </label>
+        <div class="content">
+          <div className="content-container">
+            {accordionData.map((data) => (
+              <div
+                key={data.id}
+                className="accordion-card container-effects"
+                style={{ opacity: `${data.isActive ? "100%" : "40%"}` }}
+              >
+                <h3>{data.title}</h3>
+                <span>{data.subTitle}</span>
+                <ul>
+                  {data.tasks.map((task, index) => (
+                    <li key={index}>
+                      {task.isDone ? (
+                        <img
+                          className="inline"
+                          src="/img/employer/checked.png"
+                          alt="Done"
+                        />
+                      ) : (
+                        <img
+                          className="inline"
+                          src="/img/employer/unchecked.png"
+                          alt="Undone"
+                        />
+                      )}{" "}
+                      <span>{task.lable}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
-          </ul>
-          <div className="body--empty-progress">
-          <div className="order-counte">
-            <div className="order-counte-p"><p>سفارش شماره 8 : وبسایت سفارش آنلاین غذا</p></div>
-            <div className="order-counte-icon"><p>درصد پیشرفت سفارش 42%</p>
-            <img  src="../img/direction-up.svg" alt="icon" />
-            </div>
-
           </div>
-                    <div className="fase_container">
-                        <div className="fase_container-col">
-                        <p className="fase-title">فاز 1</p>
-                        <p className="fase-title">تحلیل وطراحی</p>
-                        <div className="order-progress-fase">
-                        <input type="radio" />
-                        <p>جسله با کارفرما برای تعیین نیاز مندی ها </p>
-                        </div>
-                        <div className="order-progress-fase">
-                        <input type="radio" />
-                        <p>تحلیل بازار و رقبا</p>
-                        </div>
-                        <div className="order-progress-fase">
-                        <input type="radio" />
-                        <p>تعیین ویژگی‌های کلیدی (ثبت‌نام، منو غذا، سبد خرید، پرداخت آنلاین)</p>
-                        </div>
-                        <div className="order-progress-fase">
-                        <input type="radio" />
-                        <p>طراحی وایرفریم صفحات اصلی (Home, منو، صفحه سفارش، داشبورد کاربر)</p>
-                        </div>
-                        <div className="order-progress-fase">
-                        <input type="radio" />
-                        <p>طراحی پایگاه داده (ERD ساده: کاربر، غذا، سفارش، پرداخت)</p>
-                        </div>
-                        <div className="order-progress-fase">
-                        <input type="radio" />
-                        <p>تعیین تکنولوژی‌ها (مثلاً: Next.js + Node.js + MongoDB)</p>
-                        </div>
-                        </div>
-
-
-                        <div className="fase_container-col">
-                        <p className="fase-title">فاز 2</p>
-                        <p className="fase-title">تحلیل وطراحی</p>
-                        <div className="order-progress-fase">
-                        <input type="radio" />
-                        <p>جسله با کارفرما برای تعیین نیاز مندی ها </p>
-                        </div>
-                        <div className="order-progress-fase">
-                        <input type="radio" />
-                        <p>تحلیل بازار و رقبا</p>
-                        </div>
-                        <div className="order-progress-fase">
-                        <input type="radio" />
-                        <p>تعیین ویژگی‌های کلیدی (ثبت‌نام، منو غذا، سبد خرید، پرداخت آنلاین)</p>
-                        </div>
-                        <div className="order-progress-fase">
-                        <input type="radio" />
-                        <p>طراحی وایرفریم صفحات اصلی (Home, منو، صفحه سفارش، داشبورد کاربر)</p>
-                        </div>
-                        <div className="order-progress-fase">
-                        <input type="radio" />
-                        <p>طراحی پایگاه داده (ERD ساده: کاربر، غذا، سفارش، پرداخت)</p>
-                        </div>
-                        <div className="order-progress-fase">
-                        <input type="radio" />
-                        <p>تعیین تکنولوژی‌ها (مثلاً: Next.js + Node.js + MongoDB)</p>
-                        </div>
-                        </div>
-
-
-
-                        <div className="fase_container-col">
-                        <p className="fase-title">فاز 3</p>
-                        <p className="fase-title">تحلیل وطراحی</p>
-                        <div className="order-progress-fase">
-                        <input type="radio"disabled />
-                        <p>جسله با کارفرما برای تعیین نیاز مندی ها </p>
-                        </div>
-                        <div className="order-progress-fase">
-                        <input type="radio" disabled/>
-                        <p>تحلیل بازار و رقبا</p>
-                        </div>
-                        <div className="order-progress-fase">
-                        <input type="radio" disabled/>
-                        <p>تعیین ویژگی‌های کلیدی (ثبت‌نام، منو غذا، سبد خرید، پرداخت آنلاین)</p>
-                        </div>
-                        <div className="order-progress-fase">
-                        <input type="radio" disabled/>
-                        <p>طراحی وایرفریم صفحات اصلی (Home, منو، صفحه سفارش، داشبورد کاربر)</p>
-                        </div>
-                        <div className="order-progress-fase">
-                        <input type="radio" disabled/>
-                        <p>طراحی پایگاه داده (ERD ساده: کاربر، غذا، سفارش، پرداخت)</p>
-                        </div>
-                        <div className="order-progress-fase">
-                        <input type="radio" disabled/>
-                        <p>تعیین تکنولوژی‌ها (مثلاً: Next.js + Node.js + MongoDB)</p>
-                        </div>
-                        </div>
-
-
-                        <div className="fase_container-col">
-                        <p className="fase-title">فاز 4</p>
-                        <p className="fase-title">تحلیل وطراحی</p>
-                        <div className="order-progress-fase">
-                        <input type="radio"  disabled/>
-                        <p>جسله با کارفرما برای تعیین نیاز مندی ها </p>
-                        </div>
-                        <div className="order-progress-fase">
-                        <input type="radio" disabled/>
-                        <p>تحلیل بازار و رقبا</p>
-                        </div>
-                        <div className="order-progress-fase">
-                        <input type="radio" disabled />
-                        <p>تعیین ویژگی‌های کلیدی (ثبت‌نام، منو غذا، سبد خرید، پرداخت آنلاین)</p>
-                        </div>
-                        <div className="order-progress-fase">
-                        <input type="radio" disabled/>
-                        <p>طراحی وایرفریم صفحات اصلی (Home, منو، صفحه سفارش، داشبورد کاربر)</p>
-                        </div>
-                        <div className="order-progress-fase">
-                        <input type="radio" disabled/>
-                        <p>طراحی پایگاه داده (ERD ساده: کاربر، غذا، سفارش، پرداخت)</p>
-                        </div>
-                        <div className="order-progress-fase">
-                        <input type="radio" disabled/>
-                        <p>تعیین تکنولوژی‌ها (مثلاً: Next.js + Node.js + MongoDB)</p>
-                        </div>
-                        </div>
-                
-                    </div>
-                    <div className="order-counte">
-            <div className="order-counte-p"><p>سفارش شماره 8 : وبسایت سفارش آنلاین غذا</p></div>
-            <div className="order-counte-icon"><p>درصد پیشرفت سفارش 42%</p>
-            <img  src="../img/direction-up.svg" alt="icon" />
-            </div>
-
-          </div>
-          <div className="order-counte">
-            <div className="order-counte-p"><p>سفارش شماره 8 : وبسایت سفارش آنلاین غذا</p></div>
-            <div className="order-counte-icon"><p>درصد پیشرفت سفارش 42%</p>
-            <img  src="../img/direction-up.svg" alt="icon" />
-            </div>
-
-          </div>
-          <div className="order-counte">
-            <div className="order-counte-p"><p>سفارش شماره 8 : وبسایت سفارش آنلاین غذا</p></div>
-            <div className="order-counte-icon"><p>درصد پیشرفت سفارش 42%</p>
-            <img  src="../img/direction-up.svg" alt="icon" />
-            </div>
-
-          </div>
-          <div className="order-counte">
-            <div className="order-counte-p"><p>سفارش شماره 8 : وبسایت سفارش آنلاین غذا</p></div>
-            <div className="order-counte-icon"><p>درصد پیشرفت سفارش 42%</p>
-            <img  src="../img/direction-up.svg" alt="icon" />
-            </div>
-
-          </div>
-
         </div>
-        </div>
-        <div>
+      </div>
+      <div class="accordion">
+        <input type="checkbox" id="section2" />
+        <label for="section2" className="container-effects">
+          <span>سفارش شماره 8 : وبسایت سفارش آنلاین غذا</span>
+          <div>
+            <span>درصد پیشرفت سفارش 42%</span>
+            <img src="/img/employer/arrow.png" alt="arrow" className="arrow" />
+          </div>
+        </label>
+        <div class="content">
+          <div className="content-container">
+            {accordionData.map((data) => (
+              <div
+                key={data.id}
+                className="accordion-card container-effects"
+                style={{ opacity: `${data.isActive ? "100%" : "40%"}` }}
+              >
+                <h3>{data.title}</h3>
+                <span>{data.subTitle}</span>
+                <ul>
+                  {data.tasks.map((task, index) => (
+                    <li key={index}>
+                      {task.isDone ? (
+                        <img
+                          className="inline"
+                          src="/img/employer/checked.png"
+                          alt="Done"
+                        />
+                      ) : (
+                        <img
+                          className="inline"
+                          src="/img/employer/unchecked.png"
+                          alt="Undone"
+                        />
+                      )}{" "}
+                      <span>{task.lable}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </>
   );
 };
 
-export default Setting;
+export default OrderProgress;

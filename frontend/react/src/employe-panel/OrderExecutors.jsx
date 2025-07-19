@@ -1,127 +1,134 @@
-import React from "react";
-import { Link } from "react-router-dom";
-const Setting = () => {
+const executorProfiles = [
+  {
+    id: 0,
+    name: "علی علوی",
+    img: "/img/img-person.jpg",
+    skill: "برنامه نویس ",
+  },
+  {
+    id: 1,
+    name: "علی علوی",
+    img: "/img/img-person.jpg",
+    skill: "برنامه نویس ",
+  },
+  {
+    id: 2,
+    name: "علی علوی",
+    img: "/img/img-person.jpg",
+    skill: "برنامه نویس ",
+  },
+  {
+    id: 3,
+    name: "علی علوی",
+    img: "/img/img-person.jpg",
+    skill: "برنامه نویس ",
+  },
+  {
+    id: 4,
+    name: "علی علوی",
+    img: "/img/img-person.jpg",
+    skill: "برنامه نویس ",
+  },
+  {
+    id: 5,
+    name: "علی علوی",
+    img: "/img/img-person.jpg",
+    skill: "برنامه نویس ",
+  },
+  {
+    id: 6,
+    name: "علی علوی",
+    img: "/img/img-person.jpg",
+    skill: "برنامه نویس ",
+  },
+  {
+    id: 7,
+    name: "علی علوی",
+    img: "/img/img-person.jpg",
+    skill: "برنامه نویس ",
+  },
+  {
+    id: 8,
+    name: "علی علوی",
+    img: "/img/img-person.jpg",
+    skill: "برنامه نویس ",
+  },
+  {
+    id: 9,
+    name: "علی علوی",
+    img: "/img/img-person.jpg",
+    skill: "برنامه نویس ",
+  },
+  {
+    id: 10,
+    name: "علی علوی",
+    img: "/img/img-person.jpg",
+    skill: "برنامه نویس ",
+  },
+  {
+    id: 11,
+    name: "علی علوی",
+    img: "/img/img-person.jpg",
+    skill: "برنامه نویس ",
+  },
+];
+const OrderExecutors = () => {
   return (
-    <>
-      <header>
-        <div className="header--container">
-          <div className="header__left">
-            <div className="header--dashobord">
-              <img src="../img/Link → logo.png" alt="" />
-              <p className="header__right--para"> |</p>
-              <img
-                className="header__right--img"
-                src="../img/img-person.jpg"
-                alt="person"
-              />
-              <div className="header--dashbord-p-home">
-                <p>پروفایل شخصی</p>
-              </div>
-            </div>
-
-            <div className="search-container">
-              <button className="add-project">
-                <img src="../img/plus.svg" alt="add-project" />
-              </button>
-              <Link href="#" className="add-project-para">افزودن پروژه</Link>
+    <div className="order-executor">
+      <div className="executor-right container-effects">
+        <h2 className="executors-title">جستجو مدیر لاین</h2>
+        <form className="executor-form">
+          <div className="form-container">
+            <div className="form-group">
+              <label htmlFor="name">نام:</label>
               <input
+                className="container-effects"
                 type="text"
-                className="search-input-home"
-                placeholder="دنبال چه چیزی میگردید؟"
+                id="name"
+                name="name"
               />
+            </div>
+            <div className="form-group">
+              <label htmlFor="skill">مهارت:</label>
+              <input
+                className="container-effects"
+                type="text"
+                id="skill"
+                name="skill"
+              />
+            </div>
+          </div>
+          <div className="form-btn">
+            <button className="btn-secondary">جستجو</button>
+          </div>
+        </form>
+        <table className="rounded-table">
+          <tr>
+            <th>نام</th>
+            <th>مهارت</th>
+          </tr>
+        </table>
+      </div>
+      <div className="executor-left container-effects">
+        <h2 className="executors-title">مجری ها و مدیر پروژه ها</h2>
+        <div className="executor-profiles">
+          {executorProfiles.map((executor) => (
+            <div className="executor-profile" key={executor.id}>
               <img
-               src="../img/search 01.svg" 
-               className="search-icon-home" 
-               alt=""
-               />
-            </div>
-
-            <p className="header__right--para"> |</p>
-            <img className="header__left--img" src="../img/setting.svg" alt="" />
-            <p className="header__right--para"> |</p>
-            <img
-              className="header__left--img"
-              src="../img/notification 03.svg"
-              alt=""
-            />
-            <p className="header__right--para">|</p>
-            <img className="header__left--img" src="../img/out.svg" alt="" />
-          </div>
-        </div>
-      </header>
-
-      <div className="container">
-        <div className="sidebar">
-          <ul>
-            {[
-      { icon: "../img/لوگو/کارفرما/بستن سایدبار.svg", label: "بستن سایدبار", path: "/#" },
-      { icon: "../img/لوگو/کارفرما/خانه.svg", label: "خانه", path: "/Home" },
-      { icon: "../img/لوگو/کارفرما/ثبت سفارش.svg", label: "ثبت سفارش", path: "/PlaceOrder" },
-      { icon: "../img/لوگو/کارفرما/سفارش ها.svg", label: "سفارش ها", path: "/Orders"},
-      { icon: "../img/لوگو/کارفرما/اتاق کار.svg", label: "اتاق کار", path: "/Room" },
-      { icon: "../img/لوگو/کارفرما/درصد پیشرفت سفارش.svg", label: "درصد پیشرفت سفارش", path: "/OrderProgress" },
-      { icon: "../img/لوگو/کارفرما/اطلاعیه ها.svg", label: "اطلاعیه ها", path: "/Notification" },
-      { icon: "../img/لوگو/کارفرما/صفحه چت و پیام ها.svg", label: "صفحه چت و پیام ها", path: "/Chat" },
-      { icon: "../img/لوگو/کارفرما/کیف پول و امور مالی.svg", label: "کیف پول و امور مالیاتی", path: "/BagMoney"},
-      { icon: "../img/لوگو/کارفرما/تنظیمات پنل کارفرما.svg", label: "تنظیمات  کارفرما", path: "/Setting" },
-      { icon: "../img/لوگو/کارفرما/جستجو.svg", label: "جستجو", path: "/Search" },
-      { icon: "../img/لوگو/کارفرما/مجری های سفارش.svg", label: "مجری های سفارش", path: "/Workers" },
-      { icon: "../img/لوگو/کارفرما/ارتباط با مدیرعامل.svg", label: "ارتباط با مدیرعامل", path: "/" },
-            ].map((item, index) => (
-              <div className="sidebar--order" key={index}>
-                <img src={`../img/${item.icon}`} alt="" />
-                <li>{item.label}</li>
+                className="executor-img"
+                src={executor.img}
+                alt={executor.name}
+              />
+              <div className="executor-info">
+                <h3 className="executor-name">{executor.name}</h3>
+                <span className="executor-skill">{executor.skill}</span>
               </div>
-            ))}
-          </ul>
-          <div className="body--empty-order-executors">
-            
-          <div className="Order-Executors-container">
-            <div className="search-manegment-line">
-              <h3 >جستجو مدیر لاین</h3>
-              <div className="search-manegment-inputs">
-                <div >
-              <label className="search-manegment-label">نام:</label>
-              <input className="search-manegment-input" type="text" />
-              </div>
-              <div>
-              <label className="search-manegment-label">مهارت:</label>
-              <input className="search-manegment-input" type="text" />
-              </div>
-              </div>
-              <button className="search-manegment-btn">جستجو</button>
-              <div className="search-manegment-list"><p>نام</p><p>مهارت</p></div>
             </div>
-            <div className="search-manegment-line">
-            <h3 > برنامه نویسان و مدیران لاین ها </h3>
-            <div className="programmes-managmentLine">
-              <div className="programmer"><img src="../img/img-person.jpg" alt="img" /><p>ایمان علوی</p><p>برنامه نویس</p></div>
-              <div className="programmer"><img src="../img/img-person.jpg" alt="img" /><p>ایمان علوی</p><p>برنامه نویس</p></div>
-              <div className="programmer"><img src="../img/img-person.jpg" alt="img" /><p>ایمان علوی</p><p>برنامه نویس</p></div>
-              <div className="programmer"><img src="../img/img-person.jpg" alt="img" /><p>ایمان علوی</p><p>برنامه نویس</p></div>
-            </div>
-            <div className="programmes-managmentLine">
-              <div className="programmer"><img src="../img/img-person.jpg" alt="img" /><p>ایمان علوی</p><p>برنامه نویس</p></div>
-              <div className="programmer"><img src="../img/img-person.jpg" alt="img" /><p>ایمان علوی</p><p>برنامه نویس</p></div>
-              <div className="programmer"><img src="../img/img-person.jpg" alt="img" /><p>ایمان علوی</p><p>برنامه نویس</p></div>
-              <div className="programmer"><img src="../img/img-person.jpg" alt="img" /><p>ایمان علوی</p><p>برنامه نویس</p></div>
-            </div>
-            <div className="programmes-managmentLine">
-              <div className="programmer"><img src="../img/img-person.jpg" alt="img" /><p>ایمان علوی</p><p>برنامه نویس</p></div>
-              <div className="programmer"><img src="../img/img-person.jpg" alt="img" /><p>ایمان علوی</p><p>برنامه نویس</p></div>
-              <div className="programmer"><img src="../img/img-person.jpg" alt="img" /><p>ایمان علوی</p><p>برنامه نویس</p></div>
-              <div className="programmer"><img src="../img/img-person.jpg" alt="img" /><p>ایمان علوی</p><p>برنامه نویس</p></div>
-            </div>
-            </div>
-          </div>
-       
-        </div>
-        </div>
-        <div>
+          ))}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
-export default Setting;
+export default OrderExecutors;

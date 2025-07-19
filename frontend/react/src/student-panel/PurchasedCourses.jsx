@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+<<<<<<< HEAD
+=======
 // import { Link } from "react-router-dom";
 import Header from "./components/header";
 import Sidebar from "./components/sidebar";
+>>>>>>> a43b147191de07cffa1536aca68daa0ad6e6a0a0
 
 const Dashboard = () => {
   const [activeLabel, setActiveLabel] = useState(null);
@@ -25,98 +28,88 @@ const Dashboard = () => {
   ];
 
   return (
-    <div className="d-flex flex-column" style={{ minHeight: "100vh" }}>
-      <Header />
-      <div className="d-flex flex-grow-1">
-        <div style={{ width: "250px" }}>
-          <Sidebar />
-        </div>
-
-        <main className="flex-grow-1" style={{ overflowY: "auto" }}>
-          <div className="container-fluid py-3" style={{ maxWidth: "100%" }}>
-            <div className="row">
-              <div className="col-12 d-flex gap-3 flex-wrap">
-                {labels.map((label) => (
-                  <div
-                    key={label.id}
-                    className={`p-3 rounded-5 cursor-pointer text-center`}
-                    style={{
-                      width: "180px",
-                      backgroundColor:
-                        activeLabel === label.id ? label.color : "white",
-                      border:
-                        activeLabel === label.id
-                          ? `3px solid ${label.borderColor}`
-                          : `1px solid ${label.borderColor}`,
-                      color: activeLabel === label.id ? "white" : label.color,
-                      transition: "all 0.3s ease",
-                      fontWeight: "500",
-                    }}
-                    onClick={() => setActiveLabel(label.id)}
-                  >
-                    {label.name}
-                  </div>
-                ))}
+    <main className="overflow-y-auto">
+      <div className="container mx-auto py-3 px-4 w-full">
+        <div className="flex flex-col">
+          <div className="flex flex-wrap gap-3">
+            {labels.map((label) => (
+              <div
+                key={label.id}
+                className={`p-3 rounded-2xl text-center cursor-pointer w-44`}
+                style={{
+                  backgroundColor:
+                    activeLabel === label.id ? label.color : "white",
+                  border:
+                    activeLabel === label.id
+                      ? `3px solid ${label.borderColor}`
+                      : `1px solid ${label.borderColor}`,
+                  color: activeLabel === label.id ? "white" : label.color,
+                  transition: "all 0.3s ease",
+                  fontWeight: "500",
+                }}
+                onClick={() => setActiveLabel(label.id)}
+              >
+                {label.name}
               </div>
-            </div>
+            ))}
+          </div>
 
-            <div className="row g-4 mt-3">
-              {[...Array(3)].map((_, i) => (
-                <div key={i} className="col-md-4">
-                  <div className="card p-2 shadow rounded-4 overflow-hidden h-100">
-                    <img
-                      src="/img/Rectangle 2715.png"
-                      className="card-img-top rounded-3"
-                      alt="دوره UML"
-                      style={{ height: "200px", objectFit: "cover" }}
-                    />
-                    <div className="card-body d-flex flex-column">
-                      <div className="d-flex justify-content-between align-items-center mb-2">
-                        <div className="d-flex align-items-center gap-2">
-                          <img
-                            src="/img/Instructor.png"
-                            alt="استاد"
-                            className="rounded-circle"
-                            width="32"
-                            height="32"
-                          />
-                          <span className="fw-bold small">امیرحسین نیاور</span>
-                        </div>
-                        <span className="badge bg-warning text-dark px-3 py-1">
-                          دانشگاه
-                        </span>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-3">
+            {[...Array(3)].map((_, i) => (
+              <div
+                key={i}
+                className="bg-white p-4 container-effects !rounded-2xl overflow-hidden h-full flex flex-col"
+              >
+                <img
+                  src="/img/Rectangle 2715.png"
+                  className="w-full rounded-lg object-cover mb-5"
+                  alt="دوره UML"
+                />
+                <div className="flex flex-col flex-grow">
+                  <div className="flex justify-between items-center mb-2">
+                    <div className="flex items-center gap-2">
+                      <img
+                        src="/img/Instructor.png"
+                        alt="استاد"
+                        className="rounded-full"
+                        width="32"
+                        height="32"
+                      />
+                      <span className="font-bold text-sm">امیرحسین نیاور</span>
+                    </div>
+                    <span className="bg-yellow-400 text-dark px-3 py-1 rounded-full text-xs">
+                      دانشگاه
+                    </span>
+                  </div>
+                  <p className="text-xl mb-4">
+                    دوره طراحی UML برای درس مهندسی نرم افزار کارشناسی ناپیوسته
+                    حرفه ای نرم افزار
+                  </p>
+                  <div className="mt-auto">
+                    <small className="text-gray-500 font-light">
+                      پیشرفت در مطالعه
+                    </small>
+                    <div className="w-full bg-gray-200 rounded-full h-4 mt-2">
+                      <div
+                        className="bg-[#28303F] h-4 rounded-full text-center text-xs text-[#FAB437]"
+                        style={{ width: "30%" }}
+                      >
+                        30%
                       </div>
-                      <p className="card-text fw-bold small">
-                        دوره طراحی UML برای درس مهندسی نرم افزار...
-                      </p>
-                      <div className="mt-auto">
-                        <small className="text-muted">۲۰٪</small>
-                        <div
-                          className="progress mt-2"
-                          style={{ height: "6px" }}
-                        >
-                          <div
-                            className="progress-bar bg-dark"
-                            role="progressbar"
-                            style={{ width: "20%" }}
-                            aria-valuenow="20"
-                            aria-valuemin="0"
-                            aria-valuemax="100"
-                          ></div>
-                        </div>
-                        <button className="btn btn-dark btn-sm mt-2 w-50 align-self-start">
-                          مطالعه دوره
-                        </button>
-                      </div>
+                    </div>
+                    <div className="flex-end mt-4">
+                      <button className="bg-black text-white text-sm py-2 px-4 rounded-xl text-left">
+                        مطالعه دوره
+                      </button>
                     </div>
                   </div>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
-        </main>
+        </div>
       </div>
-    </div>
+    </main>
   );
 };
 

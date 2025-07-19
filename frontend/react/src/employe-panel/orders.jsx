@@ -1,150 +1,82 @@
-import React from "react";
-const Dashboard = () => {
+const orderArray = [
+  {
+    id: 0,
+    title: "سفارش شماره 1",
+    category: "توسعه نرم‌افزار و آی تی",
+    status: "ثبت شده",
+    description: "طراحی وب سایت دیکشنری مخصوص کامپیوتر",
+  },
+  {
+    id: 1,
+    title: "سفارش شماره 2",
+    category: "محتوا و ترجمه",
+    status: "در حال انجام",
+    description:
+      "ترجمه کامل کتاب Change your mind before change for you در سه هفته",
+  },
+  {
+    id: 2,
+    title: "سفارش شماره 3",
+    category: "بازاریابی و فروش",
+    status: "کنسل شده",
+    description: "طراحی وب سایت دیکشنری مخصوص کامپیوتر",
+  },
+  {
+    id: 3,
+    title: "سفارش شماره 4",
+    category: "طراحی و خلاقیت",
+    status: "کامل شده",
+    description: "طراحی وب سایت دیکشنری مخصوص کامپیوتر",
+  },
+  {
+    id: 4,
+    title: "سفارش شماره 5",
+    category: "کسب و کار",
+    status: "پرداخت شده",
+    description: "طراحی وب سایت دیکشنری مخصوص کامپیوتر",
+  },
+  {
+    id: 5,
+    title: "سفارش شماره 6",
+    category: "مهندسی و معماری",
+    status: "غیر فعال شده",
+    description: "طراحی وب سایت دیکشنری مخصوص کامپیوتر",
+  },
+];
+const Orders = () => {
   return (
-    <>
-      <header>
-        <div className="header--container">
-          <div className="header__left">
-            <div className="header--dashobord">
-              <img src="../img/Link → logo.png" alt="" />
-              <p className="header__right--para"> |</p>
-              <img
-                className="header__right--img"
-                src="../img/img-person.jpg"
-                alt="person"
-              />
-              <div className="header--dashbord-p-home">
-                <p>پروفایل شخصی</p>
-              </div>
+    <div className="orders-container">
+      {orderArray.map((order) => {
+        let orderColor = "#111";
+        if (order.status === "ثبت شده") {
+          orderColor = "#238F7C"; // Green
+        } else if (
+          (order.status === "در حال انجام") |
+          (order.status === "پرداخت شده")
+        ) {
+          orderColor = "#BF9105"; // Yellow
+        } else if (order.status === "کنسل شده") {
+          orderColor = "#A52834"; // Blue
+        }
+        return (
+          <div key={order.id} className="order-card container-effects">
+            <h3>{order.title}</h3>
+            <div>
+              <p className="mb-0">دسته‌بندی: {order.category}</p>
+              <span
+                style={{
+                  color: orderColor,
+                }}
+              >
+                {order.status}
+              </span>
             </div>
-
-            <div className="search-container">
-              <button className="add-project">
-                <img src="../img/plus.svg" alt="add-project" />
-              </button>
-              <p className="add-project-para">افزودن پروژه</p>
-              <input
-                type="text"
-                className="search-input-home"
-                placeholder="دنبال چه چیزی میگردید؟"
-              />
-              <img
-               src="../img/search 01.svg" 
-               className="search-icon-home" 
-               alt=""
-               />
-            </div>
-
-            <p className="header__right--para"> |</p>
-            <img className="header__left--img" src="../img/setting.svg" alt="" />
-            <p className="header__right--para"> |</p>
-            <img
-              className="header__left--img"
-              src="../img/notification 03.svg"
-              alt=""
-            />
-            <p className="header__right--para">|</p>
-            <img className="header__left--img" src="../img/out.svg" alt="" />
+            <p className="mb-0">توضیحات: {order.description}</p>
           </div>
-        </div>
-      </header>
-
-      <div className="container">
-        <div className="sidebar">
-          <ul>
-            {[
-      { icon: "../img/لوگو/کارفرما/بستن سایدبار.svg", label: "بستن سایدبار", path: "/#" },
-      { icon: "../img/لوگو/کارفرما/خانه.svg", label: "خانه", path: "/Home" },
-      { icon: "../img/لوگو/کارفرما/ثبت سفارش.svg", label: "ثبت سفارش", path: "/PlaceOrder" },
-      { icon: "../img/لوگو/کارفرما/سفارش ها.svg", label: "سفارش ها", path: "/Orders"},
-      { icon: "../img/لوگو/کارفرما/اتاق کار.svg", label: "اتاق کار", path: "/Room" },
-      { icon: "../img/لوگو/کارفرما/درصد پیشرفت سفارش.svg", label: "درصد پیشرفت سفارش", path: "/OrderProgress" },
-      { icon: "../img/لوگو/کارفرما/اطلاعیه ها.svg", label: "اطلاعیه ها", path: "/Notification" },
-      { icon: "../img/لوگو/کارفرما/صفحه چت و پیام ها.svg", label: "صفحه چت و پیام ها", path: "/Chat" },
-      { icon: "../img/لوگو/کارفرما/کیف پول و امور مالی.svg", label: "کیف پول و امور مالیاتی", path: "/BagMoney"},
-      { icon: "../img/لوگو/کارفرما/تنظیمات پنل کارفرما.svg", label: "تنظیمات  کارفرما", path: "/Money" },
-      { icon: "../img/لوگو/کارفرما/جستجو.svg", label: "جستجو", path: "/Search" },
-      { icon: "../img/لوگو/کارفرما/مجری های سفارش.svg", label: "مجری های سفارش", path: "/Workers" },
-      { icon: "../img/لوگو/کارفرما/ارتباط با مدیرعامل.svg", label: "ارتباط با مدیرعامل", path: "/" },
-            ].map((item, index) => (
-              <div className="sidebar--order" key={index}>
-                <img src={`../img/${item.icon}`} alt="" />
-                <li>{item.label}</li>
-              </div>
-            ))}
-          </ul>
-
-
-
-
-
-          <div className="body--empty-show-order">
-            <div className="body--empty--row">
-              <div className="body--empty--card">
-                <h4>سفارش شماره1</h4>
-                <div className="body--empty--card-position">
-                  <p>دسته بندی : توسعه نرم افزار و آی تی</p>
-                  <p className="body--empty--card-position-p1">ثبت شده</p>
-                </div>
-                <p>عنوان : طراحی وب سایت دیکشنری مخصوص کامپیوتر</p>
-              </div>
-
-              <div className="body--empty--card">
-                <h4>سفارش شماره2</h4>
-                <div className="body--empty--card-position">
-                  <p>دسته بندی : محتوا و ترجمه</p>
-                  <p className="body--empty--card-position-p">در حال انجام</p>
-                </div>
-                <p>
-                  عنوان : ترجمه کامل کتاب در سه هفته Change your mind before change for you <br />
-                </p>
-              </div>
-            </div>
-
-            <div className="body--empty--row">
-              <div className="body--empty--card">
-                <h4>سفارش شماره3</h4>
-                <div className="body--empty--card-position">
-                  <p>دسته بندی : بازاریابی و فروش</p>
-                  <p className="body--empty--card-position-p3">کنسل شد</p>
-                </div>
-                <p>عنوان : طراحی وب سایت دیکشنری مخصوص کامپیوتر</p>
-              </div>
-
-              <div className="body--empty--card">
-                <h4>سفارش شماره4</h4>
-                <div className="body--empty--card-position">
-                  <p>دسته بندی : طراحی و خلاقیت</p>
-                  <p className="body--empty--card-position-p4">کامل شد</p>
-                </div>
-                <p>عنوان : طراحی وب سایت دیکشنری مخصوص کامپیوتر</p>
-              </div>
-            </div>
-
-            <div className="body--empty--row">
-              <div className="body--empty--card">
-                <h4>سفارش شماره5</h4>
-                <div className="body--empty--card-position">
-                  <p>دسته بندی : طراحی و خلاقیت</p>
-                  <p className="body--empty--card-position-p">پرداخت شد</p>
-                </div>
-                <p>عنوان : طراحی وب سایت دیکشنری مخصوص کامپیوتر</p>
-              </div>
-
-              <div className="body--empty--card">
-                <h4>سفارش شماره6</h4>
-                <div className="body--empty--card-position">
-                  <p>دسته بندی : طراحی و خلاقیت</p>
-                  <p className="body--empty--card-position-p4">غیرفعال شده</p>
-                </div>
-                <p>عنوان : طراحی وب سایت دیکشنری مخصوص کامپیوتر</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
+        );
+      })}
+    </div>
   );
-}
+};
 
-export default Dashboard;
+export default Orders;

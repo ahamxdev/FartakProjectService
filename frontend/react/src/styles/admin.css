@@ -1,0 +1,56 @@
+.accordion-sidebar .acc-sidebar-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  opacity: 0;
+  padding: 0 1rem 0 0;
+  display: flex;
+  flex-direction: column;
+}
+.accordion-sidebar input:checked ~ .acc-sidebar-content {
+  padding: 10px 10px 10px 0;
+  max-height: 400px;
+  opacity: 100%;
+}
+.link-arrow {
+  transition: transform 0.3s;
+}
+.accordion-sidebar input:checked ~ label .link-arrow {
+  transform: rotate(-90deg);
+}
+.accordion-sidebar:not(:last-child) {
+  border-bottom: 1px solid #d1d4d7;
+}
+.sidebar-link.active {
+  background-color: #28303f;
+  color: #fff;
+}
+
+/* Professor resoume */
+.accordion-sidebar .professor-resoume-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  opacity: 0;
+  padding: 0 1rem;
+}
+.accordion-sidebar input:checked ~ .professor-resoume-content {
+  max-height: 1400px;
+  opacity: 100%;
+  padding: 1rem;
+  border-top: 1px solid black;
+}
+.professor-resoume-content h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+.professor-resoume-content p {
+  font-size: 14px;
+  line-height: 2;
+  margin-bottom: 16px;
+}
+
+.course-field.active {
+  background-color: #c9bd4a;
+}

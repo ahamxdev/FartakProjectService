@@ -1,5 +1,6 @@
-﻿USE [FartakDB]
+USE [FartakDB]
 GO
+<<<<<<< HEAD
  
  delete from TeacherTypes 
  go
@@ -273,3 +274,41 @@ INSERT INTO TeacherTypes (TeacherTypeParentId, Title) VALUES (@SecondGrade, N'ع
 
 -- [Continue with other grades and categories following the same pattern]
 go
+=======
+drop TABLE [dbo].[Projects]
+/****** Object:  Table [dbo].[Projects]    Script Date: 7/16/2025 4:32:04 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Projects](
+	[ProjectId] [bigint] IDENTITY(1,1) NOT NULL,
+	[ProjectCategoryId] [bigint] NOT NULL,
+	[Duration] [bigint] NOT NULL,
+	[Title] [nvarchar](max) NOT NULL,
+	[Description] [nvarchar](max) NOT NULL,
+	[OwnerId] [bigint] NOT NULL,
+	[FinishPrice] [bigint] NOT NULL,
+	[StartPrice] [bigint] NOT NULL,
+	[EndPrice] [bigint] NOT NULL,
+	[CreateDate] [nvarchar](max) NOT NULL,
+	[DeadLine] [nvarchar](max) NOT NULL,
+	[Status] [int] NOT NULL,
+	[Priority] [int] NOT NULL,
+	[PriceType] [int] NOT NULL,
+	[Image] [nvarchar](max) NULL,
+	[ProjectSkillJson] [nvarchar](max) NULL,
+	[ProjectHashtagJson] [nvarchar](max) NULL,
+	[PortfolioImage] [nvarchar](max) NULL,
+	[PortfolioDescription] [nvarchar](max) NULL,
+ CONSTRAINT [PK_Projects] PRIMARY KEY CLUSTERED 
+(
+	[ProjectId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+
+>>>>>>> origin/Sina
