@@ -21,11 +21,12 @@
   position: fixed;
   top: 90px;
   right: 50px;
-  overflow: hidden;
+  height: calc(100vh - 90px);
+  overflow-y: auto;
   background-color: #f4f4f4;
-  height: 650px;
   z-index: 1000;
 }
+
 .main-content {
   margin-right: 350px;
   flex-grow: 1;

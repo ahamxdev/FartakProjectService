@@ -20,7 +20,7 @@ export default function PanelProfessorBootstrap() {
         </button>
       </div>
 
-      <div className="d-flex flex-row" style={{ height: "calc(100vh - 60px)" }}>
+      <div className="d-flex flex-row">
         <div className="main-content">
           <Outlet />
         </div>

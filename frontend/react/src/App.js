@@ -13,22 +13,20 @@ import ContactCEO from "./employe-panel/ContactCEO";
 import OrderExcutors from "./employe-panel/OrderExecutors";
 import OrderProgress from "./employe-panel/OrderProgress";
 
-import Wallet from "./panel-professor/Wallet";
-import MyClasses from "./panel-professor/MyClasses";
-import OnlineCourses from "./panel-professor/OnlineCourses";
-import PurchasedCourses from "./panel-professor/PurchasedCourses";
-import FAQ from "./panel-professor/FAQ";
-import Money from "./panel-professor/Money";
-import MainOstad from "./panel-professor/mainOstad";
-import MoneyTwo from "./panel-professor/money2";
-import DiscountCode from "./panel-professor/DiscountCode";
-import RequestManagement from "./panel-professor/RequestManagement";
-import SupportTicket from "./panel-professor/SupportTicket";
-import HomeStudent from "./panel-professor/HomeStudent";
-
 import PanelProffesor from "./admin-panel/panelProfessor/PanelProffesor";
+import Wallet from "./student-panel/Wallet";
+import MyClasses from "./student-panel/MyClasses";
+import OnlineCourses from "./student-panel/OnlineCourses";
+import PurchasedCourses from "./student-panel/PurchasedCourses";
+import FAQ from "./student-panel/FAQ";
+import Money from "./student-panel/Money";
+import MainOstad from "./student-panel/mainOstad";
+import MoneyTwo from "./student-panel/money2";
+import DiscountCode from "./student-panel/DiscountCode";
+import RequestManagement from "./student-panel/RequestManagement";
+import SupportTicket from "./student-panel/SupportTicket";
+import HomeStudent from "./student-panel/HomeStudent";
 
-<<<<<<< HEAD
 import HomeFreelancer from "./freelancer/Home";
 import PanelFreelanser from "./admin-panel/PanelFreelancer";
 import TaskProject from "./admin-panel/TaskProject";
@@ -37,44 +35,10 @@ import RegisteringEmployerNotification from "./admin-panel/RegisteringEmployerNo
 import FileTaskProject from "./admin-panel/FileTaskProject";
 import StatusProject from "./admin-panel/StatusProject";
 import ResoumeProfessor from "./admin-panel/ResoumeProfessor";
-import PersonalInformation from "./admin-panel/panelProfessor/personalInformation/PersonalInformation";
-import ProfessorResume from "./admin-panel/panelProfessor/ProfessorResume/ProfessorResume";
-import OnlineClass from "./admin-panel/panelProfessor/OnlineClass/OnlineClass";
 import PaymentAndWallet from "./admin-panel/panelProfessor/PaymentAndWallet/PaymentAndWallet";
-=======
-import Wallet from './student-panel/Wallet';
-import MyClasses from './student-panel/MyClasses';
-import OnlineCourses from './student-panel/OnlineCourses';
-import PurchasedCourses from './student-panel/PurchasedCourses';
-import FAQ from './student-panel/FAQ';
-import Money from './student-panel/Money';
-import MainOstad from './student-panel/mainOstad';
-import MoneyTwo from './student-panel/money2';
-import DiscountCode from './student-panel/DiscountCode';
-import RequestManagement from './student-panel/RequestManagement';
-import SupportTicket from './student-panel/SupportTicket';
-import HomeStudent from './student-panel/HomeStudent';
-
-
-
-
-
-
-
-import PanelProffesor from './admin-panel/PanelProffesor'
-
-
-
-
-import HomeFreelancer from './freelancer/Home'
-import PanelFreelanser from './admin-panel/PanelFreelancer'
-import TaskProject from './admin-panel/TaskProject'
-import PanelEmployer from './admin-panel/PanelEmployer'
-import RegisteringEmployerNotification from './admin-panel/RegisteringEmployerNotification'
-import FileTaskProject from './admin-panel/FileTaskProject'
-import StatusProject from './admin-panel/StatusProject'
-import ResoumeProfessor from './admin-panel/ResoumeProfessor'
->>>>>>> 2507956968eee70d24f03051063e871ea02a7c6b
+import ProfessorResume from './admin-panel/panelProfessor/ProfessorResume/ProfessorResume';
+import PersonalInformation from './admin-panel/panelProfessor/personalInformation/PersonalInformation';
+import OnlineClass from './admin-panel/panelProfessor/OnlineClass/OnlineClass';
 function App() {
   return (
     <>
