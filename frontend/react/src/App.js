@@ -50,6 +50,7 @@ import DiscountCode from "./student-panel/DiscountCode";
 import RequestManagement from "./student-panel/RequestManagement";
 import SupportTicket from "./student-panel/SupportTicket";
 import HomeStudent from "./student-panel/HomeStudent";
+import Orders from "./employe-panel/Orders";
 
 const router = createBrowserRouter([
   {
@@ -89,7 +90,7 @@ const router = createBrowserRouter([
       { path: "chat", Component: Chat },
       { path: "notification", Component: Notification },
       { path: "work-room", Component: WorkRoom },
-      // { path: "orders", Component: Orders },
+      { path: "orders", Component: Orders },
       { path: "create-order", Component: CreateOrder },
       { path: "contact-ceo", Component: ContactCEO },
       { path: "executors", Component: OrderExecutors },
@@ -137,7 +138,6 @@ const router = createBrowserRouter([
       },
     ],
   },
-
 
   // Student dashboard
   {
