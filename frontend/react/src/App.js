@@ -24,33 +24,30 @@ import Charts from "./pages/Charts";
 import OrderId from "./freelancer/OrderId";
 // Admin Panel
 import AdminLayout from "./admin-panel/AdminLayout";
-import FileTaskProject from "./admin-panel/FileTaskProject";
-import PanelEmployer from "./admin-panel/PanelEmployer";
-import PanelFreelancer from "./admin-panel/PanelFreelancer";
-import PanelProffesor from "./admin-panel/PanelProffesor";
-import RegisteringEmployerNotification from "./admin-panel/RegisteringEmployerNotification";
-import StatusProject from "./admin-panel/StatusProject";
-import TaskProject from "./admin-panel/TaskProject";
-import ProfessorResoume from "./admin-panel/ProfessorResoume";
-import ProfessorInfo from "./admin-panel/ProfessorInfo";
+import PanelProffesor from "./admin-panel/professor/PanelProffesor";
+import ProfessorResoume from "./admin-panel/professor/ProfessorResoume";
+import ProfessorInfo from "./admin-panel/professor/ProfessorInfo";
 import Login from "./pages/Login";
-import ProfessorHelp from "./admin-panel/ProfessorHelp";
-import RecordedCourses from "./admin-panel/RecordedCourses";
-import CourseField from "./admin-panel/CourseField";
-import { loader as CourseFieldLoader } from "./admin-panel/CourseField";
+import ProfessorHelp from "./admin-panel/professor/ProfessorHelp";
+import RecordedCourses from "./admin-panel/professor/RecordedCourses";
+import CourseField from "./admin-panel/professor/CourseField";
+import { loader as CourseFieldLoader } from "./admin-panel/professor/CourseField";
+import ConfirmOrder from "./admin-panel/professor/ConfirmOrder";
+import RecordedClasses from "./admin-panel/professor/RecordedClasses";
+import OnlineClasses from "./admin-panel/professor/OnlineClasses";
+import InpersonClasses from "./admin-panel/professor/InpersonClasses";
 // Student dashboard
 import Wallet from "./student-panel/Wallet";
 import MyClasses from "./student-panel/MyClasses";
 import OnlineCourses from "./student-panel/OnlineCourses";
 import PurchasedCourses from "./student-panel/PurchasedCourses";
 import FAQ from "./student-panel/FAQ";
-import Money from "./student-panel/Money";
-import MainOstad from "./student-panel/mainOstad";
-import MoneyTwo from "./student-panel/money2";
 import DiscountCode from "./student-panel/DiscountCode";
 import RequestManagement from "./student-panel/RequestManagement";
 import SupportTicket from "./student-panel/SupportTicket";
 import HomeStudent from "./student-panel/HomeStudent";
+import Freelancers from "./admin-panel/freelancer/Freelancers";
+import Projects from "./admin-panel/freelancer/Projects";
 
 const router = createBrowserRouter([
   {
@@ -117,17 +114,15 @@ const router = createBrowserRouter([
     path: "/admin",
     Component: AdminLayout,
     children: [
-      { path: "filetask", Component: FileTaskProject },
-      { path: "employer", Component: PanelEmployer },
-      { path: "freelancer", Component: PanelFreelancer },
-      { path: "register-employer", Component: RegisteringEmployerNotification },
-      { path: "status-project", Component: StatusProject },
-      { path: "task-project", Component: TaskProject },
+      // Freelancers
+      { path: "freelancers", Component: Freelancers },
+      { path: "projects", Component: Projects },
       // Professors
       { path: "professors", Component: PanelProffesor },
       { path: "professor-resoume", Component: ProfessorResoume },
       { path: "professor-info", Component: ProfessorInfo },
       { path: "professor-help", Component: ProfessorHelp },
+      { path: "confirm-order", Component: ConfirmOrder },
       {
         path: "courses",
         Component: RecordedCourses,
@@ -136,6 +131,9 @@ const router = createBrowserRouter([
           { path: ":field", Component: CourseField, loader: CourseFieldLoader },
         ],
       },
+      { path: "classes", Component: RecordedClasses },
+      { path: "online-classes", Component: OnlineClasses },
+      { path: "inperson-classes", Component: InpersonClasses },
     ],
   },
   // Student dashboard
