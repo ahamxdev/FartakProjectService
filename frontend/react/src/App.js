@@ -26,7 +26,7 @@ import RequestManagement from "./student-panel/RequestManagement";
 import SupportTicket from "./student-panel/SupportTicket";
 import HomeStudent from "./student-panel/HomeStudent";
 
-import PanelProffesor from "./admin-panel/PanelProffesor";
+import PanelProfessor from "./admin-panel/panelProfessor/PanelProfessor";
 
 import HomeFreelancer from "./freelancer/Home";
 import PanelFreelanser from "./admin-panel/PanelFreelancer";
@@ -73,8 +73,8 @@ function App() {
         {/* student end */}
         <Route path="/HomeFreelancer" element={<HomeFreelancer />} />
         {/* ADMIN */}
-        <Route path="/PanelProffesor" element={<PanelProffesor />}>
-          <Route path="/PanelProffesor" element={<ProfessorResume />} />
+        <Route path="/PanelProfessor" element={<PanelProfessor />}>
+          <Route path="/PanelProfessor" element={<ProfessorResume />} />
           <Route path="personalInformation" element={<PersonalInformation />} />
           <Route path="onlineClass" element={<OnlineClass />} />
           <Route path="paymentAndWallet" element={<PaymentAndWallet />} />
