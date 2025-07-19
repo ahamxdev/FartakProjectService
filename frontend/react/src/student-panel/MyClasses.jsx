@@ -10,8 +10,8 @@ function MyClasses() {
       <div className="container mx-auto">
         <div className="flex flex-wrap -mx-3">
           <div className="w-full md:w-1/3 px-3">
-            <div className="m-3 rounded-xl shadow h-full flex flex-col">
-              <div className="p-4 flex flex-col flex-grow">
+            <div className="m-3 container-effects h-full flex flex-col">
+              <div className="p-4 flex flex-col flex-grow ">
                 <h5 className="font-bold text-center">کلاس های خصوصی انلاین</h5>
                 <p className="text-center flex-grow">
                   دروس تخصصی هنرستان رشته کامپیوتر جلسه 6 شنبه 1404/06/12 در نرم
@@ -48,7 +48,7 @@ function MyClasses() {
                     </div>
                   </div>
                 </div>
-                <button className="bg-black text-white w-full py-2 rounded mt-auto">
+                <button className="bg-[#28303F] text-white w-full py-1 rounded-lg mt-auto hover:bg-[#363e4d] transition-colors duration-300">
                   چت با استاد
                 </button>
               </div>
@@ -56,8 +56,8 @@ function MyClasses() {
           </div>
 
           <div className="w-full md:w-1/3 px-3">
-            <div className="m-3 rounded-xl shadow h-full flex flex-col">
-              <div className="p-4 flex flex-col flex-grow">
+            <div className="m-3 container-effects h-full flex flex-col">
+              <div className="p-4 flex flex-col flex-grow ">
                 <h5 className="font-bold text-center">کلاس های خصوصی حضوری</h5>
                 <p className="text-center flex-grow">
                   دروس تخصصی هنرستان رشته کامپیوتر جلسه 5 استان قزوین جمعه
@@ -94,16 +94,16 @@ function MyClasses() {
                     </div>
                   </div>
                 </div>
-                <button className="bg-black text-white w-full py-2 rounded mt-auto">
-                  چت با استاد
+                <button className="bg-[#28303F] text-white w-full py-1 rounded-lg mt-auto hover:bg-[#363e4d] transition-colors duration-300">
+                  ارسال
                 </button>
               </div>
             </div>
           </div>
 
           <div className="w-full md:w-1/3 px-3">
-            <div className="m-3 rounded-xl shadow h-full flex flex-col">
-              <div className="p-4 flex flex-col flex-grow">
+            <div className="m-3 container-effects h-full flex flex-col">
+              <div className="p-4 flex flex-col flex-grow ">
                 <h5 className="font-bold text-center">دوره های کنکوری</h5>
                 <p className="text-center flex-grow">
                   دوره آماده سازی برای امتحانات پایان ترم کلاس 11 تجربی
@@ -139,7 +139,7 @@ function MyClasses() {
                     </div>
                   </div>
                 </div>
-                <button className="bg-black text-white w-full py-2 rounded mt-auto">
+                <button className="bg-[#28303F] text-white w-full py-1 rounded-lg mt-auto hover:bg-[#363e4d] transition-colors duration-300">
                   چت با استاد
                 </button>
               </div>

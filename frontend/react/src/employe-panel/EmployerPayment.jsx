@@ -21,6 +21,10 @@ const myWithdrawal = [
 const EmployerPayment = () => {
   return (
     <>
+      <div className="flex justify-center gap-4 my-5">
+        <button className="btn-payment-card">افزایش موجودی</button>
+        <button className="btn-payment-card">درخواست برداشت وجه</button>
+      </div>
       <div className="payment-cards">
         <div className="payment-card">
           <p>موجودی قابل استفاده</p>

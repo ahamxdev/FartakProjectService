@@ -50,42 +50,49 @@ const Dashboard = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-3">
             {[...Array(3)].map((_, i) => (
-              <div key={i} className="w-full">
-                <div className="bg-white p-2 shadow rounded-xl overflow-hidden h-full flex flex-col">
-                  <img
-                    src="/img/Rectangle 2715.png"
-                    className="w-full rounded-lg object-cover"
-                    alt="دوره UML"
-                    style={{ height: "200px" }}
-                  />
-                  <div className="p-4 flex flex-col flex-grow">
-                    <div className="flex justify-between items-center mb-2">
-                      <div className="flex items-center gap-2">
-                        <img
-                          src="/img/Instructor.png"
-                          alt="استاد"
-                          className="rounded-full"
-                          width="32"
-                          height="32"
-                        />
-                        <span className="font-bold text-sm">امیرحسین نیاور</span>
-                      </div>
-                      <span className="bg-yellow-400 text-dark px-3 py-1 rounded-full text-xs">
-                        دانشگاه
-                      </span>
+              <div
+                key={i}
+                className="bg-white p-4 container-effects !rounded-2xl overflow-hidden h-full flex flex-col"
+              >
+                <img
+                  src="/img/Rectangle 2715.png"
+                  className="w-full rounded-lg object-cover mb-5"
+                  alt="دوره UML"
+                />
+                <div className="flex flex-col flex-grow">
+                  <div className="flex justify-between items-center mb-2">
+                    <div className="flex items-center gap-2">
+                      <img
+                        src="/img/Instructor.png"
+                        alt="استاد"
+                        className="rounded-full"
+                        width="32"
+                        height="32"
+                      />
+                      <span className="font-bold text-sm">امیرحسین نیاور</span>
                     </div>
-                    <p className="font-bold text-sm mb-4">
-                      دوره طراحی UML برای درس مهندسی نرم افزار...
-                    </p>
-                    <div className="mt-auto">
-                      <small className="text-gray-500">۲۰٪</small>
-                      <div className="w-full bg-gray-200 rounded-full h-1.5 mt-2">
-                        <div
-                          className="bg-black h-1.5 rounded-full"
-                          style={{ width: "20%" }}
-                        ></div>
+                    <span className="bg-yellow-400 text-dark px-3 py-1 rounded-full text-xs">
+                      دانشگاه
+                    </span>
+                  </div>
+                  <p className="text-xl mb-4">
+                    دوره طراحی UML برای درس مهندسی نرم افزار کارشناسی ناپیوسته
+                    حرفه ای نرم افزار
+                  </p>
+                  <div className="mt-auto">
+                    <small className="text-gray-500 font-light">
+                      پیشرفت در مطالعه
+                    </small>
+                    <div className="w-full bg-gray-200 rounded-full h-4 mt-2">
+                      <div
+                        className="bg-[#28303F] h-4 rounded-full text-center text-xs text-[#FAB437]"
+                        style={{ width: "30%" }}
+                      >
+                        30%
                       </div>
-                      <button className="bg-black text-white text-sm py-1 px-3 rounded mt-2 w-1/2 text-left">
+                    </div>
+                    <div className="flex-end mt-4">
+                      <button className="bg-black text-white text-sm py-2 px-4 rounded-xl text-left">
                         مطالعه دوره
                       </button>
                     </div>
