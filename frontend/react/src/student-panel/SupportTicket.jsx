@@ -77,41 +77,31 @@ function SupportTicket() {
 
           <div className="w-full lg:w-1/2 px-4 mb-4">
             <div className="border rounded-xl p-4 shadow h-full">
-              <h3 className="text-center mb-4 text-xl">وضعیت تیکت های پشتیبانی</h3>
-              <div className="overflow-x-auto">
-                <table className="w-full">
-                  <thead className="bg-gray-800 text-white">
-                    <tr>
-                      <th className="p-2">شماره</th>
-                      <th className="p-2">عنوان</th>
-                      <th className="p-2">وضعیت</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr className="border-b">
-                      <td className="p-2">3a00</td>
-                      <td className="p-2">مشکل در برداشت وجه</td>
-                      <td className="p-2 text-yellow-500 font-bold">منتظر پاسخ</td>
-                    </tr>
-                    <tr className="border-b">
-                      <td className="p-2">2fd4</td>
-                      <td className="p-2">
-                        من نمی‌توانم وارد پنل پسر بچه بشم تا حسابش را...
-                      </td>
-                      <td className="p-2 text-green-500 font-bold">
-                        پاسخ داده شده
-                      </td>
-                    </tr>
-                    <tr className="border-b">
-                      <td className="p-2">120f</td>
-                      <td className="p-2">مشکل در برداشت وجه</td>
-                      <td className="p-2 text-green-500 font-bold">
-                        پاسخ داده شده
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+              <h3 className="text-center mb-4 text-xl">
+                وضعیت تیکت های پشتیبانی
+              </h3>
+              <table className="rounded-table">
+                <tr>
+                  <th>شماره</th>
+                  <th>عنوان</th>
+                  <th>وضعیت</th>
+                </tr>
+                <tr>
+                  <td>3a00</td>
+                  <td>مشکل در برداشت وجه</td>
+                  <td className=" text-yellow-500 font-bold">منتظر پاسخ</td>
+                </tr>
+                <tr>
+                  <td>2fd4</td>
+                  <td>من نمی‌توانم وارد پنل پسر بچه بشم تا حسابش را...</td>
+                  <td className="text-green-500 font-bold">پاسخ داده شده</td>
+                </tr>
+                <tr>
+                  <td>120f</td>
+                  <td>مشکل در برداشت وجه</td>
+                  <td className=" text-green-500 font-bold">پاسخ داده شده</td>
+                </tr>
+              </table>
               <div className="text-center mt-4">
                 <button className="bg-black text-white px-4 py-2 rounded">
                   نمایش کامل تیکت ها

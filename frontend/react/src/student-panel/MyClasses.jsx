@@ -12,9 +12,7 @@ function MyClasses() {
           <div className="w-full md:w-1/3 px-3">
             <div className="m-3 rounded-xl shadow h-full flex flex-col">
               <div className="p-4 flex flex-col flex-grow">
-                <h5 className="font-bold text-center">
-                  کلاس های خصوصی انلاین
-                </h5>
+                <h5 className="font-bold text-center">کلاس های خصوصی انلاین</h5>
                 <p className="text-center flex-grow">
                   دروس تخصصی هنرستان رشته کامپیوتر جلسه 6 شنبه 1404/06/12 در نرم
                   افزار Google Meet ساعت 10 صبح
@@ -60,9 +58,7 @@ function MyClasses() {
           <div className="w-full md:w-1/3 px-3">
             <div className="m-3 rounded-xl shadow h-full flex flex-col">
               <div className="p-4 flex flex-col flex-grow">
-                <h5 className="font-bold text-center">
-                  کلاس های خصوصی حضوری
-                </h5>
+                <h5 className="font-bold text-center">کلاس های خصوصی حضوری</h5>
                 <p className="text-center flex-grow">
                   دروس تخصصی هنرستان رشته کامپیوتر جلسه 5 استان قزوین جمعه
                   1404/06/11 در دفتر نمایندگی شرکت فرتاک ساعت 10 صبح
@@ -108,9 +104,7 @@ function MyClasses() {
           <div className="w-full md:w-1/3 px-3">
             <div className="m-3 rounded-xl shadow h-full flex flex-col">
               <div className="p-4 flex flex-col flex-grow">
-                <h5 className="font-bold text-center">
-                  دوره های کنکوری
-                </h5>
+                <h5 className="font-bold text-center">دوره های کنکوری</h5>
                 <p className="text-center flex-grow">
                   دوره آماده سازی برای امتحانات پایان ترم کلاس 11 تجربی
                 </p>
@@ -165,33 +159,27 @@ function MyClasses() {
               کلاس ها و دوره های پایان یافته
             </h4>
 
-            <div className="overflow-x-auto">
-              <table className="w-full text-right text-sm align-middle">
-                <thead className="bg-gray-800 text-white text-xs font-semibold text-center">
-                  <tr>
-                    <th className="p-3">نام دوره</th>
-                    <th className="p-3">نام استاد</th>
-                    <th className="p-3 text-center">هزینه جلسه</th>
-                    <th className="p-3 text-center">تاریخ برگزاری جلسه</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr className="border-b">
-                    <td className="p-4 text-center">کلاس طراحی uml</td>
-                    <td className="p-4 text-center">مهرداد طاهرخانی</td>
-                    <td className="p-4 text-center">100 هزار تومن</td>
-                    <td className="p-4 text-center">1404/04/25</td>
-                  </tr>
+            <table className="rounded-table">
+              <tr>
+                <th>نام دوره</th>
+                <th>نام استاد</th>
+                <th>هزینه جلسه</th>
+                <th>تاریخ برگزاری جلسه</th>
+              </tr>
+              <tr>
+                <td>کلاس طراحی uml</td>
+                <td>مهرداد طاهرخانی</td>
+                <td>100 هزار تومن</td>
+                <td>1404/04/25</td>
+              </tr>
 
-                  <tr className="border-b">
-                    <td className="p-4 text-center">کلاس ریاضیات گسسته</td>
-                    <td className="p-4 text-center">مهرداد طاهرخانی</td>
-                    <td className="p-4 text-center">2 میلیون تومان</td>
-                    <td className="p-4 text-center">1404/05/20</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+              <tr>
+                <td>کلاس ریاضیات گسسته</td>
+                <td>مهرداد طاهرخانی</td>
+                <td>2 میلیون تومان</td>
+                <td>1404/05/20</td>
+              </tr>
+            </table>
           </div>
         </div>
       </div>
