@@ -43,6 +43,14 @@ namespace Application.Services.Users.Commands.EditUsers
 
                 user.Name = request.Name;
                 user.Lastname = request.Lastname;
+                user.MaritalStatus = request.MaritalStatus;
+                user.Gender = request.Gender;
+                user.Language = request.Language;
+                user.City = request.City;
+                user.Latitude = request.Latitude;
+                user.Longitude = request.Longitude;
+                user.ProjectSkillJson = request.ProjectSkillJson;
+
                 user.Status = request.Status;
                 user.PassWord = (user.PassWord != null) ? EncodePassword(request.Password, salt) : "";
                 user.Mobile = (request.Mobile != null) ? request.Mobile : "";
@@ -69,7 +77,7 @@ namespace Application.Services.Users.Commands.EditUsers
         }
         public ResultDto OtpConfirm(RequestEditUserOtpConfirmDto request)
         {
-             var user = _context.Users.Where (p=>p.Mobile== request.Mobile ).FirstOrDefault();
+             var user = _context.Users.Where (p=> p.Mobile== request.Mobile ).FirstOrDefault();
 
             if (user == null)
             {
@@ -83,15 +91,10 @@ namespace Application.Services.Users.Commands.EditUsers
 
             try
             {
-                 user.Name ="";
-                user.Lastname = "";
-                user.Status = 1;
-                user.PassWord = "";
-                user.Salt = ""; 
-                user.Mobile =   request.Mobile ;
-                user.Email = "";
-                user.Kind = 1;
-                 _context.SaveChanges();
+                
+                user.Status = 1;                
+                user.Mobile =   request.Mobile ;              
+                _context.SaveChanges();
 
                 return new ResultDto()
                 {
@@ -112,7 +115,7 @@ namespace Application.Services.Users.Commands.EditUsers
         public ResultDto ChangePassword(RequestChangeUserPasswordDto request)
         {
             var salt = Guid.NewGuid().ToString("N");
-            var user = _context.Users.Find(request.UserId);
+            var user = _context.Users.Where(p=>p.Mobile == request.Mobile ).FirstOrDefault();
             if (user == null)
             {
                 return new ResultDto

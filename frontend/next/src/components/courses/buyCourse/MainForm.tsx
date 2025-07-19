@@ -1,5 +1,5 @@
 "use client";
-import { lazy, memo, useState } from "react";
+import { lazy, memo, useState, useEffect } from "react"; // Added useEffect
 import { useTranslations } from "next-intl";
 import { AnimatePresence, motion } from "framer-motion";
 import { Step, StepLabel, Stepper } from "@mui/material";
@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import { IFirstBuyCourseForm } from "@/types/zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { firstBuyCourseFormSchema } from "@/zodObjects";
+import { useSearchParams } from "next/navigation"; // Added useSearchParams
 
 const FirstForm = lazy(
   () => import("@/components/courses/buyCourse/FirstForm")
@@ -19,12 +20,11 @@ const ThirdForm = lazy(() => import("./ThirdForm"));
 
 const MainForm = () => {
   const t = useTranslations("BuyCourseForm");
+  const searchParams = useSearchParams(); // Hook to access query params
   const [currentStep, setCurrentStep] = useState(0);
   const [canGoStep, setSteps] = useState<true[]>([true]);
 
-  const [educationBreadCrumbs, setEducationBreadCrumbs] = useState<string[]>(
-    []
-  );
+  const [educationBreadCrumbs, setEducationBreadCrumbs] = useState<string[]>([]);
   const [bussinesBreadCrumbs, setBussinesBreadCrumbs] = useState<string[]>([]);
 
   const {
@@ -49,8 +49,18 @@ const MainForm = () => {
     },
   });
 
+  // Check query parameter 'step' and update currentStep
+  useEffect(() => {
+    const stepParam = searchParams.get("step");
+    console.log(stepParam, 'steppppp')
+    if (stepParam) {
+       setCurrentStep(+stepParam);
+    }
+  }, [searchParams, canGoStep]);
+
   return (
     <div className="w-full overflow-hidden">
+      {currentStep}
       <Stepper
         alternativeLabel
         activeStep={currentStep}
@@ -105,7 +115,6 @@ const MainForm = () => {
               />
             </motion.div>
           )}
-          {currentStep}
           {currentStep === 1 && (
             <motion.div
               key="step-1"
@@ -126,7 +135,7 @@ const MainForm = () => {
           )}
           {currentStep === 2 && (
             <motion.div
-              key="step-1"
+              key="step-2" // Fixed key to be unique
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}

@@ -1,6 +1,7 @@
 ﻿using Domain.Entities;
 using Domain.Entities.Blogs;
 using Domain.Entities.MessageSetting;
+using Domain.Entities.NotificationSettings;
 using Domain.Entities.Payments;
 using Domain.Entities.Projects;
 using Domain.Entities.TeacherUser;
@@ -19,6 +20,7 @@ namespace Application.Interfaces.Contexts
         DbSet<Course> Courses { get; set; }
         DbSet<CourseUser> CourseUsers { get; set; }
         DbSet<CourseType> CourseTypes { get; set; }
+        DbSet<NotificationSetting> NotificationSettings { get; set; }
         DbSet<ProjectCategory> ProjectCategories { get; set; }
         DbSet<TeacherUser> TeacherUsers { get; set; }
         DbSet<TeacherUserResume> TeacherUserResumes { get; set; }
@@ -42,6 +44,8 @@ namespace Application.Interfaces.Contexts
         DbSet<PaymentUse> PaymentUses { get; set; }
         DbSet<ProjectFile> ProjectFiles { get; set; }
         DbSet<ProjectPhase> ProjectPhases { get; set; }
+        DbSet<ProjectPhaseTask> ProjectPhaseTasks { get; set; }
+
         DbSet<Comment> Comments { get; set; }
 
         int SaveChanges(bool accceptAllChangesOnSuccess);

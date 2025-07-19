@@ -1,4 +1,10 @@
 import React, { useState } from "react";
+<<<<<<< HEAD
+=======
+import Header from "./components/header";
+import Sidebar from "./components/sidebar";
+import { Link } from "react-router-dom";
+>>>>>>> a43b147191de07cffa1536aca68daa0ad6e6a0a0
 
 function DiscountCode() {
   const [activeLabel, setActiveLabel] = useState(null);
@@ -119,10 +125,65 @@ function DiscountCode() {
                         alert("کد تخفیف کپی شد!");
                       }}
                     >
+<<<<<<< HEAD
                       <span className="text-xs font-light">کپی کردن</span>{" "}
                       {card.code}
                       <i className="far fa-copy"></i>
                     </button>
+=======
+                      <span
+                        style={{
+                          fontWeight: "900",
+                          fontSize: "32px",
+                          lineHeight: "1",
+                          color: "#222",
+                        }}
+                      >
+                        {card.discount}
+                      </span>
+                    </div>
+                    <div
+                      className="p-3 flex-grow-1 d-flex flex-column"
+                      style={{ borderRight: "1px dashed #ccc" }}
+                    >
+                      <h5 className="mb-2">{card.title}</h5>
+                      <div className="d-flex align-items-center mb-2">
+                        <small
+                          className="text-white bg-success rounded-pill p-2"
+                          style={{ fontSize: "11px", lineHeight: "1.2" }}
+                        >
+                          مهلت استفاده : {card.duration}
+                        </small>
+                      </div>
+                      <Link
+                        to={"/"}
+                        className="text-decoration-none d-inline-block my-3"
+                        style={{ fontSize: "12px" }}
+                      >
+                        <span
+                          className="bg-warning rounded rounded-pill px-2 py-1"
+                          style={{ color: "#222" }}
+                        >
+                          {card.tag}
+                        </span>
+                      </Link>
+                      <div className="d-flex justify-content-between align-items-center mt-auto">
+                        <span className="text-muted small">کد تخفیف:</span>
+                        <button
+                          type="button"
+                          className="btn btn-outline-danger btn-sm px-3 d-flex align-items-center gap-2"
+                          style={{ fontSize: "13px", fontWeight: "bold" }}
+                          onClick={() => {
+                            navigator.clipboard.writeText(card.code);
+                            alert("کد تخفیف کپی شد!");
+                          }}
+                        >
+                          {card.code}
+                          <i className="far fa-copy"></i>
+                        </button>
+                      </div>
+                    </div>
+>>>>>>> a43b147191de07cffa1536aca68daa0ad6e6a0a0
                   </div>
                 </div>
               </div>

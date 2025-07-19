@@ -23,6 +23,7 @@ const Portfolio = () => {
   const [childrenHashtags, setChildrenHashtags] = useState<parentHashtags[]>(
     []
   );
+  const [filterPortfolio , setFilterPortfolio] = useState<string>("all")
   const [parentHashtagsTitle, setParentHashtagsTitle] =
     useState<string>("مهارت");
   const [childrenHashtagsTitle, setChildrenHashtagsTitle] =
@@ -83,7 +84,27 @@ const Portfolio = () => {
         />
       </div>
 
-      <section className="w-[90%] mx-auto md:my-10 my-5 grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-10">
+      <div className="relative rounded-lg border-[2px] gap-4 bg-[#fff] border-[#1D40D7] px-3 py-1 flex justify-between items-center w-[90%] mx-auto">
+        <input
+          className="w-full text-base  font-normal cursor-pointer text-[#00000080]"
+          placeholder="جست و جوی نمونه کار"
+        />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={1.5}
+          stroke="currentColor"
+          className="size-6"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+          />
+        </svg>
+      </div>
+      <section className="w-[90%] mx-auto md:my-10 my-5 grid sm:grid-cols-2 grid-cols-1 gap-10">
         <div className="flex relative items-center gap-4">
           <button
             onClick={() => setIsSubMenuOpen((prev) => !prev)}
@@ -144,26 +165,6 @@ const Portfolio = () => {
             setProjectSkillTitle={setChildrenHashtagsTitle}
           />{" "}
         </div>
-        <div className="relative rounded-lg border-[2px] gap-4 bg-[#fff] border-[#1D40D7] px-3 py-1 flex justify-between items-center ">
-          <input
-            className="w-full text-base  font-normal cursor-pointer text-[#00000080]"
-            placeholder="جست و جوی نمونه کار"
-          />
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="size-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
-            />
-          </svg>
-        </div>
       </section>
 
       <section className="w-[90%] mx-auto md:my-10 my-5 flex flex-col gap-8">
@@ -172,14 +173,14 @@ const Portfolio = () => {
             بازدید بر اساس
           </h6>
           <div className="flex items-center gap-6">
-            <button className="bg-transparent border-none outline-none md:text-lg font-normal text-xs text-[#1D40D7]">
+            <button onClick={() => setFilterPortfolio("all")} className={`bg-transparent border-none outline-none md:text-lg font-normal text-xs cursor-pointer ${filterPortfolio === "all" ? "text-[#1D40D7]" : "text-[#8BAEF5]"}`}>
               همه نمونه کار ها
             </button>
-            <button className="bg-transparent border-none outline-none md:text-lg font-normal text-xs text-[#8BAEF5]">
-              همه نمونه کار ها
+            <button onClick={() => setFilterPortfolio("new")} className={`bg-transparent border-none outline-none md:text-lg font-normal text-xs cursor-pointer ${filterPortfolio === "new" ? "text-[#1D40D7]" : "text-[#8BAEF5]"}`}>
+              جدید ترین
             </button>
-            <button className="bg-transparent border-none outline-none md:text-lg font-normal text-xs text-[#8BAEF5]">
-              همه نمونه کار ها
+            <button onClick={() => setFilterPortfolio("old")} className={`bg-transparent border-none outline-none md:text-lg font-normal text-xs cursor-pointer ${filterPortfolio === "old" ? "text-[#1D40D7]" : "text-[#8BAEF5]"}`}>
+              قدیمی ترین
             </button>
           </div>
         </div>

@@ -10,7 +10,7 @@ import { UseCategory } from "@/contexts/CategoryContext";
 
 const OrderProject = () => {
   const inputRef = useRef<HTMLInputElement | null>(null);
-  const {category} = UseCategory()
+  const { category } = UseCategory();
   // const [category, setCategory] = useState<[]>([]);
   const [projectSkillId, setProjectSkillId] = useState<number>(0);
   const [projectSkillTitle, setProjectSkillTitle] = useState<string>(
@@ -18,6 +18,12 @@ const OrderProject = () => {
   );
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [projectMode, setProjectMode] = useState<string | null>(null);
+
+  const [leastBudget, setLeastBudget] = useState<string>("");
+  const [MostBudget, setMostBudget] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
+  const [title, setTitle] = useState<string>("");
+  const [file, setFile] = useState<File | null>(null);
 
   console.log(projectSkillId);
 
@@ -35,6 +41,27 @@ const OrderProject = () => {
   //       setCategory(data.projectCategories);
   //     });
   // }, []);
+
+  const handleChange = (
+    setValue: (value: string) => void,
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const rawValue = e.target.value.replace(/,/g, "").replace(/\D/g, "");
+    if (rawValue === "") {
+      setValue("");
+      return;
+    }
+
+    const formattedValue = Number(rawValue).toLocaleString("en-US");
+    setValue(formattedValue);
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedFile = e.target.files?.[0];
+    if (selectedFile) {
+      setFile(selectedFile);
+    }
+  };
 
   return (
     <>
@@ -79,7 +106,11 @@ const OrderProject = () => {
             <div className="flex items-center relative gap-4 w-full">
               <button
                 onClick={() => setIsSubMenuOpen((prev) => !prev)}
-                className={`rounded-lg border-[2px] border-[#DC3545] w-full px-3 py-2 flex justify-between items-center text-base bg-[#fff] font-normal cursor-pointer text-[#00000080]`}
+                className={`rounded-lg border-[2px] ${
+                  projectSkillTitle != "دسته‌بندی پروژه خود را انتخاب کنید"
+                    ? "border-[#495AFF]"
+                    : "border-[#DC3545]"
+                } w-full px-3 py-2 flex justify-between items-center text-base bg-[#fff] font-normal cursor-pointer text-[#00000080]`}
               >
                 {projectSkillTitle}
                 <svg
@@ -116,7 +147,11 @@ const OrderProject = () => {
             </label>
             <div className="flex items-center gap-4 w-full">
               <input
-                className={`rounded-lg border-[2px] border-[#DC3545] w-full px-3 py-2 flex justify-between items-center text-base bg-[#fff] font-normal cursor-pointer text-[#00000080]`}
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                className={`rounded-lg border-[2px] ${
+                  title.trim() ? "border-[#495AFF]" : "border-[#DC3545]"
+                } w-full px-3 py-2 flex justify-between items-center text-base bg-[#fff] font-normal text-[#00000080]`}
               />
             </div>
             <span className="text-sm text-[#DC3545] font-normal flex items-center gap-1">
@@ -137,7 +172,11 @@ const OrderProject = () => {
             </label>
             <div className="flex items-center gap-4 w-full">
               <textarea
-                className={`rounded-lg border-[2px] h-[190px] border-[#DC3545] w-full px-3 py-2 flex justify-between items-center md:text-base bg-[#fff] font-normal cursor-pointer text-[#00000080] placeholder:text-[#aaa] text-sm`}
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                className={`rounded-lg border-[2px] h-[190px] ${
+                  description.trim() ? "border-[#495AFF]" : "border-[#DC3545]"
+                } w-full px-3 py-2 flex justify-between items-center md:text-base bg-[#fff] font-normal text-[#00000080] placeholder:text-[#aaa] text-sm`}
                 placeholder="توضیحات تکمیلی"
               ></textarea>
             </div>
@@ -146,7 +185,10 @@ const OrderProject = () => {
             <p className="text-[##00060F] md:text-xl text-base font-bold">
               آپلود فایل
             </p>
-            <label className="text-[##00060F] text-sm font-normal" htmlFor="">
+            <label
+              className="text-[##00060F] text-sm font-normal"
+              htmlFor="upload-file"
+            >
               فایل هایی که به توضیحات شما در معرفی پروژه کمک میکند را آپلود کنید
             </label>
             <div
@@ -155,9 +197,15 @@ const OrderProject = () => {
                   inputRef.current.click();
                 }
               }}
-              className={`w-full bg-white flex justify-center items-center cursor-pointer rounded-lg text-xs md:text-base font-bold border-[2px] h-[190px] border-[#DC3545]`}
+              className={`w-full bg-white flex justify-center items-center cursor-pointer rounded-lg text-xs md:text-base font-bold border-[2px] h-[190px] ${file ? "border-[#495AFF]" : "border-[#DC3545]"}`}
             >
-              <input ref={inputRef} type="file" hidden />
+              <input
+                ref={inputRef}
+                onChange={handleFileChange}
+                id="upload-file"
+                type="file"
+                hidden
+              />
               آپلود عکس یا فایل
             </div>
           </div>
@@ -232,7 +280,11 @@ const OrderProject = () => {
           </div>
           <div className="flex items-center gap-5 justify-between flex-wrap">
             <div
-              className={`flex justify-center items-center rounded-lg border-[1px] border-[#DC3545] px-4 py-2`}
+              className={`${
+                selectedOption === "price"
+                  ? "border-[#495AFF]"
+                  : "border-[#DC3545]"
+              } flex justify-center items-center rounded-lg border-[1px] px-4 py-2`}
             >
               <div className="flex items-center gap-2">
                 <label className="relative inline-block">
@@ -255,14 +307,21 @@ const OrderProject = () => {
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
                 </label>
-                <label htmlFor="price" className="text-base font-extrabold pb-1.5 text-[#000]">
+                <label
+                  htmlFor="price"
+                  className="text-base font-extrabold pb-1.5 text-[#000]"
+                >
                   برای من <span className="text-[#495AFF]">قیمت</span> بالاترین
                   درجه اهمیت را دارد
                 </label>
               </div>{" "}
             </div>
             <div
-              className={`flex justify-center items-center rounded-lg border-[1px] border-[#DC3545] px-4 py-2`}
+              className={`flex justify-center items-center rounded-lg border-[1px] ${
+                selectedOption === "quality"
+                  ? "border-[#495AFF]"
+                  : "border-[#DC3545]"
+              } px-4 py-2`}
             >
               <div className="flex items-center gap-2">
                 <label className="relative inline-block">
@@ -285,14 +344,21 @@ const OrderProject = () => {
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
                 </label>
-                <label htmlFor="quality" className="text-base font-extrabold pb-1.5 text-[#000]">
+                <label
+                  htmlFor="quality"
+                  className="text-base font-extrabold pb-1.5 text-[#000]"
+                >
                   برای من <span className="text-[#495aff]">کیفیت</span> بالاترین
                   درجه اهمیت را دارد
                 </label>
               </div>{" "}
             </div>
             <div
-              className={`flex justify-center items-center rounded-lg border-[1px] border-[#DC3545] px-4 py-2`}
+              className={`flex justify-center items-center rounded-lg border-[1px] ${
+                selectedOption === "both"
+                  ? "border-[#495AFF]"
+                  : "border-[#DC3545]"
+              } px-4 py-2`}
             >
               <div className="flex items-center gap-2">
                 <label className="relative inline-block">
@@ -315,7 +381,10 @@ const OrderProject = () => {
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
                 </label>
-                <label htmlFor="both" className="text-base font-extrabold pb-1.5 text-[#000]">
+                <label
+                  htmlFor="both"
+                  className="text-base font-extrabold pb-1.5 text-[#000]"
+                >
                   برای من ترکیبی از{" "}
                   <span className="text-[#495aff]">کیفیت</span> و{" "}
                   <span className="text-[#495aff]">قیمت</span> اهمیت را دارد
@@ -332,7 +401,13 @@ const OrderProject = () => {
                 حداقل بودجه (تومان)
               </label>
               <div className="flex items-center gap-4 w-full">
-                <input className="rounded-lg border-[1px] border-[#D3D3D3] w-full px-3 py-2 flex justify-between items-center text-base bg-[#fff] font-normal cursor-pointer text-[#00000080]" />
+                <input
+                  value={leastBudget}
+                  onChange={(e) => handleChange(setLeastBudget, e)}
+                  className={`rounded-lg border-[1px] ${
+                    leastBudget.trim() ? "border-[#495AFF]" : "border-[#DC3545]"
+                  } w-full px-3 py-2 flex justify-between items-center text-base bg-[#fff] font-normal text-[#00000080]`}
+                />
               </div>
             </div>
             <div className="flex flex-col gap-5 md:w-[50%] w-full">
@@ -340,13 +415,23 @@ const OrderProject = () => {
                 حداکثر بودجه (تومان)
               </label>
               <div className="flex items-center gap-4 w-full">
-                <input className="rounded-lg border-[1px] border-[#D3D3D3] w-full px-3 py-2 flex justify-between items-center text-base bg-[#fff] font-normal cursor-pointer text-[#00000080]" />
+                <input
+                  value={MostBudget}
+                  onChange={(e) => handleChange(setMostBudget, e)}
+                  className={`rounded-lg border-[1px] ${
+                    MostBudget.trim() ? "border-[#495AFF]" : "border-[#DC3545]"
+                  } w-full px-3 py-2 flex justify-between items-center text-base bg-[#fff] font-normal text-[#00000080]`}
+                />
               </div>
             </div>
           </div>
           <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 my-6">
             <div
-              className={`flex justify-center items-center rounded-lg border-[1px] border-[#DC3545] px-4 py-2`}
+              className={`flex justify-center items-center rounded-lg border-[1px] ${
+                projectMode === "simple"
+                  ? "border-[#495AFF]"
+                  : "border-[#DC3545]"
+              } px-4 py-2`}
             >
               <div className="flex items-center gap-2">
                 <label className="relative inline-block">
@@ -370,7 +455,10 @@ const OrderProject = () => {
                   </svg>
                 </label>
                 <div className="flex flex-col items-center gap-3">
-                  <label htmlFor="simple" className="md:text-xl text-base font-bold text-[#1d40d7]">
+                  <label
+                    htmlFor="simple"
+                    className="md:text-xl text-base font-bold text-[#1d40d7]"
+                  >
                     پروژه ساده
                   </label>
                   <span className="md:text-base text-sm font-bold text-[#000]">
@@ -380,7 +468,11 @@ const OrderProject = () => {
               </div>
             </div>
             <div
-              className={`flex justify-center items-center rounded-lg border-[1px] border-[#DC3545] px-4 py-2`}
+              className={`flex justify-center items-center rounded-lg border-[1px] ${
+                projectMode === "middle"
+                  ? "border-[#495AFF]"
+                  : "border-[#DC3545]"
+              } px-4 py-2`}
             >
               <div className="flex items-center gap-2">
                 <label className="relative inline-block">
@@ -404,7 +496,10 @@ const OrderProject = () => {
                   </svg>
                 </label>
                 <div className="flex flex-col items-center gap-3">
-                  <label htmlFor="middle" className="md:text-xl text-base font-bold text-[#1d40d7]">
+                  <label
+                    htmlFor="middle"
+                    className="md:text-xl text-base font-bold text-[#1d40d7]"
+                  >
                     پروژه متوسط
                   </label>
                   <span className="md:text-base text-sm font-bold text-[#000]">
@@ -414,7 +509,11 @@ const OrderProject = () => {
               </div>
             </div>
             <div
-              className={`flex justify-center items-center rounded-lg border-[1px] border-[#DC3545] px-4 py-2`}
+              className={`flex justify-center items-center rounded-lg border-[1px] ${
+                projectMode === "advanced"
+                  ? "border-[#495AFF]"
+                  : "border-[#DC3545]"
+              } px-4 py-2`}
             >
               <div className="flex items-center gap-2">
                 <label className="relative inline-block">
@@ -438,7 +537,10 @@ const OrderProject = () => {
                   </svg>
                 </label>
                 <div className="flex flex-col items-center gap-3">
-                  <label htmlFor="advanced" className="md:text-xl text-base font-bold text-[#1d40d7]">
+                  <label
+                    htmlFor="advanced"
+                    className="md:text-xl text-base font-bold text-[#1d40d7]"
+                  >
                     پروژه بزرگ
                   </label>
                   <span className="md:text-base text-sm font-bold text-[#000]">
