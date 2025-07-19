@@ -19,6 +19,10 @@ using Application.Services.CourseTypes.Commands.AddCourseTypes;
 using Application.Services.CourseTypes.Commands.EditCourseTypes;
 using Application.Services.CourseTypes.Commands.RemoveCourseTypes;
 using Application.Services.CourseTypes.Queries.GetCourseTypes;
+using Application.Services.NotificationSettings.Commands.AddNotificationSettings;
+using Application.Services.NotificationSettings.Commands.EditNotificationSettings;
+using Application.Services.NotificationSettings.Commands.RemoveNotificationSettings;
+using Application.Services.NotificationSettings.Queries.GetNotificationSettings;
 using Application.Services.ProjectCategories.Commands.AddProjectCategories;
 using Application.Services.ProjectCategories.Commands.EditProjectCategories;
 using Application.Services.ProjectCategories.Commands.RemoveProjectCategories;
@@ -45,8 +49,11 @@ using Application.Services.ProjectLikes.Queries.GetProjectLikes;
 using Application.Services.ProjectPhases.Commands.AddProjectPhase;
 using Application.Services.ProjectPhases.Commands.EditProjectPhase;
 using Application.Services.ProjectPhases.Commands.RemoveProjectPhase;
-using Application.Services.ProjectPhases.Commands.RemoveProjectPhases;
-using Application.Services.ProjectPhases.Queries.GetProjectPhase;
+ using Application.Services.ProjectPhases.Queries.GetProjectPhase;
+using Application.Services.ProjectPhaseTasks.Commands.AddProjectPhaseTask;
+using Application.Services.ProjectPhaseTasks.Commands.EditProjectPhaseTask;
+using Application.Services.ProjectPhaseTasks.Commands.RemoveProjectPhaseTask;
+using Application.Services.ProjectPhaseTasks.Queries.GetProjectPhaseTask;
 using Application.Services.Projects.Commands.AddProjects;
 using Application.Services.Projects.Commands.EditProjects;
 using Application.Services.Projects.Commands.RemoveProjects;
@@ -113,6 +120,8 @@ using Application.Services.ZarinpalSettings.Queries.GetZarinpalSettings;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Contexts;
 using System.Reflection;
+using Application.Services.ProjectPhaseTasks.Commands.RemoveProjectPhaseTasks;
+using Application.Services.ProjectPhases.Commands.RemoveProjectPhases;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -249,6 +258,13 @@ builder.Services.AddScoped<IGetProjectPhaseService, GetProjectPhaseService>();
 
 
 
+// ProjectPhaseTask
+
+builder.Services.AddScoped<IAddProjectPhaseTaskService, AddProjectPhaseTaskService>();
+builder.Services.AddScoped<IEditProjectPhaseTaskService, EditProjectPhaseTaskService>();
+builder.Services.AddScoped<IRemoveProjectPhaseTaskService, RemoveProjectPhaseTaskService>();
+builder.Services.AddScoped<IGetProjectPhaseTaskService, GetProjectPhaseTaskService>();
+
 //Blog
 builder.Services.AddScoped<IAddBlogService, AddBlogService>();
 builder.Services.AddScoped<IEditBlogService, EditBlogService>();
@@ -330,13 +346,19 @@ builder.Services.AddScoped<IGetCourseService, GetCourseService>();
 builder.Services.AddScoped<IAddPaymentUseService, AddPaymantUseService>();
 builder.Services.AddScoped<IGetPaymentUseService, GetPaymentUseService>();
 
-
 //CourseType
 
 builder.Services.AddScoped<IAddCourseTypeService, AddCourseTypeService>();
 builder.Services.AddScoped<IEditCourseTypeService, EditCourseTypeService>();
 builder.Services.AddScoped<IRemoveCourseTypeService, RemoveCourseTypeService>();
 builder.Services.AddScoped<IGetCourseTypeService, GetCourseTypeService>();
+
+//NotificationSetting
+
+builder.Services.AddScoped<IAddNotificationSettingService, AddNotificationSettingService>();
+builder.Services.AddScoped<IEditNotificationSettingService, EditNotificationSettingService>();
+builder.Services.AddScoped<IRemoveNotificationSettingService, RemoveNotificationSettingService>();
+builder.Services.AddScoped<IGetNotificationSettingService, GetNotificationSettingService>();
 
 //ProjectCategory
 

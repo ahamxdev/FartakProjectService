@@ -12,6 +12,7 @@ using Common.Dto;
 using Domain.Entities.Users;
 using Microsoft.AspNetCore.Mvc;
 using project.Application.Services.SMS;
+using Sentry.Protocol;
 
 namespace FartakProjectService.Controllers
 {
@@ -400,57 +401,48 @@ namespace FartakProjectService.Controllers
         [ProducesResponseType(typeof(ErrorDto), 500)]
         [HttpPost]
         [Route("OtpSingup")]
-        public async Task<ActionResult> OtpSingupAsync(RequestEditUserForgetPasswordDto dto)
+        public async Task<ActionResult> OtpSingupAsync(RequestGetUserByMobileDto dto)
         {
 
             try
             {
-                var newUser = new RequestAddUserDto()
-                {
-                    Name = "",
-                    Lastname = "",
-                    PassWord = "",
-                    Salt = "",
-                    Mobile = dto.Mobile,
-                    Email = "",
-                    Verify = "",
-                    Status = 0,
-                    Kind = 1
-                };
-                var user = _addUserService.Execute(newUser);
-                Int32 minutes = Convert.ToInt32(_configuration["AppSettings:TokenMinutes"]);
-
-                var res = _addUserTokenService.Execute(new RequestAddUserTokenDto
-                {
-                    UserId = user.Data.UserId,
-                    ExpireDate = DateTime.Now.AddMinutes(minutes),
-                });
-
-                //var outputResult = new
-                //{
-                //    IsSuccess = user.IsSuccess,
-                //    Message = user.Message,
-                //    UserId = user.Data.UserId,
-                //    Token = res.Data.Token,
-                //};
-                //if (res.IsSuccess == true)
-                //{
-                //    return Ok(outputResult);
-                //}
-                //else
-                //{
-                //    return BadRequest(new
-                //    {
-                //        data = res.Data,
-                //        message = res.Message
-                //    });
-                //}
-
-
-                var SMS = await _smsService.SMSSignup(new SMSRequestDto
+                var verifyCode = "";
+                var users = _getUserService.GetByMobile(new RequestGetUserByMobileDto { Mobile = dto.Mobile });
+                if (users.Rows == 0)
                 {
 
-                    Code = user.Data.Verify ,
+                    var newUser = new RequestAddUserDto()
+                    {
+                        Name = "",
+                        Lastname = "",
+                        PassWord = "",
+                        Salt = "",
+                        Mobile = dto.Mobile,
+                        Email = "",
+                        Verify = "",
+                        Status = 0,
+                        Kind = 1
+                    };
+                    var user = _addUserService.Execute(newUser);
+                    Int32 minutes = Convert.ToInt32(_configuration["AppSettings:TokenMinutes"]);
+                    //if (result.IsSuccess == true)
+                    //{ }
+                    var res = _addUserTokenService.Execute(new RequestAddUserTokenDto
+                    {
+                        UserId = user.Data.UserId,
+                        ExpireDate = DateTime.Now.AddMinutes(minutes),
+                    });
+
+                    verifyCode = user.Data.Verify;
+
+
+                } else verifyCode = users.Users[0].Verify; 
+
+
+                    var SMS = await _smsService.SMSSignup(new SMSRequestDto
+                {
+
+                    Code =   verifyCode,
                     ToSMS = dto.Mobile
                 });
                 if (SMS.IsSuccess == false)
@@ -463,19 +455,7 @@ namespace FartakProjectService.Controllers
                         ResponseCode = 409,
                     }));
                 }
-                var users = _getUserService.GetByMobile(new RequestGetUserByMobileDto { Mobile = dto.Mobile });
-                if (users.Rows != 0)
-                {
-                    var tokens = _getTokenService.GetByUserId(new RequestGetUserTokenByUserIdDto
-                    {
-                        UserId = users.Users[0].UserId
-                    });
-                    foreach (var item in tokens.UserToken)
-                        _removeUserTokenService.Execute(new RequestRemoveUserTokenDto
-                        {
-                            Token = item.Token
-                        });
-                }
+                
                 return Json(new ResultDto
                 {
                     IsSuccess = true,
@@ -486,43 +466,11 @@ namespace FartakProjectService.Controllers
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                return BadRequest("خطا در ثبت نام کاربر");
+                return BadRequest("خطا ");
             }
         }
-        //else
-        //    return StatusCode(409, Json(new ErrorDto
-        //    {
-        //        IsSuccess = false,
-        //        Message = result.Message,
-        //        Service = "User",
-        //        ResponseCode = 409,
-        //    }));
-        //}
-        //catch (Exception e)
-        //{
-        //    var st = new StackTrace(e, true);
-        //    var frame = st.GetFrame(0);
-        //    var line = 0;
-        //    if (frame != null)
-        //    {
-        //        line = frame.GetFileLineNumber();
-        //        // Proceed with line
-        //    }
-
-        //    return StatusCode(500, new
-        //    {
-        //        value = new ErrorDto
-        //        {
-        //            IsSuccess = false,
-        //            Message = "Server Error : LIne Number=" + line + " *** Message= " + e.Message,
-        //            Service = "User",
-        //            ResponseCode = 500,
-        //        }
-        //});
-        //}
-        //}
-
-
+      
+       
 
         /// <summary>
         /// ثب نام
@@ -548,21 +496,27 @@ namespace FartakProjectService.Controllers
                 {
                     var editUser = new RequestEditUserOtpConfirmDto()
                     {
-                       
+
                         Mobile = dto.Mobile,
-                       
+
                     };
-                    if (users.Users[0].Verify==dto.OtpCode)
+                      
+                    if ( users.Users[0].Verify == dto.OtpCode)
                     {
                         var result = _editUserService.OtpConfirm(editUser);
                         if (result.IsSuccess == true)
-                            return StatusCode(409, Json(new ErrorDto
+                        {
+                            var userToken = _getTokenService.GetByUserId(new RequestGetUserTokenByUserIdDto { UserId = users.Users[0].UserId });
+                            var outputResult = new
                             {
-                                IsSuccess = true,
-                                Message = result.Message,
-                                Service = "User",
-                                ResponseCode = 200,
-                            }));
+
+                                UserId = users.Users[0].UserId,
+                                Token = userToken.UserToken,
+                            };
+
+                            return Ok(outputResult);
+
+                        }
                         else
                             return StatusCode(409, Json(new ErrorDto
                             {
@@ -571,8 +525,9 @@ namespace FartakProjectService.Controllers
                                 Service = "User",
                                 ResponseCode = 409,
                             }));
-                         
+
                     }
+                    
                 }
                 
             }
@@ -580,9 +535,9 @@ namespace FartakProjectService.Controllers
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                return BadRequest("خطا در ثبت نام کاربر");
+                return BadRequest("خطا  ");
             }
-            return BadRequest("خطا در ثبت نام کاربر");
+            return BadRequest("خطا  ");
         }
        
         
@@ -605,45 +560,11 @@ namespace FartakProjectService.Controllers
         public ActionResult ChangePassword(RequestChangeUserPasswordDto dto)
         {
             try
-            {
-                //var tokenDto = new RequestGetTokenDto { };
-                //if (Request.Headers["Authorization"].Count() > 0)
-                //{
-                //    tokenDto.Token = Request.Headers["Authorization"];
-                //}
-                //if (Request.Headers["selfUserId"].Count() > 0)
-                //{
-                //    tokenDto.SelfUserId = Request.Headers["selfUserId"];
-                //}
-                //if (tokenDto.Token == null)
-                //    tokenDto.Token = "";
-                //if (_getTokenService.GetToken(new RequestCheckTokenDto
-                //{
-                //    SelfUserId = Convert.ToInt64(tokenDto.SelfUserId),
-                //    Token = tokenDto.Token
-                //}).Rows == 0)
-                //{
-                //    return StatusCode(403, Json(new ErrorDto { IsSuccess = false, Message = "توکن نامعتبر است", ResponseCode = 403, Service = "User" }));
-                //}
+            { 
                 var result = _editUserService.ChangePassword(dto);
                 if (result.IsSuccess == true)
                 {
-                    var users = _getUserService.GetById(new RequestGetUserByIdDto
-                    {
-                        UserId = dto.UserId
-                    });
-                    if (users.Rows != 0)
-                    {
-                        var tokens = _getTokenService.GetByUserId(new RequestGetUserTokenByUserIdDto
-                        {
-                            UserId = users.Users[0].UserId
-                        });
-                        foreach (var item in tokens.UserToken)
-                            _removeUserTokenService.Execute(new RequestRemoveUserTokenDto
-                            {
-                                Token = item.Token
-                            });
-                    }
+                   
                     return Json(result);
                 }
                 else

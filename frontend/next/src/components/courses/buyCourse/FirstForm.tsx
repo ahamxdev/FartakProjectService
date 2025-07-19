@@ -59,8 +59,9 @@ const FirstForm = ({
   register: UseFormRegister<IFirstBuyCourseForm>;
   getValues: UseFormGetValues<IFirstBuyCourseForm>;
 }) => {
-  
   const [region, setRegion] = useState<string>(getValues("region"));
+  const [city, setCity] = useState<string>(getValues("city"));
+  const [address, setAddress] = useState<string>(getValues("address"));
   const [language, setLanguage] = useState<string>(getValues("language"));
   const [forWho, setForWho] = useState<string>(getValues("forWho"));
   const [countOfCustomers, setCountOfCustomers] = useState<number>(
@@ -118,7 +119,7 @@ const FirstForm = ({
               {/* 📍 Offline: Select City */}
               <div
                 className={`w-full h-[68px] border-2 ${
-                  region ? "" : "border-[#EA0017]"
+                  city ? "" : "border-[#EA0017]"
                 } rounded-[8px] grow flex items-center justify-between px-5`}
               >
                 <span className="md:text-[20px] lg:text-[24px] font-[700] shrink-0">
@@ -129,6 +130,8 @@ const FirstForm = ({
                     type="text"
                     className="border-2 rounded-[6px] pr-3 py-1.5 w-full"
                     placeholder="جستجو"
+                    name="city"
+                    onClick={() => setCity("city")}
                   />
                   <IconSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
                 </div>
@@ -167,7 +170,7 @@ const FirstForm = ({
               {/* 🏠 Offline: Address Input */}
               <div
                 className={`w-full h-[68px] border-2 ${
-                  region ? "" : "border-[#EA0017]"
+                  address ? "" : "border-[#EA0017]"
                 } rounded-[8px] grow flex items-center justify-between px-5`}
               >
                 <span className="md:text-[20px] lg:text-[24px] font-[700] shrink-0">
@@ -178,6 +181,8 @@ const FirstForm = ({
                     type="text"
                     className="border-2 rounded-[6px] pr-3 py-1.5 w-full"
                     placeholder="وارد کردن ادرس"
+                    name="address"
+                    onClick={() => setAddress("address")}
                   />
                 </div>
 
@@ -282,39 +287,39 @@ const FirstForm = ({
                 کلاس را برای چه کسی میخواهید ؟
               </span>
               <div className="!flex w-1/2 !items-center !justify-between">
-                 <label htmlFor="mySelf" className="flex items-center gap-3">
-                 {/* <Radio
+                <label htmlFor="mySelf" className="flex items-center gap-3">
+                  {/* <Radio
                     id="mySelf"
                     value="mySelf"
                     onClick={() => setForWho("mySelf")}
                     {...register("forWho", { required: true })}
                   /> */}
-                <input
-                  id="mySelf"
-                  value="mySelf"
-                  type="radio"
-                  className="w-4 h-4"
-                  onClick={() => setForWho("mySelf")}
-                  {...register("forWho", { required: true })}
-                />
-                خودم
+                  <input
+                    id="mySelf"
+                    value="mySelf"
+                    type="radio"
+                    className="w-4 h-4"
+                    onClick={() => setForWho("mySelf")}
+                    {...register("forWho", { required: true })}
+                  />
+                  خودم
                 </label>
-                 <label htmlFor="mySon" className="flex items-center gap-3">
-                 {/* <Radio
+                <label htmlFor="mySon" className="flex items-center gap-3">
+                  {/* <Radio
                     id="mySon"
                     value="mySon"
                     onClick={() => setForWho("mySon")}
                     {...register("forWho", { required: true })}
                   /> */}
-                <input
-                  id="mySon"
-                  value="mySon"
-                  type="radio"
-                  className="w-4 h-4"
-                  onClick={() => setForWho("mySon")}
-                  {...register("forWho", { required: true })}
-                />
-                فرزندم
+                  <input
+                    id="mySon"
+                    value="mySon"
+                    type="radio"
+                    className="w-4 h-4"
+                    onClick={() => setForWho("mySon")}
+                    {...register("forWho", { required: true })}
+                  />
+                  فرزندم
                 </label>
                 <label htmlFor="other" className="flex items-center gap-3">
                   {/* <Radio
@@ -331,7 +336,7 @@ const FirstForm = ({
                     onClick={() => setForWho("other")}
                     {...register("forWho", { required: true })}
                   />
-                     دیگران
+                  دیگران
                 </label>
               </div>
             </div>
@@ -552,7 +557,9 @@ const FirstForm = ({
                     setEducationBreadCrumbs((prev) => [...prev, item]);
                   }}
                   className={`w-full ${
-                    formValid ? "" : "opacity-50 pointer-events-none"
+                    formValid || isOffline
+                      ? ""
+                      : "opacity-50 pointer-events-none"
                   } p-4 cursor-pointer transition-colors duration-200 rounded-sm hover:bg-gray-200 flex justify-center items-center`}
                 >
                   {item}
@@ -578,7 +585,9 @@ const FirstForm = ({
                     setBussinesBreadCrumbs((prev) => [...prev, item]);
                   }}
                   className={`w-full ${
-                    formValid ? "" : "opacity-50 pointer-events-none"
+                    formValid || isOffline
+                      ? ""
+                      : "opacity-50 pointer-events-none"
                   } p-4 cursor-pointer transition-colors duration-200 rounded-sm hover:bg-gray-200 flex justify-center items-center`}
                 >
                   <span className="min-w-40">{item}</span>
@@ -593,7 +602,81 @@ const FirstForm = ({
 
       {/* mobile  */}
       <div className="md:hidden">
-        <div className="border flex flex-col gap-3 p-3 rounded-lg">
+        <div className="border mt-3 flex flex-col gap-3 p-3 rounded-lg">
+           {isOffline && (
+            <>
+          <div className="w-full h-[68px] grow flex flex-col justify-between pb-4">
+            <div className="md:text-[20px] flex gap-3 items-center lg:text-[24px] font-[700] shrink-0">
+              <span>شهر خود را انتخاب کنید</span>
+              <IconInfoNotif className="text-[#000] scale-130" />
+            </div>
+            <div className="relative">
+              <select
+                id="class-duration"
+                className="w-80 mt-2 appearance-none bg-white border  border-[2px] rounded-lg px-4 py-2 text-sm text-gray-800 focus:ring-2 focus:ring-[#158AFF] focus:border-[#158AFF] hover:border-gray-400 transition-colors duration-200 pr-10"
+                aria-label="مدت زمان ادامه کلاس"
+              >
+                <option value="1">انتخاب شهر</option>
+                <option value="2">تبریز</option>
+                <option value="3">تهران</option>
+                <option value="6">مشهد</option>
+                <option value="12">شیراز</option>
+              </select>
+              <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none">
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </span>
+            </div>
+          </div>
+          <div className="bg-[#B1BFFA] h-[1px] w-full" />
+          <div className="w-full flex flex-col justify-between">
+            <div className="md:text-[20px] flex gap-3 items-center lg:text-[24px] font-[700] shrink-0">
+              <span> آدرس خود را وارد کنید .</span>
+              <IconInfoNotif className="text-[#000] scale-130" />
+            </div>
+            <div className="flex flex-col  items-center">
+              <div className="relative w-full">
+                <textarea
+                  rows={5}
+                  className="border-2 pr-2 rounded-[6px]  py-1.5 mt-3 w-full"
+                  placeholder="وارد کردن ادرس"
+                  name="address"
+                  onClick={() => setAddress("address")}
+                />
+              </div>
+
+              <div className="relative w-full">
+                <button
+                  className="bg-[#1D40D7] text-white font-semibold rounded-[8px] w-full h-[40px]"
+                  onClick={() => setShowMap(true)}
+                >
+                  <span className="shrink-0">انتخاب از نقشه</span>
+                </button>
+                {showMap && (
+                  <MapPicker
+                    onClose={() => setShowMap(false)}
+                    onSelect={handleMapSelect}
+                  />
+                )}
+              </div>
+            </div>
+          </div>
+          <div className="bg-[#B1BFFA] h-[1px] w-full" />
+            </>
+           )}
+           {isOnline &&(
           <div className="w-full h-[68px] grow flex flex-col justify-between">
             <div className="md:text-[20px] flex gap-3 items-center lg:text-[24px] font-[700] shrink-0">
               <span>مکان خود را انتخاب کنید</span>
@@ -620,6 +703,7 @@ const FirstForm = ({
               </div>
             </div>
           </div>
+           ) }
           <div className="bg-[#B1BFFA] h-[1px] w-full" />
           <div className="w-full h-[68px] grow flex flex-col justify-between">
             <div className="md:text-[20px] flex gap-3 items-center lg:text-[24px] font-[700] shrink-0">
@@ -688,14 +772,34 @@ const FirstForm = ({
             <div className="md:text-[20px] flex gap-3 items-center justify-between lg:text-[24px] font-[700] shrink-0">
               <span>تعداد شرکت کنندگان</span>
               <div className="flex items-center gap-1.5">
-                <button className="rounded-full border-[1px] w-[20px] h-[20px] flex items-center justify-center pb-0.5">
+                <button
+                  onClick={() => {
+                    if (countOfCustomers + 1 <= 999) {
+                      setCountOfCustomers(countOfCustomers + 1);
+                      setValue("countOfCustomers", countOfCustomers + 1);
+                    }
+                  }}
+                  type="button"
+                  className="rounded-full hover:bg-gray-200 cursor-pointer transition-colors duration-200 border-[1px] w-[20px] h-[20px] flex items-center justify-center pb-0.5"
+                >
                   +
                 </button>
                 <input
-                  className="w-[28px] text-[14px] text-center outline-none h-[28px] border p-1 rounded-[4px]"
+                  {...register("countOfCustomers", { required: true })}
+                  className="w-[32px] text-center h-[32px] border-[1px] rounded-[4px]"
                   type="text"
+                  //   value={countOfCustomers}
                 />
-                <button className="rounded-full border-[1px] w-[20px] h-[20px] flex items-center justify-center pb-0.5">
+                <button
+                  onClick={() => {
+                    if (countOfCustomers - 1 >= 0) {
+                      setCountOfCustomers(countOfCustomers - 1);
+                      setValue("countOfCustomers", countOfCustomers - 1);
+                    }
+                  }}
+                  type="button"
+                  className="rounded-full hover:bg-gray-200 cursor-pointer transition-colors duration-200 border-[1px] w-[20px] h-[20px] flex items-center justify-center pb-0.5"
+                >
                   -
                 </button>
               </div>

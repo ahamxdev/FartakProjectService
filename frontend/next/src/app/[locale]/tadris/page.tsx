@@ -1,4 +1,4 @@
-import { aboutUsComments, dropDownMenuItems, teachers } from "@/api";
+import { aboutUsComments,  teachers } from "@/api";
 import { lazy, memo } from "react";
 import Image from "next/image";
 import ebtedayi from "../../../../public/amozeshgahCard/ebtedayiCardBoy.png";
@@ -26,7 +26,7 @@ const page = () => {
 	return (
 		<div className="flex flex-col justify-center items-center w-full">
 			<TadrisPagePoster />
-			<DropDownMenu mainItems={dropDownMenuItems} />
+			<DropDownMenu  />
 
 			<List
 				gap={16}

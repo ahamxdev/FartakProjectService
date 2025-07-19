@@ -35,30 +35,30 @@ export default function PricingTable() {
 
       return (
             <section className="w-[90%] mx-auto flex flex-col gap-8 md:my-10 my-5">
-                  <div className="flex items-center justify-between gap-5 px-6">
-                        <button className="cursor-pointer border-[1px] border-[#EEF5FF] rounded-md md:text-lg text-sm font-bold flex justify-center items-center px-6 py-5 outline-none">سایت کامل</button>
-                        <button className="cursor-pointer shadow-md bg-[#EEF5FF] rounded-md flex flex-col gap-2 justify-center items-center px-4 py-2 outline-none">
+                  <div className="flex items-center justify-between gap-5 px-6 py-5 overflow-x-auto">
+                        <button className="cursor-pointer md:flex-1 min-w-[180px] border-[1px] border-[#EEF5FF] rounded-md md:text-lg text-sm font-bold flex justify-center items-center px-6 py-5 outline-none">سایت کامل</button>
+                        <button className="cursor-pointer md:flex-1 min-w-[180px] shadow-md bg-[#EEF5FF] rounded-md flex flex-col gap-2 justify-center items-center px-4 py-2 outline-none">
                               <span className="md:text-lg text-sm font-bold">سایت کوچک</span>
                               <span className="bg-white rounded-sm flex items-center gap-2 justify-center px-1.5 py-0.5">
                                     <span className="text-sm font-bold text-[#9daaff]">4 تا 10</span>
                                     <span className="text-sm font-bold text-black">میلیون تومان</span>
                               </span>
                         </button>
-                        <button className="cursor-pointer shadow-md bg-[#EEF5FF] rounded-md flex flex-col gap-2 justify-center items-center px-4 py-2 outline-none">
+                        <button className="cursor-pointer md:flex-1 min-w-[180px] shadow-md bg-[#EEF5FF] rounded-md flex flex-col gap-2 justify-center items-center px-4 py-2 outline-none">
                               <span className="md:text-lg text-sm font-bold">سایت کوچک</span>
                               <span className="bg-white rounded-sm flex items-center gap-2 justify-center px-1.5 py-0.5">
                                     <span className="text-sm font-bold text-[#9daaff]">4 تا 10</span>
                                     <span className="text-sm font-bold text-black">میلیون تومان</span>
                               </span>
                         </button>
-                        <button className="cursor-pointer shadow-md bg-[#EEF5FF] rounded-md flex flex-col gap-2 justify-center items-center px-4 py-2 outline-none">
+                        <button className="cursor-pointer md:flex-1 min-w-[180px] shadow-md bg-[#EEF5FF] rounded-md flex flex-col gap-2 justify-center items-center px-4 py-2 outline-none">
                               <span className="md:text-lg text-sm font-bold">سایت کوچک</span>
                               <span className="bg-white rounded-sm flex items-center gap-2 justify-center px-1.5 py-0.5">
                                     <span className="text-sm font-bold text-[#9daaff]">4 تا 10</span>
                                     <span className="text-sm font-bold text-black">میلیون تومان</span>
                               </span>
                         </button>
-                        <button className="cursor-pointer shadow-md relative bg-[#495AFF] rounded-md flex flex-col gap-2 justify-center items-center px-4 py-2 outline-none">
+                        <button className="cursor-pointer md:flex-1 min-w-[180px] shadow-md relative bg-[#495AFF] rounded-md flex flex-col gap-2 justify-center items-center px-4 py-2 outline-none">
                               <span className="text-black absolute -top-4 -right-4 z-10 rounded-full bg-[#FCE638] flex justify-center items-center w-8 h-8 text-[8px] font-extrabold rotate-12">پر فروش</span>
                               <span className="md:text-lg text-sm font-bold">سایت کوچک</span>
                               <span className="bg-white rounded-sm flex items-center gap-2 justify-center px-1.5 py-0.5">

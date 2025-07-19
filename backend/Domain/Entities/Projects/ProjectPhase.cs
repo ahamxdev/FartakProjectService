@@ -10,6 +10,9 @@ namespace Domain.Entities.Projects
     {
         public long ProjectPhaseId {  get; set; }
         public long ProjectId {  get; set; }
+        public Project Projects { get; set; }
+        public ICollection<ProjectPhaseTask> ProjectPhaseTasks { get; set; }
+
         public long ProjectTeamId {  get; set; }
         public long Duration {  get; set; }
         public long Price {  get; set; }
