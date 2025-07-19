@@ -1,17 +1,10 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import BreadCrumb from "@/components/skills/BreadCrumb";
-// import OnlineStoreDesign from "@/components/skills/OnlineStoreDesign";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { api } from "@/utils/api";
-import SectionTitle from "@/components/skills/SectionTitile";
-import CategorySkillSliderSection from "@/components/skills/CategorySkillSliderSection";
-import { SwiperSlide } from "swiper/react";
-// import { notFound } from "next/navigation";
-
-// import InputCheckbox from "@/components/skills/InputCheckbox";
 import ContentCreation from "@/components/skills/ContentCreation"
 import ApplicationWebsiteDesign from "@/components/skills/ApplicationWebsiteDesign"
 import Programming from "@/components/skills/Programming"
