@@ -47,6 +47,7 @@ namespace Persistence.Contexts
         public DbSet<RequestProjectTeam> RequestProjectTeams { get; set; }
         public DbSet<ProjectFile> ProjectFiles { get; set; }
         public DbSet<ProjectPhase> ProjectPhases { get; set; }
+        public DbSet<ProjectPhaseTask> ProjectPhaseTasks { get; set; }
 
         public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
         {
@@ -81,12 +82,18 @@ namespace Persistence.Contexts
             modelBuilder.Entity<PaymentUse>().HasIndex(u => u.PaymentUseId).IsUnique();
             modelBuilder.Entity<ProjectFile>().HasIndex(u => u.ProjectFileId).IsUnique();
             modelBuilder.Entity<ProjectPhase>().HasIndex(u => u.ProjectPhaseId).IsUnique();
+            modelBuilder.Entity<ProjectPhaseTask>().HasIndex(u => u.ProjectPhaseTaskId).IsUnique();
             modelBuilder.Entity<Comment>().HasIndex(u => u.CommentId).IsUnique();
-          
+
             modelBuilder.Entity<Project>()
-                .HasMany(p => p.ProjectPhases)
-                .WithOne(pp => pp.Projects)
-                .HasForeignKey(pp => pp.ProjectId);
+              .HasMany(p => p.ProjectPhases)
+              .WithOne(pp => pp.Projects)
+              .HasForeignKey(pp => pp.ProjectId);
+
+            modelBuilder.Entity<ProjectPhase>()
+                .HasMany(p => p.ProjectPhaseTasks)
+                .WithOne(pp => pp.ProjectPhases)
+                .HasForeignKey(pp => pp.ProjectPhaseId);
         
 
     }
