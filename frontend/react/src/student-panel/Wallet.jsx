@@ -14,8 +14,12 @@ function Wallet() {
               </div>
             </div>
             <div className="flex justify-end pe-5">
-              <button className="bg-green-500 text-white px-4 py-2 ml-4 rounded">افزایش موجودی</button>
-              <button className="bg-blue-500 text-white px-4 py-2 rounded">درخواست برداشت وجه</button>
+              <button className="bg-green-500 text-white px-4 py-2 ml-4 rounded">
+                افزایش موجودی
+              </button>
+              <button className="bg-blue-500 text-white px-4 py-2 rounded">
+                درخواست برداشت وجه
+              </button>
             </div>
           </div>
           <div className="w-full md:w-1/2">
@@ -40,43 +44,29 @@ function Wallet() {
               lang="fa"
               style={{ fontFamily: "Vazirmatn, sans-serif" }}
             >
-              <div className="overflow-x-auto w-3/4 mx-auto">
+              <div className="w-3/4 mx-auto">
                 <h4 className="text-right text-lg mt-4">قسط های پیش رو :</h4>
 
-                <table className="w-full text-sm">
-                  <thead className="bg-gray-800 text-white text-xs font-semibold text-center">
-                    <tr>
-                      <th className="p-3">تاریخ قسط</th>
-                      <th className="p-3">مبلغ قسط</th>
-                      <th className="p-3 text-center">بابت دوره </th>
-                      <th className="p-3 text-center">
-                        وضعیت
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr className="border-b">
-                      <td className="p-4 text-center">1404/02/15</td>
-                      <td className="p-4 text-center">1,200,000 تومان</td>
-                      <td className="p-4 text-center">
-                        دوره آمادگی برای امتحانات پایانی کلاس 11
-                      </td>
-                      <td className="p-4 text-center">
-                        در انتظار پرداخت
-                      </td>
-                    </tr>
+                <table className="rounded-table">
+                  <tr>
+                    <th>تاریخ قسط</th>
+                    <th>مبلغ قسط</th>
+                    <th>بابت دوره </th>
+                    <th>وضعیت</th>
+                  </tr>
+                  <tr>
+                    <td>1404/02/15</td>
+                    <td>1,200,000 تومان</td>
+                    <td>دوره آمادگی برای امتحانات پایانی کلاس 11</td>
+                    <td>در انتظار پرداخت</td>
+                  </tr>
 
-                    <tr className="border-b">
-                      <td className="p-4 text-center">1404/01/15</td>
-                      <td className="p-4 text-center">1,200,000 تومان</td>
-                      <td className="p-4 text-center">
-                        دوره آمادگی برای امتحانات پایانی کلاس 11
-                      </td>
-                      <td className="p-4 text-center">
-                        پرداخت شده
-                      </td>
-                    </tr>
-                  </tbody>
+                  <tr>
+                    <td>1404/01/15</td>
+                    <td>1,200,000 تومان</td>
+                    <td>دوره آمادگی برای امتحانات پایانی کلاس 11</td>
+                    <td>پرداخت شده</td>
+                  </tr>
                 </table>
               </div>
             </div>
@@ -90,102 +80,68 @@ function Wallet() {
               lang="fa"
               style={{ fontFamily: "Vazirmatn, sans-serif" }}
             >
-              <div className="overflow-x-auto w-3/4 mx-auto">
-                <h4 className="text-right text-lg mt-4">تاریخچه تراکنش ها : </h4>
+              <div className="w-3/4 mx-auto">
+                <h4 className="text-right text-lg mt-4">
+                  تاریخچه تراکنش ها :{" "}
+                </h4>
 
-                <table className="w-full text-sm">
-                  <thead className="bg-gray-800 text-white text-xs font-semibold text-center">
-                    <tr>
-                      <th className="p-3">تاریخ</th>
-                      <th className="p-3"> نوع تراکنش </th>
-                      <th className="p-3 text-center">مبلغ</th>
-                      <th className="p-3 text-center">
-                        توضیحات
-                      </th>
-                      <th className="p-3 text-center">
-                        وضعیت
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr className="border-b">
-                      <td className="p-4 text-center">1404/02/15</td>
-                      <td className="p-4 text-center">برداشت</td>
-                      <td className="p-4 text-center">1,120,000 تومان</td>
-                      <td className="p-4 text-center">
-                        برای دوره مهندسی نرم افزار
-                      </td>
-                      <td className="p-4 text-center">
-                        تایید شده
-                      </td>
-                    </tr>
-                    <tr className="border-b">
-                      <td className="p-4 text-center">1404/02/15</td>
-                      <td className="p-4 text-center">برداشت</td>
-                      <td className="p-4 text-center">1,120,000 تومان</td>
-                      <td className="p-4 text-center">
-                        برای دوره مهندسی نرم افزار
-                      </td>
-                      <td className="p-4 text-center">
-                        تایید شده
-                      </td>
-                    </tr>
-                    <tr className="border-b">
-                      <td className="p-4 text-center">1404/02/15</td>
-                      <td className="p-4 text-center">برداشت</td>
-                      <td className="p-4 text-center">1,120,000 تومان</td>
-                      <td className="p-4 text-center">
-                        برای دوره مهندسی نرم افزار
-                      </td>
-                      <td className="p-4 text-center">
-                        تایید شده
-                      </td>
-                    </tr>
-                    <tr className="border-b">
-                      <td className="p-4 text-center">1404/02/15</td>
-                      <td className="p-4 text-center">برداشت</td>
-                      <td className="p-4 text-center">1,120,000 تومان</td>
-                      <td className="p-4 text-center">
-                        برای دوره مهندسی نرم افزار
-                      </td>
-                      <td className="p-4 text-center">
-                        تایید شده
-                      </td>
-                    </tr>
-                    <tr className="border-b">
-                      <td className="p-4 text-center">1404/02/15</td>
-                      <td className="p-4 text-center">برداشت</td>
-                      <td className="p-4 text-center">1,120,000 تومان</td>
-                      <td className="p-4 text-center">
-                        برای دوره مهندسی نرم افزار
-                      </td>
-                      <td className="p-4 text-center">
-                        تایید شده
-                      </td>
-                    </tr>
-                    <tr className="border-b">
-                      <td className="p-4 text-center">1404/02/15</td>
-                      <td className="p-4 text-center">برداشت</td>
-                      <td className="p-4 text-center">1,120,000 تومان</td>
-                      <td className="p-4 text-center">
-                        برای دوره مهندسی نرم افزار
-                      </td>
-                      <td className="p-4 text-center">
-                        تایید شده
-                      </td>
-                    </tr>
-                    <tr className="border-b">
-                      <td className="p-4 text-center">1404/02/15</td>
-                      <td className="p-4 text-center">برداشت</td>
-                      <td className="p-4 text-center">1,120,000 تومان</td>
-                      <td className="p-4 text-center">
-                        برای دوره مهندسی نرم افزار
-                      </td>
-                      <td className="p-4 text-center">
-                        تایید شده
-                      </td>
-                    </tr>
-                  </tbody>
+                <table className="rounded-table">
+                  <tr>
+                    <th>تاریخ</th>
+                    <th> نوع تراکنش </th>
+                    <th>مبلغ</th>
+                    <th>توضیحات</th>
+                    <th>وضعیت</th>
+                  </tr>
+                  <tr>
+                    <td>1404/02/15</td>
+                    <td>برداشت</td>
+                    <td>1,120,000 تومان</td>
+                    <td>برای دوره مهندسی نرم افزار</td>
+                    <td>تایید شده</td>
+                  </tr>
+                  <tr>
+                    <td>1404/02/15</td>
+                    <td>برداشت</td>
+                    <td>1,120,000 تومان</td>
+                    <td>برای دوره مهندسی نرم افزار</td>
+                    <td>تایید شده</td>
+                  </tr>
+                  <tr>
+                    <td>1404/02/15</td>
+                    <td>برداشت</td>
+                    <td>1,120,000 تومان</td>
+                    <td>برای دوره مهندسی نرم افزار</td>
+                    <td>تایید شده</td>
+                  </tr>
+                  <tr>
+                    <td>1404/02/15</td>
+                    <td>برداشت</td>
+                    <td>1,120,000 تومان</td>
+                    <td>برای دوره مهندسی نرم افزار</td>
+                    <td>تایید شده</td>
+                  </tr>
+                  <tr>
+                    <td>1404/02/15</td>
+                    <td>برداشت</td>
+                    <td>1,120,000 تومان</td>
+                    <td>برای دوره مهندسی نرم افزار</td>
+                    <td>تایید شده</td>
+                  </tr>
+                  <tr>
+                    <td>1404/02/15</td>
+                    <td>برداشت</td>
+                    <td>1,120,000 تومان</td>
+                    <td>برای دوره مهندسی نرم افزار</td>
+                    <td>تایید شده</td>
+                  </tr>
+                  <tr>
+                    <td>1404/02/15</td>
+                    <td>برداشت</td>
+                    <td>1,120,000 تومان</td>
+                    <td>برای دوره مهندسی نرم افزار</td>
+                    <td>تایید شده</td>
+                  </tr>
                 </table>
               </div>
             </div>

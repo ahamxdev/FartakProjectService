@@ -1,4 +1,4 @@
-function Header() {
+function Header({ addProject = false }) {
   return (
     <header className="header__left container-effects container mx-auto px-2.5">
       <div className="header--dashobord">
@@ -13,13 +13,14 @@ function Header() {
           <p className="mb-0">پروفایل شخصی</p>
         </div>
       </div>
-
-      <div className="add-project-container">
-        <button className="add-project">
-          <img src="/img/plus.svg" alt="add-project" />
-        </button>
-        <p className="add-project-para mb-0">افزودن پروژه</p>
-      </div>
+      {addProject && (
+        <div className="add-project-container">
+          <button className="add-project">
+            <img src="/img/plus.svg" alt="add-project" />
+          </button>
+          <p className="add-project-para mb-0">افزودن پروژه</p>
+        </div>
+      )}
       <div className="search-nav-container">
         <form action="" className="header-search-form">
           <input

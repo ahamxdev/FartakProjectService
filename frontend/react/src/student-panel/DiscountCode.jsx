@@ -83,31 +83,27 @@ function DiscountCode() {
           {discountCards.map((card, index) => (
             <div className="w-full md:w-1/2 lg:w-1/2 px-3 mt-3" key={index}>
               <div
-                className="flex rounded overflow-hidden h-full border border-dashed border-gray-300"
+                className="flex rounded overflow-hidden h-full"
                 style={{
                   fontFamily: "Arial, sans-serif",
                 }}
               >
                 <div
-                  className="flex items-center justify-center px-3 bg-gray-50"
+                  className="flex items-center justify-center px-3 bg-gray-50 border border-dashed border-[#999999] border-l-0"
                   style={{
                     minWidth: "100px",
                   }}
                 >
-                  <span
-                    className="font-black text-3xl leading-none text-gray-800"
-                  >
+                  <span className="font-black text-3xl leading-none text-gray-800">
                     {card.discount}
                   </span>
                 </div>
-                <div
-                  className="p-3 flex-grow flex flex-col border-r border-dashed border-gray-300"
-                >
+                <div className="relative p-3 flex-grow flex flex-col border border-dashed border-[#999999]">
+                  <span className="p-4 -top-4 -right-[17px] border border-dashed bg-white border-[#999999] rounded-full absolute"></span>
+                  <span className="p-4 -bottom-4 -right-[17px] border border-dashed bg-white border-[#999999] rounded-full absolute"></span>
                   <h5 className="mb-2 text-lg">{card.title}</h5>
                   <div className="flex items-center mb-2">
-                    <span
-                      className="text-white bg-green-500 rounded-full px-2 py-1 text-xs leading-tight"
-                    >
+                    <span className="text-white bg-green-500 rounded-full px-2 py-1 text-xs leading-tight">
                       مهلت استفاده : {card.duration}
                     </span>
                   </div>
@@ -115,9 +111,7 @@ function DiscountCode() {
                     href="#"
                     className="no-underline inline-block my-3 text-xs"
                   >
-                    <span
-                      className="bg-yellow-400 rounded-full px-2 py-1 text-gray-800"
-                    >
+                    <span className="bg-yellow-400 rounded-full px-2 py-1 text-gray-800">
                       {card.tag}
                     </span>
                   </a>
@@ -125,13 +119,17 @@ function DiscountCode() {
                     <span className="text-gray-500 text-sm">کد تخفیف:</span>
                     <button
                       type="button"
-                      className="border border-red-500 text-red-500 px-3 py-1 rounded text-sm font-bold flex items-center gap-2"
+                      className="border bg-[#C6303E] text-white px-3 py-1 rounded-full text-sm font-bold flex items-center gap-2"
                       onClick={() => {
                         navigator.clipboard.writeText(card.code);
                         alert("کد تخفیف کپی شد!");
                       }}
                     >
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+                      <span className="text-xs font-light">کپی کردن</span>{" "}
+>>>>>>> origin/alimash
                       {card.code}
                       <i className="far fa-copy"></i>
                     </button>

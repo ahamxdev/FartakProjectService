@@ -485,8 +485,10 @@ input[type="number"] {
   margin-bottom: 0;
 }
 .btn-payment-card {
-  padding: 4px 8px;
+  padding: 4px 16px;
+  font-size: 18px;
   background-color: #1938ff;
+  color: white;
   border-radius: 10px;
   transition: all 0.3s;
 }

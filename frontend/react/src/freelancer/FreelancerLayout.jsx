@@ -1,13 +1,9 @@
 import "../styles/freelancer.css";
 import Header from "../components/Header";
-import { NavLink, Outlet } from "react-router-dom";
+import SideBar from "../components/SideBar";
+import { Outlet } from "react-router-dom";
 
 const sideBarLinks = [
-  {
-    icon: "/img/لوگو/کارفرما/بستن سایدبار.svg",
-    label: "بستن سایدبار",
-    path: "",
-  },
   {
     icon: "/img/لوگو/کارفرما/خانه.svg",
     label: "خانه",
@@ -40,18 +36,7 @@ function FreelancerLayout() {
     <>
       <Header />
       <main className="container mx-auto px-2.5 gap-4 grid grid-cols-[auto_1fr] mt-5">
-        <aside className="sidebar container-effects w-[220px] h-[666px]">
-          <ul>
-            {sideBarLinks.map((item, index) => (
-              <li key={index}>
-                <NavLink end to={item.path} className="sidebar--order">
-                  <img src={item.icon} alt={item.label} />
-                  <span>{item.label}</span>
-                </NavLink>
-              </li>
-            ))}
-          </ul>
-        </aside>
+        <SideBar links={sideBarLinks} />
         <div className="outlet-container">
           <Outlet />
         </div>

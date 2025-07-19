@@ -6,6 +6,7 @@ import Chat from "./employe-panel/Chat";
 import Notification from "./employe-panel/Notification";
 import ContactCEO from "./employe-panel/ContactCEO";
 import CreateOrder from "./employe-panel/CreateOrder";
+import Orders from "./employe-panel/Orders";
 // import Orders from "./employe-panel/Orders";
 import WorkRoom from "./employe-panel/WorkRoom";
 import EmployerLayout from "./employe-panel/EmployerLayout";
@@ -25,20 +26,18 @@ import Charts from "./pages/Charts";
 import OrderId from "./freelancer/OrderId";
 // Admin Panel
 import AdminLayout from "./admin-panel/AdminLayout";
-import FileTaskProject from "./admin-panel/FileTaskProject";
-import PanelEmployer from "./admin-panel/PanelEmployer";
-import PanelFreelancer from "./admin-panel/PanelFreelancer";
-import PanelProffesor from "./admin-panel/PanelProffesor";
-import RegisteringEmployerNotification from "./admin-panel/RegisteringEmployerNotification";
-import StatusProject from "./admin-panel/StatusProject";
-import TaskProject from "./admin-panel/TaskProject";
-import ProfessorResoume from "./admin-panel/ProfessorResoume";
-import ProfessorInfo from "./admin-panel/ProfessorInfo";
+import PanelProffesor from "./admin-panel/professor/PanelProffesor";
+import ProfessorResoume from "./admin-panel/professor/ProfessorResoume";
+import ProfessorInfo from "./admin-panel/professor/ProfessorInfo";
 import Login from "./pages/Login";
-import ProfessorHelp from "./admin-panel/ProfessorHelp";
-import RecordedCourses from "./admin-panel/RecordedCourses";
-import CourseField from "./admin-panel/CourseField";
-import { loader as CourseFieldLoader } from "./admin-panel/CourseField";
+import ProfessorHelp from "./admin-panel/professor/ProfessorHelp";
+import RecordedCourses from "./admin-panel/professor/RecordedCourses";
+import CourseField from "./admin-panel/professor/CourseField";
+import { loader as CourseFieldLoader } from "./admin-panel/professor/CourseField";
+import ConfirmOrder from "./admin-panel/professor/ConfirmOrder";
+import RecordedClasses from "./admin-panel/professor/RecordedClasses";
+import OnlineClasses from "./admin-panel/professor/OnlineClasses";
+import InpersonClasses from "./admin-panel/professor/InpersonClasses";
 // Student dashboard
 import StudentLayout from "./student-panel/components/StudentLayout";
 import Wallet from "./student-panel/Wallet";
@@ -77,7 +76,12 @@ import RequestManagement from "./student-panel/RequestManagement";
 import SupportTicket from "./student-panel/SupportTicket";
 import HomeStudent from "./student-panel/HomeStudent";
 <<<<<<< HEAD
+<<<<<<< HEAD
 import Orders from "./employe-panel/Orders";
+=======
+import Freelancers from "./admin-panel/freelancer/Freelancers";
+import Projects from "./admin-panel/freelancer/Projects";
+>>>>>>> origin/alimash
 
 const router = createBrowserRouter([
   {
@@ -144,17 +148,15 @@ const router = createBrowserRouter([
     path: "/admin",
     Component: AdminLayout,
     children: [
-      { path: "filetask", Component: FileTaskProject },
-      { path: "employer", Component: PanelEmployer },
-      { path: "freelancer", Component: PanelFreelancer },
-      { path: "register-employer", Component: RegisteringEmployerNotification },
-      { path: "status-project", Component: StatusProject },
-      { path: "task-project", Component: TaskProject },
+      // Freelancers
+      { path: "freelancers", Component: Freelancers },
+      { path: "projects", Component: Projects },
       // Professors
       { path: "professors", Component: PanelProffesor },
       { path: "professor-resoume", Component: ProfessorResoume },
       { path: "professor-info", Component: ProfessorInfo },
       { path: "professor-help", Component: ProfessorHelp },
+      { path: "confirm-order", Component: ConfirmOrder },
       {
         path: "courses",
         Component: RecordedCourses,
@@ -163,6 +165,9 @@ const router = createBrowserRouter([
           { path: ":field", Component: CourseField, loader: CourseFieldLoader },
         ],
       },
+      { path: "classes", Component: RecordedClasses },
+      { path: "online-classes", Component: OnlineClasses },
+      { path: "inperson-classes", Component: InpersonClasses },
     ],
   },
 <<<<<<< HEAD
@@ -222,7 +227,10 @@ function App() {
   return <RouterProvider router={router} />;
 =======
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> origin/alimash
 
 >>>>>>> origin/SP-layout
 import PanelProfessor from "./admin-panel/panelProfessor/PanelProfessor";

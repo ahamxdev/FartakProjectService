@@ -1,4 +1,5 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./Sidebar.css";
 import { NavLink } from "react-router-dom";
 
@@ -9,56 +10,52 @@ const Sidebar = () => {
   const toggleSidebar = () => setIsOpen(!isOpen);
 
   const menuItems = [
-    {
-      icon: "./img/لوگو/پنل دانشجو/خانه.svg",
-      text: "خانه",
-      link: "",
-    },
+    { icon: "./img/لوگو/پنل دانشجو/خانه.svg", text: "خانه", link: "/HomeStudent" },
     {
       icon: "./img/لوگو/پنل دانشجو/دوره های خریداری شده.svg",
       text: "دوره‌های خریده‌شده",
-      link: "purchased-courses",
+      link: "/PurchasedCourses",
     },
     {
       icon: "./img/لوگو/پنل دانشجو/دوره های آنلاین.svg",
       text: "دوره‌های آنلاین",
-      link: "online-courses",
+      link: "/OnlineCourses",
     },
     {
       icon: "./img/لوگو/پنل دانشجو/کلاس های من.svg",
       text: "کلاس‌های من",
-      link: "my-classes",
+      link: "/MyClasses",
     },
     {
       icon: "./img/لوگو/پنل دانشجو/مدریت درخواست ها.svg",
       text: "مدیریت درخواست‌ها",
-      link: "request-management",
+      link: "/RequestManagement",
     },
     {
       icon: "./img/لوگو/پنل دانشجو/کیف پول.svg",
       text: "کیف پول",
-      link: "wallet",
+      link: "/Wallet",
     },
     {
       icon: "./img/لوگو/پنل دانشجو/کد تخفیف.svg",
       text: "کد تخفیف",
-      link: "discount-code",
+      link: "/DiscountCode",
     },
     {
       icon: "./img/لوگو/پنل دانشجو/تیکت پشتیبانی.svg",
       text: "تیکت پشتیبانی",
-      link: "support-ticket",
+      link: "/SupportTicket",
     },
     {
       icon: "./img/لوگو/پنل دانشجو/سوالات متداول.svg",
       text: "سوالات متداول",
-      link: "faq",
+      link: "/faq",
     },
   ];
 
   return (
     <div
-      className={`d-flex flex-column rounded-3 shadow sidebar mx-3 mt-2 w-[666px] ${
+      className={`d-flex flex-column rounded-3 shadow sidebar mx-3 mt-2 ${
         isOpen ? "sidebar-open" : "sidebar-closed"
       }`}
     >

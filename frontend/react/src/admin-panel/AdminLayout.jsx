@@ -16,7 +16,7 @@ const sideBarLinks = [
   {
     label: "پنل کارفرما",
     Links: [
-      { label: "تایید پروژه های جدید", to: "#" },
+      { label: "تایید پروژه های جدید", to: "confirm-order" },
       { label: "تسک بندی پروژه های جدید", to: "#" },
       { label: "ثبت اطلاعیه جدید به کارفرما", to: "#" },
       { label: "چت با کارفرما", to: "#" },
@@ -28,8 +28,8 @@ const sideBarLinks = [
   {
     label: "پنل فریلنسر ها",
     Links: [
-      { label: "لیست و افزودن فریلنسر", to: "#" },
-      { label: "لیست و وضعیت پروژه", to: "#" },
+      { label: "لیست و افزودن فریلنسر", to: "freelancers" },
+      { label: "لیست و وضعیت پروژه", to: "projects" },
       { label: "فایل تسک های پروژه ها", to: "#" },
       { label: "لیست و وضعیت پروژه", to: "#" },
       { label: "فایل تسک های پروژه ها", to: "#" },
@@ -49,11 +49,11 @@ const sideBarLinks = [
       { label: "نمایش اساتید و سطح بندی", to: "professors" },
       { label: "تایید روزمه استاد", to: "professor-resoume" },
       { label: "تایید اطلاعات شخصی", to: "professor-info" },
-      { label: "مدریت راهنما های عملکردی", to: "professor-help" },
+      { label: "مدیریت راهنما های عملکردی", to: "professor-help" },
       { label: "آموزش های ضبط شده", to: "courses" },
-      { label: "کلاس های ضبط شده", to: "#" },
-      { label: "کلاس های خصوصی آنلاین", to: "#" },
-      { label: "کلاس های خصوصی حضوری", to: "#" },
+      { label: "کلاس های ضبط شده", to: "classes" },
+      { label: "کلاس های خصوصی آنلاین", to: "online-classes" },
+      { label: "کلاس های خصوصی حضوری", to: "inperson-classes" },
     ],
     icon: "/img/admin/user-circle.png",
     id: 3,
