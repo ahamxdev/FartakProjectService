@@ -47,10 +47,37 @@ import OnlineCourses from "./student-panel/OnlineCourses";
 import PurchasedCourses from "./student-panel/PurchasedCourses";
 import FAQ from "./student-panel/FAQ";
 
+=======
+import { Routes, Route } from "react-router-dom";
+import "./App.css";
+import Home from "./employe-panel/Home";
+import Chat from "./employe-panel/Chat";
+import Notification from "./employe-panel/Notification";
+import Pay from "./employe-panel/Pay";
+import WorkSpace from "./employe-panel/WorkSpace";
+import Orders from "./employe-panel/orders";
+import PlaceOrder from "./employe-panel/place_order";
+import Setting from "./employe-panel/Setting";
+import Search from "./employe-panel/Search";
+import ContactCEO from "./employe-panel/ContactCEO";
+import OrderExcutors from "./employe-panel/OrderExecutors";
+import OrderProgress from "./employe-panel/OrderProgress";
+
+import Wallet from "./student-panel/Wallet";
+import MyClasses from "./student-panel/MyClasses";
+import OnlineCourses from "./student-panel/OnlineCourses";
+import PurchasedCourses from "./student-panel/PurchasedCourses";
+import FAQ from "./student-panel/FAQ";
+import Money from "./student-panel/Money";
+import MainOstad from "./student-panel/mainOstad";
+import MoneyTwo from "./student-panel/money2";
+>>>>>>> a43b147191de07cffa1536aca68daa0ad6e6a0a0
 import DiscountCode from "./student-panel/DiscountCode";
 import RequestManagement from "./student-panel/RequestManagement";
 import SupportTicket from "./student-panel/SupportTicket";
 import HomeStudent from "./student-panel/HomeStudent";
+<<<<<<< HEAD
+import Orders from "./employe-panel/Orders";
 
 const router = createBrowserRouter([
   {
@@ -90,7 +117,7 @@ const router = createBrowserRouter([
       { path: "chat", Component: Chat },
       { path: "notification", Component: Notification },
       { path: "work-room", Component: WorkRoom },
-      // { path: "orders", Component: Orders },
+      { path: "orders", Component: Orders },
       { path: "create-order", Component: CreateOrder },
       { path: "contact-ceo", Component: ContactCEO },
       { path: "executors", Component: OrderExecutors },
@@ -138,6 +165,7 @@ const router = createBrowserRouter([
       },
     ],
   },
+<<<<<<< HEAD
 =======
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
@@ -169,6 +197,9 @@ import SupportTicket from "./student-panel/SupportTicket";
 import HomeStudent from "./student-panel/HomeStudent";
 
 <<<<<<< HEAD
+=======
+
+>>>>>>> origin/SP-layout
   // Student dashboard
   {
     path: "/student",
@@ -190,6 +221,10 @@ import HomeStudent from "./student-panel/HomeStudent";
 function App() {
   return <RouterProvider router={router} />;
 =======
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/SP-layout
 import PanelProfessor from "./admin-panel/panelProfessor/PanelProfessor";
 
 <<<<<<< HEAD
