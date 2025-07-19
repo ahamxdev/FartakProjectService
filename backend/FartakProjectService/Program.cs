@@ -49,8 +49,11 @@ using Application.Services.ProjectLikes.Queries.GetProjectLikes;
 using Application.Services.ProjectPhases.Commands.AddProjectPhase;
 using Application.Services.ProjectPhases.Commands.EditProjectPhase;
 using Application.Services.ProjectPhases.Commands.RemoveProjectPhase;
-using Application.Services.ProjectPhases.Commands.RemoveProjectPhases;
-using Application.Services.ProjectPhases.Queries.GetProjectPhase;
+ using Application.Services.ProjectPhases.Queries.GetProjectPhase;
+using Application.Services.ProjectPhaseTasks.Commands.AddProjectPhaseTask;
+using Application.Services.ProjectPhaseTasks.Commands.EditProjectPhaseTask;
+using Application.Services.ProjectPhaseTasks.Commands.RemoveProjectPhaseTask;
+using Application.Services.ProjectPhaseTasks.Queries.GetProjectPhaseTask;
 using Application.Services.Projects.Commands.AddProjects;
 using Application.Services.Projects.Commands.EditProjects;
 using Application.Services.Projects.Commands.RemoveProjects;
@@ -117,6 +120,8 @@ using Application.Services.ZarinpalSettings.Queries.GetZarinpalSettings;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Contexts;
 using System.Reflection;
+using Application.Services.ProjectPhaseTasks.Commands.RemoveProjectPhaseTasks;
+using Application.Services.ProjectPhases.Commands.RemoveProjectPhases;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -252,6 +257,13 @@ builder.Services.AddScoped<IRemoveProjectPhaseService, RemoveProjectPhaseService
 builder.Services.AddScoped<IGetProjectPhaseService, GetProjectPhaseService>();
 
 
+
+// ProjectPhaseTask
+
+builder.Services.AddScoped<IAddProjectPhaseTaskService, AddProjectPhaseTaskService>();
+builder.Services.AddScoped<IEditProjectPhaseTaskService, EditProjectPhaseTaskService>();
+builder.Services.AddScoped<IRemoveProjectPhaseTaskService, RemoveProjectPhaseTaskService>();
+builder.Services.AddScoped<IGetProjectPhaseTaskService, GetProjectPhaseTaskService>();
 
 //Blog
 builder.Services.AddScoped<IAddBlogService, AddBlogService>();

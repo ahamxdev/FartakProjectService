@@ -44,6 +44,8 @@ namespace Application.Interfaces.Contexts
         DbSet<PaymentUse> PaymentUses { get; set; }
         DbSet<ProjectFile> ProjectFiles { get; set; }
         DbSet<ProjectPhase> ProjectPhases { get; set; }
+        DbSet<ProjectPhaseTask> ProjectPhaseTasks { get; set; }
+
         DbSet<Comment> Comments { get; set; }
 
         int SaveChanges(bool accceptAllChangesOnSuccess);
