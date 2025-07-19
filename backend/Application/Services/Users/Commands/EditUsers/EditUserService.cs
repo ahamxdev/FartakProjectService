@@ -43,6 +43,14 @@ namespace Application.Services.Users.Commands.EditUsers
 
                 user.Name = request.Name;
                 user.Lastname = request.Lastname;
+                user.MaritalStatus = request.MaritalStatus;
+                user.Gender = request.Gender;
+                user.Language = request.Language;
+                user.City = request.City;
+                user.Latitude = request.Latitude;
+                user.Longitude = request.Longitude;
+                user.ProjectSkillJson = request.ProjectSkillJson;
+
                 user.Status = request.Status;
                 user.PassWord = (user.PassWord != null) ? EncodePassword(request.Password, salt) : "";
                 user.Mobile = (request.Mobile != null) ? request.Mobile : "";
