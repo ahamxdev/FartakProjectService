@@ -13,7 +13,6 @@ import ContactCEO from "./employe-panel/ContactCEO";
 import OrderExcutors from "./employe-panel/OrderExecutors";
 import OrderProgress from "./employe-panel/OrderProgress";
 
-import PanelProffesor from "./admin-panel/panelProfessor/PanelProffesor";
 import Wallet from "./student-panel/Wallet";
 import MyClasses from "./student-panel/MyClasses";
 import OnlineCourses from "./student-panel/OnlineCourses";
@@ -27,6 +26,8 @@ import RequestManagement from "./student-panel/RequestManagement";
 import SupportTicket from "./student-panel/SupportTicket";
 import HomeStudent from "./student-panel/HomeStudent";
 
+import PanelProffesor from "./admin-panel/PanelProffesor";
+
 import HomeFreelancer from "./freelancer/Home";
 import PanelFreelanser from "./admin-panel/PanelFreelancer";
 import TaskProject from "./admin-panel/TaskProject";
@@ -36,9 +37,9 @@ import FileTaskProject from "./admin-panel/FileTaskProject";
 import StatusProject from "./admin-panel/StatusProject";
 import ResoumeProfessor from "./admin-panel/ResoumeProfessor";
 import PaymentAndWallet from "./admin-panel/panelProfessor/PaymentAndWallet/PaymentAndWallet";
-import ProfessorResume from './admin-panel/panelProfessor/ProfessorResume/ProfessorResume';
-import PersonalInformation from './admin-panel/panelProfessor/personalInformation/PersonalInformation';
-import OnlineClass from './admin-panel/panelProfessor/OnlineClass/OnlineClass';
+import OnlineClass from "./admin-panel/panelProfessor/OnlineClass/OnlineClass";
+import ProfessorResume from "./admin-panel/panelProfessor/ProfessorResume/ProfessorResume";
+import PersonalInformation from "./admin-panel/panelProfessor/personalInformation/PersonalInformation";
 function App() {
   return (
     <>
