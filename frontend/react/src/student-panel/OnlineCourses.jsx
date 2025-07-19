@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Header from "./components/header";
 import Sidebar from "./components/sidebar";
+import { Link } from "react-router-dom";
 
 const CourseTable = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -72,21 +73,21 @@ const CourseTable = () => {
                           30 جلسه
                         </td>
                         <td style={{ padding: "1rem" }} className="text-center">
-                          <a
-                            href="#"
+                          <Link
+                            to={"/"}
                             className="text-primary text-decoration-none small fw-semibold"
                             onClick={toggleDetails}
                           >
                             نمایش بیشتر آمار کلاس ها
-                          </a>
+                          </Link>
                         </td>
                         <td style={{ padding: "1rem" }} className="text-center">
-                          <a
-                            href="#"
+                          <Link
+                            to={"/"}
                             className="text-primary text-decoration-none small fw-semibold"
                           >
                             پخش زنده فعال است
-                          </a>
+                          </Link>
                         </td>
                         <td
                           style={{
@@ -114,21 +115,21 @@ const CourseTable = () => {
                           4 جلسه
                         </td>
                         <td style={{ padding: "1rem" }} className="text-center">
-                          <a
-                            href="#"
+                          <Link
+                            to={"/"}
                             className="text-primary text-decoration-none small fw-semibold"
                             onClick={toggleDetails}
                           >
                             نمایش بیشتر آمار کلاس ها
-                          </a>
+                          </Link>
                         </td>
                         <td style={{ padding: "1rem" }} className="text-center">
-                          <a
-                            href="#"
+                          <Link
+                            to={"/"}
                             className="text-primary text-decoration-none small fw-semibold"
                           >
                             پخش زنده فعال است
-                          </a>
+                          </Link>
                         </td>
                         <td
                           style={{
@@ -314,21 +315,21 @@ const CourseTable = () => {
                           30 جلسه
                         </td>
                         <td style={{ padding: "1rem" }} className="text-center">
-                          <a
-                            href="#"
+                          <Link
+                            to={"/"}
                             className="text-primary text-decoration-none small fw-semibold"
                             onClick={toggleDetails}
                           >
                             نمایش بیشتر آمار کلاس ها
-                          </a>
+                          </Link>
                         </td>
                         <td style={{ padding: "1rem" }} className="text-center">
-                          <a
-                            href="#"
+                          <Link
+                            to={"/"}
                             className="text-primary text-decoration-none small fw-semibold"
                           >
                             پخش زنده فعال است
-                          </a>
+                          </Link>
                         </td>
                         <td
                           style={{
@@ -356,21 +357,21 @@ const CourseTable = () => {
                           4 جلسه
                         </td>
                         <td style={{ padding: "1rem" }} className="text-center">
-                          <a
-                            href="#"
+                          <Link
+                            to={"/"}
                             className="text-primary text-decoration-none small fw-semibold"
                             onClick={toggleDetails}
                           >
                             نمایش بیشتر آمار کلاس ها
-                          </a>
+                          </Link>
                         </td>
                         <td style={{ padding: "1rem" }} className="text-center">
-                          <a
-                            href="#"
+                          <Link
+                            to={"/"}
                             className="text-primary text-decoration-none small fw-semibold"
                           >
                             پخش زنده فعال است
-                          </a>
+                          </Link>
                         </td>
                         <td
                           style={{

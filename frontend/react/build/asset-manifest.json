@@ -1,7 +1,11 @@
 {
   "files": {
     "main.css": "/static/css/main.300e5d11.css",
+<<<<<<< HEAD
     "main.js": "/static/js/main.f1223319.js",
+=======
+    "main.js": "/static/js/main.1d407625.js",
+>>>>>>> a43b147191de07cffa1536aca68daa0ad6e6a0a0
     "static/media/bootstrap-icons.woff?": "/static/media/bootstrap-icons.1295669cd4e305c97f2c.woff",
     "static/media/bootstrap-icons.woff2?": "/static/media/bootstrap-icons.92ea18a81d737146ff04.woff2",
     "static/media/Qs_Iranyekan thin.ttf": "/static/media/Qs_Iranyekan thin.fa4ee44fb1b00e264acf.ttf",
@@ -13,10 +17,18 @@
     "static/media/Qs_Iranyekan black.ttf": "/static/media/Qs_Iranyekan black.ea936a4866227a30e62e.ttf",
     "index.html": "/index.html",
     "main.300e5d11.css.map": "/static/css/main.300e5d11.css.map",
+<<<<<<< HEAD
     "main.f1223319.js.map": "/static/js/main.f1223319.js.map"
   },
   "entrypoints": [
     "static/css/main.300e5d11.css",
     "static/js/main.f1223319.js"
+=======
+    "main.1d407625.js.map": "/static/js/main.1d407625.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.300e5d11.css",
+    "static/js/main.1d407625.js"
+>>>>>>> a43b147191de07cffa1536aca68daa0ad6e6a0a0
   ]
 }

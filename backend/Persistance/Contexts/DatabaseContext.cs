@@ -2,6 +2,7 @@
 using Domain.Entities;
 using Domain.Entities.Blogs;
 using Domain.Entities.MessageSetting;
+using Domain.Entities.NotificationSettings;
 using Domain.Entities.Payments;
 using Domain.Entities.Projects;
 using Domain.Entities.TeacherUser;
@@ -20,6 +21,7 @@ namespace Persistence.Contexts
         public DbSet<Course> Courses { get; set; }
         public DbSet<CourseUser> CourseUsers { get; set; }
         public DbSet<CourseType> CourseTypes { get; set; }
+        public DbSet<NotificationSetting> NotificationSettings { get; set; }
         public DbSet<ProjectCategory> ProjectCategories { get; set; }
         public DbSet<TeacherUser> TeacherUsers { get; set; }
         public DbSet<Comment> Comments { get; set; }
@@ -45,6 +47,7 @@ namespace Persistence.Contexts
         public DbSet<RequestProjectTeam> RequestProjectTeams { get; set; }
         public DbSet<ProjectFile> ProjectFiles { get; set; }
         public DbSet<ProjectPhase> ProjectPhases { get; set; }
+        public DbSet<ProjectPhaseTask> ProjectPhaseTasks { get; set; }
 
         public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
         {
@@ -57,6 +60,7 @@ namespace Persistence.Contexts
             modelBuilder.Entity<Course>().HasIndex(u => u.CourseId).IsUnique();
             modelBuilder.Entity<CourseUser>().HasIndex(u => u.CourseUserId).IsUnique();
             modelBuilder.Entity<CourseType>().HasIndex(u => u.CourseTypeId).IsUnique();
+            modelBuilder.Entity<NotificationSetting>().HasIndex(u => u.NotificationSettingId).IsUnique();
             modelBuilder.Entity<TeacherUser>().HasIndex(u => u.TeacherUserId).IsUnique();
             modelBuilder.Entity<TeacherUserResume>().HasIndex(u => u.TeacherUserResumeId).IsUnique();
             modelBuilder.Entity<TeacherUserSelect>().HasIndex(u => u.TeacherUserSelectId).IsUnique();
@@ -78,8 +82,21 @@ namespace Persistence.Contexts
             modelBuilder.Entity<PaymentUse>().HasIndex(u => u.PaymentUseId).IsUnique();
             modelBuilder.Entity<ProjectFile>().HasIndex(u => u.ProjectFileId).IsUnique();
             modelBuilder.Entity<ProjectPhase>().HasIndex(u => u.ProjectPhaseId).IsUnique();
+            modelBuilder.Entity<ProjectPhaseTask>().HasIndex(u => u.ProjectPhaseTaskId).IsUnique();
             modelBuilder.Entity<Comment>().HasIndex(u => u.CommentId).IsUnique();
-        }
+
+            modelBuilder.Entity<Project>()
+              .HasMany(p => p.ProjectPhases)
+              .WithOne(pp => pp.Projects)
+              .HasForeignKey(pp => pp.ProjectId);
+
+            modelBuilder.Entity<ProjectPhase>()
+                .HasMany(p => p.ProjectPhaseTasks)
+                .WithOne(pp => pp.ProjectPhases)
+                .HasForeignKey(pp => pp.ProjectPhaseId);
+        
+
     }
+}
 
 }

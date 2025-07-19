@@ -106,8 +106,8 @@ namespace Application.Services.Projects.Commands.EditProjects
                 project.PriceType = request.PriceType;
                 project.DeadLine = request.DeadLine;
                 project.Duration = request.Duration;
-
-
+                project.PortfolioImage = request.PortfolioImage;
+                project.PortfolioDescription = request.PortfolioDescription;
                 _context.SaveChanges();
 
                 return new ResultDto()

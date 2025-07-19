@@ -1,9 +1,7 @@
-'use client';
+"use client";
 
-import { useState } from "react"; 
-
+import { useState } from "react";
 import { useRouter } from "next/navigation";
-
 
 type Day = {
   id: number;
@@ -34,7 +32,7 @@ const week: Day[] = [
   {
     id: 4,
     title: "۴",
-    subtitle: "سه‌ شنبه",
+    subtitle: "سه‌شنبه",
     slots: ["08:00 - 11:00", "13:00 - 16:00", "16:00 - 19:00", "20:00 - 23:00"],
   },
   {
@@ -46,7 +44,7 @@ const week: Day[] = [
   {
     id: 6,
     title: "۶",
-    subtitle: "پنج‌ شنبه",
+    subtitle: "پنج‌شنبه",
     slots: ["08:00 - 11:00", "13:00 - 16:00", "16:00 - 19:00", "20:00 - 23:00"],
   },
   {
@@ -80,7 +78,10 @@ const ThirdFormAfterVerified = () => {
   const router = useRouter();
 
   return (
-    <section className="w-full max-w-7xl mx-auto mt-8 px-4 lg:px-0" dir="rtl">
+    <section
+      className="w-full max-w-7xl mx-auto mt-8 px-4 lg:px-0 overflow-hidden"
+      dir="rtl"
+    >
       <h2 className="text-2xl lg:text-3xl font-bold text-right">
         انتخاب زمان کلاس
       </h2>
@@ -220,34 +221,41 @@ const ThirdFormAfterVerified = () => {
           </span>
         </div>
       </div>
-      <div className="flex items-center justify-between rounded-xl mt-4">
+
+      {/* Responsive Textarea and File Input */}
+      <div className="mt-6">
         <label
-          htmlFor="class-duration"
-          className="font-semibold text-sm lg:text-xl "
+          htmlFor="additional-info"
+          className="font-semibold text-sm lg:text-xl text-right block mb-2"
         >
           توضیحات تکمیلی خود را در این قسمت وارد کنید
         </label>
-      </div>
-      <div className="flex items-center justify-between gap-4 rounded-xl py-3 mt-6">
-        <textarea
-          className="h-[95px] md:w-[50%] flex rounded-lg border-[2px] p-3 placeholder:text-sm placeholder:text-[#787878] placeholder:font-normal border-[#1E1E1E]"
-          placeholder="توضیحات تکمیلی"
-        ></textarea>
-        <div className="h-[95px] md:w-[50%] border-[2px] flex items-center border justify-center rounded-lg py-3">
-          <div className="h-[55px] md:w-[80%] flex items-center justify-center rounded-lg py-3 px-3 bg-[#FFEE98]">
-            <input
-              type="file"
-              className="w-full opacity-0 absolute cursor-pointer"
-            />
-            <span className="text-center text-[#1E1E1E]">فایل انتخاب کنید</span>
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4 rounded-xl py-3">
+          <textarea
+            id="additional-info"
+            className="h-[95px] w-full md:w-1/2 rounded-lg border-[2px] p-3 placeholder:text-sm placeholder:text-[#787878] placeholder:font-normal border-[#1E1E1E]"
+            placeholder="توضیحات تکمیلی"
+          ></textarea>
+          <div className="h-[95px] w-full md:w-1/2 flex items-center justify-center rounded-lg border-[2px] border-[#1E1E1E]">
+            <div className="h-[55px] w-full md:w-[80%] flex items-center justify-center rounded-lg py-3 px-3 bg-[#FFEE98]">
+              <input
+                type="file"
+                className="opacity-0 absolute cursor-pointer w-full"
+              />
+              <span className="text-center text-[#1E1E1E]">
+                فایل انتخاب کنید
+              </span>
+            </div>
           </div>
         </div>
-      </div> 
-      <button 
-         
-        className="mt-4 w-full bg-[#1D40D7] text-white h-[40px] rounded-lg cursor-pointer" 
-        onClick={() => router.push('/fa/tadris/result')}
-      >تایید زمان انتخاب شده</button>
+      </div>
+
+      <button
+        className="mt-4 w-full bg-[#1D40D7] text-white h-[40px] rounded-lg cursor-pointer"
+        onClick={() => router.push("/fa/tadris/result")}
+      >
+        تایید زمان انتخاب شده
+      </button>
     </section>
   );
 };

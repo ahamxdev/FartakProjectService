@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Header from "./components/header";
 import Sidebar from "./components/sidebar";
+import { Link } from "react-router-dom";
 
 function DiscountCode() {
   const [activeLabel, setActiveLabel] = useState(null);
@@ -122,8 +123,8 @@ function DiscountCode() {
                           مهلت استفاده : {card.duration}
                         </small>
                       </div>
-                      <a
-                        href="#"
+                      <Link
+                        to={"/"}
                         className="text-decoration-none d-inline-block my-3"
                         style={{ fontSize: "12px" }}
                       >
@@ -133,7 +134,7 @@ function DiscountCode() {
                         >
                           {card.tag}
                         </span>
-                      </a>
+                      </Link>
                       <div className="d-flex justify-content-between align-items-center mt-auto">
                         <span className="text-muted small">کد تخفیف:</span>
                         <button

@@ -36,11 +36,11 @@ const featuresRight = [
 
 const FartakQuality = () => {
   return (
-    <div className="relative bg-white py-10 px-8 flex flex-col items-center font-sans">
+    <div className="relative bg-white py-10 md:px-8 px-3 flex flex-col items-center font-sans">
       {/* Header */}
-      <div className="bg-[#7649C4] text-white w-[80%] rounded-[24px] p-8 flex flex-col items-center">
-        <div className="flex justify-around items-center rounded-[24px] w-full border border-white/60 bg-[linear-gradient(15deg,rgba(0,0,0,0.4)_0%,rgba(0,0,0,0.1)_41.54%,rgba(0,0,0,0.4)_88.33%)] backdrop-blur-[10px]">
-          <div className="flex flex-col justify-end items-end gap-12">
+      <div className="bg-[#7649C4] text-white md:w-[80%] w-full rounded-[24px] md:p-8 p-3 flex flex-col items-center">
+        <div className="flex justify-around md:p-0 px-4 items-center rounded-[24px] w-full border border-white/60 bg-[linear-gradient(15deg,rgba(0,0,0,0.4)_0%,rgba(0,0,0,0.1)_41.54%,rgba(0,0,0,0.4)_88.33%)] backdrop-blur-[10px]">
+          <div className="flex flex-col md:justify-end md:items-end items-start md:gap-12 gap-4">
             <span className="text-lg">
               با فرتاک سه سال{" "}
               <span className="text-yellow-300 font-bold text-xl">
@@ -52,13 +52,18 @@ const FartakQuality = () => {
               <span className="text-sm">برای ثبت نام کلیک کنید</span>
             </button>
           </div>
-          <Image src={HeaderImage} alt="header img" />
+          <Image
+            src={HeaderImage}
+            alt="header img"
+            className="w-[117px] h-[137px] md:w-[327px] md:h-[286px]"
+          />
         </div>
       </div>
 
+      {/* Features Section */}
       <div className="flex flex-col lg:flex-row justify-center items-center gap-6 w-full relative mt-8">
-        {/* Left Features */}
-        <div className="flex flex-col gap-4">
+        {/* Left Features - Visible only on md and larger */}
+        <div className="hidden md:flex flex-col gap-4">
           {featuresRight.map((item, idx) => (
             <div
               key={idx}
@@ -79,12 +84,12 @@ const FartakQuality = () => {
         {/* Center Logo + Cards */}
         <div className="relative flex flex-col items-center justify-center">
           <div className="flex justify-center items-start bg-[#7649C4] rounded-[32px] w-[380px] h-[200px] py-5">
-            <h3 className="text-white">کیفیت به سبک فرتاک</h3>
+            <h3 className="text-white text-lg">کیفیت به سبک فرتاک</h3>
           </div>
           <div className="-mt-27 z-1 border border-[#7F56D9] bg-white rounded-full p-6 w-68 h-68 flex items-center justify-center">
             <Image src={Logo} alt="Fartak Project" width={230} height={230} />
           </div>
-          <div className="mt-[-50px] flex gap-7  relative">
+          <div className="mt-[-50px] flex gap-7 relative">
             {/* Left Card */}
             <div className="bg-[#CBC2FF] w-44 h-56 rounded-tl-[40px] rounded-tr-[20px] rounded-bl-[20px] rounded-br-[20px] flex flex-col items-center justify-center border border-[#7F56D9] p-4">
               <Image
@@ -96,7 +101,6 @@ const FartakQuality = () => {
               />
               <span className="mt-4 font-semibold text-sm">صرفه اقتصادی</span>
             </div>
-
             {/* Right Card */}
             <div className="bg-[#CBC2FF] w-44 h-56 rounded-tr-[40px] rounded-tl-[20px] rounded-bl-[20px] rounded-br-[20px] flex flex-col items-center justify-center border border-[#7F56D9] p-4">
               <Image
@@ -111,8 +115,8 @@ const FartakQuality = () => {
           </div>
         </div>
 
-        {/* Right Features */}
-        <div className="flex flex-col gap-4">
+        {/* Right Features - Visible only on md and larger */}
+        <div className="hidden md:flex flex-col gap-4">
           {featuresLeft.map((item, idx) => (
             <div
               key={idx}
@@ -131,7 +135,44 @@ const FartakQuality = () => {
         </div>
       </div>
 
-      {/* First Course Slider */}
+      {/* Features for Small Screens - Visible only on sm */}
+      <div className="md:hidden flex justify-between items-center gap-4 mt-6">
+        <div className="flex flex-col gap-4">
+          {featuresRight.map((item, idx) => (
+            <div
+              key={idx}
+              className="bg-[#CBC2FF] border border-[#7F56D9] p-4 rounded-xl w-45 flex flex-col justify-center items-center gap-3 relative"
+            >
+              <Image
+                className="border border-[#00000099] p-2 rounded-lg"
+                src={item.icon}
+                alt="icon"
+                width={64}
+                height={64}
+              />
+              <span className="text-xs font-semibold">{item.label}</span>
+            </div>
+          ))}
+        </div>
+        <div className="flex flex-col gap-4">
+          {featuresLeft.map((item, idx) => (
+            <div
+              key={idx}
+              className="bg-[#CBC2FF] border border-[#7F56D9] p-4 rounded-xl w-45 flex flex-col justify-center items-center gap-3 relative"
+            >
+              <Image
+                className="border border-[#00000099] p-2 rounded-lg"
+                src={item.icon}
+                alt="icon"
+                width={64}
+                height={64}
+              />
+              <span className="text-xs font-semibold">{item.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
       <SectionSlider
         title="دوره های آنلاین دهم"
         viewAllUrl="/category/all"
@@ -139,7 +180,7 @@ const FartakQuality = () => {
       >
         {[...Array(10)].map((_, i) => (
           <SwiperSlide key={i} className="py-6">
-            <div className="bg-[#EEF5FF] rounded-2xl shadow-md border border-gray-200 w-[250px] p-4 flex flex-col items-center text-right font-sans">
+            <div className="bg-[#EEF5FF] rounded-2xl shadow-md border border-gray-200 md:w-[250px] w-[90%] p-4 flex flex-col items-center text-right font-sans">
               <div className="w-full h-40 relative rounded-xl overflow-hidden mb-3">
                 <Image
                   src={CourseImg}
@@ -175,11 +216,15 @@ const FartakQuality = () => {
       </SectionSlider>
 
       {/* Gradient Card with Image */}
-      <div className="flex w-[83%] mt-6 justify-between items-center rounded-[16px_80px] h-[200px] bg-gradient-to-r from-[#FCE638] to-[#FCE94C] shadow-[0_0_5px_rgba(0,0,0,0.25)] pr-8">
+      <div className="flex md:w-[83%] w-[100%] mt-6 justify-between items-center rounded-[16px_80px] h-[200px] bg-gradient-to-r from-[#FCE638] to-[#FCE94C] shadow-[0_0_5px_rgba(0,0,0,0.25)] pr-8">
         <p className="text-[#1E1E1E] font-bold md:text-xl">
           میدونی که فرتاک برات بهترین دوره ها رو آماده کرده ؟
         </p>
-        <Image className="-mt-27 p-2" src={UserImg} alt="icon" />
+        <Image
+          className="md:-mt-27 p-2 w-[200px] h-[237px] -mt-12"
+          src={UserImg}
+          alt="icon"
+        />
       </div>
 
       {/* Second Course Slider */}
@@ -190,7 +235,7 @@ const FartakQuality = () => {
       >
         {[...Array(10)].map((_, i) => (
           <SwiperSlide key={i} className="py-6">
-            <div className="bg-[#EEF5FF] rounded-2xl shadow-md border border-gray-200 w-[250px] p-4 flex flex-col items-center text-right font-sans">
+            <div className="bg-[#EEF5FF] rounded-2xl shadow-md border border-gray-200 md:w-[250px] w-[90%] p-4 flex flex-col items-center text-right font-sans">
               <div className="w-full h-40 relative rounded-xl overflow-hidden mb-3">
                 <Image
                   src={CourseImg}
@@ -226,47 +271,49 @@ const FartakQuality = () => {
       </SectionSlider>
 
       {/* Lead Capture Form */}
-      <div className="rounded-lg border-2 border-[#1E1E1E] bg-white w-full p-8 mt-10">
+      <div className="rounded-lg border-2 border-[#1E1E1E] bg-white w-[90%]  md:p-8 p-4 md:mt-10">
         <h3 className="text-black my-2 font-bold md:text-xl">
           نمونه کلاس های فرتاک
         </h3>
         <p className="text-black my-3 text-sm">
           اطلاعاتت‌رو وارد کن تا همین الان ویدیوهای نمونه تدریس رو ببینی!
         </p>
-        <div className="flex justify-between items-center flex-wrap gap-4">
-          <div>
+        <div className="grid  md:grid-cols-4 md:gap-4 gap-2">
+          <div className="col-span-1">
             <label className="font-normal text-base text-black">
               نام و نام خانوادگی
             </label>
             <input
               type="text"
-              className="border-[2px] border-[#1E1E1E] rounded-lg py-2 px-4 mt-2"
+              className="border-[2px] border-[#1E1E1E] rounded-lg py-2 px-4 mt-2 w-full"
               placeholder="نام و نام خانوادگی خود را وارد کنید"
             />
           </div>
-          <div>
+          <div className="col-span-1">
             <label className="font-normal text-base text-black">
               شماره تلفن
             </label>
             <input
               type="tel"
-              className="border-[2px] border-[#1E1E1E] rounded-lg py-2 px-4 mt-2"
+              className="border-[2px] border-[#1E1E1E] rounded-lg py-2 px-4 mt-2 w-full text-right"
               placeholder="لطفا شماره خود را وارد کنید"
             />
           </div>
-          <div>
+          <div className="col-span-1">
             <label className="font-normal text-base text-black">
               شماره تلفن
             </label>
             <input
               type="tel"
-              className="border-[2px] border-[#1E1E1E] rounded-lg py-2 px-4 mt-2"
+              className="border-[2px] border-[#1E1E1E] rounded-lg py-2 px-4 mt-2 w-full text-right"
               placeholder="لطفا شماره خود را وارد کنید"
             />
           </div>
-          <button className="bg-[#1D40D7] mt-7 text-white w-[40%] h-[44px] py-2 rounded-lg text-sm hover:bg-[#0044cc] transition">
-            مشاهده ویدیو ها
-          </button>
+          <div className="col-span-1 flex items-end mt-2">
+            <button className="bg-[#1D40D7] text-white w-full h-[44px] py-2 rounded-lg text-sm hover:bg-[#0044cc] transition">
+              مشاهده ویدیو ها
+            </button>
+          </div>
         </div>
       </div>
     </div>
