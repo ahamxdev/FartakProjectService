@@ -1,4 +1,10 @@
 import React, { useState } from "react";
+<<<<<<< HEAD
+=======
+// import { Link } from "react-router-dom";
+import Header from "./components/header";
+import Sidebar from "./components/sidebar";
+>>>>>>> a43b147191de07cffa1536aca68daa0ad6e6a0a0
 
 const Dashboard = () => {
   const [activeLabel, setActiveLabel] = useState(null);

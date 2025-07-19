@@ -122,7 +122,7 @@ export default function MapPicker({ onSelect, onClose }: MapPickerProps) {
 
   return (
     <div className="fixed inset-0 z-50 backdrop-blur-sm bg-black/30 flex items-center justify-center">
-      <div className="bg-white p-12 rounded-lg w-[30%] h-[80%] relative flex flex-col items-center">
+      <div className="bg-white p-12 rounded-lg  h-[80%] w-[90%] relative flex flex-col items-center">
         <button
           onClick={onClose}
           className="absolute top-12 cursor-pointer right-12 text-black text-xl"

@@ -137,7 +137,7 @@ const ProjectRegistration = () => {
             </Link>
           </div>
           <div className="flex flex-col gap-3">
-            <div className="relative lg:-mt-26 mt-0 w-[126px] h-[154px]">
+            <div className="relative lg:-mt-[95px] mt-0 w-[126px] h-[154px]">
               <Image
                 src={
                   "/projectRegistration/man and woman working at table with laptop.png"
@@ -207,13 +207,13 @@ const ProjectRegistration = () => {
             </span>
             <Link
               href={"/projects/managerlist"}
-              className="bg-[#FFE401] flex md:hidden justify-center items-center rounded-lg px-1.5 py-1.5 text-sm font-bold text-[#000]"
+              className="bg-[#FFE401] flex md:hidden justify-center items-center rounded-lg px-1.5 py-1.5 text-sm font-bold text-[#000] lg:mt-[30px]"
             >
               مشاهده اطلاعات
             </Link>
           </div>
           <div className="flex flex-col gap-3">
-            <div className="relative lg:-mt-26 mt-0 w-[126px] h-[154px]">
+            <div className="relative lg:-mt-[94px] mt-0 w-[126px] h-[154px]">
               <Image
                 src={
                   "/projectRegistration/man and woman working at the table.png"

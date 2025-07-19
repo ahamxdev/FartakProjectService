@@ -20,5 +20,7 @@ namespace Application.Services.Projects.Commands.EditProjects
         public int Priority { get; set; } // 0 Price 2 Quality 2 Both
         public int PriceType { get; set; } // 0 Simple 1 Medium  2 Large 
         public IFormFile? FileImage { get; set; }
+        public string? PortfolioImage { get; set; } // تصویر نمونه کار 
+        public string? PortfolioDescription { get; set; } // توضیحات نمونه کار 
     }
 }

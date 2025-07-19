@@ -1,23 +1,24 @@
-"use client"
-import React, { useRef } from 'react'
+"use client";
+import React, { useRef, useState } from "react";
 // import BreadCrumb from '@/components/modules/BreadCrumb'
 // import Image from 'next/image'
 // import Link from 'next/link'
-import { SwiperSlide } from 'swiper/react'
-import SectionTitle from './SectionTitile'
-import ApplicationCreationPointsBox from './ApplicationCreationPointsBox'
-import MobileApplicationPointsBox from './MobileApplicationPointsBox'
-import CategorySkillSliderSection from './CategorySkillSliderSection'
-import NewestProjectBox from './NewestProjectBox'
+import { SwiperSlide } from "swiper/react";
+import SectionTitle from "./SectionTitile";
+import ApplicationCreationPointsBox from "./ApplicationCreationPointsBox";
+import MobileApplicationPointsBox from "./MobileApplicationPointsBox";
+import CategorySkillSliderSection from "./CategorySkillSliderSection";
+import NewestProjectBox from "./NewestProjectBox";
 // import SkillBox from './SkillBox'
-import InputCheckbox from './InputCheckbox'
+import InputCheckbox from "./InputCheckbox";
 
 const ApplicationWebsiteDesign = () => {
-      const inputRef = useRef<HTMLInputElement | null>(null)
-
-      return (
-            <>
-                  {/* <BreadCrumb items={["مهارت ها شما", "طراحی سایت و اپلیکیشن", "طراحی رابط کاربری"]} />
+  const inputRef = useRef<HTMLInputElement | null>(null);
+  const options = ["اندروید", "ios"];
+  const [selected, setSelected] = useState<string | null>(null);
+  return (
+    <>
+      {/* <BreadCrumb items={["مهارت ها شما", "طراحی سایت و اپلیکیشن", "طراحی رابط کاربری"]} />
                   <section className='flex flex-col lg:flex-row lg:gap-16 gap-8 w-[90%] mx-auto md:my-10 my-5'>
                         <div className="relative lg:w-[55%] w-full lg:h-[530px] h-[350px]">
                               <Image
@@ -44,37 +45,37 @@ const ApplicationWebsiteDesign = () => {
                         </div>
                   </section> */}
 
-                  <SectionTitle title={"مزایای ساخت اپلیکیشن"} />
-                  <section className="w-[90%] mx-auto md:my-10 my-5 grid grid-cols-2 md:grid-cols-3 gap-6">
-                        <ApplicationCreationPointsBox />
-                        <ApplicationCreationPointsBox />
-                        <ApplicationCreationPointsBox />
-                        <ApplicationCreationPointsBox />
-                        <ApplicationCreationPointsBox />
-                        <ApplicationCreationPointsBox />
-                  </section>
+      <SectionTitle title={"مزایای ساخت اپلیکیشن"} />
+      <section className="w-[90%] mx-auto md:my-10 my-5 grid grid-cols-2 md:grid-cols-3 gap-6">
+        <ApplicationCreationPointsBox />
+        <ApplicationCreationPointsBox />
+        <ApplicationCreationPointsBox />
+        <ApplicationCreationPointsBox />
+        <ApplicationCreationPointsBox />
+        <ApplicationCreationPointsBox />
+      </section>
 
-                  <SectionTitle title={"مزایای ساخت اپلیکیشن موبایل"} />
-                  <section className="w-[90%] mx-auto md:my-10 my-5 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-                        <MobileApplicationPointsBox />
-                        <MobileApplicationPointsBox />
-                        <MobileApplicationPointsBox />
-                        <MobileApplicationPointsBox />
-                        <MobileApplicationPointsBox />
-                        <MobileApplicationPointsBox />
-                  </section>
+      <SectionTitle title={"مزایای ساخت اپلیکیشن موبایل"} />
+      <section className="w-[90%] mx-auto md:my-10 my-5 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+        <MobileApplicationPointsBox />
+        <MobileApplicationPointsBox />
+        <MobileApplicationPointsBox />
+        <MobileApplicationPointsBox />
+        <MobileApplicationPointsBox />
+        <MobileApplicationPointsBox />
+      </section>
 
-                  <SectionTitle title={"جدیدترین پروژه های ثبت شده"} />
-                  <CategorySkillSliderSection>
-                        {[...Array(10)].map((_, i) => (
-                              <SwiperSlide key={i}>
-                                    <NewestProjectBox />
-                              </SwiperSlide>
-                        ))}
-                  </CategorySkillSliderSection>
+      <SectionTitle title={"جدیدترین پروژه های ثبت شده"} />
+      <CategorySkillSliderSection>
+        {[...Array(10)].map((_, i) => (
+          <SwiperSlide key={i}>
+            <NewestProjectBox />
+          </SwiperSlide>
+        ))}
+      </CategorySkillSliderSection>
 
-                  <SectionTitle title={"نمونه کار های طراحی سایت"} />
-                  {/* <CategorySkillSliderSection>
+      <SectionTitle title={"نمونه کار های طراحی سایت"} />
+      {/* <CategorySkillSliderSection>
                         {[...Array(10)].map((_, i) => (
                               <SwiperSlide key={i}>
                                     <SkillBox />
@@ -82,60 +83,115 @@ const ApplicationWebsiteDesign = () => {
                         ))}
                   </CategorySkillSliderSection> */}
 
+      <SectionTitle title={"پروژتون در کمترین زمان ممکن ثبت کنید"} />
+      <section className="w-[90%] flex flex-col gap-4 mx-auto md:my-10 my-5 bg-[#EEF5FF] rounded-2xl border-[2px] border-[#1E1E1E] py-5 lg:py-10 px-4 sm:px-8 md:px-12 lg:px-16">
+        <div className="flex flex-col md:flex-row items-center gap-2 w-full justify-between">
+          <div className="flex flex-col gap-3.5 md:w-[50%] w-full">
+            <span className="font-bold md:text-[22px] text-sm text-[#000]">
+              سیستم عامل اپلیکیشن را انتخاب کنید .{" "}
+            </span>
+            <div className="flex items-center gap-10">
+              {options.map((label) => (
+                <InputCheckbox
+                  key={label}
+                  label={label}
+                  checked={selected === label}
+                  onChange={() => setSelected(label)}
+                />
+              ))}
+            </div>
+          </div>
 
-                  <SectionTitle title={"پروژتون در کمترین زمان ممکن ثبت کنید"} />
-                  <section className='w-[90%] flex flex-col gap-4 mx-auto md:my-10 my-5 bg-[#EEF5FF] rounded-2xl border-[2px] border-[#1E1E1E] py-5 lg:py-10 px-4 sm:px-8 md:px-12 lg:px-16'>
-                        <div className="flex flex-col md:flex-row items-center gap-2 w-full justify-between">
-                              <div className="flex flex-col gap-3.5 md:w-[50%] w-full">
-                                    <span className='font-bold md:text-[22px] text-sm text-[#000]'>سیستم عامل اپلیکیشن را انتخاب کنید . </span>
-                                    <div className="flex items-center gap-10">
-                                          <InputCheckbox label={"اندروید"} />
-                                          <InputCheckbox label={"IOS"} />
-                                    </div>
-                              </div>
+          <div className="flex flex-col gap-3.5 md:w-[50%] w-full">
+            <span className="font-bold md:text-[22px] text-sm text-[#000]">
+              یک دسته بندی برای پروژه خود انتخاب کنید
+            </span>
+            <div className="flex items-center gap-4 w-full">
+              <button className="rounded-lg border-[2px] border-[#1D40D7] w-full px-3 py-1 flex justify-between items-center text-base bg-[#fff] font-normal cursor-pointer text-[#00000080]">
+                دسته بندی
+                <svg
+                  width="12"
+                  height="7"
+                  viewBox="0 0 12 7"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1 1.47852L6 5.47852L11 1.47852"
+                    stroke="black"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div className="flex flex-col md:flex-row items-center gap-2 w-full justify-between">
+          <div className="flex flex-col gap-3.5 md:w-[50%] w-full">
+            <label
+              className="font-bold md:text-[22px] text-sm text-[#000]"
+              htmlFor=""
+            >
+              یک عنوان برای پروژه خود وارد کنید .
+            </label>
+            <input
+              type="text"
+              className="border-[2px] bg-white border-[#1D40D7] rounded-lg py-4 px-4 placeholder:text[#aaa] placeholder:text-base placeholder:font-normal"
+              placeholder="عنوان پروژه خود را وارد کنید"
+            />
+          </div>
+          <div className="flex flex-col gap-3.5 md:w-[50%] w-full">
+            <label
+              className="font-bold md:text-[22px] text-sm text-[#000]"
+              htmlFor=""
+            >
+              زمان پیشنهادی شما برای تحویل پروژه چقدر است .
+            </label>
+            <input
+              type="text"
+              className="border-[2px] bg-white border-[#1D40D7] rounded-lg py-4 px-4 placeholder:text[#aaa] placeholder:text-base placeholder:font-normal"
+              placeholder="تعداد روز"
+            />
+          </div>
+        </div>
 
-                              <div className="flex flex-col gap-3.5 md:w-[50%] w-full">
-                                    <span className='font-bold md:text-[22px] text-sm text-[#000]'>یک دسته بندی برای پروژه خود انتخاب کنید</span>
-                                    <div className="flex items-center gap-4 w-full">
-                                          <button className='rounded-lg border-[2px] border-[#1D40D7] w-full px-3 py-1 flex justify-between items-center text-base bg-[#fff] font-normal cursor-pointer text-[#00000080]'>
-                                                دسته بندی
-                                                <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                      <path d="M1 1.47852L6 5.47852L11 1.47852" stroke="black" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                                                </svg>
-                                          </button>
-                                    </div>
-                              </div>
-                        </div>
-                        <div className="flex flex-col md:flex-row items-center gap-2 w-full justify-between">
-                              <div className="flex flex-col gap-3.5 md:w-[50%] w-full">
-                                    <label className='font-bold md:text-[22px] text-sm text-[#000]' htmlFor="">یک عنوان برای پروژه خود وارد کنید .</label>
-                                    <input type="text" className='border-[2px] bg-white border-[#1D40D7] rounded-lg py-4 px-4 placeholder:text[#aaa] placeholder:text-base placeholder:font-normal' placeholder='عنوان پروژه خود را وارد کنید' />
-                              </div>
-                              <div className="flex flex-col gap-3.5 md:w-[50%] w-full">
-                                    <label className='font-bold md:text-[22px] text-sm text-[#000]' htmlFor="">زمان پیشنهادی شما برای تحویل پروژه چقدر است .</label>
-                                    <input type="text" className='border-[2px] bg-white border-[#1D40D7] rounded-lg py-4 px-4 placeholder:text[#aaa] placeholder:text-base placeholder:font-normal' placeholder='تعداد روز' />
-                              </div>
-                        </div>
+        <div className="flex flex-col md:flex-row items-center justify-between gap-2">
+          <div className="md:w-[60%] w-full flex flex-col gap-2">
+            <label
+              className="font-bold md:text-[22px] text-sm text-[#000]"
+              htmlFor=""
+            >
+              بیشتر درباره پروژه بگویید .
+            </label>
+            <textarea
+              className="w-full h-[150px] md:h-[190px] border-[2px] border-[#1D40D7] rounded-lg py-4 px-4 placeholder:text[#aaa] bg-white placeholder:text-base placeholder:font-normal"
+              placeholder="توضیحات تکمیلی"
+            ></textarea>
+          </div>
+          <div
+            onClick={() => {
+              if (inputRef.current) {
+                inputRef.current.click();
+              }
+            }}
+            className="md:w-[40%] bg-white w-full mt-9 h-[120px] md:h-[190px] flex justify-center items-center cursor-pointer border-[2px] border-[#1D40D7] rounded-lg text-xs md:text-base font-bold"
+          >
+            <input ref={inputRef} type="file" hidden />
+            آپلود عکس یا فایل
+          </div>
+        </div>
 
-                        <div className="flex flex-col md:flex-row items-center justify-between gap-2">
-                              <div className="md:w-[60%] w-full flex flex-col gap-2">
-                                    <label className='font-bold md:text-[22px] text-sm text-[#000]' htmlFor="">بیشتر درباره پروژه بگویید .</label>
-                                    <textarea className='w-full h-[150px] md:h-[190px] border-[2px] border-[#1D40D7] rounded-lg py-4 px-4 placeholder:text[#aaa] bg-white placeholder:text-base placeholder:font-normal' placeholder='توضیحات تکمیلی'></textarea>
-                              </div>
-                              <div onClick={() => {
-                                    if (inputRef.current) {
-                                          inputRef.current.click();
-                                    }
-                              }} className="md:w-[40%] bg-white w-full mt-9 h-[120px] md:h-[190px] flex justify-center items-center cursor-pointer border-[2px] border-[#1D40D7] rounded-lg text-xs md:text-base font-bold">
-                                    <input ref={inputRef} type="file" hidden />
-                                    آپلود عکس یا فایل
-                              </div>
-                        </div>
+        <button
+          className="w-full bg-[#1D40D7] py-3 flex items-center justify-center rounded-lg font-bold md:text-lg text-xs text-white cursor-pointer my-4"
+          id="confirm-btn"
+        >
+          ثبت رایگان پروژه
+        </button>
+      </section>
+    </>
+  );
+};
 
-                        <button className='w-full bg-[#1D40D7] py-3 flex items-center justify-center rounded-lg font-bold md:text-lg text-xs text-white cursor-pointer my-4' id='confirm-btn'>ثبت رایگان پروژه</button>
-                  </section>
-            </>
-      )
-}
-
-export default ApplicationWebsiteDesign
+export default ApplicationWebsiteDesign;

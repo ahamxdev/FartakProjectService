@@ -7,6 +7,11 @@ using Application.Services.ProjectTeams.Queries.GetProjectTeams;
 
 namespace Application.Services.ProjectTeamMembers.Queries.GetProjectTeamMembers
 {
+    public class ResultGetProjectTeamHeadDto
+    {
+        public required List<GetProjectTeamHeadDto> ProjectTeamMembers { get; set; }
+        public long Rows { get; set; }
+    }
     public class ResultGetProjectTeamMemberDto
     {
         public required List<GetProjectTeamMemberDto> ProjectTeamMembers { get; set; }

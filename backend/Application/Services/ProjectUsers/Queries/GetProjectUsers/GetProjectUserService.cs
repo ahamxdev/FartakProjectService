@@ -20,6 +20,8 @@ namespace Application.Services.ProjectUsers.Commands.AddProjectUsers
                 ProjectUserId = p.ProjectUserId,
                 ProjectId = p.ProjectId,
                 UserId = p.UserId,
+                Price = p.Price,
+                Days = p.Days,
                 Status = p.Status,
 
             }).OrderBy(x => x.ProjectUserId).ToList();
@@ -40,6 +42,8 @@ namespace Application.Services.ProjectUsers.Commands.AddProjectUsers
                 ProjectUserId = p.ProjectUserId,
                 ProjectId = p.ProjectId,
                 UserId = p.UserId,
+                Price = p.Price,
+                Days = p.Days,
                 Status = p.Status
 
             }).OrderBy(x => x.ProjectUserId).ToList();
@@ -58,6 +62,8 @@ namespace Application.Services.ProjectUsers.Commands.AddProjectUsers
                 ProjectUserId = p.ProjectUserId,
                 ProjectId = p.ProjectId,
                 UserId = p.UserId,
+                Price = p.Price,
+                Days = p.Days,
                 Status = p.Status
 
             }).OrderBy(x => x.ProjectUserId).ToList();

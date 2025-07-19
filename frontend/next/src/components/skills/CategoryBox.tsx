@@ -15,14 +15,12 @@ const CategoryBox = ({
   id?: number;
   addProject: boolean;
 }) => {
-  console.log(src);
-
   return (
     <Link
       href={`${
         addProject
-          ? `/projects/${id}-${encodeURIComponent(title)}/order-project`
-          : `/projects/${id}-${encodeURIComponent(title)}`
+          ? `/projects/${id}-${title}/order-project`
+          : `/projects/${id}-${title}`
       }`}
       // href={`/projects/${title}`}
       className={`flex flex-col items-center gap-2 ${
