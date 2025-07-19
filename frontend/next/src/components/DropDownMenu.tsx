@@ -3,8 +3,11 @@
 import { getTextColor } from "@/utils/color";
 import { memo, useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import { api } from "@/utils/api";
+import { lazy } from "react";
+
+const SelectTadrisType = lazy(() => import("./SelectTadrisType"));
 
 interface TeacherType {
   teacherTypeId: number;
@@ -31,7 +34,8 @@ const DropDownMenu = ({ titleBarColor = "black" }: DropDownMenuProps) => {
   const [headTitle, setHeadTitle] = useState<TeacherType[]>([]);
   const [mainItems, setMainItems] = useState<DropDownMenuItemsType>({});
   const [error, setError] = useState<string | null>(null);
-  const router = useRouter();
+  const [showSelection, setShowSelection] = useState<boolean>(false);
+  // const router = useRouter();
 
   const handleItemHover = (item: TeacherType) => {
     setSelectedMainTitle(item.teacherTypeId.toString());
@@ -53,7 +57,8 @@ const DropDownMenu = ({ titleBarColor = "black" }: DropDownMenuProps) => {
   };
 
   const handleSubItemClick = () => {
-    router.push(`/tadris/online?step=${2}`);
+    // router.push(`/tadris/online?step=${2}`);
+    setShowSelection(true);
   };
 
   useEffect(() => {
@@ -106,7 +111,6 @@ const DropDownMenu = ({ titleBarColor = "black" }: DropDownMenuProps) => {
                   1,
                 ]);
 
-                // Add nested items where teacherTypeParentId matches subItem.teacherTypeId
                 const nestedItems = teacherTypes.filter(
                   (item) => item.teacherTypeParentId === subItem.teacherTypeId
                 );
@@ -114,7 +118,7 @@ const DropDownMenu = ({ titleBarColor = "black" }: DropDownMenuProps) => {
                   const nestedColumnIndex = nestedIndex % 3;
                   newMainItems[parentId][subItem.title].items[nestedColumnIndex].push([
                     nestedItem.title,
-                    0, // Not a parent item
+                    0,
                   ]);
                 });
               });
@@ -124,7 +128,6 @@ const DropDownMenu = ({ titleBarColor = "black" }: DropDownMenuProps) => {
           setHeadTitle(headTitles);
           setMainItems(newMainItems);
           setError(null);
-       
         } else {
           throw new Error(`API responded with status: ${res.status}`);
         }
@@ -140,6 +143,11 @@ const DropDownMenu = ({ titleBarColor = "black" }: DropDownMenuProps) => {
 
     fetchData();
   }, []);
+
+  // Move the conditional rendering after all hooks
+  if (showSelection) {
+    return <SelectTadrisType />;
+  }
 
   return (
     <div

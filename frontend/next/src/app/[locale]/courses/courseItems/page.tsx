@@ -278,7 +278,7 @@ const FartakQuality = () => {
         <p className="text-black my-3 text-sm">
           اطلاعاتت‌رو وارد کن تا همین الان ویدیوهای نمونه تدریس رو ببینی!
         </p>
-        <div className="grid grid-cols-1 grid-cols-2 md:grid-cols-4 md:gap-4 gap-2">
+        <div className="grid  md:grid-cols-4 md:gap-4 gap-2">
           <div className="col-span-1">
             <label className="font-normal text-base text-black">
               نام و نام خانوادگی
@@ -295,7 +295,7 @@ const FartakQuality = () => {
             </label>
             <input
               type="tel"
-              className="border-[2px] border-[#1E1E1E] rounded-lg py-2 px-4 mt-2 w-full"
+              className="border-[2px] border-[#1E1E1E] rounded-lg py-2 px-4 mt-2 w-full text-right"
               placeholder="لطفا شماره خود را وارد کنید"
             />
           </div>
@@ -305,11 +305,11 @@ const FartakQuality = () => {
             </label>
             <input
               type="tel"
-              className="border-[2px] border-[#1E1E1E] rounded-lg py-2 px-4 mt-2 w-full"
+              className="border-[2px] border-[#1E1E1E] rounded-lg py-2 px-4 mt-2 w-full text-right"
               placeholder="لطفا شماره خود را وارد کنید"
             />
           </div>
-          <div className="col-span-1 flex items-end">
+          <div className="col-span-1 flex items-end mt-2">
             <button className="bg-[#1D40D7] text-white w-full h-[44px] py-2 rounded-lg text-sm hover:bg-[#0044cc] transition">
               مشاهده ویدیو ها
             </button>
